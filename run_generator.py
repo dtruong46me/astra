@@ -1,43 +1,42 @@
-# main.py
+# run_generator.py (Tên cũ là main.py)
 import config
 import generator
 import os
 import time
+import shutil
 
 def main():
+    print(">>> Đang khởi tạo quá trình sinh dữ liệu...")
     start_time = time.time()
     
-    # Tạo thư mục output nếu chưa có
-    if not os.path.exists("output_data"):
-        os.makedirs("output_data")
+    # 1. Dọn dẹp folder cũ để tránh dữ liệu rác
+    if os.path.exists("output_data"):
+        shutil.rmtree("output_data") # Xóa sạch thư mục cũ
+    os.makedirs("output_data")
 
-    # 1. Sinh Topology
+    # 2. Sinh Topology
     topo_df, node_list = generator.generate_topology()
     topo_file = "output_data/network_topology.csv"
-    topo_df.to_csv(topo_file, index=False)
-    print(f"✅ Đã tạo file Topology: {topo_file} ({len(topo_df)} links)")
+    topo_df.to_csv(topo_file, index=False, encoding='utf-8')
+    print(f"✅ Đã tạo file Topology: {topo_file}")
 
-    # 2. Sinh Traffic Logs
+    # 3. Sinh Traffic Logs
     traffic_df = generator.generate_traffic_data(node_list)
     traffic_file = "output_data/traffic_logs.csv"
-    traffic_df.to_csv(traffic_file, index=False)
+    
+    # Quan trọng: Ghi format chuẩn ISO để pandas đọc nhanh, float 3 số lẻ cho nhẹ
+    traffic_df.to_csv(traffic_file, index=False, encoding='utf-8', float_format='%.3f', date_format='%Y-%m-%d %H:%M:%S')
     
     end_time = time.time()
-    duration = end_time - start_time
-    
-    print(f"\n================ KẾT QUẢ ===================")
-    print(f"✅ Đã tạo file Traffic: {traffic_file}")
-    print(f"📊 Tổng số dòng dữ liệu: {len(traffic_df):,}")
-    print(f"🕒 Thời gian thực thi: {duration:.2f} giây")
-    print(f"============================================")
-    print(f"Gợi ý: Dùng file 'traffic_logs.csv' để train model Prophet/LSTM.")
-    print(f"Gợi ý: Dùng file 'network_topology.csv' để xây dựng Adjacency Matrix cho GNN.")
+    print(f"\n================ HOÀN TẤT ===================")
+    print(f"✅ File Traffic: {traffic_file}")
+    print(f"📊 Kích thước: {len(traffic_df):,} dòng")
+    print(f"🕒 Thời gian chạy: {end_time - start_time:.2f}s")
+    print(f"=============================================")
 
 if __name__ == "__main__":
-    # Set seed
     import numpy as np
     import random
     np.random.seed(config.SEED)
     random.seed(config.SEED)
-    
     main()

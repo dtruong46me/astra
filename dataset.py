@@ -1,7 +1,8 @@
+# dataset.py
 import pandas as pd
 import numpy as np
 import torch
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset
 from sklearn.preprocessing import StandardScaler
 import train_config as cfg
 
@@ -17,43 +18,29 @@ class TrafficDataset(Dataset):
         return self.X[idx], self.Y[idx]
 
 def get_adjacency_matrix(nodes, topo_df):
-    """
-    Tạo ma trận kề (A) chuẩn hóa từ danh sách cạnh.
-    A_wave = D^-1/2 * (A + I) * D^-1/2
-    """
     num_nodes = len(nodes)
     node_map = {node: i for i, node in enumerate(nodes)}
-    
-    # Khởi tạo ma trận toàn số 0
     adj = np.zeros((num_nodes, num_nodes))
     
-    # Fill ma trận dựa trên topology file
     for _, row in topo_df.iterrows():
         if row['source_device'] in node_map and row['target_device'] in node_map:
             u = node_map[row['source_device']]
             v = node_map[row['target_device']]
             adj[u, v] = 1
-            adj[v, u] = 1 # Vô hướng
+            adj[v, u] = 1 
             
-    # Self-loop (Thêm ma trận đơn vị I)
     adj = adj + np.eye(num_nodes)
-    
-    # Normalize (Laplacian normalization)
     row_sum = adj.sum(1)
-    d_inv_sqrt = np.power(row_sum, -0.5)
+    with np.errstate(divide='ignore'):
+        d_inv_sqrt = np.power(row_sum, -0.5)
     d_inv_sqrt[np.isinf(d_inv_sqrt)] = 0.
     d_mat_inv_sqrt = np.diag(d_inv_sqrt)
-    
     norm_adj = d_mat_inv_sqrt.dot(adj).dot(d_mat_inv_sqrt)
     return torch.FloatTensor(norm_adj).to(cfg.DEVICE)
 
 def feature_engineering(df_pivot):
-    """
-    Tạo thêm các feature: Time of Day, Day of Week, Holiday
-    """
     timestamps = df_pivot.index
-    
-    # 1. Time Features (Cyclical encoding)
+    # Time Features
     hour = timestamps.hour.values
     day_of_week = timestamps.dayofweek.values
     
@@ -62,72 +49,79 @@ def feature_engineering(df_pivot):
     day_sin = np.sin(2 * np.pi * day_of_week / 7)
     day_cos = np.cos(2 * np.pi * day_of_week / 7)
     
-    # 2. Event Feature
+    # Event Feature
     is_holiday = np.zeros(len(timestamps))
     date_strs = timestamps.strftime('%Y-%m-%d')
+    holidays_set = set(cfg.HOLIDAYS_ISO)
+    events_set = set(cfg.SPECIAL_EVENTS_ISO)
     
     for i, d in enumerate(date_strs):
-        if d in cfg.HOLIDAYS_ISO or d in cfg.SPECIAL_EVENTS_ISO:
+        if d in holidays_set or d in events_set:
             is_holiday[i] = 1.0
             
-    # Mở rộng kích thước để khớp với (Time, Nodes, Features)
-    # Traffic shape: (Time, Nodes) -> Chúng ta cần ghép feature vào từng node
     num_nodes = df_pivot.shape[1]
-    
-    # Feature array: (Time, Num_Features)
     feature_array = np.stack([hour_sin, hour_cos, day_sin, day_cos, is_holiday], axis=1)
-    
-    # Repeat feature cho tất cả các node: (Time, Nodes, Features)
-    # Traffic là feature đầu tiên
-    traffic_values = df_pivot.values # (Time, Nodes)
-    
-    # Reshape features to (Time, 1, Feats) then broadcast
     feature_expanded = np.tile(feature_array[:, np.newaxis, :], (1, num_nodes, 1))
-    
-    # Combine: Traffic (Time, Nodes, 1) + Features (Time, Nodes, 5)
+    traffic_values = df_pivot.values 
     full_data = np.concatenate([traffic_values[:, :, np.newaxis], feature_expanded], axis=2)
-    
-    return full_data, traffic_values # Trả về full features và raw traffic (để làm label)
+    return full_data
 
 def load_data():
     print(">>> Loading Data...")
-    df_traffic = pd.read_csv(cfg.TRAFFIC_PATH)
+    
+    # 1. Đọc dữ liệu an toàn
+    # on_bad_lines='skip': Bỏ qua dòng bị lỗi format trong CSV
+    try:
+        df_traffic = pd.read_csv(cfg.TRAFFIC_PATH, on_bad_lines='skip')
+    except:
+        df_traffic = pd.read_csv(cfg.TRAFFIC_PATH, error_bad_lines=False) # type: ignore
+
     df_topo = pd.read_csv(cfg.TOPO_PATH)
     
-    df_traffic['timestamp'] = pd.to_datetime(df_traffic['timestamp'])
+    # 2. Xử lý Date Time cực kỳ cẩn thận
+    # errors='coerce': Nếu format sai, biến thành NaT chứ không báo lỗi
+    df_traffic['timestamp'] = pd.to_datetime(df_traffic['timestamp'], errors='coerce')
     
-    # Pivot: Index=Time, Col=NodeID, Val=Bandwidth
+    # Bỏ các dòng bị NaT (do lỗi parse)
+    original_len = len(df_traffic)
+    df_traffic = df_traffic.dropna(subset=['timestamp'])
+    if len(df_traffic) < original_len:
+        print(f"⚠️ Warning: Đã loại bỏ {original_len - len(df_traffic)} dòng lỗi thời gian.")
+
+    # 3. Xử lý trùng lặp (Đây là thuốc chữa bệnh treo máy lúc pivot)
+    # Nếu có 2 dòng cùng timestamp và device_id, giữ dòng cuối cùng
+    df_traffic = df_traffic.drop_duplicates(subset=['timestamp', 'device_id'], keep='last')
+
+    # 4. Pivot
+    print(">>> Pivoting data (Might take a moment)...")
     df_pivot = df_traffic.pivot(index='timestamp', columns='device_id', values='bandwidth_usage_mbps')
-    df_pivot = df_pivot.fillna(method='ffill').fillna(0) # Handle missing # type: ignore
     
+    # 5. Fill missing data
+    df_pivot = df_pivot.ffill().fillna(0)
+    df_pivot = df_pivot.sort_index()
+
     nodes = df_pivot.columns.tolist()
     cfg.NUM_NODES = len(nodes)
     
-    # Lấy Ma trận kề
     adj_matrix = get_adjacency_matrix(nodes, df_topo)
     
-    # Scale dữ liệu Traffic (Chỉ scale feature traffic, các feature khác đã ở range tốt)
     scaler = StandardScaler()
-    # Fit scaler trên toàn bộ traffic data (trong thực tế chỉ nên fit trên train)
     scaled_traffic = scaler.fit_transform(df_pivot.values)
     
-    # Thay thế cột traffic cũ bằng cột đã scale
-    full_data, _ = feature_engineering(df_pivot)
+    full_data = feature_engineering(df_pivot)
     full_data[:, :, 0] = scaled_traffic 
+    full_data = np.array(full_data, dtype=np.float32)
     
-    # Tạo Sliding Window
+    # Sliding Window
     X, Y = [], []
-    # Y chỉ cần predict Traffic (feature 0)
-    
     L = len(df_pivot)
     for i in range(L - cfg.SEQ_LEN - cfg.PRED_LEN):
-        X.append(full_data[i : i + cfg.SEQ_LEN]) # (Seq_Len, Nodes, Feats)
-        Y.append(full_data[i + cfg.SEQ_LEN : i + cfg.SEQ_LEN + cfg.PRED_LEN, :, 0]) # (Pred_Len, Nodes)
+        X.append(full_data[i : i + cfg.SEQ_LEN]) 
+        Y.append(full_data[i + cfg.SEQ_LEN : i + cfg.SEQ_LEN + cfg.PRED_LEN, :, 0]) 
         
     X = np.array(X)
     Y = np.array(Y)
     
-    # Split Train/Test
     train_size = int(len(X) * cfg.TRAIN_RATIO)
     val_size = int(len(X) * cfg.VAL_RATIO)
     
