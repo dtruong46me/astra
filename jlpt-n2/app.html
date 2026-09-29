@@ -59,6 +59,7 @@ h1 .jp { font-family: var(--font-jp); margin-inline-end: .35em; }
 .home-head p { margin: 0; color: var(--ink-soft); max-width: 62ch; }
 .stats { display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; color: var(--ink-soft); }
 .stats b { font-size: 18px; color: var(--ink); font-variant-numeric: tabular-nums; margin-inline-end: 4px; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; margin-top: 8px; }
 .card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 14px; display: grid; gap: 8px; align-content: start; min-width: 0; }
 .card.off { background: transparent; border-style: dashed; }
@@ -105,6 +106,9 @@ h1 .jp { font-family: var(--font-jp); margin-inline-end: .35em; }
 .blank { display: inline-block; min-width: 4.5em; text-align: center; border-bottom: 2px solid var(--ink-soft); margin-inline: .2em; line-height: 1.5; }
 .blank.filled { color: var(--ai); border-bottom-color: var(--ai); }
 .blank:empty::before { content: "\3000"; }
+.slot { display: inline-block; min-width: 3.2em; text-align: center; border-bottom: 2px solid var(--ink-soft); margin-inline: .25em; line-height: 1.5; color: var(--ink-soft); font-size: .8em; vertical-align: baseline; }
+.slot.star { color: var(--shu); }
+.slot.filled { color: var(--ai); border-bottom-color: var(--ai); font-size: 1em; }
 .opts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 10px; list-style: none; margin: 0; padding: 0; }
 .opts.long { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 560px) { .opts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -130,7 +134,8 @@ details.ex > summary { list-style: none; cursor: pointer; padding: 8px 12px; fon
 details.ex > summary::-webkit-details-marker { display: none; }
 details.ex > summary::before { content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); transition: transform .15s; }
 details.ex[open] > summary::before { transform: rotate(45deg); }
-.exb { padding: 4px 14px 14px; display: grid; gap: 14px; font-size: 14.5px; }
+.exb { padding: 4px 14px 14px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; font-size: 14.5px; }
+.exb > * { min-width: 0; }
 .exb h4 { margin: 0 0 4px; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; }
 .exb .jp, .exb ruby { font-family: var(--font-jp); }
 .ansline { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
@@ -185,6 +190,8 @@ const scoreOf = (ex, s) => ex.qs.filter((q, i) => s.picks[i] === q.a).length;
 const mmss = t => `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`;
 
 /* ---------- home ---------- */
+let filter = "Tất cả";
+try { filter = localStorage.getItem("n2-dora-filter") || "Tất cả"; } catch (e) {}
 function home() {
   document.title = "Luyện đề N2 DORA";
   const ready = CATALOG.slots.filter(s => byNo[s.no]);
@@ -198,7 +205,8 @@ function home() {
       <div class="stats"><span><b>${ready.length}</b>/20 đề có sẵn</span><span><b>${done.length}</b>đề đã nộp</span>${avg !== null ? `<span><b>${avg}%</b>điểm trung bình</span>` : ""}</div>
       <div class="sources"><a class="src" href="${CATALOG.root}" target="_blank" rel="noopener"><span class="k">Drive</span>Thư mục gốc Đề JLPT (1–20)</a></div>
     </header>
-    <div class="grid">${CATALOG.slots.map(card).join("")}</div>
+    <div class="filters" role="group" aria-label="Lọc theo dạng">${["Tất cả", "Kanji", "Từ vựng", "Ngữ pháp"].map(f => `<button type="button" class="btn" data-filter="${f}" aria-pressed="${filter === f}">${f}${f === "Tất cả" ? "" : ` (${EXAMS.filter(e => e.cat === f).length})`}</button>`).join("")}</div>
+    <div class="grid">${CATALOG.slots.filter(s => filter === "Tất cả" || (byNo[s.no] && byNo[s.no].cat === filter)).map(card).join("")}</div>
     <footer>Đề gốc và đáp án © DORA Nihongo. Trang này chép lại đề để tự luyện; phần Hán Việt, phương án nhiễu, ngữ pháp và ghi chú mở rộng là phần bổ sung, không có trong bản chữa gốc.</footer>`;
 }
 function card(slot) {
@@ -278,10 +286,26 @@ function drawExam() {
 }
 const MARK_OK = `<svg class="mark" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="18" transform="rotate(-20 22 22)" stroke-dasharray="108 6"/></svg>`;
 const MARK_NG = `<svg class="mark" viewBox="0 0 44 44" aria-hidden="true"><path d="M9 22 L18 33 L37 8"/></svg>`;
+/* Stem tokens: （　） = blank filled by the chosen option (split on ／ for two blanks);
+   ［　］ / ［★］ = ordering slots, the chosen option goes into the ★ slot. */
+function fillStem(q, html, pickNo, full) {
+  const parts = pickNo ? q.o[pickNo - 1].split("／") : [];
+  let b = 0;
+  html = html.replace(/（　）/g, () => {
+    const t = parts.length ? esc(parts[Math.min(b++, parts.length - 1)]) : "";
+    return full ? `<u>${t}</u>` : `<span class="blank${t ? " filled" : ""}">${t}</span>`;
+  });
+  let k = 0;
+  html = html.replace(/［(　|★)］/g, (m, c) => {
+    if (full) { const w = esc(q.o[q.order[k++] - 1]); return c === "★" ? `<u>${w}</u>` : w; }
+    const t = c === "★" && pickNo ? esc(q.o[pickNo - 1]) : "";
+    return `<span class="slot${c === "★" ? " star" : ""}${t ? " filled" : ""}">${t || (c === "★" ? "★" : "")}</span>`;
+  });
+  return html;
+}
 function qHTML(q, i) {
   const done = st.submitted, pick = st.picks[i], ok = pick === q.a;
-  const fill = cur.kind === "vocab" && pick ? esc(q.o[pick - 1]) : "";
-  const stem = fmt(esc(q.s)).replace("（　）", `<span class="blank${fill ? " filled" : ""}">${fill}</span>`);
+  const stem = fillStem(q, fmt(esc(q.s)), pick, false);
   const long = q.o.some(o => o.length > 6);
   return `<section class="q${done ? (ok ? " ok" : " ng") : ""}" id="q${i + 1}" data-i="${i}">
     <div><div class="qn">${i + 1}${done ? (ok ? MARK_OK : MARK_NG) : ""}</div></div>
@@ -300,7 +324,8 @@ function qHTML(q, i) {
 function exHTML(q) {
   const a = q.a, p = [];
   p.push(`<div><h4>Đáp án</h4><div class="ansline"><span class="circ">${CIRC[a]}</span><span class="w">${esc(q.o[a - 1])}</span>${q.ar ? `<span class="r">${fmt(q.ar)}</span>` : ""}</div></div>`);
-  p.push(`<div><h4>Dịch câu</h4><p class="jpline">${fmt(q.s.replace("（　）", `<u>${q.o[a - 1]}</u>`))}</p><p class="vi">${q.vi}</p></div>`);
+  if (q.order) p.push(`<div><h4>Thứ tự đúng</h4><div class="ansline">${q.order.map(n => `<span class="${n === a ? "circ" : "r"}">${n}</span>`).join('<span class="r">→</span>')}</div></div>`);
+  p.push(`<div><h4>Dịch câu</h4><p class="jpline">${fillStem(q, fmt(q.s), a, true)}</p><p class="vi">${q.vi}</p></div>`);
   if (q.key && q.key.length) p.push(`<div><h4>Từ vựng</h4><div class="tbl"><table><thead><tr><th>Từ</th><th>Cách đọc</th><th>Hán Việt</th><th>Nghĩa</th></tr></thead><tbody>${q.key.map(k => `<tr><td class="w">${k.w}</td><td class="r">${k.r}</td><td class="hv">${k.hv || "—"}</td><td>${fmt(k.m)}</td></tr>`).join("")}</tbody></table></div></div>`);
   if (q.x) p.push(`<div><h4>Các phương án còn lại</h4><ul class="others">${[1, 2, 3, 4].filter(n => n !== a && q.x[n]).map(n => `<li><span class="n">${n}</span><div><span class="jp">${esc(q.o[n - 1])}</span> — ${fmt(q.x[n])}</div></li>`).join("")}</ul></div>`);
   if (q.g && q.g.length) p.push(`<div><h4>Ngữ pháp trong câu</h4><div style="display:grid;gap:6px">${q.g.map(g => `<div class="g">${fmt(g)}</div>`).join("")}</div></div>`);
@@ -330,10 +355,12 @@ app.addEventListener("click", e => {
     save(cur.no, st);
     qEl.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", String(+o.dataset.n === st.picks[i])));
     const bl = qEl.querySelector(".blank");
-    if (bl) { const p = st.picks[i]; bl.textContent = p ? cur.qs[i].o[p - 1] : ""; bl.classList.toggle("filled", !!p); }
+    if (bl || qEl.querySelector(".slot")) qEl.querySelector(".stem").innerHTML = fillStem(cur.qs[i], fmt(esc(cur.qs[i].s)), st.picks[i], false);
     const info = app.querySelector(".bar .info span"); if (info) info.textContent = `${Object.keys(st.picks).length}/${cur.qs.length} câu`;
     return;
   }
+  const fb = t.closest("[data-filter]");
+  if (fb) { filter = fb.dataset.filter; try { localStorage.setItem("n2-dora-filter", filter); } catch (e) {} home(); return; }
   const jump = t.closest("[data-jump]");
   if (jump) { e.preventDefault(); document.getElementById("q" + jump.dataset.jump).scrollIntoView({ behavior: "smooth", block: "start" }); return; }
   switch (t.closest("button")?.id) {

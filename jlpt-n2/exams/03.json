@@ -1,0 +1,205 @@
+{
+ "no": 3,
+ "folderLabel": "Ngữ pháp",
+ "cat": "Ngữ pháp",
+ "file": "ĐỀ 9 - NGỮ PHÁP N2",
+ "title": "Đề 3 · Ngữ pháp N2",
+ "jp": "文法形式",
+ "mondai": "<b>問題7</b> 次の文の（　）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。 Chọn mẫu ngữ pháp thích hợp nhất để điền vào chỗ trống.",
+ "src": {"folder": "1NJdTgjv1SPeAPMdzj9SSXXoAp6Iu0e-g", "goc": "1BFS4wnv23klBa4UWxM4ATBkagFkdGzsC", "chua": "1IQCUgzK3OoZyiVy_k1o-YCfaBpYQ9tNW"},
+ "qs": [
+  {
+   "s": "テーブルのうえに（　）ケーキが{置|お}いてあります。",
+   "o": ["食べはじめの", "食べきった", "食べぬいた", "食べかけの"],
+   "a": 4,
+   "ar": "Vます + かけ(の)",
+   "vi": "Trên bàn có đặt một chiếc bánh ngọt đang ăn dở.",
+   "key": [{"w": "〜かけの N", "r": "かけの", "hv": "—", "m": "N đang làm dở (chưa xong): 食べかけのパン, 読みかけの本"}],
+   "x": {
+    "1": "〜はじめ: bắt đầu làm. 食べはじめ chỉ lúc bắt đầu ăn, không mô tả trạng thái cái bánh đang dở.",
+    "2": "〜きる: làm hết, trọn vẹn. 食べきった = đã ăn hết, vậy thì không còn bánh trên bàn.",
+    "3": "〜ぬく: làm đến cùng dù khó khăn (走りぬく, 考えぬく). Không dùng với 食べる trong nghĩa này."
+   },
+   "g": ["<b class=\"jp\">Vてある</b>: trạng thái kết quả do ai đó cố ý tạo ra (置いてある: được đặt sẵn)."],
+   "n": ["〜かける còn nghĩa là suýt: 死にかける (suýt chết), おぼれかける (suýt chết đuối). Xem Đề 4 câu 6."]
+  },
+  {
+   "s": "この映画は青少年に悪い{影響|えいきょう}を与える（　）。",
+   "o": ["ことはない", "ものがある", "恐れがある", "限りではない"],
+   "a": 3,
+   "ar": "〜おそれがある",
+   "vi": "Bộ phim này có nguy cơ gây ảnh hưởng xấu đến thanh thiếu niên.",
+   "key": [{"w": "恐れがある", "r": "おそれがある", "hv": "KHỦNG", "m": "e rằng, có nguy cơ (việc xấu)"}],
+   "x": {
+    "1": "〜ことはない: không cần phải… (心配することはない). Không hợp nghĩa.",
+    "2": "〜ものがある: có cái gì đó (cảm thán): 彼の歌には心に響くものがある.",
+    "4": "〜限りではない: không thuộc phạm vi (quy định) này. この限りではない = không áp dụng."
+   },
+   "g": ["<b class=\"jp\">Vる / Nの + 恐れがある</b>: văn viết, tin tức. 台風が上陸する恐れがある."],
+   "n": ["青少年 せいしょうねん THANH THIẾU NIÊN; 影響を与える: gây ảnh hưởng."]
+  },
+  {
+   "s": "{森田|もりた}さんのお父さんは、声（　）やさしそうですね。",
+   "o": ["をして", "をもって", "からは", "からして"],
+   "a": 4,
+   "ar": "N + からして",
+   "vi": "Bố của anh Morita chỉ nghe giọng thôi đã thấy hiền rồi nhỉ.",
+   "key": [{"w": "〜からして", "r": "からして", "hv": "—", "m": "ngay từ… (lấy một chi tiết tiêu biểu để phán đoán toàn thể)"}],
+   "x": {
+    "1": "〜をして: dùng trong 〜をして〜させる (khiến ai làm gì), không hợp.",
+    "2": "〜をもって: bằng, với (phương tiện, trang trọng): 書面をもって通知する.",
+    "3": "〜からは: từ… thì (điểm xuất phát). Không mang nghĩa “ngay từ… đã”."
+   },
+   "g": ["<b class=\"jp\">〜そうだ</b> (Aい bỏ い + そう): trông có vẻ. やさしそう."],
+   "n": ["Cùng mẫu: タイトルからして面白そうだ. Xem thêm Đề 6 câu 2 (体格からして)."]
+  },
+  {
+   "s": "やっと{契約|けいやく}がまとまったかと（　）、まだ小さな{条件|じょうけん}でもめている。",
+   "o": ["思ったなら", "思い", "思って", "思ったら"],
+   "a": 4,
+   "ar": "〜かと思ったら",
+   "vi": "Cứ tưởng hợp đồng cuối cùng đã chốt xong, vậy mà vẫn đang cãi nhau về mấy điều khoản nhỏ.",
+   "key": [
+    {"w": "〜かと思ったら", "r": "かとおもったら", "hv": "—", "m": "cứ tưởng là… thì (thực tế khác hẳn)"},
+    {"w": "契約", "r": "けいやく", "hv": "KHẾ ƯỚC", "m": "hợp đồng"},
+    {"w": "もめる", "r": "もめる", "hv": "—", "m": "tranh cãi, xích mích"}
+   ],
+   "x": {
+    "1": "〜なら: nếu (giả định). Không đi thành mẫu かと思ったなら.",
+    "2": "Thể liên dụng 思い, không tạo thành mẫu ngữ pháp.",
+    "3": "思って: vì nghĩ… nên. Không diễn tả sự trái ngược."
+   },
+   "g": ["<b class=\"jp\">Vた + かと思ったら / かと思うと</b>: (1) cứ tưởng… nhưng thực ra; (2) vừa mới… thì đã (thay đổi nhanh)."],
+   "n": ["条件 じょうけん ĐIỀU KIỆN; まとまる: được thống nhất, chốt lại."]
+  },
+  {
+   "s": "いったん引き受けた（　）、最後までやり通すべきです。",
+   "o": ["からには", "ためには", "うえには", "わけには"],
+   "a": 1,
+   "ar": "〜からには",
+   "vi": "Một khi đã nhận lời thì nên làm đến cùng.",
+   "key": [{"w": "〜からには", "r": "からには", "hv": "—", "m": "một khi đã… thì (phải, nên)"}],
+   "x": {
+    "2": "〜ためには: để (mục đích). Vế trước phải là mục tiêu, không phải việc đã làm.",
+    "3": "〜うえは (không có に): một khi đã… (văn cứng). うえには không phải mẫu đúng.",
+    "4": "〜わけにはいかない: không thể (vì lý do đạo lý). Thiếu いかない."
+   },
+   "g": [
+    "<b class=\"jp\">Vた + からには</b>: vế sau là ý chí, nghĩa vụ: 〜べきだ, 〜なければならない, 〜つもりだ.",
+    "<b class=\"jp\">やり通す</b>: làm đến cùng (Vます + 通す)."
+   ],
+   "n": ["Đồng nghĩa: 〜以上(は), 〜上は. いったん: một khi, một lần đã."]
+  },
+  {
+   "s": "ゆうべ私が調べた（　）、工場の機械に問題はなかったのです。",
+   "o": ["ようでは", "うえでは", "次第では", "限りでは"],
+   "a": 4,
+   "ar": "〜限りでは",
+   "vi": "Theo như tôi kiểm tra tối qua thì máy móc trong nhà máy không có vấn đề gì.",
+   "key": [{"w": "〜限りでは", "r": "かぎりでは", "hv": "HẠN", "m": "theo như (phạm vi hiểu biết của người nói)"}],
+   "x": {
+    "1": "〜ようでは: nếu cứ như thế thì (kết quả xấu): こんなミスをするようでは困る.",
+    "2": "〜うえでは: về mặt, trên phương diện (数字のうえでは). Không đi với 調べた.",
+    "3": "〜次第では: tùy vào… mà (結果次第では). Đi với danh từ."
+   },
+   "g": ["<b class=\"jp\">調べた / 聞いた / 知っている + 限りでは</b>: giới hạn phạm vi thông tin."],
+   "n": ["Cùng chữ 限: 〜限り (chừng nào còn), 〜に限って (riêng…). Xem Đề 18 câu 10."]
+  },
+  {
+   "s": "風邪（　）し、それに着て行く服もないから、パーティーには行かない。",
+   "o": ["かねる", "ぎみだ", "ようだ", "うる"],
+   "a": 2,
+   "ar": "〜気味だ",
+   "vi": "Tôi hơi bị cảm, lại cũng chẳng có đồ để mặc đi, nên tôi không đi dự tiệc.",
+   "key": [{"w": "〜気味", "r": "ぎみ", "hv": "KHÍ VỊ", "m": "hơi có vẻ, hơi bị (tình trạng không tốt)"}],
+   "x": {
+    "1": "〜かねる: khó mà (Vます + かねる), không đi sau danh từ.",
+    "3": "〜ようだ: hình như. Về nghĩa có thể nhưng 風邪ようだ sai ngữ pháp (phải là 風邪のようだ).",
+    "4": "〜うる: có thể (Vます + うる), không đi sau danh từ."
+   },
+   "g": ["<b class=\"jp\">〜し、それに〜</b>: liệt kê lý do (vừa… lại còn…)."],
+   "n": ["Hay gặp: 風邪気味, 疲れ気味, 太り気味, 緊張気味. Xem Đề 6 câu 9 (不足気味)."]
+  },
+  {
+   "s": "あの人とは卒業式のとき別れた（　）。",
+   "o": ["ほどだ", "ことだ", "ばかりだ", "きりだ"],
+   "a": 4,
+   "ar": "Vた + きり",
+   "vi": "Tôi chia tay người ấy từ hôm lễ tốt nghiệp rồi không gặp lại nữa.",
+   "key": [{"w": "〜きり", "r": "きり", "hv": "—", "m": "từ khi… rồi thôi (không có gì tiếp theo)"}],
+   "x": {
+    "1": "〜ほどだ: đến mức. Không hợp nghĩa.",
+    "2": "〜ことだ: nên (lời khuyên) hoặc cảm thán. Không hợp.",
+    "3": "Vた + ばかりだ: vừa mới. Chia tay từ lễ tốt nghiệp thì không phải “vừa mới”."
+   },
+   "g": ["<b class=\"jp\">Vた + きり(〜ない)</b>: 出かけたきり帰ってこない (đi rồi không về)."],
+   "n": ["きり còn nghĩa là chỉ: 二人きり (chỉ hai người)."]
+  },
+  {
+   "s": "雪が降ると、バスは遅れ（　）。",
+   "o": ["かけになる", "きれなくなる", "がちになる", "かけなくなる"],
+   "a": 3,
+   "ar": "〜がち",
+   "vi": "Cứ hễ tuyết rơi là xe buýt hay bị trễ.",
+   "key": [{"w": "〜がち", "r": "がち", "hv": "—", "m": "hay bị, dễ có khuynh hướng (việc không tốt)"}],
+   "x": {
+    "1": "〜かけ: làm dở. 遅れかけになる không tự nhiên.",
+    "2": "〜きれない: không thể làm hết. Không hợp nghĩa.",
+    "4": "Không có mẫu này."
+   },
+   "g": ["<b class=\"jp\">Vます / N + がち</b>: 病気がち, 忘れがち, 遅れがち."],
+   "n": ["Phân biệt: 〜がち (hay xảy ra, lặp lại), 〜気味 (hơi có dấu hiệu), 〜っぽい (có vẻ, dễ)."]
+  },
+  {
+   "s": "家に着くか着かない（　）雨が降りだした。",
+   "o": ["かのように", "かのうちに", "ままにして", "ようにして"],
+   "a": 2,
+   "ar": "〜か〜ないかのうちに",
+   "vi": "Vừa về đến nhà thì trời đổ mưa.",
+   "key": [{"w": "〜か〜ないかのうちに", "r": "かないかのうちに", "hv": "—", "m": "vừa mới… thì đã (gần như cùng lúc)"}],
+   "x": {
+    "1": "〜かのように: như thể là. Không hợp.",
+    "3": "〜まま: để nguyên. Không hợp.",
+    "4": "〜ようにして: làm như thế nào đó. Không hợp."
+   },
+   "g": ["<b class=\"jp\">Vる + か + Vない + かのうちに</b>. Đồng nghĩa: 〜たとたん, 〜や否や."],
+   "n": ["Xem Đề 6 câu 6 (触れるか触れないかのうちに)."]
+  },
+  {
+   "s": "{鈴木|すずき}さんは、おなかがいっぱいな（　）まだ食べようとしている。",
+   "o": ["せいに", "ものに", "うえに", "くせに"],
+   "a": 4,
+   "ar": "〜くせに",
+   "vi": "Anh Suzuki bụng đã no căng vậy mà vẫn cố ăn tiếp.",
+   "key": [{"w": "〜くせに", "r": "くせに", "hv": "—", "m": "dù… vậy mà (chê trách, bất mãn)"}],
+   "x": {
+    "1": "〜せいで: tại vì (nguyên nhân xấu). せいに không đúng dạng.",
+    "2": "Không có mẫu ものに với nghĩa này.",
+    "3": "〜うえに: không những… mà còn. Không mang nghĩa trái ngược."
+   },
+   "g": [
+    "<b class=\"jp\">Aな + くせに</b>: いっぱいなくせに. Chủ ngữ thường là người khác.",
+    "<b class=\"jp\">Vよう + とする</b>: định, cố làm."
+   ],
+   "n": ["Gần nghĩa nhưng trung tính hơn: 〜のに."]
+  },
+  {
+   "s": "きのう、３時から４時に（　）{停電|ていでん}があった。",
+   "o": ["かけて", "そって", "わたって", "おいて"],
+   "a": 1,
+   "ar": "〜から〜にかけて",
+   "vi": "Hôm qua bị mất điện khoảng từ 3 giờ đến 4 giờ.",
+   "key": [
+    {"w": "〜から〜にかけて", "r": "にかけて", "hv": "—", "m": "từ khoảng… đến khoảng… (thời gian, không gian)"},
+    {"w": "停電", "r": "ていでん", "hv": "ĐÌNH ĐIỆN", "m": "mất điện"}
+   ],
+   "x": {
+    "2": "〜にそって: dọc theo; theo (方針にそって).",
+    "3": "〜にわたって: suốt, trải dài (期間/範囲全体). Không đi với から.",
+    "4": "〜において: tại, trong (trang trọng)."
+   },
+   "g": ["<b class=\"jp\">N1 から N2 にかけて</b>: 東北から関東にかけて雪が降る."],
+   "n": ["Phân biệt: 〜から〜まで (mốc rõ ràng) và 〜から〜にかけて (khoảng chừng)."]
+  }
+ ]
+}
