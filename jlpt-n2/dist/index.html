@@ -1,0 +1,361 @@
+<title>Luyện đề N2 DORA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@400;700&family=Be+Vietnam+Pro:wght@400;500;600;700&family=Klee+One:wght@600&display=swap">
+<style>
+/* Layout: an exam binder. Home = index of 20 exam slots; exam view = one answer sheet column with a sticky bar; explanations exist only after submitting. */
+:root {
+  --paper: #f6f7f9;
+  --sheet: #ffffff;
+  --ink: #1d2433;
+  --ink-soft: #566074;
+  --rule: #dfe3ea;
+  --ai: #2b4a8b;
+  --ai-wash: #e8edf7;
+  --shu: #d2352b;
+  --shu-wash: #fbeceb;
+  --ok: #1f7a4d;
+  --ok-wash: #e6f4ec;
+  --font-jp: "BIZ UDPMincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-ui: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-pen: "Klee One", "Be Vietnam Pro", cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12151b; --sheet: #1a1e26; --ink: #e6e9ef; --ink-soft: #9aa3b5; --rule: #2c323e;
+    --ai: #8fb0f0; --ai-wash: #22304a; --shu: #ff7b6e; --shu-wash: #3a2224; --ok: #6fd3a0; --ok-wash: #1d3329;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12151b; --sheet: #1a1e26; --ink: #e6e9ef; --ink-soft: #9aa3b5; --rule: #2c323e;
+  --ai: #8fb0f0; --ai-wash: #22304a; --shu: #ff7b6e; --shu-wash: #3a2224; --ok: #6fd3a0; --ok-wash: #1d3329;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.6; }
+a { color: var(--ai); }
+:focus-visible { outline: 2px solid var(--ai); outline-offset: 2px; }
+button { font: inherit; cursor: pointer; }
+.wrap { max-width: 800px; margin: 0 auto; padding-inline: 16px; padding-block: 0 56px; }
+
+/* shared bits */
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+h1 { margin: 0; font-size: clamp(24px, 5vw, 32px); line-height: 1.2; text-wrap: balance; font-weight: 700; }
+h1 .jp { font-family: var(--font-jp); margin-inline-end: .35em; }
+.btn { border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); padding: 7px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.btn:hover { border-color: var(--ai); }
+.btn.primary { background: var(--ai); border-color: var(--ai); color: var(--sheet); }
+.btn.danger { background: var(--shu); border-color: var(--shu); color: var(--sheet); }
+.btn[aria-pressed="true"] { background: var(--ai-wash); border-color: var(--ai); color: var(--ai); }
+.chip { display: inline-flex; align-items: center; padding: 1px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--ai-wash); color: var(--ai); }
+.src { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border: 1px solid var(--rule); border-radius: 999px; background: var(--sheet); text-decoration: none; font-size: 13px; font-weight: 500; color: var(--ink); }
+.src:hover { border-color: var(--ai); color: var(--ai); }
+.src .k { font-family: var(--font-jp); color: var(--ai); font-weight: 700; }
+.notice { font-size: 13px; color: var(--ink-soft); background: var(--sheet); border: 1px dashed var(--rule); border-radius: 8px; padding: 8px 12px; }
+
+/* home */
+.home-head { padding-block: 32px 18px; display: grid; gap: 10px; }
+.home-head p { margin: 0; color: var(--ink-soft); max-width: 62ch; }
+.stats { display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; color: var(--ink-soft); }
+.stats b { font-size: 18px; color: var(--ink); font-variant-numeric: tabular-nums; margin-inline-end: 4px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; margin-top: 8px; }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 14px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.card.off { background: transparent; border-style: dashed; }
+.card .no { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.card .no b { font-size: 17px; }
+.card .file { font-size: 13px; color: var(--ink-soft); font-family: var(--font-jp); }
+.card .state { font-size: 13px; font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 8px; min-height: 26px; }
+.card .state .pen { font-family: var(--font-pen); color: var(--shu); font-size: 20px; line-height: 1; }
+.card .acts { display: flex; flex-wrap: wrap; gap: 6px; }
+.card.off .state { color: var(--ink-soft); }
+.bar-mini { height: 4px; border-radius: 2px; background: var(--rule); overflow: hidden; }
+.bar-mini i { display: block; height: 100%; background: var(--ai); }
+
+/* exam */
+.exam-head { padding-block: 22px 16px; display: grid; gap: 10px; }
+.back { font-size: 13px; text-decoration: none; font-weight: 600; }
+.mondai { margin: 0; color: var(--ink-soft); }
+.mondai b { font-family: var(--font-jp); color: var(--ink); }
+.sources { display: flex; flex-wrap: wrap; gap: 8px; }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); margin-inline: -16px; padding: 10px 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.bar .info { margin-inline-end: auto; display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.bar .score { font-family: var(--font-pen); color: var(--shu); font-size: 24px; line-height: 1; }
+.bar .score small { font-size: 14px; }
+.confirm { margin-top: 12px; background: var(--shu-wash); border: 1px solid var(--shu); border-radius: 10px; padding: 12px 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.confirm p { margin: 0; margin-inline-end: auto; }
+
+.result { margin-top: 16px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 16px; display: grid; gap: 12px; }
+.result .big { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; }
+.result .big .pen { font-family: var(--font-pen); color: var(--shu); font-size: 44px; line-height: 1; }
+.result .big .pen small { font-size: 22px; }
+.result .big span { color: var(--ink-soft); font-size: 14px; }
+.jumps { display: flex; flex-wrap: wrap; gap: 6px; }
+.jumps a { width: 32px; height: 32px; border-radius: 6px; display: grid; place-items: center; font-size: 13px; font-weight: 700; text-decoration: none; font-variant-numeric: tabular-nums; border: 1.5px solid var(--ok); color: var(--ok); background: var(--ok-wash); }
+.jumps a.ng { border-color: var(--shu); color: var(--shu); background: var(--shu-wash); }
+
+.sheet { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; margin-top: 16px; }
+.q { padding: 20px 18px 16px; border-top: 1px solid var(--rule); display: grid; grid-template-columns: auto 1fr; column-gap: 14px; scroll-margin-top: 80px; }
+.q:first-child { border-top: 0; }
+.qn { width: 30px; height: 30px; border: 1.5px solid var(--ai); color: var(--ai); border-radius: 6px; display: grid; place-items: center; font-weight: 700; font-size: 14px; font-variant-numeric: tabular-nums; position: relative; }
+.qbody { min-width: 0; display: grid; gap: 12px; }
+.stem { font-family: var(--font-jp); font-size: 19px; line-height: 2.1; margin: 0; }
+.stem ruby rt, .jpline ruby rt { font-size: 10px; color: var(--ink-soft); }
+.stem u, .jpline u { text-decoration: none; border-bottom: 2px solid var(--ai); padding-bottom: 1px; }
+.blank { display: inline-block; min-width: 4.5em; text-align: center; border-bottom: 2px solid var(--ink-soft); margin-inline: .2em; line-height: 1.5; }
+.blank.filled { color: var(--ai); border-bottom-color: var(--ai); }
+.blank:empty::before { content: "\3000"; }
+.opts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 10px; list-style: none; margin: 0; padding: 0; }
+.opts.long { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 560px) { .opts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.opt { display: flex; align-items: center; gap: 10px; width: 100%; text-align: start; border: 1px solid transparent; background: transparent; color: var(--ink); padding: 6px 8px; border-radius: 8px; font-family: var(--font-jp); font-size: 17px; min-width: 0; }
+.opt:hover { background: var(--ai-wash); }
+.opt .bub { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--ink-soft); display: grid; place-items: center; font-family: var(--font-ui); font-size: 12px; font-weight: 700; color: var(--ink-soft); }
+.opt .t { min-width: 0; overflow-wrap: anywhere; }
+.opt[aria-pressed="true"] .bub { background: var(--ink); border-color: var(--ink); color: var(--sheet); }
+.done .opt { cursor: default; }
+.done .opt:hover { background: transparent; }
+.done .opt.is-ans { background: var(--ok-wash); }
+.done .opt.is-ans .bub { border-color: var(--ok); color: var(--ok); }
+.done .opt.is-ans[aria-pressed="true"] .bub { background: var(--ok); border-color: var(--ok); color: var(--sheet); }
+.done .opt.is-wrong { background: var(--shu-wash); }
+.done .opt.is-wrong .bub { background: var(--shu); border-color: var(--shu); color: var(--sheet); }
+.unanswered { font-size: 12.5px; color: var(--shu); font-weight: 600; }
+.mark { position: absolute; left: -7px; top: -8px; width: 44px; height: 44px; pointer-events: none; }
+.mark circle, .mark path { fill: none; stroke: var(--shu); stroke-width: 3; stroke-linecap: round; }
+.only-wrong .q.ok { display: none; }
+
+details.ex { border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }
+details.ex > summary { list-style: none; cursor: pointer; padding: 8px 12px; font-size: 13px; font-weight: 600; color: var(--ai); display: flex; align-items: center; gap: 10px; }
+details.ex > summary::-webkit-details-marker { display: none; }
+details.ex > summary::before { content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); transition: transform .15s; }
+details.ex[open] > summary::before { transform: rotate(45deg); }
+.exb { padding: 4px 14px 14px; display: grid; gap: 14px; font-size: 14.5px; }
+.exb h4 { margin: 0 0 4px; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; }
+.exb .jp, .exb ruby { font-family: var(--font-jp); }
+.ansline { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
+.ansline .circ { font-family: var(--font-pen); color: var(--shu); font-size: 20px; }
+.ansline .w { font-family: var(--font-jp); font-size: 20px; font-weight: 700; }
+.ansline .r { font-family: var(--font-jp); color: var(--ink-soft); }
+.vi { margin: 0; font-style: italic; }
+.jpline { margin: 0 0 2px; font-family: var(--font-jp); font-size: 16px; line-height: 2; }
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: start; padding: 6px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; }
+td.w { font-family: var(--font-jp); font-size: 17px; font-weight: 700; white-space: nowrap; }
+td.r { font-family: var(--font-jp); white-space: nowrap; }
+td.hv { font-size: 12.5px; font-weight: 600; letter-spacing: .04em; color: var(--ai); white-space: nowrap; }
+ul.others, ul.notes { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+ul.others li { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: baseline; }
+ul.others .n { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--shu); color: var(--shu); display: grid; place-items: center; font-size: 11px; font-weight: 700; }
+ul.others li > div { min-width: 0; }
+ul.notes li { padding-inline-start: 14px; position: relative; }
+ul.notes li::before { content: ""; position: absolute; left: 0; top: .7em; width: 6px; height: 6px; border-radius: 50%; background: var(--ai); }
+.g { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 8px 10px; }
+.g b.jp { color: var(--ai); }
+.key { margin-top: 16px; }
+.key table { background: var(--sheet); }
+.key td, .key th { text-align: center; font-variant-numeric: tabular-nums; }
+.key td { font-weight: 700; color: var(--shu); font-family: var(--font-pen); font-size: 17px; }
+footer { margin-top: 28px; font-size: 13px; color: var(--ink-soft); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap" id="app"></div>
+
+<script>
+const EXAMS = [{"id": "de13-kanji-n2", "kind": "kanji", "series": "DORA Nihongo · Đề 1 · Kanji N5–N2 trúng tủ", "jp": "漢字読み", "title": "Đề 1 · Kanji N2", "mondai": "<b>問題1<\/b> ＿＿の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。 Chọn cách đọc đúng nhất cho từ được gạch chân.", "source": {"goc": "https://drive.google.com/file/d/11PYSBCqOM-oxvMjCTAg0iGUaXNPw5Lj6/view", "chua": "https://drive.google.com/file/d/11Res_rm63WqK8ugILN5aG9KFosG8G3rc/view", "folder": "https://drive.google.com/drive/folders/1LAixdU5Je_Sl-HqNtl3C_22oaubkXufA"}, "qs": [{"s": "花見はわが社の春の{恒例|こうれい}_行事_です。", "o": ["こうごと", "こうじ", "ぎょうごと", "ぎょうじ"], "a": 4, "ar": "行事", "vi": "Ngắm hoa là sự kiện thường niên vào mùa xuân của công ty chúng tôi.", "key": [{"w": "行事", "r": "ぎょうじ", "hv": "HÀNH SỰ", "m": "sự kiện, hoạt động tổ chức theo lịch"}, {"w": "恒例", "r": "こうれい", "hv": "HẰNG LỆ", "m": "lệ thường, thông lệ hằng năm"}, {"w": "花見", "r": "はなみ", "hv": "HOA KIẾN", "m": "ngắm hoa (anh đào)"}], "x": {"1": "không có từ này. Bẫy trộn âm On こう với âm Kun ごと.", "2": "là cách đọc của <span class=\"jp\">工事<\/span> (CÔNG SỰ, thi công) hoặc <span class=\"jp\">公示<\/span> (công bố). Không phải cách đọc của 行事.", "3": "không có từ này. ごと là âm Kun của 事 (như 仕事 しごと), không dùng trong từ Hán ghép 行事."}, "g": ["<b class=\"jp\">わが〜<\/b> (我が): của chúng tôi, của ta. わが社 = công ty chúng tôi, わが国 = nước ta."], "n": ["行 có ba âm On: こう (旅行 りょこう, 銀行 ぎんこう), ぎょう (行事, 行列 ぎょうれつ hàng người, 行儀 ぎょうぎ phép tắc), あん (行灯 あんどん đèn lồng).", "事: じ trong từ Hán (火事 かじ, 食事 しょくじ, 用事 ようじ); こと/ごと là Kun (出来事 できごと, 仕事 しごと).", "恒例行事 こうれいぎょうじ: sự kiện thường niên. Hay gặp cùng: 年中行事 ねんじゅうぎょうじ (các lễ hội trong năm)."]}, {"s": "データをコンピューターで_処理_した。", "o": ["しょうり", "しゅうり", "しゅり", "しょり"], "a": 4, "ar": "処理", "vi": "Tôi đã xử lý dữ liệu bằng máy tính.", "key": [{"w": "処理", "r": "しょり", "hv": "XỬ LÝ", "m": "xử lý"}], "x": {"1": "<span class=\"jp\">勝利<\/span> (THẮNG LỢI): chiến thắng. Bẫy thêm trường âm う.", "2": "<span class=\"jp\">修理<\/span> (TU LÝ): sửa chữa. 修 đọc しゅう.", "3": "không phải từ thông dụng (chỉ gặp trong địa danh 首里 ở Okinawa)."}, "g": ["<b class=\"jp\">N で<\/b>: chỉ phương tiện, công cụ. コンピューターで = bằng máy tính."], "n": ["処 đọc しょ, âm ngắn: 処分 しょぶん (xử lý, vứt bỏ; kỷ luật), 対処 たいしょ (đối phó), 処置 しょち (xử trí, sơ cứu), 処方 しょほう (kê đơn).", "理 đọc り: 料理, 無理, 理由 りゆう, 管理 かんり."]}, {"s": "もちろん私は_地元_チームを応援します。", "o": ["じもと", "じげん", "ちもと", "ちげん"], "a": 1, "ar": "地元", "vi": "Đương nhiên là tôi sẽ cổ vũ cho đội nhà (đội địa phương).", "key": [{"w": "地元", "r": "じもと", "hv": "ĐỊA NGUYÊN", "m": "địa phương, quê nhà, bản địa"}, {"w": "応援", "r": "おうえん", "hv": "ỨNG VIỆN", "m": "cổ vũ, ủng hộ"}], "x": {"2": "<span class=\"jp\">次元<\/span> (THỨ NGUYÊN): chiều, không gian (3次元 = 3 chiều); cũng nghĩa là tầm, cấp độ (次元が違う: khác đẳng cấp).", "3": "không có từ này. 地 đọc ち ở 地下, 地図, nhưng 地元 đọc じ.", "4": "không có từ này."}, "n": ["地元 là kiểu đọc 重箱読み (On + Kun): じ (On) + もと (Kun).", "地 đọc じ: 地震 じしん, 地面 じめん, 地味 じみ (giản dị). Đọc ち: 地下 ちか, 地図 ちず, 地域 ちいき, 地球 ちきゅう.", "元 đọc もと (Kun, gốc), げん (元気), がん (元日 がんじつ, 元旦 がんたん)."]}, {"s": "このカレーは_辛くて_食べられない。", "o": ["にがくて", "しぶくて", "くさくて", "からくて"], "a": 4, "ar": "辛い → からい", "vi": "Món cà ri này cay quá nên tôi không ăn được.", "key": [{"w": "辛い", "r": "からい", "hv": "TÂN", "m": "cay; (cũng đọc つらい: khổ sở, vất vả)"}], "x": {"1": "<span class=\"jp\">苦い<\/span> (KHỔ) にがい: đắng.", "2": "<span class=\"jp\">渋い<\/span> (SÁP) しぶい: chát; (nghĩa bóng) trầm, sành điệu; nhăn nhó (渋い顔).", "3": "<span class=\"jp\">臭い<\/span> (XÚ) くさい: hôi, có mùi khó chịu."}, "g": ["<b class=\"jp\">Aくて<\/b>: thể て của tính từ い chỉ nguyên nhân (cay nên…).", "<b class=\"jp\">食べられない<\/b>: thể khả năng phủ định, không thể ăn."], "n": ["Năm vị: 甘い あまい (ngọt), 辛い からい (cay), 苦い にがい (đắng), 酸っぱい すっぱい (chua), 塩辛い しおからい / しょっぱい (mặn).", "辛い đọc つらい khi nói về cảm giác khổ sở: 別れが辛い (chia tay thật đau lòng). Xem câu 5 đề Từ vựng 7.", "On của 辛 là しん: 香辛料 こうしんりょう (gia vị cay), 辛抱 しんぼう (nhẫn nại)."]}, {"s": "その本について_批評_を書きました。", "o": ["ひべい", "ひびょう", "ひひょう", "ひへい"], "a": 3, "ar": "批評", "vi": "Tôi đã viết bài phê bình về cuốn sách đó.", "key": [{"w": "批評", "r": "ひひょう", "hv": "PHÊ BÌNH", "m": "phê bình, bình luận đánh giá (cả khen lẫn chê)"}], "x": {"1": "không có từ này.", "2": "không có từ này. 評 không bị đục hóa thành びょう.", "4": "<span class=\"jp\">疲弊<\/span> (BÌ TỆ): kiệt quệ, suy kiệt (kinh tế, thể lực). Có thật nhưng khác chữ."}, "g": ["<b class=\"jp\">〜について<\/b>: về, liên quan đến."], "n": ["評 đọc ひょう: 評判 ひょうばん (tiếng tăm), 評価 ひょうか (đánh giá), 好評 こうひょう (được khen), 不評 ふひょう.", "Phân biệt: 批評 (đánh giá chung, có thể khen) và 批判 ひはん PHÊ PHÁN (chỉ trích, nghiêng về tiêu cực).", "批 đọc ひ: 批判, 批准 ひじゅん (phê chuẩn)."]}, {"s": "{消毒済|しょうどくず}みの_清潔_なガーゼを{傷口|きずぐち}に当てる。", "o": ["せいげつ", "せいぎつ", "せいけつ", "せいきつ"], "a": 3, "ar": "清潔", "vi": "Đặt miếng gạc sạch đã khử trùng lên miệng vết thương.", "key": [{"w": "清潔", "r": "せいけつ", "hv": "THANH KHIẾT", "m": "sạch sẽ, vệ sinh"}, {"w": "消毒", "r": "しょうどく", "hv": "TIÊU ĐỘC", "m": "khử trùng, sát trùng"}, {"w": "傷口", "r": "きずぐち", "hv": "THƯƠNG KHẨU", "m": "miệng vết thương"}], "x": {"1": "không có từ này. げつ là âm của 月 (月曜日).", "2": "không có từ này.", "4": "không có từ này. 潔 đọc けつ, không phải きつ."}, "g": ["<b class=\"jp\">Vます + 済み<\/b> (ずみ): đã xong. 支払い済み (đã thanh toán), 使用済み (đã qua sử dụng).", "<b class=\"jp\">〜に当てる<\/b>: áp, đặt vào. 手を額に当てる (đặt tay lên trán)."], "n": ["潔 đọc けつ: 簡潔 かんけつ (ngắn gọn), 不潔 ふけつ (bẩn, trái nghĩa của 清潔). Kun: 潔い いさぎよい (dứt khoát, thẳng thắn).", "清 đọc せい (清掃 せいそう dọn dẹp), しょう (清浄 しょうじょう). Kun: 清い きよい.", "ガーゼ: gạc y tế (từ tiếng Đức Gaze)."]}, {"s": "{抜|ぬ}き{出|だ}したカードを元の場所に_戻す_。", "o": ["かえす", "もどす", "こわす", "なおす"], "a": 2, "ar": "戻す", "vi": "Đặt tấm thẻ đã rút ra trở lại chỗ cũ.", "key": [{"w": "戻す", "r": "もどす", "hv": "LỆ", "m": "đưa về, trả về (vị trí, trạng thái cũ)"}, {"w": "抜き出す", "r": "ぬきだす", "hv": "BẠT XUẤT", "m": "rút ra, lấy ra"}], "x": {"1": "<span class=\"jp\">返す<\/span> (PHẢN) かえす: trả lại (cho người khác). 本を返す.", "3": "<span class=\"jp\">壊す<\/span> (HOẠI) こわす: làm hỏng, phá.", "4": "<span class=\"jp\">直す<\/span> (TRỰC) なおす: sửa; <span class=\"jp\">治す<\/span>: chữa bệnh."}, "g": ["<b class=\"jp\">元の場所に戻す / 元に戻す<\/b>: đặt về chỗ cũ, khôi phục như ban đầu."], "n": ["Cặp tự/tha: 戻る もどる (quay về) / 戻す もどす (đưa về).", "返す trả cho chủ sở hữu; 戻す đưa về vị trí hay trạng thái cũ. 借りた本を返す, 本を棚に戻す.", "On của 戻 là れい (返戻 へんれい, ít gặp)."]}, {"s": "花びんの_破片_が床に飛び散っていた。", "o": ["ひがた", "はへん", "ひへん", "はがた"], "a": 2, "ar": "破片", "vi": "Mảnh vỡ của bình hoa văng tung tóe trên sàn nhà.", "key": [{"w": "破片", "r": "はへん", "hv": "PHÁ PHIẾN", "m": "mảnh vỡ"}, {"w": "飛び散る", "r": "とびちる", "hv": "PHI TÁN", "m": "văng tung tóe, bắn ra khắp nơi"}], "x": {"1": "<span class=\"jp\">干潟<\/span> ひがた: bãi bồi lộ ra khi thủy triều rút. Khác chữ.", "3": "không có từ này. 破 đọc は, không phải ひ.", "4": "<span class=\"jp\">歯形<\/span> はがた: dấu răng. Có thật nhưng khác chữ."}, "g": ["<b class=\"jp\">Vていた<\/b>: trạng thái kết quả trong quá khứ (lúc đó mảnh vỡ đang nằm văng khắp sàn)."], "n": ["破 đọc は: 破産 はさん (phá sản), 突破 とっぱ (đột phá). Kun: 破る やぶる, 破れる やぶれる.", "片 đọc へん: 破片, 断片 だんぺん (đục hóa). Kun かた: 片方 かたほう, 片付ける かたづける, 片道 かたみち."]}, {"s": "_抽象的_な説明はやめてください。", "o": ["つうしょうてき", "ちゅうぞうてき", "ちゅうしょうてき", "つうぞうてき"], "a": 3, "ar": "抽象的", "vi": "Xin đừng giải thích một cách trừu tượng như vậy.", "key": [{"w": "抽象的", "r": "ちゅうしょうてき", "hv": "TRỪU TƯỢNG ĐÍCH", "m": "trừu tượng"}, {"w": "具体的", "r": "ぐたいてき", "hv": "CỤ THỂ ĐÍCH", "m": "cụ thể (trái nghĩa)"}], "x": {"1": "không có từ này. (通商 つうしょう: thông thương.)", "2": "không có từ này. (鋳造 ちゅうぞう: đúc kim loại.) Bẫy nhầm 象 với 像 ぞう.", "4": "không có từ này. (通俗的 つうぞくてき: thông tục, bình dân.)"}, "g": ["<b class=\"jp\">Vるのはやめてください / Nはやめてください<\/b>: xin đừng…, thôi… đi."], "n": ["抽 đọc ちゅう: 抽選 ちゅうせん (câu 13), 抽出 ちゅうしゅつ (trích xuất).", "象 đọc しょう: 印象 いんしょう, 現象 げんしょう, 対象 たいしょう. Đọc ぞう khi là con voi (象).", "像 luôn đọc ぞう: 想像 そうぞう, 画像 がぞう, 映像 えいぞう. Đây là bẫy phổ biến."]}, {"s": "祖父は孫に_極端_に甘い。", "o": ["きょくたん", "ごくだん", "ごくたん", "きょくだん"], "a": 1, "ar": "極端", "vi": "Ông tôi nuông chiều cháu hết mức.", "key": [{"w": "極端", "r": "きょくたん", "hv": "CỰC ĐOAN", "m": "cực đoan, thái quá"}, {"w": "祖父", "r": "そふ", "hv": "TỔ PHỤ", "m": "ông"}, {"w": "孫", "r": "まご", "hv": "TÔN", "m": "cháu"}], "x": {"2": "không có từ này.", "3": "không có từ này. ごく là cách đọc khác của 極 nhưng không dùng ở đây.", "4": "không có từ này. 端 không bị đục hóa."}, "g": ["<b class=\"jp\">〜に甘い<\/b>: dễ dãi, nuông chiều với ai. ↔ 〜に厳しい (nghiêm khắc với…).", "<b class=\"jp\">極端に + A<\/b>: quá mức, thái quá."], "n": ["極 đọc きょく: 積極的 せっきょくてき, 消極的, 北極 ほっきょく. Đọc ごく: 極 ごく (rất), 極楽 ごくらく, 極秘 ごくひ.", "端 đọc たん: 先端 せんたん, 途端 とたん, 半端 はんぱ. Kun: 端 はし (mép), は (端数 はすう)."]}, {"s": "相手チームは選手層の厚さで我々より_圧倒的_に有利だ。", "o": ["おっとうてき", "あつどうてき", "あっとうてき", "おつどうてき"], "a": 3, "ar": "圧倒的", "vi": "Đội đối phương chiếm ưu thế áp đảo so với chúng tôi nhờ lực lượng cầu thủ dày dặn.", "key": [{"w": "圧倒的", "r": "あっとうてき", "hv": "ÁP ĐẢO ĐÍCH", "m": "mang tính áp đảo"}, {"w": "有利", "r": "ゆうり", "hv": "HỮU LỢI", "m": "có lợi, chiếm ưu thế (↔ 不利 ふり)"}, {"w": "選手層", "r": "せんしゅそう", "hv": "TUYỂN THỦ TẦNG", "m": "đội hình, lực lượng cầu thủ"}], "x": {"1": "không có từ này. 圧 đọc あつ, không phải おつ.", "2": "không có từ này. 倒 đọc とう, không đục hóa.", "4": "không có từ này."}, "g": ["<b class=\"jp\">〜で<\/b>: nguyên nhân, căn cứ (nhờ vào…).", "<b class=\"jp\">AはBより〜<\/b>: A hơn B."], "n": ["圧 あつ → あっ khi đứng trước âm t/p/k: 圧倒 あっとう, 圧迫 あっぱく, 圧巻 あっかん. Giữ あつ: 圧力 あつりょく, 気圧 きあつ.", "倒 đọc とう: 倒産 とうさん (phá sản), 面倒 めんどう. Kun: 倒れる たおれる."]}, {"s": "私たちは建物に{冷房|れいぼう}_装置_を付けた。", "o": ["しょうち", "しょち", "そうち", "そち"], "a": 3, "ar": "装置", "vi": "Chúng tôi đã lắp đặt thiết bị làm lạnh cho tòa nhà.", "key": [{"w": "装置", "r": "そうち", "hv": "TRANG TRÍ", "m": "thiết bị, hệ thống máy móc"}, {"w": "冷房", "r": "れいぼう", "hv": "LÃNH PHÒNG", "m": "điều hòa làm lạnh (↔ 暖房 だんぼう)"}], "x": {"1": "<span class=\"jp\">承知<\/span> (THỪA TRI) しょうち: biết, chấp thuận (かしこまりました ≈ 承知しました).", "2": "<span class=\"jp\">処置<\/span> (XỬ TRÍ) しょち: xử lý, sơ cứu.", "4": "<span class=\"jp\">措置<\/span> (THỐ TRÍ) そち: biện pháp (措置を取る)."}, "g": ["<b class=\"jp\">NにNを付ける<\/b>: gắn, lắp cái gì vào đâu."], "n": ["装 đọc そう: 服装 ふくそう (trang phục), 包装 ほうそう (đóng gói), 改装 かいそう. Đọc しょう: 衣装 いしょう.", "置 đọc ち: 位置 いち, 設置 せっち (lắp đặt), 放置 ほうち (bỏ mặc).", "Nhóm dễ nhầm cùng đuôi 〜ち: 装置 そうち / 処置 しょち / 措置 そち / 設置 せっち."]}, {"s": "_抽選_で順番を決めました。", "o": ["ちゅうせん", "つうせん", "つうぜん", "ちゅうぜん"], "a": 1, "ar": "抽選", "vi": "Chúng tôi đã quyết định thứ tự bằng cách bốc thăm.", "key": [{"w": "抽選", "r": "ちゅうせん", "hv": "TRỪU TUYỂN", "m": "bốc thăm, rút thăm, xổ số"}, {"w": "順番", "r": "じゅんばん", "hv": "THUẬN PHIÊN", "m": "thứ tự, lượt"}], "x": {"2": "không có từ này. 抽 đọc ちゅう.", "3": "không có từ này.", "4": "không có từ này. 選 không đục hóa."}, "g": ["<b class=\"jp\">Nで決める<\/b>: quyết định bằng (cách)…"], "n": ["選 đọc せん: 選挙 せんきょ, 選手 せんしゅ, 選択 せんたく. Kun: 選ぶ えらぶ.", "抽選に当たる (trúng thăm) / 抽選に外れる (trượt thăm)."]}, {"s": "住民の_要求_により新しい公園が作られた。", "o": ["よっきゅう", "よっきゅ", "ようきゅう", "ようきゅ"], "a": 3, "ar": "要求", "vi": "Một công viên mới đã được xây theo yêu cầu của người dân.", "key": [{"w": "要求", "r": "ようきゅう", "hv": "YẾU CẦU", "m": "yêu cầu, đòi hỏi"}, {"w": "住民", "r": "じゅうみん", "hv": "TRÚ DÂN", "m": "cư dân"}], "x": {"1": "<span class=\"jp\">欲求<\/span> (DỤC CẦU) よっきゅう: nhu cầu, ham muốn (欲求不満). Có thật nhưng khác chữ.", "2": "không có từ này, thiếu trường âm.", "4": "không có từ này, thiếu trường âm ở きゅう."}, "g": ["<b class=\"jp\">Nにより / Nによって<\/b>: do, theo, dựa trên.", "<b class=\"jp\">作られた<\/b>: bị động quá khứ (đã được xây dựng)."], "n": ["Cả hai chữ đều có trường âm: 要 よう (必要, 重要, 要点) + 求 きゅう (請求 せいきゅう, 追求 ついきゅう). Kun: 求める もとめる.", "So sánh: 要求 (đòi hỏi, mạnh), 要望 ようぼう (nguyện vọng, nhẹ hơn), 請求 せいきゅう (đòi thanh toán, yêu cầu chính thức)."]}, {"s": "彼は_世の中_のことは何も知らなかった。", "o": ["よのなか", "せのなか", "せのうち", "よのうち"], "a": 1, "ar": "世の中", "vi": "Anh ấy chẳng biết gì về sự đời cả.", "key": [{"w": "世の中", "r": "よのなか", "hv": "THẾ TRUNG", "m": "xã hội, thế gian, sự đời"}], "x": {"2": "không có từ này. 世 đọc せ ở 世間, 世話 nhưng không dùng ở đây.", "3": "không có từ này. うち là Kun của 内.", "4": "không có từ này."}, "g": ["<b class=\"jp\">何も〜ない<\/b>: hoàn toàn không… gì."], "n": ["世 đọc よ (Kun): この世, あの世. Đọc せ: 世間 せけん, 世話 せわ, 世界 せかい. Đọc せい: 世紀 せいき.", "Liên quan: 世間知らず せけんしらず (người ngây ngô, không biết sự đời)."]}, {"s": "壁の絵が少し_傾いて_いる。", "o": ["きずついて", "かたむいて", "かわいて", "ういて"], "a": 2, "ar": "傾く → かたむく", "vi": "Bức tranh trên tường hơi bị nghiêng.", "key": [{"w": "傾く", "r": "かたむく", "hv": "KHUYNH", "m": "nghiêng; (kinh tế, vận nước) suy vi"}], "x": {"1": "<span class=\"jp\">傷つく<\/span> (THƯƠNG) きずつく: bị thương, bị tổn thương.", "3": "<span class=\"jp\">乾く<\/span> (CAN) かわく: khô; <span class=\"jp\">渇く<\/span>: khát.", "4": "<span class=\"jp\">浮く<\/span> (PHÙ) うく: nổi."}, "g": ["<b class=\"jp\">Vている<\/b>: trạng thái hiện tại do kết quả của hành động (đang ở tình trạng nghiêng)."], "n": ["Tha động từ: 傾ける かたむける. 耳を傾ける: lắng nghe chăm chú.", "On けい: 傾向 けいこう (khuynh hướng), 傾斜 けいしゃ (độ dốc)."]}, {"s": "皆様のあたたかいご_声援_に応えるように努力します。", "o": ["せいえん", "しえん", "せいいん", "しいん"], "a": 1, "ar": "声援", "vi": "Tôi sẽ nỗ lực để đáp lại sự cổ vũ nồng nhiệt của mọi người.", "key": [{"w": "声援", "r": "せいえん", "hv": "THANH VIỆN", "m": "tiếng cổ vũ, sự cổ vũ"}, {"w": "応える", "r": "こたえる", "hv": "ỨNG", "m": "đáp lại, đáp ứng (kỳ vọng, cổ vũ)"}], "x": {"2": "<span class=\"jp\">支援<\/span> (CHI VIỆN) しえん: hỗ trợ, viện trợ. Có thật nhưng khác chữ.", "3": "<span class=\"jp\">成員<\/span> せいいん: thành viên (ít dùng). 援 đọc えん, không phải いん.", "4": "<span class=\"jp\">子音<\/span> しいん: phụ âm; <span class=\"jp\">死因<\/span>: nguyên nhân tử vong."}, "g": ["<b class=\"jp\">〜に応える<\/b>: đáp lại. 期待に応える (đáp ứng kỳ vọng). Khác 答える (trả lời câu hỏi).", "<b class=\"jp\">Vるように努力する<\/b>: nỗ lực để có thể…"], "n": ["援 đọc えん: 応援 おうえん, 援助 えんじょ (viện trợ), 救援 きゅうえん (cứu viện).", "声 đọc せい: 音声 おんせい, 名声 めいせい. Kun: こえ, こわ (声色 こわいろ)."]}, {"s": "簡単な質問に答えられなくて_恥_をかいた。", "o": ["はし", "はず", "はす", "はじ"], "a": 4, "ar": "恥", "vi": "Tôi bẽ mặt vì không trả lời được một câu hỏi đơn giản.", "key": [{"w": "恥", "r": "はじ", "hv": "SỈ", "m": "nỗi xấu hổ, sự bẽ mặt"}], "x": {"1": "<span class=\"jp\">橋 / 端 / 箸<\/span> はし: cây cầu / mép / đũa.", "2": "<span class=\"jp\">筈<\/span> はず: lẽ ra (〜はずだ). Lưu ý 恥ずかしい đọc はずかしい nên dễ nhầm.", "3": "<span class=\"jp\">蓮<\/span> はす: hoa sen."}, "g": ["<b class=\"jp\">恥をかく<\/b>: bị bẽ mặt, xấu hổ (quán ngữ, dùng động từ かく). 恥をかかせる: làm ai bẽ mặt.", "<b class=\"jp\">Vられなくて<\/b>: không thể… nên (nguyên nhân)."], "n": ["Cùng chữ 恥: 恥じる はじる (hổ thẹn), 恥ずかしい はずかしい (xấu hổ). On ち: 恥辱 ちじょく.", "Quán ngữ khác với かく: 汗をかく (đổ mồ hôi), いびきをかく (ngáy), あぐらをかく (ngồi xếp bằng)."]}, {"s": "そのがけは地面に対してほとんど_垂直_です。", "o": ["すいちょく", "ついちょく", "すいじき", "ついじき"], "a": 1, "ar": "垂直", "vi": "Vách đá đó gần như thẳng đứng so với mặt đất.", "key": [{"w": "垂直", "r": "すいちょく", "hv": "THÙY TRỰC", "m": "thẳng đứng, vuông góc"}, {"w": "水平", "r": "すいへい", "hv": "THỦY BÌNH", "m": "nằm ngang (trái nghĩa)"}], "x": {"2": "không có từ này. 垂 đọc すい.", "3": "không có từ này. じき là cách đọc của 直 trong 正直 しょうじき, 直に じきに.", "4": "không có từ này."}, "g": ["<b class=\"jp\">〜に対して<\/b>: đối với, so với (ở đây là so với mặt đất)."], "n": ["垂 Kun: 垂れる たれる (rủ xuống), 垂らす たらす (nhỏ giọt, thả xuống).", "直 đọc ちょく: 直接 ちょくせつ, 直線 ちょくせん. じき: 正直. Kun: 直す なおす, 直ちに ただちに.", "がけ (崖): vách đá."]}, {"s": "いとこが今月_下旬_うちへ遊びに来る予定だ。", "o": ["げじゅん", "けじゅん", "げしゅん", "けしゅん"], "a": 1, "ar": "下旬", "vi": "Cuối tháng này anh chị em họ của tôi dự định đến nhà tôi chơi.", "key": [{"w": "下旬", "r": "げじゅん", "hv": "HẠ TUẦN", "m": "hạ tuần (ngày 21 đến cuối tháng)"}, {"w": "上旬", "r": "じょうじゅん", "hv": "THƯỢNG TUẦN", "m": "ngày 1–10"}, {"w": "中旬", "r": "ちゅうじゅん", "hv": "TRUNG TUẦN", "m": "ngày 11–20"}], "x": {"2": "không có từ này. 下 đọc げ hoặc か, không phải け.", "3": "không có từ này. Bẫy: 旬 đứng một mình đọc しゅん (mùa ngon nhất của thực phẩm), nhưng trong 上旬/中旬/下旬 đọc じゅん.", "4": "không có từ này."}, "g": ["<b class=\"jp\">Vます + に来る<\/b>: đến để làm gì. 遊びに来る."], "n": ["下 đọc げ: 下車 げしゃ, 下品 げひん, 下水 げすい, 下旬. Đọc か: 地下 ちか, 下流 かりゅう.", "旬 しゅん: 旬の野菜 (rau đúng mùa)."]}], "no": 1, "cat": "Kanji", "file": "ĐỀ 13 - KANJI N2"}, {"id": "de7-tuvung-n2", "kind": "vocab", "series": "DORA Nihongo · Đề 2 · Ngữ pháp N5–N2 trúng tủ", "jp": "文脈規定", "title": "Đề 2 · Từ vựng N2", "mondai": "<b>問題3<\/b> （　）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。 Chọn từ thích hợp nhất để điền vào chỗ trống.", "notice": "Thư mục trên Drive tên là “Đề 2 · Ngữ pháp”, nhưng file bên trong là <b>Đề 7 · Từ vựng N2<\/b>. Trang này theo đúng nội dung file.", "source": {"goc": "https://drive.google.com/file/d/172NfEmOfXeUpahQv1Hn3ge-W-2apyUNw/view", "chua": "https://drive.google.com/file/d/1qxQjPxxp24RejO_r-8iDJluWmw8eOK1a/view", "folder": "https://drive.google.com/drive/folders/1I__WFm8fTUnUs5Qjv5T8KH4av9jZmLf-"}, "qs": [{"s": "わが校の（　）は国際交流に力を入れていることだ。", "o": ["調子", "異色", "特色", "様子"], "a": 3, "ar": "とくしょく", "vi": "Nét đặc sắc của trường chúng tôi là chú trọng vào giao lưu quốc tế.", "key": [{"w": "特色", "r": "とくしょく", "hv": "ĐẶC SẮC", "m": "nét đặc sắc, điểm nổi bật riêng"}, {"w": "国際交流", "r": "こくさいこうりゅう", "hv": "QUỐC TẾ GIAO LƯU", "m": "giao lưu quốc tế"}], "x": {"1": "<span class=\"jp\">ちょうし<\/span> (ĐIỀU TỬ): tình trạng, phong độ. 体の調子が悪い, 調子に乗る (được đà lấn tới).", "2": "<span class=\"jp\">いしょく<\/span> (DỊ SẮC): khác thường, lạ so với số đông, thường dùng dạng 異色の＋N (異色の作品). Không dùng để nói “điểm đặc trưng của X”.", "4": "<span class=\"jp\">ようす<\/span> (DẠNG TỬ): dáng vẻ, tình hình quan sát được (様子を見る)."}, "g": ["<b class=\"jp\">AはBことだ<\/b>: A là việc B (giải thích nội dung của A).", "<b class=\"jp\">〜に力を入れる<\/b>: dồn sức, chú trọng vào."], "n": ["特色 gần nghĩa 特徴 とくちょう (đặc trưng, trung tính). 特色 thường mang sắc thái tích cực, là điểm riêng đáng chú ý."]}, {"s": "あの会社はいろんな問題を（　）いる。", "o": ["むかえて", "かかえて", "かぎって", "にぎって"], "a": 2, "ar": "抱える", "vi": "Công ty đó đang ôm rất nhiều vấn đề.", "key": [{"w": "抱える", "r": "かかえる", "hv": "BÃO", "m": "ôm (trong tay); gánh, mang (vấn đề, nợ, nỗi lo)"}], "x": {"1": "<span class=\"jp\">迎える<\/span> (NGHÊNH): đón (客を迎える, 新年を迎える).", "3": "<span class=\"jp\">限る<\/span> (HẠN): giới hạn. Hay gặp 〜に限って, 〜とは限らない.", "4": "<span class=\"jp\">握る<\/span> (ÁC): nắm chặt (手を握る, 権力を握る)."}, "g": ["<b class=\"jp\">Vている<\/b>: trạng thái kéo dài (đang mang vấn đề)."], "n": ["Collocation: 問題を抱える, 借金を抱える (gánh nợ), 悩みを抱える (mang nỗi lo), 頭を抱える (vò đầu bứt tai).", "Cùng chữ 抱: 抱く だく (ôm) / いだく (ấp ủ: 夢を抱く)."]}, {"s": "最終コーナーを曲がったとき、ひざに（　）痛みを感じた。", "o": ["ほそい", "するどい", "にぶい", "あらい"], "a": 3, "ar": "鈍い", "vi": "Lúc rẽ qua khúc cua cuối cùng, tôi thấy một cơn đau âm ỉ ở đầu gối.", "key": [{"w": "鈍い", "r": "にぶい", "hv": "ĐỘN", "m": "âm ỉ (cơn đau); cùn; chậm chạp"}, {"w": "痛み", "r": "いたみ", "hv": "THỐNG", "m": "cơn đau"}], "x": {"1": "<span class=\"jp\">細い<\/span> (TẾ): mảnh, gầy. Không đi với 痛み.", "2": "<span class=\"jp\">鋭い<\/span> (DUỆ): sắc, nhọn; 鋭い痛み = đau nhói. Về nghĩa cụm này cũng tự nhiên, nhưng đáp án của đề là 鈍い. Nên nhớ cả cặp 鈍い痛み / 鋭い痛み.", "4": "<span class=\"jp\">粗い<\/span> (THÔ): thô, ráp; <span class=\"jp\">荒い<\/span> (HOANG): dữ dội (波が荒い)."}, "g": ["<b class=\"jp\">Vたとき<\/b>: khi đã (làm xong hành động)…"], "n": ["鈍い còn dùng: 動きが鈍い (chậm chạp), 勘が鈍い (kém nhạy), 鈍い音 (tiếng động trầm đục).", "Tả cơn đau: ずきずき (nhức từng cơn), ちくちく (châm chích), ひりひり (rát), がんがん (đau như búa bổ)."]}, {"s": "明日ゴルフだというのに（　）雨のようですね。", "o": ["うっかり", "せっかく", "あいにく", "わざわざ"], "a": 3, "ar": "生憎", "vi": "Mai đi chơi gôn vậy mà không may có vẻ trời lại mưa nhỉ.", "key": [{"w": "あいにく", "r": "あいにく", "hv": "(生憎)", "m": "không may, đáng tiếc (trái với mong đợi)"}], "x": {"1": "lơ đễnh, sơ ý (うっかり忘れた). Chỉ hành động vô ý của người, không tả thời tiết.", "2": "<span class=\"jp\">折角<\/span>: cất công, hiếm hoi mới có (せっかくの休み, せっかく来たのに). Phải bổ nghĩa cho hành động hay danh từ đáng quý, không đứng trước 雨.", "4": "cất công, cố tình (わざわざ来てくれた)."}, "g": ["<b class=\"jp\">〜というのに<\/b>: vậy mà, thế mà (bất mãn vì kết quả trái mong đợi).", "<b class=\"jp\">Nのようだ<\/b>: có vẻ là N."], "n": ["あいにく còn dùng khi từ chối lịch sự: あいにく、その日は都合が悪いです (rất tiếc hôm đó tôi bận)."]}, {"s": "ずっと彼にうそをついているのが（　）なってきた。", "o": ["痛ましく", "つらく", "重苦しく", "にくく"], "a": 2, "ar": "辛い → つらい", "vi": "Cứ phải nói dối anh ấy mãi khiến tôi thấy ngày càng khổ sở.", "key": [{"w": "辛い", "r": "つらい", "hv": "TÂN", "m": "khổ sở, đau khổ, nặng nề (cảm giác của bản thân)"}], "x": {"1": "<span class=\"jp\">いたましい<\/span> (THỐNG): thương tâm, đau lòng khi chứng kiến chuyện của người khác (痛ましい事故).", "3": "<span class=\"jp\">おもくるしい<\/span> (TRỌNG KHỔ): nặng nề, ngột ngạt (không khí, tâm trạng chung). 重苦しい雰囲気.", "4": "<span class=\"jp\">憎い<\/span> (TĂNG) にくい: đáng ghét. Không hợp nghĩa."}, "g": ["<b class=\"jp\">Aく + なってきた<\/b>: dần trở nên… (biến đổi tới hiện tại).", "<b class=\"jp\">Vているのが〜<\/b>: の danh từ hóa mệnh đề."], "n": ["Cùng chữ 辛: からい (cay) — xem câu 4 đề Kanji 13."]}, {"s": "彼女とは久しぶりに会ったので、何時間話しても話が（　）。", "o": ["限りない", "衰えない", "尽きない", "枯れない"], "a": 3, "ar": "つきない", "vi": "Lâu lắm mới gặp lại cô ấy nên nói chuyện mấy tiếng đồng hồ vẫn không hết chuyện.", "key": [{"w": "尽きる", "r": "つきる", "hv": "TẬN", "m": "cạn, hết"}], "x": {"1": "<span class=\"jp\">かぎりない<\/span>: vô hạn, bất tận. Dùng như tính từ bổ nghĩa (限りない愛), không làm vị ngữ cho 話が.", "2": "<span class=\"jp\">衰える<\/span> (SUY) おとろえる: suy yếu (体力が衰える, 人気が衰える).", "4": "<span class=\"jp\">枯れる<\/span> (KHÔ) かれる: héo, khô (花が枯れる)."}, "g": ["<b class=\"jp\">何時間〜ても<\/b>: dù bao nhiêu tiếng… đi nữa.", "<b class=\"jp\">Nとは<\/b>: với N thì (nhấn mạnh đối tượng)."], "n": ["Collocation: 話が尽きない (nói mãi không hết), 話題が尽きない, 力が尽きる (kiệt sức), 運が尽きる (hết vận).", "Tha động từ: 尽くす つくす (tận lực): 全力を尽くす."]}, {"s": "給与を引き上げただけでは社員の不満は（　）しない。", "o": ["停止", "減量", "削除", "解消"], "a": 4, "ar": "かいしょう", "vi": "Chỉ tăng lương thôi thì không giải tỏa được sự bất mãn của nhân viên.", "key": [{"w": "解消", "r": "かいしょう", "hv": "GIẢI TIÊU", "m": "giải tỏa, xóa bỏ (vấn đề, bất mãn); hủy (hợp đồng, hôn ước)"}, {"w": "給与", "r": "きゅうよ", "hv": "CẤP DỮ", "m": "tiền lương"}, {"w": "引き上げる", "r": "ひきあげる", "hv": "DẪN THƯỢNG", "m": "nâng lên, tăng (giá, lương)"}], "x": {"1": "<span class=\"jp\">ていし<\/span> (ĐÌNH CHỈ): dừng (運転停止, 営業停止).", "2": "<span class=\"jp\">げんりょう<\/span> (GIẢM LƯỢNG): giảm cân, giảm lượng.", "3": "<span class=\"jp\">さくじょ<\/span> (TƯỚC TRỪ): xóa bỏ (dữ liệu, câu chữ)."}, "g": ["<b class=\"jp\">Vただけでは〜ない<\/b>: chỉ riêng việc… thì chưa (đủ để)…"], "n": ["Collocation: ストレス解消, 不満を解消する, 渋滞を解消する, 契約を解消する."]}, {"s": "彼は収入に（　）して出費が多くなった。", "o": ["対応", "比例", "応答", "比較"], "a": 2, "ar": "ひれい", "vi": "Chi tiêu của anh ấy tăng lên tỷ lệ thuận với thu nhập.", "key": [{"w": "比例", "r": "ひれい", "hv": "TỶ LỆ", "m": "tỷ lệ thuận"}, {"w": "出費", "r": "しゅっぴ", "hv": "XUẤT PHÍ", "m": "chi tiêu, khoản chi"}, {"w": "収入", "r": "しゅうにゅう", "hv": "THU NHẬP", "m": "thu nhập"}], "x": {"1": "<span class=\"jp\">たいおう<\/span> (ĐỐI ỨNG): ứng phó, đáp ứng (客に対応する, 変化に対応する). Không diễn tả quan hệ tăng theo.", "3": "<span class=\"jp\">おうとう<\/span> (ỨNG ĐÁP): trả lời, phản hồi.", "4": "<span class=\"jp\">ひかく<\/span> (TỶ GIẢO): so sánh, đi với と: 〜と比較して."}, "g": ["<b class=\"jp\">〜に比例して<\/b>: tỷ lệ thuận với… ↔ 〜に反比例して はんぴれい (tỷ lệ nghịch)."], "n": ["Mẫu gần nghĩa ở N2: 〜につれて, 〜に伴って, 〜とともに (cùng với… thì…)."]}, {"s": "ぼくの部屋は通りに（　）いるから、ときどきうるさいんだ。", "o": ["対して", "属して", "適して", "面して"], "a": 4, "ar": "面する", "vi": "Phòng tớ nhìn ra đường nên thỉnh thoảng ồn lắm.", "key": [{"w": "面する", "r": "めんする", "hv": "DIỆN", "m": "hướng ra, giáp mặt với"}], "x": {"1": "<span class=\"jp\">対する<\/span>: đối với. Thường dùng dạng 〜に対して, không tả vị trí căn phòng.", "2": "<span class=\"jp\">属する<\/span> (THUỘC) ぞくする: thuộc về (組織に属する).", "3": "<span class=\"jp\">適する<\/span> (THÍCH) てきする: thích hợp (〜に適している)."}, "g": ["<b class=\"jp\">〜んだ<\/b>: giải thích lý do (khẩu ngữ)."], "n": ["Hay gặp: 海に面したホテル (khách sạn nhìn ra biển), 危機に面する (đối mặt khủng hoảng; thường dùng 直面する ちょくめんする)."]}, {"s": "{洗面所|せんめんじょ}のトイレが一つ（　）いて使えません。", "o": ["つまって", "もぐって", "うまいて", "しずんで"], "a": 1, "ar": "詰まる", "vi": "Một bồn cầu trong nhà vệ sinh bị tắc nên không dùng được.", "key": [{"w": "詰まる", "r": "つまる", "hv": "CẬT", "m": "tắc, nghẽn, kẹt; kín, đầy"}, {"w": "洗面所", "r": "せんめんじょ", "hv": "TẨY DIỆN SỞ", "m": "chỗ rửa mặt; nhà vệ sinh"}], "x": {"2": "<span class=\"jp\">潜る<\/span> (TIỀM) もぐる: lặn, chui vào (海に潜る, 布団に潜る).", "3": "đề in “うまいて”, nhiều khả năng là lỗi in của <span class=\"jp\">埋まって<\/span> (MAI) うまって: bị lấp đầy, bị vùi (席が埋まる: kín chỗ).", "4": "<span class=\"jp\">沈む<\/span> (TRẦM) しずむ: chìm, lặn (太陽が沈む)."}, "g": ["<b class=\"jp\">Vて + 使えません<\/b>: vì… nên không thể dùng."], "n": ["詰まる: 鼻が詰まる (nghẹt mũi), 言葉に詰まる (nghẹn lời), 予定が詰まっている (lịch kín).", "Tha động từ: 詰める つめる (nhồi, xếp chặt; ngồi xích lại)."]}, {"s": "ロシア語ができるのが彼女の（　）ですね。", "o": ["強み", "深み", "重み", "高み"], "a": 1, "ar": "つよみ", "vi": "Biết tiếng Nga chính là thế mạnh của cô ấy nhỉ.", "key": [{"w": "強み", "r": "つよみ", "hv": "CƯỜNG", "m": "điểm mạnh, thế mạnh (↔ 弱み よわみ)"}], "x": {"2": "<span class=\"jp\">ふかみ<\/span>: chiều sâu (味に深みがある: vị đậm đà).", "3": "<span class=\"jp\">おもみ<\/span>: sức nặng, trọng lượng (言葉の重み).", "4": "<span class=\"jp\">たかみ<\/span>: chỗ cao. 高みの見物 (đứng ngoài xem)."}, "g": ["<b class=\"jp\">Vるのが〜だ<\/b>: việc… là…"], "n": ["Hậu tố 〜み tạo danh từ chỉ điểm, cảm nhận: 強み, 弱み, 楽しみ, 悲しみ. 〜さ chỉ mức độ đo được: 強さ, 深さ.", "弱みを握る: nắm được điểm yếu của ai."]}, {"s": "秋は読書の（　）です。", "o": ["マスター", "コーラス", "パートナー", "シーズン"], "a": 4, "ar": "season", "vi": "Mùa thu là mùa đọc sách.", "key": [{"w": "シーズン", "r": "シーズン", "hv": "—", "m": "mùa, thời điểm thích hợp (season)"}, {"w": "読書", "r": "どくしょ", "hv": "ĐỘC THƯ", "m": "đọc sách"}], "x": {"1": "master: chủ quán; thạc sĩ; thành thạo (マスターする).", "2": "chorus: hợp xướng.", "3": "partner: đối tác, bạn đời."}, "n": ["Các cụm quen thuộc về mùa thu: 読書の秋, スポーツの秋, 食欲の秋, 芸術の秋.", "Liên quan: シーズンオフ (mùa thấp điểm), オフシーズン, 受験シーズン (mùa thi)."]}, {"s": "雨に降られて、{上着|うわぎ}が（　）{濡|ぬ}れた。", "o": ["ぐっすり", "ぐったり", "ぴったり", "びっしょり"], "a": 4, "ar": "びっしょり", "vi": "Bị mắc mưa nên áo khoác ướt sũng.", "key": [{"w": "びっしょり", "r": "びっしょり", "hv": "—", "m": "ướt sũng, ướt đẫm"}, {"w": "上着", "r": "うわぎ", "hv": "THƯỢNG TRƯỚC", "m": "áo khoác"}, {"w": "濡れる", "r": "ぬれる", "hv": "NHU", "m": "bị ướt"}], "x": {"1": "ngủ say (ぐっすり眠る).", "2": "mệt lả, rũ rượi (疲れてぐったりする).", "3": "vừa khít, vừa vặn (サイズがぴったり)."}, "g": ["<b class=\"jp\">雨に降られる<\/b>: bị động gián tiếp (bị làm phiền), bị mắc mưa."], "n": ["Gần nghĩa: びしょびしょ, びしょ濡れ. 汗びっしょり: đầm đìa mồ hôi."]}, {"s": "（　）言っておくが、これは楽な仕事ではない。", "o": ["思い切って", "一気に", "一斉に", "予め"], "a": 4, "ar": "あらかじめ", "vi": "Tôi nói trước nhé, đây không phải việc nhàn đâu.", "key": [{"w": "予め", "r": "あらかじめ", "hv": "DỰ", "m": "trước, sẵn từ trước"}], "x": {"1": "<span class=\"jp\">おもいきって<\/span>: mạnh dạn, dứt khoát (思い切って告白する).", "2": "<span class=\"jp\">いっきに<\/span>: một mạch, một hơi (xem câu 19).", "3": "<span class=\"jp\">いっせいに<\/span> (NHẤT TỀ): đồng loạt."}, "g": ["<b class=\"jp\">Vておく<\/b>: làm trước (để chuẩn bị). 言っておく = nói trước.", "<b class=\"jp\">〜が、<\/b>: liên từ rào đón trước khi vào ý chính."], "n": ["Đồng nghĩa khẩu ngữ: 前もって まえもって. 予め thường đi với Vておく: 予め準備しておく."]}, {"s": "{大雨|おおあめ}で{地盤|じばん}が{緩|ゆる}み、{落石|らくせき}が（　）落ちて来た。", "o": ["ぶらぶら", "ごろごろ", "ゆらゆら", "うろうろ"], "a": 2, "ar": "ごろごろ", "vi": "Mưa lớn làm nền đất lỏng ra, đá lăn ầm ầm rơi xuống.", "key": [{"w": "ごろごろ", "r": "ごろごろ", "hv": "—", "m": "(vật nặng) lăn lông lốc; sấm rền; nằm ườn"}, {"w": "地盤", "r": "じばん", "hv": "ĐỊA BÀN", "m": "nền đất"}, {"w": "緩む", "r": "ゆるむ", "hv": "HOÃN", "m": "lỏng ra, chùng xuống"}, {"w": "落石", "r": "らくせき", "hv": "LẠC THẠCH", "m": "đá lở, đá rơi"}], "x": {"1": "đi lang thang (町をぶらぶらする); đung đưa lủng lẳng.", "3": "đung đưa nhè nhẹ (ろうそくの火がゆらゆら).", "4": "đi loanh quanh, lảng vảng (không có mục đích, bồn chồn)."}, "g": ["<b class=\"jp\">Vます形、〜<\/b> (緩み、): thể liên dụng nối câu trong văn viết, tương đương 緩んで.", "<b class=\"jp\">Vて来る<\/b>: hướng về phía người nói (rơi xuống phía mình)."], "n": ["ごろごろ còn dùng: 家でごろごろする (nằm ườn ở nhà), 雷がごろごろ鳴る (sấm rền), 目がごろごろする (cộm mắt)."]}, {"s": "この切符は、明日まで（　）です。", "o": ["効用", "権利", "利点", "有効"], "a": 4, "ar": "ゆうこう", "vi": "Vé này có hiệu lực đến ngày mai.", "key": [{"w": "有効", "r": "ゆうこう", "hv": "HỮU HIỆU", "m": "có hiệu lực, hiệu quả (↔ 無効 むこう)"}], "x": {"1": "<span class=\"jp\">こうよう<\/span> (HIỆU DỤNG): công dụng (薬の効用).", "2": "<span class=\"jp\">けんり<\/span> (QUYỀN LỢI): quyền (↔ 義務 nghĩa vụ).", "3": "<span class=\"jp\">りてん<\/span> (LỢI ĐIỂM): ưu điểm."}, "g": ["<b class=\"jp\">〜まで<\/b>: đến (mốc thời gian) — hiệu lực kéo dài đến hết ngày mai."], "n": ["有効期限 ゆうこうきげん: hạn sử dụng/hiệu lực. 時間を有効に使う: dùng thời gian hiệu quả."]}, {"s": "彼はちょっとしたことにもすぐ腹を（　）。", "o": ["立てる", "割る", "切る", "決める"], "a": 1, "ar": "腹を立てる", "vi": "Anh ấy hay nổi giận ngay cả với những chuyện cỏn con.", "key": [{"w": "腹を立てる", "r": "はらをたてる", "hv": "PHÚC", "m": "nổi giận"}], "x": {"2": "<span class=\"jp\">腹を割る<\/span>: thẳng thắn, nói thật lòng (腹を割って話す).", "3": "<span class=\"jp\">腹を切る<\/span>: mổ bụng tự sát; nghĩa bóng: nhận trách nhiệm.", "4": "<span class=\"jp\">腹を決める<\/span>: hạ quyết tâm (≈ 腹をくくる)."}, "g": ["<b class=\"jp\">ちょっとした<\/b>: nhỏ nhặt, không đáng kể.", "<b class=\"jp\">〜にも<\/b>: ngay cả với…"], "n": ["Cặp tự/tha: 腹が立つ (tức giận) / 腹を立てる (nổi giận). Quán ngữ với 腹 khác: 腹が黒い (thâm hiểm)."]}, {"s": "交通渋滞で少しも動けないので車の中で（　）している。", "o": ["いらいら", "ぺらぺら", "すらすら", "わくわく"], "a": 1, "ar": "いらいら", "vi": "Tắc đường không nhích được chút nào nên tôi ngồi trong xe bực bội sốt ruột.", "key": [{"w": "いらいら", "r": "いらいら", "hv": "—", "m": "bực bội, sốt ruột"}, {"w": "渋滞", "r": "じゅうたい", "hv": "SÁP TRỆ", "m": "tắc nghẽn (giao thông)"}], "x": {"2": "nói trôi chảy (tiếng nước ngoài); lật giở trang sách.", "3": "trôi chảy, suôn sẻ (すらすら読む, すらすら解ける).", "4": "hồi hộp háo hức (điều sắp tới vui)."}, "g": ["<b class=\"jp\">少しも〜ない<\/b>: không… chút nào."], "n": ["いらいらする: sốt ruột, cáu vì mọi việc không như ý. Gần nghĩa: むかむか (buồn nôn; tức tối)."]}, {"s": "途中寄り道をせず、{岡山|おかやま}まで（　）車を飛ばした。", "o": ["一斉に", "改めて", "一気に", "思い切って"], "a": 3, "ar": "いっきに", "vi": "Không la cà dọc đường, tôi phóng xe một mạch đến Okayama.", "key": [{"w": "一気に", "r": "いっきに", "hv": "NHẤT KHÍ", "m": "một mạch, một hơi"}, {"w": "寄り道", "r": "よりみち", "hv": "KÝ ĐẠO", "m": "tạt ngang, la cà dọc đường"}], "x": {"1": "<span class=\"jp\">いっせいに<\/span>: đồng loạt (nhiều người/vật cùng lúc).", "2": "<span class=\"jp\">あらためて<\/span>: lại lần nữa, dịp khác (改めて連絡します).", "4": "<span class=\"jp\">おもいきって<\/span>: mạnh dạn, dứt khoát."}, "g": ["<b class=\"jp\">Vず(に)<\/b>: không làm… mà (văn viết của ないで). する → せず.", "<b class=\"jp\">車を飛ばす<\/b>: phóng xe nhanh."], "n": ["一気に: 一気に飲む (uống một hơi), 一気に読み終える (đọc một mạch hết)."]}, {"s": "年末の完成を（　）工事を進める。", "o": ["ながめて", "みあげて", "みおろして", "めざして"], "a": 4, "ar": "目指す", "vi": "Tiến hành thi công với mục tiêu hoàn thành vào cuối năm.", "key": [{"w": "目指す", "r": "めざす", "hv": "MỤC CHỈ", "m": "nhắm tới, hướng tới"}, {"w": "完成", "r": "かんせい", "hv": "HOÀN THÀNH", "m": "hoàn thành"}], "x": {"1": "<span class=\"jp\">眺める<\/span> (THIẾU) ながめる: ngắm nhìn (景色を眺める).", "2": "<span class=\"jp\">見上げる<\/span>: ngước nhìn; ngưỡng mộ.", "3": "<span class=\"jp\">見下ろす<\/span>: nhìn xuống (từ trên cao). Khác 見下す みくだす (coi thường)."}, "g": ["<b class=\"jp\">〜を目指して<\/b>: hướng tới (mục tiêu)…", "<b class=\"jp\">工事を進める<\/b>: đẩy nhanh, tiến hành thi công."], "n": ["目指す: 合格を目指す (nhắm đến đỗ), 頂上を目指す (hướng lên đỉnh)."]}], "no": 2, "cat": "Từ vựng", "file": "ĐỀ 7 - TỪ VỰNG N2"}];
+const CATALOG = {"root": "https://drive.google.com/drive/folders/1ujdYXmBtiFlgbPR2gAYXLPkJh9cVlEcv", "slots": [{"no": 1, "cat": "Kanji", "folder": "https://drive.google.com/drive/folders/1LAixdU5Je_Sl-HqNtl3C_22oaubkXufA"}, {"no": 2, "cat": "Ngữ pháp", "folder": "https://drive.google.com/drive/folders/1I__WFm8fTUnUs5Qjv5T8KH4av9jZmLf-"}, {"no": 3, "cat": null, "folder": "https://drive.google.com/drive/folders/1bd-hwcdM7rmF0pjR8RffBWB1OpfKTbaH"}, {"no": 4, "cat": null, "folder": "https://drive.google.com/drive/folders/1bd-hwcdM7rmF0pjR8RffBWB1OpfKTbaH"}, {"no": 5, "cat": null, "folder": "https://drive.google.com/drive/folders/1bd-hwcdM7rmF0pjR8RffBWB1OpfKTbaH"}, {"no": 6, "cat": null, "folder": "https://drive.google.com/drive/folders/1bd-hwcdM7rmF0pjR8RffBWB1OpfKTbaH"}, {"no": 7, "cat": null, "folder": "https://drive.google.com/drive/folders/1bd-hwcdM7rmF0pjR8RffBWB1OpfKTbaH"}, {"no": 8, "cat": "Từ vựng", "folder": "https://drive.google.com/drive/folders/1wQmVMGk71d-DyTdtNUoH0uI5iwTnDzzR"}, {"no": 9, "cat": null, "folder": "https://drive.google.com/drive/folders/1bd-hwcdM7rmF0pjR8RffBWB1OpfKTbaH"}, {"no": 10, "cat": null, "folder": "https://drive.google.com/drive/folders/1bd-hwcdM7rmF0pjR8RffBWB1OpfKTbaH"}, {"no": 11, "cat": "Kanji", "folder": "https://drive.google.com/drive/folders/1hd-JaV0ycmjMZSqrzvWGXyna2cnVyQuT"}, {"no": 12, "cat": null, "folder": "https://drive.google.com/drive/folders/1ujdYXmBtiFlgbPR2gAYXLPkJh9cVlEcv"}, {"no": 13, "cat": "Từ vựng", "folder": "https://drive.google.com/drive/folders/1qyh5LVW7K_NQ0zPPz6UaGVvfSbhmhjML"}, {"no": 14, "cat": null, "folder": "https://drive.google.com/drive/folders/1ujdYXmBtiFlgbPR2gAYXLPkJh9cVlEcv"}, {"no": 15, "cat": null, "folder": "https://drive.google.com/drive/folders/1ujdYXmBtiFlgbPR2gAYXLPkJh9cVlEcv"}, {"no": 16, "cat": null, "folder": "https://drive.google.com/drive/folders/1ujdYXmBtiFlgbPR2gAYXLPkJh9cVlEcv"}, {"no": 17, "cat": null, "folder": "https://drive.google.com/drive/folders/1ujdYXmBtiFlgbPR2gAYXLPkJh9cVlEcv"}, {"no": 18, "cat": "Ngữ pháp", "folder": "https://drive.google.com/drive/folders/14tmSQtWaGoqwDOaqvU4el2STikUgH-zp"}, {"no": 19, "cat": null, "folder": "https://drive.google.com/drive/folders/1ujdYXmBtiFlgbPR2gAYXLPkJh9cVlEcv"}, {"no": 20, "cat": null, "folder": "https://drive.google.com/drive/folders/1ujdYXmBtiFlgbPR2gAYXLPkJh9cVlEcv"}]};
+
+const CIRC = ["", "①", "②", "③", "④"];
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const fmt = s => String(s || "").replace(/\{([^|{}]+)\|([^{}]+)\}/g, "<ruby>$1<rt>$2</rt></ruby>").replace(/_([^_]+)_/g, "<u>$1</u>");
+const byNo = Object.fromEntries(EXAMS.map(e => [e.no, e]));
+const app = document.getElementById("app");
+
+/* ---------- storage (per exam, per viewer) ---------- */
+const KEY = no => "n2-dora-de" + no;
+function load(no) {
+  try { const s = JSON.parse(localStorage.getItem(KEY(no))); if (s && s.picks) return s; } catch (e) {}
+  return { picks: {}, submitted: false, t0: null, secs: 0 };
+}
+function save(no, s) { try { localStorage.setItem(KEY(no), JSON.stringify(s)); } catch (e) {} }
+const scoreOf = (ex, s) => ex.qs.filter((q, i) => s.picks[i] === q.a).length;
+const mmss = t => `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`;
+
+/* ---------- home ---------- */
+function home() {
+  document.title = "Luyện đề N2 DORA";
+  const ready = CATALOG.slots.filter(s => byNo[s.no]);
+  const done = ready.filter(s => load(s.no).submitted);
+  const avg = done.length ? Math.round(done.reduce((a, s) => a + scoreOf(byNo[s.no], load(s.no)) / byNo[s.no].qs.length, 0) / done.length * 100) : null;
+  app.innerHTML = `
+    <header class="home-head">
+      <div class="eyebrow">DORA Nihongo · Đề JLPT (1–20)</div>
+      <h1><span class="jp">日本語能力試験</span>Luyện đề N2</h1>
+      <p>Chọn một đề để làm. Trong lúc làm bài chỉ có câu hỏi; đáp án và giải thích (dịch câu, Hán Việt, cách đọc, phương án nhiễu, ngữ pháp) mở ra sau khi nộp bài.</p>
+      <div class="stats"><span><b>${ready.length}</b>/20 đề có sẵn</span><span><b>${done.length}</b>đề đã nộp</span>${avg !== null ? `<span><b>${avg}%</b>điểm trung bình</span>` : ""}</div>
+      <div class="sources"><a class="src" href="${CATALOG.root}" target="_blank" rel="noopener"><span class="k">Drive</span>Thư mục gốc Đề JLPT (1–20)</a></div>
+    </header>
+    <div class="grid">${CATALOG.slots.map(card).join("")}</div>
+    <footer>Đề gốc và đáp án © DORA Nihongo. Trang này chép lại đề để tự luyện; phần Hán Việt, phương án nhiễu, ngữ pháp và ghi chú mở rộng là phần bổ sung, không có trong bản chữa gốc.</footer>`;
+}
+function card(slot) {
+  const ex = byNo[slot.no];
+  if (!ex) {
+    return `<div class="card off"><div class="no"><b>Đề ${slot.no}</b>${slot.cat ? `<span class="chip">${esc(slot.cat)}</span>` : ""}</div>
+      <div class="state">Chưa có nội dung</div>
+      <div class="acts"><a class="src" href="${slot.folder}" target="_blank" rel="noopener">Mở thư mục</a></div></div>`;
+  }
+  const s = load(ex.no), n = ex.qs.length, picked = Object.keys(s.picks).length;
+  let state;
+  if (s.submitted) state = `<span class="pen">${scoreOf(ex, s)}<small>/${n}</small></span><span>Đã nộp · ${mmss(s.secs)}</span>`;
+  else if (picked) state = `<span>Đang làm ${picked}/${n}</span>`;
+  else state = `<span>Chưa làm · ${n} câu</span>`;
+  return `<div class="card"><div class="no"><b>Đề ${ex.no}</b><span class="chip">${esc(ex.cat)}</span></div>
+    <div class="file">${esc(ex.file)}</div>
+    ${!s.submitted && picked ? `<div class="bar-mini"><i style="width:${picked / n * 100}%"></i></div>` : ""}
+    <div class="state">${state}</div>
+    <div class="acts"><a class="btn primary" href="#de${ex.no}">${s.submitted ? "Xem lại" : picked ? "Làm tiếp" : "Làm bài"}</a>
+      <a class="src" href="${ex.source.goc}" target="_blank" rel="noopener"><span class="k">問題</span>Đề gốc</a>
+      <a class="src" href="${ex.source.chua}" target="_blank" rel="noopener"><span class="k">解説</span>Đề chữa</a></div></div>`;
+}
+
+/* ---------- exam ---------- */
+let cur = null, st = null, timer = null, onlyWrong = false, confirming = false;
+
+function exam(no) {
+  cur = byNo[no]; st = load(no); onlyWrong = false; confirming = false;
+  if (!st.submitted) st.t0 = Date.now() - st.secs * 1000;
+  document.title = `${cur.title} · Luyện đề N2`;
+  drawExam();
+  window.scrollTo({ top: 0 });
+}
+function tick() {
+  clearInterval(timer);
+  if (!cur || st.submitted) return;
+  timer = setInterval(() => {
+    st.secs = Math.floor((Date.now() - st.t0) / 1000);
+    const el = document.getElementById("clock"); if (el) el.textContent = mmss(st.secs);
+    if (st.secs % 10 === 0) save(cur.no, st);
+  }, 1000);
+}
+function drawExam() {
+  const ex = cur, S = ex.source, done = st.submitted, n = ex.qs.length;
+  const right = scoreOf(ex, st), picked = Object.keys(st.picks).length;
+  const wrongIdx = ex.qs.map((q, i) => st.picks[i] === q.a ? -1 : i).filter(i => i >= 0);
+  app.innerHTML = `
+    <header class="exam-head">
+      <a class="back" href="#">← Tất cả đề</a>
+      <div class="eyebrow">${esc(ex.series)} · file “${esc(ex.file)}”</div>
+      <h1><span class="jp">${esc(ex.jp)}</span>${esc(ex.title)}</h1>
+      <p class="mondai">${ex.mondai}</p>
+      <div class="sources">
+        <a class="src" href="${S.goc}" target="_blank" rel="noopener"><span class="k">問題</span>Đề gốc (PDF)</a>
+        <a class="src" href="${S.chua}" target="_blank" rel="noopener"><span class="k">解説</span>Đề chữa (PDF)</a>
+        <a class="src" href="${S.folder}" target="_blank" rel="noopener"><span class="k">Drive</span>Thư mục</a>
+      </div>
+      ${ex.notice ? `<div class="notice">${ex.notice}</div>` : ""}
+    </header>
+    <div class="bar">${done
+      ? `<div class="info"><span class="score">${right}<small>/${n}</small></span><span>${mmss(st.secs)}</span></div>
+         <button class="btn" type="button" id="onlyWrong" aria-pressed="${onlyWrong}">Chỉ câu sai (${wrongIdx.length})</button>
+         <button class="btn" type="button" id="openAll">Mở tất cả giải thích</button>
+         <button class="btn" type="button" id="retry">Làm lại</button>`
+      : `<div class="info"><span>${picked}/${n} câu</span><span id="clock">${mmss(st.secs)}</span></div>
+         <button class="btn primary" type="button" id="submit">Nộp bài</button>`}
+    </div>
+    ${confirming ? `<div class="confirm" role="alert"><p>Còn <b>${n - picked}</b> câu chưa chọn. Câu bỏ trống sẽ tính là sai.</p>
+       <button class="btn" type="button" id="cancelSubmit">Làm tiếp</button><button class="btn danger" type="button" id="forceSubmit">Nộp luôn</button></div>` : ""}
+    ${done ? `<section class="result"><div class="big"><span class="pen">${right}<small>/${n}</small></span>
+        <span>Đúng ${right} · Sai ${n - right} · Thời gian ${mmss(st.secs)}</span></div>
+        <div class="jumps">${ex.qs.map((q, i) => `<a href="#q${i + 1}" class="${st.picks[i] === q.a ? "" : "ng"}" data-jump="${i + 1}">${i + 1}</a>`).join("")}</div></section>` : ""}
+    <main class="sheet${done ? " done" : ""}${onlyWrong ? " only-wrong" : ""}" id="sheet">${ex.qs.map((q, i) => qHTML(q, i)).join("")}</main>
+    ${done ? keyHTML() : ""}
+    <footer>Đề gốc và đáp án © DORA Nihongo. Phần giải thích mở rộng là phần bổ sung, không có trong bản chữa gốc.</footer>`;
+  tick();
+}
+const MARK_OK = `<svg class="mark" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="18" transform="rotate(-20 22 22)" stroke-dasharray="108 6"/></svg>`;
+const MARK_NG = `<svg class="mark" viewBox="0 0 44 44" aria-hidden="true"><path d="M9 22 L18 33 L37 8"/></svg>`;
+function qHTML(q, i) {
+  const done = st.submitted, pick = st.picks[i], ok = pick === q.a;
+  const fill = cur.kind === "vocab" && pick ? esc(q.o[pick - 1]) : "";
+  const stem = fmt(esc(q.s)).replace("（　）", `<span class="blank${fill ? " filled" : ""}">${fill}</span>`);
+  const long = q.o.some(o => o.length > 6);
+  return `<section class="q${done ? (ok ? " ok" : " ng") : ""}" id="q${i + 1}" data-i="${i}">
+    <div><div class="qn">${i + 1}${done ? (ok ? MARK_OK : MARK_NG) : ""}</div></div>
+    <div class="qbody">
+      <p class="stem">${stem}</p>
+      <ul class="opts${long ? " long" : ""}">${q.o.map((o, j) => {
+        const n = j + 1, c = ["opt"];
+        if (done && n === q.a) c.push("is-ans");
+        if (done && n === pick && n !== q.a) c.push("is-wrong");
+        return `<li><button type="button" class="${c.join(" ")}" data-n="${n}" aria-pressed="${pick === n}"${done ? " disabled" : ""}><span class="bub">${n}</span><span class="t">${esc(o)}</span></button></li>`;
+      }).join("")}</ul>
+      ${done && !pick ? `<div class="unanswered">Bỏ trống</div>` : ""}
+      ${done ? `<details class="ex"${ok ? "" : " open"}><summary>Giải thích câu ${i + 1}</summary><div class="exb">${exHTML(q)}</div></details>` : ""}
+    </div></section>`;
+}
+function exHTML(q) {
+  const a = q.a, p = [];
+  p.push(`<div><h4>Đáp án</h4><div class="ansline"><span class="circ">${CIRC[a]}</span><span class="w">${esc(q.o[a - 1])}</span>${q.ar ? `<span class="r">${fmt(q.ar)}</span>` : ""}</div></div>`);
+  p.push(`<div><h4>Dịch câu</h4><p class="jpline">${fmt(q.s.replace("（　）", `<u>${q.o[a - 1]}</u>`))}</p><p class="vi">${q.vi}</p></div>`);
+  if (q.key && q.key.length) p.push(`<div><h4>Từ vựng</h4><div class="tbl"><table><thead><tr><th>Từ</th><th>Cách đọc</th><th>Hán Việt</th><th>Nghĩa</th></tr></thead><tbody>${q.key.map(k => `<tr><td class="w">${k.w}</td><td class="r">${k.r}</td><td class="hv">${k.hv || "—"}</td><td>${fmt(k.m)}</td></tr>`).join("")}</tbody></table></div></div>`);
+  if (q.x) p.push(`<div><h4>Các phương án còn lại</h4><ul class="others">${[1, 2, 3, 4].filter(n => n !== a && q.x[n]).map(n => `<li><span class="n">${n}</span><div><span class="jp">${esc(q.o[n - 1])}</span> — ${fmt(q.x[n])}</div></li>`).join("")}</ul></div>`);
+  if (q.g && q.g.length) p.push(`<div><h4>Ngữ pháp trong câu</h4><div style="display:grid;gap:6px">${q.g.map(g => `<div class="g">${fmt(g)}</div>`).join("")}</div></div>`);
+  if (q.n && q.n.length) p.push(`<div><h4>Ghi chú · Mở rộng</h4><ul class="notes">${q.n.map(n => `<li>${fmt(n)}</li>`).join("")}</ul></div>`);
+  return p.join("");
+}
+function keyHTML() {
+  const qs = cur.qs, rows = [];
+  for (let s = 0; s < qs.length; s += 10) {
+    const sl = qs.slice(s, s + 10);
+    rows.push(`<tr><th>Câu</th>${sl.map((_, k) => `<th>${s + k + 1}</th>`).join("")}</tr><tr><th>Đ/A</th>${sl.map(q => `<td>${q.a}</td>`).join("")}</tr>`);
+  }
+  return `<details class="ex key"><summary>Bảng đáp án (解答)</summary><div class="exb"><div class="tbl"><table>${rows.join("")}</table></div></div></details>`;
+}
+function submit() {
+  st.secs = Math.floor((Date.now() - st.t0) / 1000);
+  st.submitted = true; confirming = false; clearInterval(timer);
+  save(cur.no, st); drawExam(); window.scrollTo({ top: 0 });
+}
+
+app.addEventListener("click", e => {
+  const t = e.target;
+  const opt = t.closest(".opt");
+  if (opt && cur && !st.submitted) {
+    const qEl = opt.closest(".q"), i = +qEl.dataset.i, n = +opt.dataset.n;
+    if (st.picks[i] === n) delete st.picks[i]; else st.picks[i] = n;
+    save(cur.no, st);
+    qEl.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", String(+o.dataset.n === st.picks[i])));
+    const bl = qEl.querySelector(".blank");
+    if (bl) { const p = st.picks[i]; bl.textContent = p ? cur.qs[i].o[p - 1] : ""; bl.classList.toggle("filled", !!p); }
+    const info = app.querySelector(".bar .info span"); if (info) info.textContent = `${Object.keys(st.picks).length}/${cur.qs.length} câu`;
+    return;
+  }
+  const jump = t.closest("[data-jump]");
+  if (jump) { e.preventDefault(); document.getElementById("q" + jump.dataset.jump).scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+  switch (t.closest("button")?.id) {
+    case "submit": if (Object.keys(st.picks).length < cur.qs.length) { confirming = true; drawExam(); } else submit(); break;
+    case "forceSubmit": submit(); break;
+    case "cancelSubmit": confirming = false; drawExam(); break;
+    case "retry": st = { picks: {}, submitted: false, t0: Date.now(), secs: 0 }; save(cur.no, st); drawExam(); window.scrollTo({ top: 0 }); break;
+    case "onlyWrong": onlyWrong = !onlyWrong; drawExam(); break;
+    case "openAll": {
+      const all = [...app.querySelectorAll("#sheet details.ex")], open = !all.every(d => d.open);
+      all.forEach(d => d.open = open); t.textContent = open ? "Đóng tất cả giải thích" : "Mở tất cả giải thích"; break;
+    }
+  }
+});
+
+function route() {
+  clearInterval(timer);
+  if (cur && st && !st.submitted) save(cur.no, st);
+  const m = location.hash.match(/^#de(\d+)$/);
+  if (m && byNo[+m[1]]) exam(+m[1]); else { cur = null; home(); }
+}
+window.addEventListener("hashchange", route);
+window.addEventListener("pagehide", () => { if (cur && st && !st.submitted) save(cur.no, st); });
+route();
+</script>
