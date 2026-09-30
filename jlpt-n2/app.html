@@ -164,10 +164,15 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .7em; width
 .key td, .key th { text-align: center; font-variant-numeric: tabular-nums; }
 .key td { font-weight: 700; color: var(--shu); font-family: var(--font-pen); font-size: 17px; }
 footer { margin-top: 28px; font-size: 13px; color: var(--ink-soft); }
+.sync { position: fixed; right: 12px; bottom: 12px; z-index: 5; font-size: 12px; padding: 5px 10px; border-radius: 999px; background: var(--sheet); border: 1px solid var(--rule); color: var(--ink-soft); box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.sync[data-s="ok"] { color: var(--ok); border-color: var(--ok); }
+.sync[data-s="err"], .sync[data-s="off"] { color: var(--shu); border-color: var(--shu); }
+.sync:empty { display: none; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
 
 <div class="wrap" id="app"></div>
+<div class="sync" id="sync" role="status" aria-live="polite"></div>
 
 <script>
 const EXAMS = __EXAMS__;
@@ -182,10 +187,83 @@ const app = document.getElementById("app");
 /* ---------- storage (per exam, per viewer) ---------- */
 const KEY = no => "n2-dora-de" + no;
 function load(no) {
-  try { const s = JSON.parse(localStorage.getItem(KEY(no))); if (s && s.picks) return s; } catch (e) {}
+  if (mem[no]) return mem[no];
+  try { const s = JSON.parse(localStorage.getItem(KEY(no))); if (s && s.picks) return (mem[no] = s); } catch (e) {}
   return { picks: {}, submitted: false, t0: null, secs: 0 };
 }
-function save(no, s) { try { localStorage.setItem(KEY(no), JSON.stringify(s)); } catch (e) {} }
+function save(no, s, sync = true) {
+  s.u = Date.now();
+  try { localStorage.setItem(KEY(no), JSON.stringify(s)); } catch (e) {}
+  mem[no] = s;
+  if (sync) push(no);
+}
+
+/* ---------- cloud sync: each viewer's own progress, kept in the artifact db
+   (data/users/<id>/deN) so it survives cleared browser storage and follows
+   the account across devices. localStorage stays as the fast local copy. ---------- */
+const mem = {};
+const syncEl = document.getElementById("sync");
+const SYNC_TXT = { wait: "Đang tải tiến độ…", ok: "✓ Đã lưu vào tài khoản", err: "⚠ Chưa lưu được lên tài khoản — đang giữ trên máy này", off: "⚠ Chỉ lưu trên trình duyệt này" };
+let cloud = null, syncHide;
+function setSync(k) {
+  clearTimeout(syncHide); syncEl.dataset.s = k; syncEl.textContent = SYNC_TXT[k];
+  if (k === "ok") syncHide = setTimeout(() => { syncEl.textContent = ""; }, 2500);
+}
+const pend = {}, busy = {};
+function push(no) {
+  if (!cloud) return;
+  clearTimeout(pend[no]);
+  pend[no] = setTimeout(() => flush(no), 700);
+}
+async function flush(no) {
+  clearTimeout(pend[no]);
+  if (!cloud) return;
+  if (busy[no]) { busy[no] = "again"; return; }
+  busy[no] = true;
+  const s = load(no), n = byNo[no].qs.length;
+  const body = { picks: Array.from({ length: n }, (_, i) => s.picks[i] || 0), submitted: !!s.submitted, secs: s.secs || 0, u: s.u || Date.now() };
+  try { await cloud.doc("de" + no).set(body); setSync("ok"); }
+  catch (e) { setSync(e && e.code === "invalid_argument" ? "off" : "err"); }
+  const again = busy[no] === "again"; busy[no] = false;
+  if (again) flush(no);
+}
+function fromCloud(no, r) {
+  const picks = {};
+  (Array.isArray(r.picks) ? r.picks : []).forEach((v, i) => { if (v >= 1 && v <= 4) picks[i] = v; });
+  const s = { picks, submitted: !!r.submitted, t0: null, secs: +r.secs || 0, u: +r.u || 0 };
+  try { localStorage.setItem(KEY(no), JSON.stringify(s)); } catch (e) {}
+  mem[no] = s;
+}
+async function initCloud() {
+  if (!window.claude || !window.claude.use) return;
+  setSync("wait");
+  const [user, db] = await Promise.all([claude.use("user"), claude.use("db")]);
+  const uid = user ? await user.id() : null;
+  if (!db || !uid) { setSync("off"); return; }
+  const col = db.collection("data/users/" + uid);
+  let snap;
+  try { snap = await col.get(); } catch (e) { setSync("err"); return; }
+  cloud = col;
+  const inCloud = new Set();
+  let changed = false;
+  snap.docs.forEach(d => {
+    const m = d.id.match(/^de(\d+)$/), no = m && +m[1];
+    if (!no || !byNo[no]) return;
+    inCloud.add(no);
+    const r = d.data() || {}, loc = load(no);
+    if ((+r.u || 0) > (loc.u || 0)) { fromCloud(no, r); changed = true; }
+    else if ((loc.u || 0) > (+r.u || 0)) push(no);
+  });
+  EXAMS.forEach(e => { if (!inCloud.has(e.no) && (load(e.no).u || Object.keys(load(e.no).picks).length)) push(e.no); });
+  setSync("ok");
+  if (!changed) return;
+  if (!cur) home();
+  else if (mem[cur.no] && mem[cur.no] !== st) {
+    st = load(cur.no);
+    if (!st.submitted) st.t0 = Date.now() - st.secs * 1000;
+    drawExam();
+  }
+}
 const scoreOf = (ex, s) => ex.qs.filter((q, i) => s.picks[i] === q.a).length;
 const mmss = t => `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`;
 
@@ -246,7 +324,7 @@ function tick() {
   timer = setInterval(() => {
     st.secs = Math.floor((Date.now() - st.t0) / 1000);
     const el = document.getElementById("clock"); if (el) el.textContent = mmss(st.secs);
-    if (st.secs % 10 === 0) save(cur.no, st);
+    if (st.secs % 10 === 0) save(cur.no, st, false);
   }, 1000);
 }
 function drawExam() {
@@ -378,11 +456,13 @@ app.addEventListener("click", e => {
 
 function route() {
   clearInterval(timer);
-  if (cur && st && !st.submitted) save(cur.no, st);
+  if (cur && st && !st.submitted) { save(cur.no, st); flush(cur.no); }
   const m = location.hash.match(/^#de(\d+)$/);
   if (m && byNo[+m[1]]) exam(+m[1]); else { cur = null; home(); }
 }
 window.addEventListener("hashchange", route);
-window.addEventListener("pagehide", () => { if (cur && st && !st.submitted) save(cur.no, st); });
+window.addEventListener("pagehide", () => { if (cur && st && !st.submitted) { save(cur.no, st); flush(cur.no); } });
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && cur && st && !st.submitted) { save(cur.no, st); flush(cur.no); } });
 route();
+initCloud();
 </script>
