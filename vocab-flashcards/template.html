@@ -435,13 +435,16 @@ function deck(now = Date.now()) {
   const revLeft = Math.max(0, P.settings.revPerDay - T.r);
   return { learnNow: learnNow.sort(byDue), learnLater: learnLater.sort(byDue), due: due.sort(byDue).slice(0, revLeft), fresh: fresh.slice(0, newLeft), freshAll: fresh.length };
 }
-let booting = true, cur = null, revealed = false, lastId = null, sessionN = 0, undoStack = [], cram = null, waitTimer = null;
+let booting = true, cur = null, revealed = false, lastId = null, revRun = 0, undoStack = [], cram = null, waitTimer = null;
 
 function pickNext() {
   const now = Date.now(), k = deck(now);
   const avoid = arr => (arr.length > 1 && arr[0] === lastId ? arr[1] : arr[0]);
   if (k.learnNow.length) { const id = avoid(k.learnNow); if (id !== lastId || (!k.due.length && !k.fresh.length)) return id; }
-  const wantNew = k.fresh.length && (!k.due.length || sessionN % 5 === 4);
+  // Interleave reviews with new words, front-loaded: about 1.5 reviews per remaining new word in each run
+  // (at least 1), so the reviews are mixed in but finish well before the new words do.
+  const perNew = k.fresh.length ? Math.max(1, Math.ceil(1.5 * k.due.length / k.fresh.length)) : Infinity;
+  const wantNew = k.fresh.length && (!k.due.length || revRun >= perNew);
   if (wantNew) return k.fresh[0];
   if (k.due.length) return avoid(k.due);
   if (k.learnNow.length) return k.learnNow[0];
@@ -601,7 +604,7 @@ function next() {
   let id;
   if (cram) { id = cram.q[0]; } else { id = pickNext(); }
   cur = id ? BY_ID.get(id) : null;
-  if (cur) { if (!cram) sessionN++; curDir = P.settings.dir === "mix" ? (Math.random() < 0.5 ? "jp" : "vi") : P.settings.dir; }
+  if (cur) { curDir = P.settings.dir === "mix" ? (Math.random() < 0.5 ? "jp" : "vi") : P.settings.dir; }
   renderStudy();
 }
 function renderStudy() {
@@ -664,7 +667,7 @@ function answer(g) {
   const prev = P.cards[id] || null, T = today(), dk = dayKey();
   undoStack.push({ id, prev, dk, tPrev: { ...T } });
   if (undoStack.length > 30) undoStack.shift();
-  if (!prev || !prev.q) T.n++; else if (prev.q === 2) T.r++;
+  if (!prev || !prev.q) { T.n++; revRun = 0; } else if (prev.q === 2) { T.r++; revRun++; }
   P.cards[id] = sched(prev, g, Date.now(), true);
   save(); lastId = id; next();
 }
