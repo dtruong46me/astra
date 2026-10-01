@@ -193,6 +193,7 @@ function load(no) {
 }
 function save(no, s, sync = true) {
   s.u = Date.now();
+  if (!pulled) touched.add(no);
   try { localStorage.setItem(KEY(no), JSON.stringify(s)); } catch (e) {}
   mem[no] = s;
   if (sync) push(no);
@@ -203,21 +204,24 @@ function save(no, s, sync = true) {
    the account across devices. localStorage stays as the fast local copy. ---------- */
 const mem = {};
 const syncEl = document.getElementById("sync");
-const SYNC_TXT = { wait: "Đang tải tiến độ…", ok: "✓ Đã lưu vào tài khoản", err: "⚠ Chưa lưu được lên tài khoản — đang giữ trên máy này", off: "⚠ Chỉ lưu trên trình duyệt này" };
-let cloud = null, syncHide;
+const SYNC_TXT = { wait: "Đang tải tiến độ từ tài khoản…", ok: "☁ Tiến độ đã lưu vào tài khoản", err: "⚠ Chưa lưu được lên tài khoản — đang giữ trên máy này", off: "⚠ Chỉ lưu trên trình duyệt này" };
+let cloud = null, syncHide, syncNow = "";
+let pulled = false;            // first cloud read finished
+const touched = new Set();     // exams changed on this load before that read
 function setSync(k) {
-  clearTimeout(syncHide); syncEl.dataset.s = k; syncEl.textContent = SYNC_TXT[k];
-  if (k === "ok") syncHide = setTimeout(() => { syncEl.textContent = ""; }, 2500);
+  syncNow = k; clearTimeout(syncHide); syncEl.dataset.s = k; syncEl.textContent = SYNC_TXT[k];
+  // on the home page the status stays visible; inside an exam a success note fades
+  if (k === "ok" && cur) syncHide = setTimeout(() => { syncEl.textContent = ""; }, 2500);
 }
 const pend = {}, busy = {};
 function push(no) {
-  if (!cloud) return;
+  if (!cloud || !pulled) return;   // never write before the cloud copy has been read and merged
   clearTimeout(pend[no]);
   pend[no] = setTimeout(() => flush(no), 700);
 }
 async function flush(no) {
   clearTimeout(pend[no]);
-  if (!cloud) return;
+  if (!cloud || !pulled) return;
   if (busy[no]) { busy[no] = "again"; return; }
   busy[no] = true;
   const s = load(no), n = byNo[no].qs.length;
@@ -234,35 +238,64 @@ function fromCloud(no, r) {
   try { localStorage.setItem(KEY(no), JSON.stringify(s)); } catch (e) {}
   mem[no] = s;
 }
-async function initCloud() {
-  if (!window.claude || !window.claude.use) return;
-  setSync("wait");
-  const [user, db] = await Promise.all([claude.use("user"), claude.use("db")]);
-  const uid = user ? await user.id() : null;
-  if (!db || !uid) { setSync("off"); return; }
-  const col = db.collection("data/users/" + uid);
+// Merge one exam's cloud copy into the local one. Normally the newer side wins;
+// an exam touched on this load before the first cloud read started from an
+// empty local copy, so the cloud copy is kept and only new answers are layered on.
+function merge(no, r) {
+  const loc = load(no), ru = +r.u || 0, lu = loc.u || 0;
+  if (touched.has(no) && !pulled) {
+    if (r.submitted && !loc.submitted) { fromCloud(no, r); return "cloud"; }
+    if (!r.submitted && !loc.submitted) {
+      fromCloud(no, r);
+      const m = mem[no];
+      Object.assign(m.picks, loc.picks);
+      m.secs = Math.max(m.secs, loc.secs || 0);
+      save(no, m);
+      return "cloud";
+    }
+  }
+  if (ru > lu) { fromCloud(no, r); return "cloud"; }
+  if (lu > ru) push(no);
+  return "";
+}
+async function pull() {
   let snap;
-  try { snap = await col.get(); } catch (e) { setSync("err"); return; }
-  cloud = col;
+  try { snap = await cloud.get(); } catch (e) { setSync("err"); return false; }
   const inCloud = new Set();
   let changed = false;
   snap.docs.forEach(d => {
     const m = d.id.match(/^de(\d+)$/), no = m && +m[1];
     if (!no || !byNo[no]) return;
     inCloud.add(no);
-    const r = d.data() || {}, loc = load(no);
-    if ((+r.u || 0) > (loc.u || 0)) { fromCloud(no, r); changed = true; }
-    else if ((loc.u || 0) > (+r.u || 0)) push(no);
+    if (merge(no, d.data() || {})) changed = true;
   });
-  EXAMS.forEach(e => { if (!inCloud.has(e.no) && (load(e.no).u || Object.keys(load(e.no).picks).length)) push(e.no); });
+  EXAMS.forEach(e => { const l = load(e.no); if (!inCloud.has(e.no) && (l.u || Object.keys(l.picks).length)) push(e.no); });
+  const merged = [...touched];
+  pulled = true; touched.clear();
+  merged.forEach(push);
   setSync("ok");
-  if (!changed) return;
+  if (!changed) return true;
   if (!cur) home();
   else if (mem[cur.no] && mem[cur.no] !== st) {
     st = load(cur.no);
     if (!st.submitted) st.t0 = Date.now() - st.secs * 1000;
     drawExam();
   }
+  return true;
+}
+async function initCloud() {
+  if (!window.claude || !window.claude.use) { setSync("off"); return; }
+  setSync("wait");
+  const [user, db] = await Promise.all([claude.use("user"), claude.use("db")]);
+  const uid = user ? await user.id() : null;
+  if (!db || !uid) { setSync("off"); return; }
+  cloud = db.collection("data/users/" + uid);
+  if (!(await pull())) {           // one retry after a short pause
+    await new Promise(r => setTimeout(r, 2000 + Math.random() * 1000));
+    if (!(await pull())) { cloud = null; return; }
+  }
+  // coming back to the tab (or from another device) picks up newer progress
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && cloud) pull(); });
 }
 const scoreOf = (ex, s) => ex.qs.filter((q, i) => s.picks[i] === q.a).length;
 const mmss = t => `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`;
@@ -271,6 +304,7 @@ const mmss = t => `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 6
 let filter = "Tất cả";
 try { filter = localStorage.getItem("n2-dora-filter") || "Tất cả"; } catch (e) {}
 function home() {
+  if (syncNow) setSync(syncNow);
   document.title = "Luyện đề N2 DORA";
   const ready = CATALOG.slots.filter(s => byNo[s.no]);
   const done = ready.filter(s => load(s.no).submitted);
@@ -313,6 +347,7 @@ let cur = null, st = null, timer = null, onlyWrong = false, confirming = false;
 
 function exam(no) {
   cur = byNo[no]; st = load(no); onlyWrong = false; confirming = false;
+  if (syncNow) setSync(syncNow);
   if (!st.submitted) st.t0 = Date.now() - st.secs * 1000;
   document.title = `${cur.title} · Luyện đề N2`;
   drawExam();
