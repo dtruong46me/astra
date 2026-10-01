@@ -1,0 +1,864 @@
+<title>Thẻ từ vựng N2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one study column (max 760px) under a sticky header; the card is a ring-bound 単語カード;
+   the list view is a dense ledger grouped by lesson. Colour: 藍 (indigo) ink on cool paper, 朱 for marks. */
+:root{
+  --paper:#EDF0F3; --card:#FFFFFF; --soft:#F5F7F9; --ink:#17212C; --muted:#5A6878; --line:#D8DFE6;
+  --ai:#24477D; --ai-soft:#E1E8F3; --shu:#BF4128; --shu-soft:#FBE9E4;
+  --again:#BC3A28; --hard:#9A6410; --good:#2B7A4B; --easy:#2760A6;
+  --again-soft:#F9E6E2; --hard-soft:#F7EEDD; --good-soft:#E1F1E7; --easy-soft:#E2ECF8;
+  --shadow:0 1px 2px rgba(23,33,44,.06),0 10px 30px rgba(23,33,44,.07);
+  --f-mincho:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  --f-jp:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;
+  --f-ui:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0D1218; --card:#161E27; --soft:#1B2530; --ink:#E4E9EF; --muted:#94A2B1; --line:#283442;
+  --ai:#93B4E8; --ai-soft:#1D2B3E; --shu:#F08A70; --shu-soft:#3A221D;
+  --again:#F08A78; --hard:#E2B15A; --good:#6FCB94; --easy:#86B4F0;
+  --again-soft:#3A2220; --hard-soft:#352B19; --good-soft:#1A3326; --easy-soft:#1B2A3E;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.25); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0D1218; --card:#161E27; --soft:#1B2530; --ink:#E4E9EF; --muted:#94A2B1; --line:#283442;
+  --ai:#93B4E8; --ai-soft:#1D2B3E; --shu:#F08A70; --shu-soft:#3A221D;
+  --again:#F08A78; --hard:#E2B15A; --good:#6FCB94; --easy:#86B4F0;
+  --again-soft:#3A2220; --hard-soft:#352B19; --good-soft:#1A3326; --easy-soft:#1B2A3E;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.25); color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--paper);color:var(--ink)}
+body{font-family:var(--f-ui);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--ai);outline-offset:2px}
+.jp{font-family:var(--f-jp)}
+.wrap{max-width:820px;margin:0 auto;padding-inline:16px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;flex-direction:column;gap:10px;padding-block:12px 10px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand .mark{width:34px;height:34px;border-radius:9px;background:var(--ai);color:var(--card);display:grid;place-items:center;font-family:var(--f-mincho);font-weight:800;font-size:19px;flex:none}
+.brand h1{margin:0;font-size:17px;font-weight:700;letter-spacing:.01em;text-wrap:balance}
+.brand small{display:block;color:var(--muted);font-size:12px;font-weight:500;font-family:var(--f-jp)}
+.brand .grow{flex:1;min-width:0}
+.sync{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);white-space:nowrap}
+.sync i{width:8px;height:8px;border-radius:50%;background:var(--muted);display:inline-block}
+.sync.ok i{background:var(--good)} .sync.err i{background:var(--again)}
+.iconbtn{border:1px solid var(--line);background:var(--card);border-radius:10px;width:38px;height:38px;display:grid;place-items:center;flex:none}
+.iconbtn svg{width:18px;height:18px}
+.navrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;padding:6px 14px;border-radius:8px;font-weight:600;font-size:14px;color:var(--muted)}
+.seg button[aria-selected="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.filterbtn{margin-left:auto;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);border-radius:11px;padding:7px 12px;font-size:13.5px;font-weight:500;max-width:100%;min-width:0}
+.filterbtn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.filterbtn svg{width:16px;height:16px;flex:none}
+.filters{border:1px solid var(--line);background:var(--card);border-radius:var(--r);padding:14px;display:grid;gap:12px}
+.filters h3{margin:0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:4px 11px;font-size:13px;font-weight:500;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ai);border-color:var(--ai);color:var(--card)}
+.lessongrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:6px}
+.lessongrid .chip{border-radius:9px;padding:6px 0;text-align:center;font-variant-numeric:tabular-nums}
+.quick{display:flex;flex-wrap:wrap;gap:6px}
+.quick button{border:0;background:none;color:var(--ai);font-weight:600;font-size:13px;padding:2px 4px}
+
+main.wrap{padding-block:18px 40px}
+
+/* study */
+.deckbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.counts{display:flex;gap:14px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.counts b{font-size:16px;margin-right:4px}
+.c-new{color:var(--new,var(--easy))} .c-learn{color:var(--again)} .c-due{color:var(--good)}
+.deckbar .tools{margin-left:auto;display:flex;gap:6px}
+.ghost{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:6px 11px;font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.ghost svg{width:15px;height:15px}
+.ghost[disabled]{opacity:.45;cursor:default}
+.crambar{display:flex;align-items:center;gap:10px;background:var(--shu-soft);color:var(--shu);border-radius:10px;padding:8px 12px;font-size:13px;font-weight:600;margin-bottom:12px}
+.crambar button{margin-left:auto;border:0;background:none;color:inherit;font-weight:700;text-decoration:underline}
+
+.fc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:22px 22px 24px;min-height:340px;display:flex;flex-direction:column}
+.fc::before{content:"";position:absolute;top:16px;left:16px;width:13px;height:13px;border-radius:50%;background:var(--paper);box-shadow:inset 0 1px 2px rgba(0,0,0,.18);border:1px solid var(--line)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-left:24px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.meta .no{font-family:var(--f-jp);letter-spacing:.04em}
+.tags{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--muted);white-space:nowrap}
+.front{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:26px 0 8px;text-align:center}
+.bigword{font-family:var(--f-mincho);font-weight:800;font-size:clamp(46px,12vw,84px);line-height:1.15;letter-spacing:.04em;word-break:keep-all}
+.bigword rt{font-family:var(--f-jp);font-weight:500;font-size:.24em;letter-spacing:.12em;color:var(--muted)}
+.front .vi-big{font-size:clamp(22px,5vw,30px);font-weight:700;text-wrap:balance;max-width:28ch}
+.front .emo{font-size:64px;line-height:1}
+.hintbtn{border:1px dashed var(--line);background:none;border-radius:999px;padding:4px 12px;font-size:12.5px;color:var(--muted)}
+.say{border:1px solid var(--line);background:var(--soft);border-radius:999px;width:34px;height:34px;display:inline-grid;place-items:center;color:var(--ai);flex:none}
+.say svg{width:17px;height:17px}
+.say.lg{width:44px;height:44px}
+.say.lg svg{width:21px;height:21px}
+.say.playing{background:var(--ai);color:var(--card);border-color:var(--ai)}
+
+.back{margin-top:18px;display:grid;gap:22px}
+.headrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start}
+.headrow .wline{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.midword{font-family:var(--f-mincho);font-weight:800;font-size:40px;line-height:1.2;letter-spacing:.04em}
+.midword rt{font-family:var(--f-jp);font-weight:500;font-size:.34em;letter-spacing:.1em;color:var(--muted)}
+.hv{font-weight:700;letter-spacing:.14em;font-size:13px;color:var(--shu);margin-top:4px}
+.vimean{font-size:20px;font-weight:700;line-height:1.35;margin-top:4px;text-wrap:balance}
+.pic{width:84px;height:84px;border-radius:20px;background:var(--ai-soft);display:grid;place-items:center;font-size:48px;line-height:1}
+.sec h4{margin:0 0 8px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;display:flex;gap:8px;align-items:baseline}
+.sec h4 .jp{letter-spacing:.1em;text-transform:none;font-weight:500}
+.senses{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:s}
+.senses>li{display:grid;gap:8px}
+.senses.multi>li{counter-increment:s;padding-left:30px;position:relative}
+.senses.multi>li::before{content:counter(s);position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;background:var(--ai);color:var(--card);font-size:12px;font-weight:700;display:grid;place-items:center}
+.def{font-family:var(--f-jp);font-weight:700;font-size:16px}
+.def small{display:block;font-family:var(--f-ui);font-weight:500;font-size:13.5px;color:var(--muted)}
+.pts{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.pts li{font-family:var(--f-jp);font-size:13.5px;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:2px 9px}
+.exs{display:grid;gap:10px}
+.ex{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start}
+.ex .jp{font-size:16px;line-height:1.7;white-space:pre-line}
+.ex mark{background:none;color:inherit;text-decoration:underline 2px var(--shu);text-underline-offset:4px;font-weight:700}
+.ex .note{color:var(--muted);font-size:.88em}
+.tr{font-size:14px;color:var(--muted);margin-top:2px;white-space:pre-line}
+.hide-tr .tr{filter:blur(5px);cursor:pointer;user-select:none;transition:filter .15s}
+.hide-tr .tr.show{filter:none}
+.uses{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.uses li{font-family:var(--f-jp);font-size:14.5px;background:var(--soft);border-left:3px solid var(--ai);border-radius:0 8px 8px 0;padding:6px 10px}
+.rels{display:flex;flex-wrap:wrap;gap:8px}
+.rel{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:6px 11px;text-align:left;display:grid;gap:0;max-width:100%}
+.rel b{font-family:var(--f-jp);font-size:15.5px;font-weight:700}
+.rel b small{font-weight:500;color:var(--muted);font-size:12px;margin-left:6px}
+.rel span{font-size:12.5px;color:var(--muted)}
+.rel.indeck{border-color:color-mix(in srgb,var(--ai) 45%,var(--line))}
+.rel.indeck b::after{content:"→";color:var(--ai);margin-left:6px;font-size:12px}
+
+.answer{position:sticky;bottom:env(safe-area-inset-bottom,0px);padding-block:12px;background:linear-gradient(to top,var(--paper) 70%,transparent);z-index:5}
+.reveal{width:100%;border:0;background:var(--ai);color:var(--card);border-radius:14px;padding:15px;font-weight:700;font-size:16px;box-shadow:var(--shadow)}
+.grades{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.grade{border:1px solid transparent;border-radius:14px;padding:10px 4px;display:grid;gap:1px;justify-items:center;font-weight:700;font-size:15px}
+.grade small{font-weight:500;font-size:12px;opacity:.85;font-variant-numeric:tabular-nums}
+.g1{background:var(--again-soft);color:var(--again)} .g2{background:var(--hard-soft);color:var(--hard)}
+.g3{background:var(--good-soft);color:var(--good)} .g4{background:var(--easy-soft);color:var(--easy)}
+.grade:hover{border-color:currentColor}
+.keys{margin-top:8px;text-align:center;font-size:12px;color:var(--muted)}
+.keys kbd{font-family:var(--f-ui);border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 5px;font-size:11px;background:var(--card)}
+@media (hover:none){.keys{display:none}}
+
+.done{text-align:center;padding:48px 20px;display:grid;gap:14px;justify-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px}
+.done .kanji{font-family:var(--f-mincho);font-size:56px;font-weight:800;color:var(--ai);line-height:1}
+.done h2{margin:0;font-size:20px;text-wrap:balance}
+.done p{margin:0;color:var(--muted);max-width:44ch}
+.done .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.primary{border:0;background:var(--ai);color:var(--card);border-radius:11px;padding:9px 16px;font-weight:600}
+
+/* list */
+.listbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.search{flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);border-radius:11px;padding:0 12px}
+.search svg{width:16px;height:16px;color:var(--muted);flex:none}
+.search input{border:0;background:none;padding:9px 0;width:100%;min-width:0;outline:none}
+.summary{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:14px;font-variant-numeric:tabular-nums}
+.summary b{color:var(--ink)}
+.lesson{margin-bottom:18px}
+.lesson header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:6px 2px 8px}
+.lesson h3{margin:0;font-family:var(--f-mincho);font-size:19px;font-weight:800}
+.lesson h3 small{font-family:var(--f-ui);font-size:12.5px;color:var(--muted);font-weight:500;margin-left:6px}
+.prog{flex:1 1 80px;max-width:180px;height:6px;border-radius:99px;background:var(--line);overflow:hidden;display:flex}
+.prog i{display:block;height:100%}
+.prog .p-m{background:var(--good)} .prog .p-y{background:color-mix(in srgb,var(--good) 45%,var(--line))} .prog .p-l{background:var(--again)}
+.lesson .pcount{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.lesson header .ghost{margin-left:auto}
+.rows{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.rowi{display:grid;grid-template-columns:2.4rem 2.2rem minmax(7.5rem,1fr) minmax(0,2fr) 5.6rem 34px;gap:10px;align-items:center;padding:9px 12px;border-top:1px solid var(--line);cursor:pointer}
+.rowi:first-child{border-top:0}
+.rowi:hover{background:var(--soft)}
+.rowi .n{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;font-family:var(--f-jp)}
+.rowi .e{font-size:22px;text-align:center}
+.rowi .w{font-family:var(--f-mincho);font-weight:800;font-size:21px;line-height:1.25;min-width:0}
+.rowi .w rt{font-family:var(--f-jp);font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:.06em}
+.rowi .w .h{display:block;font-family:var(--f-ui);font-weight:700;font-size:10.5px;letter-spacing:.12em;color:var(--shu);margin-top:1px}
+.rowi .m{min-width:0;font-size:14px}
+.hidemean .rowi .m{filter:blur(6px)}
+.hidemean .rowi:hover .m{filter:none}
+.pill{font-size:11.5px;font-weight:600;border-radius:999px;padding:2px 8px;text-align:center;white-space:nowrap;justify-self:start}
+.st-new{background:var(--easy-soft);color:var(--easy)} .st-learn{background:var(--again-soft);color:var(--again)}
+.st-due{background:var(--good-soft);color:var(--good)} .st-young{background:var(--soft);color:var(--muted);border:1px solid var(--line)}
+.st-mature{background:var(--good);color:var(--card)}
+.empty{padding:40px 16px;text-align:center;color:var(--muted)}
+@media (max-width:640px){
+  .rowi{grid-template-columns:2.2rem minmax(0,1fr) auto 34px;grid-template-areas:"e w p s" "e m m m";row-gap:2px;padding:10px 12px}
+  .rowi .n{display:none}
+  .rowi .e{grid-area:e;align-self:start;padding-top:2px}
+  .rowi .w{grid-area:w} .rowi .m{grid-area:m} .rowi .pill{grid-area:p} .rowi .say{grid-area:s}
+  .headrow{grid-template-columns:minmax(0,1fr) auto}
+  .pic{width:64px;height:64px;font-size:36px;border-radius:16px}
+  .midword{font-size:34px}
+  .fc{padding:18px 16px 20px}
+}
+
+/* overlay */
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(10,15,22,.45);display:flex;align-items:flex-end;justify-content:center;padding:env(safe-area-inset-top,0px) 0 0}
+.sheet{background:var(--card);width:100%;max-width:760px;max-height:92%;overflow:auto;border-radius:20px 20px 0 0;padding:18px 20px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:var(--shadow)}
+@media (min-width:700px){.overlay{align-items:center;padding:24px}.sheet{border-radius:20px;max-height:88%}}
+.sheet .bar{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.sheet .bar .meta{padding-left:0;flex:1}
+.sheet .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.form{display:grid;gap:14px}
+.field{display:grid;gap:5px}
+.field label,.field .lbl{font-weight:600;font-size:13.5px}
+.field .help{font-size:12.5px;color:var(--muted)}
+.field input[type=number],.field select,.field textarea{border:1px solid var(--line);background:var(--soft);border-radius:10px;padding:8px 10px;width:100%;max-width:100%}
+.field textarea{min-height:90px;font-family:ui-monospace,Menlo,monospace;font-size:12px}
+.check{display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:4px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.danger{border:1px solid var(--again);color:var(--again);background:none;border-radius:10px;padding:7px 12px;font-weight:600}
+.confirm{background:var(--again-soft);border-radius:10px;padding:10px 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--again);font-weight:600;font-size:13.5px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);border-radius:10px;padding:8px 14px;font-size:13.5px;z-index:60;max-width:calc(100% - 32px)}
+@media (prefers-reduced-motion:no-preference){
+  .fc.flip .back{animation:rise .22s ease-out}
+  @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">語</div>
+      <div class="grow">
+        <h1>Thẻ từ vựng N2</h1>
+        <small>文字語彙「言葉ゲームの漂流記」</small>
+      </div>
+      <span class="sync" id="sync" title="Trạng thái lưu tiến độ"><i></i><span>Lưu trên máy</span></span>
+      <button class="iconbtn" id="btnSettings" aria-label="Cài đặt">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+    </div>
+    <div class="navrow">
+      <div class="seg" role="tablist">
+        <button role="tab" id="tabStudy" aria-selected="true">Ôn tập</button>
+        <button role="tab" id="tabList" aria-selected="false">Danh sách</button>
+      </div>
+      <button class="filterbtn" id="btnFilter" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h18M6 12h12M10 19h4"/></svg>
+        <span id="filterLabel">Tất cả bài</span>
+      </button>
+    </div>
+    <div class="filters" id="filters" hidden>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+        <h3>Bài (課)</h3>
+        <div class="quick" id="quick"></div>
+      </div>
+      <div class="lessongrid" id="lessonChips"></div>
+      <h3>Loại từ</h3>
+      <div class="chips" id="posChips"></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="viewStudy">
+    <div class="crambar" id="cramBar" hidden>
+      <span id="cramText">Luyện tự do</span>
+      <button id="cramExit">Thoát</button>
+    </div>
+    <div class="deckbar" id="deckbar">
+      <div class="counts" id="counts"></div>
+      <div class="tools">
+        <button class="ghost" id="btnUndo" disabled title="Hoàn tác (Z)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>Hoàn tác
+        </button>
+      </div>
+    </div>
+    <div id="stage"></div>
+    <div class="answer" id="answer"></div>
+  </section>
+
+  <section id="viewList" hidden>
+    <div class="listbar">
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Tìm: 評判, ひょうばん, BÌNH PHÁN, đánh giá…" autocomplete="off">
+      </label>
+      <button class="ghost" id="btnHideMean" aria-pressed="false">Che nghĩa</button>
+    </div>
+    <div class="chips" id="statusChips" style="margin-bottom:12px"></div>
+    <div class="summary" id="summary"></div>
+    <div id="lessons"></div>
+  </section>
+</main>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const VOCAB = [{"id":1,"l":1,"w":"評判","r":"ひょうばん","hv":"BÌNH PHÁN","vi":"Đánh giá, tiếng tăm, có tiếng","pos":["n"],"img":"⭐","s":[{"ja":"世の中からの評価","pt":["店、有名な人","＿がいい、悪い","＿が高まる、下がる"],"ex":[["この映画、評判がいいらしいよ。","Nghe nói bộ phim này được đánh giá tốt lắm đấy."],["評判のいい店が探せて嬉しい！","Vui quá vì tìm được quán có tiếng tốt!"]]}],"use":["評判：客観的（いい、悪い）","評価：主観的（A－B－C・100－90－80）"],"rel":[["評価","ひょうか","đánh giá (chủ quan, cho điểm)"],["好評","こうひょう","được khen, đánh giá tốt"],["悪評","あくひょう","tiếng xấu"]]},{"id":2,"l":1,"w":"雑談","r":"ざつだん","hv":"TẠP ĐÀM","vi":"Nói chuyện phiếm, tán gẫu","pos":["n","vs"],"img":"💬","s":[{"ja":"特にテーマを定めないで気楽に会話する","pt":["≒おしゃべり（軽い話）"],"ex":[["みなさんは職場で仕事以外の話、例えばプライベートな話や雑談をしてもいいと思いますか？","Mọi người có nghĩ ở chỗ làm được phép nói chuyện ngoài công việc, ví dụ chuyện riêng tư hay tán gẫu không?"]]}],"rel":[["おしゃべり","","nói chuyện, tán gẫu"],["世間話","せけんばなし","chuyện phiếm, chuyện thế sự"],["会話","かいわ","hội thoại"]]},{"id":3,"l":1,"w":"おしゃべり","r":"おしゃべり","hv":"","vi":"Nói chuyện; hoạt ngôn, lắm lời","pos":["n","vs","na"],"img":"🗣️","s":[{"ja":"軽い会話≒雑談","vi":"tán gẫu, nói chuyện","ex":[["授業中に隣の人とおしゃべりしていて、先生に怒られた。","Đang giờ học mà nói chuyện với bạn bên cạnh nên bị thầy mắng."]]},{"ja":"口数が多いこと","vi":"lắm lời, nói nhiều","ex":[["おしゃべりな子供","Đứa trẻ nói nhiều"]]}],"rel":[["雑談","ざつだん","nói chuyện phiếm"],["無口","むくち","ít nói"],["口数","くちかず","số lời nói"]]},{"id":4,"l":1,"w":"取材","r":"しゅざい","hv":"THỦ TÀI","vi":"Phỏng vấn, lấy tin","pos":["n","vs"],"img":"🎤","s":[{"ja":"ニュースや記事の情報材料を集めるために、話を聞くこと","ex":[["放送局の取材に応じる。","Nhận lời phỏng vấn của đài truyền hình."],["インタビューする前に、相手から取材許可をとる。","Trước khi phỏng vấn, phải xin phép đối phương cho lấy tin."]]}],"rel":[["インタビュー","","phỏng vấn"],["記者","きしゃ","phóng viên"],["報道","ほうどう","đưa tin"]]},{"id":5,"l":1,"w":"きっかけ","r":"きっかけ","hv":"","vi":"Nguyên cớ, cơ hội bắt đầu","pos":["n"],"img":"🔑","s":[{"ja":"何かを始める手がかり・糸口・動機","pt":["何かをスタートする理由になるもの"],"ex":[["彼女と話したいのだが、話のきっかけがつかめない。","Muốn nói chuyện với cô ấy mà không tìm được cớ để bắt chuyện."],["日本語を勉強しようと思ったきっかけは、山田さんとの出会いです。","Điều khiến tôi muốn học tiếng Nhật là cuộc gặp gỡ với anh Yamada."]]}],"rel":[["契機","けいき","thời cơ (cách nói trang trọng)"],["動機","どうき","động cơ"],["糸口","いとぐち","đầu mối"]]},{"id":6,"l":1,"w":"続出","r":"ぞくしゅつ","hv":"TỤC XUẤT","vi":"Liên tiếp xuất hiện","pos":["n","vs"],"img":"🌊","s":[{"ja":"同じようなこと・人がどんどん出てくること","ex":[["暑い！真夏日続出","Nóng quá! Ngày hè oi bức cứ liên tiếp."],["このゲーム！ハマる人続出！","Trò chơi này! Người nghiện xuất hiện liên tục!"]]}],"rel":[["続々","ぞくぞく","lần lượt, liên tiếp"],["相次ぐ","あいつぐ","nối tiếp nhau"],["連続","れんぞく","liên tục"]]},{"id":7,"l":1,"w":"外見","r":"がいけん","hv":"NGOẠI KIẾN","vi":"Ngoại hình, bề ngoài","pos":["n"],"img":"🪞","s":[{"ja":"外側からの見ため","pt":["⇔中身、内面"],"ex":[["人を判断するときは外見よりも中身が大切だ。","Khi đánh giá con người thì bên trong quan trọng hơn vẻ bề ngoài."],["この商品は外見は微妙だけど、超うまい。","Món này nhìn thì hơi kém nhưng mà siêu ngon."]]}],"rel":[["見た目","みため","vẻ ngoài"],["容姿","ようし","dung mạo"],["中身","なかみ","bên trong, nội dung"],["内面","ないめん","nội tâm"]]},{"id":8,"l":1,"w":"上昇","r":"じょうしょう","hv":"THƯỢNG THĂNG","vi":"Sự tăng lên, đi lên","pos":["n","vs"],"img":"⬆️","s":[{"ja":"上がっていく、高くなる","pt":["気温、物価＿"],"ex":[["高度が上昇するにしたがって気温が下がる。","Càng lên cao thì nhiệt độ càng giảm."]]}],"use":["上昇：新聞・ニュース","上がる：日常"],"rel":[["低下","ていか","sự giảm xuống"],["下降","かこう","đi xuống"],["増加","ぞうか","gia tăng"]]},{"id":9,"l":1,"w":"見解","r":"けんかい","hv":"KIẾN GIẢI","vi":"Quan điểm, ý kiến (khi xử lý vấn đề)","pos":["n"],"img":"🧐","s":[{"ja":"ものの見方・考え方","pt":["専門性のある意見"],"ex":[["来年の経済の見通しについて、政府が見解を述べた。（見通し：予想）","Chính phủ đã nêu quan điểm về triển vọng kinh tế năm tới."],["事故原因については、専門家の間でも見解が分かれている。","Về nguyên nhân tai nạn, ngay cả giữa các chuyên gia cũng có nhiều quan điểm khác nhau."]]}],"rel":[["意見","いけん","ý kiến"],["見方","みかた","cách nhìn"],["見通し","みとおし","triển vọng, dự đoán"]]},{"id":10,"l":1,"w":"普及","r":"ふきゅう","hv":"PHỔ CẬP","vi":"Phổ cập","pos":["n","vs"],"img":"📱","s":[{"ja":"新しいものが広がって当たり前になること","ex":[["パソコンが一般家庭に普及するに伴い、インターネット利用者が急激に増えた。","Cùng với việc máy tính phổ cập đến các hộ gia đình, số người dùng Internet tăng vọt."],["スマホの普及率は１００％に近づいている。","Tỷ lệ phổ cập điện thoại thông minh đang gần chạm 100%."]]}],"rel":[["普及率","ふきゅうりつ","tỷ lệ phổ cập"],["定着","ていちゃく","bám rễ, trở nên quen thuộc"],["流行","りゅうこう","thịnh hành"]]},{"id":11,"l":2,"w":"注目","r":"ちゅうもく","hv":"CHÚ MỤC","vi":"Chú ý, quan tâm","pos":["n","vs"],"img":"👀","s":[{"ja":"人の注意の目を集めること","vi":"thu hút sự chú ý","pt":["注目される"],"ex":[["会議中におならをして注目を浴びてしまった。","Đang họp thì xì hơi nên bị mọi người đổ dồn ánh mắt."]]},{"ja":"注意して見ること","vi":"theo dõi, để ý","pt":["注目する"],"ex":[["最近、ＲＩＫＩという日本語学校に注目している。","Dạo này tôi đang để ý trường tiếng Nhật tên là RIKI."]]}],"rel":[["注目を浴びる","ちゅうもくをあびる","được chú ý"],["注目を集める","ちゅうもくをあつめる","thu hút chú ý"],["注意","ちゅうい","chú ý, cẩn thận"]]},{"id":12,"l":2,"w":"分析","r":"ぶんせき","hv":"PHÂN TÍCH","vi":"Phân tích","pos":["n","vs"],"img":"📊","s":[{"ja":"複雑なことを１つ１つ分けて、原因や結果を考える","pt":["「なぜ？要因は？」を考える。"],"ex":[["統計資料を見て、お客さんが増えた理由を分析する。","Xem số liệu thống kê để phân tích lý do lượng khách tăng."]]}],"rel":[["要因","よういん","yếu tố, nguyên nhân chính"],["データ分析","データぶんせき","phân tích dữ liệu"],["検討","けんとう","xem xét"]]},{"id":13,"l":2,"w":"反映","r":"はんえい","hv":"PHẢN ÁNH","vi":"Phản ánh, phản hồi","pos":["n","vs"],"img":"🔆","s":[{"ja":"（主張、意見）が〜まで及ぶ","pt":["Ａ→Ｂに影響し、現れること。","意見・考えを〜に反映する"],"ex":[["国民の声を政治に反映させよう。","Hãy đưa tiếng nói của người dân vào chính trị."],["お客様からいただいた意見をサービス改善に反映する。","Đưa ý kiến khách hàng vào việc cải thiện dịch vụ."]]}],"rel":[["影響","えいきょう","ảnh hưởng"],["反響","はんきょう","tiếng vang, phản hồi"],["取り入れる","とりいれる","tiếp thu, đưa vào"]]},{"id":14,"l":2,"w":"強み","r":"つよみ","hv":"CƯỜNG","vi":"Sở trường, điểm mạnh","pos":["n"],"img":"💪","s":[{"ja":"強いところ、長所","pt":["⇔ 弱み"],"ex":[["ＲＩＫＩ日本語の強みは「面白さ」です。","Điểm mạnh của tiếng Nhật RIKI là sự thú vị."]]}],"use":["類：長所"],"rel":[["弱み","よわみ","điểm yếu"],["長所","ちょうしょ","sở trường, ưu điểm"],["短所","たんしょ","khuyết điểm"]]},{"id":15,"l":2,"w":"回復","r":"かいふく","hv":"HỒI PHỤC","vi":"Hồi phục","pos":["n","vs"],"img":"🩹","s":[{"ja":"悪い状態になったものが元に戻ること","pt":["経済、体調が回復する"],"ex":[["祖父の体調が回復に向かっている。","Sức khoẻ của ông tôi đang dần hồi phục."],["景気が回復してきた。","Kinh tế đã bắt đầu hồi phục."]]}],"rel":[["復旧","ふっきゅう","khôi phục (hạ tầng)"],["悪化","あっか","xấu đi"],["改善","かいぜん","cải thiện"]]},{"id":16,"l":2,"w":"方針","r":"ほうしん","hv":"PHƯƠNG CHÂM","vi":"Phương châm, định hướng","pos":["n"],"img":"🧭","s":[{"ja":"計画での目指す方向","pt":["針の方向"],"ex":[["来年に向けた会社の方針を発表する。","Công bố phương châm của công ty cho năm tới."],["子供の教育方針について夫と意見が合わない。","Tôi và chồng không thống nhất về phương châm giáo dục con cái."]]}],"rel":[["方向","ほうこう","phương hướng"],["方針転換","ほうしんてんかん","thay đổi đường lối"],["針","はり","cây kim"]]},{"id":17,"l":2,"w":"範囲","r":"はんい","hv":"PHẠM VI","vi":"Phạm vi","pos":["n"],"img":"📏","s":[{"ja":"〜から〜まで","ex":[["今回の試験範囲はかなり広いらしい。","Nghe nói phạm vi bài thi lần này khá rộng."],["（相手に頼まれた時）「はい。できる範囲で協力しますよ。」","(Khi được nhờ) 'Vâng, tôi sẽ giúp trong phạm vi có thể.'"]]}],"rel":[["範囲内","はんいない","trong phạm vi"],["範囲外","はんいがい","ngoài phạm vi"],["分野","ぶんや","lĩnh vực"]]},{"id":18,"l":2,"w":"利益","r":"りえき","hv":"LỢI ÍCH","vi":"Lợi ích, lợi nhuận","pos":["n"],"img":"💰","s":[{"ja":"得","pt":["売り上げ ⇔ 費用","利益 ⇔ 損失"],"ex":[["目の前の利益ばかり追っているといつか損をするよ。","Chỉ chạy theo lợi ích trước mắt thì có ngày sẽ chịu thiệt đấy."],["今年は景気が良く、会社の利益も去年の２倍になった。","Năm nay kinh tế tốt, lợi nhuận công ty cũng gấp đôi năm ngoái."]]}],"rel":[["損失","そんしつ","tổn thất"],["売り上げ","うりあげ","doanh thu"],["黒字","くろじ","có lãi"]]},{"id":19,"l":2,"w":"解消","r":"かいしょう","hv":"GIẢI TIÊU","vi":"Giải toả, huỷ bỏ","pos":["n","vs"],"img":"🎈","s":[{"ja":"今までの状態がなくなること","pt":["問題、ストレス＿"],"ex":[["私のストレス解消法はカラオケに行くことです。","Cách giải toả căng thẳng của tôi là đi hát karaoke."]]}],"rel":[["ストレス解消","ストレスかいしょう","giải toả stress"],["解決","かいけつ","giải quyết"],["発散","はっさん","xả (stress)"]]},{"id":20,"l":2,"w":"改善","r":"かいぜん","hv":"CẢI THIỆN","vi":"Cải thiện","pos":["n","vs"],"img":"🛠️","s":[{"ja":"あるものをさらに良くしていくこと","pt":["改めて、よく（善）する"],"ex":[["この教材はまだまだ改善すべきだ。","Giáo trình này vẫn còn cần cải thiện nhiều."]]}],"use":["改正：ルール、法律","改善：あらゆるもの（生活、サービスなど）"],"rel":[["改正","かいせい","sửa đổi (luật)"],["改良","かいりょう","cải tiến"],["悪化","あっか","xấu đi"]]},{"id":21,"l":3,"w":"視野","r":"しや","hv":"THỊ DÃ","vi":"Tầm nhìn","pos":["n"],"img":"👓","s":[{"ja":"目を動かさずに見える景色の範囲","vi":"tầm mắt","pt":["＿が見える、＿に入る"],"ex":[["山をじっと見ていたら、雲が視野に入ってきた。","Đang chăm chú nhìn núi thì mây lọt vào tầm mắt."]]},{"ja":"考え方","vi":"tầm nhìn, tầm hiểu biết","pt":["＿が広い、狭い"],"ex":[["息子には留学して視野を広げてほしい。","Tôi muốn con trai đi du học để mở rộng tầm nhìn."]]}],"use":["視界：目を動かしてあちらこちら見回して、見える範囲","視野＜視界（範囲が広い）　例：停電して視界が暗い"],"rel":[["視界","しかい","tầm nhìn (khi đảo mắt nhìn quanh)"],["視点","してん","góc nhìn"],["視線","しせん","ánh nhìn"]]},{"id":22,"l":3,"w":"機能","r":"きのう","hv":"CƠ NĂNG","vi":"Tính năng, chức năng","pos":["n","vs"],"img":"⚙️","s":[{"ja":"ものの働き・できること","pt":["カメラ＿、電話＿、ネット＿等"],"ex":[["最近のスマホは機能が多すぎる。","Điện thoại bây giờ có quá nhiều tính năng."],["（医者が患者へ）あなたの心臓は、正常に機能しています。","(Bác sĩ nói với bệnh nhân) Tim của anh đang hoạt động bình thường."]]}],"use":["機能：何ができるか？（機能がある、ない、ほしい）","性能：能力が高い、低い？","⇒ iPhone6とiPhoneXは（機能）の違いはあまりないが、（性能）は全然違う。"],"rel":[["性能","せいのう","tính năng, hiệu suất"],["多機能","たきのう","đa chức năng"],["働き","はたらき","tác dụng"]]},{"id":23,"l":3,"w":"世間","r":"せけん","hv":"THẾ GIAN","vi":"Xã hội, thế gian","pos":["n"],"img":"🌏","s":[{"ja":"世の中、社会","ex":[["有名芸能人の不倫事件が世間を騒がせている。","Vụ ngoại tình của nghệ sĩ nổi tiếng đang làm xôn xao dư luận."],["本当はニートになりたいが、世間の目が怖いので働くしかない。","Thật ra muốn ở nhà không làm gì, nhưng sợ ánh mắt xã hội nên đành phải đi làm."],["確かに彼は世間知らずだが、悪い奴というわけではない。（世間知らず：経験が浅く、世の中のことをあまり知らない人）","Đúng là cậu ta chẳng biết sự đời, nhưng không phải người xấu."]]}],"use":["世間体：世間の人から見られる姿（例：世間体を気にする）"],"rel":[["世間体","せけんてい","thể diện trước xã hội"],["世間知らず","せけんしらず","không biết sự đời"],["世の中","よのなか","thế gian, xã hội"]]},{"id":24,"l":3,"w":"違反","r":"いはん","hv":"VI PHẢN","vi":"Vi phạm","pos":["n","vs"],"img":"🚫","s":[{"ja":"ルール・決まりを守らないこと","ex":[["スピード違反で捕まってしまった。","Bị bắt vì vi phạm tốc độ."]]}],"rel":[["交通違反","こうつういはん","vi phạm giao thông"],["違法","いほう","phạm pháp"],["守る","まもる","tuân thủ"]]},{"id":25,"l":3,"w":"素質","r":"そしつ","hv":"TỐ CHẤT","vi":"Tố chất","pos":["n"],"img":"🌱","s":[{"ja":"生まれつき持っている性質","pt":["≒才能"],"ex":[["彼は有名な人の素質がある。","Anh ấy có tố chất của người nổi tiếng."]]}],"rel":[["才能","さいのう","tài năng"],["資質","ししつ","tư chất"],["性質","せいしつ","tính chất"]]},{"id":26,"l":3,"w":"辞退","r":"じたい","hv":"TỪ THOÁI","vi":"Rút lui, từ chối","pos":["n","vs"],"img":"🙅","s":[{"ja":"すすめられたことを遠慮して断ること","pt":["候補になったり提案をもらったが、それを断ること"],"ex":[["今回の大会は怪我のせいで辞退しなければならなくなった。","Vì chấn thương nên tôi phải rút lui khỏi giải đấu lần này."],["（会社から内定をもらったあと）「良いお話ですが、今回はご辞退させていただきます」","(Sau khi được báo trúng tuyển) 'Lời mời rất tốt nhưng lần này cho phép tôi xin từ chối.'"]]}],"rel":[["断る","ことわる","từ chối"],["遠慮","えんりょ","khách sáo, ngại"],["拒否","きょひ","cự tuyệt"]]},{"id":27,"l":3,"w":"改正","r":"かいせい","hv":"CẢI CHÍNH","vi":"Sửa đổi (pháp luật)","pos":["n","vs"],"img":"⚖️","s":[{"ja":"改めて、変える","pt":["規則、内容を改めて、正しくする"],"ex":[["労働法を改正する。","Sửa đổi luật lao động."]]}],"use":["改正：ルール、法律（変更＋良くないところを直してもっとよくする）","改善：あらゆるもの（生活、サービスなど）"],"rel":[["改善","かいぜん","cải thiện"],["改訂","かいてい","sửa đổi (sách)"],["法改正","ほうかいせい","sửa đổi luật"]]},{"id":28,"l":3,"w":"夢中","r":"むちゅう","hv":"MỘNG TRUNG","vi":"Say sưa, mải mê","pos":["na"],"img":"🎮","s":[{"ja":"周りが見えなくなるくらい集中すること","pt":["夢の中にいるような気分になるほど！"],"ex":[["最近彼はＲＩＫＩの動画に夢中になっている。","Dạo này cậu ấy đang mê mệt video của RIKI."]]}],"rel":[["熱中","ねっちゅう","say mê"],["没頭","ぼっとう","miệt mài"],["ハマる","","nghiện, mê"]]},{"id":29,"l":3,"w":"日中","r":"にっちゅう","hv":"NHẬT TRUNG","vi":"Ban ngày","pos":["n"],"img":"☀️","s":[{"ja":"昼間・日がのぼっている間","pt":["だいたい12時前後から4時ぐらいまで"],"ex":[["（約束時間を決めているとき）「日中は仕事で家にいないので、夜だと助かります」","(Khi hẹn giờ) 'Ban ngày tôi đi làm không có nhà, nên buổi tối thì tốt quá.'"]]}],"rel":[["昼間","ひるま","ban ngày"],["夜間","やかん","ban đêm"],["日差し","ひざし","ánh nắng"]]},{"id":30,"l":3,"w":"矛盾","r":"むじゅん","hv":"MÂU THUẪN","vi":"Mâu thuẫn","pos":["n","vs"],"img":"🗡️","s":[{"ja":"一方ではAと言い、一方ではBと言い、話のロジックが合わないこと","ex":[["上司がよく、「丁寧に急いで仕事をしなさい」というが、私には矛盾しているように感じる。","Sếp hay bảo 'Làm việc cẩn thận mà phải nhanh vào', tôi thấy như vậy là mâu thuẫn."]]}],"rel":[["食い違い","くいちがい","sự không khớp"],["一貫","いっかん","nhất quán"],["矛","ほこ","cây giáo (MÂU)"],["盾","たて","cái khiên (THUẪN)"]]},{"id":31,"l":4,"w":"交代","r":"こうたい","hv":"GIAO ĐẠI","vi":"Luân phiên, thay đổi","pos":["n","vs"],"img":"🔄","s":[{"ja":"場所や位置を入れ替えること","ex":[["選手交代","Thay người (cầu thủ)"],["交代で働く","Làm việc luân phiên"]]}],"rel":[["交替","こうたい","thay ca (cách viết khác)"],["入れ替える","いれかえる","thay thế, đổi chỗ"],["交換","こうかん","trao đổi"]]},{"id":32,"l":4,"w":"合図","r":"あいず","hv":"HỢP ĐỒ","vi":"Tín hiệu, ra hiệu","pos":["n","vs"],"img":"🙋","s":[{"ja":"意志を伝えるために約束された、言葉以外の手段","pt":["サイン"],"ex":[["（彼女の誕生日の日、レストランで）片手で店員に合図をすると、誕生日ケーキが来た。","(Sinh nhật bạn gái, ở nhà hàng) Vừa giơ tay ra hiệu cho nhân viên là bánh sinh nhật được mang ra."],["（歯医者で）痛かったら合図してくださいね。","(Ở nha sĩ) Nếu đau thì ra hiệu cho tôi nhé."]]}],"rel":[["サイン","","ký hiệu, tín hiệu"],["目配せ","めくばせ","đưa mắt ra hiệu"],["信号","しんごう","tín hiệu, đèn giao thông"]]},{"id":33,"l":4,"w":"愚痴","r":"ぐち","hv":"NGU SI","vi":"Than vãn, càu nhàu","pos":["n"],"img":"😮‍💨","s":[{"ja":"言っても仕方がないことを嘆く","pt":["嫌いな人や事のどうでもいい悪口を言うこと","愚痴を言う、愚痴をこぼす、愚痴る"],"ex":[["課長は飲み会でいつも会社の愚痴をこぼす。","Trưởng phòng lúc nào đi nhậu cũng than vãn về công ty."],["（愚痴る：若者言葉）\nＡ：ねぇ、ちょっとぐちってもいい？\nＢ：うん。最近大変そうだよね。全然聞くわ。","A: Này, cho tớ than thở chút được không? — B: Ừ, dạo này cậu có vẻ vất vả nhỉ. Cứ nói đi, tớ nghe."]]}],"rel":[["不平","ふへい","bất bình"],["文句","もんく","phàn nàn"],["悪口","わるぐち","nói xấu"]]},{"id":34,"l":4,"w":"場面","r":"ばめん","hv":"TRƯỜNG DIỆN","vi":"Bối cảnh, tình huống, cảnh","pos":["n"],"img":"🎬","s":[{"ja":"シーン、状況","ex":[["2021年、世界は苦しい場面に直面している。","Năm 2021, thế giới đang đối mặt với tình cảnh khó khăn."],["この本は使う場面別に文法が書かれているので勉強しやすい。","Cuốn sách này viết ngữ pháp theo từng tình huống sử dụng nên dễ học."]]}],"rel":[["シーン","","cảnh"],["状況","じょうきょう","tình hình"],["場合","ばあい","trường hợp"]]},{"id":35,"l":4,"w":"成長","r":"せいちょう","hv":"THÀNH TRƯỞNG","vi":"Trưởng thành, tăng trưởng","pos":["n","vs"],"img":"🌳","s":[{"ja":"育って大きくなること","pt":["人以外にも使う！","経済・精神的な成長にも"],"ex":[["子どもの成長は本当に早い。","Trẻ con lớn nhanh thật."]]}],"rel":[["経済成長","けいざいせいちょう","tăng trưởng kinh tế"],["発達","はったつ","phát triển"],["育つ","そだつ","lớn lên"]]},{"id":36,"l":4,"w":"追加","r":"ついか","hv":"TRUY GIA","vi":"Thêm vào","pos":["n","vs"],"img":"➕","s":[{"ja":"今あるものにつけ足すこと","ex":[["（店員）「ミルクティー１つですね。トッピングを追加しますか？」","(Nhân viên) 'Một trà sữa đúng không ạ. Quý khách có muốn thêm topping không?'"]]}],"rel":[["付け足す","つけたす","thêm vào"],["補足","ほそく","bổ sung"],["削除","さくじょ","xoá"]]},{"id":37,"l":4,"w":"廃止","r":"はいし","hv":"PHẾ CHỈ","vi":"Huỷ bỏ, bãi bỏ","pos":["n","vs"],"img":"🗑️","s":[{"ja":"制度・ルールをやめること","pt":["類：終了、中止"],"ex":[["レジ袋の無料配布を廃止します。（環境のため）","Bãi bỏ việc phát túi nilon miễn phí. (vì môi trường)"]]}],"rel":[["終了","しゅうりょう","kết thúc"],["中止","ちゅうし","huỷ, dừng"],["存続","そんぞく","duy trì, tồn tại tiếp"]]},{"id":38,"l":4,"w":"心強い","r":"こころづよい","hv":"TÂM CƯỜNG","vi":"Vững tâm, yên tâm (vì có chỗ dựa)","pos":["i"],"img":"🫶","s":[{"ja":"頼りになって、安心できること","pt":["⇔心細い"],"ex":[["Ａ「あー、合格できるかなぁ、、、」\nＢ「ダオさんなら絶対合格できるよ！」\nＡ「そういってくれると本当に心強いです。」","A: 'Haizz, không biết có đỗ không...' — B: 'Chị Đào thì chắc chắn đỗ!' — A: 'Được bạn nói vậy mình thấy vững tâm hẳn.'"]]}],"rel":[["心細い","こころぼそい","lo lắng, chơi vơi"],["頼もしい","たのもしい","đáng tin cậy"],["安心","あんしん","yên tâm"]]},{"id":39,"l":4,"w":"解散","r":"かいさん","hv":"GIẢI TÁN","vi":"Giải tán; giải thể, tan rã (công ty, nhóm)","pos":["n","vs"],"img":"👋","s":[{"ja":"集まっていた人が分かれてバラバラになること","ex":[["９時に集合、それから現地に向かって１時に昼食、３時に解散","9 giờ tập trung, sau đó đi đến nơi, 1 giờ ăn trưa, 3 giờ giải tán."],["有名なグループ〇〇が解散したらしい。","Nghe nói nhóm nhạc nổi tiếng ○○ đã tan rã."]]}],"rel":[["集合","しゅうごう","tập hợp"],["結成","けっせい","thành lập (nhóm)"],["解体","かいたい","giải thể, tháo dỡ"]]},{"id":40,"l":4,"w":"意欲","r":"いよく","hv":"Ý DỤC","vi":"Sự mong muốn, hăng hái","pos":["n"],"img":"🔥","s":[{"ja":"進んで何かをしようと思う気持ち、やる気","ex":[["RIKIの学生は意欲のある学生ばかりだ。","Học viên RIKI toàn là những người hăng hái."],["日本で頑張っている友達を見ると勉強意欲がわいてくる。","Nhìn bạn bè đang cố gắng ở Nhật là tôi lại có động lực học."]]}],"rel":[["やる気","やるき","động lực, hứng thú"],["意志","いし","ý chí"],["熱意","ねつい","nhiệt huyết"]]},{"id":41,"l":5,"w":"専念","r":"せんねん","hv":"CHUYÊN NIỆM","vi":"Chuyên tâm, tập trung","pos":["n","vs"],"img":"🎯","s":[{"ja":"他のことを諦めて、一つのことに集中する","ex":[["「今年は仕事に専念したいから恋愛はしないつもり。」","'Năm nay tôi muốn chuyên tâm vào công việc nên không định yêu đương.'"]]}],"rel":[["集中","しゅうちゅう","tập trung"],["没頭","ぼっとう","miệt mài"],["夢中","むちゅう","say sưa"]]},{"id":42,"l":5,"w":"格好","r":"かっこう","hv":"CÁCH HẢO","vi":"Diện mạo, dáng vẻ; giữ thể diện","pos":["n"],"img":"🕴️","s":[{"ja":"外から見た見た目、外見、姿","vi":"dáng vẻ, bộ dạng","pt":["＿がいい"],"ex":[["同じ格好で並んで眠る柴犬","Những chú chó Shiba nằm ngủ xếp hàng cùng một tư thế."]]},{"ja":"人に対して恥ずかしくない姿","vi":"giữ được thể diện","pt":["＿がつく・つかない"],"ex":[["テスト10点では母に格好がつかない…。","Bài kiểm tra được 10 điểm thì chẳng còn mặt mũi nào với mẹ..."]]}],"rel":[["かっこいい","","ngầu, đẹp"],["格好つける","かっこうつける","làm màu, tỏ vẻ"],["姿","すがた","dáng vẻ"]]},{"id":43,"l":5,"w":"提示","r":"ていじ","hv":"ĐỀ THỊ","vi":"Xuất trình, đưa ra","pos":["n","vs"],"img":"🛂","s":[{"ja":"差し出して見せること","pt":["クレジットカード、パスポート"],"ex":[["（警備員さんが）\nＡ「すみませんが、身分証の提示をお願いします。」\nＢ「はい」","(Bảo vệ) A: 'Xin lỗi, vui lòng xuất trình giấy tờ tùy thân.' — B: 'Vâng.'"],["他社からいい条件を提示されたため、今の会社を辞めるつもりだ。","Vì được công ty khác đưa ra điều kiện tốt nên tôi định nghỉ công ty hiện tại."]]}],"rel":[["提出","ていしゅつ","nộp"],["提案","ていあん","đề xuất"],["見せる","みせる","cho xem"]]},{"id":44,"l":5,"w":"分野","r":"ぶんや","hv":"PHÂN DÃ","vi":"Lĩnh vực","pos":["n"],"img":"🗂️","s":[{"ja":"物事のある範囲","pt":["Aさんの得意分野➡計算・暗算","Aさんの苦手分野➡デザイン"],"ex":[["恋愛相談は私の得意分野です。","Tư vấn tình cảm là lĩnh vực sở trường của tôi."]]}],"rel":[["領域","りょういき","lãnh vực, phạm vi"],["得意分野","とくいぶんや","lĩnh vực sở trường"],["専門","せんもん","chuyên môn"]]},{"id":45,"l":5,"w":"中継","r":"ちゅうけい","hv":"TRUNG KẾ","vi":"Phát thanh, phát sóng (truyền hình trực tiếp)","pos":["n","vs"],"img":"📡","s":[{"ja":"中継放送の略","pt":["現場の放送を、他の人にも見せること","生中継"],"ex":[["スポーツ中継を見る。","Xem truyền hình thể thao."],["「こちら現場からの中継です。」","'Đây là truyền hình trực tiếp từ hiện trường.'"]]}],"rel":[["生中継","なまちゅうけい","truyền hình trực tiếp"],["放送","ほうそう","phát sóng"],["放映","ほうえい","phát hình"]]},{"id":46,"l":5,"w":"見当","r":"けんとう","hv":"KIẾN ĐƯƠNG","vi":"Dự đoán, phỏng đoán","pos":["n"],"img":"🤔","s":[{"ja":"大体の予想をすること","pt":["＿がつく、つかない"],"ex":[["誰が犯人なのか見当もつかない。","Không thể đoán nổi ai là thủ phạm."]]}],"rel":[["予想","よそう","dự đoán"],["見当違い","けんとうちがい","đoán sai"],["検討","けんとう","xem xét (đồng âm)"]]},{"id":47,"l":5,"w":"比例","r":"ひれい","hv":"TỶ LỆ","vi":"Tỷ lệ (thuận)","pos":["n","vs"],"img":"〽️","s":[{"ja":"１つが減ったり増えたりすると、もう１つも増えたり減ったりすること","pt":["グラフ、図を使って見せる場合が多い"],"ex":[["身長と体重は必ず比例しているわけではない。","Chiều cao và cân nặng không hẳn lúc nào cũng tỷ lệ thuận."]]}],"rel":[["反比例","はんぴれい","tỷ lệ nghịch"],["比率","ひりつ","tỷ suất"],["割合","わりあい","tỷ lệ"]]},{"id":48,"l":5,"w":"ふもと","r":"ふもと","hv":"LỘC (麓)","vi":"Chân núi","pos":["n"],"img":"🏕️","s":[{"ja":"山の下の方のところ","ex":[["富士山のふもとでキャンプする。","Cắm trại dưới chân núi Phú Sĩ."]]}],"rel":[["麓","ふもと","chân núi (chữ Hán)"],["頂上","ちょうじょう","đỉnh núi"],["中腹","ちゅうふく","lưng chừng núi"]]},{"id":49,"l":5,"w":"補足","r":"ほそく","hv":"BỔ TÚC","vi":"Bổ túc, bổ sung","pos":["n","vs"],"img":"📝","s":[{"ja":"不十分な説明をプラスすること","pt":["説明に対し、付け足して、補う。"],"ex":[["補足説明はページの下にあります。","Phần giải thích bổ sung nằm ở cuối trang."],["「今の彼の意見に補足させていただきますと〜」","'Cho phép tôi bổ sung thêm vào ý kiến vừa rồi của anh ấy...'"]]}],"rel":[["補う","おぎなう","bù đắp"],["追加","ついか","thêm vào"],["付け足す","つけたす","thêm vào"]]},{"id":50,"l":5,"w":"催促","r":"さいそく","hv":"THÔI XÚC","vi":"Thúc giục, hối thúc","pos":["n","vs"],"img":"⏰","s":[{"ja":"早くするように何かを言ったり・したりすること","pt":["借金、料金、メール、締め切り"],"ex":[["取引先から催促の電話がかかってきた。","Đối tác gọi điện tới thúc giục."]]}],"rel":[["督促","とくそく","đôn đốc (trả nợ)"],["急かす","せかす","giục"],["締め切り","しめきり","hạn chót"]]},{"id":51,"l":6,"w":"導入","r":"どうにゅう","hv":"ĐẠO NHẬP","vi":"Đưa vào; dẫn nhập","pos":["n","vs"],"img":"🆕","s":[{"ja":"新しい何か（製品、サービス、制度）を社内に入れること","vi":"đưa vào áp dụng","ex":[["Ａ「最近はどこもセルフレジを導入してるね。」\nＢ「うちも導入しようか。」","A: 'Dạo này đâu đâu cũng lắp máy tự thanh toán nhỉ.' — B: 'Hay chỗ mình cũng áp dụng đi.'"]]},{"ja":"はじまりの部分","vi":"phần mở đầu","ex":[["授業では導入部分が大切です。","Trong giờ học, phần dẫn nhập rất quan trọng."]]}],"rel":[["取り入れる","とりいれる","tiếp nhận, đưa vào"],["採用","さいよう","áp dụng; tuyển dụng"],["導入部","どうにゅうぶ","phần mở đầu"]]},{"id":52,"l":6,"w":"体格","r":"たいかく","hv":"THỂ CÁCH","vi":"Vóc dáng, thể hình","pos":["n"],"img":"🏋️","s":[{"ja":"体の筋肉・骨の太さ","pt":["身長、体重、骨格","＿が小さい、＿がいい"],"ex":[["ボディガードはみんな体格がいいなぁ。","Vệ sĩ ai cũng có vóc dáng vạm vỡ nhỉ."]]}],"use":["体格（たいかく）：筋肉、骨の太さ","体型（たいけい）：太っている、痩せている"],"rel":[["体型","たいけい","dáng người (béo/gầy)"],["骨格","こっかく","khung xương"],["体つき","からだつき","dáng người"]]},{"id":53,"l":6,"w":"勘定","r":"かんじょう","hv":"KHÁM ĐỊNH","vi":"Sự thanh toán, tính tiền","pos":["n","vs"],"img":"🧾","s":[{"ja":"支払い金額を計算してお金を支払うこと","pt":["≒お会計","会計より硬い感じ"],"ex":[["Ａ「ここの勘定は私が。」\nＢ「いえいえ、割り勘でいきましょう。」","A: 'Để tôi trả chỗ này.' — B: 'Không không, mình chia đều đi.'"],["（店員に向かって）お勘定お願いします。（中年のビジネスパーソンが使う感じ）","(Nói với nhân viên) Cho tôi tính tiền."]]}],"rel":[["会計","かいけい","thanh toán"],["割り勘","わりかん","chia đều tiền"],["支払い","しはらい","chi trả"]]},{"id":54,"l":6,"w":"人通り","r":"ひとどおり","hv":"NHÂN THÔNG","vi":"Lượng người đi lại","pos":["n"],"img":"🚶","s":[{"ja":"人が行き来すること。人の通行。","pt":["＿が多い","＿が少ない"],"ex":[["東京の渋谷は人通りが多くて、にぎやかだ。","Shibuya ở Tokyo người qua lại đông, rất nhộn nhịp."]]}],"rel":[["通行","つうこう","lưu thông"],["往来","おうらい","qua lại"],["人混み","ひとごみ","đám đông"]]},{"id":55,"l":6,"w":"訂正","r":"ていせい","hv":"ĐÍNH CHÍNH","vi":"Đính chính","pos":["n","vs"],"img":"✏️","s":[{"ja":"間違っているものを正しく直すこと","pt":["よく言葉・文字・文章の間違いを直す時に使います","自分に間違いがあった時","修正は相手がミスした時も使える"],"ex":[["資料を訂正したので、確認しておいてね。","Tôi đã sửa lại tài liệu, nhớ kiểm tra nhé."],["先ほどは失礼な事を申しました。発言を訂正いたします。","Lúc nãy tôi đã nói điều thất lễ. Tôi xin đính chính lại phát ngôn."]]}],"rel":[["修正","しゅうせい","chỉnh sửa"],["誤り","あやまり","lỗi sai"],["改訂","かいてい","sửa đổi (sách)"]]},{"id":56,"l":6,"w":"用心","r":"ようじん","hv":"DỤNG TÂM","vi":"Dụng tâm, cẩn trọng, đề phòng","pos":["n","vs"],"img":"🔒","s":[{"ja":"事前に気をつけること","ex":[["火の用心","Cẩn thận phòng hoả"],["この辺は夜危なそうだから、帰り道は用心してね。","Khu này buổi tối có vẻ nguy hiểm, trên đường về nhớ cẩn thận nhé."]]}],"use":["注意（ちゅうい）：しかる時にも使う ⇒ 子供に注意する","用心（ようじん）：事前に気をつける場合に使う"],"rel":[["注意","ちゅうい","chú ý, nhắc nhở"],["警戒","けいかい","cảnh giác"],["油断","ゆだん","lơ là"]]},{"id":57,"l":6,"w":"会見","r":"かいけん","hv":"HỘI KIẾN","vi":"Phỏng vấn, họp báo, hội kiến","pos":["n","vs"],"img":"🎙️","s":[{"ja":"特定の場所で公式に人と会うこと","ex":[["謝罪会見、結婚会見","Họp báo xin lỗi, họp báo công bố kết hôn"],["総理は昨夜バイデン大統領と会見した。","Thủ tướng đã hội kiến Tổng thống Biden tối qua."]]}],"rel":[["記者会見","きしゃかいけん","họp báo"],["引退会見","いんたいかいけん","họp báo giải nghệ"],["面会","めんかい","gặp mặt"]]},{"id":58,"l":6,"w":"支持","r":"しじ","hv":"CHI TRÌ","vi":"Ủng hộ","pos":["n","vs"],"img":"👍","s":[{"ja":"賛成して応援すること","pt":["政治の話でよく使います"],"ex":[["新しい政治家の支持率が高い・低い","Tỷ lệ ủng hộ chính trị gia mới cao / thấp"]]}],"rel":[["支持率","しじりつ","tỷ lệ ủng hộ"],["応援","おうえん","cổ vũ"],["賛成","さんせい","tán thành"]]},{"id":59,"l":6,"w":"言い訳","r":"いいわけ","hv":"NGÔN DỊCH","vi":"Biện minh, lý do lý trấu","pos":["n","vs"],"img":"🙊","s":[{"ja":"そうなった理由を説明して、責任を逃れようとすること","ex":[["「やばい、お皿壊れちゃった。お母さんに絶対怒られる〜〜。言い訳考えなきゃ、、、」","'Chết, vỡ đĩa rồi. Kiểu gì cũng bị mẹ mắng~. Phải nghĩ lý do mới được...'"],["言い訳するな！！！","Đừng có biện minh!!!"]]}],"rel":[["弁解","べんかい","biện bạch"],["口実","こうじつ","cái cớ"],["理由","りゆう","lý do"]]},{"id":60,"l":6,"w":"特色","r":"とくしょく","hv":"ĐẶC SẮC","vi":"Đặc sắc, nét riêng","pos":["n"],"img":"🎨","s":[{"ja":"他と違っていて、良い意味で目だつところ","ex":[["特色のある学校","Ngôi trường có nét đặc sắc riêng"]]}],"rel":[["特徴","とくちょう","đặc trưng"],["個性","こせい","cá tính"],["独特","どくとく","độc đáo"]]},{"id":61,"l":7,"w":"所有","r":"しょゆう","hv":"SỞ HỮU","vi":"Sở hữu","pos":["n","vs"],"img":"🏠","s":[{"ja":"自分のものとして持っていること","pt":["権利、財産＋所有"],"ex":[["「このアパートは僕が所有しているんだ。」","'Căn hộ này là của tôi đấy.'"],["父の所有する土地","Mảnh đất bố tôi sở hữu"]]}],"rel":[["所有権","しょゆうけん","quyền sở hữu"],["所有者","しょゆうしゃ","chủ sở hữu"],["保有","ほゆう","nắm giữ"]]},{"id":62,"l":7,"w":"収納","r":"しゅうのう","hv":"THU NẠP","vi":"Sự cất trữ, chỗ chứa đồ","pos":["n","vs"],"img":"📦","s":[{"ja":"ものを中に入れてしまっておくこと","ex":[["このアパートは収納が多い。","Căn hộ này có nhiều chỗ để đồ."],["Ａ「山田さんは収納が上手ですね。」\nＢ「いえいえ、むじるしで買った収納用品を使っただけです。」","A: 'Chị Yamada sắp xếp đồ khéo thật.' — B: 'Đâu có, tôi chỉ dùng đồ đựng mua ở Mujirushi thôi.'"]]}],"rel":[["収納用品","しゅうのうようひん","đồ dùng để cất đồ"],["押し入れ","おしいれ","tủ âm tường"],["片付け","かたづけ","dọn dẹp"]]},{"id":63,"l":7,"w":"用途","r":"ようと","hv":"DỤNG ĐỒ","vi":"Công dụng","pos":["n"],"img":"🧰","s":[{"ja":"ものの使いみち","pt":["＿が多い、＿が広い"],"ex":[["この商品は用途が多い。","Sản phẩm này có nhiều công dụng."]]}],"rel":[["使い道","つかいみち","cách dùng, công dụng"],["用具","ようぐ","dụng cụ"],["目的","もくてき","mục đích"]]},{"id":64,"l":7,"w":"行方","r":"ゆくえ","hv":"HÀNH PHƯƠNG","vi":"Tung tích","pos":["n"],"img":"🔍","s":[{"ja":"どこにいるか","ex":[["警察庁の最新データによると、平成26年から30年の間に、日本全体の年間行方不明者数は81,111人から87,962人に増加した。","Theo số liệu mới nhất của Cục Cảnh sát, từ năm Heisei 26 đến 30, số người mất tích hằng năm trên toàn Nhật đã tăng từ 81.111 lên 87.962 người."]]}],"rel":[["行方不明","ゆくえふめい","mất tích"],["消息","しょうそく","tin tức, tung tích"],["居場所","いばしょ","chỗ ở"]]},{"id":65,"l":7,"w":"予測","r":"よそく","hv":"DỰ TRẮC","vi":"Dự đoán (khách quan, có cơ sở)","pos":["n","vs"],"img":"📉","s":[{"ja":"その先や結果を前もって考える・予想すること","pt":["予想よりも客観的・信頼性が高い"],"ex":[["コロナウイルスは今年中に収束すると予測しています。","Người ta dự đoán dịch corona sẽ được kiểm soát trong năm nay."]]}],"rel":[["予想","よそう","dự đoán (chủ quan)"],["予報","よほう","dự báo"],["見通し","みとおし","triển vọng"]]},{"id":66,"l":7,"w":"完了","r":"かんりょう","hv":"HOÀN LIỄU","vi":"Hoàn thành, xong","pos":["n","vs"],"img":"✅","s":[{"ja":"完全に終えること","ex":[["「課長。会議の準備、完了しました。」","'Thưa trưởng phòng, tôi đã chuẩn bị xong cho cuộc họp.'"]]}],"rel":[["終了","しゅうりょう","kết thúc"],["完成","かんせい","hoàn thành (sản phẩm)"],["未完了","みかんりょう","chưa hoàn thành"]]},{"id":67,"l":7,"w":"相違","r":"そうい","hv":"TƯƠNG VI","vi":"Khác nhau, sự khác biệt","pos":["n","vs"],"img":"↔️","s":[{"ja":"２つのものの間に違いがあること","pt":["⇔共通点"],"ex":[["（警察の取り調べで）２人の意見は相違点が多い。","(Khi cảnh sát lấy lời khai) Lời của hai người có nhiều điểm khác nhau."]]}],"rel":[["相違点","そういてん","điểm khác nhau"],["共通点","きょうつうてん","điểm chung"],["違い","ちがい","sự khác biệt"]]},{"id":68,"l":7,"w":"作成","r":"さくせい","hv":"TÁC THÀNH","vi":"Soạn thảo, lập (tài liệu)","pos":["n","vs"],"img":"📄","s":[{"ja":"計画や書類を作ること","ex":[["「グエンさん、今日の会議の資料を作成してくれるかな。」","'Anh Nguyễn, soạn giúp tôi tài liệu cho cuộc họp hôm nay được không?'"]]}],"rel":[["作製","さくせい","chế tạo (đồ vật)"],["制作","せいさく","sản xuất (tác phẩm)"],["書類","しょるい","giấy tờ"]]},{"id":69,"l":7,"w":"中断","r":"ちゅうだん","hv":"TRUNG ĐOẠN","vi":"Gián đoạn, tạm dừng","pos":["n","vs"],"img":"⏸️","s":[{"ja":"始まっているものを途中でやめること","pt":["完全にやめるわけではなく、また再開する"],"ex":[["雨でサッカーの試合が中断する。","Trận bóng bị tạm dừng vì mưa."]]}],"rel":[["再開","さいかい","mở lại, tiếp tục"],["中止","ちゅうし","huỷ bỏ"],["一時停止","いちじていし","tạm dừng"]]},{"id":70,"l":7,"w":"収穫","r":"しゅうかく","hv":"THU HOẠCH","vi":"Gặt hái, thu hoạch","pos":["n","vs"],"img":"🍎","s":[{"ja":"何かをして得られること","pt":["食べ物、経験、結果"],"ex":[["（いつもよりリンゴがとれました）「今年はたくさん収穫できたなぁ！」","(Táo thu được nhiều hơn mọi năm) 'Năm nay thu hoạch được nhiều quá!'"],["「今回の出張は収穫が多かったです。契約が３件も取れました。」","'Chuyến công tác lần này gặt hái được nhiều. Ký được tận 3 hợp đồng.'"]]}],"rel":[["成果","せいか","thành quả"],["収益","しゅうえき","thu nhập, lợi nhuận"],["実り","みのり","kết quả, mùa màng"]]},{"id":71,"l":8,"w":"衝突","r":"しょうとつ","hv":"XUNG ĐỘT","vi":"Va chạm, xung đột","pos":["n","vs"],"img":"💥","s":[{"ja":"ぶつかること","ex":[["今日の朝、車と自転車の衝突事故があったみたいだよ。","Hình như sáng nay có vụ tai nạn ô tô va chạm với xe đạp."],["意見衝突、衝突事故","Xung đột ý kiến, tai nạn va chạm"]]}],"rel":[["ぶつかる","","va vào, đụng"],["対立","たいりつ","đối lập"],["事故","じこ","tai nạn"]]},{"id":72,"l":8,"w":"発達","r":"はったつ","hv":"PHÁT ĐẠT","vi":"Phát triển, mạnh dần lên","pos":["n","vs"],"img":"🌀","s":[{"ja":"成長してさらに機能をもつようになること","vi":"phát triển (cơ thể, tinh thần)","pt":["心、体"],"ex":[["心身が発達する","Thể chất và tinh thần phát triển"]]},{"ja":"規模が大きくなること","vi":"mạnh lên (bão), phát triển (văn minh)","pt":["台風・文明"],"ex":[["（天気予報で）現在台風９号が発達しており、来週には日本へ上陸するでしょう。","(Dự báo thời tiết) Hiện cơn bão số 9 đang mạnh lên, có lẽ sẽ đổ bộ vào Nhật Bản tuần sau."]]}],"rel":[["発展","はってん","phát triển (xã hội, kinh tế)"],["成長","せいちょう","trưởng thành"],["進歩","しんぽ","tiến bộ"]]},{"id":73,"l":8,"w":"引退","r":"いんたい","hv":"DẪN THOÁI","vi":"Nghỉ hưu, giải nghệ","pos":["n","vs"],"img":"🏁","s":[{"ja":"今の役職や地位を離れること","ex":[["引退会見","Họp báo giải nghệ"],["○○は来年引退を考えているそうだ。","Nghe nói ○○ đang tính chuyện giải nghệ vào năm sau."]]}],"use":["引退会見（いんたいかいけん）：Buổi họp báo giải nghệ","謝罪会見（しゃざいかいけん）：Buổi họp báo xin lỗi"],"rel":[["退職","たいしょく","nghỉ việc, về hưu"],["現役","げんえき","đang hoạt động"],["引退会見","いんたいかいけん","họp báo giải nghệ"]]},{"id":74,"l":8,"w":"順調","r":"じゅんちょう","hv":"THUẬN ĐIỀU","vi":"Thuận lợi, suôn sẻ","pos":["na"],"img":"🚀","s":[{"ja":"問題なく物事がうまく進んでいる","pt":["順調に進む","仕事、結婚生活は順調です"],"ex":[["A：「最近仕事どう？」\nB：「ん？順調だよ。そっちは？」\nA：「もうトラブル続きで大変だよ」","A: 'Dạo này công việc thế nào?' — B: 'Ừ, suôn sẻ. Còn cậu?' — A: 'Rắc rối liên miên, mệt lắm.'"]]}],"rel":[["スムーズ","","trôi chảy"],["好調","こうちょう","tốt, thuận lợi"],["不調","ふちょう","không ổn"]]},{"id":75,"l":8,"w":"提供","r":"ていきょう","hv":"ĐỀ CUNG","vi":"Cung cấp","pos":["n","vs"],"img":"🍽️","s":[{"ja":"相手の役に立つように、何かを渡すこと","pt":["物、サービスを提供する"],"ex":[["（スターバックスで）「あちらのカウンターでご提供いたしますので少々お待ちください。」","(Ở Starbucks) 'Đồ uống sẽ được giao ở quầy đằng kia, quý khách vui lòng đợi một chút.'"]]}],"rel":[["供給","きょうきゅう","cung ứng"],["提出","ていしゅつ","nộp"],["サービス","","dịch vụ"]]},{"id":76,"l":8,"w":"邪魔","r":"じゃま","hv":"TÀ MA","vi":"Cản trở, vướng víu, làm phiền","pos":["n","vs","na"],"img":"🚧","s":[{"ja":"妨げること","ex":[["A：「そこにいると邪魔だよ。ゲームできない。」\nB：「ワンワンワンワン（あっ、ごめん）」","A: 'Nằm đó vướng quá. Không chơi game được.' — B: 'Gâu gâu gâu (A, xin lỗi)'"]]}],"rel":[["妨げる","さまたげる","cản trở"],["お邪魔します","おじゃまします","xin phép (khi vào nhà người khác)"],["障害","しょうがい","chướng ngại"]]},{"id":77,"l":8,"w":"息抜き","r":"いきぬき","hv":"TỨC BẠT","vi":"Đổi gió, nghỉ xả hơi","pos":["n","vs"],"img":"☕","s":[{"ja":"気分転換のために休んだり・何か好きなことをすること","ex":[["A:「仕事中の息抜きはどうしていますか？」\nB:「最近は韓国語の会話練習をしてますね」\nA:「？？勉強ですか？」\nB:「なんか、ストレス発散になるんですよ〜」","A: 'Lúc làm việc anh xả hơi bằng cách nào?' — B: 'Dạo này tôi luyện hội thoại tiếng Hàn.' — A: '?? Học á?' — B: 'Không hiểu sao nó giúp tôi xả stress~'"]]}],"rel":[["気分転換","きぶんてんかん","thay đổi không khí"],["休憩","きゅうけい","nghỉ giải lao"],["リフレッシュ","","làm mới bản thân"]]},{"id":78,"l":8,"w":"延長","r":"えんちょう","hv":"DIÊN TRƯỜNG","vi":"Kéo dài, gia hạn","pos":["n","vs"],"img":"⏳","s":[{"ja":"期間を延ばすこと・延びること","vi":"kéo dài (thời gian)","ex":[["感染者が減らず、ロックダウンが９月まで延長されるそうだ。","Số ca nhiễm không giảm nên nghe nói phong toả sẽ được kéo dài đến tháng 9."]]},{"ja":"続きのもの","vi":"phần nối dài, sự tiếp nối","ex":[["彼は仕事が遊びの延長だと思っている。","Anh ấy coi công việc như phần nối dài của việc chơi."]]}],"use":["延長（えんちょう）：始まっている　⇒ 延長コード","延期（えんき）：まだ始まってない　⇒ 雨でイベントは、１週間延期になった。楽しみにしていたのに…"],"rel":[["延期","えんき","hoãn lại"],["延長コード","えんちょうコード","dây nối điện"],["短縮","たんしゅく","rút ngắn"]]},{"id":79,"l":8,"w":"目上","r":"めうえ","hv":"MỤC THƯỢNG","vi":"Người trên, bề trên","pos":["n"],"img":"🧓","s":[{"ja":"年齢・地位が自分より上","pt":["＿の人","⇔目下"],"ex":[["目上の人に「ご苦労様」はだめです！「お疲れ様」を使いましょう！","Không được nói 'Gokurōsama' với người trên! Hãy dùng 'Otsukaresama'!"]]}],"rel":[["目下","めした","người dưới"],["先輩","せんぱい","tiền bối"],["上司","じょうし","cấp trên"]]},{"id":80,"l":8,"w":"反省","r":"はんせい","hv":"PHẢN TỈNH","vi":"Kiểm điểm, tự xem xét lại","pos":["n","vs"],"img":"🤦","s":[{"ja":"自分のよくなかったところを認めて、よくしようとすること","ex":[["今回のプロジェクト失敗の原因を探すために反省会を開いた。","Đã tổ chức buổi họp rút kinh nghiệm để tìm nguyên nhân thất bại của dự án lần này."]]}],"rel":[["反省会","はんせいかい","họp rút kinh nghiệm"],["後悔","こうかい","hối hận"],["振り返る","ふりかえる","nhìn lại"]]},{"id":81,"l":9,"w":"確保","r":"かくほ","hv":"XÁC BẢO","vi":"Đảm bảo (có được); bắt giữ","pos":["n","vs"],"img":"🔐","s":[{"ja":"確実に手に入れること","vi":"đảm bảo có được","ex":[["紛争地域では、食料を確保することも難しい。","Ở vùng xung đột, ngay cả việc đảm bảo lương thực cũng khó khăn."]]},{"ja":"失わないように、しっかりと保つこと","vi":"giữ chặt, bắt giữ","ex":[["「犯人を確保しました。」","'Đã bắt giữ được thủ phạm.'"]]}],"rel":[["確実","かくじつ","chắc chắn"],["保つ","たもつ","giữ"],["逮捕","たいほ","bắt giữ"]]},{"id":82,"l":9,"w":"契機","r":"けいき","hv":"KHẾ CƠ","vi":"Thời cơ, dịp, bước ngoặt","pos":["n"],"img":"🎓","s":[{"ja":"「きっかけ」よりも堅い言い方","ex":[["卒業を契機に日本に行くことを決めた。（≒卒業を機に）","Nhân dịp tốt nghiệp, tôi đã quyết định sang Nhật."]]}],"rel":[["きっかけ","","cơ hội, nguyên cớ"],["〜を機に","〜をきに","nhân dịp ~"],["転機","てんき","bước ngoặt"]]},{"id":83,"l":9,"w":"誤り","r":"あやまり","hv":"NGỘ","vi":"Sai, nhầm, lỗi","pos":["n"],"img":"❌","s":[{"ja":"正しくないこと。間違い。","pt":["≒エラー、間違い"],"ex":[["パスワード連続誤りが続ければ、アカウントがロックされる。","Nếu nhập sai mật khẩu liên tiếp, tài khoản sẽ bị khoá."]]}],"rel":[["間違い","まちがい","nhầm lẫn"],["誤解","ごかい","hiểu lầm"],["謝る","あやまる","xin lỗi (đồng âm, khác chữ)"]]},{"id":84,"l":9,"w":"臆病","r":"おくびょう","hv":"ỨC BỆNH","vi":"Hèn nhát, nhút nhát","pos":["n","na"],"img":"🐔","s":[{"ja":"ちょっとしたことで怖がる","ex":[["私は怖がりで臆病で、よく泣く子供だった。","Tôi từng là đứa trẻ nhát gan, hay sợ và hay khóc."]]}],"use":["類：臆病者（おくびょうもの）","対：勇気（ゆうき）"],"rel":[["臆病者","おくびょうもの","kẻ nhát gan"],["勇気","ゆうき","dũng khí"],["怖がり","こわがり","người hay sợ"]]},{"id":85,"l":9,"w":"頂上","r":"ちょうじょう","hv":"ĐỈNH THƯỢNG","vi":"Đỉnh (dốc, núi...)","pos":["n"],"img":"⛰️","s":[{"ja":"一番高いところ。","ex":[["ファンシパン山の頂上からの景色は最高だよ！","Phong cảnh từ đỉnh Fansipan tuyệt nhất luôn!"]]}],"rel":[["頂き","いただき","đỉnh"],["山頂","さんちょう","đỉnh núi"],["ふもと","","chân núi"]]},{"id":86,"l":9,"w":"節約","r":"せつやく","hv":"TIẾT ƯỚC","vi":"Tiết kiệm","pos":["n","vs"],"img":"🐷","s":[{"ja":"お金を貯めるために無駄に使わないこと","ex":[["生活費の節約","Tiết kiệm chi phí sinh hoạt"],["電気や水を節約する。","Tiết kiệm điện nước."]]}],"use":["節約（せつやく）：お金以外にも","倹約（けんやく）：お金だけ","対：浪費（ろうひ）（を）する"],"rel":[["倹約","けんやく","tằn tiện (tiền)"],["浪費","ろうひ","lãng phí"],["貯金","ちょきん","tiền tiết kiệm"]]},{"id":87,"l":9,"w":"苦情","r":"くじょう","hv":"KHỔ TÌNH","vi":"Than phiền, phàn nàn (khiếu nại)","pos":["n"],"img":"📢","s":[{"ja":"自分以外が原因で、困っていることをいうこと","ex":[["近所が毎晩うるさいので苦情を言った。","Hàng xóm đêm nào cũng ồn nên tôi đã phàn nàn."]]}],"use":["文句（もんく）：気に入らないので、文句を言う（被害がなくても）","苦情（くじょう）：困っていることをいう（被害があった）","クレーム：お客さんによるクレーム（払い戻し、返品など）"],"rel":[["文句","もんく","phàn nàn"],["クレーム","","khiếu nại"],["不平","ふへい","bất bình"]]},{"id":88,"l":9,"w":"名所","r":"めいしょ","hv":"DANH SỞ","vi":"Nơi nổi tiếng, danh lam","pos":["n"],"img":"🏯","s":[{"ja":"有名なところ","ex":[["フエは古くからの名所が多い。","Huế có nhiều danh lam từ xưa."]]}],"rel":[["観光地","かんこうち","điểm du lịch"],["名物","めいぶつ","đặc sản"],["名所旧跡","めいしょきゅうせき","danh lam cổ tích"]]},{"id":89,"l":9,"w":"記憶","r":"きおく","hv":"KÝ ỨC","vi":"Ký ức, trí nhớ","pos":["n","vs"],"img":"🧠","s":[{"ja":"過去のことを覚えていること","ex":[["うーん。昨日店から出て、何したっけ。。記憶が全くない…お酒を飲みすぎたな…","Ừm... hôm qua ra khỏi quán thì làm gì nhỉ... Chẳng nhớ gì cả... uống quá chén rồi..."]]}],"rel":[["記憶力","きおくりょく","trí nhớ"],["思い出","おもいで","kỷ niệm"],["覚える","おぼえる","nhớ"]]},{"id":90,"l":9,"w":"不平","r":"ふへい","hv":"BẤT BÌNH","vi":"Than phiền, bất bình","pos":["n"],"img":"😤","s":[{"ja":"不満に思うこと。また、それを態度や言葉に表すこと","pt":["≒文句、ぐち","＿を鳴らす、＿を並べる、＿不満"],"ex":[["ぶつぶつと不平を言う。","Lầm bầm than phiền."]]}],"use":["不平（ふへい）：口に出さなくてもいい。態度であらわすことも。","文句（もんく）：口に出していうこと。"],"rel":[["不満","ふまん","bất mãn"],["不平不満","ふへいふまん","bất bình bất mãn"],["愚痴","ぐち","than vãn"]]},{"id":91,"l":10,"w":"限定","r":"げんてい","hv":"HẠN ĐỊNH","vi":"Giới hạn","pos":["n","vs"],"img":"🏷️","s":[{"ja":"その個数・期間しかないこと","ex":[["アプリ会員限定価格！","Giá chỉ dành cho thành viên ứng dụng!"],["先着２００名限定！","Giới hạn 200 người đến trước!"]]}],"rel":[["期間限定","きかんげんてい","giới hạn thời gian"],["数量限定","すうりょうげんてい","số lượng có hạn"],["制限","せいげん","hạn chế"]]},{"id":92,"l":10,"w":"論戦","r":"ろんせん","hv":"LUẬN CHIẾN","vi":"Tranh cãi, tranh luận","pos":["n","vs"],"img":"🥊","s":[{"ja":"議論（話すこと）で戦うこと","ex":[["昨日の政治家たちの論戦はかなり激しかった。","Cuộc tranh luận giữa các chính trị gia hôm qua khá gay gắt."]]}],"rel":[["議論","ぎろん","thảo luận"],["討論","とうろん","tranh luận"],["口論","こうろん","cãi nhau"]]},{"id":93,"l":10,"w":"独特","r":"どくとく","hv":"ĐỘC ĐẶC","vi":"Độc đáo, đặc trưng riêng","pos":["na"],"img":"🦄","s":[{"ja":"他にはない、その人・ものだけが持っていること","pt":["＿な人、雰囲気、考え、方法"],"ex":[["一度見たら忘れられない独特な雰囲気の男だった。","Đó là một người đàn ông có khí chất đặc biệt, gặp một lần là không quên được."]]}],"use":["独自：独特より、もっと「自分しかない」「他とは違う」という意味が強い ⇒ 独自の技術・方法で開発したアプリ。","独特：自分だけが持っている様子、特徴 ⇒ この国は独特の文化を持っている。"],"rel":[["独自","どくじ","riêng, độc lập"],["特有","とくゆう","đặc hữu"],["個性的","こせいてき","cá tính"]]},{"id":94,"l":10,"w":"じたばた","r":"じたばた","hv":"","vi":"Vùng vẫy, vật lộn, cuống cuồng","pos":["adv","vs"],"img":"🐟","s":[{"ja":"ある状態から逃れようと慌てたり焦ったりするさま。","ex":[["A「あぁ、テスト大丈夫かなぁ。落ちたかな…。」\nB「まぁまぁ。今更じたばたしてもしょうがないよ。」","A: 'Ôi, không biết bài thi có ổn không. Trượt rồi chăng...' — B: 'Thôi nào. Giờ có cuống lên cũng chẳng được gì đâu.'"]]}],"rel":[["慌てる","あわてる","hoảng hốt"],["焦る","あせる","sốt ruột"],["もがく","","giãy giụa"]]},{"id":95,"l":10,"w":"役目","r":"やくめ","hv":"DỊCH MỤC","vi":"Vai trò, bổn phận","pos":["n"],"img":"🎖️","s":[{"ja":"自分がやらなければならない事・立場（抽象的）","pt":["＿を果たす、＿を背負う"],"ex":[["子どもが２０歳になって親としての役目は終わった。","Con đã 20 tuổi nên bổn phận làm cha mẹ đã xong."]]}],"use":["役目：具体的 ✕ ⇒ 親の役目","役割：具体的 ⇒ 仕事の役割"],"rel":[["役割","やくわり","vai trò (cụ thể)"],["責任","せきにん","trách nhiệm"],["義務","ぎむ","nghĩa vụ"]]},{"id":96,"l":10,"w":"最寄り","r":"もより","hv":"TỐI KÝ","vi":"Gần nhất","pos":["n"],"img":"🚉","s":[{"ja":"最も（一番）近い","pt":["＿の駅、交番→場所"],"ex":[["最寄りの駅まで徒歩１０分くらいです。","Đi bộ đến ga gần nhất mất khoảng 10 phút."],["財布を拾ったので、最寄りの交番に届ける。","Nhặt được ví nên mang đến đồn cảnh sát gần nhất."]]}],"rel":[["最寄り駅","もよりえき","ga gần nhất"],["近所","きんじょ","lân cận, hàng xóm"],["付近","ふきん","vùng lân cận"]]},{"id":97,"l":10,"w":"解約","r":"かいやく","hv":"GIẢI ƯỚC","vi":"Huỷ hợp đồng","pos":["n","vs"],"img":"✂️","s":[{"ja":"契約を取り消すこと","pt":["契約を＿する"],"ex":[["ケータイ代が高すぎるので来月解約することにした。","Tiền điện thoại đắt quá nên tôi quyết định huỷ hợp đồng từ tháng sau."]]}],"rel":[["契約","けいやく","hợp đồng"],["キャンセル","","huỷ"],["取り消す","とりけす","huỷ bỏ"]]},{"id":98,"l":10,"w":"演説","r":"えんぜつ","hv":"DIỄN THUYẾT","vi":"Diễn thuyết","pos":["n","vs"],"img":"📣","s":[{"ja":"大勢の前で自分の意見を話すこと","ex":[["オバマ大統領の演説は素晴らしい。","Bài diễn thuyết của Tổng thống Obama thật tuyệt vời."]]}],"rel":[["スピーチ","","bài phát biểu"],["講演","こうえん","bài giảng, diễn giảng"],["演説会","えんぜつかい","buổi diễn thuyết"]]},{"id":99,"l":10,"w":"点検","r":"てんけん","hv":"ĐIỂM KIỂM","vi":"Kiểm tra, bảo dưỡng","pos":["n","vs"],"img":"🔩","s":[{"ja":"悪い所や異常がないかを一つ一つしっかり検査すること","pt":["施設、エレベーター、車、パソコン＋＿"],"ex":[["安全のために一年に一回は車の点検をしてください。","Để an toàn, hãy kiểm tra xe mỗi năm một lần."]]}],"rel":[["検査","けんさ","kiểm tra"],["整備","せいび","bảo dưỡng"],["メンテナンス","","bảo trì"]]},{"id":100,"l":10,"w":"地元","r":"じもと","hv":"ĐỊA NGUYÊN","vi":"Địa phương, quê nhà","pos":["n"],"img":"🏡","s":[{"ja":"長く居住している（していた）所","pt":["店、有名な人など"],"ex":[["親元から離れたくないので、地元の会社で働きたい。","Không muốn xa bố mẹ nên tôi muốn làm ở công ty quê nhà."],["あの政治家は地元の声に耳を傾けている。","Chính trị gia đó luôn lắng nghe tiếng nói của người dân địa phương."]]}],"use":["出身地、故郷：生まれたところ、硬い言葉","地元：生まれ育った・長く住んでいるところ（愛着がある）"],"rel":[["故郷","ふるさと","quê hương"],["出身地","しゅっしんち","nơi xuất thân"],["地方","ちほう","địa phương, vùng"]]},{"id":101,"l":11,"w":"敏感","r":"びんかん","hv":"MẪN CẢM","vi":"Nhạy cảm, mẫn cảm","pos":["na"],"img":"🌡️","s":[{"ja":"少しの変化でもすぐに感じ取ること","ex":[["新聞記者は社会の変化に敏感でなければならない。","Phóng viên báo phải nhạy bén với những thay đổi của xã hội."],["敏感な肌／話","Làn da nhạy cảm / chuyện tế nhị"]]}],"rel":[["鈍感","どんかん","chậm hiểu, vô tâm"],["繊細","せんさい","tinh tế, mong manh"],["過敏","かびん","quá nhạy cảm"]]},{"id":102,"l":11,"w":"保存","r":"ほぞん","hv":"BẢO TỒN","vi":"Lưu (file); bảo quản","pos":["n","vs"],"img":"💾","s":[{"ja":"そのままの状態に保つこと","ex":[["パソコンにデータを保存する。","Lưu dữ liệu vào máy tính."],["美味しくて長期保存ができる食料","Thực phẩm ngon lại bảo quản được lâu"],["冷凍保存","Bảo quản đông lạnh"]]}],"rel":[["保管","ほかん","cất giữ"],["保存料","ほぞんりょう","chất bảo quản"],["上書き保存","うわがきほぞん","lưu đè"]]},{"id":103,"l":11,"w":"日課","r":"にっか","hv":"NHẬT KHOÁ","vi":"Thói quen hàng ngày, việc hằng ngày","pos":["n"],"img":"🗓️","s":[{"ja":"毎日決まってする仕事","pt":["類：ルーティン"],"ex":[["最近は家に帰ってすぐお花に水をあげるのが日課です。","Dạo này việc hằng ngày của tôi là về nhà là tưới hoa ngay."]]}],"rel":[["ルーティン","","thói quen, lịch cố định"],["習慣","しゅうかん","tập quán, thói quen"],["毎日","まいにち","mỗi ngày"]]},{"id":104,"l":11,"w":"油断","r":"ゆだん","hv":"DU ĐOẠN","vi":"Lơ là, chủ quan, cẩu thả","pos":["n","vs"],"img":"😴","s":[{"ja":"大したことないと思って、気を緩めること","ex":[["一瞬の油断が大きな事故につながることがある。","Một phút lơ là có thể dẫn đến tai nạn lớn."],["あの人は内心何を考えているかわからない、油断できない人だ。（いつ裏切られるかわからない）","Người đó không biết trong lòng nghĩ gì, là người không thể chủ quan được."]]}],"rel":[["用心","ようじん","cẩn trọng"],["不注意","ふちゅうい","bất cẩn"],["油断大敵","ゆだんたいてき","chủ quan là kẻ thù lớn"]]},{"id":105,"l":11,"w":"分担","r":"ぶんたん","hv":"PHÂN ĐẢM","vi":"Phân chia công việc","pos":["n","vs"],"img":"🧩","s":[{"ja":"仕事などを分けて負担すること","pt":["仕事、役割など"],"ex":[["同僚と仕事を分担して仕事を進めている。","Tôi chia việc với đồng nghiệp để tiến hành công việc."],["役割分担しましょう！","Hãy phân chia vai trò nào!"]]}],"use":["役目：具体的 ✕ ⇒ 親の役目","役割：具体的 ⇒ 仕事の役割"],"rel":[["役割分担","やくわりぶんたん","phân chia vai trò"],["負担","ふたん","gánh nặng"],["分配","ぶんぱい","phân phối"]]},{"id":106,"l":11,"w":"同情","r":"どうじょう","hv":"ĐỒNG TÌNH","vi":"Đồng cảm, thương cảm","pos":["n","vs"],"img":"🫂","s":[{"ja":"人の気持ち、特に苦しみや悲しみを、自分のことのように感じること","ex":[["苦しんでいる人々に同情する。","Thương cảm với những người đang khổ sở."],["被害者に同情 {○する／✕だ}。","Thương cảm với nạn nhân. (dùng 同情する, không dùng 同情だ)"]]}],"rel":[["共感","きょうかん","đồng cảm"],["哀れむ","あわれむ","thương hại"],["思いやり","おもいやり","sự quan tâm"]]},{"id":107,"l":11,"w":"初歩","r":"しょほ","hv":"SƠ BỘ","vi":"Bước đầu, sơ đẳng","pos":["n"],"img":"👶","s":[{"ja":"学問・技術などの一番はじめの段階","pt":["勉強、習い事など"],"ex":[["もう入社してから3年も経ったのに、いつも初歩的なミスをしてしまう。（新入社員がやるようなミス）","Đã vào công ty được 3 năm rồi mà vẫn toàn mắc lỗi sơ đẳng."]]}],"rel":[["初歩的","しょほてき","mang tính sơ đẳng"],["基礎","きそ","cơ sở, nền tảng"],["初心者","しょしんしゃ","người mới"]]},{"id":108,"l":11,"w":"本物","r":"ほんもの","hv":"BẢN VẬT","vi":"Đồ thật","pos":["n"],"img":"💎","s":[{"ja":"偽物や作り物ではない","pt":["⇔偽物"],"ex":[["本物と思って買ったシャネルのバッグは偽物だった。","Cái túi Chanel tưởng là hàng thật mà mua hoá ra là đồ giả."]]}],"rel":[["偽物","にせもの","đồ giả"],["本当","ほんとう","thật"],["模造品","もぞうひん","hàng nhái"]]},{"id":109,"l":11,"w":"あこがれ","r":"あこがれ","hv":"SUNG (憧)","vi":"Ao ước, ngưỡng mộ","pos":["n"],"img":"🌟","s":[{"ja":"強く心がひかれ、その人のようになりたいと思うこと","ex":[["マイさんは私にとってあこがれの存在だ。","Chị Mai là người tôi ngưỡng mộ."],["DaLatに住むことが私のあこがれだ。","Được sống ở Đà Lạt là ao ước của tôi."]]}],"rel":[["憧れる","あこがれる","ngưỡng mộ, mơ ước"],["尊敬","そんけい","kính trọng"],["夢","ゆめ","ước mơ"]]},{"id":110,"l":11,"w":"転勤","r":"てんきん","hv":"CHUYỂN CẦN","vi":"Chuyển công tác","pos":["n","vs"],"img":"🧳","s":[{"ja":"（遠いところに）勤務地が変わること","ex":[["ハノイからホーチミンへ転勤することになった。","Tôi được điều chuyển công tác từ Hà Nội vào TP. Hồ Chí Minh."]]}],"rel":[["転職","てんしょく","đổi việc"],["異動","いどう","điều chuyển (vị trí)"],["単身赴任","たんしんふにん","đi công tác xa một mình"]]},{"id":111,"l":12,"w":"栽培","r":"さいばい","hv":"TÀI BỒI","vi":"Trồng trọt","pos":["n","vs"],"img":"🍅","s":[{"ja":"食べ物、植物を植えて育てること","ex":[["ミニトマトを栽培する","Trồng cà chua bi"]]}],"rel":[["育てる","そだてる","nuôi trồng"],["農業","のうぎょう","nông nghiệp"],["収穫","しゅうかく","thu hoạch"]]},{"id":112,"l":12,"w":"動揺","r":"どうよう","hv":"ĐỘNG DAO","vi":"Bất an, dao động, bối rối","pos":["n","vs"],"img":"😰","s":[{"ja":"不安な気持ち","pt":["心が揺れる（不安）","＿が激しい、する、しない"],"ex":[["面接で思わぬことを聞かれて動揺し、うまく答えられなかった。","Bị hỏi điều không ngờ trong buổi phỏng vấn nên tôi bối rối, không trả lời tốt được."]]}],"rel":[["不安","ふあん","bất an"],["揺れる","ゆれる","rung lắc, dao động"],["冷静","れいせい","bình tĩnh"]]},{"id":113,"l":12,"w":"かかりつけ","r":"かかりつけ","hv":"","vi":"Quen, hay đi (bác sĩ riêng, cá nhân)","pos":["n"],"img":"🩺","s":[{"ja":"いつもいく","pt":["≒行きつけ","＿の医者、病院"],"ex":[["私のかかりつけの病院を紹介します。","Tôi giới thiệu bệnh viện quen của tôi."]]}],"rel":[["行きつけ","いきつけ","quen (quán hay lui tới)"],["主治医","しゅじい","bác sĩ điều trị chính"],["常連","じょうれん","khách quen"]]},{"id":114,"l":12,"w":"特殊","r":"とくしゅ","hv":"ĐẶC THÙ","vi":"Đặc biệt, đặc thù","pos":["na"],"img":"🦓","s":[{"ja":"他とは違う。普通ではない。","ex":[["特殊な{職業／例}","Nghề nghiệp / trường hợp đặc thù"]]}],"use":["特別：他と違う ⇒ 今日は特別！私がおごるよ！","特殊：他ととても違う！ ⇒ 特殊なメーク"],"rel":[["特別","とくべつ","đặc biệt"],["普通","ふつう","bình thường"],["一般","いっぱん","thông thường"]]},{"id":115,"l":12,"w":"素材","r":"そざい","hv":"TỐ TÀI","vi":"Nguyên vật liệu, chất liệu","pos":["n"],"img":"🧵","s":[{"ja":"もとになる材料","ex":[["調味料をたくさん使った料理よりも素材の味を活かした料理が好きです。","Tôi thích món ăn giữ được vị của nguyên liệu hơn là món dùng nhiều gia vị."]]}],"rel":[["材料","ざいりょう","vật liệu, nguyên liệu"],["原料","げんりょう","nguyên liệu thô"],["食材","しょくざい","nguyên liệu nấu ăn"]]},{"id":116,"l":12,"w":"充満","r":"じゅうまん","hv":"SUNG MÃN","vi":"Tràn đầy, nồng nặc (khắp không gian)","pos":["n","vs"],"img":"💨","s":[{"ja":"〜がある空間にいっぱいになること","pt":["煙、匂い、雰囲気＿"],"ex":[["A「なんかこの部屋焼肉のにおいが充満してるよ」\nB「あ、昼ご飯焼肉したんだけど換気扇回すの忘れてた…！」","A: 'Phòng này sao nồng nặc mùi thịt nướng thế.' — B: 'À, trưa nay nướng thịt mà quên bật quạt thông gió...!'"]]}],"rel":[["満ちる","みちる","tràn đầy"],["換気","かんき","thông gió"],["充実","じゅうじつ","đầy đủ, sung túc"]]},{"id":117,"l":12,"w":"信頼","r":"しんらい","hv":"TÍN LẠI","vi":"Sự tin tưởng, tin cậy","pos":["n","vs"],"img":"🤞","s":[{"ja":"信じて頼りにすること","ex":[["上司の信頼に応えて結果を出したい。","Tôi muốn đáp lại sự tin tưởng của cấp trên bằng kết quả."]]}],"use":["信頼：主観的　根拠がなくても信頼はできる","信用：客観的　根拠が必要"],"rel":[["信用","しんよう","tín nhiệm (có căn cứ)"],["頼る","たよる","dựa vào"],["裏切る","うらぎる","phản bội"]]},{"id":118,"l":12,"w":"尊重","r":"そんちょう","hv":"TÔN TRỌNG","vi":"Tôn trọng","pos":["n","vs"],"img":"🙏","s":[{"ja":"価値があるものとして大切に扱うこと","pt":["意見〜、人権〜"],"ex":[["人の意見を尊重する。","Tôn trọng ý kiến của người khác."]]}],"use":["対：無視する","尊重：相手の意見、相手を思いあって大切にすること","尊敬：相手の意見、行動がすごいと感じ、自分より高いところにいると感じること","⇒ 相手が尊敬できない、子供や、有名ではない人に対しても、尊重できる"],"rel":[["尊敬","そんけい","kính trọng"],["無視","むし","phớt lờ"],["人権","じんけん","nhân quyền"]]},{"id":119,"l":12,"w":"初期","r":"しょき","hv":"SƠ KỲ","vi":"Thời gian đầu, giai đoạn đầu","pos":["n"],"img":"🌅","s":[{"ja":"初めの時期","ex":[["ここにいるのが会社の初期メンバーです。（≒立ち上げメンバー）","Những người ở đây là thành viên đầu tiên của công ty."]]}],"rel":[["末期","まっき","giai đoạn cuối"],["初期化","しょきか","khởi tạo lại (reset)"],["中期","ちゅうき","giai đoạn giữa"]]},{"id":120,"l":12,"w":"欠陥","r":"けっかん","hv":"KHIẾM HÃM","vi":"Thiếu sót, lỗi (khuyết tật)","pos":["n"],"img":"⚠️","s":[{"ja":"欠けて足りていないこと","pt":["部品の問題で事故などを起こしかねない","物：商品、機械、建物、壁"],"ex":[["新発売の車のブレーキに欠陥が見つかり、回収されることになった。","Phát hiện lỗi ở phanh của mẫu xe mới ra nên xe sẽ bị thu hồi."],["製品に欠陥がある。","Sản phẩm có khiếm khuyết."]]}],"rel":[["欠点","けってん","khuyết điểm"],["不良品","ふりょうひん","hàng lỗi"],["リコール","","thu hồi sản phẩm"]]},{"id":121,"l":13,"w":"評価","r":"ひょうか","hv":"BÌNH GIÁ","vi":"Đánh giá","pos":["n","vs"],"img":"💯","s":[{"ja":"価値を判断して決めること","pt":["＿が高い・低い","＿をつける"],"ex":[["先生からの評価が高い。","Được thầy cô đánh giá cao."],["この作品は海外で高く評価されている。","Tác phẩm này được đánh giá cao ở nước ngoài."]]}],"use":["評判：客観的（いい、悪い）","評価：主観的（A－B－C・100－90－80）","批評：なにかしたことに対して評価や成績をつけること"],"rel":[["評判","ひょうばん","tiếng tăm"],["高評価","こうひょうか","đánh giá cao"],["批評","ひひょう","phê bình"]]},{"id":122,"l":13,"w":"診断","r":"しんだん","hv":"CHẨN ĐOÁN","vi":"Chẩn đoán","pos":["n","vs"],"img":"🩻","s":[{"ja":"診て、判断すること","pt":["どんな種類か判断","性格＿、健康＿"],"ex":[["健康診断を受ける","Đi khám sức khoẻ"],["診断結果は2週間後にメールで送られる。（おそっ！）","Kết quả chẩn đoán sẽ được gửi qua email sau 2 tuần. (Chậm thế!)"]]}],"rel":[["健康診断","けんこうしんだん","khám sức khoẻ"],["診察","しんさつ","khám bệnh"],["診断書","しんだんしょ","giấy chẩn đoán"]]},{"id":123,"l":13,"w":"権利","r":"けんり","hv":"QUYỀN LỢI","vi":"Quyền lợi, quyền","pos":["n"],"img":"📜","s":[{"ja":"あることを自由に行ってよい資格","pt":["⇔ 義務","≒資格"],"ex":[["すべての国民には健康的な生活を送る権利がある。","Mọi công dân đều có quyền được sống một cuộc sống lành mạnh."],["会社に入ったばかりのあなたに他人をああだこうだ非難する権利はない。","Cậu vừa mới vào công ty thì không có quyền chỉ trích người khác thế này thế nọ."]]}],"use":["類：所有権、財産権"],"rel":[["義務","ぎむ","nghĩa vụ"],["所有権","しょゆうけん","quyền sở hữu"],["資格","しかく","tư cách"]]},{"id":124,"l":13,"w":"増大","r":"ぞうだい","hv":"TĂNG ĐẠI","vi":"Tăng lên (rất nhiều)","pos":["n","vs"],"img":"📈","s":[{"ja":"かなり増える","ex":[["年金受給者の増大","Sự gia tăng số người nhận lương hưu"]]}],"use":["増加：数量がふえること","増大：数量や物事の程度がかなり大きくなること"],"rel":[["増加","ぞうか","gia tăng"],["拡大","かくだい","mở rộng"],["減少","げんしょう","giảm"]]},{"id":125,"l":13,"w":"上達","r":"じょうたつ","hv":"THƯỢNG ĐẠT","vi":"Tiến bộ, giỏi lên","pos":["n","vs"],"img":"🎹","s":[{"ja":"技能・技術などがよく身につき、進歩すること","pt":["≒レベルアップ、〜が早い"],"ex":[["語学上達のコツはその国の恋人を作ることです。","Bí quyết giỏi ngoại ngữ là có người yêu nước đó."]]}],"rel":[["進歩","しんぽ","tiến bộ"],["上手","じょうず","giỏi"],["向上","こうじょう","nâng cao"]]},{"id":126,"l":13,"w":"視察","r":"しさつ","hv":"THỊ SÁT","vi":"Thị sát","pos":["n","vs"],"img":"🔭","s":[{"ja":"偉い人が、現地に行き、実際の様子を見ること","pt":["＿状況・現状・工場"],"ex":[["社長は先日新しい技術を開発した工場を視察された。","Hôm trước giám đốc đã thị sát nhà máy vừa phát triển công nghệ mới."]]}],"rel":[["見学","けんがく","tham quan học hỏi"],["調査","ちょうさ","điều tra"],["現地","げんち","hiện trường, tại chỗ"]]},{"id":127,"l":13,"w":"削除","r":"さくじょ","hv":"TƯỚC TRỪ","vi":"Xoá","pos":["n","vs"],"img":"🧹","s":[{"ja":"一部を取って捨てること","pt":["もの ➡ ✕","ファイル、データなど…"],"ex":[["不要なファイルやアプリを削除する。","Xoá các file và ứng dụng không cần thiết."]]}],"rel":[["消去","しょうきょ","xoá bỏ"],["追加","ついか","thêm vào"],["消す","けす","xoá, tắt"]]},{"id":128,"l":13,"w":"減量","r":"げんりょう","hv":"GIẢM LƯỢNG","vi":"Giảm (cân, trọng lượng)","pos":["n","vs"],"img":"🥗","s":[{"ja":"体重・量を減らすこと","ex":[["減量に成功した！","Giảm cân thành công rồi!"],["健康のため体重を減量する。","Giảm cân vì sức khoẻ."]]}],"rel":[["ダイエット","","ăn kiêng"],["増量","ぞうりょう","tăng lượng"],["体重","たいじゅう","cân nặng"]]},{"id":129,"l":13,"w":"整備","r":"せいび","hv":"CHỈNH BỊ","vi":"Bảo dưỡng, bảo trì; xây dựng (hạ tầng)","pos":["n","vs"],"img":"🚗","s":[{"ja":"すぐ使えるように、整えたり準備すること","pt":["（主に自動車）","道路、線路、インフラなど"],"ex":[["私の父は自動車を整備する整備士だ。","Bố tôi là thợ bảo dưỡng ô tô."]]}],"use":["メンテナンス・点検：パソコン、エレベーター、建物（幅広く使われる）","整備：大きい運送手段（自動車、飛行機）"],"rel":[["整備士","せいびし","thợ bảo dưỡng"],["点検","てんけん","kiểm tra"],["修理","しゅうり","sửa chữa"]]},{"id":130,"l":13,"w":"視線","r":"しせん","hv":"THỊ TUYẾN","vi":"Ánh nhìn","pos":["n"],"img":"👁️","s":[{"ja":"目が見ている方向。じっとみる","pt":["＿を浴びる","＿を引き付ける"],"ex":[["視線を感じて振り向くと、何者かが私を見つめていた。（見つめる：ずっと見ている）","Cảm thấy có ánh mắt nên quay lại thì thấy ai đó đang nhìn chằm chằm vào tôi."]]}],"rel":[["目線","めせん","ánh mắt, tầm mắt"],["見つめる","みつめる","nhìn chằm chằm"],["注目","ちゅうもく","chú ý"]]},{"id":131,"l":14,"w":"才能","r":"さいのう","hv":"TÀI NĂNG","vi":"Tài năng","pos":["n"],"img":"🎻","s":[{"ja":"生まれつきの能力","pt":["＿がある・ない","＿を伸ばす"],"ex":[["彼には、音楽の才能がある。","Anh ấy có tài năng âm nhạc."],["才能は伸ばせる！","Tài năng có thể phát triển được!"],["才能が豊かだ。","Rất giàu tài năng."]]}],"rel":[["素質","そしつ","tố chất"],["天才","てんさい","thiên tài"],["能力","のうりょく","năng lực"]]},{"id":132,"l":14,"w":"効用","r":"こうよう","hv":"HIỆU DỤNG","vi":"Hiệu quả, công dụng","pos":["n"],"img":"💊","s":[{"ja":"（薬などの）効果","pt":["薬の＿"],"ex":[["サウナは健康への効用があるらしい","Nghe nói xông hơi có tác dụng tốt cho sức khoẻ."]]}],"rel":[["効果","こうか","hiệu quả"],["効能","こうのう","công hiệu"],["副作用","ふくさよう","tác dụng phụ"]]},{"id":133,"l":14,"w":"効力","r":"こうりょく","hv":"HIỆU LỰC","vi":"Hiệu lực","pos":["n"],"img":"📑","s":[{"ja":"法律、約束、契約などが有効であること","pt":["効力を失う"],"ex":[["メールで約束した内容も契約書と同じ効力を持つ。","Nội dung đã hứa qua email cũng có hiệu lực như hợp đồng."]]}],"rel":[["有効","ゆうこう","có hiệu lực"],["無効","むこう","vô hiệu"],["効果","こうか","hiệu quả"]]},{"id":134,"l":14,"w":"避難","r":"ひなん","hv":"TỊ NẠN","vi":"Tị nạn, sơ tán","pos":["n","vs"],"img":"🏃","s":[{"ja":"危ないことから逃げて安全な場所へ行くこと","pt":["避難訓練","避難はしご","≒ 逃げる"],"ex":[["２階以上にお住まいの方はいますぐ避難してください。","Những ai sống từ tầng 2 trở lên hãy sơ tán ngay lập tức."]]}],"rel":[["避難所","ひなんじょ","nơi sơ tán"],["非難","ひなん","chỉ trích (đồng âm)"],["逃げる","にげる","chạy trốn"]]},{"id":135,"l":14,"w":"盗難","r":"とうなん","hv":"ĐẠO NẠN","vi":"Vụ trộm, vụ cướp","pos":["n"],"img":"🦹","s":[{"ja":"何か盗まれること","pt":["≒盗み"],"ex":[["この辺りは盗難が多い。","Khu này hay có trộm."]]}],"rel":[["泥棒","どろぼう","kẻ trộm"],["盗む","ぬすむ","ăn trộm"],["防犯","ぼうはん","phòng chống tội phạm"]]},{"id":136,"l":14,"w":"改造","r":"かいぞう","hv":"CẢI TẠO","vi":"Cải tạo, tân trang","pos":["n","vs"],"img":"🔨","s":[{"ja":"作り変えること","pt":["車、家","≒作り直す"],"ex":[["この車は1000万円かけて改造しました。","Chiếc xe này được độ lại hết 10 triệu yên."],["室内を改造する","Cải tạo nội thất"]]}],"rel":[["改装","かいそう","sửa sang"],["リフォーム","","sửa nhà"],["改良","かいりょう","cải tiến"]]},{"id":137,"l":14,"w":"転換","r":"てんかん","hv":"CHUYỂN HOÁN","vi":"Chuyển đổi","pos":["n","vs"],"img":"🔀","s":[{"ja":"違った方向に変えること","pt":["≒変わる"],"ex":[["勉強ばかりしていたから、気分転換に音楽を聴く。（気分転換：疲れた、落ち込んだ心を良くするためにやること）","Học suốt rồi nên nghe nhạc để thay đổi không khí."],["方向転換","Đổi hướng"]]}],"rel":[["気分転換","きぶんてんかん","thay đổi tâm trạng"],["転換期","てんかんき","giai đoạn chuyển giao"],["切り替え","きりかえ","chuyển đổi"]]},{"id":138,"l":14,"w":"非難","r":"ひなん","hv":"PHI NẠN","vi":"Chỉ trích, phê phán","pos":["n","vs"],"img":"👉","s":[{"ja":"人の欠点を責めること","pt":["言動、人格にたいして、非難する"],"ex":[["彼は不正して非難を浴びた。","Anh ta gian lận nên hứng chịu chỉ trích."]]}],"rel":[["批判","ひはん","phê phán (để sửa sai)"],["責める","せめる","trách móc"],["避難","ひなん","sơ tán (đồng âm)"]]},{"id":139,"l":14,"w":"要所","r":"ようしょ","hv":"YẾU SỞ","vi":"Điểm quan trọng, chỗ hiểm yếu","pos":["n"],"img":"📍","s":[{"ja":"大事・重要な場所","pt":["「要所要所」と２回繰り返す事が多い！","≒ポイント"],"ex":[["要所要所での確認を怠らなければ、今回のミスは防げたはずだ。","Nếu không lơ là việc kiểm tra ở từng điểm quan trọng thì đã tránh được lỗi lần này."]]}],"rel":[["要点","ようてん","điểm chính"],["重要","じゅうよう","quan trọng"],["ポイント","","điểm"]]},{"id":140,"l":14,"w":"展開","r":"てんかい","hv":"TRIỂN KHAI","vi":"Diễn biến (phim, truyện); mở rộng","pos":["n","vs"],"img":"📖","s":[{"ja":"これからどうなって行くのか","vi":"diễn biến","pt":["映画、動画、漫画、本"],"ex":[["この先の展開が気になる。","Tò mò diễn biến tiếp theo."]]},{"ja":"大きくして行く、広げて行く","vi":"mở rộng (kinh doanh)","pt":["ビジネス、事業"],"ex":[["海外展開する企業が増えている。","Số doanh nghiệp mở rộng ra nước ngoài đang tăng."]]}],"rel":[["進出","しんしゅつ","tiến ra, mở rộng"],["発展","はってん","phát triển"],["展開図","てんかいず","hình khai triển"]]},{"id":141,"l":15,"w":"解放","r":"かいほう","hv":"GIẢI PHÓNG","vi":"Giải phóng","pos":["n","vs"],"img":"🕊️","s":[{"ja":"自由にすること","pt":["大変なことから＋解放"],"ex":[["週６日で２０時間も残業しているし、日曜日くらいは解放させてほしい…","Làm 6 ngày một tuần, tăng ca tận 20 tiếng, ít nhất Chủ nhật hãy cho tôi được giải phóng..."]]}],"rel":[["開放","かいほう","mở cửa (đồng âm)"],["自由","じゆう","tự do"],["束縛","そくばく","trói buộc"]]},{"id":142,"l":15,"w":"退出","r":"たいしゅつ","hv":"THOÁI XUẤT","vi":"Thoát ra, rời khỏi","pos":["n","vs"],"img":"🚪","s":[{"ja":"今までいた場所から出ること","pt":["特に公の場や、お客さんから離れること"],"ex":[["試験から20分経ったら途中退出可能です。","Sau 20 phút làm bài có thể rời phòng thi."]]}],"rel":[["退場","たいじょう","rời sân, rời hội trường"],["退室","たいしつ","rời phòng"],["入室","にゅうしつ","vào phòng"]]},{"id":143,"l":15,"w":"意図","r":"いと","hv":"Ý ĐỒ","vi":"Ý đồ, mục đích","pos":["n","vs"],"img":"💭","s":[{"ja":"こうしようと考えていること","pt":["≒目的"],"ex":[["元カノが突然電話してきた。どういう意図か分からない…","Người yêu cũ đột nhiên gọi điện. Không hiểu có ý đồ gì..."]]}],"rel":[["目的","もくてき","mục đích"],["狙い","ねらい","nhắm đến"],["意図的","いとてき","cố ý"]]},{"id":144,"l":15,"w":"根気","r":"こんき","hv":"CĂN KHÍ","vi":"Kiên nhẫn, bền bỉ","pos":["n"],"img":"🐢","s":[{"ja":"ものごとを長くやり続ける気力","pt":["やる気➡根気➡目標達成","＿が強い"],"ex":[["私の長所はすぐに諦めず、根気強いところです。","Ưu điểm của tôi là không dễ bỏ cuộc và rất bền bỉ."]]}],"rel":[["根気強い","こんきづよい","kiên trì"],["忍耐","にんたい","nhẫn nại"],["粘り強い","ねばりづよい","bền bỉ, dai dẳng"]]},{"id":145,"l":15,"w":"統一","r":"とういつ","hv":"THỐNG NHẤT","vi":"Thống nhất","pos":["n","vs"],"img":"🔗","s":[{"ja":"一つにまとめること","pt":["＿意見、国"],"ex":[["ヨガは精神統一にも良いです。","Yoga cũng tốt cho việc tập trung tinh thần."],["全体の意見を統一する。","Thống nhất ý kiến của mọi người."],["統一会堂","Dinh Thống Nhất"]]}],"use":["対：分裂（ぶんれつ）、バラバラ"],"rel":[["分裂","ぶんれつ","chia rẽ, phân liệt"],["統合","とうごう","hợp nhất"],["まとめる","","tổng hợp, gom lại"]]},{"id":146,"l":15,"w":"特定","r":"とくてい","hv":"ĐẶC ĐỊNH","vi":"Xác định rõ; cố định, riêng (nhất định)","pos":["n","vs"],"img":"🕵️","s":[{"ja":"不定・不明のものの間から、探したいものを探す、指定する","vi":"xác định, tìm ra","pt":["原因、犯人、個人情報＋特定"],"ex":[["SNSにあげた写真から、知らない人に自宅を特定された。。。","Từ ảnh đăng lên mạng xã hội, người lạ đã tìm ra được nhà tôi..."],["故障した原因が特定できない。","Không xác định được nguyên nhân hỏng hóc."]]},{"ja":"いくつかのものだけ指定する","vi":"nhất định, riêng","ex":[["当店では特定の商品だけ販売しています。","Cửa hàng chúng tôi chỉ bán một số sản phẩm nhất định."]]}],"rel":[["不特定","ふとくてい","không xác định"],["指定","してい","chỉ định"],["特定商品","とくていしょうひん","sản phẩm nhất định"]]},{"id":147,"l":15,"w":"容姿","r":"ようし","hv":"DUNG TƯ","vi":"Diện mạo, dáng vẻ bề ngoài","pos":["n"],"img":"💄","s":[{"ja":"みため（顔・体）","pt":["丁寧な言い方。","日常では、外見、見た目"],"ex":[["人の容姿にあれこれ言うのはよくない。","Bàn tán này nọ về ngoại hình người khác là không tốt."]]}],"rel":[["外見","がいけん","bề ngoài"],["見た目","みため","vẻ ngoài"],["容姿端麗","ようしたんれい","dung mạo xinh đẹp"]]},{"id":148,"l":15,"w":"発想","r":"はっそう","hv":"PHÁT TƯỞNG","vi":"Ý tưởng, cách nghĩ","pos":["n","vs"],"img":"💡","s":[{"ja":"新しい考えや思いつき","pt":["≒アイデア、考え"],"ex":[["Youtubeを仕事にするとは…私にはなかった発想だ。","Biến Youtube thành công việc... đó là ý tưởng tôi chưa từng nghĩ tới."]]}],"rel":[["アイデア","","ý tưởng"],["発想力","はっそうりょく","khả năng sáng tạo ý tưởng"],["思いつき","おもいつき","ý nghĩ chợt đến"]]},{"id":149,"l":15,"w":"仮定","r":"かてい","hv":"GIẢ ĐỊNH","vi":"Giả định","pos":["n","vs"],"img":"🎲","s":[{"ja":"仮に「こう」と決めること","pt":["根拠のない仮定"],"ex":[["山田さんの言っていることが正しいと仮定すると犯人は弟ということになる。","Nếu giả định lời anh Yamada là đúng thì thủ phạm là em trai."]]}],"rel":[["仮説","かせつ","giả thuyết"],["前提","ぜんてい","tiền đề"],["仮に","かりに","giả sử"]]},{"id":150,"l":15,"w":"目印","r":"めじるし","hv":"MỤC ẤN","vi":"Mốc chỉ đường, dấu hiệu","pos":["n"],"img":"🚩","s":[{"ja":"見てすぐわかるサイン","pt":["目ですぐ分かる＋印（サイン）"],"ex":[["（マイさんの家に行きます。）\nA: 近くまで来たけど…家がたくさんあってわからないよ。\nB: 緑の屋根が目印だけどわかる？\nA: あ！あった！","(Đến nhà chị Mai) A: 'Đến gần rồi mà... nhiều nhà quá không biết nhà nào.' — B: 'Mốc là cái mái màu xanh lá, thấy không?' — A: 'A! Thấy rồi!'"]]}],"rel":[["印","しるし","dấu hiệu"],["目立つ","めだつ","nổi bật"],["標識","ひょうしき","biển báo"]]},{"id":151,"l":16,"w":"対応","r":"たいおう","hv":"ĐỐI ỨNG","vi":"Xử lý, ứng phó (với khách)","pos":["n","vs"],"img":"🧑‍💼","s":[{"ja":"周りの状況に合わせて事をする","pt":["依頼、問題に対し、対応する"],"ex":[["クレーム対応","Xử lý khiếu nại"],["お忙しい所恐縮ですがご対応よろしくお願いいたします。","Xin lỗi đã làm phiền lúc anh/chị bận, mong anh/chị xử lý giúp."]]}],"rel":[["対処","たいしょ","đối phó"],["対策","たいさく","biện pháp"],["応対","おうたい","tiếp đón"]]},{"id":152,"l":16,"w":"特徴","r":"とくちょう","hv":"ĐẶC TRƯNG","vi":"Đặc trưng, đặc điểm","pos":["n"],"img":"👂","s":[{"ja":"他と比べて目立つ点、ポイント","ex":[["耳が特徴的ですね。","Đôi tai thật đặc biệt nhỉ."]]}],"rel":[["特色","とくしょく","đặc sắc"],["特長","とくちょう","điểm mạnh nổi bật"],["特徴的","とくちょうてき","mang tính đặc trưng"]]},{"id":153,"l":16,"w":"向こう","r":"むこう","hv":"HƯỚNG","vi":"Phía trước, phía đối diện; phía bên kia (đối phương)","pos":["n"],"img":"↗️","s":[{"ja":"正面の前","vi":"phía trước, đằng kia","ex":[["向こうにいる人を手招きする。","Vẫy tay gọi người ở đằng kia."]]},{"ja":"距離を隔てた、あちらの方（相手の側）","vi":"phía bên kia, đối phương","ex":[["（事故の場面で警察に話す）赤信号で渡った向こうが悪い！","(Nói với cảnh sát ở hiện trường tai nạn) Bên kia vượt đèn đỏ nên bên kia sai!"]]}],"rel":[["向かい","むかい","đối diện"],["こちら","","phía này"],["相手","あいて","đối phương"]]},{"id":154,"l":16,"w":"引用","r":"いんよう","hv":"DẪN DỤNG","vi":"Trích dẫn","pos":["n","vs"],"img":"📚","s":[{"ja":"人の言葉や文章を自分の文の中に使う（用いる）こと","ex":[["レポートなどで他の本から引用する場合は必ず引用元を書くこと。","Khi trích dẫn từ sách khác trong báo cáo, nhất định phải ghi nguồn."]]}],"rel":[["引用元","いんようもと","nguồn trích dẫn"],["出典","しゅってん","xuất xứ"],["盗用","とうよう","đạo văn"]]},{"id":155,"l":16,"w":"吸収","r":"きゅうしゅう","hv":"HẤP THU","vi":"Hấp thu, thấm hút; tiếp thu","pos":["n","vs"],"img":"🧽","s":[{"ja":"吸い取ること","vi":"hấp thu, thấm hút","pt":["水、汗を＿する"],"ex":[["栄養を吸収する。","Hấp thu dinh dưỡng."],["ユニクロの下着は汗を吸収してくれる。","Đồ lót Uniqlo thấm hút mồ hôi."]]},{"ja":"外から取り入れて自分のものにすること","vi":"tiếp thu","pt":["知識、ノウハウ、いいところ"],"ex":[["新人の内に先輩（のいいところ）をたくさん吸収してください。","Khi còn là nhân viên mới, hãy tiếp thu thật nhiều điểm tốt của tiền bối."],["お茶には脂肪と糖分の吸収を抑える効果がある。","Trà có tác dụng hạn chế hấp thu chất béo và đường."]]}],"rel":[["吸う","すう","hút"],["消化","しょうか","tiêu hoá"],["取り入れる","とりいれる","tiếp nhận"]]},{"id":156,"l":16,"w":"性能","r":"せいのう","hv":"TÍNH NĂNG","vi":"Tính năng, hiệu suất","pos":["n"],"img":"🖥️","s":[{"ja":"機械や道具の能力","ex":[["Apple製品はデザイン性だけでなく、性能も良い。","Sản phẩm Apple không chỉ đẹp mà hiệu năng cũng tốt."]]}],"use":["機能：何ができるか？","性能：能力が高い、低い？"],"rel":[["機能","きのう","chức năng"],["高性能","こうせいのう","hiệu năng cao"],["スペック","","thông số"]]},{"id":157,"l":16,"w":"得点","r":"とくてん","hv":"ĐẮC ĐIỂM","vi":"Sự ghi điểm, điểm số","pos":["n","vs"],"img":"⚽","s":[{"ja":"競技で点をとること","pt":["スポーツ、試験"],"ex":[["今回のゲームはベトナム側がたくさん得点を得た。","Trận này phía Việt Nam ghi được nhiều điểm."],["対して日本側はあまり得点が伸びなかった。","Ngược lại phía Nhật Bản không ghi thêm được mấy điểm."]]}],"use":["対：失点"],"rel":[["失点","しってん","mất điểm, bị ghi bàn"],["点数","てんすう","điểm số"],["得点王","とくてんおう","vua phá lưới"]]},{"id":158,"l":16,"w":"予報","r":"よほう","hv":"DỰ BÁO","vi":"Dự báo","pos":["n","vs"],"img":"🌦️","s":[{"ja":"事前に（推測して）知らせること","pt":["【覚え方】予想して報告する"],"ex":[["今朝の天気予報によると、午後から雨がふるらしい。","Theo dự báo thời tiết sáng nay, có vẻ chiều sẽ mưa."]]}],"use":["予想：自分で考えた","予報：データによる正確な予想"],"rel":[["天気予報","てんきよほう","dự báo thời tiết"],["予想","よそう","dự đoán"],["予測","よそく","dự đoán (có cơ sở)"]]},{"id":159,"l":16,"w":"実現","r":"じつげん","hv":"THỰC HIỆN","vi":"Thực hiện, trở thành hiện thực","pos":["n","vs"],"img":"🌠","s":[{"ja":"計画・希望などが現実のものになること","pt":["【覚え方】実際に現実になる"],"ex":[["夢を実現させるためには努力が必要だ。","Để biến ước mơ thành hiện thực thì cần nỗ lực."]]}],"rel":[["達成","たっせい","đạt được"],["現実","げんじつ","hiện thực"],["叶う","かなう","thành hiện thực"]]},{"id":160,"l":16,"w":"達成","r":"たっせい","hv":"ĐẠT THÀNH","vi":"Đạt được","pos":["n","vs"],"img":"🏆","s":[{"ja":"目的・目標を叶えること","ex":[["今月の売り上げ１００万という目標は１０日も早く達成した。","Mục tiêu doanh thu 1 triệu tháng này đã đạt được sớm tận 10 ngày."]]}],"rel":[["目標","もくひょう","mục tiêu"],["達成感","たっせいかん","cảm giác thành tựu"],["実現","じつげん","thực hiện"]]},{"id":161,"l":17,"w":"対比","r":"たいひ","hv":"ĐỐI TỶ","vi":"So sánh, đối chiếu","pos":["n","vs"],"img":"🆚","s":[{"ja":"二つのものを比べる事","ex":[["ＡとＢの製品を対比してみるとＡの良さがよくわかる。","Đặt sản phẩm A và B cạnh nhau so sánh thì thấy rõ cái hay của A."]]}],"rel":[["比較","ひかく","so sánh"],["対照","たいしょう","tương phản"],["比べる","くらべる","so sánh"]]},{"id":162,"l":17,"w":"大別","r":"たいべつ","hv":"ĐẠI BIỆT","vi":"Phân chia đại thể, chia thành nhóm lớn","pos":["n","vs"],"img":"👕","s":[{"ja":"だいたいの区別","ex":[["クローゼットの中を夏服と冬服に大別した。","Chia tủ quần áo thành hai nhóm lớn: đồ hè và đồ đông."]]}],"rel":[["分類","ぶんるい","phân loại"],["区別","くべつ","phân biệt"],["区分","くぶん","phân chia"]]},{"id":163,"l":17,"w":"伝染","r":"でんせん","hv":"TRUYỀN NHIỄM","vi":"Truyền nhiễm, lan truyền","pos":["n","vs"],"img":"🦠","s":[{"ja":"病原体が他の生物体に入り、増殖して病気になること","pt":["伝染病"],"ex":[["感染症が伝染するのに大した時間はかからなかった。","Bệnh truyền nhiễm lây lan chẳng mất bao nhiêu thời gian."],["ネガティブは伝染していくので、なるべくポジティブな人と一緒にいるようにしています。","Sự tiêu cực có thể lây lan nên tôi cố gắng ở bên những người tích cực."]]}],"use":["感染：病気にかかる","伝染：感染者から他の人に病気が移る"],"rel":[["感染","かんせん","nhiễm bệnh"],["伝染病","でんせんびょう","bệnh truyền nhiễm"],["うつる","","lây"]]},{"id":164,"l":17,"w":"選出","r":"せんしゅつ","hv":"TUYỂN XUẤT","vi":"Chọn ra, bầu ra","pos":["n","vs"],"img":"🙌","s":[{"ja":"（優秀な作品や人）選び出すこと","ex":[["労働組合員の中から労働者代表を選出する","Bầu ra đại diện người lao động trong số các thành viên công đoàn."]]}],"rel":[["選ぶ","えらぶ","chọn"],["選挙","せんきょ","bầu cử"],["選択","せんたく","lựa chọn"]]},{"id":165,"l":17,"w":"寄付","r":"きふ","hv":"KÝ PHÓ","vi":"Quyên góp","pos":["n","vs"],"img":"🎁","s":[{"ja":"困っている人・ところ・会社のためにお金や品物を送る（あげる）事","pt":["無料であげること"],"ex":[["東日本大震災の時、ベトナムは日本へ衣服を寄付した。","Khi xảy ra động đất lớn Đông Nhật Bản, Việt Nam đã quyên góp quần áo cho Nhật."]]}],"rel":[["募金","ぼきん","quyên tiền"],["寄贈","きぞう","tặng (đồ vật)"],["支援","しえん","hỗ trợ"]]},{"id":166,"l":17,"w":"先端","r":"せんたん","hv":"TIÊN ĐOAN","vi":"Mũi nhọn, đầu mút; tiên tiến","pos":["n"],"img":"🛰️","s":[{"ja":"モノの一番端、先","vi":"đầu mút, mũi","ex":[["iPhoneのケーブルの先端は壊れやすいので注意してください。","Đầu dây cáp iPhone dễ hỏng nên hãy cẩn thận."]]},{"ja":"時代・流行の先頭","vi":"tiên tiến, mũi nhọn","ex":[["VRやAIなどの先端技術に関わる仕事をしています。","Tôi làm công việc liên quan đến công nghệ tiên tiến như VR, AI."],["最先端技術","Công nghệ tiên tiến nhất"]]}],"rel":[["最先端","さいせんたん","tiên tiến nhất"],["先頭","せんとう","dẫn đầu"],["末端","まったん","đầu cuối"]]},{"id":167,"l":17,"w":"表現","r":"ひょうげん","hv":"BIỂU HIỆN","vi":"Biểu hiện, diễn đạt","pos":["n","vs"],"img":"🎭","s":[{"ja":"心に思う、感じることを色、音、言葉、動きなどで表すこと","ex":[["A:山田さんの絵は表現力が優れているね。\nB:本当だよね。","A: 'Tranh của anh Yamada có khả năng diễn đạt tuyệt vời nhỉ.' — B: 'Đúng thật.' (表現力: khả năng diễn đạt)"]]}],"rel":[["表現力","ひょうげんりょく","khả năng diễn đạt"],["表す","あらわす","thể hiện"],["表情","ひょうじょう","nét mặt"]]},{"id":168,"l":17,"w":"明示","r":"めいじ","hv":"MINH THỊ","vi":"Biểu hiện rõ, ghi rõ","pos":["n","vs"],"img":"🔦","s":[{"ja":"はっきり示すこと","ex":[["求人票に給料が明示されていない会社に応募するのはやめておいたほうがいいよ。","Đừng ứng tuyển vào công ty không ghi rõ mức lương trong tin tuyển dụng."]]}],"rel":[["暗示","あんじ","ám thị, ngụ ý"],["明記","めいき","ghi rõ"],["提示","ていじ","đưa ra"]]},{"id":169,"l":17,"w":"専属","r":"せんぞく","hv":"CHUYÊN THUỘC","vi":"Chuyên trách, độc quyền (thuộc riêng một bên)","pos":["n"],"img":"📸","s":[{"ja":"ある一つの会社と契約し、他社とは契約しない事","ex":[["彼女は雑誌「KILALA」の専属モデルです。","Cô ấy là người mẫu độc quyền của tạp chí KILALA."]]}],"rel":[["所属","しょぞく","trực thuộc"],["専任","せんにん","chuyên trách"],["フリー","","tự do"]]},{"id":170,"l":17,"w":"孤立","r":"こりつ","hv":"CÔ LẬP","vi":"Cô lập, lẻ loi","pos":["n","vs"],"img":"🏝️","s":[{"ja":"周りからの助けがなくて、１人きり状態の事","ex":[["村田君はいつも社内で孤立している。","Murata lúc nào cũng bị cô lập trong công ty."]]}],"rel":[["孤独","こどく","cô độc"],["独立","どくりつ","độc lập"],["仲間外れ","なかまはずれ","bị cho ra rìa"]]},{"id":171,"l":18,"w":"分別","r":"ぶんべつ","hv":"PHÂN BIỆT","vi":"Phân loại (rác)","pos":["n","vs"],"img":"♻️","s":[{"ja":"似ている種類で分けること","pt":["言葉を分別する ✕","言葉を使い分ける、分類する ○"],"ex":[["ゴミは分別してだすのがルールです。","Quy định là rác phải phân loại rồi mới vứt."]]}],"rel":[["分類","ぶんるい","phân loại"],["分別（ふんべつ）","ふんべつ","sự hiểu chuyện, biết phải trái"],["ゴミ","","rác"]]},{"id":172,"l":18,"w":"区分","r":"くぶん","hv":"KHU PHÂN","vi":"Phân ra, chia ra","pos":["n","vs"],"img":"🧱","s":[{"ja":"区別してグループに分ける事","ex":[["地方区分","Phân chia vùng miền"],["高齢者を年齢で区分する。","Phân chia người cao tuổi theo độ tuổi."]]}],"rel":[["区別","くべつ","phân biệt"],["区切り","くぎり","ngắt quãng"],["分類","ぶんるい","phân loại"]]},{"id":173,"l":18,"w":"現状","r":"げんじょう","hv":"HIỆN TRẠNG","vi":"Hiện trạng","pos":["n"],"img":"📋","s":[{"ja":"現在の状態","ex":[["当社の経営の現状はよくない。","Hiện trạng kinh doanh của công ty chúng tôi không tốt."]]}],"rel":[["状況","じょうきょう","tình hình"],["現状維持","げんじょういじ","giữ nguyên hiện trạng"],["実態","じったい","thực trạng"]]},{"id":174,"l":18,"w":"移行","r":"いこう","hv":"DI HÀNH","vi":"Di chuyển, chuyển đổi (sang)","pos":["n","vs"],"img":"💽","s":[{"ja":"ある状態から他の状態へ移り変わること","pt":["データ、システム、コンテンツ＿"],"ex":[["古いパソコンから新しいパソコンへデータを移行する。","Chuyển dữ liệu từ máy tính cũ sang máy tính mới."]]}],"rel":[["移動","いどう","di chuyển"],["移転","いてん","chuyển địa điểm"],["切り替え","きりかえ","chuyển đổi"]]},{"id":175,"l":18,"w":"移住","r":"いじゅう","hv":"DI TRÚ","vi":"Di trú, di cư","pos":["n","vs"],"img":"✈️","s":[{"ja":"（遠く離れたところに）移り住む事","ex":[["マイクさんご夫妻はアメリカから日本に先月移住してきました。","Vợ chồng anh Mike đã chuyển từ Mỹ sang Nhật sinh sống vào tháng trước."]]}],"rel":[["移民","いみん","người nhập cư"],["引っ越し","ひっこし","chuyển nhà"],["定住","ていじゅう","định cư"]]},{"id":176,"l":18,"w":"養成","r":"ようせい","hv":"DƯỠNG THÀNH","vi":"Đào tạo, nuôi dưỡng","pos":["n","vs"],"img":"👨‍✈️","s":[{"ja":"教えて、技術をつけさせること","pt":["＿講座","＿施設"],"ex":[["この学校ではパイロットを養成しています。","Trường này đào tạo phi công."]]}],"rel":[["育成","いくせい","bồi dưỡng"],["訓練","くんれん","huấn luyện"],["教育","きょういく","giáo dục"]]},{"id":177,"l":18,"w":"考慮","r":"こうりょ","hv":"KHẢO LỰ","vi":"Sự xem xét, suy tính","pos":["n","vs"],"img":"🧮","s":[{"ja":"色々よく、じっくり考える","pt":["問題、事情を＿する"],"ex":[["「欠席すると試験は受けられませんが、やむを得ない理由の場合は考慮します」","'Vắng mặt thì không được dự thi, nhưng nếu có lý do bất khả kháng thì sẽ được xem xét.'"],["（飲み会の日程を決める時）「日程を組む前に、参加者の都合を考慮する」","(Khi chọn ngày đi nhậu) 'Trước khi lên lịch, cân nhắc lịch của người tham gia.'"]]}],"use":["考慮：色々な状況、事情などを配慮してよく考える","検討：やるか、やらないかを考える。","⇒ 彼女がまだ学生という事を（考慮して）、食事代の安い店で飲み会を開く事にした。どの場所にするかは（検討）中だ"],"rel":[["検討","けんとう","xem xét (làm hay không)"],["配慮","はいりょ","quan tâm, để ý"],["考える","かんがえる","suy nghĩ"]]},{"id":178,"l":18,"w":"測定","r":"そくてい","hv":"TRẮC ĐỊNH","vi":"Đo đạc","pos":["n","vs"],"img":"⏱️","s":[{"ja":"ものを使って正確に測る","pt":["長さ・重さ・速さなどの量"],"ex":[["学校で身長と体重を測定した。","Đã đo chiều cao và cân nặng ở trường."]]}],"rel":[["計測","けいそく","đo lường"],["測る","はかる","đo"],["測定器","そくていき","máy đo"]]},{"id":179,"l":18,"w":"提案","r":"ていあん","hv":"ĐỀ ÁN","vi":"Đề án, đề xuất","pos":["n","vs"],"img":"📨","s":[{"ja":"案を提出（出す）すること","pt":["ビジネスシーンでも日常会話でも使用できる","＿を出す、＿を断る、＿を受ける"],"ex":[["お客さんから新サービスについて提案を受ける","Nhận đề xuất từ khách hàng về dịch vụ mới"],["課長に新しい企画を提案する","Đề xuất kế hoạch mới với trưởng phòng"]]}],"rel":[["企画","きかく","kế hoạch, dự án"],["提出","ていしゅつ","nộp"],["案","あん","phương án"]]},{"id":180,"l":18,"w":"信仰","r":"しんこう","hv":"TÍN NGƯỠNG","vi":"Tín ngưỡng","pos":["n","vs"],"img":"⛩️","s":[{"ja":"深く信じること","ex":[["両親は仏教を信仰しているが、祖父はキリスト教を信仰している。","Bố mẹ tôi theo đạo Phật, còn ông tôi theo đạo Thiên Chúa."]]}],"rel":[["宗教","しゅうきょう","tôn giáo"],["仏教","ぶっきょう","Phật giáo"],["信者","しんじゃ","tín đồ"]]},{"id":181,"l":19,"w":"定着","r":"ていちゃく","hv":"ĐỊNH TRƯỚC","vi":"Định hình, bám rễ, có chỗ đứng vững chắc","pos":["n","vs"],"img":"📌","s":[{"ja":"新しいものが、当たり前になる、習慣化する、安定する","ex":[["田中さんは復習をしないので日本語の知識が定着しない。","Anh Tanaka không ôn bài nên kiến thức tiếng Nhật không đọng lại được."],["採用してもすぐ辞めてしまい従業員が定着しない。","Tuyển vào rồi lại nghỉ ngay, nhân viên không trụ lại được."]]}],"rel":[["普及","ふきゅう","phổ cập"],["習慣化","しゅうかんか","thành thói quen"],["根付く","ねづく","bén rễ"]]},{"id":182,"l":19,"w":"愛情","r":"あいじょう","hv":"ÁI TÌNH","vi":"Tình yêu thương","pos":["n"],"img":"❤️","s":[{"ja":"愛している気持ち","pt":["＿を注ぐ"],"ex":[["母は私にたくさん愛情を注いでくれた。","Mẹ đã dành cho tôi rất nhiều tình yêu thương."],["今日のお弁当も愛情たっぷり！","Hộp cơm hôm nay cũng đầy ắp yêu thương!"]]}],"rel":[["愛","あい","tình yêu"],["恋愛","れんあい","yêu đương"],["友情","ゆうじょう","tình bạn"]]},{"id":183,"l":19,"w":"判断","r":"はんだん","hv":"PHÁN ĐOÁN","vi":"Phán đoán, đánh giá, quyết định","pos":["n","vs"],"img":"🧑‍⚖️","s":[{"ja":"自分で考えて、決めること","ex":[["（上司に向かって）素晴らしいご判断です。","(Nói với cấp trên) Quyết định tuyệt vời ạ."],["状況にあう、的確な判断を下す。","Đưa ra phán đoán chính xác, phù hợp với tình huống."],["外見で人を判断してはいけないと思う。","Tôi nghĩ không nên đánh giá con người qua vẻ bề ngoài."]]}],"rel":[["決断","けつだん","quyết đoán"],["判定","はんてい","phán định"],["判断力","はんだんりょく","khả năng phán đoán"]]},{"id":184,"l":19,"w":"凸凹","r":"でこぼこ","hv":"ĐỘT AO","vi":"Lồi lõm, gồ ghề","pos":["n","vs","na"],"img":"🪨","s":[{"ja":"物の表面が出っ張ったり、へこんだりしていること","pt":["凸凹した道"],"ex":[["凸凹した道","Con đường gồ ghề"]]}],"rel":[["平ら","たいら","bằng phẳng"],["出っ張る","でっぱる","lồi ra"],["へこむ","","lõm xuống"]]},{"id":185,"l":19,"w":"教育","r":"きょういく","hv":"GIÁO DỤC","vi":"Giáo dục","pos":["n","vs"],"img":"🏫","s":[{"ja":"教えて育てること","ex":[["新入社員を教育する。","Đào tạo nhân viên mới."],["この会社は教育制度がしっかりしている。","Công ty này có chế độ đào tạo bài bản."]]}],"rel":[["養成","ようせい","đào tạo"],["育成","いくせい","bồi dưỡng"],["教育制度","きょういくせいど","chế độ giáo dục"]]},{"id":186,"l":19,"w":"大臣","r":"だいじん","hv":"ĐẠI THẦN","vi":"Bộ trưởng","pos":["n"],"img":"🏛️","s":[{"ja":"政治を行う偉い人","ex":[["総理大臣","Thủ tướng"],["大臣が職を離れた。","Bộ trưởng đã rời chức."]]}],"rel":[["総理大臣","そうりだいじん","thủ tướng"],["政府","せいふ","chính phủ"],["政党","せいとう","chính đảng"]]},{"id":187,"l":19,"w":"やる気","r":"やるき","hv":"– KHÍ","vi":"Hứng thú, động lực","pos":["n"],"img":"⚡","s":[{"ja":"頑張ってやろうという気持ち","pt":["＿がある、＿が出る"],"ex":[["やる気のある人","Người có động lực"],["上司にほめられてやる気が出てきた。","Được sếp khen nên có động lực hẳn lên."],["日本に行きたいというモチベーションがあるから、勉強のやる気が上がる。（モチベーション：やる気につながる動機）","Vì có động cơ muốn sang Nhật nên hứng thú học tập tăng lên."]]}],"rel":[["意欲","いよく","ý chí, hăng hái"],["モチベーション","","động lực"],["根気","こんき","kiên nhẫn"]]},{"id":188,"l":19,"w":"指摘","r":"してき","hv":"CHỈ TRÍCH","vi":"Chỉ ra (điểm sai, vấn đề)","pos":["n","vs"],"img":"☝️","s":[{"ja":"大事な点、問題点を言うこと","pt":["ミスを＿＿する"],"ex":[["経済評論家は、景気の悪さの原因を正確に指摘した。","Nhà bình luận kinh tế đã chỉ ra chính xác nguyên nhân kinh tế đi xuống."]]}],"rel":[["指摘を受ける","してきをうける","bị chỉ ra lỗi"],["非難","ひなん","chỉ trích (lên án)"],["注意","ちゅうい","nhắc nhở"]]},{"id":189,"l":19,"w":"決勝戦","r":"けっしょうせん","hv":"QUYẾT THẮNG CHIẾN","vi":"Trận chung kết","pos":["n"],"img":"🥇","s":[{"ja":"１位（優勝）を決めるための試合","pt":["スポーツで使う"],"ex":[["今夜はベトナムVS日本の決勝戦だから早く仕事を終わらせないと。","Tối nay là trận chung kết Việt Nam vs Nhật Bản nên phải xong việc sớm."]]}],"rel":[["準決勝","じゅんけっしょう","bán kết"],["優勝","ゆうしょう","vô địch"],["予選","よせん","vòng loại"]]},{"id":190,"l":19,"w":"活気","r":"かっき","hv":"HOẠT KHÍ","vi":"Sự hoạt bát, sức sống, sôi động","pos":["n"],"img":"🎉","s":[{"ja":"生き生きとした雰囲気、盛り上がっている","ex":[["ベトナムは若者が多くて活気がある。","Việt Nam có nhiều người trẻ nên rất sôi động."],["人が少なく、活気がない街。","Thành phố ít người, thiếu sức sống."]]}],"rel":[["活発","かっぱつ","hoạt bát"],["にぎやか","","náo nhiệt"],["元気","げんき","khoẻ khoắn"]]},{"id":191,"l":20,"w":"放映","r":"ほうえい","hv":"PHÓNG ÁNH","vi":"Sự phát sóng (một bộ phim...)","pos":["n","vs"],"img":"📺","s":[{"ja":"テレビで放送すること","ex":[["「鬼滅の刃」の映画が来週テレビで初放映されるそうだ。","Nghe nói phim 'Thanh gươm diệt quỷ' sẽ lần đầu chiếu trên TV vào tuần sau."]]}],"rel":[["放送","ほうそう","phát sóng"],["上映","じょうえい","chiếu phim (rạp)"],["中継","ちゅうけい","truyền hình trực tiếp"]]},{"id":192,"l":20,"w":"採用","r":"さいよう","hv":"THÁI DỤNG","vi":"Tuyển dụng; áp dụng (ý kiến)","pos":["n","vs"],"img":"✍️","s":[{"ja":"会社・団体などがその構成員として選び雇うこと","pt":["＿する、＿試験、＿基準"],"ex":[["新入社員を５人採用したが、そのうちの４人が１ヶ月で辞めてしまった。（≒定着しない）","Đã tuyển 5 nhân viên mới nhưng 4 người đã nghỉ sau 1 tháng."],["徹夜で考えた私の案が会議で採用された。","Phương án tôi thức trắng đêm nghĩ ra đã được chọn trong cuộc họp."]]}],"use":["採用：人、意見 OK","雇用：人だけ","対：不採用（✕ 不採用する　○ 不採用にする）"],"rel":[["雇用","こよう","tuyển dụng (chỉ người)"],["不採用","ふさいよう","không tuyển"],["採用試験","さいようしけん","kỳ thi tuyển dụng"]]},{"id":193,"l":20,"w":"進出","r":"しんしゅつ","hv":"TIẾN XUẤT","vi":"Mở rộng (thị trường); sự tiến lên (vòng sau)","pos":["n","vs"],"img":"🗺️","s":[{"ja":"活動の場所を増やすこと","vi":"mở rộng hoạt động","pt":["ビジネス","⇔撤退する"],"ex":[["海外進出する日本企業が増えている。","Doanh nghiệp Nhật mở rộng ra nước ngoài ngày càng nhiều."]]},{"ja":"進み出ること（大会で決勝戦に勝ち進む）","vi":"tiến vào (vòng trong)","ex":[["オリンピック史上初、ベスト４進出。","Lần đầu tiên trong lịch sử Olympic, lọt vào top 4."]]}],"rel":[["撤退","てったい","rút lui"],["展開","てんかい","mở rộng"],["進む","すすむ","tiến lên"]]},{"id":194,"l":20,"w":"俳優","r":"はいゆう","hv":"BÀI ƯU","vi":"Diễn viên","pos":["n"],"img":"🎞️","s":[{"ja":"舞台や映画などで演技をしている人（映画、演劇など）","ex":[["SontungMTPは歌手から俳優に転向するらしい。","Nghe nói Sơn Tùng MTP sẽ chuyển từ ca sĩ sang làm diễn viên."]]}],"rel":[["女優","じょゆう","nữ diễn viên"],["演技","えんぎ","diễn xuất"],["役者","やくしゃ","diễn viên (kịch)"]]},{"id":195,"l":20,"w":"組織","r":"そしき","hv":"TỔ CHỨC","vi":"Tổ chức; hệ thống (mô)","pos":["n","vs"],"img":"🏢","s":[{"ja":"ある目的のために集まった集団","ex":[["会社の組織図","Sơ đồ tổ chức công ty"],["「体／内臓／神経／細胞…」の組織","Mô cơ thể / nội tạng / thần kinh / tế bào..."],["ユニセフは国際連合の組織です。","UNICEF là một tổ chức của Liên Hợp Quốc."]]}],"rel":[["団体","だんたい","đoàn thể"],["組織図","そしきず","sơ đồ tổ chức"],["機関","きかん","cơ quan"]]},{"id":196,"l":20,"w":"真夏","r":"まなつ","hv":"CHÂN HẠ","vi":"Giữa mùa hè","pos":["n"],"img":"🏖️","s":[{"ja":"夏の中でも暑い時期","pt":["「真」は強調の意味","⇔真冬、真っ青"],"ex":[["30℃以上の日は「真夏日」と呼ばれる。","Những ngày trên 30℃ được gọi là 'ngày giữa hè'."]]}],"use":["類：真正面　例文：真正面に山が見える。"],"rel":[["真冬","まふゆ","giữa mùa đông"],["真夏日","まなつび","ngày nóng trên 30℃"],["真正面","ましょうめん","ngay chính diện"]]},{"id":197,"l":20,"w":"政党","r":"せいとう","hv":"CHÍNH ĐẢNG","vi":"Chính đảng, đảng","pos":["n"],"img":"🎌","s":[{"ja":"政治の団体","ex":[["日本の若者が支持する政党。","Chính đảng được giới trẻ Nhật ủng hộ."]]}],"rel":[["与党","よとう","đảng cầm quyền"],["野党","やとう","đảng đối lập"],["支持","しじ","ủng hộ"]]},{"id":198,"l":20,"w":"退場","r":"たいじょう","hv":"THOÁI TRƯỜNG","vi":"Rời khỏi (trận đấu, hội trường)","pos":["n","vs"],"img":"🟥","s":[{"ja":"試合・会場・舞台から出て行くこと","ex":[["勝利目前にレッドカードで退場になった。（目前≒目の前）","Ngay trước chiến thắng thì bị thẻ đỏ đuổi khỏi sân."]]}],"rel":[["出場","しゅつじょう","ra sân, tham gia"],["入場","にゅうじょう","vào cửa"],["退出","たいしゅつ","rời khỏi"]]},{"id":199,"l":20,"w":"拡大","r":"かくだい","hv":"KHUẾCH ĐẠI","vi":"Sự mở rộng, lan rộng; phóng to","pos":["n","vs"],"img":"🔎","s":[{"ja":"（範囲・規模などを）広げて大きくすること","pt":["ビジネス、経済、会社、勢力"],"ex":[["画面拡大 ⇔ 画面縮小","Phóng to màn hình ⇔ thu nhỏ màn hình"],["会社拡大、事業拡大","Mở rộng công ty, mở rộng kinh doanh"]]}],"use":["拡大：全体を大きくする ⇒ 地図を拡大する。","拡張：新しい部分を＋する、付け足す ⇒ 道路の拡張工事。"],"rel":[["縮小","しゅくしょう","thu nhỏ"],["拡張","かくちょう","mở rộng thêm"],["拡散","かくさん","lan truyền"]]},{"id":200,"l":20,"w":"向上","r":"こうじょう","hv":"HƯỚNG THƯỢNG","vi":"Sự nâng cao, tiến triển","pos":["n","vs"],"img":"📶","s":[{"ja":"能力・性質・技術などがよりよくなること","pt":["能力・性能・技術・レベル"],"ex":[["向上心がある社員は伸びる","Nhân viên có tinh thần cầu tiến sẽ phát triển."],["社員のモチベーションを向上させると、生産性が上がる。","Nâng cao động lực của nhân viên thì năng suất sẽ tăng."]]}],"rel":[["向上心","こうじょうしん","tinh thần cầu tiến"],["上達","じょうたつ","tiến bộ"],["低下","ていか","giảm sút"]]},{"id":201,"l":21,"w":"需要","r":"じゅよう","hv":"NHU YẾU","vi":"Nhu cầu","pos":["n"],"img":"🛍️","s":[{"ja":"商品に対する欲求（ほしい）","pt":["市場を分析するときの経済用語","需要は硬い言葉、普段は「ニーズ」"],"ex":[["物の値段には、需要と供給の関係が影響している。","Giá cả hàng hoá chịu ảnh hưởng của quan hệ cung cầu."],["夏と冬は電力の需要が増える。","Mùa hè và mùa đông nhu cầu điện tăng lên."]]}],"rel":[["供給","きょうきゅう","cung cấp, cung ứng"],["ニーズ","","nhu cầu (khẩu ngữ)"],["需要と供給","じゅようときょうきゅう","cung và cầu"]]},{"id":202,"l":21,"w":"半球","r":"はんきゅう","hv":"BÁN CẦU","vi":"Bán cầu","pos":["n"],"img":"🌐","s":[{"ja":"球（丸いもの）の半分のこと","ex":[["北半球と南半球では季節が逆になる。","Mùa ở Bắc bán cầu và Nam bán cầu ngược nhau."]]}],"rel":[["北半球","きたはんきゅう","Bắc bán cầu"],["南半球","みなみはんきゅう","Nam bán cầu"],["地球","ちきゅう","Trái Đất"]]},{"id":203,"l":21,"w":"投票","r":"とうひょう","hv":"ĐẦU PHIẾU","vi":"Bỏ phiếu","pos":["n","vs"],"img":"🗳️","s":[{"ja":"何かを決めるときに、（選挙などで）票を入れること","ex":[["選挙でＡ候補に投票した。","Tôi đã bỏ phiếu cho ứng viên A trong cuộc bầu cử."]]}],"rel":[["選挙","せんきょ","bầu cử"],["候補","こうほ","ứng cử viên"],["投票率","とうひょうりつ","tỷ lệ đi bầu"]]},{"id":204,"l":21,"w":"主人公","r":"しゅじんこう","hv":"CHỦ NHÂN CÔNG","vi":"Nhân vật chính","pos":["n"],"img":"🦸","s":[{"ja":"物語などの中心の人（小説、映画、漫画など）","ex":[["ドラえもんの主人公ってドラえもん？のび太？","Nhân vật chính của Doraemon là Doraemon hay Nobita?"],["人生の主人公はあなたです。","Nhân vật chính của cuộc đời bạn là chính bạn."]]}],"rel":[["脇役","わきやく","vai phụ"],["登場人物","とうじょうじんぶつ","nhân vật"],["ヒーロー","","anh hùng"]]},{"id":205,"l":21,"w":"区切り","r":"くぎり","hv":"KHU THIẾT","vi":"Sự phân chia, ngắt quãng, mốc","pos":["n"],"img":"⏲️","s":[{"ja":"連続しているもの、ひろがっているものを、境目をつけて分ける","ex":[["２５分区切りで勉強すると集中力が続くと言われている。","Người ta nói học theo từng quãng 25 phút thì sự tập trung sẽ được duy trì."]]}],"rel":[["区切る","くぎる","ngắt, chia"],["一区切り","ひとくぎり","một chặng, tạm xong"],["区分","くぶん","phân chia"]]},{"id":206,"l":21,"w":"雷","r":"かみなり","hv":"LÔI","vi":"Sấm sét","pos":["n"],"img":"🌩️","s":[{"ja":"空で光って、大きな音が鳴る自然現象","pt":["＿が落ちる、＿が鳴る"],"ex":[["「怖っ！今日は雷がよく鳴るね。」","'Sợ quá! Hôm nay sấm nhiều nhỉ.'"],["このミスは…部長の雷が落ちるだろうねぇ。","Lỗi này... chắc trưởng phòng sẽ nổi trận lôi đình mất."]]}],"rel":[["稲妻","いなずま","tia chớp"],["雷が落ちる","かみなりがおちる","bị mắng xối xả"],["嵐","あらし","bão"]]},{"id":207,"l":21,"w":"試し","r":"ためし","hv":"THÍ","vi":"Việc thử","pos":["n"],"img":"🧪","s":[{"ja":"確かめようと、実際にやってみる。","pt":["お試し N","V を試す"],"ex":[["試しに１つだけ買ってみようか。","Thử mua một cái xem sao nhé."],["お試し価格","Giá dùng thử"]]}],"rel":[["試す","ためす","thử"],["お試し","おためし","dùng thử"],["試食","ししょく","ăn thử"]]},{"id":208,"l":21,"w":"保障","r":"ほしょう","hv":"BẢO CHƯỚNG","vi":"Sự bảo đảm","pos":["n","vs"],"img":"☂️","s":[{"ja":"問題のないように責任を持って約束する","ex":[["けが、病気の場合でも最低１０万円の給与は保障します。","Kể cả khi bị thương hay ốm đau, chúng tôi vẫn đảm bảo lương tối thiểu 100.000 yên."]]}],"rel":[["保証","ほしょう","bảo hành, bảo lãnh (đồng âm)"],["補償","ほしょう","bồi thường (đồng âm)"],["社会保障","しゃかいほしょう","an sinh xã hội"]]},{"id":209,"l":21,"w":"筆者","r":"ひっしゃ","hv":"BÚT GIẢ","vi":"Tác giả, người viết","pos":["n"],"img":"🖋️","s":[{"ja":"その文章を書いた人","ex":[["この本の筆者は名前も性別も明かしていない。","Tác giả cuốn sách này không công khai cả tên lẫn giới tính."]]}],"rel":[["作者","さくしゃ","tác giả"],["著者","ちょしゃ","tác giả (sách)"],["読者","どくしゃ","độc giả"]]},{"id":210,"l":21,"w":"休憩","r":"きゅうけい","hv":"HƯU KHẾ","vi":"Nghỉ giải lao","pos":["n","vs"],"img":"🍵","s":[{"ja":"仕事や運動などを一時やめて休むこと","pt":["＿する、＿を取る"],"ex":[["「ではここで、１０分間の休憩です。」","'Bây giờ chúng ta nghỉ giải lao 10 phút.'"]]}],"rel":[["休み","やすみ","nghỉ"],["息抜き","いきぬき","xả hơi"],["休憩室","きゅうけいしつ","phòng nghỉ"]]},{"id":211,"l":22,"w":"歌謡曲","r":"かようきょく","hv":"CA DAO KHÚC","vi":"Bài hát đại chúng (ai cũng hát được)","pos":["n"],"img":"🎶","s":[{"ja":"多くの人が知っている有名な曲","ex":[["最近はみんなが歌えるような歌謡曲は少なくなりました。","Dạo này những bài hát mà ai cũng hát được đã ít đi."]]}],"rel":[["演歌","えんか","nhạc Enka"],["流行歌","りゅうこうか","bài hát thịnh hành"],["名曲","めいきょく","bài hát nổi tiếng"]]},{"id":212,"l":22,"w":"候補","r":"こうほ","hv":"HẬU BỔ","vi":"Ứng cử viên","pos":["n"],"img":"📇","s":[{"ja":"ある偉い地位などを得る可能性のある人","pt":["政治家、社長、候補"],"ex":[["今３人の社長候補がいるが、外国人は社長になる可能性が高い。","Hiện có 3 ứng viên giám đốc, người nước ngoài có khả năng cao sẽ trở thành giám đốc."],["二人の大統領候補。","Hai ứng cử viên tổng thống."]]}],"rel":[["立候補","りっこうほ","ra ứng cử"],["候補者","こうほしゃ","ứng cử viên"],["投票","とうひょう","bỏ phiếu"]]},{"id":213,"l":22,"w":"分配","r":"ぶんぱい","hv":"PHÂN PHỐI","vi":"Phân phối, chia","pos":["n","vs"],"img":"🍰","s":[{"ja":"（利益などを）分けて配ること","ex":[["利益は全員に分配します。","Lợi nhuận sẽ được chia cho tất cả mọi người."]]}],"rel":[["配分","はいぶん","phân bổ"],["分担","ぶんたん","phân chia công việc"],["配る","くばる","phát, chia"]]},{"id":214,"l":22,"w":"状況","r":"じょうきょう","hv":"TRẠNG HUỐNG","vi":"Tình hình","pos":["n"],"img":"🌤️","s":[{"ja":"その時の様子、ありさま","pt":["＿が良い・悪い","どんな＿","N＋＿"],"ex":[["最近は休みが多く出席状況はよくない。","Dạo này nghỉ nhiều nên tình hình đi học không tốt."],["日本はそろそろコロナが終わりそうです。ベトナムはどんな状況ですか？","Ở Nhật dịch Covid sắp kết thúc rồi. Tình hình ở Việt Nam thế nào?"]]}],"rel":[["状態","じょうたい","trạng thái"],["現状","げんじょう","hiện trạng"],["事情","じじょう","hoàn cảnh, sự tình"]]},{"id":215,"l":22,"w":"概要","r":"がいよう","hv":"KHÁI YẾU","vi":"Tóm lược, khái quát","pos":["n"],"img":"🗒️","s":[{"ja":"全体のポイント（大事なところ）のまとめ","ex":[["会社概要","Giới thiệu khái quát về công ty"],["外交問題の概要を説明する。","Giải thích khái quát về vấn đề ngoại giao."]]}],"rel":[["要約","ようやく","tóm tắt"],["あらすじ","","cốt truyện"],["要点","ようてん","điểm chính"]]},{"id":216,"l":22,"w":"役割","r":"やくわり","hv":"DỊCH CÁT","vi":"Vai trò","pos":["n"],"img":"👥","s":[{"ja":"集団の中で一人一人に与えられた仕事の内容","pt":["役割を分ける、分担する、決める"],"ex":[["映画を作るために、いろんな役割を決めないといけない。","Để làm phim thì phải phân định nhiều vai trò."],["家族で役割を分担して、大掃除をする。","Cả nhà chia việc để tổng vệ sinh."],["社長の主な役割\n① 会社の方向性を決める\n② 社員が働きやすい環境を作るなど","Vai trò chính của giám đốc: ① Quyết định phương hướng công ty ② Tạo môi trường làm việc thuận lợi cho nhân viên..."]]}],"rel":[["役目","やくめ","bổn phận"],["分担","ぶんたん","phân chia"],["担当","たんとう","phụ trách"]]},{"id":217,"l":22,"w":"異文化","r":"いぶんか","hv":"DỊ VĂN HOÁ","vi":"Văn hoá khác, khác biệt văn hoá","pos":["n"],"img":"🥢","s":[{"ja":"自分の文化とは異なる文化","pt":["＿交流、＿体験"],"ex":[["来週日曜日、ベトナムと日本の異文化交流会を行います。","Chủ nhật tuần sau sẽ tổ chức buổi giao lưu văn hoá Việt – Nhật."]]}],"rel":[["文化","ぶんか","văn hoá"],["交流","こうりゅう","giao lưu"],["カルチャーショック","","sốc văn hoá"]]},{"id":218,"l":22,"w":"初心者","r":"しょしんしゃ","hv":"SƠ TÂM GIẢ","vi":"Người mới","pos":["n"],"img":"🔰","s":[{"ja":"始めたばかりの人","ex":[["日本語は１ヶ月前に勉強し始めたばかりでまだ初心者です。","Tôi mới bắt đầu học tiếng Nhật từ 1 tháng trước nên vẫn là người mới."],["運転初心者マーク","Biển hiệu người mới lái xe"]]}],"rel":[["初歩","しょほ","bước đầu"],["ベテラン","","người kỳ cựu"],["上級者","じょうきゅうしゃ","người trình độ cao"]]},{"id":219,"l":22,"w":"いたずら","r":"いたずら","hv":"ÁC HÍ (悪戯)","vi":"Trò nghịch ngợm, trêu chọc","pos":["n","vs","na"],"img":"😜","s":[{"ja":"ふざけて何かをすること","pt":["V：＿する","N：＿っこ（いたずらをよくする子供）"],"ex":[["子供のころはよく兄にいたずらしていた。","Hồi nhỏ tôi hay trêu chọc anh trai."],["うちの子は本当にいたずらっ子で毎日大変です。","Con nhà tôi nghịch lắm, ngày nào cũng vất vả."]]}],"rel":[["いたずらっ子","いたずらっこ","đứa trẻ nghịch ngợm"],["ふざける","","đùa giỡn"],["悪ふざけ","わるふざけ","trò đùa quá trớn"]]},{"id":220,"l":22,"w":"対等","r":"たいとう","hv":"ĐỐI ĐẲNG","vi":"Sự tương đương, ngang bằng","pos":["n","na"],"img":"🟰","s":[{"ja":"２つのものに差がないこと","ex":[["うちの会社は社長も社員も対等に話し合います。","Ở công ty tôi, giám đốc và nhân viên trao đổi với nhau ngang hàng."]]}],"use":["対等：実力や地位について差がないこと","平等：法律的や理念的に平等（例：男女平等）"],"rel":[["平等","びょうどう","bình đẳng"],["同等","どうとう","tương đương"],["上下関係","じょうげかんけい","quan hệ trên dưới"]]},{"id":221,"l":23,"w":"鶴","r":"つる","hv":"HẠC","vi":"Con sếu, con hạc","pos":["n"],"img":"🦢","s":[{"ja":"首と足が長い、大きな鳥","ex":[["日本では「千羽鶴」をもらうと病気が治ると言われています。（千羽鶴：1000羽の鶴）","Ở Nhật, người ta nói rằng nhận được 'nghìn con hạc giấy' thì sẽ khỏi bệnh."]]}],"rel":[["千羽鶴","せんばづる","nghìn con hạc giấy"],["折り紙","おりがみ","gấp giấy"],["鶴は千年、亀は万年","つるはせんねん、かめはまんねん","hạc sống nghìn năm, rùa sống vạn năm"]]},{"id":222,"l":23,"w":"用具","r":"ようぐ","hv":"DỤNG CỤ","vi":"Dụng cụ","pos":["n"],"img":"🪣","s":[{"ja":"ある事をするために使う道具","pt":["掃除、勉強、運動、筆記用具","道具はもっと広い範囲で使われる"],"ex":[["掃除用具はここにしまっておいてください。","Hãy cất dụng cụ dọn dẹp ở đây."]]}],"rel":[["道具","どうぐ","đồ dùng, công cụ"],["筆記用具","ひっきようぐ","dụng cụ viết"],["器具","きぐ","khí cụ"]]},{"id":223,"l":23,"w":"舌","r":"した","hv":"THIỆT","vi":"Lưỡi","pos":["n"],"img":"👅","s":[{"ja":"「ベロ」の固い言い方。口の中にある部分","ex":[["私、猫舌なんです。（猫舌：あついものが苦手なこと）","Tôi là người 'lưỡi mèo' (không ăn được đồ nóng)."],["やまださんはいつも高級店ばかり行くから舌が肥えている。（舌が肥える：味に厳しい）","Anh Yamada toàn đi nhà hàng cao cấp nên rất sành ăn."]]}],"rel":[["猫舌","ねこじた","sợ đồ nóng"],["舌が肥える","したがこえる","sành ăn"],["ベロ","","lưỡi (khẩu ngữ)"]]},{"id":224,"l":23,"w":"原稿","r":"げんこう","hv":"NGUYÊN CẢO","vi":"Bản thảo","pos":["n"],"img":"📃","s":[{"ja":"公表するという目的で文章を書いたもの","ex":[["発表の時、原稿を棒読みするのはよくない。（棒読み：アクセントなど付けないで字の順に読むこと）","Khi thuyết trình, đọc bản thảo đều đều như cái máy là không tốt."]]}],"rel":[["下書き","したがき","bản nháp"],["棒読み","ぼうよみ","đọc đều đều"],["原稿用紙","げんこうようし","giấy viết bản thảo"]]},{"id":225,"l":23,"w":"改訂","r":"かいてい","hv":"CẢI ĐÍNH","vi":"Sửa đổi, đính chính (sách, tài liệu)","pos":["n","vs"],"img":"📕","s":[{"ja":"改めて直す・新しくすること","pt":["本・法律を＿＿する"],"ex":[["広辞苑という日本でもっとも有名な辞書は６０年で６回改訂されている。（広辞苑：有名な日本の辞書）","Từ điển nổi tiếng nhất Nhật Bản là Kōjien đã được sửa đổi 6 lần trong 60 năm."]]}],"rel":[["改正","かいせい","sửa đổi (luật)"],["改定","かいてい","sửa đổi (quy định, giá cả)"],["改訂版","かいていばん","bản sửa đổi"]]},{"id":226,"l":23,"w":"証拠","r":"しょうこ","hv":"CHỨNG CỨ","vi":"Chứng cứ, bằng chứng","pos":["n"],"img":"🔏","s":[{"ja":"事実（本当のこと）を明らかにするためのもの","ex":[["夫に殺されかけたのに、警察から「証拠がないと逮捕できない」と言われた。（殺されかけた≒殺されそうになった）","Suýt bị chồng giết vậy mà cảnh sát lại nói 'không có bằng chứng thì không bắt được'."]]}],"rel":[["証明","しょうめい","chứng minh"],["証人","しょうにん","nhân chứng"],["逮捕","たいほ","bắt giữ"]]},{"id":227,"l":23,"w":"撮影","r":"さつえい","hv":"TOÁT ẢNH","vi":"Sự chụp ảnh, quay phim","pos":["n","vs"],"img":"📷","s":[{"ja":"写真や映画を撮ること","ex":[["ここは撮影禁止です。","Ở đây cấm chụp ảnh."]]}],"rel":[["撮る","とる","chụp"],["撮影禁止","さつえいきんし","cấm chụp ảnh"],["写真","しゃしん","ảnh"]]},{"id":228,"l":23,"w":"批判","r":"ひはん","hv":"PHÊ PHÁN","vi":"Sự phê phán, phê bình","pos":["n","vs"],"img":"🗯️","s":[{"ja":"相手の間違っているところを指摘すること","ex":[["彼女はいつも周りからの批判が怖くて自分の言いたいことを我慢している。","Cô ấy lúc nào cũng sợ bị người xung quanh phê phán nên nhịn không nói điều mình muốn nói."]]}],"use":["非難：責めるだけのイメージ","批判：間違いを正そうとする（マイナスの意味もあるが改善を目的に使うときもある）"],"rel":[["非難","ひなん","chỉ trích, lên án"],["批評","ひひょう","phê bình (đánh giá)"],["指摘","してき","chỉ ra"]]},{"id":229,"l":23,"w":"思考","r":"しこう","hv":"TƯ KHẢO","vi":"Tư duy","pos":["n","vs"],"img":"♟️","s":[{"ja":"しっかり考えること","pt":["＿力、方法、習慣","プラス・マイナス"],"ex":[["思考力に関する本","Sách về năng lực tư duy"],["彼と一緒にいるとプラス思考になる。","Ở bên anh ấy tôi suy nghĩ tích cực hơn."]]}],"rel":[["思考力","しこうりょく","năng lực tư duy"],["プラス思考","プラスしこう","tư duy tích cực"],["考え","かんがえ","suy nghĩ"]]},{"id":230,"l":23,"w":"高層","r":"こうそう","hv":"CAO TẦNG","vi":"Cao tầng","pos":["n"],"img":"🏙️","s":[{"ja":"高い建物","pt":["＿ビル、マンション"],"ex":[["この高層ビルは５０階もあるそうです。","Nghe nói toà cao ốc này có tận 50 tầng."],["高層マンション","Chung cư cao tầng"]]}],"rel":[["超高層","ちょうこうそう","siêu cao tầng"],["低層","ていそう","thấp tầng"],["ビル","","toà nhà"]]},{"id":231,"l":24,"w":"提出","r":"ていしゅつ","hv":"ĐỀ XUẤT","vi":"Nộp","pos":["n","vs"],"img":"📤","s":[{"ja":"書類・資料などをある場所・人に出すこと","ex":[["「今日の会議の議事録は１７時半までに課長に提出してください。」","'Hãy nộp biên bản cuộc họp hôm nay cho trưởng phòng trước 17 giờ 30.'"]]}],"rel":[["締め切り","しめきり","hạn chót"],["議事録","ぎじろく","biên bản họp"],["提示","ていじ","xuất trình"]]},{"id":232,"l":24,"w":"議論","r":"ぎろん","hv":"NGHỊ LUẬN","vi":"Sự thảo luận, tranh luận","pos":["n","vs"],"img":"🗨️","s":[{"ja":"お互いの意見を言って意見を戦わせること","ex":[["総務課長と経理課長はいつもお金のことで議論している。","Trưởng phòng hành chính và trưởng phòng kế toán lúc nào cũng tranh luận về tiền."]]}],"use":["討論（とうろん）：勝負をつけるのが目的","議論（ぎろん）：一番いい結論を出すのが目的"],"rel":[["討論","とうろん","tranh luận (phân thắng thua)"],["論戦","ろんせん","luận chiến"],["話し合い","はなしあい","bàn bạc"]]},{"id":233,"l":24,"w":"姿","r":"すがた","hv":"TƯ","vi":"Bóng dáng; vẻ bề ngoài, diện mạo","pos":["n"],"img":"👤","s":[{"ja":"存在","vi":"bóng dáng","ex":[["「今日は山田さんの姿が見えないですが…お休みですか？」","'Hôm nay không thấy bóng dáng anh Yamada đâu... Anh ấy nghỉ à?'"]]},{"ja":"人の外見","vi":"vẻ bề ngoài, diện mạo","ex":[["「彼女のアオザイ姿は美しすぎる…」","'Cô ấy mặc áo dài đẹp quá...'"]]}],"use":["姿：見た目だけではなく、存在も意味する","みなり：主に身につけている服装やそこから感じる印象","容姿：生まれ持った特徴（美人・背が高いなど）"],"rel":[["身なり","みなり","cách ăn mặc"],["容姿","ようし","dung mạo"],["後ろ姿","うしろすがた","dáng nhìn từ sau"]]},{"id":234,"l":24,"w":"共同","r":"きょうどう","hv":"CỘNG ĐỒNG","vi":"Sự hợp tác, cùng nhau","pos":["n","vs"],"img":"🤝","s":[{"ja":"２人以上で一緒にすること","ex":[["この商品はハーバード大学とABC会社が共同で開発しました。","Sản phẩm này do Đại học Harvard và công ty ABC cùng phát triển."]]}],"rel":[["協力","きょうりょく","hợp tác"],["共同開発","きょうどうかいはつ","cùng phát triển"],["単独","たんどく","đơn độc"]]},{"id":235,"l":24,"w":"転職","r":"てんしょく","hv":"CHUYỂN CHỨC","vi":"Sự đổi nghề, chuyển việc","pos":["n","vs"],"img":"🔁","s":[{"ja":"仕事や職場を変えること","ex":[["今の会社は残業代が出ずブラック企業なので転職を考えている。","Công ty hiện tại không trả tiền làm thêm, là công ty 'đen' nên tôi đang tính chuyển việc."],["現在、転職活動中です。","Hiện tôi đang tìm việc mới."]]}],"rel":[["転勤","てんきん","chuyển công tác"],["退職","たいしょく","nghỉ việc"],["就職","しゅうしょく","xin được việc"]]},{"id":236,"l":24,"w":"日差し","r":"ひざし","hv":"NHẬT SAI","vi":"Ánh sáng mặt trời, tia nắng","pos":["n"],"img":"🌞","s":[{"ja":"太陽の光のこと","ex":[["今日は日差しが強いからサングラスかけたほうがいいよ。","Hôm nay nắng gắt nên đeo kính râm thì hơn."]]}],"rel":[["日光","にっこう","ánh nắng"],["日焼け","ひやけ","cháy nắng"],["日陰","ひかげ","bóng râm"]]},{"id":237,"l":24,"w":"絵画展","r":"かいがてん","hv":"HỘI HOẠ TRIỂN","vi":"Triển lãm tranh, nghệ thuật","pos":["n"],"img":"🖼️","s":[{"ja":"絵を並べて展示すること","ex":[["モネの絵画展が福岡であるらしい。","Nghe nói có triển lãm tranh của Monet ở Fukuoka."]]}],"rel":[["絵画","かいが","hội hoạ"],["展示","てんじ","trưng bày"],["美術館","びじゅつかん","bảo tàng mỹ thuật"]]},{"id":238,"l":24,"w":"採集","r":"さいしゅう","hv":"THÁI TẬP","vi":"Sự sưu tập (mẫu vật)","pos":["n","vs"],"img":"🦋","s":[{"ja":"標本・資料などにするため、取って集めること","pt":["（N）＿＿採集","（V）＿＿を採集する","⇔ 人、アイディアを採用する"],"ex":[["趣味は昆虫採集です。","Sở thích của tôi là sưu tập côn trùng."]]}],"rel":[["収集","しゅうしゅう","thu thập"],["昆虫","こんちゅう","côn trùng"],["採用","さいよう","tuyển dụng"]]},{"id":239,"l":24,"w":"取得","r":"しゅとく","hv":"THỦ ĐẮC","vi":"Sự giành được, lấy được","pos":["n","vs"],"img":"🎫","s":[{"ja":"手に入れること、自分のものとして得ること。","pt":["資格、権利＿する"],"ex":[["免許を取得する。","Lấy bằng (giấy phép)."]]}],"rel":[["資格","しかく","bằng cấp, tư cách"],["免許","めんきょ","giấy phép"],["獲得","かくとく","giành được"]]},{"id":240,"l":24,"w":"天候","r":"てんこう","hv":"THIÊN HẬU","vi":"Thời tiết","pos":["n"],"img":"⛅","s":[{"ja":"≒天気（日常）　天候（硬い）","pt":["悪＿＿","＿に恵まれる"],"ex":[["悪天候で今年は野菜の出来が悪かった。","Do thời tiết xấu nên năm nay rau màu kém."]]}],"use":["天気：数時間〜数日","天候：数週間〜１ヶ月"],"rel":[["天気","てんき","thời tiết"],["気候","きこう","khí hậu"],["悪天候","あくてんこう","thời tiết xấu"]]},{"id":241,"l":25,"w":"疑問","r":"ぎもん","hv":"NGHI VẤN","vi":"Sự nghi vấn, thắc mắc","pos":["n"],"img":"❓","s":[{"ja":"本当かどうか正しいかどうか疑うこと","pt":["＿＿がある、＿＿に感じる、＿＿に思う、＿＿をぶつける"],"ex":[["A「部長なのに一度も会議に参加しないっておかしいよね。」\nB「私もそれ、疑問に思っていました。」","A: 'Là trưởng phòng mà chưa một lần dự họp, lạ nhỉ.' — B: 'Tôi cũng đang thắc mắc chuyện đó.'"]]}],"rel":[["疑う","うたがう","nghi ngờ"],["質問","しつもん","câu hỏi"],["疑問点","ぎもんてん","điểm thắc mắc"]]},{"id":242,"l":25,"w":"専攻","r":"せんこう","hv":"CHUYÊN CÔNG","vi":"Chuyên môn, chuyên ngành","pos":["n","vs"],"img":"📘","s":[{"ja":"大学の専門","ex":[["大学では日本語を専攻しています。","Ở đại học tôi học chuyên ngành tiếng Nhật."]]}],"use":["専攻：大学の専門","専門：大学で習ってなくても自分が身についているスキル"],"rel":[["専門","せんもん","chuyên môn"],["学部","がくぶ","khoa"],["卒業","そつぎょう","tốt nghiệp"]]},{"id":243,"l":25,"w":"防犯","r":"ぼうはん","hv":"PHÒNG PHẠM","vi":"Sự phòng chống tội phạm","pos":["n"],"img":"📹","s":[{"ja":"犯罪が起こらないように防ぐ","pt":["防犯＋N","＿＿ベル、＿＿意識"],"ex":[["コンビニには必ず１台以上、防犯カメラを設置しています。","Cửa hàng tiện lợi nào cũng lắp ít nhất một camera an ninh."]]}],"rel":[["防犯カメラ","ぼうはんカメラ","camera an ninh"],["防災","ぼうさい","phòng chống thiên tai"],["犯罪","はんざい","tội phạm"]]},{"id":244,"l":25,"w":"事業","r":"じぎょう","hv":"SỰ NGHIỆP","vi":"Công việc kinh doanh, dự án (doanh nghiệp)","pos":["n"],"img":"💼","s":[{"ja":"ビジネス","pt":["＿を立ち上げる","＿家"],"ex":[["社内で新しい事業を立ち上げる。（事業家≒起業家）","Khởi động mảng kinh doanh mới trong công ty."]]}],"rel":[["起業","きぎょう","khởi nghiệp"],["企業","きぎょう","doanh nghiệp"],["事業家","じぎょうか","doanh nhân"]]},{"id":245,"l":25,"w":"予想","r":"よそう","hv":"DỰ TƯỞNG","vi":"Dự đoán","pos":["n","vs"],"img":"🔮","s":[{"ja":"将来どうなるか、前もって見当をつけること","pt":["＿＿以上、＿＿外、＿＿通り"],"ex":[["予想以上の結果が出た。（予想＜予測（必ず数字がある）正確度）","Đạt kết quả vượt ngoài dự đoán."],["予想通り、A選手が勝ちました！！！","Đúng như dự đoán, vận động viên A đã thắng!!!"]]}],"rel":[["予測","よそく","dự đoán (có số liệu)"],["予報","よほう","dự báo"],["見当","けんとう","phỏng đoán"]]},{"id":246,"l":25,"w":"誤解","r":"ごかい","hv":"NGỘ GIẢI","vi":"Sự hiểu lầm","pos":["n","vs"],"img":"😵‍💫","s":[{"ja":"まちがった理解をすること","pt":["＿を招く、＿する"],"ex":[["女友達と電話していただけなのに、彼女は浮気をしていると誤解している。","Chỉ là nói chuyện điện thoại với bạn nữ thôi mà bạn gái lại hiểu lầm là tôi ngoại tình."]]}],"rel":[["勘違い","かんちがい","nhầm tưởng"],["理解","りかい","lý giải, hiểu"],["誤り","あやまり","lỗi sai"]]},{"id":247,"l":25,"w":"気候","r":"きこう","hv":"KHÍ HẬU","vi":"Khí hậu","pos":["n"],"img":"🌍","s":[{"ja":"ある場所の平均した気温・雨の降る量など","ex":[["ハノイとホーチミンでは気候はまったく異なります。","Khí hậu ở Hà Nội và TP. Hồ Chí Minh hoàn toàn khác nhau."]]}],"use":["天気：数時間〜数日","天候：1週間〜一か月","気候：数か月"],"rel":[["天候","てんこう","thời tiết (trang trọng)"],["温暖","おんだん","ấm áp"],["気候変動","きこうへんどう","biến đổi khí hậu"]]},{"id":248,"l":25,"w":"講座","r":"こうざ","hv":"GIẢNG TOẠ","vi":"Khoá học","pos":["n"],"img":"💻","s":[{"ja":"大学での授業。大学で行われる講義をまねた形式の講習会","ex":[["会社で使う日本語になかなか慣れないので、ネットで見つけたビジネス日本語講座を登録することにした。","Mãi không quen tiếng Nhật dùng ở công ty nên tôi quyết định đăng ký khoá tiếng Nhật thương mại tìm được trên mạng."]]}],"rel":[["講義","こうぎ","bài giảng"],["講習","こうしゅう","khoá huấn luyện"],["オンライン講座","オンラインこうざ","khoá học online"]]},{"id":249,"l":25,"w":"設計","r":"せっけい","hv":"THIẾT KẾ","vi":"Sự thiết kế","pos":["n","vs"],"img":"📐","s":[{"ja":"あるものを作るための計画を立てる","pt":["設計図"],"ex":[["この家は大きな地震にも耐えられるように設計してあります。","Ngôi nhà này được thiết kế để chịu được cả động đất lớn."]]}],"rel":[["設計図","せっけいず","bản thiết kế"],["デザイン","","thiết kế"],["建築","けんちく","kiến trúc"]]},{"id":250,"l":25,"w":"受賞","r":"じゅしょう","hv":"THỤ THƯỞNG","vi":"Sự đoạt giải","pos":["n","vs"],"img":"🏅","s":[{"ja":"賞をうけること","pt":["＿する"],"ex":[["最優秀サイト賞 受賞","Đoạt giải trang web xuất sắc nhất"]]}],"rel":[["授賞","じゅしょう","trao giải (đồng âm)"],["賞","しょう","giải thưởng"],["入賞","にゅうしょう","đoạt giải (lọt top)"]]},{"id":251,"l":26,"w":"要点","r":"ようてん","hv":"YẾU ĐIỂM","vi":"Điểm trọng yếu, phần quan trọng","pos":["n"],"img":"✳️","s":[{"ja":"ポイント、大事な部分","ex":[["「時間がないから、要点だけ簡単に話してくれる？」","'Không có thời gian nên nói ngắn gọn những ý chính thôi được không?'"]]}],"rel":[["要所","ようしょ","điểm quan trọng"],["概要","がいよう","khái quát"],["ポイント","","điểm"]]},{"id":252,"l":26,"w":"購入","r":"こうにゅう","hv":"CẤU NHẬP","vi":"Việc mua","pos":["n","vs"],"img":"🛒","s":[{"ja":"買い入れること≒買う","ex":[["「この商品は購入後１週間以内であれば、返品可能です。」","'Sản phẩm này có thể trả lại trong vòng 1 tuần sau khi mua.'"]]}],"rel":[["買う","かう","mua"],["返品","へんぴん","trả hàng"],["販売","はんばい","bán hàng"]]},{"id":253,"l":26,"w":"再発","r":"さいはつ","hv":"TÁI PHÁT","vi":"Sự tái phát, tái diễn","pos":["n","vs"],"img":"🔂","s":[{"ja":"１度あったことがまた起こること","pt":["問題が＿＿する","再発防止"],"ex":[["完治したはずのガンが再発してしまった。","Căn bệnh ung thư tưởng đã khỏi hẳn lại tái phát."],["事故の再発防止につとめる。","Nỗ lực ngăn chặn tai nạn tái diễn."]]}],"rel":[["再発防止","さいはつぼうし","ngăn tái phát"],["完治","かんち","khỏi hẳn"],["繰り返す","くりかえす","lặp lại"]]},{"id":254,"l":26,"w":"講演","r":"こうえん","hv":"GIẢNG DIỄN","vi":"Bài giảng, diễn giảng","pos":["n","vs"],"img":"🧑‍🏫","s":[{"ja":"大人数を相手に話をすること","ex":[["今度ハノイ大学で、人材会社の人を招いてビジネス日本語の講演会を行うそうだ。","Nghe nói sắp tới Đại học Hà Nội sẽ mời người của công ty nhân lực đến tổ chức buổi diễn giảng về tiếng Nhật thương mại."]]}],"use":["講義、講座：登録した学生のみ。→カリキュラムがあり、大学の先生が教える。","講演：外部の人が講演する場合が多い → 大衆も参加可能、1回だけのものが多い。"],"rel":[["講演会","こうえんかい","buổi diễn giảng"],["講義","こうぎ","bài giảng"],["演説","えんぜつ","diễn thuyết"]]},{"id":255,"l":26,"w":"対策","r":"たいさく","hv":"ĐỐI SÁCH","vi":"Biện pháp, đối sách","pos":["n"],"img":"🛡️","s":[{"ja":"問題や状況に対応するための方法","pt":["関連：解決"],"ex":[["工場の人手不足の対策としてロボットを導入することが決まった。","Đã quyết định đưa robot vào như một biện pháp đối phó tình trạng thiếu nhân lực ở nhà máy."]]}],"rel":[["解決","かいけつ","giải quyết"],["対応","たいおう","ứng phó"],["試験対策","しけんたいさく","luyện thi"]]},{"id":256,"l":26,"w":"優先","r":"ゆうせん","hv":"ƯU TIÊN","vi":"Sự ưu tiên","pos":["n","vs"],"img":"🚸","s":[{"ja":"他よりも先にすること","pt":["最優先、優先席"],"ex":[["「止まってください。ここは歩行者優先です。」","'Xin dừng lại. Ở đây ưu tiên người đi bộ.'"]]}],"rel":[["優先席","ゆうせんせき","ghế ưu tiên"],["最優先","さいゆうせん","ưu tiên hàng đầu"],["後回し","あとまわし","để sau"]]},{"id":257,"l":26,"w":"勤務","r":"きんむ","hv":"CẦN VỤ","vi":"Công việc, làm việc","pos":["n","vs"],"img":"🕘","s":[{"ja":"会社・役所などに出向いて仕事をすること≒働くこと","pt":["働く場所で＋勤務","勤務地"],"ex":[["来年から本社勤務になりました。","Từ năm sau tôi sẽ làm việc ở trụ sở chính."],["人事部に勤務地変更を申し出る。","Đề nghị phòng nhân sự cho đổi nơi làm việc."]]}],"rel":[["勤務地","きんむち","nơi làm việc"],["出勤","しゅっきん","đi làm"],["転勤","てんきん","chuyển công tác"]]},{"id":258,"l":26,"w":"覚悟","r":"かくご","hv":"GIÁC NGỘ","vi":"Sự sẵn sàng (tinh thần), quyết tâm","pos":["n","vs"],"img":"🥋","s":[{"ja":"大変なことに対して心の準備をすること","pt":["＿＿する、＿＿を決める、＿＿ができる"],"ex":[["「苦労することはもう覚悟しています。やはり日本で働きたいです。」","'Tôi đã sẵn sàng tinh thần chịu vất vả. Tôi vẫn muốn làm việc ở Nhật.'"]]}],"rel":[["決心","けっしん","quyết tâm"],["決意","けつい","quyết ý"],["心構え","こころがまえ","sự chuẩn bị tinh thần"]]},{"id":259,"l":26,"w":"手数料","r":"てすうりょう","hv":"THỦ SỐ LIỆU","vi":"Tiền dịch vụ, phí thủ tục","pos":["n"],"img":"💳","s":[{"ja":"手続きの時に払わなければならないお金","pt":["＿がかかる。"],"ex":[["時間によって、お金の引き出しには手数料がかかります。","Tuỳ thời gian, rút tiền sẽ mất phí."]]}],"rel":[["料金","りょうきん","cước phí"],["振込手数料","ふりこみてすうりょう","phí chuyển khoản"],["無料","むりょう","miễn phí"]]},{"id":260,"l":26,"w":"記録","r":"きろく","hv":"KÝ LỤC","vi":"Sự ghi chép; kỷ lục","pos":["n","vs"],"img":"📒","s":[{"ja":"未来に伝えるために書くこと、または書いたもの","vi":"ghi chép","ex":[["節約のために、毎日使った金額を記録しています。","Để tiết kiệm, tôi ghi lại số tiền đã tiêu mỗi ngày."]]},{"ja":"スポーツなどの成績・結果","vi":"kỷ lục","ex":[["「ウサインボルトが世界新記録を更新しました！」","'Usain Bolt đã phá kỷ lục thế giới mới!'"]]}],"rel":[["世界記録","せかいきろく","kỷ lục thế giới"],["更新","こうしん","cập nhật, phá (kỷ lục)"],["日記","にっき","nhật ký"]]},{"id":261,"l":27,"w":"免許","r":"めんきょ","hv":"MIỄN HỨA","vi":"Giấy phép","pos":["n"],"img":"🪪","s":[{"ja":"何かを行うために、許可をもらうこと","pt":["＿＿を取得する、＿証"],"ex":[["運転免許、免許証","Bằng lái xe, giấy phép"],["レストランを開くには調理師の免許が必要だ。","Muốn mở nhà hàng thì cần có chứng chỉ đầu bếp."]]}],"rel":[["免許証","めんきょしょう","giấy phép (thẻ)"],["資格","しかく","chứng chỉ"],["取得","しゅとく","lấy được"]]},{"id":262,"l":27,"w":"手前","r":"てまえ","hv":"THỦ TIỀN","vi":"Phía trước mặt; (thời điểm) ngay trước","pos":["n"],"img":"🫴","s":[{"ja":"目の前","vi":"phía trước mặt, phía gần mình","ex":[["手前にある本を取る。","Lấy cuốn sách ở phía trước."]]},{"ja":"目標しているもののすぐ前の段階","vi":"ngay trước (giai đoạn)","ex":[["採用の一歩手前の段階","Giai đoạn chỉ còn một bước nữa là được tuyển"]]}],"rel":[["向こう","むこう","phía bên kia"],["直前","ちょくぜん","ngay trước"],["一歩手前","いっぽてまえ","chỉ còn một bước"]]},{"id":263,"l":27,"w":"演技","r":"えんぎ","hv":"DIỄN KỸ","vi":"Giả vờ; diễn xuất","pos":["n","vs"],"img":"⛸️","s":[{"ja":"嘘の態度をすること","vi":"giả vờ, diễn","ex":[["喧嘩すると彼女はすぐ泣く演技をする。","Hễ cãi nhau là bạn gái tôi lại giả vờ khóc."]]},{"ja":"人の前で違う人を演じたり、技を見せること","vi":"diễn xuất, màn trình diễn","ex":[["羽生結弦の演技は完璧です。","Màn trình diễn của Hanyu Yuzuru thật hoàn hảo."]]}],"rel":[["演じる","えんじる","diễn, đóng vai"],["俳優","はいゆう","diễn viên"],["演技力","えんぎりょく","khả năng diễn xuất"]]},{"id":264,"l":27,"w":"監督","r":"かんとく","hv":"GIÁM ĐỐC","vi":"Người / sự chỉ đạo, giám sát; đạo diễn, HLV","pos":["n","vs"],"img":"🧢","s":[{"ja":"みんなに指示を出すリーダー（をする）","pt":["N にも V にもなります"],"ex":[["現場監督、試験監督","Giám sát công trường, giám thị phòng thi"],["私の仕事は現場のアルバイトを監督することだ。","Công việc của tôi là giám sát nhân viên làm thêm ở hiện trường."]]}],"rel":[["映画監督","えいがかんとく","đạo diễn phim"],["指導","しどう","chỉ đạo"],["管理","かんり","quản lý"]]},{"id":265,"l":27,"w":"出場","r":"しゅつじょう","hv":"XUẤT TRƯỜNG","vi":"Ra mắt, tham gia thi đấu","pos":["n","vs"],"img":"🏟️","s":[{"ja":"その場所に出ること","pt":["⇔退場"],"ex":[["「全国大会に出場することができた。」","'Tôi đã được tham dự giải toàn quốc.'"]]}],"rel":[["退場","たいじょう","rời sân"],["参加","さんか","tham gia"],["出演","しゅつえん","xuất hiện (biểu diễn)"]]},{"id":266,"l":27,"w":"選択","r":"せんたく","hv":"TUYỂN TRẠCH","vi":"Sự lựa chọn","pos":["n","vs"],"img":"☑️","s":[{"ja":"良いもの、適当なものを選び取ること≒選ぶこと","ex":[["３つの料金プランから選択できます。","Có thể chọn từ 3 gói cước."]]}],"rel":[["選択肢","せんたくし","lựa chọn (phương án)"],["選ぶ","えらぶ","chọn"],["洗濯","せんたく","giặt giũ (đồng âm)"]]},{"id":267,"l":27,"w":"演奏","r":"えんそう","hv":"DIỄN TẤU","vi":"Sự trình diễn (âm nhạc)","pos":["n","vs"],"img":"🎷","s":[{"ja":"楽器を弾いたり、歌を歌うこと","pt":["＿＿者、＿＿会"],"ex":[["「今度RIKIオーケストラの演奏会があるんですが行きませんか？」","'Sắp tới có buổi hoà nhạc của dàn nhạc RIKI, bạn có đi không?'"]]}],"rel":[["演奏会","えんそうかい","buổi hoà nhạc"],["楽器","がっき","nhạc cụ"],["演奏者","えんそうしゃ","người biểu diễn"]]},{"id":268,"l":27,"w":"仕組み","r":"しくみ","hv":"SĨ TỔ","vi":"Cấu tạo, cơ chế","pos":["n"],"img":"🔧","s":[{"ja":"機械などの組み立てた物の構造。≒構造のこと","pt":["機械、体、ビジネスの＿"],"ex":[["投資の仕組みは単純です。安く買って、高くうるだけ。","Cơ chế đầu tư rất đơn giản. Chỉ là mua rẻ, bán đắt."],["この機械は人が触ると自動的に止まる仕組みになっています。","Cỗ máy này có cơ chế tự động dừng khi có người chạm vào."]]}],"rel":[["構造","こうぞう","cấu trúc"],["仕掛け","しかけ","cơ cấu, mẹo"],["システム","","hệ thống"]]},{"id":269,"l":27,"w":"一変","r":"いっぺん","hv":"NHẤT BIẾN","vi":"Sự thay đổi (hoàn toàn)","pos":["n","vs"],"img":"🌗","s":[{"ja":"すっかり（完全に）変わること","pt":["事態、態度が＿する"],"ex":[["態度が一変した。","Thái độ thay đổi hoàn toàn."]]}],"rel":[["激変","げきへん","thay đổi dữ dội"],["変化","へんか","biến đổi"],["一転","いってん","xoay chuyển hẳn"]]},{"id":270,"l":27,"w":"援助","r":"えんじょ","hv":"VIỆN TRỢ","vi":"Sự viện trợ, giúp đỡ","pos":["n","vs"],"img":"🆘","s":[{"ja":"困っている人を助けること","pt":["資金、国際＿"],"ex":[["ABC会社から１００万円の資金援助を受けた。","Đã nhận được hỗ trợ vốn 1 triệu yên từ công ty ABC."]]}],"rel":[["支援","しえん","hỗ trợ"],["寄付","きふ","quyên góp"],["補助","ほじょ","trợ cấp"]]},{"id":271,"l":28,"w":"伝言","r":"でんごん","hv":"TRUYỀN NGÔN","vi":"Lời nhắn","pos":["n","vs"],"img":"☎️","s":[{"ja":"人に頼んで、相手に伝えること","pt":["＿をお願いする","＿を承る"],"ex":[["A：山田はただいま席を外しておりまして…ご伝言承りましょうか。\nB：では、ABCの中村から電話があったとお伝えいただけますか。","A: 'Anh Yamada hiện không có ở chỗ ngồi... Anh/chị có muốn để lại lời nhắn không ạ?' — B: 'Vậy nhờ chị nhắn lại là Nakamura bên ABC có gọi điện.'"]]}],"rel":[["メッセージ","","tin nhắn"],["伝える","つたえる","truyền đạt"],["承る","うけたまわる","tiếp nhận (khiêm nhường)"]]},{"id":272,"l":28,"w":"真実","r":"しんじつ","hv":"CHÂN THỰC","vi":"Sự thật, chân thật","pos":["n"],"img":"🗝️","s":[{"ja":"うそがない。本当のこと。","ex":[["真実を話せなかった。","Tôi đã không thể nói ra sự thật."]]}],"use":["事実（じじつ）：客観的","真実（しんじつ）：自分の考えが含まれている"],"rel":[["事実","じじつ","sự thật (khách quan)"],["本当","ほんとう","thật"],["嘘","うそ","lời nói dối"]]},{"id":273,"l":28,"w":"でたらめ","r":"でたらめ","hv":"","vi":"Sự nhảm nhí, linh tinh, bịa đặt","pos":["n","na"],"img":"🤪","s":[{"ja":"筋の通らないことやいい加減なことを言ったりしたりすること","pt":["＿な話、＿なこと、その話は＿だ"],"ex":[["彼はでたらめなことしか言わない。","Anh ta chỉ toàn nói chuyện nhảm nhí."]]}],"rel":[["いい加減","いいかげん","qua loa, tuỳ tiện"],["嘘","うそ","nói dối"],["根拠","こんきょ","căn cứ"]]},{"id":274,"l":28,"w":"各々","r":"おのおの","hv":"CÁC","vi":"Mỗi, từng (người, thứ)","pos":["n","adv"],"img":"🧍","s":[{"ja":"（人間・事物について）一人一人≒それぞれ","pt":["各々＝書き言葉","各自＝話し言葉"],"ex":[["「会議の資料はコピーなどして、各々でご準備願います。」","'Tài liệu cuộc họp, mong mỗi người tự photo và chuẩn bị.'"]]}],"rel":[["それぞれ","","mỗi, từng"],["各自","かくじ","mỗi người"],["一人一人","ひとりひとり","từng người một"]]},{"id":275,"l":28,"w":"打ち合わせ","r":"うちあわせ","hv":"ĐẢ HỢP","vi":"Cuộc họp, thảo luận, bàn bạc","pos":["n","vs"],"img":"📅","s":[{"ja":"軽い会議","pt":["≒会議（会社の経営に関する重いテーマの場合が多い）"],"ex":[["来週はABC社との打ち合わせがあります。","Tuần sau có buổi họp bàn với công ty ABC."],["ズームMTG（ミーティング≒打ち合わせ）","Họp Zoom (meeting ≈ 打ち合わせ)"]]}],"rel":[["会議","かいぎ","cuộc họp (trang trọng)"],["ミーティング","","meeting"],["相談","そうだん","trao đổi, xin ý kiến"]]},{"id":276,"l":28,"w":"礼儀","r":"れいぎ","hv":"LỄ NGHI","vi":"Lễ nghi, phép lịch sự","pos":["n"],"img":"🙇","s":[{"ja":"尊敬を表す行動","pt":["＿正しい、＿作法"],"ex":[["謝る時はお辞儀をするのが日本の礼儀です。","Khi xin lỗi thì cúi chào là phép lịch sự của Nhật."],["お辞儀、礼儀正しい、マナー、礼儀の無い人","Cúi chào, lễ phép, phép tắc, người vô lễ"]]}],"rel":[["マナー","","phép lịch sự"],["礼儀正しい","れいぎただしい","lễ phép"],["お辞儀","おじぎ","cúi chào"]]},{"id":277,"l":28,"w":"訓練","r":"くんれん","hv":"HUẤN LUYỆN","vi":"Sự huấn luyện","pos":["n","vs"],"img":"🐕","s":[{"ja":"慣れるまで練習させること","pt":["＿を受ける、＿する、避難＿"],"ex":[["この犬は麻薬がわかるように訓練されている。","Con chó này được huấn luyện để phát hiện ma tuý."],["彼は軍人になるために３年間休まず訓練を受けました。","Anh ấy đã huấn luyện không nghỉ suốt 3 năm để trở thành quân nhân."]]}],"rel":[["練習","れんしゅう","luyện tập"],["避難訓練","ひなんくんれん","diễn tập sơ tán"],["養成","ようせい","đào tạo"]]},{"id":278,"l":28,"w":"娯楽","r":"ごらく","hv":"NGU LẠC","vi":"Trò giải trí, tiêu khiển","pos":["n"],"img":"🎡","s":[{"ja":"遊びや楽しみのこと","ex":[["田舎にはショッピングセンターや映画館などの娯楽は少ない。","Ở quê ít chỗ giải trí như trung tâm mua sắm hay rạp chiếu phim."]]}],"rel":[["趣味","しゅみ","sở thích"],["レジャー","","giải trí ngoài trời"],["エンタメ","","giải trí"]]},{"id":279,"l":28,"w":"当たり前","r":"あたりまえ","hv":"ĐƯƠNG TIỀN","vi":"Đương nhiên, bình thường","pos":["n","na"],"img":"😷","s":[{"ja":"当然、普通のこと","ex":[["前と違い、365日マスクをするのが当たり前になった。","Khác với trước đây, giờ đeo khẩu trang quanh năm đã trở thành chuyện bình thường."]]}],"rel":[["当然","とうぜん","đương nhiên"],["普通","ふつう","bình thường"],["常識","じょうしき","lẽ thường"]]},{"id":280,"l":28,"w":"あちこち","r":"あちこち","hv":"","vi":"Khắp nơi, khắp chốn","pos":["n","adv"],"img":"💍","s":[{"ja":"いろいろな場所・方向","ex":[["結婚指輪をなくしてしまい、あちこち探したが見つからなかった。","Làm mất nhẫn cưới, tìm khắp nơi mà không thấy."]]}],"rel":[["あちらこちら","","đây đó"],["方々","ほうぼう","khắp nơi"],["至る所","いたるところ","khắp mọi nơi"]]},{"id":281,"l":29,"w":"あらすじ","r":"あらすじ","hv":"THÔ CÂN (粗筋)","vi":"Tóm tắt, cốt truyện","pos":["n"],"img":"📽️","s":[{"ja":"だいたいの内容","ex":[["A：「the walking dead」ってドラマ見たことある？\nB：ううん、みたことない。あらすじだけ教えて。","A: 'Cậu xem phim The Walking Dead chưa?' — B: 'Chưa, chưa xem. Kể tóm tắt cho tớ đi.'"]]}],"rel":[["概要","がいよう","khái quát"],["要約","ようやく","tóm tắt"],["ストーリー","","cốt truyện"]]},{"id":282,"l":29,"w":"呑気","r":"のんき","hv":"THÔN KHÍ","vi":"Vô tư, thong thả (quá mức)","pos":["na"],"img":"🦥","s":[{"ja":"（急ぐ必要があるが）のんびりしていること","pt":["マイナスな意味が強い","〜のに呑気"],"ex":[["家を出る１０分前に起きたのに呑気に朝ごはんを食べている。","10 phút nữa là phải ra khỏi nhà mới dậy mà vẫn thong thả ăn sáng."]]}],"rel":[["のんびり","","thong thả"],["マイペース","","theo nhịp riêng"],["気楽","きらく","thoải mái"]]},{"id":283,"l":29,"w":"普段","r":"ふだん","hv":"PHỔ ĐOẠN","vi":"Bình thường, thường lệ","pos":["n","adv"],"img":"🛋️","s":[{"ja":"いつも、日常","pt":["⇔特別な時、場合"],"ex":[["「普段、節約している分、今日だけはたくさん使おう！」","'Ngày thường đã tiết kiệm rồi, hôm nay cứ tiêu thoải mái!'"]]}],"use":["類：日頃（ひごろ）　⇒ 日頃の努力が結果として現れた。（日頃：以前からの積み重ね）"],"rel":[["日頃","ひごろ","thường ngày"],["日常","にちじょう","thường nhật"],["普段着","ふだんぎ","quần áo mặc thường ngày"]]},{"id":284,"l":29,"w":"黒字","r":"くろじ","hv":"HẮC TỰ","vi":"Lãi, thặng dư","pos":["n"],"img":"💹","s":[{"ja":"収入が支出より多いこと","pt":["⇔赤字"],"ex":[["10年間黒字だったが、今年はコロナによって１億円の赤字になってしまった。","10 năm liền có lãi nhưng năm nay vì Covid mà lỗ 100 triệu yên."]]}],"rel":[["赤字","あかじ","lỗ, thâm hụt"],["利益","りえき","lợi nhuận"],["収支","しゅうし","thu chi"]]},{"id":285,"l":29,"w":"感謝","r":"かんしゃ","hv":"CẢM TẠ","vi":"Sự cảm tạ, lòng biết ơn","pos":["n","vs"],"img":"💐","s":[{"ja":"ありがとうの気持ち（少し硬い言い方）","ex":[["家族にどんなに感謝してもしきれません。","Dù cảm ơn gia đình bao nhiêu cũng không đủ."]]}],"rel":[["お礼","おれい","lời cảm ơn, quà cảm ơn"],["感謝状","かんしゃじょう","thư cảm ơn"],["恩","おん","ân tình"]]},{"id":286,"l":29,"w":"拒否","r":"きょひ","hv":"CỰ PHỦ","vi":"Sự cự tuyệt, từ chối","pos":["n","vs"],"img":"✋","s":[{"ja":"お願いされたことをいやだと言って拒むこと","ex":[["彼はワクチンを受けることを拒否した。","Anh ta từ chối tiêm vắc-xin."],["ワクチンを受けていない者はホテルから宿泊拒否された。","Người chưa tiêm vắc-xin bị khách sạn từ chối cho lưu trú."]]}],"use":["否定：違うと言うこと","拒否：断る、拒む"],"rel":[["否定","ひてい","phủ định"],["断る","ことわる","từ chối"],["辞退","じたい","rút lui"]]},{"id":287,"l":29,"w":"景色","r":"けしき","hv":"CẢNH SẮC","vi":"Phong cảnh, cảnh sắc (thiên nhiên)","pos":["n"],"img":"🌄","s":[{"ja":"自然のながめ、風景のこと","ex":[["スカイツリーからの景色は最高です。","Cảnh nhìn từ Skytree tuyệt vời nhất."]]}],"use":["風景（ふうけい）：全ての眺めに対して使う","景色（けしき）：自然の眺めに対して使う"],"rel":[["風景","ふうけい","phong cảnh"],["眺め","ながめ","quang cảnh"],["夜景","やけい","cảnh đêm"]]},{"id":288,"l":29,"w":"貿易","r":"ぼうえき","hv":"MẬU DỊCH","vi":"Ngoại thương, thương mại quốc tế","pos":["n","vs"],"img":"🚢","s":[{"ja":"外国へ輸出したり、外国から輸入すること","ex":[["貿易赤字、貿易黒字","Thâm hụt thương mại, thặng dư thương mại"],["私は貿易関係の仕事をしています。","Tôi làm công việc liên quan đến xuất nhập khẩu."]]}],"rel":[["輸出","ゆしゅつ","xuất khẩu"],["輸入","ゆにゅう","nhập khẩu"],["貿易会社","ぼうえきがいしゃ","công ty thương mại"]]},{"id":289,"l":29,"w":"防災","r":"ぼうさい","hv":"PHÒNG TAI","vi":"Phòng chống thiên tai","pos":["n"],"img":"🧯","s":[{"ja":"災害を防止すること","ex":[["防災訓練","Diễn tập phòng chống thiên tai"]]}],"use":["防犯（ぼうはん）：犯罪が起こらないように防ぐ","防火（ぼうか）：火災を防ぐこと","防災（ぼうさい）：災害を防ぐこと"],"rel":[["防犯","ぼうはん","phòng chống tội phạm"],["防火","ぼうか","phòng cháy"],["災害","さいがい","thảm hoạ"]]},{"id":290,"l":29,"w":"装置","r":"そうち","hv":"TRANG TRÍ","vi":"Thiết bị","pos":["n"],"img":"🎛️","s":[{"ja":"ある目的のために、機械・道具を取り付けておくこと","pt":["動くもの"],"ex":[["非常ボタンを押すと、安全装置が作動します。","Khi nhấn nút khẩn cấp, thiết bị an toàn sẽ hoạt động."],["舞台装置","Thiết bị sân khấu"]]}],"rel":[["設備","せつび","trang thiết bị"],["機械","きかい","máy móc"],["器具","きぐ","dụng cụ"]]},{"id":291,"l":30,"w":"治療","r":"ちりょう","hv":"TRỊ LIỆU","vi":"Sự điều trị","pos":["n","vs"],"img":"💉","s":[{"ja":"病気を治すこと","pt":["＿を受ける、＿法"],"ex":[["100%治るガンの治療法はない。","Không có phương pháp điều trị ung thư nào khỏi 100%."]]}],"rel":[["医療","いりょう","y tế"],["治る","なおる","khỏi bệnh"],["手術","しゅじゅつ","phẫu thuật"]]},{"id":292,"l":30,"w":"医療","r":"いりょう","hv":"Y LIỆU","vi":"Y tế","pos":["n"],"img":"🏥","s":[{"ja":"病気やけがを治すこと","pt":["＿費、＿機関、施設"],"ex":[["欧米は医療費が高額です。","Ở Âu Mỹ chi phí y tế rất cao."]]}],"rel":[["医療費","いりょうひ","chi phí y tế"],["治療","ちりょう","điều trị"],["医療機関","いりょうきかん","cơ sở y tế"]]},{"id":293,"l":30,"w":"針","r":"はり","hv":"CHÂM","vi":"Kim, mũi kim","pos":["n"],"img":"🪡","s":[{"ja":"先がとげのようにとがったもの","ex":[["針に糸を通す","Xâu chỉ qua kim"],["社長はこれからの会社の方針を発表した。（方針≒進むべき方向）","Giám đốc đã công bố phương châm của công ty từ nay về sau."]]}],"rel":[["方針","ほうしん","phương châm"],["時計の針","とけいのはり","kim đồng hồ"],["注射","ちゅうしゃ","tiêm"]]},{"id":294,"l":30,"w":"行事","r":"ぎょうじ","hv":"HÀNH SỰ","vi":"Sự kiện (định kỳ)","pos":["n"],"img":"🎎","s":[{"ja":"一定の時期に決まって行われること≒イベント","pt":["定期的に毎年行われること"],"ex":[["ひな祭り（3/3）は日本の伝統行事です。","Lễ hội búp bê (3/3) là sự kiện truyền thống của Nhật."],["日本の年間行事","Các sự kiện trong năm của Nhật"]]}],"use":["行事：定期的に毎年行われること","イベント：いきなり開くものでもいい"],"rel":[["年中行事","ねんちゅうぎょうじ","sự kiện thường niên"],["イベント","","sự kiện"],["祭り","まつり","lễ hội"]]},{"id":295,"l":30,"w":"供給","r":"きょうきゅう","hv":"CUNG CẤP","vi":"Sự cung cấp, cung ứng","pos":["n","vs"],"img":"🔌","s":[{"ja":"ものを準備して、欲しがってる側に与えること","pt":["⇔需要"],"ex":[["電力会社は一般家庭に電力を供給する","Công ty điện lực cung cấp điện cho các hộ gia đình."]]}],"rel":[["需要","じゅよう","nhu cầu"],["提供","ていきょう","cung cấp (dịch vụ)"],["供給不足","きょうきゅうぶそく","thiếu nguồn cung"]]},{"id":296,"l":30,"w":"設備","r":"せつび","hv":"THIẾT BỊ","vi":"Sự trang bị, cơ sở vật chất","pos":["n","vs"],"img":"🏭","s":[{"ja":"必要な建物・機器などを備えつけること","pt":["建物に、備え付ける","装置は建物に使えない"],"ex":[["あの学校には暖房設備がない。","Trường đó không có thiết bị sưởi."],["日本企業は、ベトナム支社の発展を見込んで、追加設備投資を行った。（生産設備：工場、機械など）","Doanh nghiệp Nhật đã đầu tư thêm thiết bị vì kỳ vọng vào sự phát triển của chi nhánh Việt Nam."]]}],"rel":[["装置","そうち","thiết bị (máy)"],["施設","しせつ","cơ sở, công trình"],["設備投資","せつびとうし","đầu tư thiết bị"]]},{"id":297,"l":30,"w":"建設","r":"けんせつ","hv":"KIẾN THIẾT","vi":"Xây dựng, kiến thiết","pos":["n","vs"],"img":"🏗️","s":[{"ja":"建物、道路などを新しく作ること（建設会社）","ex":[["ハノイには建設中の建物がたくさんあります。","Ở Hà Nội có nhiều toà nhà đang xây dựng."],["建設会社で働いている。","Tôi làm việc ở công ty xây dựng."]]}],"rel":[["建築","けんちく","kiến trúc"],["工事","こうじ","công trình"],["建設会社","けんせつがいしゃ","công ty xây dựng"]]},{"id":298,"l":30,"w":"印刷","r":"いんさつ","hv":"ẤN LOÁT","vi":"In ấn","pos":["n","vs"],"img":"🖨️","s":[{"ja":"プリントすること","pt":["〜部（セット）を印刷する"],"ex":[["そのファイルを15部印刷しておいてください。","Hãy in sẵn file đó 15 bản."]]}],"rel":[["プリント","","in"],["印刷機","いんさつき","máy in"],["コピー","","photo"]]},{"id":299,"l":30,"w":"貨物","r":"かもつ","hv":"HOÁ VẬT","vi":"Hàng hoá (vận tải)","pos":["n"],"img":"🚛","s":[{"ja":"運送のための荷物（荷物より大きい規模）","pt":["ロジスティック、物流用語"],"ex":[["この航空会社は貨物のみ扱っています。","Hãng hàng không này chỉ vận chuyển hàng hoá."]]}],"use":["類：貨物船、貨物車、貨物コンテナ"],"rel":[["荷物","にもつ","hành lý"],["貨物船","かもつせん","tàu chở hàng"],["物流","ぶつりゅう","logistics"]]},{"id":300,"l":30,"w":"延期","r":"えんき","hv":"DIÊN KỲ","vi":"Sự trì hoãn, hoãn","pos":["n","vs"],"img":"📆","s":[{"ja":"期限をのばすこと","pt":["動くもの"],"ex":[["大雪のため、出発は来週に延期された。","Vì tuyết rơi dày nên việc khởi hành được hoãn sang tuần sau."]]}],"use":["延長：始まっている","延期：まだ始まってない"],"rel":[["延長","えんちょう","kéo dài"],["中止","ちゅうし","huỷ"],["先送り","さきおくり","để lùi lại"]]}];
+const $ = s => document.querySelector(s);
+const BY_ID = new Map(VOCAB.map(v => [v.id, v]));
+const BY_WORD = new Map(VOCAB.map(v => [v.w, v]));
+const LESSONS = [...new Set(VOCAB.map(v => v.l))].sort((a, b) => a - b);
+const POS = { n: "Danh từ", vs: "Động từ する", na: "Tính từ な", i: "Tính từ い", adv: "Phó từ" };
+const STATUS = { new: "Mới", learn: "Đang học", due: "Đến hạn", young: "Đã học", mature: "Đã thuộc" };
+const MIN = 60e3, DAY = 864e5, ROLL = 4;
+const LEARN = [1, 10], RELEARN = [10];
+const DEFAULTS = { newPerDay: 20, revPerDay: 200, dir: "jp", readingFront: false, autoplay: true, showTr: true, voice: "", rate: 0.9 };
+const LS_KEY = "n2flash.progress.v1", UI_KEY = "n2flash.ui.v1";
+
+const lsGet = k => { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pad3 = n => String(n).padStart(3, "0");
+
+function normalize(p) {
+  p = p && typeof p === "object" ? p : {};
+  return { cards: p.cards || {}, days: p.days || {}, settings: Object.assign({}, DEFAULTS, p.settings || {}), st: p.st || 0 };
+}
+let P = normalize(lsGet(LS_KEY));
+let UI = Object.assign({ tab: "study", lessons: null, pos: [], status: "all", q: "", hideMean: false }, lsGet(UI_KEY) || {});
+const saveUI = () => lsSet(UI_KEY, UI);
+
+/* ---------- dates ---------- */
+function dayKey(t = Date.now()) {
+  const d = new Date(t - ROLL * 3600e3);
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+function nextDayStart(t = Date.now()) {
+  const d = new Date(t - ROLL * 3600e3);
+  d.setHours(ROLL, 0, 0, 0); d.setDate(d.getDate() + 1);
+  return d.getTime();
+}
+function today() { const k = dayKey(); return P.days[k] || (P.days[k] = { n: 0, r: 0, x: 0 }); }
+
+/* ---------- scheduler (Anki-style SM-2) ---------- */
+function fuzz(i) { return i < 3 ? i : Math.max(2, i + Math.round((Math.random() * 2 - 1) * Math.max(1, i * 0.05))); }
+function graduate(c, ivl, now, fz) { c.q = 2; c.s = 0; c.i = Math.min(36500, fz ? fuzz(ivl) : ivl); c.d = nextDayStart(now) + (c.i - 1) * DAY; }
+function sched(prev, g, now = Date.now(), fz = false) {
+  const c = prev ? { ...prev } : { q: 0, s: 0, d: 0, i: 0, e: 2500, r: 0, l: 0, t: 0 };
+  if (c.e == null) c.e = 2500;
+  c.r = (c.r || 0) + 1; c.t = now;
+  if (!c.q || c.q === 1) {
+    if (!c.q) c.s = 0;
+    if (g === 1) { c.q = 1; c.s = 0; c.d = now + LEARN[0] * MIN; }
+    else if (g === 2) { c.q = 1; const a = LEARN[c.s] || LEARN[0], b = LEARN[c.s + 1]; c.d = now + (c.s === 0 && b ? Math.round((a + b) / 2) : a) * MIN; }
+    else if (g === 3) { if (c.s + 1 >= LEARN.length) graduate(c, 1, now, fz); else { c.q = 1; c.s++; c.d = now + LEARN[c.s] * MIN; } }
+    else graduate(c, 4, now, fz);
+  } else if (c.q === 3) {
+    if (g <= 2) { c.s = 0; c.d = now + RELEARN[0] * MIN; }
+    else graduate(c, Math.max(1, c.i) + (g === 4 ? 1 : 0), now, fz);
+  } else {
+    const e = c.e / 1000, late = Math.max(0, Math.floor((now - c.d) / DAY));
+    if (g === 1) { c.l = (c.l || 0) + 1; c.e = Math.max(1300, c.e - 200); c.q = 3; c.s = 0; c.i = 1; c.d = now + RELEARN[0] * MIN; }
+    else if (g === 2) { c.e = Math.max(1300, c.e - 150); graduate(c, Math.max(c.i + 1, Math.round(c.i * 1.2)), now, fz); }
+    else if (g === 3) graduate(c, Math.max(c.i + 1, Math.round((c.i + late / 2) * e)), now, fz);
+    else { c.e += 150; graduate(c, Math.max(c.i + 2, Math.round((c.i + late) * e * 1.3)), now, fz); }
+  }
+  return c;
+}
+function fmtIvl(c, now) {
+  if (c.q === 2) {
+    const d = c.i;
+    if (d < 30) return d + " ngày";
+    if (d < 365) return String(+(d / 30).toFixed(1)).replace(".", ",") + " tháng";
+    return String(+(d / 365).toFixed(1)).replace(".", ",") + " năm";
+  }
+  const m = Math.round((c.d - now) / MIN);
+  return m < 1 ? "<1 phút" : m < 60 ? m + " phút" : Math.round(m / 60) + " giờ";
+}
+function status(id, now = Date.now()) {
+  const c = P.cards[id];
+  if (!c || !c.q) return "new";
+  if (c.q === 1 || c.q === 3) return "learn";
+  if (c.d <= now) return "due";
+  return c.i >= 21 ? "mature" : "young";
+}
+
+/* ---------- deck / queue ---------- */
+function pool() {
+  const L = UI.lessons ? new Set(UI.lessons) : null;
+  return VOCAB.filter(v => (!L || L.has(v.l)) && (!UI.pos.length || v.pos.some(p => UI.pos.includes(p))));
+}
+const byDue = (a, b) => P.cards[a].d - P.cards[b].d;
+function deck(now = Date.now()) {
+  const T = today(), learnNow = [], learnLater = [], due = [], fresh = [];
+  for (const v of pool()) {
+    const c = P.cards[v.id];
+    if (!c || !c.q) fresh.push(v.id);
+    else if (c.q === 1 || c.q === 3) (c.d <= now ? learnNow : learnLater).push(v.id);
+    else if (c.d <= now) due.push(v.id);
+  }
+  const newLeft = Math.max(0, P.settings.newPerDay + (T.x || 0) - T.n);
+  const revLeft = Math.max(0, P.settings.revPerDay - T.r);
+  return { learnNow: learnNow.sort(byDue), learnLater: learnLater.sort(byDue), due: due.sort(byDue).slice(0, revLeft), fresh: fresh.slice(0, newLeft), freshAll: fresh.length };
+}
+let cur = null, revealed = false, lastId = null, sessionN = 0, undoStack = [], cram = null, waitTimer = null;
+
+function pickNext() {
+  const now = Date.now(), k = deck(now);
+  const avoid = arr => (arr.length > 1 && arr[0] === lastId ? arr[1] : arr[0]);
+  if (k.learnNow.length) { const id = avoid(k.learnNow); if (id !== lastId || (!k.due.length && !k.fresh.length)) return id; }
+  const wantNew = k.fresh.length && (!k.due.length || sessionN % 5 === 4);
+  if (wantNew) return k.fresh[0];
+  if (k.due.length) return avoid(k.due);
+  if (k.learnNow.length) return k.learnNow[0];
+  const soon = k.learnLater.filter(id => P.cards[id].d - now < 20 * MIN);
+  return soon.length ? soon[0] : null;
+}
+
+/* ---------- persistence + sync ---------- */
+let docRef = null, writing = false, dirty = false, saveTimer = null;
+function pruneDays() {
+  const keys = Object.keys(P.days).sort();
+  while (keys.length > 120) delete P.days[keys.shift()];
+}
+function save() {
+  pruneDays(); lsSet(LS_KEY, P);
+  if (docRef) { dirty = true; clearTimeout(saveTimer); saveTimer = setTimeout(flush, 1200); }
+}
+async function flush() {
+  if (!docRef || writing || !dirty) return;
+  writing = true; dirty = false;
+  try { await docRef.set(JSON.parse(JSON.stringify(P))); setSync("ok"); }
+  catch (e) {
+    if (e && e.code === "invalid_argument") { setSync("local"); docRef = null; }
+    else { setSync("err"); dirty = true; }
+  } finally {
+    writing = false;
+    if (dirty && docRef) { clearTimeout(saveTimer); saveTimer = setTimeout(flush, 4000); }
+  }
+}
+function merge(remote) {
+  if (!remote) return false;
+  const R = normalize(remote); let changed = false;
+  for (const [id, c] of Object.entries(R.cards)) {
+    const l = P.cards[id];
+    if (!l || (c.t || 0) > (l.t || 0)) { P.cards[id] = c; changed = true; }
+  }
+  for (const [k, d] of Object.entries(R.days)) {
+    const l = P.days[k];
+    if (!l) { P.days[k] = { ...d }; changed = true; continue; }
+    for (const f of ["n", "r", "x"]) if ((d[f] || 0) > (l[f] || 0)) { l[f] = d[f]; changed = true; }
+  }
+  if ((R.st || 0) > (P.st || 0)) { P.settings = R.settings; P.st = R.st; changed = true; }
+  return changed;
+}
+function localAhead(remote) {
+  const R = normalize(remote);
+  if ((P.st || 0) > (R.st || 0)) return true;
+  for (const [id, c] of Object.entries(P.cards)) { const r = R.cards[id]; if (!r || (c.t || 0) > (r.t || 0)) return true; }
+  return false;
+}
+function setSync(s) {
+  const el = $("#sync"); el.className = "sync " + (s === "ok" ? "ok" : s === "err" ? "err" : "");
+  el.querySelector("span").textContent = s === "ok" ? "Đã đồng bộ" : s === "err" ? "Lỗi đồng bộ" : "Lưu trên máy";
+  el.title = s === "ok" ? "Tiến độ được lưu vào tài khoản của bạn, mở trên máy khác vẫn còn." : s === "err" ? "Không lưu được lên tài khoản. Tiến độ vẫn được giữ trên máy này và sẽ thử lại." : "Tiến độ chỉ được lưu trong trình duyệt này.";
+}
+async function connect() {
+  try {
+    if (!window.claude || !window.claude.use) return;
+    const user = await window.claude.use("user");
+    const uid = user ? await user.id() : null;
+    if (!uid) return;
+    const db = await window.claude.use("db");
+    if (!db) return;
+    const ref = db.doc("data/users/" + uid + "/srs");
+    const snap = await ref.get();
+    const remote = snap.exists ? snap.data() : null;
+    if (remote && merge(remote)) { lsSet(LS_KEY, P); refreshAll(); }
+    docRef = ref; setSync("ok");
+    if (!remote ? Object.keys(P.cards).length || P.st : localAhead(remote)) { dirty = true; flush(); }
+    ref.onSnapshot(s => {
+      if (!s.exists || s.metadata.hasPendingWrites) return;
+      if (merge(s.data())) { lsSet(LS_KEY, P); refreshAll(true); }
+    }, () => setSync("err"));
+  } catch (e) { setSync("err"); }
+}
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") flush(); });
+
+/* ---------- audio ---------- */
+let voices = [];
+function loadVoices() {
+  try { voices = speechSynthesis.getVoices().filter(v => /^ja/i.test(v.lang)); } catch (e) { voices = []; }
+}
+if ("speechSynthesis" in window) { loadVoices(); try { speechSynthesis.addEventListener("voiceschanged", loadVoices); } catch (e) {} }
+function ttsText(t) {
+  return t.replace(/（[^）]*）/g, "").replace(/\([^)]*\)/g, "").replace(/\{[^}]*\}/g, "")
+    .replace(/^[ＡＢAB][：:]\s*/gm, "").replace(/^[ＡＢAB](?=「)/gm, "").replace(/[⇒→⇔≒]/g, "、").replace(/\n/g, "。");
+}
+let playingBtn = null;
+function speak(text, btn) {
+  if (!("speechSynthesis" in window)) { toast("Trình duyệt này không hỗ trợ đọc tiếng Nhật"); return; }
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(ttsText(text));
+    u.lang = "ja-JP"; u.rate = +P.settings.rate || 0.9;
+    const v = voices.find(v => v.name === P.settings.voice) || voices.find(v => /google|kyoko|nanami|otoya|haruka/i.test(v.name)) || voices[0];
+    if (v) u.voice = v;
+    if (playingBtn) playingBtn.classList.remove("playing");
+    if (btn) { btn.classList.add("playing"); playingBtn = btn; }
+    u.onend = u.onerror = () => { if (btn) btn.classList.remove("playing"); };
+    speechSynthesis.speak(u);
+  } catch (e) { toast("Không phát được âm thanh"); }
+}
+const SPK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+const sayBtn = (text, cls = "") => `<button class="say ${cls}" data-say="${esc(text)}" aria-label="Nghe phát âm">${SPK}</button>`;
+
+/* ---------- rendering helpers ---------- */
+const ruby = v => v.w === v.r || !v.r ? esc(v.w) : `<ruby>${esc(v.w)}<rt>${esc(v.r)}</rt></ruby>`;
+function hl(text, v) {
+  let h = esc(text);
+  const keys = [v.w]; if (v.w !== v.r && v.r) keys.push(v.r);
+  for (const k of keys) { const ek = esc(k); if (ek && h.includes(ek)) { h = h.split(ek).join("<mark>" + ek + "</mark>"); break; } }
+  return h.replace(/（[^）]*）/g, m => `<span class="note">${m}</span>`);
+}
+const posTags = v => v.pos.map(p => `<span class="tag">${POS[p] || p}</span>`).join("");
+function details(v) {
+  const multi = v.s.length > 1;
+  const senses = v.s.map(s => `<li>
+      <div class="def jp">${esc(s.ja)}${s.vi ? `<small>${esc(s.vi)}</small>` : ""}</div>
+      ${s.pt && s.pt.length ? `<ul class="pts">${s.pt.map(p => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}
+      <div class="exs">${s.ex.map(e => `<div class="ex">${sayBtn(e[0])}<div><div class="jp">${hl(e[0], v)}</div><div class="tr">${esc(e[1])}</div></div></div>`).join("")}</div>
+    </li>`).join("");
+  const uses = v.use && v.use.length ? `<div class="sec"><h4>Phân biệt <span class="jp">使い分け</span></h4><ul class="uses">${v.use.map(u => `<li>${esc(u)}</li>`).join("")}</ul></div>` : "";
+  const rels = v.rel && v.rel.length ? `<div class="sec"><h4>Từ liên quan <span class="jp">関連語</span></h4><div class="rels">${v.rel.map(r => {
+    const inDeck = BY_WORD.get(r[0]);
+    return `<button class="rel${inDeck && inDeck.id !== v.id ? " indeck" : ""}" data-rel="${esc(r[0])}" data-relr="${esc(r[1] || r[0])}"><b>${esc(r[0])}${r[1] ? `<small>${esc(r[1])}</small>` : ""}</b><span>${esc(r[2])}</span></button>`;
+  }).join("")}</div></div>` : "";
+  return `<div class="sec"><h4>Nghĩa &amp; ví dụ <span class="jp">意味・例文</span></h4><ol class="senses${multi ? " multi" : ""}">${senses}</ol></div>${uses}${rels}`;
+}
+function headBlock(v) {
+  return `<div class="headrow">
+      <div>
+        <div class="wline"><span class="midword">${ruby(v)}</span>${sayBtn(v.r || v.w, "lg")}</div>
+        ${v.hv ? `<div class="hv">${esc(v.hv)}</div>` : ""}
+        <div class="vimean">${esc(v.vi)}</div>
+      </div>
+      <div class="pic" aria-hidden="true">${v.img || ""}</div>
+    </div>`;
+}
+const metaRow = v => `<div class="meta"><span class="no">No.${pad3(v.id)} · 第${v.l}課</span><span class="tags">${posTags(v)}</span></div>`;
+const trClass = () => (P.settings.showTr ? "" : " hide-tr");
+
+/* ---------- study view ---------- */
+let curDir = "jp";
+function renderCounts() {
+  const el = $("#counts");
+  if (cram) { el.innerHTML = ""; return; }
+  const k = deck(), T = today();
+  el.innerHTML = `<span><b class="c-new">${k.fresh.length}</b>Mới</span><span><b class="c-learn">${k.learnNow.length + k.learnLater.length}</b>Đang học</span><span><b class="c-due">${k.due.length}</b>Đến hạn</span><span>Hôm nay: ${T.n + T.r} thẻ</span>`;
+  $("#btnUndo").disabled = !undoStack.length || !!cram;
+}
+function next() {
+  clearTimeout(waitTimer);
+  revealed = false;
+  let id;
+  if (cram) { id = cram.q[0]; } else { id = pickNext(); }
+  cur = id ? BY_ID.get(id) : null;
+  if (cur) { if (!cram) sessionN++; curDir = P.settings.dir === "mix" ? (Math.random() < 0.5 ? "jp" : "vi") : P.settings.dir; }
+  renderStudy();
+}
+function renderStudy() {
+  renderCounts();
+  $("#cramBar").hidden = !cram;
+  if (cram) $("#cramText").textContent = `Luyện tự do · còn ${cram.q.length} thẻ (không ảnh hưởng lịch ôn)`;
+  const stage = $("#stage"), ans = $("#answer");
+  if (!cur) { ans.innerHTML = ""; stage.innerHTML = doneScreen(); return; }
+  const v = cur;
+  let front;
+  if (curDir === "vi") {
+    front = `<div class="front"><div class="emo" aria-hidden="true">${v.img || ""}</div><div class="vi-big">${esc(v.vi)}</div>
+      ${!revealed && v.hv ? `<button class="hintbtn" id="hint">Gợi ý Hán Việt</button>` : ""}</div>`;
+  } else {
+    front = `<div class="front"><div class="bigword">${P.settings.readingFront || revealed ? ruby(v) : esc(v.w)}</div>${sayBtn(v.r || v.w, "lg")}</div>`;
+  }
+  stage.innerHTML = `<article class="fc${revealed ? " flip" : ""}${trClass()}" id="card">${metaRow(v)}${revealed ? `<div class="back">${headBlock(v)}${details(v)}</div>` : front}</article>`;
+  if (!revealed) {
+    ans.innerHTML = `<button class="reveal" id="reveal">Hiện đáp án</button><div class="keys"><kbd>Space</kbd> lật thẻ · <kbd>R</kbd> nghe lại</div>`;
+  } else {
+    const now = Date.now();
+    const labels = ["Lại", "Khó", "Được", "Dễ"];
+    const ivl = g => cram ? (g === 1 ? "lặp lại" : "xong") : fmtIvl(sched(P.cards[v.id] || null, g, now), now);
+    ans.innerHTML = `<div class="grades">${[1, 2, 3, 4].map(g => `<button class="grade g${g}" data-g="${g}">${labels[g - 1]}<small>${ivl(g)}</small></button>`).join("")}</div>
+      <div class="keys"><kbd>1</kbd> Lại · <kbd>2</kbd> Khó · <kbd>3</kbd>/<kbd>Space</kbd> Được · <kbd>4</kbd> Dễ · <kbd>Z</kbd> hoàn tác</div>`;
+  }
+}
+function doneScreen() {
+  const p = pool();
+  if (!p.length) return `<div class="done"><div class="kanji">空</div><h2>Chưa chọn bài nào</h2><p>Mở bộ lọc ở trên và chọn ít nhất một bài để bắt đầu.</p></div>`;
+  if (cram) return "";
+  const k = deck(), now = Date.now();
+  const nextL = k.learnLater.length ? Math.max(1, Math.round((P.cards[k.learnLater[0]].d - now) / MIN)) : 0;
+  if (nextL) { clearTimeout(waitTimer); waitTimer = setTimeout(next, Math.max(5000, P.cards[k.learnLater[0]].d - now - 20 * MIN)); }
+  const moreNew = k.freshAll > 0;
+  return `<div class="done"><div class="kanji">完</div>
+    <h2>Xong phần ôn hôm nay</h2>
+    <p>${nextL ? `Còn ${k.learnLater.length} thẻ đang học, thẻ tiếp theo đến hạn sau khoảng ${nextL} phút.` : moreNew ? `Còn ${k.freshAll} từ mới chưa học trong các bài đang chọn.` : "Bạn đã học hết các từ trong các bài đang chọn."}</p>
+    <div class="row">
+      ${moreNew ? `<button class="primary" id="more10">Học thêm 10 từ mới</button>` : ""}
+      <button class="ghost" id="startCram">Luyện tự do các bài đang chọn</button>
+    </div></div>`;
+}
+function reveal() {
+  if (!cur || revealed) return;
+  revealed = true; renderStudy();
+  if (P.settings.autoplay) speak(cur.r || cur.w, document.querySelector(".headrow .say"));
+}
+function answer(g) {
+  if (!cur || !revealed) return;
+  const id = cur.id;
+  if (cram) {
+    cram.q.shift();
+    if (g === 1) cram.q.splice(Math.min(3, cram.q.length), 0, id);
+    if (!cram.q.length) { cram = null; toast("Đã luyện xong"); }
+    lastId = id; next(); return;
+  }
+  const prev = P.cards[id] || null, T = today(), dk = dayKey();
+  undoStack.push({ id, prev, dk, tPrev: { ...T } });
+  if (undoStack.length > 30) undoStack.shift();
+  if (!prev || !prev.q) T.n++; else if (prev.q === 2) T.r++;
+  P.cards[id] = sched(prev, g, Date.now(), true);
+  save(); lastId = id; next();
+}
+function undo() {
+  const u = undoStack.pop(); if (!u || cram) return;
+  P.cards[u.id] = u.prev ? { ...u.prev, t: Date.now() } : { q: 0, s: 0, d: 0, i: 0, e: 2500, r: 0, l: 0, t: Date.now() };
+  P.days[u.dk] = u.tPrev; save();
+  cur = BY_ID.get(u.id); revealed = false; lastId = null; renderStudy();
+}
+function startCram() {
+  const ids = pool().map(v => v.id);
+  for (let i = ids.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [ids[i], ids[j]] = [ids[j], ids[i]]; }
+  cram = { q: ids }; next();
+}
+
+/* ---------- list view ---------- */
+function matches(v, q) {
+  if (!q) return true;
+  q = q.toLowerCase();
+  return [v.w, v.r, v.hv, v.vi, String(v.id)].some(s => s && s.toLowerCase().includes(q)) || v.rel.some(r => r[0].includes(q));
+}
+function renderList() {
+  const now = Date.now(), q = UI.q.trim();
+  const items = pool().filter(v => matches(v, q) && (UI.status === "all" || status(v.id, now) === UI.status || (UI.status === "known" && ["young", "mature"].includes(status(v.id, now)))));
+  const all = pool(), cnt = { new: 0, learn: 0, due: 0, young: 0, mature: 0 };
+  all.forEach(v => cnt[status(v.id, now)]++);
+  $("#statusChips").innerHTML = [["all", "Tất cả", all.length], ["new", "Mới", cnt.new], ["learn", "Đang học", cnt.learn], ["due", "Đến hạn", cnt.due], ["known", "Đã học", cnt.young + cnt.mature]]
+    .map(([k, l, n]) => `<button class="chip" data-st="${k}" aria-pressed="${UI.status === k}">${l} · ${n}</button>`).join("");
+  $("#summary").innerHTML = `<span><b>${all.length}</b> từ trong bộ lọc</span><span><b>${cnt.young + cnt.mature}</b> đã học</span><span><b>${cnt.mature}</b> đã thuộc (≥ 21 ngày)</span>`;
+  const groups = new Map();
+  for (const v of items) { if (!groups.has(v.l)) groups.set(v.l, []); groups.get(v.l).push(v); }
+  if (!items.length) { $("#lessons").innerHTML = `<div class="empty">Không có từ nào khớp. Thử bỏ bớt bộ lọc hoặc từ khoá.</div>`; return; }
+  let html = "";
+  for (const [l, vs] of groups) {
+    const lv = VOCAB.filter(v => v.l === l), tot = lv.length;
+    const m = lv.filter(v => status(v.id, now) === "mature").length;
+    const y = lv.filter(v => ["young", "due"].includes(status(v.id, now))).length;
+    const ln = lv.filter(v => status(v.id, now) === "learn").length;
+    const first = lv[0].id, last = lv[lv.length - 1].id;
+    html += `<section class="lesson"><header>
+        <h3>第${l}課<small>Bài ${l} · ${pad3(first)}–${pad3(last)}</small></h3>
+        <span class="prog" title="Đã thuộc ${m}, đã học ${y}, đang học ${ln}"><i class="p-m" style="width:${m / tot * 100}%"></i><i class="p-y" style="width:${y / tot * 100}%"></i><i class="p-l" style="width:${ln / tot * 100}%"></i></span>
+        <span class="pcount">${m + y}/${tot}</span>
+        <button class="ghost" data-studyl="${l}">Học bài này</button>
+      </header><ul class="rows">${vs.map(v => {
+        const st = status(v.id, now);
+        return `<li class="rowi" data-open="${v.id}"><span class="n">${pad3(v.id)}</span><span class="e" aria-hidden="true">${v.img || ""}</span>
+          <span class="w">${ruby(v)}${v.hv ? `<span class="h">${esc(v.hv)}</span>` : ""}</span>
+          <span class="m">${esc(v.vi)}</span><span class="pill st-${st}">${STATUS[st]}</span>${sayBtn(v.r || v.w)}</li>`;
+      }).join("")}</ul></section>`;
+  }
+  $("#lessons").innerHTML = html;
+  $("#viewList").classList.toggle("hidemean", UI.hideMean);
+  $("#btnHideMean").setAttribute("aria-pressed", UI.hideMean);
+  $("#btnHideMean").textContent = UI.hideMean ? "Hiện nghĩa" : "Che nghĩa";
+}
+
+/* ---------- detail sheet ---------- */
+function openDetail(id) {
+  const v = BY_ID.get(+id); if (!v) return;
+  const st = status(v.id), c = P.cards[v.id];
+  const dueTxt = c && c.q ? (c.q === 2 ? `Lần ôn tiếp: ${new Date(c.d).toLocaleDateString("vi-VN")} · khoảng cách ${c.i} ngày` : "Đang trong bước học") : "Chưa học";
+  openSheet(`<div class="bar">${metaRow(v)}<button class="iconbtn" data-close aria-label="Đóng"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="${trClass().trim()}" style="display:grid;gap:20px;margin-top:10px">${headBlock(v)}${details(v)}</div>
+    <div class="actions"><span class="pill st-${st}">${STATUS[st]}</span><span style="font-size:13px;color:var(--muted);align-self:center">${dueTxt}</span>
+      <span style="flex:1"></span>
+      ${c && c.q ? `<button class="ghost" data-reset="${v.id}">Đặt lại thành từ mới</button>` : ""}
+      <button class="primary" data-studyone="${v.id}">Học ngay</button></div>`);
+}
+function openSheet(html) { $("#sheet").innerHTML = html; $("#overlay").hidden = false; document.body.style.overflow = "hidden"; }
+function closeSheet() { $("#overlay").hidden = true; document.body.style.overflow = ""; }
+
+/* ---------- settings ---------- */
+function openSettings() {
+  const s = P.settings;
+  const vopts = voices.length ? voices.map(v => `<option value="${esc(v.name)}"${v.name === s.voice ? " selected" : ""}>${esc(v.name)}</option>`).join("") : "";
+  openSheet(`<div class="bar"><h2 style="margin:0;font-size:18px;flex:1">Cài đặt</h2><button class="iconbtn" data-close aria-label="Đóng"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <form class="form" id="setForm">
+    <div class="two">
+      <div class="field"><label for="setNew">Từ mới mỗi ngày</label><input id="setNew" type="number" min="0" max="200" value="${s.newPerDay}"></div>
+      <div class="field"><label for="setRev">Ôn tối đa mỗi ngày</label><input id="setRev" type="number" min="10" max="2000" value="${s.revPerDay}"></div>
+    </div>
+    <div class="field"><label for="setDir">Mặt trước của thẻ</label>
+      <select id="setDir"><option value="jp"${s.dir === "jp" ? " selected" : ""}>Từ tiếng Nhật → đoán nghĩa</option><option value="vi"${s.dir === "vi" ? " selected" : ""}>Nghĩa tiếng Việt → nhớ từ</option><option value="mix"${s.dir === "mix" ? " selected" : ""}>Trộn ngẫu nhiên hai chiều</option></select></div>
+    <label class="check"><input type="checkbox" id="setReading"${s.readingFront ? " checked" : ""}><span>Hiện cách đọc (furigana) ở mặt trước</span></label>
+    <label class="check"><input type="checkbox" id="setAuto"${s.autoplay ? " checked" : ""}><span>Tự đọc từ khi lật thẻ</span></label>
+    <label class="check"><input type="checkbox" id="setTr"${s.showTr ? " checked" : ""}><span>Hiện bản dịch ví dụ <span class="help" style="display:block;color:var(--muted);font-size:12.5px">Khi tắt, bản dịch bị làm mờ, chạm vào để xem.</span></span></label>
+    <div class="two">
+      <div class="field"><label for="setVoice">Giọng đọc</label>
+        ${voices.length ? `<select id="setVoice"><option value="">Tự chọn</option>${vopts}</select>` : `<div class="help">Thiết bị chưa có giọng tiếng Nhật. Trình duyệt sẽ thử đọc bằng giọng mặc định; trên điện thoại, cài thêm giọng 日本語 trong phần Đọc văn bản của hệ thống.</div>`}</div>
+      <div class="field"><label for="setRate">Tốc độ đọc: <span id="rateVal">${s.rate}</span>×</label><input id="setRate" type="range" min="0.5" max="1.3" step="0.05" value="${s.rate}"></div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="ghost" id="testVoice">${SPK}Nghe thử</button><button type="submit" class="primary">Lưu cài đặt</button></div>
+  </form>
+  <div class="form" style="margin-top:22px;padding-top:16px;border-top:1px solid var(--line)">
+    <div class="field"><span class="lbl">Sao lưu tiến độ</span><span class="help">Sao chép đoạn mã tiến độ để cất giữ, hoặc dán mã đã lưu vào ô bên dưới rồi bấm Nhập (gộp với tiến độ hiện tại).</span>
+      <textarea id="backup" spellcheck="false" placeholder='{"cards":{...}}'></textarea>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="ghost" id="copyBackup">Sao chép tiến độ</button><button class="ghost" id="importBackup">Nhập</button></div></div>
+    <div class="field"><span class="lbl">Xoá tiến độ</span><div id="resetZone"><button class="danger" id="resetAll">Xoá toàn bộ tiến độ…</button></div></div>
+  </div>`);
+}
+function saveSettings() {
+  const s = P.settings;
+  s.newPerDay = Math.max(0, Math.min(200, +$("#setNew").value || 0));
+  s.revPerDay = Math.max(10, Math.min(2000, +$("#setRev").value || 200));
+  s.dir = $("#setDir").value; s.readingFront = $("#setReading").checked; s.autoplay = $("#setAuto").checked; s.showTr = $("#setTr").checked;
+  if ($("#setVoice")) s.voice = $("#setVoice").value;
+  s.rate = +$("#setRate").value;
+  P.st = Date.now(); save(); closeSheet(); toast("Đã lưu cài đặt");
+  if (cur && !revealed) curDir = s.dir === "mix" ? curDir : s.dir;
+  refreshAll();
+}
+
+/* ---------- filters ---------- */
+function filterLabel() {
+  let t;
+  if (!UI.lessons) t = `Tất cả ${LESSONS.length} bài`;
+  else if (!UI.lessons.length) t = "Chưa chọn bài";
+  else {
+    const ls = [...UI.lessons].sort((a, b) => a - b), parts = [];
+    let a = ls[0], b = ls[0];
+    for (let i = 1; i <= ls.length; i++) { if (ls[i] === b + 1) b = ls[i]; else { parts.push(a === b ? a : a + "–" + b); a = b = ls[i]; } }
+    t = "Bài " + parts.join(", ");
+  }
+  if (UI.pos.length) t += " · " + UI.pos.map(p => POS[p]).join(", ");
+  return t + ` · ${pool().length} từ`;
+}
+function renderFilters() {
+  const sel = l => !UI.lessons || UI.lessons.includes(l);
+  $("#lessonChips").innerHTML = LESSONS.map(l => `<button class="chip" data-l="${l}" aria-pressed="${sel(l)}" title="Bài ${l}">${l}</button>`).join("");
+  const groups = [];
+  for (let i = 0; i < LESSONS.length; i += 10) groups.push(LESSONS.slice(i, i + 10));
+  $("#quick").innerHTML = `<button data-q="all">Tất cả</button><button data-q="none">Bỏ chọn</button>` + groups.map(g => `<button data-q="${g[0]}-${g[g.length - 1]}">${g[0]}–${g[g.length - 1]}</button>`).join("");
+  const used = [...new Set(VOCAB.flatMap(v => v.pos))];
+  $("#posChips").innerHTML = Object.keys(POS).filter(p => used.includes(p)).map(p => `<button class="chip" data-pos="${p}" aria-pressed="${UI.pos.includes(p)}">${POS[p]}</button>`).join("");
+  $("#filterLabel").textContent = filterLabel();
+}
+function setLessons(ls) {
+  UI.lessons = ls && ls.length === LESSONS.length ? null : ls;
+  saveUI(); onFilterChange();
+}
+function onFilterChange() {
+  renderFilters();
+  if (cram) cram = null;
+  if (UI.tab === "study") { if (!cur || !pool().some(v => v.id === cur.id) || !revealed) next(); else renderCounts(); }
+  else renderList();
+}
+
+/* ---------- tabs + refresh ---------- */
+function setTab(t) {
+  UI.tab = t; saveUI();
+  $("#tabStudy").setAttribute("aria-selected", t === "study"); $("#tabList").setAttribute("aria-selected", t === "list");
+  $("#viewStudy").hidden = t !== "study"; $("#viewList").hidden = t !== "list";
+  if (t === "list") renderList(); else if (!cur) next(); else renderStudy();
+}
+function refreshAll(remote) {
+  renderFilters();
+  if (UI.tab === "list") renderList();
+  if (remote && cur && !revealed && !cram) { const k = deck(); const ok = [...k.learnNow, ...k.due, ...k.fresh].includes(cur.id); if (!ok) { next(); return; } }
+  if (UI.tab === "study") { if (cur) renderStudy(); else next(); }
+}
+let toastT = null;
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => (t.hidden = true), 2200); }
+
+/* ---------- events ---------- */
+document.addEventListener("click", e => {
+  const t = e.target;
+  const say = t.closest("[data-say]");
+  if (say) { e.stopPropagation(); speak(say.dataset.say, say); return; }
+  if (t.closest(".tr") && t.closest(".hide-tr")) { t.closest(".tr").classList.toggle("show"); return; }
+  const rel = t.closest("[data-rel]");
+  if (rel) { const v = BY_WORD.get(rel.dataset.rel); if (v && (!cur || v.id !== cur.id || !$("#overlay").hidden)) openDetail(v.id); else speak(rel.dataset.relr, null); return; }
+  if (t.closest("#reveal")) return reveal();
+  if (t.closest("#hint")) { t.closest("#hint").outerHTML = `<div class="hv" style="font-size:15px">${esc(cur.hv)}</div>`; return; }
+  const g = t.closest("[data-g]"); if (g) return answer(+g.dataset.g);
+  if (t.closest("#btnUndo")) return undo();
+  if (t.closest("#more10")) { today().x = (today().x || 0) + 10; save(); next(); return; }
+  if (t.closest("#startCram")) return startCram();
+  if (t.closest("#cramExit")) { cram = null; next(); return; }
+  if (t.closest("#tabStudy")) return setTab("study");
+  if (t.closest("#tabList")) return setTab("list");
+  if (t.closest("#btnFilter")) { const f = $("#filters"); f.hidden = !f.hidden; $("#btnFilter").setAttribute("aria-expanded", !f.hidden); return; }
+  const lc = t.closest("[data-l]");
+  if (lc) { const l = +lc.dataset.l; let ls = UI.lessons ? [...UI.lessons] : [...LESSONS]; ls = ls.includes(l) ? ls.filter(x => x !== l) : [...ls, l]; return setLessons(ls); }
+  const qk = t.closest("[data-q]");
+  if (qk) { const q = qk.dataset.q; if (q === "all") return setLessons(null); if (q === "none") return setLessons([]); const [a, b] = q.split("-").map(Number); return setLessons(LESSONS.filter(l => l >= a && l <= b)); }
+  const pc = t.closest("[data-pos]");
+  if (pc) { const p = pc.dataset.pos; UI.pos = UI.pos.includes(p) ? UI.pos.filter(x => x !== p) : [...UI.pos, p]; saveUI(); return onFilterChange(); }
+  const sc = t.closest("[data-st]"); if (sc) { UI.status = sc.dataset.st; saveUI(); return renderList(); }
+  if (t.closest("#btnHideMean")) { UI.hideMean = !UI.hideMean; saveUI(); return renderList(); }
+  const sl = t.closest("[data-studyl]"); if (sl) { $("#filters").hidden = true; setLessons([+sl.dataset.studyl]); cur = null; return setTab("study"); }
+  const op = t.closest("[data-open]"); if (op) return openDetail(op.dataset.open);
+  if (t.closest("[data-close]") || t === $("#overlay")) return closeSheet();
+  const so = t.closest("[data-studyone]");
+  if (so) { closeSheet(); cram = { q: [+so.dataset.studyone] }; setTab("study"); next(); return; }
+  const rs = t.closest("[data-reset]");
+  if (rs) { const id = +rs.dataset.reset; P.cards[id] = { q: 0, s: 0, d: 0, i: 0, e: 2500, r: 0, l: 0, t: Date.now() }; save(); closeSheet(); refreshAll(); toast("Đã đặt lại thành từ mới"); return; }
+  if (t.closest("#btnSettings")) return openSettings();
+  if (t.closest("#testVoice")) { P.settings.rate = +$("#setRate").value; const vs = $("#setVoice"); const old = P.settings.voice; if (vs) P.settings.voice = vs.value; speak("評判のいい店が探せて嬉しい！"); P.settings.voice = old; return; }
+  if (t.closest("#copyBackup")) {
+    e.preventDefault(); const txt = JSON.stringify(P); const ta = $("#backup"); ta.value = txt;
+    try { navigator.clipboard.writeText(txt).then(() => toast("Đã sao chép tiến độ"), () => { ta.select(); toast("Đã chọn sẵn, hãy bấm sao chép"); }); } catch (err) { ta.select(); }
+    return;
+  }
+  if (t.closest("#importBackup")) {
+    e.preventDefault();
+    try { const data = JSON.parse($("#backup").value); if (!data || typeof data !== "object" || !data.cards) throw 0;
+      for (const c of Object.values(data.cards)) c.t = Math.max(c.t || 0, Date.now() - 1);
+      merge(data); P.st = Date.now(); save(); closeSheet(); refreshAll(); toast("Đã nhập tiến độ"); }
+    catch (err) { toast("Mã không hợp lệ. Hãy dán đúng đoạn đã sao chép."); }
+    return;
+  }
+  if (t.closest("#resetAll")) { $("#resetZone").innerHTML = `<div class="confirm">Xoá toàn bộ tiến độ trên mọi thiết bị? <button class="danger" id="resetYes">Xoá</button><button class="ghost" id="resetNo">Huỷ</button></div>`; return; }
+  if (t.closest("#resetNo")) { $("#resetZone").innerHTML = `<button class="danger" id="resetAll">Xoá toàn bộ tiến độ…</button>`; return; }
+  if (t.closest("#resetYes")) {
+    const now = Date.now();
+    for (const v of VOCAB) if (P.cards[v.id]) P.cards[v.id] = { q: 0, s: 0, d: 0, i: 0, e: 2500, r: 0, l: 0, t: now };
+    P.days = {}; undoStack = []; save(); closeSheet(); cur = null; refreshAll(); toast("Đã xoá tiến độ"); return;
+  }
+});
+document.addEventListener("submit", e => { if (e.target.id === "setForm") { e.preventDefault(); saveSettings(); } });
+document.addEventListener("input", e => {
+  if (e.target.id === "q") { UI.q = e.target.value; saveUI(); renderList(); }
+  if (e.target.id === "setRate") $("#rateVal").textContent = e.target.value;
+});
+document.addEventListener("keydown", e => {
+  if (!$("#overlay").hidden) { if (e.key === "Escape") closeSheet(); return; }
+  if (UI.tab !== "study" || e.target.closest("input,textarea,select") || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.key === " " || e.key === "Enter") { e.preventDefault(); revealed ? answer(3) : reveal(); }
+  else if (revealed && ["1", "2", "3", "4"].includes(e.key)) answer(+e.key);
+  else if (e.key === "r" || e.key === "R") { if (cur) speak(cur.r || cur.w, document.querySelector(".fc .say.lg")); }
+  else if (e.key === "z" || e.key === "Z") undo();
+});
+
+/* ---------- boot ---------- */
+$("#q").value = UI.q || "";
+renderFilters();
+setTab(UI.tab === "list" ? "list" : "study");
+setSync("local");
+connect();
+</script>

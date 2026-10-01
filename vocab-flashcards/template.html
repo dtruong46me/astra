@@ -1,0 +1,864 @@
+<title>Thẻ từ vựng N2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one study column (max 760px) under a sticky header; the card is a ring-bound 単語カード;
+   the list view is a dense ledger grouped by lesson. Colour: 藍 (indigo) ink on cool paper, 朱 for marks. */
+:root{
+  --paper:#EDF0F3; --card:#FFFFFF; --soft:#F5F7F9; --ink:#17212C; --muted:#5A6878; --line:#D8DFE6;
+  --ai:#24477D; --ai-soft:#E1E8F3; --shu:#BF4128; --shu-soft:#FBE9E4;
+  --again:#BC3A28; --hard:#9A6410; --good:#2B7A4B; --easy:#2760A6;
+  --again-soft:#F9E6E2; --hard-soft:#F7EEDD; --good-soft:#E1F1E7; --easy-soft:#E2ECF8;
+  --shadow:0 1px 2px rgba(23,33,44,.06),0 10px 30px rgba(23,33,44,.07);
+  --f-mincho:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  --f-jp:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;
+  --f-ui:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0D1218; --card:#161E27; --soft:#1B2530; --ink:#E4E9EF; --muted:#94A2B1; --line:#283442;
+  --ai:#93B4E8; --ai-soft:#1D2B3E; --shu:#F08A70; --shu-soft:#3A221D;
+  --again:#F08A78; --hard:#E2B15A; --good:#6FCB94; --easy:#86B4F0;
+  --again-soft:#3A2220; --hard-soft:#352B19; --good-soft:#1A3326; --easy-soft:#1B2A3E;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.25); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0D1218; --card:#161E27; --soft:#1B2530; --ink:#E4E9EF; --muted:#94A2B1; --line:#283442;
+  --ai:#93B4E8; --ai-soft:#1D2B3E; --shu:#F08A70; --shu-soft:#3A221D;
+  --again:#F08A78; --hard:#E2B15A; --good:#6FCB94; --easy:#86B4F0;
+  --again-soft:#3A2220; --hard-soft:#352B19; --good-soft:#1A3326; --easy-soft:#1B2A3E;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.25); color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--paper);color:var(--ink)}
+body{font-family:var(--f-ui);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--ai);outline-offset:2px}
+.jp{font-family:var(--f-jp)}
+.wrap{max-width:820px;margin:0 auto;padding-inline:16px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;flex-direction:column;gap:10px;padding-block:12px 10px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand .mark{width:34px;height:34px;border-radius:9px;background:var(--ai);color:var(--card);display:grid;place-items:center;font-family:var(--f-mincho);font-weight:800;font-size:19px;flex:none}
+.brand h1{margin:0;font-size:17px;font-weight:700;letter-spacing:.01em;text-wrap:balance}
+.brand small{display:block;color:var(--muted);font-size:12px;font-weight:500;font-family:var(--f-jp)}
+.brand .grow{flex:1;min-width:0}
+.sync{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);white-space:nowrap}
+.sync i{width:8px;height:8px;border-radius:50%;background:var(--muted);display:inline-block}
+.sync.ok i{background:var(--good)} .sync.err i{background:var(--again)}
+.iconbtn{border:1px solid var(--line);background:var(--card);border-radius:10px;width:38px;height:38px;display:grid;place-items:center;flex:none}
+.iconbtn svg{width:18px;height:18px}
+.navrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;padding:6px 14px;border-radius:8px;font-weight:600;font-size:14px;color:var(--muted)}
+.seg button[aria-selected="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.filterbtn{margin-left:auto;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);border-radius:11px;padding:7px 12px;font-size:13.5px;font-weight:500;max-width:100%;min-width:0}
+.filterbtn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.filterbtn svg{width:16px;height:16px;flex:none}
+.filters{border:1px solid var(--line);background:var(--card);border-radius:var(--r);padding:14px;display:grid;gap:12px}
+.filters h3{margin:0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:4px 11px;font-size:13px;font-weight:500;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ai);border-color:var(--ai);color:var(--card)}
+.lessongrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:6px}
+.lessongrid .chip{border-radius:9px;padding:6px 0;text-align:center;font-variant-numeric:tabular-nums}
+.quick{display:flex;flex-wrap:wrap;gap:6px}
+.quick button{border:0;background:none;color:var(--ai);font-weight:600;font-size:13px;padding:2px 4px}
+
+main.wrap{padding-block:18px 40px}
+
+/* study */
+.deckbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.counts{display:flex;gap:14px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.counts b{font-size:16px;margin-right:4px}
+.c-new{color:var(--new,var(--easy))} .c-learn{color:var(--again)} .c-due{color:var(--good)}
+.deckbar .tools{margin-left:auto;display:flex;gap:6px}
+.ghost{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:6px 11px;font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.ghost svg{width:15px;height:15px}
+.ghost[disabled]{opacity:.45;cursor:default}
+.crambar{display:flex;align-items:center;gap:10px;background:var(--shu-soft);color:var(--shu);border-radius:10px;padding:8px 12px;font-size:13px;font-weight:600;margin-bottom:12px}
+.crambar button{margin-left:auto;border:0;background:none;color:inherit;font-weight:700;text-decoration:underline}
+
+.fc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:22px 22px 24px;min-height:340px;display:flex;flex-direction:column}
+.fc::before{content:"";position:absolute;top:16px;left:16px;width:13px;height:13px;border-radius:50%;background:var(--paper);box-shadow:inset 0 1px 2px rgba(0,0,0,.18);border:1px solid var(--line)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-left:24px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.meta .no{font-family:var(--f-jp);letter-spacing:.04em}
+.tags{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--muted);white-space:nowrap}
+.front{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:26px 0 8px;text-align:center}
+.bigword{font-family:var(--f-mincho);font-weight:800;font-size:clamp(46px,12vw,84px);line-height:1.15;letter-spacing:.04em;word-break:keep-all}
+.bigword rt{font-family:var(--f-jp);font-weight:500;font-size:.24em;letter-spacing:.12em;color:var(--muted)}
+.front .vi-big{font-size:clamp(22px,5vw,30px);font-weight:700;text-wrap:balance;max-width:28ch}
+.front .emo{font-size:64px;line-height:1}
+.hintbtn{border:1px dashed var(--line);background:none;border-radius:999px;padding:4px 12px;font-size:12.5px;color:var(--muted)}
+.say{border:1px solid var(--line);background:var(--soft);border-radius:999px;width:34px;height:34px;display:inline-grid;place-items:center;color:var(--ai);flex:none}
+.say svg{width:17px;height:17px}
+.say.lg{width:44px;height:44px}
+.say.lg svg{width:21px;height:21px}
+.say.playing{background:var(--ai);color:var(--card);border-color:var(--ai)}
+
+.back{margin-top:18px;display:grid;gap:22px}
+.headrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start}
+.headrow .wline{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.midword{font-family:var(--f-mincho);font-weight:800;font-size:40px;line-height:1.2;letter-spacing:.04em}
+.midword rt{font-family:var(--f-jp);font-weight:500;font-size:.34em;letter-spacing:.1em;color:var(--muted)}
+.hv{font-weight:700;letter-spacing:.14em;font-size:13px;color:var(--shu);margin-top:4px}
+.vimean{font-size:20px;font-weight:700;line-height:1.35;margin-top:4px;text-wrap:balance}
+.pic{width:84px;height:84px;border-radius:20px;background:var(--ai-soft);display:grid;place-items:center;font-size:48px;line-height:1}
+.sec h4{margin:0 0 8px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;display:flex;gap:8px;align-items:baseline}
+.sec h4 .jp{letter-spacing:.1em;text-transform:none;font-weight:500}
+.senses{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:s}
+.senses>li{display:grid;gap:8px}
+.senses.multi>li{counter-increment:s;padding-left:30px;position:relative}
+.senses.multi>li::before{content:counter(s);position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;background:var(--ai);color:var(--card);font-size:12px;font-weight:700;display:grid;place-items:center}
+.def{font-family:var(--f-jp);font-weight:700;font-size:16px}
+.def small{display:block;font-family:var(--f-ui);font-weight:500;font-size:13.5px;color:var(--muted)}
+.pts{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.pts li{font-family:var(--f-jp);font-size:13.5px;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:2px 9px}
+.exs{display:grid;gap:10px}
+.ex{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start}
+.ex .jp{font-size:16px;line-height:1.7;white-space:pre-line}
+.ex mark{background:none;color:inherit;text-decoration:underline 2px var(--shu);text-underline-offset:4px;font-weight:700}
+.ex .note{color:var(--muted);font-size:.88em}
+.tr{font-size:14px;color:var(--muted);margin-top:2px;white-space:pre-line}
+.hide-tr .tr{filter:blur(5px);cursor:pointer;user-select:none;transition:filter .15s}
+.hide-tr .tr.show{filter:none}
+.uses{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.uses li{font-family:var(--f-jp);font-size:14.5px;background:var(--soft);border-left:3px solid var(--ai);border-radius:0 8px 8px 0;padding:6px 10px}
+.rels{display:flex;flex-wrap:wrap;gap:8px}
+.rel{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:6px 11px;text-align:left;display:grid;gap:0;max-width:100%}
+.rel b{font-family:var(--f-jp);font-size:15.5px;font-weight:700}
+.rel b small{font-weight:500;color:var(--muted);font-size:12px;margin-left:6px}
+.rel span{font-size:12.5px;color:var(--muted)}
+.rel.indeck{border-color:color-mix(in srgb,var(--ai) 45%,var(--line))}
+.rel.indeck b::after{content:"→";color:var(--ai);margin-left:6px;font-size:12px}
+
+.answer{position:sticky;bottom:env(safe-area-inset-bottom,0px);padding-block:12px;background:linear-gradient(to top,var(--paper) 70%,transparent);z-index:5}
+.reveal{width:100%;border:0;background:var(--ai);color:var(--card);border-radius:14px;padding:15px;font-weight:700;font-size:16px;box-shadow:var(--shadow)}
+.grades{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.grade{border:1px solid transparent;border-radius:14px;padding:10px 4px;display:grid;gap:1px;justify-items:center;font-weight:700;font-size:15px}
+.grade small{font-weight:500;font-size:12px;opacity:.85;font-variant-numeric:tabular-nums}
+.g1{background:var(--again-soft);color:var(--again)} .g2{background:var(--hard-soft);color:var(--hard)}
+.g3{background:var(--good-soft);color:var(--good)} .g4{background:var(--easy-soft);color:var(--easy)}
+.grade:hover{border-color:currentColor}
+.keys{margin-top:8px;text-align:center;font-size:12px;color:var(--muted)}
+.keys kbd{font-family:var(--f-ui);border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 5px;font-size:11px;background:var(--card)}
+@media (hover:none){.keys{display:none}}
+
+.done{text-align:center;padding:48px 20px;display:grid;gap:14px;justify-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px}
+.done .kanji{font-family:var(--f-mincho);font-size:56px;font-weight:800;color:var(--ai);line-height:1}
+.done h2{margin:0;font-size:20px;text-wrap:balance}
+.done p{margin:0;color:var(--muted);max-width:44ch}
+.done .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.primary{border:0;background:var(--ai);color:var(--card);border-radius:11px;padding:9px 16px;font-weight:600}
+
+/* list */
+.listbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.search{flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);border-radius:11px;padding:0 12px}
+.search svg{width:16px;height:16px;color:var(--muted);flex:none}
+.search input{border:0;background:none;padding:9px 0;width:100%;min-width:0;outline:none}
+.summary{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:14px;font-variant-numeric:tabular-nums}
+.summary b{color:var(--ink)}
+.lesson{margin-bottom:18px}
+.lesson header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:6px 2px 8px}
+.lesson h3{margin:0;font-family:var(--f-mincho);font-size:19px;font-weight:800}
+.lesson h3 small{font-family:var(--f-ui);font-size:12.5px;color:var(--muted);font-weight:500;margin-left:6px}
+.prog{flex:1 1 80px;max-width:180px;height:6px;border-radius:99px;background:var(--line);overflow:hidden;display:flex}
+.prog i{display:block;height:100%}
+.prog .p-m{background:var(--good)} .prog .p-y{background:color-mix(in srgb,var(--good) 45%,var(--line))} .prog .p-l{background:var(--again)}
+.lesson .pcount{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.lesson header .ghost{margin-left:auto}
+.rows{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.rowi{display:grid;grid-template-columns:2.4rem 2.2rem minmax(7.5rem,1fr) minmax(0,2fr) 5.6rem 34px;gap:10px;align-items:center;padding:9px 12px;border-top:1px solid var(--line);cursor:pointer}
+.rowi:first-child{border-top:0}
+.rowi:hover{background:var(--soft)}
+.rowi .n{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;font-family:var(--f-jp)}
+.rowi .e{font-size:22px;text-align:center}
+.rowi .w{font-family:var(--f-mincho);font-weight:800;font-size:21px;line-height:1.25;min-width:0}
+.rowi .w rt{font-family:var(--f-jp);font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:.06em}
+.rowi .w .h{display:block;font-family:var(--f-ui);font-weight:700;font-size:10.5px;letter-spacing:.12em;color:var(--shu);margin-top:1px}
+.rowi .m{min-width:0;font-size:14px}
+.hidemean .rowi .m{filter:blur(6px)}
+.hidemean .rowi:hover .m{filter:none}
+.pill{font-size:11.5px;font-weight:600;border-radius:999px;padding:2px 8px;text-align:center;white-space:nowrap;justify-self:start}
+.st-new{background:var(--easy-soft);color:var(--easy)} .st-learn{background:var(--again-soft);color:var(--again)}
+.st-due{background:var(--good-soft);color:var(--good)} .st-young{background:var(--soft);color:var(--muted);border:1px solid var(--line)}
+.st-mature{background:var(--good);color:var(--card)}
+.empty{padding:40px 16px;text-align:center;color:var(--muted)}
+@media (max-width:640px){
+  .rowi{grid-template-columns:2.2rem minmax(0,1fr) auto 34px;grid-template-areas:"e w p s" "e m m m";row-gap:2px;padding:10px 12px}
+  .rowi .n{display:none}
+  .rowi .e{grid-area:e;align-self:start;padding-top:2px}
+  .rowi .w{grid-area:w} .rowi .m{grid-area:m} .rowi .pill{grid-area:p} .rowi .say{grid-area:s}
+  .headrow{grid-template-columns:minmax(0,1fr) auto}
+  .pic{width:64px;height:64px;font-size:36px;border-radius:16px}
+  .midword{font-size:34px}
+  .fc{padding:18px 16px 20px}
+}
+
+/* overlay */
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(10,15,22,.45);display:flex;align-items:flex-end;justify-content:center;padding:env(safe-area-inset-top,0px) 0 0}
+.sheet{background:var(--card);width:100%;max-width:760px;max-height:92%;overflow:auto;border-radius:20px 20px 0 0;padding:18px 20px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:var(--shadow)}
+@media (min-width:700px){.overlay{align-items:center;padding:24px}.sheet{border-radius:20px;max-height:88%}}
+.sheet .bar{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.sheet .bar .meta{padding-left:0;flex:1}
+.sheet .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.form{display:grid;gap:14px}
+.field{display:grid;gap:5px}
+.field label,.field .lbl{font-weight:600;font-size:13.5px}
+.field .help{font-size:12.5px;color:var(--muted)}
+.field input[type=number],.field select,.field textarea{border:1px solid var(--line);background:var(--soft);border-radius:10px;padding:8px 10px;width:100%;max-width:100%}
+.field textarea{min-height:90px;font-family:ui-monospace,Menlo,monospace;font-size:12px}
+.check{display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:4px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.danger{border:1px solid var(--again);color:var(--again);background:none;border-radius:10px;padding:7px 12px;font-weight:600}
+.confirm{background:var(--again-soft);border-radius:10px;padding:10px 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--again);font-weight:600;font-size:13.5px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);border-radius:10px;padding:8px 14px;font-size:13.5px;z-index:60;max-width:calc(100% - 32px)}
+@media (prefers-reduced-motion:no-preference){
+  .fc.flip .back{animation:rise .22s ease-out}
+  @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">語</div>
+      <div class="grow">
+        <h1>Thẻ từ vựng N2</h1>
+        <small>文字語彙「言葉ゲームの漂流記」</small>
+      </div>
+      <span class="sync" id="sync" title="Trạng thái lưu tiến độ"><i></i><span>Lưu trên máy</span></span>
+      <button class="iconbtn" id="btnSettings" aria-label="Cài đặt">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+    </div>
+    <div class="navrow">
+      <div class="seg" role="tablist">
+        <button role="tab" id="tabStudy" aria-selected="true">Ôn tập</button>
+        <button role="tab" id="tabList" aria-selected="false">Danh sách</button>
+      </div>
+      <button class="filterbtn" id="btnFilter" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h18M6 12h12M10 19h4"/></svg>
+        <span id="filterLabel">Tất cả bài</span>
+      </button>
+    </div>
+    <div class="filters" id="filters" hidden>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+        <h3>Bài (課)</h3>
+        <div class="quick" id="quick"></div>
+      </div>
+      <div class="lessongrid" id="lessonChips"></div>
+      <h3>Loại từ</h3>
+      <div class="chips" id="posChips"></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="viewStudy">
+    <div class="crambar" id="cramBar" hidden>
+      <span id="cramText">Luyện tự do</span>
+      <button id="cramExit">Thoát</button>
+    </div>
+    <div class="deckbar" id="deckbar">
+      <div class="counts" id="counts"></div>
+      <div class="tools">
+        <button class="ghost" id="btnUndo" disabled title="Hoàn tác (Z)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>Hoàn tác
+        </button>
+      </div>
+    </div>
+    <div id="stage"></div>
+    <div class="answer" id="answer"></div>
+  </section>
+
+  <section id="viewList" hidden>
+    <div class="listbar">
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Tìm: 評判, ひょうばん, BÌNH PHÁN, đánh giá…" autocomplete="off">
+      </label>
+      <button class="ghost" id="btnHideMean" aria-pressed="false">Che nghĩa</button>
+    </div>
+    <div class="chips" id="statusChips" style="margin-bottom:12px"></div>
+    <div class="summary" id="summary"></div>
+    <div id="lessons"></div>
+  </section>
+</main>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const VOCAB = /*__VOCAB__*/[];
+const $ = s => document.querySelector(s);
+const BY_ID = new Map(VOCAB.map(v => [v.id, v]));
+const BY_WORD = new Map(VOCAB.map(v => [v.w, v]));
+const LESSONS = [...new Set(VOCAB.map(v => v.l))].sort((a, b) => a - b);
+const POS = { n: "Danh từ", vs: "Động từ する", na: "Tính từ な", i: "Tính từ い", adv: "Phó từ" };
+const STATUS = { new: "Mới", learn: "Đang học", due: "Đến hạn", young: "Đã học", mature: "Đã thuộc" };
+const MIN = 60e3, DAY = 864e5, ROLL = 4;
+const LEARN = [1, 10], RELEARN = [10];
+const DEFAULTS = { newPerDay: 20, revPerDay: 200, dir: "jp", readingFront: false, autoplay: true, showTr: true, voice: "", rate: 0.9 };
+const LS_KEY = "n2flash.progress.v1", UI_KEY = "n2flash.ui.v1";
+
+const lsGet = k => { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pad3 = n => String(n).padStart(3, "0");
+
+function normalize(p) {
+  p = p && typeof p === "object" ? p : {};
+  return { cards: p.cards || {}, days: p.days || {}, settings: Object.assign({}, DEFAULTS, p.settings || {}), st: p.st || 0 };
+}
+let P = normalize(lsGet(LS_KEY));
+let UI = Object.assign({ tab: "study", lessons: null, pos: [], status: "all", q: "", hideMean: false }, lsGet(UI_KEY) || {});
+const saveUI = () => lsSet(UI_KEY, UI);
+
+/* ---------- dates ---------- */
+function dayKey(t = Date.now()) {
+  const d = new Date(t - ROLL * 3600e3);
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+function nextDayStart(t = Date.now()) {
+  const d = new Date(t - ROLL * 3600e3);
+  d.setHours(ROLL, 0, 0, 0); d.setDate(d.getDate() + 1);
+  return d.getTime();
+}
+function today() { const k = dayKey(); return P.days[k] || (P.days[k] = { n: 0, r: 0, x: 0 }); }
+
+/* ---------- scheduler (Anki-style SM-2) ---------- */
+function fuzz(i) { return i < 3 ? i : Math.max(2, i + Math.round((Math.random() * 2 - 1) * Math.max(1, i * 0.05))); }
+function graduate(c, ivl, now, fz) { c.q = 2; c.s = 0; c.i = Math.min(36500, fz ? fuzz(ivl) : ivl); c.d = nextDayStart(now) + (c.i - 1) * DAY; }
+function sched(prev, g, now = Date.now(), fz = false) {
+  const c = prev ? { ...prev } : { q: 0, s: 0, d: 0, i: 0, e: 2500, r: 0, l: 0, t: 0 };
+  if (c.e == null) c.e = 2500;
+  c.r = (c.r || 0) + 1; c.t = now;
+  if (!c.q || c.q === 1) {
+    if (!c.q) c.s = 0;
+    if (g === 1) { c.q = 1; c.s = 0; c.d = now + LEARN[0] * MIN; }
+    else if (g === 2) { c.q = 1; const a = LEARN[c.s] || LEARN[0], b = LEARN[c.s + 1]; c.d = now + (c.s === 0 && b ? Math.round((a + b) / 2) : a) * MIN; }
+    else if (g === 3) { if (c.s + 1 >= LEARN.length) graduate(c, 1, now, fz); else { c.q = 1; c.s++; c.d = now + LEARN[c.s] * MIN; } }
+    else graduate(c, 4, now, fz);
+  } else if (c.q === 3) {
+    if (g <= 2) { c.s = 0; c.d = now + RELEARN[0] * MIN; }
+    else graduate(c, Math.max(1, c.i) + (g === 4 ? 1 : 0), now, fz);
+  } else {
+    const e = c.e / 1000, late = Math.max(0, Math.floor((now - c.d) / DAY));
+    if (g === 1) { c.l = (c.l || 0) + 1; c.e = Math.max(1300, c.e - 200); c.q = 3; c.s = 0; c.i = 1; c.d = now + RELEARN[0] * MIN; }
+    else if (g === 2) { c.e = Math.max(1300, c.e - 150); graduate(c, Math.max(c.i + 1, Math.round(c.i * 1.2)), now, fz); }
+    else if (g === 3) graduate(c, Math.max(c.i + 1, Math.round((c.i + late / 2) * e)), now, fz);
+    else { c.e += 150; graduate(c, Math.max(c.i + 2, Math.round((c.i + late) * e * 1.3)), now, fz); }
+  }
+  return c;
+}
+function fmtIvl(c, now) {
+  if (c.q === 2) {
+    const d = c.i;
+    if (d < 30) return d + " ngày";
+    if (d < 365) return String(+(d / 30).toFixed(1)).replace(".", ",") + " tháng";
+    return String(+(d / 365).toFixed(1)).replace(".", ",") + " năm";
+  }
+  const m = Math.round((c.d - now) / MIN);
+  return m < 1 ? "<1 phút" : m < 60 ? m + " phút" : Math.round(m / 60) + " giờ";
+}
+function status(id, now = Date.now()) {
+  const c = P.cards[id];
+  if (!c || !c.q) return "new";
+  if (c.q === 1 || c.q === 3) return "learn";
+  if (c.d <= now) return "due";
+  return c.i >= 21 ? "mature" : "young";
+}
+
+/* ---------- deck / queue ---------- */
+function pool() {
+  const L = UI.lessons ? new Set(UI.lessons) : null;
+  return VOCAB.filter(v => (!L || L.has(v.l)) && (!UI.pos.length || v.pos.some(p => UI.pos.includes(p))));
+}
+const byDue = (a, b) => P.cards[a].d - P.cards[b].d;
+function deck(now = Date.now()) {
+  const T = today(), learnNow = [], learnLater = [], due = [], fresh = [];
+  for (const v of pool()) {
+    const c = P.cards[v.id];
+    if (!c || !c.q) fresh.push(v.id);
+    else if (c.q === 1 || c.q === 3) (c.d <= now ? learnNow : learnLater).push(v.id);
+    else if (c.d <= now) due.push(v.id);
+  }
+  const newLeft = Math.max(0, P.settings.newPerDay + (T.x || 0) - T.n);
+  const revLeft = Math.max(0, P.settings.revPerDay - T.r);
+  return { learnNow: learnNow.sort(byDue), learnLater: learnLater.sort(byDue), due: due.sort(byDue).slice(0, revLeft), fresh: fresh.slice(0, newLeft), freshAll: fresh.length };
+}
+let cur = null, revealed = false, lastId = null, sessionN = 0, undoStack = [], cram = null, waitTimer = null;
+
+function pickNext() {
+  const now = Date.now(), k = deck(now);
+  const avoid = arr => (arr.length > 1 && arr[0] === lastId ? arr[1] : arr[0]);
+  if (k.learnNow.length) { const id = avoid(k.learnNow); if (id !== lastId || (!k.due.length && !k.fresh.length)) return id; }
+  const wantNew = k.fresh.length && (!k.due.length || sessionN % 5 === 4);
+  if (wantNew) return k.fresh[0];
+  if (k.due.length) return avoid(k.due);
+  if (k.learnNow.length) return k.learnNow[0];
+  const soon = k.learnLater.filter(id => P.cards[id].d - now < 20 * MIN);
+  return soon.length ? soon[0] : null;
+}
+
+/* ---------- persistence + sync ---------- */
+let docRef = null, writing = false, dirty = false, saveTimer = null;
+function pruneDays() {
+  const keys = Object.keys(P.days).sort();
+  while (keys.length > 120) delete P.days[keys.shift()];
+}
+function save() {
+  pruneDays(); lsSet(LS_KEY, P);
+  if (docRef) { dirty = true; clearTimeout(saveTimer); saveTimer = setTimeout(flush, 1200); }
+}
+async function flush() {
+  if (!docRef || writing || !dirty) return;
+  writing = true; dirty = false;
+  try { await docRef.set(JSON.parse(JSON.stringify(P))); setSync("ok"); }
+  catch (e) {
+    if (e && e.code === "invalid_argument") { setSync("local"); docRef = null; }
+    else { setSync("err"); dirty = true; }
+  } finally {
+    writing = false;
+    if (dirty && docRef) { clearTimeout(saveTimer); saveTimer = setTimeout(flush, 4000); }
+  }
+}
+function merge(remote) {
+  if (!remote) return false;
+  const R = normalize(remote); let changed = false;
+  for (const [id, c] of Object.entries(R.cards)) {
+    const l = P.cards[id];
+    if (!l || (c.t || 0) > (l.t || 0)) { P.cards[id] = c; changed = true; }
+  }
+  for (const [k, d] of Object.entries(R.days)) {
+    const l = P.days[k];
+    if (!l) { P.days[k] = { ...d }; changed = true; continue; }
+    for (const f of ["n", "r", "x"]) if ((d[f] || 0) > (l[f] || 0)) { l[f] = d[f]; changed = true; }
+  }
+  if ((R.st || 0) > (P.st || 0)) { P.settings = R.settings; P.st = R.st; changed = true; }
+  return changed;
+}
+function localAhead(remote) {
+  const R = normalize(remote);
+  if ((P.st || 0) > (R.st || 0)) return true;
+  for (const [id, c] of Object.entries(P.cards)) { const r = R.cards[id]; if (!r || (c.t || 0) > (r.t || 0)) return true; }
+  return false;
+}
+function setSync(s) {
+  const el = $("#sync"); el.className = "sync " + (s === "ok" ? "ok" : s === "err" ? "err" : "");
+  el.querySelector("span").textContent = s === "ok" ? "Đã đồng bộ" : s === "err" ? "Lỗi đồng bộ" : "Lưu trên máy";
+  el.title = s === "ok" ? "Tiến độ được lưu vào tài khoản của bạn, mở trên máy khác vẫn còn." : s === "err" ? "Không lưu được lên tài khoản. Tiến độ vẫn được giữ trên máy này và sẽ thử lại." : "Tiến độ chỉ được lưu trong trình duyệt này.";
+}
+async function connect() {
+  try {
+    if (!window.claude || !window.claude.use) return;
+    const user = await window.claude.use("user");
+    const uid = user ? await user.id() : null;
+    if (!uid) return;
+    const db = await window.claude.use("db");
+    if (!db) return;
+    const ref = db.doc("data/users/" + uid + "/srs");
+    const snap = await ref.get();
+    const remote = snap.exists ? snap.data() : null;
+    if (remote && merge(remote)) { lsSet(LS_KEY, P); refreshAll(); }
+    docRef = ref; setSync("ok");
+    if (!remote ? Object.keys(P.cards).length || P.st : localAhead(remote)) { dirty = true; flush(); }
+    ref.onSnapshot(s => {
+      if (!s.exists || s.metadata.hasPendingWrites) return;
+      if (merge(s.data())) { lsSet(LS_KEY, P); refreshAll(true); }
+    }, () => setSync("err"));
+  } catch (e) { setSync("err"); }
+}
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") flush(); });
+
+/* ---------- audio ---------- */
+let voices = [];
+function loadVoices() {
+  try { voices = speechSynthesis.getVoices().filter(v => /^ja/i.test(v.lang)); } catch (e) { voices = []; }
+}
+if ("speechSynthesis" in window) { loadVoices(); try { speechSynthesis.addEventListener("voiceschanged", loadVoices); } catch (e) {} }
+function ttsText(t) {
+  return t.replace(/（[^）]*）/g, "").replace(/\([^)]*\)/g, "").replace(/\{[^}]*\}/g, "")
+    .replace(/^[ＡＢAB][：:]\s*/gm, "").replace(/^[ＡＢAB](?=「)/gm, "").replace(/[⇒→⇔≒]/g, "、").replace(/\n/g, "。");
+}
+let playingBtn = null;
+function speak(text, btn) {
+  if (!("speechSynthesis" in window)) { toast("Trình duyệt này không hỗ trợ đọc tiếng Nhật"); return; }
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(ttsText(text));
+    u.lang = "ja-JP"; u.rate = +P.settings.rate || 0.9;
+    const v = voices.find(v => v.name === P.settings.voice) || voices.find(v => /google|kyoko|nanami|otoya|haruka/i.test(v.name)) || voices[0];
+    if (v) u.voice = v;
+    if (playingBtn) playingBtn.classList.remove("playing");
+    if (btn) { btn.classList.add("playing"); playingBtn = btn; }
+    u.onend = u.onerror = () => { if (btn) btn.classList.remove("playing"); };
+    speechSynthesis.speak(u);
+  } catch (e) { toast("Không phát được âm thanh"); }
+}
+const SPK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+const sayBtn = (text, cls = "") => `<button class="say ${cls}" data-say="${esc(text)}" aria-label="Nghe phát âm">${SPK}</button>`;
+
+/* ---------- rendering helpers ---------- */
+const ruby = v => v.w === v.r || !v.r ? esc(v.w) : `<ruby>${esc(v.w)}<rt>${esc(v.r)}</rt></ruby>`;
+function hl(text, v) {
+  let h = esc(text);
+  const keys = [v.w]; if (v.w !== v.r && v.r) keys.push(v.r);
+  for (const k of keys) { const ek = esc(k); if (ek && h.includes(ek)) { h = h.split(ek).join("<mark>" + ek + "</mark>"); break; } }
+  return h.replace(/（[^）]*）/g, m => `<span class="note">${m}</span>`);
+}
+const posTags = v => v.pos.map(p => `<span class="tag">${POS[p] || p}</span>`).join("");
+function details(v) {
+  const multi = v.s.length > 1;
+  const senses = v.s.map(s => `<li>
+      <div class="def jp">${esc(s.ja)}${s.vi ? `<small>${esc(s.vi)}</small>` : ""}</div>
+      ${s.pt && s.pt.length ? `<ul class="pts">${s.pt.map(p => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}
+      <div class="exs">${s.ex.map(e => `<div class="ex">${sayBtn(e[0])}<div><div class="jp">${hl(e[0], v)}</div><div class="tr">${esc(e[1])}</div></div></div>`).join("")}</div>
+    </li>`).join("");
+  const uses = v.use && v.use.length ? `<div class="sec"><h4>Phân biệt <span class="jp">使い分け</span></h4><ul class="uses">${v.use.map(u => `<li>${esc(u)}</li>`).join("")}</ul></div>` : "";
+  const rels = v.rel && v.rel.length ? `<div class="sec"><h4>Từ liên quan <span class="jp">関連語</span></h4><div class="rels">${v.rel.map(r => {
+    const inDeck = BY_WORD.get(r[0]);
+    return `<button class="rel${inDeck && inDeck.id !== v.id ? " indeck" : ""}" data-rel="${esc(r[0])}" data-relr="${esc(r[1] || r[0])}"><b>${esc(r[0])}${r[1] ? `<small>${esc(r[1])}</small>` : ""}</b><span>${esc(r[2])}</span></button>`;
+  }).join("")}</div></div>` : "";
+  return `<div class="sec"><h4>Nghĩa &amp; ví dụ <span class="jp">意味・例文</span></h4><ol class="senses${multi ? " multi" : ""}">${senses}</ol></div>${uses}${rels}`;
+}
+function headBlock(v) {
+  return `<div class="headrow">
+      <div>
+        <div class="wline"><span class="midword">${ruby(v)}</span>${sayBtn(v.r || v.w, "lg")}</div>
+        ${v.hv ? `<div class="hv">${esc(v.hv)}</div>` : ""}
+        <div class="vimean">${esc(v.vi)}</div>
+      </div>
+      <div class="pic" aria-hidden="true">${v.img || ""}</div>
+    </div>`;
+}
+const metaRow = v => `<div class="meta"><span class="no">No.${pad3(v.id)} · 第${v.l}課</span><span class="tags">${posTags(v)}</span></div>`;
+const trClass = () => (P.settings.showTr ? "" : " hide-tr");
+
+/* ---------- study view ---------- */
+let curDir = "jp";
+function renderCounts() {
+  const el = $("#counts");
+  if (cram) { el.innerHTML = ""; return; }
+  const k = deck(), T = today();
+  el.innerHTML = `<span><b class="c-new">${k.fresh.length}</b>Mới</span><span><b class="c-learn">${k.learnNow.length + k.learnLater.length}</b>Đang học</span><span><b class="c-due">${k.due.length}</b>Đến hạn</span><span>Hôm nay: ${T.n + T.r} thẻ</span>`;
+  $("#btnUndo").disabled = !undoStack.length || !!cram;
+}
+function next() {
+  clearTimeout(waitTimer);
+  revealed = false;
+  let id;
+  if (cram) { id = cram.q[0]; } else { id = pickNext(); }
+  cur = id ? BY_ID.get(id) : null;
+  if (cur) { if (!cram) sessionN++; curDir = P.settings.dir === "mix" ? (Math.random() < 0.5 ? "jp" : "vi") : P.settings.dir; }
+  renderStudy();
+}
+function renderStudy() {
+  renderCounts();
+  $("#cramBar").hidden = !cram;
+  if (cram) $("#cramText").textContent = `Luyện tự do · còn ${cram.q.length} thẻ (không ảnh hưởng lịch ôn)`;
+  const stage = $("#stage"), ans = $("#answer");
+  if (!cur) { ans.innerHTML = ""; stage.innerHTML = doneScreen(); return; }
+  const v = cur;
+  let front;
+  if (curDir === "vi") {
+    front = `<div class="front"><div class="emo" aria-hidden="true">${v.img || ""}</div><div class="vi-big">${esc(v.vi)}</div>
+      ${!revealed && v.hv ? `<button class="hintbtn" id="hint">Gợi ý Hán Việt</button>` : ""}</div>`;
+  } else {
+    front = `<div class="front"><div class="bigword">${P.settings.readingFront || revealed ? ruby(v) : esc(v.w)}</div>${sayBtn(v.r || v.w, "lg")}</div>`;
+  }
+  stage.innerHTML = `<article class="fc${revealed ? " flip" : ""}${trClass()}" id="card">${metaRow(v)}${revealed ? `<div class="back">${headBlock(v)}${details(v)}</div>` : front}</article>`;
+  if (!revealed) {
+    ans.innerHTML = `<button class="reveal" id="reveal">Hiện đáp án</button><div class="keys"><kbd>Space</kbd> lật thẻ · <kbd>R</kbd> nghe lại</div>`;
+  } else {
+    const now = Date.now();
+    const labels = ["Lại", "Khó", "Được", "Dễ"];
+    const ivl = g => cram ? (g === 1 ? "lặp lại" : "xong") : fmtIvl(sched(P.cards[v.id] || null, g, now), now);
+    ans.innerHTML = `<div class="grades">${[1, 2, 3, 4].map(g => `<button class="grade g${g}" data-g="${g}">${labels[g - 1]}<small>${ivl(g)}</small></button>`).join("")}</div>
+      <div class="keys"><kbd>1</kbd> Lại · <kbd>2</kbd> Khó · <kbd>3</kbd>/<kbd>Space</kbd> Được · <kbd>4</kbd> Dễ · <kbd>Z</kbd> hoàn tác</div>`;
+  }
+}
+function doneScreen() {
+  const p = pool();
+  if (!p.length) return `<div class="done"><div class="kanji">空</div><h2>Chưa chọn bài nào</h2><p>Mở bộ lọc ở trên và chọn ít nhất một bài để bắt đầu.</p></div>`;
+  if (cram) return "";
+  const k = deck(), now = Date.now();
+  const nextL = k.learnLater.length ? Math.max(1, Math.round((P.cards[k.learnLater[0]].d - now) / MIN)) : 0;
+  if (nextL) { clearTimeout(waitTimer); waitTimer = setTimeout(next, Math.max(5000, P.cards[k.learnLater[0]].d - now - 20 * MIN)); }
+  const moreNew = k.freshAll > 0;
+  return `<div class="done"><div class="kanji">完</div>
+    <h2>Xong phần ôn hôm nay</h2>
+    <p>${nextL ? `Còn ${k.learnLater.length} thẻ đang học, thẻ tiếp theo đến hạn sau khoảng ${nextL} phút.` : moreNew ? `Còn ${k.freshAll} từ mới chưa học trong các bài đang chọn.` : "Bạn đã học hết các từ trong các bài đang chọn."}</p>
+    <div class="row">
+      ${moreNew ? `<button class="primary" id="more10">Học thêm 10 từ mới</button>` : ""}
+      <button class="ghost" id="startCram">Luyện tự do các bài đang chọn</button>
+    </div></div>`;
+}
+function reveal() {
+  if (!cur || revealed) return;
+  revealed = true; renderStudy();
+  if (P.settings.autoplay) speak(cur.r || cur.w, document.querySelector(".headrow .say"));
+}
+function answer(g) {
+  if (!cur || !revealed) return;
+  const id = cur.id;
+  if (cram) {
+    cram.q.shift();
+    if (g === 1) cram.q.splice(Math.min(3, cram.q.length), 0, id);
+    if (!cram.q.length) { cram = null; toast("Đã luyện xong"); }
+    lastId = id; next(); return;
+  }
+  const prev = P.cards[id] || null, T = today(), dk = dayKey();
+  undoStack.push({ id, prev, dk, tPrev: { ...T } });
+  if (undoStack.length > 30) undoStack.shift();
+  if (!prev || !prev.q) T.n++; else if (prev.q === 2) T.r++;
+  P.cards[id] = sched(prev, g, Date.now(), true);
+  save(); lastId = id; next();
+}
+function undo() {
+  const u = undoStack.pop(); if (!u || cram) return;
+  P.cards[u.id] = u.prev ? { ...u.prev, t: Date.now() } : { q: 0, s: 0, d: 0, i: 0, e: 2500, r: 0, l: 0, t: Date.now() };
+  P.days[u.dk] = u.tPrev; save();
+  cur = BY_ID.get(u.id); revealed = false; lastId = null; renderStudy();
+}
+function startCram() {
+  const ids = pool().map(v => v.id);
+  for (let i = ids.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [ids[i], ids[j]] = [ids[j], ids[i]]; }
+  cram = { q: ids }; next();
+}
+
+/* ---------- list view ---------- */
+function matches(v, q) {
+  if (!q) return true;
+  q = q.toLowerCase();
+  return [v.w, v.r, v.hv, v.vi, String(v.id)].some(s => s && s.toLowerCase().includes(q)) || v.rel.some(r => r[0].includes(q));
+}
+function renderList() {
+  const now = Date.now(), q = UI.q.trim();
+  const items = pool().filter(v => matches(v, q) && (UI.status === "all" || status(v.id, now) === UI.status || (UI.status === "known" && ["young", "mature"].includes(status(v.id, now)))));
+  const all = pool(), cnt = { new: 0, learn: 0, due: 0, young: 0, mature: 0 };
+  all.forEach(v => cnt[status(v.id, now)]++);
+  $("#statusChips").innerHTML = [["all", "Tất cả", all.length], ["new", "Mới", cnt.new], ["learn", "Đang học", cnt.learn], ["due", "Đến hạn", cnt.due], ["known", "Đã học", cnt.young + cnt.mature]]
+    .map(([k, l, n]) => `<button class="chip" data-st="${k}" aria-pressed="${UI.status === k}">${l} · ${n}</button>`).join("");
+  $("#summary").innerHTML = `<span><b>${all.length}</b> từ trong bộ lọc</span><span><b>${cnt.young + cnt.mature}</b> đã học</span><span><b>${cnt.mature}</b> đã thuộc (≥ 21 ngày)</span>`;
+  const groups = new Map();
+  for (const v of items) { if (!groups.has(v.l)) groups.set(v.l, []); groups.get(v.l).push(v); }
+  if (!items.length) { $("#lessons").innerHTML = `<div class="empty">Không có từ nào khớp. Thử bỏ bớt bộ lọc hoặc từ khoá.</div>`; return; }
+  let html = "";
+  for (const [l, vs] of groups) {
+    const lv = VOCAB.filter(v => v.l === l), tot = lv.length;
+    const m = lv.filter(v => status(v.id, now) === "mature").length;
+    const y = lv.filter(v => ["young", "due"].includes(status(v.id, now))).length;
+    const ln = lv.filter(v => status(v.id, now) === "learn").length;
+    const first = lv[0].id, last = lv[lv.length - 1].id;
+    html += `<section class="lesson"><header>
+        <h3>第${l}課<small>Bài ${l} · ${pad3(first)}–${pad3(last)}</small></h3>
+        <span class="prog" title="Đã thuộc ${m}, đã học ${y}, đang học ${ln}"><i class="p-m" style="width:${m / tot * 100}%"></i><i class="p-y" style="width:${y / tot * 100}%"></i><i class="p-l" style="width:${ln / tot * 100}%"></i></span>
+        <span class="pcount">${m + y}/${tot}</span>
+        <button class="ghost" data-studyl="${l}">Học bài này</button>
+      </header><ul class="rows">${vs.map(v => {
+        const st = status(v.id, now);
+        return `<li class="rowi" data-open="${v.id}"><span class="n">${pad3(v.id)}</span><span class="e" aria-hidden="true">${v.img || ""}</span>
+          <span class="w">${ruby(v)}${v.hv ? `<span class="h">${esc(v.hv)}</span>` : ""}</span>
+          <span class="m">${esc(v.vi)}</span><span class="pill st-${st}">${STATUS[st]}</span>${sayBtn(v.r || v.w)}</li>`;
+      }).join("")}</ul></section>`;
+  }
+  $("#lessons").innerHTML = html;
+  $("#viewList").classList.toggle("hidemean", UI.hideMean);
+  $("#btnHideMean").setAttribute("aria-pressed", UI.hideMean);
+  $("#btnHideMean").textContent = UI.hideMean ? "Hiện nghĩa" : "Che nghĩa";
+}
+
+/* ---------- detail sheet ---------- */
+function openDetail(id) {
+  const v = BY_ID.get(+id); if (!v) return;
+  const st = status(v.id), c = P.cards[v.id];
+  const dueTxt = c && c.q ? (c.q === 2 ? `Lần ôn tiếp: ${new Date(c.d).toLocaleDateString("vi-VN")} · khoảng cách ${c.i} ngày` : "Đang trong bước học") : "Chưa học";
+  openSheet(`<div class="bar">${metaRow(v)}<button class="iconbtn" data-close aria-label="Đóng"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="${trClass().trim()}" style="display:grid;gap:20px;margin-top:10px">${headBlock(v)}${details(v)}</div>
+    <div class="actions"><span class="pill st-${st}">${STATUS[st]}</span><span style="font-size:13px;color:var(--muted);align-self:center">${dueTxt}</span>
+      <span style="flex:1"></span>
+      ${c && c.q ? `<button class="ghost" data-reset="${v.id}">Đặt lại thành từ mới</button>` : ""}
+      <button class="primary" data-studyone="${v.id}">Học ngay</button></div>`);
+}
+function openSheet(html) { $("#sheet").innerHTML = html; $("#overlay").hidden = false; document.body.style.overflow = "hidden"; }
+function closeSheet() { $("#overlay").hidden = true; document.body.style.overflow = ""; }
+
+/* ---------- settings ---------- */
+function openSettings() {
+  const s = P.settings;
+  const vopts = voices.length ? voices.map(v => `<option value="${esc(v.name)}"${v.name === s.voice ? " selected" : ""}>${esc(v.name)}</option>`).join("") : "";
+  openSheet(`<div class="bar"><h2 style="margin:0;font-size:18px;flex:1">Cài đặt</h2><button class="iconbtn" data-close aria-label="Đóng"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <form class="form" id="setForm">
+    <div class="two">
+      <div class="field"><label for="setNew">Từ mới mỗi ngày</label><input id="setNew" type="number" min="0" max="200" value="${s.newPerDay}"></div>
+      <div class="field"><label for="setRev">Ôn tối đa mỗi ngày</label><input id="setRev" type="number" min="10" max="2000" value="${s.revPerDay}"></div>
+    </div>
+    <div class="field"><label for="setDir">Mặt trước của thẻ</label>
+      <select id="setDir"><option value="jp"${s.dir === "jp" ? " selected" : ""}>Từ tiếng Nhật → đoán nghĩa</option><option value="vi"${s.dir === "vi" ? " selected" : ""}>Nghĩa tiếng Việt → nhớ từ</option><option value="mix"${s.dir === "mix" ? " selected" : ""}>Trộn ngẫu nhiên hai chiều</option></select></div>
+    <label class="check"><input type="checkbox" id="setReading"${s.readingFront ? " checked" : ""}><span>Hiện cách đọc (furigana) ở mặt trước</span></label>
+    <label class="check"><input type="checkbox" id="setAuto"${s.autoplay ? " checked" : ""}><span>Tự đọc từ khi lật thẻ</span></label>
+    <label class="check"><input type="checkbox" id="setTr"${s.showTr ? " checked" : ""}><span>Hiện bản dịch ví dụ <span class="help" style="display:block;color:var(--muted);font-size:12.5px">Khi tắt, bản dịch bị làm mờ, chạm vào để xem.</span></span></label>
+    <div class="two">
+      <div class="field"><label for="setVoice">Giọng đọc</label>
+        ${voices.length ? `<select id="setVoice"><option value="">Tự chọn</option>${vopts}</select>` : `<div class="help">Thiết bị chưa có giọng tiếng Nhật. Trình duyệt sẽ thử đọc bằng giọng mặc định; trên điện thoại, cài thêm giọng 日本語 trong phần Đọc văn bản của hệ thống.</div>`}</div>
+      <div class="field"><label for="setRate">Tốc độ đọc: <span id="rateVal">${s.rate}</span>×</label><input id="setRate" type="range" min="0.5" max="1.3" step="0.05" value="${s.rate}"></div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="ghost" id="testVoice">${SPK}Nghe thử</button><button type="submit" class="primary">Lưu cài đặt</button></div>
+  </form>
+  <div class="form" style="margin-top:22px;padding-top:16px;border-top:1px solid var(--line)">
+    <div class="field"><span class="lbl">Sao lưu tiến độ</span><span class="help">Sao chép đoạn mã tiến độ để cất giữ, hoặc dán mã đã lưu vào ô bên dưới rồi bấm Nhập (gộp với tiến độ hiện tại).</span>
+      <textarea id="backup" spellcheck="false" placeholder='{"cards":{...}}'></textarea>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="ghost" id="copyBackup">Sao chép tiến độ</button><button class="ghost" id="importBackup">Nhập</button></div></div>
+    <div class="field"><span class="lbl">Xoá tiến độ</span><div id="resetZone"><button class="danger" id="resetAll">Xoá toàn bộ tiến độ…</button></div></div>
+  </div>`);
+}
+function saveSettings() {
+  const s = P.settings;
+  s.newPerDay = Math.max(0, Math.min(200, +$("#setNew").value || 0));
+  s.revPerDay = Math.max(10, Math.min(2000, +$("#setRev").value || 200));
+  s.dir = $("#setDir").value; s.readingFront = $("#setReading").checked; s.autoplay = $("#setAuto").checked; s.showTr = $("#setTr").checked;
+  if ($("#setVoice")) s.voice = $("#setVoice").value;
+  s.rate = +$("#setRate").value;
+  P.st = Date.now(); save(); closeSheet(); toast("Đã lưu cài đặt");
+  if (cur && !revealed) curDir = s.dir === "mix" ? curDir : s.dir;
+  refreshAll();
+}
+
+/* ---------- filters ---------- */
+function filterLabel() {
+  let t;
+  if (!UI.lessons) t = `Tất cả ${LESSONS.length} bài`;
+  else if (!UI.lessons.length) t = "Chưa chọn bài";
+  else {
+    const ls = [...UI.lessons].sort((a, b) => a - b), parts = [];
+    let a = ls[0], b = ls[0];
+    for (let i = 1; i <= ls.length; i++) { if (ls[i] === b + 1) b = ls[i]; else { parts.push(a === b ? a : a + "–" + b); a = b = ls[i]; } }
+    t = "Bài " + parts.join(", ");
+  }
+  if (UI.pos.length) t += " · " + UI.pos.map(p => POS[p]).join(", ");
+  return t + ` · ${pool().length} từ`;
+}
+function renderFilters() {
+  const sel = l => !UI.lessons || UI.lessons.includes(l);
+  $("#lessonChips").innerHTML = LESSONS.map(l => `<button class="chip" data-l="${l}" aria-pressed="${sel(l)}" title="Bài ${l}">${l}</button>`).join("");
+  const groups = [];
+  for (let i = 0; i < LESSONS.length; i += 10) groups.push(LESSONS.slice(i, i + 10));
+  $("#quick").innerHTML = `<button data-q="all">Tất cả</button><button data-q="none">Bỏ chọn</button>` + groups.map(g => `<button data-q="${g[0]}-${g[g.length - 1]}">${g[0]}–${g[g.length - 1]}</button>`).join("");
+  const used = [...new Set(VOCAB.flatMap(v => v.pos))];
+  $("#posChips").innerHTML = Object.keys(POS).filter(p => used.includes(p)).map(p => `<button class="chip" data-pos="${p}" aria-pressed="${UI.pos.includes(p)}">${POS[p]}</button>`).join("");
+  $("#filterLabel").textContent = filterLabel();
+}
+function setLessons(ls) {
+  UI.lessons = ls && ls.length === LESSONS.length ? null : ls;
+  saveUI(); onFilterChange();
+}
+function onFilterChange() {
+  renderFilters();
+  if (cram) cram = null;
+  if (UI.tab === "study") { if (!cur || !pool().some(v => v.id === cur.id) || !revealed) next(); else renderCounts(); }
+  else renderList();
+}
+
+/* ---------- tabs + refresh ---------- */
+function setTab(t) {
+  UI.tab = t; saveUI();
+  $("#tabStudy").setAttribute("aria-selected", t === "study"); $("#tabList").setAttribute("aria-selected", t === "list");
+  $("#viewStudy").hidden = t !== "study"; $("#viewList").hidden = t !== "list";
+  if (t === "list") renderList(); else if (!cur) next(); else renderStudy();
+}
+function refreshAll(remote) {
+  renderFilters();
+  if (UI.tab === "list") renderList();
+  if (remote && cur && !revealed && !cram) { const k = deck(); const ok = [...k.learnNow, ...k.due, ...k.fresh].includes(cur.id); if (!ok) { next(); return; } }
+  if (UI.tab === "study") { if (cur) renderStudy(); else next(); }
+}
+let toastT = null;
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => (t.hidden = true), 2200); }
+
+/* ---------- events ---------- */
+document.addEventListener("click", e => {
+  const t = e.target;
+  const say = t.closest("[data-say]");
+  if (say) { e.stopPropagation(); speak(say.dataset.say, say); return; }
+  if (t.closest(".tr") && t.closest(".hide-tr")) { t.closest(".tr").classList.toggle("show"); return; }
+  const rel = t.closest("[data-rel]");
+  if (rel) { const v = BY_WORD.get(rel.dataset.rel); if (v && (!cur || v.id !== cur.id || !$("#overlay").hidden)) openDetail(v.id); else speak(rel.dataset.relr, null); return; }
+  if (t.closest("#reveal")) return reveal();
+  if (t.closest("#hint")) { t.closest("#hint").outerHTML = `<div class="hv" style="font-size:15px">${esc(cur.hv)}</div>`; return; }
+  const g = t.closest("[data-g]"); if (g) return answer(+g.dataset.g);
+  if (t.closest("#btnUndo")) return undo();
+  if (t.closest("#more10")) { today().x = (today().x || 0) + 10; save(); next(); return; }
+  if (t.closest("#startCram")) return startCram();
+  if (t.closest("#cramExit")) { cram = null; next(); return; }
+  if (t.closest("#tabStudy")) return setTab("study");
+  if (t.closest("#tabList")) return setTab("list");
+  if (t.closest("#btnFilter")) { const f = $("#filters"); f.hidden = !f.hidden; $("#btnFilter").setAttribute("aria-expanded", !f.hidden); return; }
+  const lc = t.closest("[data-l]");
+  if (lc) { const l = +lc.dataset.l; let ls = UI.lessons ? [...UI.lessons] : [...LESSONS]; ls = ls.includes(l) ? ls.filter(x => x !== l) : [...ls, l]; return setLessons(ls); }
+  const qk = t.closest("[data-q]");
+  if (qk) { const q = qk.dataset.q; if (q === "all") return setLessons(null); if (q === "none") return setLessons([]); const [a, b] = q.split("-").map(Number); return setLessons(LESSONS.filter(l => l >= a && l <= b)); }
+  const pc = t.closest("[data-pos]");
+  if (pc) { const p = pc.dataset.pos; UI.pos = UI.pos.includes(p) ? UI.pos.filter(x => x !== p) : [...UI.pos, p]; saveUI(); return onFilterChange(); }
+  const sc = t.closest("[data-st]"); if (sc) { UI.status = sc.dataset.st; saveUI(); return renderList(); }
+  if (t.closest("#btnHideMean")) { UI.hideMean = !UI.hideMean; saveUI(); return renderList(); }
+  const sl = t.closest("[data-studyl]"); if (sl) { $("#filters").hidden = true; setLessons([+sl.dataset.studyl]); cur = null; return setTab("study"); }
+  const op = t.closest("[data-open]"); if (op) return openDetail(op.dataset.open);
+  if (t.closest("[data-close]") || t === $("#overlay")) return closeSheet();
+  const so = t.closest("[data-studyone]");
+  if (so) { closeSheet(); cram = { q: [+so.dataset.studyone] }; setTab("study"); next(); return; }
+  const rs = t.closest("[data-reset]");
+  if (rs) { const id = +rs.dataset.reset; P.cards[id] = { q: 0, s: 0, d: 0, i: 0, e: 2500, r: 0, l: 0, t: Date.now() }; save(); closeSheet(); refreshAll(); toast("Đã đặt lại thành từ mới"); return; }
+  if (t.closest("#btnSettings")) return openSettings();
+  if (t.closest("#testVoice")) { P.settings.rate = +$("#setRate").value; const vs = $("#setVoice"); const old = P.settings.voice; if (vs) P.settings.voice = vs.value; speak("評判のいい店が探せて嬉しい！"); P.settings.voice = old; return; }
+  if (t.closest("#copyBackup")) {
+    e.preventDefault(); const txt = JSON.stringify(P); const ta = $("#backup"); ta.value = txt;
+    try { navigator.clipboard.writeText(txt).then(() => toast("Đã sao chép tiến độ"), () => { ta.select(); toast("Đã chọn sẵn, hãy bấm sao chép"); }); } catch (err) { ta.select(); }
+    return;
+  }
+  if (t.closest("#importBackup")) {
+    e.preventDefault();
+    try { const data = JSON.parse($("#backup").value); if (!data || typeof data !== "object" || !data.cards) throw 0;
+      for (const c of Object.values(data.cards)) c.t = Math.max(c.t || 0, Date.now() - 1);
+      merge(data); P.st = Date.now(); save(); closeSheet(); refreshAll(); toast("Đã nhập tiến độ"); }
+    catch (err) { toast("Mã không hợp lệ. Hãy dán đúng đoạn đã sao chép."); }
+    return;
+  }
+  if (t.closest("#resetAll")) { $("#resetZone").innerHTML = `<div class="confirm">Xoá toàn bộ tiến độ trên mọi thiết bị? <button class="danger" id="resetYes">Xoá</button><button class="ghost" id="resetNo">Huỷ</button></div>`; return; }
+  if (t.closest("#resetNo")) { $("#resetZone").innerHTML = `<button class="danger" id="resetAll">Xoá toàn bộ tiến độ…</button>`; return; }
+  if (t.closest("#resetYes")) {
+    const now = Date.now();
+    for (const v of VOCAB) if (P.cards[v.id]) P.cards[v.id] = { q: 0, s: 0, d: 0, i: 0, e: 2500, r: 0, l: 0, t: now };
+    P.days = {}; undoStack = []; save(); closeSheet(); cur = null; refreshAll(); toast("Đã xoá tiến độ"); return;
+  }
+});
+document.addEventListener("submit", e => { if (e.target.id === "setForm") { e.preventDefault(); saveSettings(); } });
+document.addEventListener("input", e => {
+  if (e.target.id === "q") { UI.q = e.target.value; saveUI(); renderList(); }
+  if (e.target.id === "setRate") $("#rateVal").textContent = e.target.value;
+});
+document.addEventListener("keydown", e => {
+  if (!$("#overlay").hidden) { if (e.key === "Escape") closeSheet(); return; }
+  if (UI.tab !== "study" || e.target.closest("input,textarea,select") || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.key === " " || e.key === "Enter") { e.preventDefault(); revealed ? answer(3) : reveal(); }
+  else if (revealed && ["1", "2", "3", "4"].includes(e.key)) answer(+e.key);
+  else if (e.key === "r" || e.key === "R") { if (cur) speak(cur.r || cur.w, document.querySelector(".fc .say.lg")); }
+  else if (e.key === "z" || e.key === "Z") undo();
+});
+
+/* ---------- boot ---------- */
+$("#q").value = UI.q || "";
+renderFilters();
+setTab(UI.tab === "list" ? "list" : "study");
+setSync("local");
+connect();
+</script>
