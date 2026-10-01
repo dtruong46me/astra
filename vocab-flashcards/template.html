@@ -14,6 +14,7 @@
   --f-mincho:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
   --f-jp:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;
   --f-ui:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --c-rev:#2F64B8; --c-new:#C9502F;
   --r:14px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
@@ -21,6 +22,7 @@
   --ai:#93B4E8; --ai-soft:#1D2B3E; --shu:#F08A70; --shu-soft:#3A221D;
   --again:#F08A78; --hard:#E2B15A; --good:#6FCB94; --easy:#86B4F0;
   --again-soft:#3A2220; --hard-soft:#352B19; --good-soft:#1A3326; --easy-soft:#1B2A3E;
+  --c-rev:#5B8EE0; --c-new:#E0694A;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.25); color-scheme:dark;
 }}
 :root[data-theme="dark"]{
@@ -28,6 +30,7 @@
   --ai:#93B4E8; --ai-soft:#1D2B3E; --shu:#F08A70; --shu-soft:#3A221D;
   --again:#F08A78; --hard:#E2B15A; --good:#6FCB94; --easy:#86B4F0;
   --again-soft:#3A2220; --hard-soft:#352B19; --good-soft:#1A3326; --easy-soft:#1B2A3E;
+  --c-rev:#5B8EE0; --c-new:#E0694A;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.25); color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -187,6 +190,43 @@ main.wrap{padding-block:18px 40px}
   .fc{padding:18px 16px 20px}
 }
 
+/* stats */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;min-width:0}
+.tile .k{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.tile .v{font-size:28px;font-weight:700;line-height:1.2;font-variant-numeric:tabular-nums;margin-top:2px}
+.tile .v small{font-size:14px;font-weight:500;color:var(--muted);margin-left:4px}
+.tile .d{font-size:12.5px;color:var(--muted);margin-top:2px}
+.panel{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px 16px;margin-bottom:16px}
+.panelhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:space-between}
+.panelhead h3{margin:0;font-size:15px}
+.legend{display:flex;gap:16px;font-size:12.5px;color:var(--muted);margin:10px 0 4px;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.chartwrap{overflow-x:auto;position:relative;padding-top:6px}
+.chart{position:relative;display:flex;align-items:flex-end;gap:4px;height:210px;padding:18px 26px 0 2px;min-width:100%}
+.chart .grid{position:absolute;left:0;right:0;border-top:1px dashed var(--line);font-size:10.5px;color:var(--muted);pointer-events:none}
+.chart .grid span{position:absolute;right:0;top:-8px;font-variant-numeric:tabular-nums;background:var(--card);padding-left:3px}
+.col{flex:1 1 0;min-width:30px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;position:relative;cursor:default;z-index:1}
+.col .tot{font-size:11.5px;font-weight:600;text-align:center;font-variant-numeric:tabular-nums;margin-bottom:3px}
+.col .seg2{border-radius:4px 4px 0 0;min-height:0}
+.col .seg2+.seg2{border-radius:0;margin-top:0}
+.col .s-new{background:var(--c-new);border-radius:4px 4px 0 0}
+.col .s-rev{background:var(--c-rev)}
+.col .s-new+.s-rev{border-top:2px solid var(--card);border-radius:0}
+.col:hover .seg2,.col.on .seg2{filter:brightness(1.12)}
+.xlabels{display:flex;gap:4px;padding:6px 26px 0 2px;min-width:100%}
+.xlabels span{flex:1 1 0;min-width:30px;text-align:center;font-size:11px;color:var(--muted);line-height:1.25;white-space:nowrap;overflow:hidden}
+.xlabels span.today{color:var(--ink);font-weight:600}
+.tip{position:absolute;z-index:3;background:var(--ink);color:var(--paper);border-radius:8px;padding:6px 9px;font-size:12.5px;pointer-events:none;white-space:nowrap}
+.tip b{display:block;font-size:12px}
+.note2{font-size:12.5px;color:var(--muted);margin:10px 0 0}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums}
+.tbl th,.tbl td{padding:6px 8px;border-top:1px solid var(--line);text-align:right}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl th{color:var(--muted);font-weight:600;font-size:12px;border-top:0}
+details.more summary{cursor:pointer;font-weight:600;font-size:14px}
+details.more[open] summary{margin-bottom:8px}
+
 /* overlay */
 .overlay{position:fixed;inset:0;z-index:50;background:rgba(10,15,22,.45);display:flex;align-items:flex-end;justify-content:center;padding:env(safe-area-inset-top,0px) 0 0}
 .sheet{background:var(--card);width:100%;max-width:760px;max-height:92%;overflow:auto;border-radius:20px 20px 0 0;padding:18px 20px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:var(--shadow)}
@@ -226,6 +266,7 @@ main.wrap{padding-block:18px 40px}
       <div class="seg" role="tablist">
         <button role="tab" id="tabStudy" aria-selected="true">Ôn tập</button>
         <button role="tab" id="tabList" aria-selected="false">Danh sách</button>
+        <button role="tab" id="tabStats" aria-selected="false">Tiến độ</button>
       </div>
       <button class="filterbtn" id="btnFilter" aria-expanded="false">
         <span id="filterLabel">Tất cả bài</span>
@@ -258,6 +299,18 @@ main.wrap{padding-block:18px 40px}
     </div>
     <div id="stage"></div>
     <div class="answer" id="answer"></div>
+  </section>
+
+  <section id="viewStats" hidden>
+    <div class="tiles" id="tiles"></div>
+    <div class="panel">
+      <div class="panelhead"><h3>Số từ cần học mỗi ngày</h3>
+        <div class="seg" id="horizon"><button data-h="7">7 ngày</button><button data-h="14">14 ngày</button><button data-h="30">30 ngày</button></div></div>
+      <div class="legend"><span><i style="background:var(--c-rev)"></i>Ôn lại</span><span><i style="background:var(--c-new)"></i>Từ mới</span></div>
+      <div class="chartwrap" id="chartwrap"></div>
+      <p class="note2" id="fcNote"></p>
+    </div>
+    <div class="panel"><details class="more"><summary>Xem dạng bảng</summary><div style="overflow-x:auto"><table class="tbl" id="fcTable"></table></div></details></div>
   </section>
 
   <section id="viewList" hidden>
@@ -577,6 +630,7 @@ function doneScreen() {
   const moreNew = k.freshAll > 0;
   return `<div class="done">
     <h2>Xong phần ôn hôm nay</h2>
+    <p>Ngày mai: ${(() => { const F = forecast(2); return F.rev[1] + F.nw[1]; })()} từ (${(() => { const F = forecast(2); return F.rev[1] + " ôn lại, " + F.nw[1] + " mới"; })()}). Xem lịch chi tiết ở tab Tiến độ.</p>
     <p>${nextL ? `Còn ${k.learnLater.length} thẻ đang học, thẻ tiếp theo đến hạn sau khoảng ${nextL} phút.` : moreNew ? `Còn ${k.freshAll} từ mới chưa học trong các bài đang chọn.` : "Bạn đã học hết các từ trong các bài đang chọn."}</p>
     <div class="row">
       ${moreNew ? `<button class="primary" id="more10">Học thêm 10 từ mới</button>` : ""}
@@ -656,6 +710,82 @@ function renderList() {
   $("#viewList").classList.toggle("hidemean", UI.hideMean);
   $("#btnHideMean").setAttribute("aria-pressed", UI.hideMean);
   $("#btnHideMean").textContent = UI.hideMean ? "Hiện nghĩa" : "Che nghĩa";
+}
+
+/* ---------- stats / forecast ---------- */
+const WD = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
+function dayLabel(k, start) {
+  if (k === 0) return "Hôm nay";
+  if (k === 1) return "Mai";
+  const d = new Date(start + k * DAY + 12 * 3600e3);
+  return WD[d.getDay()] + " " + d.getDate() + "/" + (d.getMonth() + 1);
+}
+function forecast(H) {
+  const now = Date.now(), start = nextDayStart(now) - DAY, T = today();
+  const rev = new Array(H).fill(0), nw = new Array(H).fill(0);
+  const chain = (k, i, e) => { let g = 0; while (k < H && g++ < 60) { rev[k]++; i = Math.max(i + 1, Math.round(i * e)); k += i; } };
+  let fresh = 0;
+  for (const v of pool()) {
+    const c = P.cards[v.id];
+    if (!c || !c.q) { fresh++; continue; }
+    const e = (c.e || 2500) / 1000;
+    if (c.q === 1) { rev[0]++; chain(1, 1, e); }
+    else if (c.q === 3) { rev[0]++; const i = Math.max(1, c.i || 1); chain(i, i, e); }
+    else chain(Math.max(0, Math.floor((c.d - start) / DAY)), c.i || 1, e);
+  }
+  const per = Math.max(0, P.settings.newPerDay);
+  let left = fresh, lastNewDay = -1;
+  for (let k = 0; k < 3650 && left > 0 && per > 0; k++) {
+    const n = Math.min(left, k === 0 ? Math.max(0, per + (T.x || 0) - T.n) : per);
+    if (n > 0) { left -= n; lastNewDay = k; if (k < H) { nw[k] += n; for (let j = 0; j < n; j++) chain(k + 1, 1, 2.5); } }
+  }
+  return { rev, nw, start, fresh, lastNewDay, T };
+}
+function renderStats() {
+  const H = [7, 14, 30].includes(UI.horizon) ? UI.horizon : 14;
+  document.querySelectorAll("#horizon button").forEach(b => b.setAttribute("aria-selected", +b.dataset.h === H));
+  const F = forecast(Math.max(H, 30)), now = Date.now();
+  const all = pool(); let learned = 0, mature = 0;
+  for (const v of all) { const st = status(v.id, now); if (st !== "new") learned++; if (st === "mature") mature++; }
+  const tot = k => F.rev[k] + F.nw[k];
+  const week = [1, 2, 3, 4, 5, 6, 7].reduce((a, k) => a + tot(k), 0);
+  const finish = F.fresh === 0 ? "Đã học hết từ mới" : F.lastNewDay < 0 ? "Số từ mới mỗi ngày đang là 0" : F.lastNewDay === 0 ? "Xong ngay hôm nay" : "Ngày " + new Date(F.start + F.lastNewDay * DAY + 12 * 3600e3).toLocaleDateString("vi-VN");
+  $("#tiles").innerHTML = `
+    <div class="tile"><div class="k">Hôm nay còn</div><div class="v">${tot(0)}<small>từ</small></div><div class="d">${F.rev[0]} ôn lại · ${F.nw[0]} mới · đã làm ${F.T.n + F.T.r}</div></div>
+    <div class="tile"><div class="k">Ngày mai</div><div class="v">${tot(1)}<small>từ</small></div><div class="d">${F.rev[1]} ôn lại · ${F.nw[1]} mới</div></div>
+    <div class="tile"><div class="k">7 ngày tới</div><div class="v">${week}<small>lượt</small></div><div class="d">Trung bình ${Math.round(week / 7)} từ mỗi ngày</div></div>
+    <div class="tile"><div class="k">Đã học</div><div class="v">${learned}<small>/ ${all.length}</small></div><div class="d">${mature} đã thuộc · học hết từ mới: ${finish}</div></div>`;
+  const max = Math.max(1, ...Array.from({ length: H }, (_, k) => tot(k)));
+  const step = max <= 5 ? 1 : max <= 12 ? 2 : max <= 30 ? 5 : max <= 60 ? 10 : max <= 150 ? 25 : 50;
+  const top = Math.ceil(max / step) * step, PX = 170;
+  let grid = "";
+  for (let g = step; g <= top; g += step) grid += `<div class="grid" style="bottom:${g / top * PX}px"><span>${g}</span></div>`;
+  const showTot = H <= 14;
+  const cols = Array.from({ length: H }, (_, k) => {
+    const r = F.rev[k], n = F.nw[k];
+    return `<div class="col" data-k="${k}">${showTot && r + n ? `<div class="tot">${r + n}</div>` : ""}${n ? `<div class="seg2 s-new" style="height:${n / top * PX}px"></div>` : ""}${r ? `<div class="seg2 s-rev" style="height:${r / top * PX}px"></div>` : ""}</div>`;
+  }).join("");
+  const minW = H * 34 + 28 + "px";
+  $("#chartwrap").innerHTML = `<div class="chart" style="min-width:${minW};height:${PX + 22}px">${grid}${cols}</div>
+    <div class="xlabels" style="min-width:${minW}">${Array.from({ length: H }, (_, k) => `<span class="${k === 0 ? "today" : ""}">${H > 14 && k > 1 && k % 3 !== 0 ? "" : dayLabel(k, F.start).replace(" ", "<br>")}</span>`).join("")}</div>`;
+  $("#chartwrap").dataset.h = H;
+  $("#fcNote").textContent = `Dự kiến theo bộ lọc hiện tại, với ${P.settings.newPerDay} từ mới mỗi ngày và giả sử mỗi lần ôn bạn chọn "Được". Chọn "Lại" nhiều thì số lượt ôn sẽ tăng.`;
+  $("#fcTable").innerHTML = `<tr><th>Ngày</th><th>Ôn lại</th><th>Từ mới</th><th>Tổng</th></tr>` +
+    Array.from({ length: H }, (_, k) => `<tr><td>${dayLabel(k, F.start)}</td><td>${F.rev[k]}</td><td>${F.nw[k]}</td><td><b>${tot(k)}</b></td></tr>`).join("");
+  statsCache = F;
+}
+let statsCache = null;
+function showTip(col) {
+  const wrap = $("#chartwrap"), panel = wrap.closest(".panel"); let tip = panel.querySelector(".tip");
+  wrap.querySelectorAll(".col.on").forEach(c => c.classList.remove("on"));
+  if (!col || !statsCache) { if (tip) tip.remove(); return; }
+  const k = +col.dataset.k, F = statsCache; col.classList.add("on");
+  if (!tip) { tip = document.createElement("div"); tip.className = "tip"; panel.appendChild(tip); }
+  const lbl = k === 0 ? "Hôm nay" : k === 1 ? "Ngày mai" : dayLabel(k, F.start);
+  tip.innerHTML = `<b>${lbl}</b>${F.rev[k]} ôn lại · ${F.nw[k]} mới · tổng ${F.rev[k] + F.nw[k]}`;
+  const cr = col.getBoundingClientRect(), pr = panel.getBoundingClientRect(), wr = wrap.getBoundingClientRect();
+  const w = tip.offsetWidth, x = Math.min(Math.max(cr.left - pr.left + cr.width / 2 - w / 2, 8), pr.width - w - 8);
+  tip.style.left = x + "px"; tip.style.top = (wr.top - pr.top - tip.offsetHeight + 4) + "px";
 }
 
 /* ---------- detail sheet ---------- */
@@ -746,19 +876,21 @@ function onFilterChange() {
   renderFilters();
   if (cram) cram = null;
   if (UI.tab === "study") { if (!cur || !pool().some(v => v.id === cur.id) || !revealed) next(); else renderCounts(); }
+  else if (UI.tab === "stats") renderStats();
   else renderList();
 }
 
 /* ---------- tabs + refresh ---------- */
 function setTab(t) {
   UI.tab = t; saveUI();
-  $("#tabStudy").setAttribute("aria-selected", t === "study"); $("#tabList").setAttribute("aria-selected", t === "list");
-  $("#viewStudy").hidden = t !== "study"; $("#viewList").hidden = t !== "list";
-  if (t === "list") renderList(); else if (!cur) next(); else renderStudy();
+  $("#tabStudy").setAttribute("aria-selected", t === "study"); $("#tabList").setAttribute("aria-selected", t === "list"); $("#tabStats").setAttribute("aria-selected", t === "stats");
+  $("#viewStudy").hidden = t !== "study"; $("#viewList").hidden = t !== "list"; $("#viewStats").hidden = t !== "stats";
+  if (t === "list") renderList(); else if (t === "stats") renderStats(); else if (!cur) next(); else renderStudy();
 }
 function refreshAll(remote) {
   renderFilters();
   if (UI.tab === "list") renderList();
+  if (UI.tab === "stats") renderStats();
   if (remote && cur && !revealed && !cram) { const k = deck(); const ok = [...k.learnNow, ...k.due, ...k.fresh].includes(cur.id); if (!ok) { next(); return; } }
   if (UI.tab === "study") { if (cur) renderStudy(); else next(); }
 }
@@ -782,6 +914,9 @@ document.addEventListener("click", e => {
   if (t.closest("#cramExit")) { cram = null; next(); return; }
   if (t.closest("#tabStudy")) return setTab("study");
   if (t.closest("#tabList")) return setTab("list");
+  if (t.closest("#tabStats")) return setTab("stats");
+  const hz = t.closest("[data-h]"); if (hz) { UI.horizon = +hz.dataset.h; saveUI(); return renderStats(); }
+  const col = t.closest(".col"); if (col) return showTip(col);
   if (t.closest("#btnFilter")) { const f = $("#filters"); f.hidden = !f.hidden; $("#btnFilter").setAttribute("aria-expanded", !f.hidden); return; }
   const lc = t.closest("[data-l]");
   if (lc) { const l = +lc.dataset.l; let ls = UI.lessons ? [...UI.lessons] : [...LESSONS]; ls = ls.includes(l) ? ls.filter(x => x !== l) : [...ls, l]; return setLessons(ls); }
@@ -838,7 +973,9 @@ document.addEventListener("keydown", e => {
 /* ---------- boot ---------- */
 $("#q").value = UI.q || "";
 renderFilters();
-setTab(UI.tab === "list" ? "list" : "study");
+setTab(["list", "stats"].includes(UI.tab) ? UI.tab : "study");
+document.addEventListener("mouseover", e => { const c = e.target.closest && e.target.closest("#chartwrap .col"); if (c) showTip(c); });
+document.addEventListener("mouseout", e => { if (e.target.closest && e.target.closest("#chartwrap .col") && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest("#chartwrap .col"))) showTip(null); });
 setSync("local");
 connect();
 </script>
