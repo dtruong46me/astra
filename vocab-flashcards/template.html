@@ -337,7 +337,7 @@ const $ = s => document.querySelector(s);
 const BY_ID = new Map(VOCAB.map(v => [v.id, v]));
 const BY_WORD = new Map(VOCAB.map(v => [v.w, v]));
 const LESSONS = [...new Set(VOCAB.map(v => v.l))].sort((a, b) => a - b);
-const POS = { n: "Danh từ", vs: "Động từ する", na: "Tính từ な", i: "Tính từ い", adv: "Phó từ" };
+const POS = { n: "Danh từ", v: "Động từ", vs: "Động từ する", na: "Tính từ な", i: "Tính từ い", adv: "Phó từ" };
 const STATUS = { new: "Mới", learn: "Đang học", due: "Đến hạn", young: "Đã học", mature: "Đã thuộc" };
 const MIN = 60e3, DAY = 864e5, ROLL = 4;
 const LEARN = [1, 10], RELEARN = [10];
