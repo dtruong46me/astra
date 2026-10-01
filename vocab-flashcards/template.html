@@ -375,7 +375,7 @@ function graduate(c, ivl, now, fz) { c.q = 2; c.s = 0; c.i = Math.min(36500, fz 
 function sched(prev, g, now = Date.now(), fz = false) {
   const c = prev ? { ...prev } : { q: 0, s: 0, d: 0, i: 0, e: 2500, r: 0, l: 0, t: 0 };
   if (c.e == null) c.e = 2500;
-  c.r = (c.r || 0) + 1; c.t = now;
+  c.r = (c.r || 0) + 1; c.t = now; c.v = 2;
   if (!c.q || c.q === 1) {
     if (!c.q) c.s = 0;
     if (g === 1) { c.q = 1; c.s = 0; c.d = now + LEARN[0] * MIN; }
@@ -387,11 +387,11 @@ function sched(prev, g, now = Date.now(), fz = false) {
     else graduate(c, Math.max(1, c.i) + (g === 4 ? 1 : 0), now, fz);
   } else {
     const e = c.e / 1000, late = Math.max(0, Math.floor((now - c.d) / DAY));
-    if (g === 1) { c.l = (c.l || 0) + 1; c.e = Math.max(1300, c.e - 200); c.q = 3; c.s = 0; c.i = 1; c.d = now + RELEARN[0] * MIN; }
     const hard = Math.max(c.i + 1, Math.round(c.i * 1.2));
     const good = Math.max(hard + 1, Math.round((c.i + late / 2) * e));
     const easy = Math.max(good + 1, Math.round((c.i + late) * e * 1.3));
-    if (g === 2) { c.e = Math.max(1300, c.e - 150); graduate(c, hard, now, fz); }
+    if (g === 1) { c.l = (c.l || 0) + 1; c.e = Math.max(1300, c.e - 200); c.q = 3; c.s = 0; c.i = 1; c.d = now + RELEARN[0] * MIN; }
+    else if (g === 2) { c.e = Math.max(1300, c.e - 150); graduate(c, hard, now, fz); }
     else if (g === 3) graduate(c, good, now, fz);
     else { c.e += 150; graduate(c, easy, now, fz); }
   }
@@ -500,7 +500,19 @@ function setSync(s) {
   el.querySelector("span").textContent = s === "ok" ? "Đã đồng bộ" : s === "err" ? "Lỗi đồng bộ" : "Lưu trên máy";
   el.title = s === "ok" ? "Tiến độ được lưu vào tài khoản của bạn, mở trên máy khác vẫn còn." : s === "err" ? "Không lưu được lên tài khoản. Tiến độ vẫn được giữ trên máy này và sẽ thử lại." : "Tiến độ chỉ được lưu trong trình duyệt này.";
 }
-function endBoot() { if (!booting) return; booting = false; refreshAll(); }
+// Between 2026-10-01 13:20 UTC and the fix, "Lại" on a review card fell through to the "Dễ" branch,
+// sending a forgotten word ~4 days out. Those cards (lapse counted, graded by the old scheduler in that window)
+// are made due again now with a 1-day interval, so they come back for review.
+const BUG_FROM = Date.UTC(2026, 9, 1, 13, 20);
+function repairAgainBug() {
+  const now = Date.now(); let n = 0;
+  for (const c of Object.values(P.cards)) {
+    if (c.q === 2 && !c.v && (c.t || 0) >= BUG_FROM && (c.l || 0) > 0 && c.d > now) { c.i = 1; c.d = now; n++; }
+  }
+  if (n) save();
+  return n;
+}
+function endBoot() { if (!booting) return; booting = false; repairAgainBug(); refreshAll(); }
 async function connect() {
   setTimeout(endBoot, 5000);
   try {
