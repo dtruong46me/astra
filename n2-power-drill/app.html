@@ -1,5 +1,5 @@
-<title>パワードリル N2 文字・語彙</title>
-<meta name="description" content="Luyện đề 日本語パワードリル N2 文字・語彙: tự làm, xem đáp án, giải thích tiếng Việt, bảng từ vựng Hán Việt và flashcard.">
+<title>パワードリル N2</title>
+<meta name="description" content="Luyện đề 日本語パワードリル N2 文字・語彙 và 文法: tự làm, xem đáp án, giải thích tiếng Việt, bảng từ vựng Hán Việt, bảng mẫu ngữ pháp và flashcard.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
@@ -47,8 +47,10 @@ a{color:var(--ai)}
 .brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:inherit;margin-right:auto}
 .brand b{font-family:var(--f-disp);font-weight:800;font-size:18px;letter-spacing:.02em}
 .brand span{font-size:12px;opacity:.8;letter-spacing:.06em}
-.tabs{display:flex;gap:2px}
-.tabs button{background:transparent;border:0;color:inherit;padding:6px 12px;border-radius:999px;font-weight:600;font-size:14px;opacity:.8}
+.brand b .bl{font-size:inherit;opacity:1;letter-spacing:inherit}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{white-space:nowrap;background:transparent;border:0;color:inherit;padding:6px 12px;border-radius:999px;font-weight:600;font-size:14px;opacity:.8}
 .tabs button[aria-current="page"]{background:var(--mast-ink);color:var(--mast);opacity:1}
 .sync{font-size:11px;letter-spacing:.04em;opacity:.85;display:flex;align-items:center;gap:5px;white-space:nowrap}
 .sync i{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.6}
@@ -140,6 +142,7 @@ details.exp summary::before{content:"";width:7px;height:7px;border-right:2px sol
 details.exp[open] summary::before{transform:rotate(45deg)}
 .xb{display:grid;gap:10px;padding:8px 0 4px}
 .xr{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;font-size:14px}
+.xr>*{min-width:0}
 .xr>b{font-size:12px;color:var(--muted);font-weight:600;padding-top:2px}
 .xr .jp{font-size:15px}
 .xr ol{margin:0;padding-left:18px}
@@ -192,7 +195,7 @@ select.sel{border:1px solid var(--line2);background:var(--card);color:var(--ink)
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);min-height:280px;display:grid;place-items:center;text-align:center;padding:28px 18px;cursor:pointer;user-select:none;position:relative}
 .card .big{font-family:var(--f-disp);font-weight:800;font-size:clamp(40px,11vw,72px);line-height:1.15;overflow-wrap:anywhere}
 .card .bigvi{font-size:clamp(22px,5vw,30px);font-weight:600;max-width:24ch}
-.card .back{display:grid;gap:6px;margin-top:14px}
+.card .cback{display:grid;gap:6px;margin-top:14px}
 .card .rd{font-family:var(--f-jp);font-size:22px}
 .card .hv{color:var(--shu);font-weight:700;letter-spacing:.08em;font-size:13px}
 .card .mn{font-size:18px}
@@ -210,29 +213,71 @@ select.sel{border:1px solid var(--line2);background:var(--card);color:var(--ink)
 .foot{margin-top:40px;font-size:12px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .note{font-size:12px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-top:10px}
 
+/* grammar book */
+.muted{color:var(--muted)}
+.slot{display:inline-block;min-width:3.6em;border-bottom:1.5px solid var(--ink);margin:0 3px;text-align:center;line-height:1.5;vertical-align:baseline}
+.slot.st{color:var(--shu);font-weight:700}
+.slot.f{min-width:0;padding:0 4px;color:var(--ink);font-weight:500}
+.slot.f.st{background:var(--ok-soft);color:var(--ok);font-weight:700;border-bottom-color:var(--ok);position:relative}
+.slot.f.st em{font-style:normal;font-size:10px;position:absolute;top:-11px;left:50%;transform:translateX(-50%);color:var(--shu)}
+.passage{background:var(--card);border:1px solid var(--line2);border-radius:var(--r);padding:14px 16px;font-size:16px;line-height:1.95;margin-top:6px}
+.passage p{margin:0 0 6px;text-indent:1em}
+.passage .src{font-size:12px;color:var(--muted);text-align:right;margin-top:6px}
+.pbox{display:inline-block;border:1.5px solid var(--ink);min-width:2.4em;text-align:center;font-family:var(--f-ui);font-size:12px;font-weight:700;line-height:1.45;padding:0 4px;margin:0 2px;text-indent:0;border-radius:2px}
+.pbox.f{border-color:var(--ok);background:var(--ok-soft);color:var(--ok);font-family:var(--f-jp);font-size:15px;min-width:0}
+.pbox.f i{font-style:normal;font-size:10px;font-family:var(--f-ui);margin-right:4px;opacity:.75}
+details.pv{border-top:0;margin-top:4px}
+ol.oe{margin:0;padding-left:20px}
+ol.oe li{margin-bottom:3px}
+ol.oe li.okli b{color:var(--ok)}
+table.gt{min-width:520px}
+.gt .p{font-family:var(--f-jp);font-size:16px;font-weight:700;white-space:nowrap}
+.gt .cn{font-family:var(--f-jp);font-size:12.5px;color:var(--muted)}
+.gt .ex{font-family:var(--f-jp);font-size:13px;color:var(--muted);margin-top:2px}
+.mini .gt .p{font-size:14px;white-space:normal}
+.mo{display:none}
+.card .bigg{font-family:var(--f-disp);font-weight:800;font-size:clamp(28px,7.5vw,46px);line-height:1.25;overflow-wrap:anywhere}
+.card .cn{font-family:var(--f-jp);font-size:15px;color:var(--muted)}
+.card .exs{font-family:var(--f-jp);font-size:15px;max-width:34ch;margin-inline:auto}
+.card .exv{font-size:13px;color:var(--muted);max-width:40ch;margin-inline:auto}
+.booktag{font-size:11px;font-weight:700;border-radius:4px;padding:1px 6px;background:var(--ai-soft);color:var(--ai);margin-right:6px;vertical-align:2px}
+
 @media (max-width:640px){
   .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .opts{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .xr{grid-template-columns:1fr;gap:2px}
+  .xr{grid-template-columns:minmax(0,1fr);gap:2px}
+  .gt .dk{display:none}
+  .gt .mo{display:block}
+  table.gt{min-width:0}
+  .gt .p{white-space:normal;min-width:5.5em}
   .brand span{display:none}
+  .brand b .bl{display:none}
+  .tabs button{padding:6px 8px}
   .sync span{display:none}
-  .tabs button{padding:6px 9px;font-size:13px}
+  .tabs button{padding:6px 8px;font-size:13px}
   .top .wrap{gap:8px;flex-wrap:nowrap}
   .brand b{font-size:16px}
   .qt{font-size:16px}
   .uhead{grid-template-columns:1fr}
   .scorebox{display:none}
 }
+@media (max-width:400px){
+  .tabs{gap:0}
+  .tabs button{padding:6px 6px;font-size:12.5px}
+  .top .wrap{gap:6px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#home" data-go="home"><b>パワードリル N2</b><span>文字・語彙</span></a>
+    <a class="brand" href="#home" data-go="home"><b><span class="bl">パワードリル </span>N2</b><span>語彙 · 文法</span></a>
     <nav class="tabs" aria-label="Chính">
-      <button data-go="home">Bài tập</button>
+      <button data-go="home" title="Bài tập sách 文字・語彙">語彙</button>
+      <button data-go="bunpou" title="Bài tập sách 文法">文法</button>
       <button data-go="vocab">Từ vựng</button>
-      <button data-go="flash">Flashcard</button>
+      <button data-go="grammar">Ngữ pháp</button>
+      <button data-go="flash">Thẻ</button>
     </nav>
     <div class="sync" id="sync" title="Trạng thái lưu tiến độ"><i></i><span>Lưu trên máy này</span></div>
   </div>
@@ -248,8 +293,13 @@ const D=[];
 (function(){
 "use strict";
 // ---------- data prep ----------
-const UNITS=D.slice().sort((a,b)=>parseInt(a.pages)-parseInt(b.pages));
+D.forEach(u=>{u.book=u.book||"v";});
+const BORD={v:0,g:1};
+const UNITS=D.slice().sort((a,b)=>BORD[a.book]-BORD[b.book]||parseInt(a.pages)-parseInt(b.pages));
 const BYID={};UNITS.forEach(u=>BYID[u.id]=u);
+const BOOKU={v:UNITS.filter(u=>u.book==="v"),g:UNITS.filter(u=>u.book==="g")};
+const BOOKN={v:"文字・語彙",g:"文法"};
+const AB="ab";
 const SEC={
  1:{jp:"問題1",nm:"漢字読み",vi:"Cách đọc Kanji",ins:"＿＿の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。",pt:1},
  2:{jp:"問題2",nm:"表記",vi:"Viết bằng Kanji",ins:"＿＿の言葉を漢字で書くとき、最もよいものを1・2・3・4から一つ選びなさい。",pt:1},
@@ -257,22 +307,37 @@ const SEC={
  4:{jp:"問題4",nm:"語形成",vi:"Cấu tạo từ",ins:"（　）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。",pt:1},
  5:{jp:"問題5",nm:"言い換え類義",vi:"Từ gần nghĩa",ins:"＿＿の言葉に意味が最も近いものを、1・2・3・4から一つ選びなさい。",pt:1},
  6:{jp:"問題6",nm:"用法",vi:"Cách dùng từ",ins:"次の言葉の使い方として最もよいものを、1・2・3・4から一つ選びなさい。",pt:2},
- 7:{jp:"",nm:"",vi:"",ins:"（　）の中のaとbのうち、文に合うほうを選びましょう。",pt:1}
+ 7:{jp:"",nm:"",vi:"",ins:"（　）の中のaとbのうち、文に合うほうを選びましょう。",pt:1},
+ 11:{jp:"問題1",nm:"文法形式の判断",vi:"Chọn mẫu ngữ pháp",ins:"次の文の（　）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。",pt:1},
+ 12:{jp:"問題2",nm:"文の組み立て",vi:"Sắp xếp câu ★",ins:"次の文の ＿★＿ に入る最もよいものを、1・2・3・4から一つ選びなさい。",pt:1},
+ 13:{jp:"問題3",nm:"文章の文法",vi:"Ngữ pháp đoạn văn",ins:"",pt:2},
+ 17:{jp:"",nm:"",vi:"",ins:"（　）の中のaとbのうち、文に合うほうを選びましょう。",pt:1}
 };
 const TAGN={c:"Hay thi",r:"Nhận diện"};
-const VOC=new Map(); // key -> entry
-UNITS.forEach(u=>{u.total=0;u.maxPt=0;u.vkeys=[];const seen=new Set();
+function stripVN(s){return s.normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d").replace(/Đ/g,"D").toLowerCase();}
+function fillBlanks(t,ans){const n=(t.match(/（　）/g)||[]).length;const parts=String(ans).split("／");let i=0;
+ return t.replace(/（　）/g,()=>n>1&&parts.length===n?parts[i++]:ans);}
+const fullStar=q=>q.q.replace("〔★〕",q.ord.map(n=>q.o[n-1]).join(""));
+const VOC=new Map(),GRM=new Map(); // key -> entry
+UNITS.forEach(u=>{u.total=0;u.maxPt=0;u.vkeys=[];u.gkeys=[];const seen=new Set(),gseen=new Set();
  u.secs.forEach((s,si)=>s.qs.forEach((q,qi)=>{q.id=si+"-"+qi;u.total++;u.maxPt+=SEC[s.t].pt;
-  q.vk=q.v.map(v=>{const k=v[0]+"|"+v[1];let e=VOC.get(k);
-   if(!e){e={k,w:v[0],r:v[1],hv:v[2],m:v[3],tag:v[4],units:[]};VOC.set(k,e);}
+  q.vk=(q.v||[]).map(v=>{const k=v[0]+"|"+v[1];let e=VOC.get(k);
+   if(!e){e={k,kind:"v",w:v[0],r:v[1],hv:v[2],m:v[3],tag:v[4],units:[],hay:v[0]+" "+v[1]+" "+stripVN(v[2]+" "+v[3])};VOC.set(k,e);}
    if(!e.units.includes(u.id))e.units.push(u.id);
    if(!seen.has(k)){seen.add(k);u.vkeys.push(k);} return k;});
+  q.gk=(q.gp||[]).map((g,gi)=>{const k="g:"+g[0];let e=GRM.get(k);
+   if(!e){e={k,kind:"g",p:g[0],c:g[1],m:g[2],tag:g[3],units:[],ex:"",exvi:"",exp:0,hay:g[0]+" "+g[1]+" "+stripVN(g[2])};GRM.set(k,e);}
+   if(!e.units.includes(u.id))e.units.push(u.id);
+   if(gi===0){const pr=(s.t===11||s.t===17)?2:s.t===12?1:0;
+    if(pr>e.exp){e.exp=pr;e.ex=(s.t===12?fullStar(q):fillBlanks(q.q,q.o[q.a-1])).replace(/\n/g," ");e.exvi=q.vi||"";e.exu=u.id;}}
+   if(!gseen.has(k)){gseen.add(k);u.gkeys.push(k);} return k;});
  }));});
-const ALLV=[...VOC.values()];
+const ALLV=[...VOC.values()],ALLG=[...GRM.values()];
+const ENT=k=>VOC.get(k)||GRM.get(k);
 
 // ---------- state ----------
 const LS="n2pd.v1";
-function blank(){return {v:1,units:{},favs:{},tags:{},srs:{},prefs:{mode:{},vf:"all",fdir:"jp",fsrc:"fav"}}}
+function blank(){return {v:1,units:{},favs:{},tags:{},srs:{},prefs:{mode:{},vf:"all",gf:"all",fdir:"jp",fsrc:"fav"}}}
 let S=blank();
 try{const raw=localStorage.getItem(LS);if(raw){const p=JSON.parse(raw);if(p&&p.v===1)S=Object.assign(blank(),p);S.prefs=Object.assign(blank().prefs,S.prefs||{});}}catch(e){}
 function U(id){return S.units[id]||(S.units[id]={ans:{},sub:false,score:null,best:null,time:0,ts:0});}
@@ -281,7 +346,7 @@ function save(remote=true){try{localStorage.setItem(LS,JSON.stringify(S));}catch
  if(remote&&sync.ref){clearTimeout(saveT);saveT=setTimeout(pushRemote,1500);}}
 const now=()=>Date.now();
 const isFav=k=>!!(S.favs[k]&&S.favs[k].on);
-const tagOf=k=>(S.tags[k]&&S.tags[k].v)||VOC.get(k).tag;
+const tagOf=k=>(S.tags[k]&&S.tags[k].v)||ENT(k).tag;
 function toggleFav(k){const on=!isFav(k);S.favs[k]={on:on?1:0,ts:now()};save();}
 function toggleTag(k){const v=tagOf(k)==="c"?"r":"c";S.tags[k]={v,ts:now()};save();}
 
@@ -303,7 +368,7 @@ async function initSync(tries=0){
   const ref=db.doc("data/users/"+uid+"/state");
   const snap=await ref.get();
   if(snap.exists)mergeRemote(snap.data());
-  sync.ref=ref;save(false);setSync(true,"Đã đồng bộ tài khoản");render();
+  sync.ref=ref;save(false);setSync(true,"Đã đồng bộ tài khoản");keepRender();
   pushRemote();
  }catch(e){setSync(false,"Lưu trên máy này");}
 }
@@ -313,19 +378,28 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const STAR='<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>';
 const SPK='<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>';
 function fmtQ(t,fill){let h=esc(t).replace(/\{([^}]*)\}/g,"<u>$1</u>");
- h=h.replace(/（　）/g,fill!=null?'（<span class="fill">'+esc(fill)+'</span>）':'<span class="blank">（　　）</span>');return h;}
+ const n=(t.match(/（　）/g)||[]).length;const parts=fill!=null?String(fill).split("／"):null;let i=0;
+ h=h.replace(/（　）/g,()=>{if(fill==null)return '<span class="blank">（　　）</span>';const f=n>1&&parts.length===n?parts[i++]:fill;return '（<span class="fill">'+esc(f)+'</span>）';});
+ return h.replace(/\n/g,"<br>");}
 const fmtO=t=>esc(t).replace(/\{([^}]*)\}/g,"<u>$1</u>");
+function starQ(q,show){const [a,b]=esc(q.q).split("〔★〕");let sl="";
+ for(let i=0;i<4;i++){const st=i===2;
+  sl+=show?`<span class="slot f${st?" st":""}">${st?"<em>★</em>":""}${esc(q.o[q.ord[i]-1])}</span>`:`<span class="slot${st?" st":""}">${st?"★":""}</span>`;}
+ return (a+sl+(b||"")).replace(/\n/g,"<br>");}
 const mmss=s=>{s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");};
 function unitLabel(u){return u.kind==="round"?u.title:"集中"+u.title.slice(-1)}
+const unitRef=u=>(u.book==="g"?"文·":"")+unitLabel(u);
+const ulinks=ids=>ids.map(id=>`<a href="#${id}">${esc(unitRef(BYID[id]))}</a>`).join("");
 function scoreOf(u,ans){let pt=0,ok=0;u.secs.forEach(s=>s.qs.forEach(q=>{if(ans[q.id]===q.a){ok++;pt+=SEC[s.t].pt;}}));return {pt,ok};}
 function answered(u){const a=U(u.id).ans;return Object.keys(a).length;}
-function stripVN(s){return s.normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d").replace(/Đ/g,"D").toLowerCase();}
 
 // ---------- routing ----------
-let route={v:"home",id:null};
+let route={v:"home",book:"v"};
 function parseHash(){const h=(location.hash||"").replace("#","");
- if(BYID[h])return {v:"unit",id:h};if(h==="vocab"||h==="flash")return {v:h};return {v:"home"};}
-function go(v,id){const h=id||v;if(location.hash!=="#"+h)location.hash=h;else{route=parseHash();render();}}
+ if(BYID[h])return {v:"unit",id:h,book:BYID[h].book};
+ if(h==="bunpou")return {v:"home",book:"g"};
+ if(h==="vocab"||h==="flash"||h==="grammar")return {v:h};return {v:"home",book:"v"};}
+function go(h){if(location.hash!=="#"+h)location.hash=h;else{route=parseHash();render();}}
 window.addEventListener("hashchange",()=>{leaveUnit();route=parseHash();render();window.scrollTo(0,0);});
 
 // ---------- timer ----------
@@ -339,28 +413,34 @@ const mode=id=>S.prefs.mode[id]||"self";
 
 // ---------- render ----------
 const V=document.getElementById("view"),DOCK=document.getElementById("dock");
-function render(){document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-current",b.dataset.go===(route.v==="unit"?"home":route.v)?"page":"false"));
+function tabOf(){if(route.v==="home"||route.v==="unit")return route.book==="g"?"bunpou":"home";return route.v;}
+function render(){const tab=tabOf();document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-current",b.dataset.go===tab?"page":"false"));
  DOCK.hidden=true;
- if(route.v==="unit")renderUnit(BYID[route.id]);else if(route.v==="vocab")renderVocab();else if(route.v==="flash")renderFlash();else renderHome();}
+ if(route.v==="unit")renderUnit(BYID[route.id]);else if(route.v==="vocab")renderVocab();else if(route.v==="grammar")renderGrammar();else if(route.v==="flash")renderFlash();else renderHome(route.book||"v");}
 
-function renderHome(){
- const rounds=UNITS;let done=0,pctSum=0,qa=0;
- rounds.forEach(u=>{const st=S.units[u.id];if(st){qa+=Object.keys(st.ans||{}).length;if(st.sub){done++;pctSum+=(st.score||0)/u.maxPt;}}});
- const favN=Object.values(S.favs).filter(f=>f.on).length;
- const next=UNITS.find(u=>!(S.units[u.id]&&S.units[u.id].sub))||UNITS[0];
- let h=`<section class="hero"><div class="eyebrow">日本語能力試験対策 · Sách luyện đề</div>
- <h1 class="jp">日本語パワードリル<br>N2 文字・語彙</h1>
- <p>30 回 × 18 câu theo đúng dạng đề JLPT N2 phần Chữ – Từ vựng, cùng 10 bài 集中トレーニング. Tự làm có bấm giờ, chấm điểm theo thang 20 của sách, xem đáp án kèm dịch nghĩa, giải thích, Hán Việt.</p>
+const HERO={
+ v:{h:"日本語パワードリル<br>N2 文字・語彙",p:"30 回 × 18 câu theo đúng dạng đề JLPT N2 phần Chữ – Từ vựng, cùng 10 bài 集中トレーニング. Tự làm có bấm giờ, chấm điểm theo thang 20 của sách, xem đáp án kèm dịch nghĩa, giải thích, Hán Việt."},
+ g:{h:"日本語パワードリル<br>N2 文法",p:"30 回 theo đúng dạng đề JLPT N2 phần Ngữ pháp: chọn mẫu ngữ pháp, sắp xếp câu ★, ngữ pháp đoạn văn — cùng 10 bài 集中トレーニング. Xem đáp án kèm dịch nghĩa, phân tích từng lựa chọn, mẫu ngữ pháp và từ vựng."}
+};
+function renderHome(book){
+ const list=BOOKU[book];let done=0,pctSum=0,qa=0;
+ list.forEach(u=>{const st=S.units[u.id];if(st){qa+=Object.keys(st.ans||{}).length;if(st.sub){done++;pctSum+=(st.score||0)/u.maxPt;}}});
+ const favN=(book==="g"?ALLG:ALLV).filter(e=>isFav(e.k)).length;
+ const next=list.find(u=>!(S.units[u.id]&&S.units[u.id].sub))||list[0];
+ let h=`<section class="hero"><div class="eyebrow">日本語能力試験対策 · Sách luyện đề ${BOOKN[book]}</div>
+ <h1 class="jp">${HERO[book].h}</h1>
+ <p>${HERO[book].p}</p>
  <div class="stats">
-  <div class="stat"><b>${done}<small style="font-size:13px;color:var(--muted)"> / ${UNITS.length}</small></b><span>Bài đã chấm</span></div>
+  <div class="stat"><b>${done}<small style="font-size:13px;color:var(--muted)"> / ${list.length}</small></b><span>Bài đã chấm</span></div>
   <div class="stat"><b>${done?Math.round(pctSum/done*100)+"%":"—"}</b><span>Điểm trung bình</span></div>
   <div class="stat"><b>${qa}</b><span>Câu đã trả lời</span></div>
-  <div class="stat"><b>${favN}</b><span>Từ yêu thích</span></div>
+  <div class="stat"><b>${favN}</b><span>${book==="g"?"Mẫu NP yêu thích":"Từ yêu thích"}</span></div>
  </div>
  <div class="continue"><button class="btn pri" data-open="${next.id}">${(S.units[next.id]&&answered(next))?"Tiếp tục":"Bắt đầu"} ${esc(unitLabel(next))} →</button>
- <button class="btn" data-go="flash">Ôn flashcard</button></div></section>`;
+ <button class="btn" data-go="${book==="g"?"grammar":"vocab"}">${book==="g"?"Bảng ngữ pháp":"Bảng từ vựng"}</button>
+ <button class="btn" data-fsrc="${book==="g"?"gfav":"fav"}">Ôn flashcard</button></div></section>`;
  // groups: every chunk ending with trainings
- const groups=[];let cur=[];UNITS.forEach((u,i)=>{cur.push(u);const nx=UNITS[i+1];if(u.kind==="train"&&(!nx||nx.kind==="round")){groups.push(cur);cur=[];}});if(cur.length)groups.push(cur);
+ const groups=[];let cur=[];list.forEach((u,i)=>{cur.push(u);const nx=list[i+1];if(u.kind==="train"&&(!nx||nx.kind==="round")){groups.push(cur);cur=[];}});if(cur.length)groups.push(cur);
  groups.forEach((g,gi)=>{const r=g.filter(u=>u.kind==="round");
   h+=`<section class="stage"><h2>Chặng ${gi+1}${r.length?` · 第${r[0].no}〜${r[r.length-1].no}回`:""}</h2><div class="grid">`;
   g.forEach(u=>{const st=S.units[u.id];const an=st?Object.keys(st.ans||{}).length:0;
@@ -371,131 +451,191 @@ function renderHome(){
    <span class="bar"><i style="width:${Math.round(an/u.total*100)}%"></i></span></button>`;});
   h+=`</div></section>`;});
  h+=`<div class="foot"><span>Tiến độ được lưu ngay trên trình duyệt; khi mở bằng tài khoản Claude, tiến độ còn được đồng bộ giữa các thiết bị.</span>
- <button class="btn warn" id="reset" data-step="0">Xoá toàn bộ tiến độ</button></div>`;
+ <button class="btn warn" id="reset" data-step="0">Xoá toàn bộ tiến độ (cả 2 sách)</button></div>`;
  V.innerHTML=h;}
+
+function passageHTML(s,si,showKey){
+ const fills={};
+ if(showKey)s.qs.forEach((q,qi)=>{const n=qi+1;const ans=q.o[q.a-1];const parts=ans.split("／").map(x=>x.trim());
+  if(parts.length>1&&/^[a-c] /.test(parts[0]))parts.forEach(p=>{fills[n+"-"+p[0]]=p.slice(2).trim();});else fills[n]=ans;});
+ const body=s.p.split("\n").filter(x=>x.trim()).map(par=>`<p>${esc(par).replace(/\[(\d)(?:-([abc]))?\]/g,(m0,n,l)=>{const key=l?n+"-"+l:n;const f=fills[key];
+  return f!=null?`<span class="pbox f"><i>${key}</i>${esc(f)}</span>`:`<span class="pbox">${key}</span>`;})}</p>`).join("");
+ let h=`<div class="passage jp">${body}${s.src?`<div class="src">（${esc(s.src)}）</div>`:""}</div>`;
+ if(showKey&&s.pvi)h+=`<details class="exp pv" data-k="p${si}"${S.prefs.openAll?" open":""}><summary>Dịch đoạn văn</summary><div class="xb">${s.pvi.split("\n").filter(x=>x.trim()).map(x=>`<p style="margin:0">${esc(x)}</p>`).join("")}</div></details>`;
+ return h;}
 
 function qHTML(u,s,q,qi,m,st){
  const showKey=m==="key"||st.sub;const pick=st.ans[q.id];const t=s.t;
- const long=t===6;const two=t===7;
- const correct=q.o[q.a-1];
- let qt=t===6?`<span class="qword jp">${esc(q.q)}</span>`:fmtQ(q.q,showKey&&(t===3||t===4||t===7)?correct:null);
- let h=`<article class="q" data-q="${q.id}"><div class="qn">${qi+1}</div><div class="qt jp">${qt}</div><div class="opts ${long?"long":two?"two":""}">`;
+ const two=q.o.length===2;const correct=q.o[q.a-1];const kl=n=>two?AB[n-1]:n;
+ let lay;
+ if(u.book==="g"){const ml=Math.max(...q.o.map(x=>x.length));lay=two?"two":ml>12?"long":ml>6?"two":"";}
+ else lay=t===6?"long":two?"two":"";
+ let qt;
+ if(t===6)qt=`<span class="qword jp">${esc(q.q)}</span>`;
+ else if(t===12)qt=starQ(q,showKey);
+ else if(t===13)qt=`<span class="muted" style="font-family:var(--f-ui);font-size:14px">Ô</span> <span class="pbox">${qi+1}</span> <span class="muted" style="font-family:var(--f-ui);font-size:14px">trong đoạn văn</span>`;
+ else qt=fmtQ(q.q,showKey&&(t===3||t===4||t===7||t===11||t===17)?correct:null);
+ let h=`<article class="q" data-q="${q.id}"><div class="qn">${qi+1}</div><div class="qt jp">${qt}</div><div class="opts ${lay}">`;
  q.o.forEach((o,i)=>{const n=i+1;let cls="opt";
   if(showKey){if(n===q.a)cls+=" ok";else if(st.sub&&m==="self"&&pick===n)cls+=" bad";else cls+=" dim";}
   else if(pick===n)cls+=" pick";
-  const key=two?"ab"[i]:n;
-  h+=`<button class="${cls}" data-pick="${n}" ${showKey?"disabled":""}><span class="k">${key}</span><span class="ot jp">${fmtO(o)}</span></button>`;});
+  h+=`<button class="${cls}" data-pick="${n}" ${showKey?"disabled":""}><span class="k">${kl(n)}</span><span class="ot jp">${fmtO(o)}</span></button>`;});
  h+=`</div>`;
- if(st.sub&&m==="self"){h+=pick===q.a?`<div class="mark ok">✓ Đúng</div>`:`<div class="mark bad">${pick?"✗ Sai":"— Bỏ trống"} · Đáp án: ${two?"ab"[q.a-1]:q.a}</div>`;}
+ if(st.sub&&m==="self"){h+=pick===q.a?`<div class="mark ok">✓ Đúng</div>`:`<div class="mark bad">${pick?"✗ Sai":"— Bỏ trống"} · Đáp án: ${kl(q.a)}</div>`;}
  if(showKey){
-  h+=`<details class="exp"${S.prefs.openAll?" open":""}><summary>Xem kỹ: dịch, giải thích, từ vựng</summary><div class="xb">
-  <div class="xr"><b>Đáp án</b><div><span class="jp" style="font-weight:700">${two?"ab"[q.a-1]:q.a}. ${fmtO(correct)}</span></div></div>
-  <div class="xr"><b>Dịch nghĩa</b><div>${esc(q.vi)}</div></div>
-  <div class="xr"><b>Giải thích</b><div>${esc(q.ex)}</div></div>`;
+  h+=`<details class="exp" data-k="${q.id}"${S.prefs.openAll?" open":""}><summary>Xem kỹ: dịch, giải thích, ${u.book==="g"?"ngữ pháp, ":""}từ vựng</summary><div class="xb">
+  <div class="xr"><b>Đáp án</b><div><span class="jp" style="font-weight:700">${kl(q.a)}. ${fmtO(correct)}</span></div></div>`;
+  if(t===12)h+=`<div class="xr"><b>Câu đúng</b><div><span class="jp">${esc(fullStar(q))}</span><div class="muted" style="font-size:13px;margin-top:2px">Thứ tự: ${q.ord.join(" → ")} · ★ ở ô thứ 3</div></div></div>`;
+  if(q.vi)h+=`<div class="xr"><b>Dịch nghĩa</b><div>${esc(q.vi).replace(/\n/g,"<br>")}</div></div>`;
+  h+=`<div class="xr"><b>Giải thích</b><div>${esc(q.ex)}</div></div>`;
+  if(q.oe)h+=`<div class="xr"><b>Các lựa chọn</b><ol class="oe">${q.oe.map((x,i)=>`<li class="${i+1===q.a?"okli":""}"><b class="jp">${fmtO(q.o[i])}</b> — ${esc(x)}</li>`).join("")}</ol></div>`;
   if(q.g)h+=`<div class="xr"><b>Ngữ pháp</b><div class="gram jp">${esc(q.g)}</div></div>`;
   if(q.ot)h+=`<div class="xr"><b>Dịch 4 câu</b><ol>${q.ot.map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`;
-  h+=`<div class="xr"><b>Từ vựng</b><div class="mini">${vtable(q.vk,{mini:true})}</div></div></div></details>`;}
+  if(q.gk.length)h+=`<div class="xr"><b>Mẫu ngữ pháp</b><div class="mini">${gtable(q.gk,{mini:true})}</div></div>`;
+  if(q.vk.length)h+=`<div class="xr"><b>Từ vựng</b><div class="mini">${vtable(q.vk,{mini:true})}</div></div>`;
+  h+=`</div></details>`;}
  return h+`</article>`;}
 
+const EMPTY=`<div class="empty"><b>Không có mục nào khớp bộ lọc</b>Thử chọn bộ lọc khác hoặc xoá ô tìm kiếm.</div>`;
+const starBtn=k=>`<button class="star ${isFav(k)?"on":""}" data-fav="${esc(k)}" aria-label="Yêu thích">${STAR}</button>`;
+const tagBtn=k=>{const tg=tagOf(k);return `<button class="tag ${tg}" data-tag="${esc(k)}" title="Bấm để đổi mức">${TAGN[tg]}</button>`;};
 function vtable(keys,opt={}){
- if(!keys.length)return `<div class="empty"><b>Không có từ nào khớp bộ lọc</b>Thử chọn bộ lọc khác hoặc xoá ô tìm kiếm.</div>`;
+ if(!keys.length)return EMPTY;
  let h=`<div class="vt-wrap"><table class="vt"><thead><tr><th style="width:34px"></th><th>Chữ Hán</th><th>Cách đọc</th><th>Hán Việt</th><th>Nghĩa</th>${opt.mini?"":"<th>Mức</th>"}${opt.units?"<th>Bài</th>":""}</tr></thead><tbody>`;
- keys.forEach(k=>{const e=VOC.get(k);const tg=tagOf(k);
-  h+=`<tr><td><button class="star ${isFav(k)?"on":""}" data-fav="${esc(k)}" aria-label="Yêu thích">${STAR}</button></td><td class="w">${esc(e.w)}</td><td class="rd">${e.r===e.w?"":esc(e.r)}</td><td class="hv">${esc(e.hv)}</td><td>${esc(e.m)}</td>`+
-  (opt.mini?"":`<td><button class="tag ${tg}" data-tag="${esc(k)}" title="Bấm để đổi mức">${TAGN[tg]}</button></td>`)+
-  (opt.units?`<td class="ulinks">${e.units.map(id=>`<a href="#${id}">${esc(unitLabel(BYID[id]))}</a>`).join("")}</td>`:"")+`</tr>`;});
+ keys.forEach(k=>{const e=VOC.get(k);
+  h+=`<tr><td>${starBtn(k)}</td><td class="w">${esc(e.w)}</td><td class="rd">${e.r===e.w?"":esc(e.r)}</td><td class="hv">${esc(e.hv)}</td><td>${esc(e.m)}</td>`+
+  (opt.mini?"":`<td>${tagBtn(k)}</td>`)+(opt.units?`<td class="ulinks">${ulinks(e.units)}</td>`:"")+`</tr>`;});
+ return h+`</tbody></table></div>`;}
+function gtable(keys,opt={}){
+ if(!keys.length)return EMPTY;
+ let h=`<div class="vt-wrap"><table class="vt gt"><thead><tr><th style="width:34px"></th><th>Mẫu ngữ pháp</th><th class="dk">Cách nối</th><th>Nghĩa</th>${opt.mini?"":"<th>Mức</th>"}${opt.units?"<th>Bài</th>":""}</tr></thead><tbody>`;
+ keys.forEach(k=>{const e=GRM.get(k);
+  h+=`<tr><td>${starBtn(k)}</td><td><div class="p">${esc(e.p)}</div>${e.c?`<div class="cn mo">${esc(e.c)}</div>`:""}</td><td class="cn dk">${esc(e.c)}</td><td>${esc(e.m)}${opt.ex&&e.ex?`<div class="ex">${esc(e.ex)}</div>`:""}</td>`+
+  (opt.mini?"":`<td>${tagBtn(k)}</td>`)+(opt.units?`<td class="ulinks">${ulinks(e.units)}</td>`:"")+`</tr>`;});
  return h+`</tbody></table></div>`;}
 
 function filterKeys(keys,f,q){return keys.filter(k=>{if(f==="fav"&&!isFav(k))return false;if((f==="c"||f==="r")&&tagOf(k)!==f)return false;
- if(q){const e=VOC.get(k);const hay=e.w+" "+e.r+" "+stripVN(e.hv+" "+e.m);if(!hay.includes(q)&&!hay.includes(stripVN(q)))return false;}return true;});}
-function chipsHTML(keys,f,extra=""){const n=x=>filterKeys(keys,x,"").length;
- return `<div class="chips" role="group" aria-label="Lọc từ vựng">${[["all","Tất cả"],["c","Hay thi"],["r","Nhận diện"],["fav","★ Yêu thích"]].map(([v,l])=>`<button class="chip" data-vf="${v}" aria-pressed="${f===v}">${l}<small>${n(v)}</small></button>`).join("")}${extra}</div>`;}
+ if(q){const hay=ENT(k).hay;if(!hay.includes(q)&&!hay.includes(stripVN(q)))return false;}return true;});}
+function chipsHTML(keys,f,attr,extra=""){const n=x=>filterKeys(keys,x,"").length;
+ return `<div class="chips" role="group" aria-label="Lọc">${[["all","Tất cả"],["c","Hay thi"],["r","Nhận diện"],["fav","★ Yêu thích"]].map(([v,l])=>`<button class="chip" data-${attr}="${v}" aria-pressed="${f===v}">${l}<small>${n(v)}</small></button>`).join("")}${extra}</div>`;}
 
 function renderUnit(u){
  const st=U(u.id);const m=mode(u.id);
  const showKey=m==="key"||st.sub;
- let h=`<button class="back" data-go="home">← Danh sách bài</button>
- <div class="uhead"><div><div class="eyebrow">${u.kind==="round"?"Bài luyện đề":"集中トレーニング · Luyện tập tập trung"}</div><h1 class="jp">${esc(u.title)}</h1>
+ let h=`<button class="back" data-go="${u.book==="g"?"bunpou":"home"}">← Danh sách bài ${BOOKN[u.book]}</button>
+ <div class="uhead"><div><div class="eyebrow">${BOOKN[u.book]} · ${u.kind==="round"?"Bài luyện đề":"集中トレーニング · Luyện tập tập trung"}</div><h1 class="jp">${esc(u.title)}</h1>
  <div class="meta"><span>Trang ${esc(u.pages)}</span>${u.topic?`<span class="jp">${esc(u.topic)}</span>`:""}<span class="jp">目標解答時間 ${u.kind==="round"?"10分":"3分"}</span><span>${u.total} câu · ${u.maxPt} điểm</span></div></div>
  <div class="scorebox" aria-label="Điểm"><span class="num">${st.sub?st.score:""}</span><span class="den">${u.maxPt}</span></div></div>
  <div class="toolbar"><div class="seg" role="group" aria-label="Chế độ"><button data-mode="self" aria-pressed="${m==="self"}">Tự làm</button><button data-mode="key" aria-pressed="${m==="key"}">Xem đáp án</button></div>
  ${showKey?`<button class="linkbtn sp" data-openall>${S.prefs.openAll?"Thu gọn tất cả":"Mở tất cả giải thích"}</button>`:""}</div>`;
  if(m==="key"&&!st.sub&&answered(u))h+=`<div class="note">Bạn đang làm dở bài này (${answered(u)}/${u.total} câu). Câu trả lời vẫn được giữ, chuyển về “Tự làm” để làm tiếp.</div>`;
- u.secs.forEach(s=>{const d=SEC[s.t];
-  h+=`<section class="sec">${s.t!==7?`<div class="sec-h"><span class="mondai">${d.jp}</span><span class="nm jp">${d.nm}<small>${d.vi}</small></span><span class="pt">${d.pt} điểm × ${s.qs.length}</span></div>`:""}<p class="ins jp">${esc(d.ins)}</p>`;
+ u.secs.forEach((s,si)=>{const d=SEC[s.t];
+  const ins=s.t===13?`次の文章を読んで、［1］から［${s.qs.length}］の中に入る最もよいものを、1・2・3・4から一つ選びなさい。`:d.ins;
+  h+=`<section class="sec">${d.jp?`<div class="sec-h"><span class="mondai">${d.jp}</span><span class="nm jp">${d.nm}<small>${d.vi}</small></span><span class="pt">${d.pt} điểm × ${s.qs.length}</span></div>`:""}<p class="ins jp">${esc(ins)}</p>`;
+  if(s.t===13)h+=passageHTML(s,si,showKey);
   s.qs.forEach((q,qi)=>h+=qHTML(u,s,q,qi,m,st));h+=`</section>`;});
- if(showKey){const f=S.prefs.vf;const keys=filterKeys(u.vkeys,f,"");
-  h+=`<section class="vsum" id="vsum"><div class="eyebrow">Tổng hợp cuối bài</div><h2 class="jp">語彙リスト · Từ vựng ${esc(u.title)}</h2>
-  <p>${u.vkeys.length} từ xuất hiện trong câu hỏi, đáp án và các lựa chọn. Bấm ★ để đưa vào flashcard, bấm nhãn mức để đổi “Hay thi” ↔ “Nhận diện”.</p>
-  ${chipsHTML(u.vkeys,f,`<button class="chip" data-favall="${u.id}">+ ★ tất cả “Hay thi”</button>`)}${vtable(keys)}</section>`;}
+ if(showKey){
+  if(u.gkeys.length){const f=S.prefs.gf;const keys=filterKeys(u.gkeys,f,"");
+   h+=`<section class="vsum" id="gsum"><div class="eyebrow">Tổng hợp cuối bài</div><h2 class="jp">文型リスト · Ngữ pháp ${esc(u.title)}</h2>
+   <p>${u.gkeys.length} mẫu ngữ pháp xuất hiện trong đáp án và giải thích. Bấm ★ để đưa vào flashcard, bấm nhãn mức để đổi “Hay thi” ↔ “Nhận diện”.</p>
+   ${chipsHTML(u.gkeys,f,"gf",`<button class="chip" data-favall="${u.id}" data-kind="g">+ ★ tất cả “Hay thi”</button>`)}${gtable(keys,{ex:true})}</section>`;}
+  if(u.vkeys.length){const f=S.prefs.vf;const keys=filterKeys(u.vkeys,f,"");
+   h+=`<section class="vsum" id="vsum"><div class="eyebrow">Tổng hợp cuối bài</div><h2 class="jp">語彙リスト · Từ vựng ${esc(u.title)}</h2>
+   <p>${u.vkeys.length} từ xuất hiện trong ${u.book==="g"?"câu hỏi và đoạn văn":"câu hỏi, đáp án và các lựa chọn"}. Bấm ★ để đưa vào flashcard, bấm nhãn mức để đổi “Hay thi” ↔ “Nhận diện”.</p>
+   ${chipsHTML(u.vkeys,f,"vf",`<button class="chip" data-favall="${u.id}" data-kind="v">+ ★ tất cả “Hay thi”</button>`)}${vtable(keys)}</section>`;}}
  V.innerHTML=h;
  // dock
  if(m==="self"){DOCK.hidden=false;
   if(!st.sub){DOCK.innerHTML=`<div class="wrap"><span class="cnt"><b>${answered(u)}</b>/${u.total} câu</span><span class="timer" id="timer"></span><span class="sp"><button class="btn pri" id="submit">Chấm điểm</button></span></div>`;updTimer();}
-  else{const sc=scoreOf(u,st.ans);DOCK.innerHTML=`<div class="wrap"><span class="result">${st.score}/${u.maxPt} điểm</span><span class="cnt">${sc.ok}/${u.total} câu đúng · ${mmss(st.time)}${st.best!=null&&st.best!==st.score?` · cao nhất ${st.best}`:""}</span><span class="sp"><a class="btn" href="#vsum">Từ vựng</a><button class="btn" id="redo">Làm lại</button></span></div>`;}}
+  else{const sc=scoreOf(u,st.ans);DOCK.innerHTML=`<div class="wrap"><span class="result">${st.score}/${u.maxPt} điểm</span><span class="cnt">${sc.ok}/${u.total} câu đúng · ${mmss(st.time)}${st.best!=null&&st.best!==st.score?` · cao nhất ${st.best}`:""}</span><span class="sp"><button class="btn" data-scroll="${u.gkeys.length?"gsum":"vsum"}">${u.gkeys.length?"Ngữ pháp":"Từ vựng"}</button><button class="btn" id="redo">Làm lại</button></span></div>`;}}
 }
 
+function unitSelect(id,val,books){return `<select class="sel" id="${id}"><option value="">Tất cả các bài</option>${books.map(b=>`<optgroup label="${BOOKN[b]}">${BOOKU[b].map(u=>`<option value="${u.id}" ${val===u.id?"selected":""}>${esc(u.title)}${u.topic?" "+esc(u.topic):""}</option>`).join("")}</optgroup>`).join("")}</select>`;}
 function renderVocab(){
- const f=S.prefs.vf;const q=(S.prefs.vq||"").trim().toLowerCase();const uf=S.prefs.vu||"";
+ const f=S.prefs.vf;const q=(S.prefs.vq||"").trim().toLowerCase();const uf=BYID[S.prefs.vu]?S.prefs.vu:"";
  const base=uf?BYID[uf].vkeys:ALLV.map(e=>e.k);
  const keys=filterKeys(base,f,q);const LIM=S.prefs.vlim||200;
- let h=`<div class="eyebrow">Toàn bộ sách</div><h1 class="jp" style="font-family:var(--f-disp);font-size:30px">語彙リスト</h1>
- <p style="color:var(--muted);margin:6px 0 0">${ALLV.length} từ tổng hợp từ 40 bài. Lọc theo mức “Hay thi” / “Nhận diện”, theo bài, hoặc chỉ xem từ yêu thích.</p>
+ let h=`<div class="eyebrow">Cả hai sách</div><h1 class="jp" style="font-family:var(--f-disp);font-size:30px">語彙リスト</h1>
+ <p style="color:var(--muted);margin:6px 0 0">${ALLV.length} từ tổng hợp từ ${UNITS.length} bài (sách 文字・語彙 và 文法). Lọc theo mức “Hay thi” / “Nhận diện”, theo bài, hoặc chỉ xem từ yêu thích. Bài có tiền tố “文·” là của sách 文法.</p>
  <div class="chips"><input class="search" id="vq" type="search" placeholder="Tìm: kanji, cách đọc, Hán Việt, nghĩa…" value="${esc(S.prefs.vq||"")}">
- <select class="sel" id="vu"><option value="">Tất cả các bài</option>${UNITS.map(u=>`<option value="${u.id}" ${uf===u.id?"selected":""}>${esc(u.title)}${u.topic?" "+esc(u.topic):""}</option>`).join("")}</select></div>
- ${chipsHTML(base,f)}${vtable(keys.slice(0,LIM),{units:true})}`;
- if(keys.length>LIM)h+=`<div style="text-align:center;margin-top:12px"><button class="btn" id="more">Hiện thêm (${keys.length-LIM} từ)</button></div>`;
+ ${unitSelect("vu",uf,["v","g"])}</div>
+ ${chipsHTML(base,f,"vf")}${vtable(keys.slice(0,LIM),{units:true})}`;
+ if(keys.length>LIM)h+=`<div style="text-align:center;margin-top:12px"><button class="btn" id="more" data-lim="vlim">Hiện thêm (${keys.length-LIM} từ)</button></div>`;
+ V.innerHTML=h;}
+function renderGrammar(){
+ const f=S.prefs.gf;const q=(S.prefs.gq||"").trim().toLowerCase();const uf=BYID[S.prefs.gu]?S.prefs.gu:"";
+ const base=uf?BYID[uf].gkeys:ALLG.slice().sort((a,b)=>b.units.length-a.units.length||a.p.localeCompare(b.p,"ja")).map(e=>e.k);
+ const keys=filterKeys(base,f,q);const LIM=S.prefs.glim||150;
+ let h=`<div class="eyebrow">Sách 文法</div><h1 class="jp" style="font-family:var(--f-disp);font-size:30px">文型リスト</h1>
+ <p style="color:var(--muted);margin:6px 0 0">${ALLG.length} mẫu ngữ pháp tổng hợp từ 40 bài, xếp theo số bài xuất hiện (mẫu gặp nhiều nhất lên đầu). Mỗi mẫu có cách nối, nghĩa và một câu ví dụ lấy từ đề.</p>
+ <div class="chips"><input class="search" id="gq" type="search" placeholder="Tìm: mẫu ngữ pháp, cách nối, nghĩa…" value="${esc(S.prefs.gq||"")}">
+ ${unitSelect("gu",uf,["g"])}</div>
+ ${chipsHTML(base,f,"gf")}${gtable(keys.slice(0,LIM),{units:true,ex:true})}`;
+ if(keys.length>LIM)h+=`<div style="text-align:center;margin-top:12px"><button class="btn" id="more" data-lim="glim">Hiện thêm (${keys.length-LIM} mẫu)</button></div>`;
  V.innerHTML=h;}
 
 // ---------- flashcards ----------
 let FC={deck:[],i:0,flip:false,sig:""};
-function fcSource(){const src=S.prefs.fsrc;let keys;
- if(src==="fav")keys=ALLV.filter(e=>isFav(e.k)).map(e=>e.k);
- else if(src==="c")keys=ALLV.filter(e=>tagOf(e.k)==="c").map(e=>e.k);
- else if(BYID[src])keys=BYID[src].vkeys.slice();else keys=[];
- if(S.prefs.fdue)keys=keys.filter(k=>((S.srs[k]&&S.srs[k].b)||0)<3);return keys;}
+function fcBase(){const src=S.prefs.fsrc;
+ if(src==="fav")return ALLV.filter(e=>isFav(e.k)).map(e=>e.k);
+ if(src==="c")return ALLV.filter(e=>tagOf(e.k)==="c").map(e=>e.k);
+ if(src==="gfav")return ALLG.filter(e=>isFav(e.k)).map(e=>e.k);
+ if(src==="gc")return ALLG.filter(e=>tagOf(e.k)==="c").map(e=>e.k);
+ if(src.startsWith("gu:")&&BYID[src.slice(3)])return BYID[src.slice(3)].gkeys.slice();
+ if(BYID[src])return BYID[src].vkeys.slice();return [];}
+const lvl=k=>(S.srs[k]&&S.srs[k].b)||0;
+function fcSource(){let keys=fcBase();if(S.prefs.fdue)keys=keys.filter(k=>lvl(k)<3);return keys;}
 function buildDeck(force){const keys=fcSource();const sig=S.prefs.fsrc+"|"+S.prefs.fdue+"|"+keys.length;
  if(!force&&sig===FC.sig&&FC.deck.length)return;
- const sh=keys.map(k=>[((S.srs[k]&&S.srs[k].b)||0),Math.random(),k]).sort((a,b)=>a[0]-b[0]||a[1]-b[1]).map(x=>x[2]);
+ const sh=keys.map(k=>[lvl(k),Math.random(),k]).sort((a,b)=>a[0]-b[0]||a[1]-b[1]).map(x=>x[2]);
  FC={deck:sh,i:0,flip:false,sig};}
 function renderFlash(){buildDeck(false);
- const src=S.prefs.fsrc;const favKeys=ALLV.filter(e=>isFav(e.k)).map(e=>e.k);
- const box=[0,0,0,0,0];favKeys.forEach(k=>{box[Math.min(4,(S.srs[k]&&S.srs[k].b)||0)]++;});
- let h=`<div class="eyebrow">Ôn tập</div><h1 class="jp" style="font-family:var(--f-disp);font-size:30px">単語カード</h1>
+ const src=S.prefs.fsrc;const isG=src.startsWith("g");
+ const vfav=ALLV.filter(e=>isFav(e.k)).length,gfav=ALLG.filter(e=>isFav(e.k)).length;
+ const box=[0,0,0,0,0];fcBase().forEach(k=>{box[Math.min(4,lvl(k))]++;});
+ const opt=(v,l)=>`<option value="${v}" ${src===v?"selected":""}>${l}</option>`;
+ let h=`<div class="eyebrow">Ôn tập</div><h1 class="jp" style="font-family:var(--f-disp);font-size:30px">${isG?"文型カード":"単語カード"}</h1>
  <div class="fc-top" style="margin-top:10px"><select class="sel" id="fsrc" aria-label="Bộ thẻ">
- <option value="fav" ${src==="fav"?"selected":""}>★ Từ yêu thích (${favKeys.length})</option>
- <option value="c" ${src==="c"?"selected":""}>Tất cả từ “Hay thi”</option>
- ${UNITS.map(u=>`<option value="${u.id}" ${src===u.id?"selected":""}>Từ vựng ${esc(u.title)}</option>`).join("")}</select>
- <div class="seg" role="group" aria-label="Chiều thẻ"><button data-fdir="jp" aria-pressed="${S.prefs.fdir==="jp"}">漢字 → Nghĩa</button><button data-fdir="vi" aria-pressed="${S.prefs.fdir==="vi"}">Nghĩa → 漢字</button></div>
- <button class="chip" id="fdue" aria-pressed="${!!S.prefs.fdue}">Chỉ từ chưa thuộc</button>
+ <optgroup label="Từ vựng">${opt("fav",`★ Từ vựng yêu thích (${vfav})`)}${opt("c","Tất cả từ “Hay thi”")}${BOOKU.v.map(u=>opt(u.id,"Từ vựng 語彙 "+esc(u.title))).join("")}${BOOKU.g.map(u=>opt(u.id,"Từ vựng 文法 "+esc(u.title))).join("")}</optgroup>
+ <optgroup label="Ngữ pháp">${opt("gfav",`★ Ngữ pháp yêu thích (${gfav})`)}${opt("gc","Tất cả ngữ pháp “Hay thi”")}${BOOKU.g.map(u=>opt("gu:"+u.id,"Ngữ pháp "+esc(u.title))).join("")}</optgroup></select>
+ <div class="seg" role="group" aria-label="Chiều thẻ"><button data-fdir="jp" aria-pressed="${S.prefs.fdir==="jp"}">${isG?"文型":"漢字"} → Nghĩa</button><button data-fdir="vi" aria-pressed="${S.prefs.fdir==="vi"}">Nghĩa → ${isG?"文型":"漢字"}</button></div>
+ <button class="chip" id="fdue" aria-pressed="${!!S.prefs.fdue}">Chỉ thẻ chưa thuộc</button>
  <button class="chip" id="fshuf">Xáo lại</button></div>
- <div class="boxes" aria-label="Hộp ghi nhớ của từ yêu thích">${["Mới / quên","Hộp 1","Hộp 2","Hộp 3","Đã thuộc"].map((l,i)=>`<div><b>${box[i]}</b>${l}</div>`).join("")}</div>`;
- if(!FC.deck.length){
-  h+=`<div class="empty"><b>${src==="fav"?"Chưa có từ yêu thích nào":"Bộ thẻ này đang trống"}</b>${src==="fav"?"Bấm ★ cạnh từ trong phần giải thích hoặc bảng từ vựng cuối bài để thêm vào đây. Hoặc chọn “Tất cả từ Hay thi” / từ vựng của một bài ở ô phía trên.":"Bỏ chọn “Chỉ từ chưa thuộc” hoặc chọn bộ thẻ khác."}
-  <div style="margin-top:12px"><button class="btn" data-fsrc="c">Ôn tất cả từ “Hay thi”</button></div></div>`;V.innerHTML=h;return;}
- if(FC.i>=FC.deck.length){h+=`<div class="empty"><b>Xong một lượt ${FC.deck.length} thẻ</b>Các từ bấm “Chưa nhớ” sẽ được xếp lên đầu ở lượt sau.<div style="margin-top:12px"><button class="btn pri" id="fagain">Ôn lượt mới</button></div></div>`;V.innerHTML=h;return;}
- const k=FC.deck[FC.i];const e=VOC.get(k);const b=(S.srs[k]&&S.srs[k].b)||0;const dir=S.prefs.fdir;
- const front=dir==="jp"?`<div class="big jp">${esc(e.w)}</div>`:`<div class="bigvi">${esc(e.m)}</div>`;
- const back=`<div class="back">${dir==="vi"?`<div class="big jp" style="font-size:clamp(36px,9vw,56px)">${esc(e.w)}</div>`:""}<div class="rd">${esc(e.r)}</div>${e.hv?`<div class="hv">${esc(e.hv)}</div>`:""}${dir==="jp"?`<div class="mn">${esc(e.m)}</div>`:""}<div class="ulinks">${e.units.map(id=>`<a href="#${id}">${esc(unitLabel(BYID[id]))}</a>`).join("")}</div></div>`;
- h+=`<div class="card" id="card" tabindex="0" role="button" aria-label="Lật thẻ"><div class="corner"><button class="speak" id="speak" aria-label="Phát âm">${SPK}</button><button class="star ${isFav(k)?"on":""}" data-fav="${esc(k)}" aria-label="Yêu thích">${STAR}</button></div>
+ <div class="boxes" aria-label="Hộp ghi nhớ của bộ thẻ này">${["Mới / quên","Hộp 1","Hộp 2","Hộp 3","Đã thuộc"].map((l,i)=>`<div><b>${box[i]}</b>${l}</div>`).join("")}</div>`;
+ if(!FC.deck.length){const favSrc=src==="fav"||src==="gfav";
+  h+=`<div class="empty"><b>${favSrc?(isG?"Chưa có mẫu ngữ pháp yêu thích nào":"Chưa có từ yêu thích nào"):"Bộ thẻ này đang trống"}</b>${favSrc?"Bấm ★ trong phần giải thích hoặc bảng tổng hợp cuối bài để thêm vào đây. Hoặc chọn bộ thẻ khác ở ô phía trên.":"Bỏ chọn “Chỉ thẻ chưa thuộc” hoặc chọn bộ thẻ khác."}
+  <div style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="btn" data-fsrc="c">Ôn tất cả từ “Hay thi”</button><button class="btn" data-fsrc="gc">Ôn tất cả ngữ pháp “Hay thi”</button></div></div>`;V.innerHTML=h;return;}
+ if(FC.i>=FC.deck.length){h+=`<div class="empty"><b>Xong một lượt ${FC.deck.length} thẻ</b>Các thẻ bấm “Chưa nhớ” sẽ được xếp lên đầu ở lượt sau.<div style="margin-top:12px"><button class="btn pri" id="fagain">Ôn lượt mới</button></div></div>`;V.innerHTML=h;return;}
+ const k=FC.deck[FC.i];const e=ENT(k);const b=lvl(k);const dir=S.prefs.fdir;let front,back;
+ if(e.kind==="g"){
+  front=dir==="jp"?`<div class="bigg jp">${esc(e.p)}</div>`:`<div class="bigvi">${esc(e.m)}</div>`;
+  back=`<div class="cback">${dir==="vi"?`<div class="bigg jp">${esc(e.p)}</div>`:""}${e.c?`<div class="cn">${esc(e.c)}</div>`:""}${dir==="jp"?`<div class="mn">${esc(e.m)}</div>`:""}${e.ex?`<div class="exs">${esc(e.ex)}</div>`:""}${e.exvi?`<div class="exv">${esc(e.exvi)}</div>`:""}<div class="ulinks">${ulinks(e.units)}</div></div>`;
+ }else{
+  front=dir==="jp"?`<div class="big jp">${esc(e.w)}</div>`:`<div class="bigvi">${esc(e.m)}</div>`;
+  back=`<div class="cback">${dir==="vi"?`<div class="big jp" style="font-size:clamp(36px,9vw,56px)">${esc(e.w)}</div>`:""}<div class="rd">${esc(e.r)}</div>${e.hv?`<div class="hv">${esc(e.hv)}</div>`:""}${dir==="jp"?`<div class="mn">${esc(e.m)}</div>`:""}<div class="ulinks">${ulinks(e.units)}</div></div>`;}
+ h+=`<div class="card" id="card" tabindex="0" role="button" aria-label="Lật thẻ"><div class="corner"><button class="speak" id="speak" aria-label="Phát âm">${SPK}</button>${starBtn(k)}</div>
  <div>${front}${FC.flip?back:""}</div>${FC.flip?"":`<div class="hint">Chạm hoặc nhấn Space để lật</div>`}</div>
  <div class="fc-act"><button class="btn no" id="fno">Chưa nhớ <small>←</small></button><button class="btn yes" id="fyes">Nhớ rồi <small>→</small></button></div>
  <div class="fc-meta"><span>Thẻ ${FC.i+1} / ${FC.deck.length}</span><span>${b>=4?"Đã thuộc":b?"Hộp "+b:"Mới"} · <span class="tag ${tagOf(k)}" style="border:0">${TAGN[tagOf(k)]}</span></span></div>`;
  V.innerHTML=h;}
-function fcRate(ok){const k=FC.deck[FC.i];const b=(S.srs[k]&&S.srs[k].b)||0;S.srs[k]={b:ok?Math.min(4,b+1):0,ts:now()};save();FC.i++;FC.flip=false;renderFlash();}
+function fcRate(ok){const k=FC.deck[FC.i];const b=lvl(k);S.srs[k]={b:ok?Math.min(4,b+1):0,ts:now()};save();FC.i++;FC.flip=false;renderFlash();}
 function speak(t){try{const u=new SpeechSynthesisUtterance(t);u.lang="ja-JP";speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+const speakText=e=>e.kind==="g"?(e.ex||e.p.replace(/[～〜]/g,"")):e.r;
 
-function keepRender(){const y=window.scrollY;const open=[...document.querySelectorAll("details.exp[open]")].map(d=>d.closest(".q").dataset.q);render();
- open.forEach(id=>{const d=document.querySelector(`.q[data-q="${id}"] details.exp`);if(d)d.open=true;});window.scrollTo(0,y);}
+function keepRender(){const y=window.scrollY;const open=[...document.querySelectorAll("details[data-k][open]")].map(d=>d.dataset.k);render();
+ open.forEach(id=>{const d=document.querySelector(`details[data-k="${id}"]`);if(d)d.open=true;});window.scrollTo(0,y);}
 // ---------- events ----------
 document.addEventListener("click",ev=>{const t=ev.target.closest("button,a");if(!t)return;
  if(t.dataset.go){ev.preventDefault();go(t.dataset.go);return;}
- if(t.dataset.open){go("unit",t.dataset.open);return;}
- if(t.dataset.fav){toggleFav(t.dataset.fav);document.querySelectorAll(`[data-fav="${CSS.escape(t.dataset.fav)}"]`).forEach(b=>b.classList.toggle("on",isFav(t.dataset.fav)));
-  if(route.v==="vocab"&&S.prefs.vf==="fav")keepRender();return;}
+ if(t.dataset.open){go(t.dataset.open);return;}
+ if(t.dataset.fav){const k=t.dataset.fav;toggleFav(k);document.querySelectorAll(`[data-fav="${CSS.escape(k)}"]`).forEach(b=>b.classList.toggle("on",isFav(k)));
+  if((route.v==="vocab"&&S.prefs.vf==="fav")||(route.v==="grammar"&&S.prefs.gf==="fav"))keepRender();return;}
  if(t.dataset.tag){toggleTag(t.dataset.tag);keepRender();return;}
  if(t.dataset.vf){S.prefs.vf=t.dataset.vf;S.prefs.vlim=200;save(false);keepRender();return;}
- if(t.dataset.favall){const u=BYID[t.dataset.favall];u.vkeys.forEach(k=>{if(tagOf(k)==="c"&&!isFav(k))S.favs[k]={on:1,ts:now()};});save();keepRender();return;}
+ if(t.dataset.gf){S.prefs.gf=t.dataset.gf;S.prefs.glim=150;save(false);keepRender();return;}
+ if(t.dataset.favall){const u=BYID[t.dataset.favall];(t.dataset.kind==="g"?u.gkeys:u.vkeys).forEach(k=>{if(tagOf(k)==="c"&&!isFav(k))S.favs[k]={on:1,ts:now()};});save();keepRender();return;}
+ if(t.dataset.scroll){const el=document.getElementById(t.dataset.scroll);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});return;}
+ if(t.dataset.fsrc){S.prefs.fsrc=t.dataset.fsrc;save(false);buildDeck(true);if(route.v!=="flash")go("flash");else renderFlash();return;}
  if(route.v==="unit"){const u=BYID[route.id];const st=U(u.id);
   if(t.dataset.pick&&mode(u.id)==="self"&&!st.sub){const q=t.closest(".q").dataset.q;const n=+t.dataset.pick;
    if(st.ans[q]===n)delete st.ans[q];else st.ans[q]=n;st.ts=now();if(!tStart){tStart=now();clearInterval(tTick);tTick=setInterval(updTimer,1000);}save();
@@ -510,20 +650,21 @@ document.addEventListener("click",ev=>{const t=ev.target.closest("button,a");if(
  if(t.id==="redo"){const u=BYID[route.id];const st=U(u.id);st.ans={};st.sub=false;st.score=null;st.time=0;st.ts=now();save();S.prefs.mode[u.id]="self";enterUnit(u.id);render();window.scrollTo(0,0);return;}
  if(t.id==="reset"){if(t.dataset.step!=="1"){t.dataset.step="1";t.textContent="Bấm lần nữa để xoá hẳn";return;}
   S=blank();save();render();return;}
- if(t.id==="more"){S.prefs.vlim=(S.prefs.vlim||200)+300;render();return;}
+ if(t.id==="more"){const l=t.dataset.lim;S.prefs[l]=(S.prefs[l]||(l==="glim"?150:200))+300;keepRender();return;}
  if(t.dataset.fdir){S.prefs.fdir=t.dataset.fdir;save(false);FC.flip=false;renderFlash();return;}
- if(t.dataset.fsrc){S.prefs.fsrc=t.dataset.fsrc;save(false);buildDeck(true);renderFlash();return;}
  if(t.id==="fdue"){S.prefs.fdue=!S.prefs.fdue;save(false);buildDeck(true);renderFlash();return;}
  if(t.id==="fshuf"||t.id==="fagain"){buildDeck(true);renderFlash();return;}
  if(t.id==="fno"){fcRate(false);return;} if(t.id==="fyes"){fcRate(true);return;}
- if(t.id==="speak"){ev.stopPropagation();speak(VOC.get(FC.deck[FC.i]).r);return;}
+ if(t.id==="speak"){ev.stopPropagation();speak(speakText(ENT(FC.deck[FC.i])));return;}
 });
 document.addEventListener("click",ev=>{const c=ev.target.closest("#card");if(c&&!ev.target.closest("button")){FC.flip=!FC.flip;renderFlash();}});
 document.addEventListener("change",ev=>{const t=ev.target;
  if(t.id==="fsrc"){S.prefs.fsrc=t.value;save(false);buildDeck(true);renderFlash();}
- if(t.id==="vu"){S.prefs.vu=t.value;S.prefs.vlim=200;save(false);renderVocab();}});
+ if(t.id==="vu"){S.prefs.vu=t.value;S.prefs.vlim=200;save(false);renderVocab();}
+ if(t.id==="gu"){S.prefs.gu=t.value;S.prefs.glim=150;save(false);renderGrammar();}});
 let qT=null;
-document.addEventListener("input",ev=>{if(ev.target.id==="vq"){S.prefs.vq=ev.target.value;clearTimeout(qT);qT=setTimeout(()=>{const pos=ev.target.selectionStart;renderVocab();const el=document.getElementById("vq");el.focus();try{el.setSelectionRange(pos,pos);}catch(e){}},200);}});
+document.addEventListener("input",ev=>{const id=ev.target.id;if(id!=="vq"&&id!=="gq")return;
+ S.prefs[id]=ev.target.value;clearTimeout(qT);qT=setTimeout(()=>{const pos=ev.target.selectionStart;if(id==="vq")renderVocab();else renderGrammar();const el=document.getElementById(id);el.focus();try{el.setSelectionRange(pos,pos);}catch(e){}},200);});
 document.addEventListener("keydown",ev=>{if(route.v!=="flash"||!FC.deck.length||FC.i>=FC.deck.length)return;if(/INPUT|SELECT|TEXTAREA/.test(ev.target.tagName))return;
  if(ev.key===" "){ev.preventDefault();FC.flip=!FC.flip;renderFlash();}
  else if(ev.key==="ArrowLeft"){fcRate(false);}else if(ev.key==="ArrowRight"){fcRate(true);}});
