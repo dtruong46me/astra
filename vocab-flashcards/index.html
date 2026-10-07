@@ -92,6 +92,20 @@ main.wrap{padding-block:18px 40px}
 .bigword rt{font-family:var(--f-jp);font-weight:500;font-size:.24em;letter-spacing:.12em;color:var(--muted)}
 .front .vi-big{font-size:clamp(22px,5vw,30px);font-weight:700;text-wrap:balance;max-width:28ch}
 .hintbtn{border:1px dashed var(--line);background:none;border-radius:999px;padding:4px 12px;font-size:12.5px;color:var(--muted)}
+.modecap{font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.hints{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.hintout{width:100%;max-width:560px;display:grid;gap:8px;text-align:left}
+.hintout>div{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:14.5px;line-height:1.6}
+.hintout b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:2px}
+.hintout .jp{font-family:var(--f-jp);font-size:15.5px}
+.hintout .hvh{font-weight:700;letter-spacing:.14em;color:var(--shu)}
+.blank{display:inline-block;min-width:2.2em;border-bottom:2px solid var(--shu);color:transparent;user-select:none}
+.readcap{font-size:13px;color:var(--muted);margin-top:14px;display:flex;justify-content:space-between;gap:10px}
+.readbtns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:8px}
+.readbtns button{border-radius:14px;padding:12px 6px;display:grid;gap:1px;justify-items:center;font-weight:700;font-size:15px}
+.readbtns small{font-weight:500;font-size:12px;opacity:.8}
+.readbtns .known{border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.readbtns .learn{border:0;background:var(--ai);color:var(--card);box-shadow:var(--shadow)}
 .say{border:1px solid var(--line);background:var(--soft);border-radius:999px;width:34px;height:34px;display:inline-grid;place-items:center;color:var(--ai);flex:none}
 .say svg{width:17px;height:17px}
 .say.lg{width:44px;height:44px}
@@ -341,7 +355,7 @@ const POS = { n: "Danh từ", v: "Động từ", vs: "Động từ する", na: 
 const STATUS = { new: "Mới", learn: "Đang học", due: "Đến hạn", young: "Đã học", mature: "Đã thuộc" };
 const MIN = 60e3, DAY = 864e5, ROLL = 4;
 const LEARN = [1, 10], RELEARN = [10];
-const DEFAULTS = { newPerDay: 20, revPerDay: 200, dir: "jp", readingFront: false, autoplay: true, showTr: true, voice: "", rate: 0.9 };
+const DEFAULTS = { newPerDay: 20, revPerDay: 200, dir: "jp", front: "stage", readingFront: false, autoplay: true, showTr: true, voice: "", rate: 0.9 };
 const LS_KEY = "n2flash.progress.v1", UI_KEY = "n2flash.ui.v1";
 
 const lsGet = k => { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } };
@@ -503,11 +517,11 @@ function setSync(s) {
 // Between 2026-10-01 13:20 UTC and the fix, "Lại" on a review card fell through to the "Dễ" branch,
 // sending a forgotten word ~4 days out. Those cards (lapse counted, graded by the old scheduler in that window)
 // are made due again now with a 1-day interval, so they come back for review.
-const BUG_FROM = Date.UTC(2026, 9, 1, 13, 20);
+const BUG_FROM = Date.UTC(2026, 9, 1, 13, 20), BUG_TO = Date.UTC(2026, 9, 2, 1, 0);
 function repairAgainBug() {
   const now = Date.now(); let n = 0;
   for (const c of Object.values(P.cards)) {
-    if (c.q === 2 && !c.v && (c.t || 0) >= BUG_FROM && (c.l || 0) > 0 && c.d > now) { c.i = 1; c.d = now; n++; }
+    if (c.q === 2 && !c.v && (c.t || 0) >= BUG_FROM && c.t < BUG_TO && (c.l || 0) > 0 && c.d > now) { c.i = 1; c.d = now; n++; }
   }
   if (n) save();
   return n;
@@ -600,8 +614,57 @@ function headBlock(v) {
 const metaRow = v => `<div class="meta"><span class="no">No.${pad3(v.id)} · 第${v.l}課</span><span class="tags">${posTags(v)}</span></div>`;
 const trClass = () => (P.settings.showTr ? "" : " hide-tr");
 
+/* ---------- card modes ---------- */
+// "stage": new words are read in full (read), learning cards show the word to recall its meaning (recognize),
+// due reviews show the meaning plus optional hints to recall the word (recall).
+function modeFor(v) {
+  const f = P.settings.front, c = P.cards[v.id];
+  if (f === "jp" || f === "vi") return f === "jp" ? "recognize" : "recall";
+  if (f === "mix") return Math.random() < 0.5 ? "recognize" : "recall";
+  if (cram) return c && c.q === 2 ? "recall" : "recognize";
+  if (!c || !c.q) return "read";
+  return c.q === 2 ? "recall" : "recognize";
+}
+function maskKeys(v) {
+  const k = new Set([v.w]);
+  if (v.r && v.r !== v.w && v.r.length >= 3) k.add(v.r);
+  if (v.pos.some(p => p === "v" || p === "i")) for (const x of [v.w, v.r]) if (x && x.length >= 3) k.add(x.slice(0, -1));
+  if (/[にと]$/.test(v.w) && v.w.length >= 3) k.add(v.w.slice(0, -1));
+  return [...k].filter(Boolean).sort((a, b) => b.length - a.length);
+}
+function masked(text, v) {
+  let h = esc(text);
+  for (const key of maskKeys(v)) { const ek = esc(key); if (h.includes(ek)) h = h.split(ek).join('<span class="blank">＿＿</span>'); }
+  return h;
+}
+const HINTS = [["hv", "Hán Việt"], ["def", "Giải thích"], ["ex", "Câu ví dụ"], ["kana", "Chữ đầu"]];
+function hintHtml(v, key) {
+  if (key === "hv") { const h = (v.hv || "").replace(/\s*\([^)]*\)\s*$/, "").trim(); return h ? `<span class="hvh">${esc(h)}</span>` : ""; }
+  if (key === "def") return v.s.map((x, i) => `<div class="jp">${v.s.length > 1 ? i + 1 + ". " : ""}${masked(x.ja, v)}</div>`).join("");
+  if (key === "ex") {
+    for (const x of v.s) for (const e of x.ex) { const m = masked(e[0], v); if (m.includes('class="blank"')) return `<div class="jp">${m}</div><div class="tr">${masked(e[1], v)}</div>`; }
+    return "";
+  }
+  if (key === "kana") { const r = v.r || v.w; return `Bắt đầu bằng <span class="jp">「${esc(r[0])}」</span>, gồm ${r.length} ký tự`; }
+  return "";
+}
+let hintsOn = [];
+function recallFront(v) {
+  const avail = HINTS.filter(([k]) => hintHtml(v, k));
+  const out = hintsOn.map(k => { const h = HINTS.find(x => x[0] === k); return `<div><b>${h[1]}</b>${hintHtml(v, k)}</div>`; }).join("");
+  const left = avail.filter(([k]) => !hintsOn.includes(k));
+  return `<div class="front"><div class="modecap">Nhớ ra từ tiếng Nhật</div><div class="vi-big">${esc(v.vi)}</div>
+    ${left.length ? `<div class="hints">${left.map(([k, l]) => `<button class="hintbtn" data-hint="${k}">Gợi ý: ${l}</button>`).join("")}</div>` : ""}
+    ${out ? `<div class="hintout">${out}</div>` : ""}</div>`;
+}
+function nextHint() {
+  if (!cur || revealed || curDir !== "recall") return;
+  const k = HINTS.map(h => h[0]).find(k => !hintsOn.includes(k) && hintHtml(cur, k));
+  if (k) { hintsOn.push(k); renderStudy(); }
+}
+
 /* ---------- study view ---------- */
-let curDir = "jp";
+let curDir = "recognize";
 function renderCounts() {
   const el = $("#counts");
   if (cram) { el.innerHTML = ""; return; }
@@ -615,9 +678,13 @@ function next() {
   if (booting && !cram) { cur = null; renderCounts(); $("#stage").innerHTML = `<div class="done"><p>Đang tải tiến độ…</p></div>`; $("#answer").innerHTML = ""; return; }
   let id;
   if (cram) { id = cram.q[0]; } else { id = pickNext(); }
-  cur = id ? BY_ID.get(id) : null;
-  if (cur) { curDir = P.settings.dir === "mix" ? (Math.random() < 0.5 ? "jp" : "vi") : P.settings.dir; }
+  show(id ? BY_ID.get(id) : null);
+}
+function show(v) {
+  cur = v || null; hintsOn = []; revealed = false;
+  if (cur) { curDir = modeFor(cur); revealed = curDir === "read"; }
   renderStudy();
+  if (cur && curDir === "read" && P.settings.autoplay) speak(cur.r || cur.w, document.querySelector(".headrow .say"));
 }
 function renderStudy() {
   renderCounts();
@@ -627,15 +694,16 @@ function renderStudy() {
   if (!cur) { ans.innerHTML = ""; stage.innerHTML = doneScreen(); return; }
   const v = cur;
   let front;
-  if (curDir === "vi") {
-    front = `<div class="front"><div class="vi-big">${esc(v.vi)}</div>
-      ${!revealed && v.hv ? `<button class="hintbtn" id="hint">Gợi ý Hán Việt</button>` : ""}</div>`;
-  } else {
-    front = `<div class="front"><div class="bigword">${P.settings.readingFront || revealed ? ruby(v) : esc(v.w)}</div>${sayBtn(v.r || v.w, "lg")}</div>`;
-  }
-  stage.innerHTML = `<article class="fc${revealed ? " flip" : ""}${trClass()}" id="card">${metaRow(v)}${revealed ? `<div class="back">${headBlock(v)}${details(v)}</div>` : front}</article>`;
-  if (!revealed) {
-    ans.innerHTML = `<button class="reveal" id="reveal">Hiện đáp án</button><div class="keys"><kbd>Space</kbd> lật thẻ · <kbd>R</kbd> nghe lại</div>`;
+  if (curDir === "recall") front = recallFront(v);
+  else front = `<div class="front"><div class="modecap">Nhớ nghĩa và cách đọc</div><div class="bigword">${P.settings.readingFront ? ruby(v) : esc(v.w)}</div>${sayBtn(v.r || v.w, "lg")}</div>`;
+  const readCap = curDir === "read" ? `<div class="readcap"><span>Từ mới · đọc kỹ cách đọc, nghĩa và ví dụ</span></div>` : "";
+  stage.innerHTML = `<article class="fc${revealed ? " flip" : ""}${trClass()}" id="card">${metaRow(v)}${readCap}${revealed ? `<div class="back">${headBlock(v)}${details(v)}</div>` : front}</article>`;
+  if (curDir === "read") {
+    const now = Date.now(), at = g => fmtIvl(sched(P.cards[v.id] || null, g, now), now);
+    ans.innerHTML = `<div class="readbtns"><button class="known" data-g="4">Đã biết<small>gặp lại sau ${at(4)}</small></button><button class="learn" data-g="1">Học từ này<small>nhớ lại sau ${at(1)}</small></button></div>
+      <div class="keys"><kbd>Space</kbd> học từ này · <kbd>4</kbd> đã biết · <kbd>Z</kbd> hoàn tác</div>`;
+  } else if (!revealed) {
+    ans.innerHTML = `<button class="reveal" id="reveal">Hiện đáp án</button><div class="keys"><kbd>Space</kbd> lật thẻ${curDir === "recall" ? " · <kbd>H</kbd> gợi ý" : " · <kbd>R</kbd> nghe lại"}</div>`;
   } else {
     const now = Date.now();
     const labels = ["Lại", "Khó", "Được", "Dễ"];
@@ -687,7 +755,7 @@ function undo() {
   const u = undoStack.pop(); if (!u || cram) return;
   P.cards[u.id] = u.prev ? { ...u.prev, t: Date.now() } : { q: 0, s: 0, d: 0, i: 0, e: 2500, r: 0, l: 0, t: Date.now() };
   P.days[u.dk] = u.tPrev; save();
-  cur = BY_ID.get(u.id); revealed = false; lastId = null; renderStudy();
+  lastId = null; show(BY_ID.get(u.id));
 }
 function startCram() {
   const ids = pool().map(v => v.id);
@@ -838,8 +906,8 @@ function openSettings() {
       <div class="field"><label for="setNew">Từ mới mỗi ngày</label><input id="setNew" type="number" min="0" max="200" value="${s.newPerDay}"></div>
       <div class="field"><label for="setRev">Ôn tối đa mỗi ngày</label><input id="setRev" type="number" min="10" max="2000" value="${s.revPerDay}"></div>
     </div>
-    <div class="field"><label for="setDir">Mặt trước của thẻ</label>
-      <select id="setDir"><option value="jp"${s.dir === "jp" ? " selected" : ""}>Từ tiếng Nhật → đoán nghĩa</option><option value="vi"${s.dir === "vi" ? " selected" : ""}>Nghĩa tiếng Việt → nhớ từ</option><option value="mix"${s.dir === "mix" ? " selected" : ""}>Trộn ngẫu nhiên hai chiều</option></select></div>
+    <div class="field"><label for="setDir">Cách học</label>
+      <select id="setDir">${[["stage", "Theo giai đoạn: từ mới đọc · đang học nhớ nghĩa · ôn tập nhớ từ"], ["jp", "Luôn nhìn từ tiếng Nhật → nhớ nghĩa"], ["vi", "Luôn nhìn nghĩa → nhớ từ tiếng Nhật"], ["mix", "Trộn ngẫu nhiên hai chiều"]].map(([k, l]) => `<option value="${k}"${s.front === k ? " selected" : ""}>${l}</option>`).join("")}</select></div>
     <label class="check"><input type="checkbox" id="setReading"${s.readingFront ? " checked" : ""}><span>Hiện cách đọc (furigana) ở mặt trước</span></label>
     <label class="check"><input type="checkbox" id="setAuto"${s.autoplay ? " checked" : ""}><span>Tự đọc từ khi lật thẻ</span></label>
     <label class="check"><input type="checkbox" id="setTr"${s.showTr ? " checked" : ""}><span>Hiện bản dịch ví dụ <span class="help" style="display:block;color:var(--muted);font-size:12.5px">Khi tắt, bản dịch bị làm mờ, chạm vào để xem.</span></span></label>
@@ -861,11 +929,11 @@ function saveSettings() {
   const s = P.settings;
   s.newPerDay = Math.max(0, Math.min(200, +$("#setNew").value || 0));
   s.revPerDay = Math.max(10, Math.min(2000, +$("#setRev").value || 200));
-  s.dir = $("#setDir").value; s.readingFront = $("#setReading").checked; s.autoplay = $("#setAuto").checked; s.showTr = $("#setTr").checked;
+  s.front = $("#setDir").value; s.readingFront = $("#setReading").checked; s.autoplay = $("#setAuto").checked; s.showTr = $("#setTr").checked;
   if ($("#setVoice")) s.voice = $("#setVoice").value;
   s.rate = +$("#setRate").value;
   P.st = Date.now(); save(); closeSheet(); toast("Đã lưu cài đặt");
-  if (cur && !revealed) curDir = s.dir === "mix" ? curDir : s.dir;
+  if (cur && !cram && (!revealed || curDir === "read")) show(cur);
   refreshAll();
 }
 
@@ -932,7 +1000,7 @@ document.addEventListener("click", e => {
   const rel = t.closest("[data-rel]");
   if (rel) { const v = BY_WORD.get(rel.dataset.rel); if (v && (!cur || v.id !== cur.id || !$("#overlay").hidden)) openDetail(v.id); else speak(rel.dataset.relr, null); return; }
   if (t.closest("#reveal")) return reveal();
-  if (t.closest("#hint")) { t.closest("#hint").outerHTML = `<div class="hv" style="font-size:15px">${esc(cur.hv)}</div>`; return; }
+  const hb = t.closest("[data-hint]"); if (hb) { if (!hintsOn.includes(hb.dataset.hint)) hintsOn.push(hb.dataset.hint); renderStudy(); return; }
   const g = t.closest("[data-g]"); if (g) return answer(+g.dataset.g);
   if (t.closest("#btnUndo")) return undo();
   if (t.closest("#more10")) { today().x = (today().x || 0) + 10; save(); next(); return; }
@@ -990,8 +1058,16 @@ document.addEventListener("input", e => {
 document.addEventListener("keydown", e => {
   if (!$("#overlay").hidden) { if (e.key === "Escape") closeSheet(); return; }
   if (UI.tab !== "study" || e.target.closest("input,textarea,select") || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (curDir === "read" && revealed && !cram) {
+    if (e.key === " " || e.key === "Enter") { e.preventDefault(); answer(1); }
+    else if (e.key === "4") answer(4);
+    else if (e.key === "z" || e.key === "Z") undo();
+    else if (e.key === "r" || e.key === "R") { if (cur) speak(cur.r || cur.w, document.querySelector(".headrow .say")); }
+    return;
+  }
   if (e.key === " " || e.key === "Enter") { e.preventDefault(); revealed ? answer(3) : reveal(); }
   else if (revealed && ["1", "2", "3", "4"].includes(e.key)) answer(+e.key);
+  else if (e.key === "h" || e.key === "H") nextHint();
   else if (e.key === "r" || e.key === "R") { if (cur) speak(cur.r || cur.w, document.querySelector(".fc .say.lg")); }
   else if (e.key === "z" || e.key === "Z") undo();
 });
