@@ -92,15 +92,22 @@ main.wrap{padding-block:18px 40px}
 .bigword rt{font-family:var(--f-jp);font-weight:500;font-size:.24em;letter-spacing:.12em;color:var(--muted)}
 .front .vi-big{font-size:clamp(22px,5vw,30px);font-weight:700;text-wrap:balance;max-width:28ch}
 .hintbtn{border:1px dashed var(--line);background:none;border-radius:999px;padding:4px 12px;font-size:12.5px;color:var(--muted)}
-.modecap{font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.state{margin-left:8px;font-family:var(--f-ui);font-size:11px;font-weight:700;letter-spacing:.02em;border-radius:6px;padding:1px 7px;border:1px solid currentColor}
+.st-new{color:var(--new,var(--easy))} .st-learn{color:var(--again)} .st-review{color:var(--good)}
+.qdefs{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:clamp(19px,4.2vw,24px);font-weight:700;line-height:1.55;max-width:30ch;text-wrap:balance}
+.qdefs .dn{display:inline-grid;place-items:center;width:1.25em;height:1.25em;border-radius:50%;background:var(--ai);color:var(--card);font-size:.6em;margin-right:8px;vertical-align:.2em}
+.blank{display:inline-block;width:2.4em;border-bottom:2px solid var(--shu);vertical-align:-.1em;height:1em}
+.slots{display:inline-flex;gap:max(.2em,4px);vertical-align:-.15em;margin-inline:2px}
+.slot{display:inline-grid;place-items:center;width:.95em;height:1.15em;border-bottom:2px solid var(--shu);color:var(--shu);font-weight:700;line-height:1}
+.answerline{font-size:clamp(26px,6vw,34px);min-height:1.4em}
+.answerline .blank{width:4.5em}
+.hintout .vih{font-weight:700;font-size:16px}
 .hints{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
 .hintout{width:100%;max-width:560px;display:grid;gap:8px;text-align:left}
 .hintout>div{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:14.5px;line-height:1.6}
 .hintout b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:2px}
 .hintout .jp{font-family:var(--f-jp);font-size:15.5px}
 .hintout .hvh{font-weight:700;letter-spacing:.14em;color:var(--shu)}
-.blank{display:inline-block;min-width:2.2em;border-bottom:2px solid var(--shu);color:transparent;user-select:none}
-.readcap{font-size:13px;color:var(--muted);margin-top:14px;display:flex;justify-content:space-between;gap:10px}
 .readbtns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:8px}
 .readbtns button{border-radius:14px;padding:12px 6px;display:grid;gap:1px;justify-items:center;font-weight:700;font-size:15px}
 .readbtns small{font-weight:500;font-size:12px;opacity:.8}
@@ -611,7 +618,7 @@ function headBlock(v) {
       </div>
     </div>`;
 }
-const metaRow = v => `<div class="meta"><span class="no">No.${pad3(v.id)} · 第${v.l}課</span><span class="tags">${posTags(v)}</span></div>`;
+const metaRow = (v, state) => `<div class="meta"><span class="no">No.${pad3(v.id)} · 第${v.l}課${state ? `<span class="state st-${state}">${{ new: "Từ mới", learn: "Đang học", review: "Ôn tập" }[state]}</span>` : ""}</span><span class="tags">${posTags(v)}</span></div>`;
 const trClass = () => (P.settings.showTr ? "" : " hide-tr");
 
 /* ---------- card modes ---------- */
@@ -625,41 +632,54 @@ function modeFor(v) {
   if (!c || !c.q) return "read";
   return c.q === 2 ? "recall" : "recognize";
 }
+// Each key that hides the word maps to the kana that fills its blank (stems for conjugated verbs/adjectives).
 function maskKeys(v) {
-  const k = new Set([v.w]);
-  if (v.r && v.r !== v.w && v.r.length >= 3) k.add(v.r);
-  if (v.pos.some(p => p === "v" || p === "i")) for (const x of [v.w, v.r]) if (x && x.length >= 3) k.add(x.slice(0, -1));
-  if (/[にと]$/.test(v.w) && v.w.length >= 3) k.add(v.w.slice(0, -1));
-  return [...k].filter(Boolean).sort((a, b) => b.length - a.length);
+  const m = new Map(), r = v.r || v.w, add = (k, f) => { if (k && !m.has(k)) m.set(k, f); };
+  add(v.w, r);
+  if (v.r && v.r !== v.w && v.r.length >= 3) add(v.r, v.r);
+  if (v.pos.some(p => p === "v" || p === "i")) {
+    if (v.w.length >= 3) add(v.w.slice(0, -1), r.slice(0, -1));
+    if (v.r && v.r.length >= 3) add(v.r.slice(0, -1), v.r.slice(0, -1));
+  }
+  if (/[にと]$/.test(v.w) && v.w.length >= 3) add(v.w.slice(0, -1), /[にと]$/.test(r) ? r.slice(0, -1) : r);
+  return [...m].sort((a, b) => b[0].length - a[0].length);
+}
+// A blank is a plain underline until "Số chữ" splits it into one slot per kana; "Chữ đầu" fills the first slot.
+function blankHtml(fill) {
+  const lvl = hintsOn.includes("kana") ? 2 : hintsOn.includes("len") ? 1 : 0;
+  if (!lvl) return '<span class="blank"></span>';
+  return `<span class="slots">${[...fill].map((ch, i) => `<span class="slot">${lvl === 2 && i === 0 ? esc(ch) : ""}</span>`).join("")}</span>`;
 }
 function masked(text, v) {
   let h = esc(text);
-  for (const key of maskKeys(v)) { const ek = esc(key); if (h.includes(ek)) h = h.split(ek).join('<span class="blank">＿＿</span>'); }
-  return h;
+  const keys = maskKeys(v);
+  keys.forEach(([key], i) => { const ek = esc(key); if (h.includes(ek)) h = h.split(ek).join("\u0000" + i + "\u0000"); });
+  return h.replace(/\u0000(\d+)\u0000/g, (_, i) => blankHtml(keys[+i][1]));
 }
-const HINTS = [["hv", "Hán Việt"], ["def", "Giải thích"], ["ex", "Câu ví dụ"], ["kana", "Chữ đầu"]];
+const HINTS = [["hv", "Hán Việt"], ["vi", "Nghĩa tiếng Việt"], ["ex", "Câu ví dụ"], ["len", "Số chữ"], ["kana", "Chữ đầu"]];
 function hintHtml(v, key) {
   if (key === "hv") { const h = (v.hv || "").replace(/\s*\([^)]*\)\s*$/, "").trim(); return h ? `<span class="hvh">${esc(h)}</span>` : ""; }
-  if (key === "def") return v.s.map((x, i) => `<div class="jp">${v.s.length > 1 ? i + 1 + ". " : ""}${masked(x.ja, v)}</div>`).join("");
+  if (key === "vi") return `<span class="vih">${masked(v.vi, v)}</span>`;
   if (key === "ex") {
-    for (const x of v.s) for (const e of x.ex) { const m = masked(e[0], v); if (m.includes('class="blank"')) return `<div class="jp">${m}</div><div class="tr">${masked(e[1], v)}</div>`; }
+    for (const x of v.s) for (const e of x.ex) { const m = masked(e[0], v); if (/class="(blank|slots)"/.test(m)) return `<div class="jp">${m}</div><div class="tr">${masked(e[1], v)}</div>`; }
     return "";
   }
-  if (key === "kana") { const r = v.r || v.w; return `Bắt đầu bằng <span class="jp">「${esc(r[0])}」</span>, gồm ${r.length} ký tự`; }
   return "";
 }
+const hintReady = (v, k) => k === "len" || (k === "kana" ? hintsOn.includes("len") : !!hintHtml(v, k));
 let hintsOn = [];
 function recallFront(v) {
-  const avail = HINTS.filter(([k]) => hintHtml(v, k));
-  const out = hintsOn.map(k => { const h = HINTS.find(x => x[0] === k); return `<div><b>${h[1]}</b>${hintHtml(v, k)}</div>`; }).join("");
-  const left = avail.filter(([k]) => !hintsOn.includes(k));
-  return `<div class="front"><div class="modecap">Nhớ ra từ tiếng Nhật</div><div class="vi-big">${esc(v.vi)}</div>
-    ${left.length ? `<div class="hints">${left.map(([k, l]) => `<button class="hintbtn" data-hint="${k}">Gợi ý: ${l}</button>`).join("")}</div>` : ""}
+  const defs = v.s.map((x, i) => `<li>${v.s.length > 1 ? `<span class="dn">${i + 1}</span>` : ""}${masked(x.ja, v)}</li>`).join("");
+  const out = HINTS.filter(([k]) => hintsOn.includes(k) && hintHtml(v, k)).map(([k, l]) => `<div><b>${l}</b>${hintHtml(v, k)}</div>`).join("");
+  const left = HINTS.filter(([k]) => !hintsOn.includes(k) && hintReady(v, k));
+  return `<div class="front recall"><ol class="qdefs jp">${defs}</ol>
+    <div class="answerline jp">${blankHtml(v.r || v.w)}</div>
+    ${left.length ? `<div class="hints">${left.map(([k, l]) => `<button class="hintbtn" data-hint="${k}">${l}</button>`).join("")}</div>` : ""}
     ${out ? `<div class="hintout">${out}</div>` : ""}</div>`;
 }
 function nextHint() {
   if (!cur || revealed || curDir !== "recall") return;
-  const k = HINTS.map(h => h[0]).find(k => !hintsOn.includes(k) && hintHtml(cur, k));
+  const k = HINTS.map(h => h[0]).find(k => !hintsOn.includes(k) && hintReady(cur, k));
   if (k) { hintsOn.push(k); renderStudy(); }
 }
 
@@ -695,12 +715,12 @@ function renderStudy() {
   const v = cur;
   let front;
   if (curDir === "recall") front = recallFront(v);
-  else front = `<div class="front"><div class="modecap">Nhớ nghĩa và cách đọc</div><div class="bigword">${P.settings.readingFront ? ruby(v) : esc(v.w)}</div>${sayBtn(v.r || v.w, "lg")}</div>`;
-  const readCap = curDir === "read" ? `<div class="readcap"><span>Từ mới · đọc kỹ cách đọc, nghĩa và ví dụ</span></div>` : "";
-  stage.innerHTML = `<article class="fc${revealed ? " flip" : ""}${trClass()}" id="card">${metaRow(v)}${readCap}${revealed ? `<div class="back">${headBlock(v)}${details(v)}</div>` : front}</article>`;
+  else front = `<div class="front"><div class="bigword">${P.settings.readingFront ? ruby(v) : esc(v.w)}</div>${sayBtn(v.r || v.w, "lg")}</div>`;
+  const c = P.cards[v.id], state = !c || !c.q ? "new" : c.q === 2 ? "review" : "learn";
+  stage.innerHTML = `<article class="fc${revealed ? " flip" : ""}${trClass()}" id="card">${metaRow(v, state)}${revealed ? `<div class="back">${headBlock(v)}${details(v)}</div>` : front}</article>`;
   if (curDir === "read") {
     const now = Date.now(), at = g => fmtIvl(sched(P.cards[v.id] || null, g, now), now);
-    ans.innerHTML = `<div class="readbtns"><button class="known" data-g="4">Đã biết<small>gặp lại sau ${at(4)}</small></button><button class="learn" data-g="1">Học từ này<small>nhớ lại sau ${at(1)}</small></button></div>
+    ans.innerHTML = `<div class="readbtns"><button class="known" data-g="4">Đã biết<small>sau ${at(4)}</small></button><button class="learn" data-g="1">Học từ này<small>sau ${at(1)}</small></button></div>
       <div class="keys"><kbd>Space</kbd> học từ này · <kbd>4</kbd> đã biết · <kbd>Z</kbd> hoàn tác</div>`;
   } else if (!revealed) {
     ans.innerHTML = `<button class="reveal" id="reveal">Hiện đáp án</button><div class="keys"><kbd>Space</kbd> lật thẻ${curDir === "recall" ? " · <kbd>H</kbd> gợi ý" : " · <kbd>R</kbd> nghe lại"}</div>`;
@@ -907,7 +927,7 @@ function openSettings() {
       <div class="field"><label for="setRev">Ôn tối đa mỗi ngày</label><input id="setRev" type="number" min="10" max="2000" value="${s.revPerDay}"></div>
     </div>
     <div class="field"><label for="setDir">Cách học</label>
-      <select id="setDir">${[["stage", "Theo giai đoạn: từ mới đọc · đang học nhớ nghĩa · ôn tập nhớ từ"], ["jp", "Luôn nhìn từ tiếng Nhật → nhớ nghĩa"], ["vi", "Luôn nhìn nghĩa → nhớ từ tiếng Nhật"], ["mix", "Trộn ngẫu nhiên hai chiều"]].map(([k, l]) => `<option value="${k}"${s.front === k ? " selected" : ""}>${l}</option>`).join("")}</select></div>
+      <select id="setDir">${[["stage", "Theo giai đoạn: từ mới đọc · đang học nhìn từ nhớ nghĩa · ôn tập nhìn giải thích nhớ từ"], ["jp", "Luôn nhìn từ tiếng Nhật → nhớ nghĩa"], ["vi", "Luôn nhìn giải thích → nhớ từ tiếng Nhật"], ["mix", "Trộn ngẫu nhiên hai chiều"]].map(([k, l]) => `<option value="${k}"${s.front === k ? " selected" : ""}>${l}</option>`).join("")}</select></div>
     <label class="check"><input type="checkbox" id="setReading"${s.readingFront ? " checked" : ""}><span>Hiện cách đọc (furigana) ở mặt trước</span></label>
     <label class="check"><input type="checkbox" id="setAuto"${s.autoplay ? " checked" : ""}><span>Tự đọc từ khi lật thẻ</span></label>
     <label class="check"><input type="checkbox" id="setTr"${s.showTr ? " checked" : ""}><span>Hiện bản dịch ví dụ <span class="help" style="display:block;color:var(--muted);font-size:12.5px">Khi tắt, bản dịch bị làm mờ, chạm vào để xem.</span></span></label>
