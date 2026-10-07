@@ -635,15 +635,14 @@ const metaRow = (v, state) => `<div class="meta"><span class="no">No.${pad3(v.id
 const trClass = () => (P.settings.showTr ? "" : " hide-tr");
 
 /* ---------- card modes ---------- */
-// "stage": new words are read in full (read), learning cards show the word to recall its meaning (recognize),
-// due reviews show the meaning plus optional hints to recall the word (recall).
+// "stage": new and learning cards show the word to recall its meaning (recognize),
+// due reviews show the Japanese definition plus optional hints to recall the word (recall).
 function modeFor(v) {
   const f = P.settings.front, c = P.cards[v.id];
   if (f === "jp" || f === "vi") return f === "jp" ? "recognize" : "recall";
   if (f === "mix") return Math.random() < 0.5 ? "recognize" : "recall";
   if (cram) return c && c.q === 2 ? "recall" : "recognize";
-  if (!c || !c.q) return "read";
-  return c.q === 2 ? "recall" : "recognize";
+  return c && c.q === 2 ? "recall" : "recognize";
 }
 // Each key that hides the word maps to the kana that fills its blank (stems for conjugated verbs/adjectives).
 function maskKeys(v) {
@@ -715,9 +714,8 @@ function next() {
 }
 function show(v) {
   cur = v || null; hintsOn = []; revealed = false;
-  if (cur) { curDir = modeFor(cur); revealed = curDir === "read"; }
+  if (cur) curDir = modeFor(cur);
   renderStudy();
-  if (cur && curDir === "read" && P.settings.autoplay) speak(cur.r || cur.w, document.querySelector(".headrow .say"));
 }
 function renderStudy() {
   renderCounts();
@@ -731,10 +729,7 @@ function renderStudy() {
   else front = `<div class="front"><div class="bigword">${P.settings.readingFront ? ruby(v) : esc(v.w)}</div>${sayBtn(v.r || v.w, "lg")}</div>`;
   const c = P.cards[v.id], state = !c || !c.q ? "new" : c.q === 2 ? "review" : "learn";
   stage.innerHTML = `<article class="fc${revealed ? " flip" : ""}${trClass()}" id="card">${metaRow(v, state)}${revealed ? `<div class="back">${headBlock(v)}${details(v)}</div>` : front}</article>`;
-  if (curDir === "read") {
-    ans.innerHTML = `<button class="reveal" data-g="1">Tiếp</button>
-      <div class="keys"><kbd>Space</kbd> tiếp · <kbd>R</kbd> nghe lại · <kbd>Z</kbd> hoàn tác</div>`;
-  } else if (!revealed) {
+  if (!revealed) {
     ans.innerHTML = `<button class="reveal" id="reveal">Hiện đáp án</button><div class="keys"><kbd>Space</kbd> lật thẻ${curDir === "recall" ? " · <kbd>H</kbd> gợi ý" : " · <kbd>R</kbd> nghe lại"}</div>`;
   } else {
     const now = Date.now();
@@ -939,7 +934,7 @@ function openSettings() {
       <div class="field"><label for="setRev">Ôn tối đa mỗi ngày</label><input id="setRev" type="number" min="10" max="2000" value="${s.revPerDay}"></div>
     </div>
     <div class="field"><label for="setDir">Cách học</label>
-      <select id="setDir">${[["stage", "Theo giai đoạn: từ mới đọc · đang học nhìn từ nhớ nghĩa · ôn tập nhìn giải thích nhớ từ"], ["jp", "Luôn nhìn từ tiếng Nhật → nhớ nghĩa"], ["vi", "Luôn nhìn giải thích → nhớ từ tiếng Nhật"], ["mix", "Trộn ngẫu nhiên hai chiều"]].map(([k, l]) => `<option value="${k}"${s.front === k ? " selected" : ""}>${l}</option>`).join("")}</select></div>
+      <select id="setDir">${[["stage", "Theo giai đoạn: từ mới, đang học nhìn từ nhớ nghĩa · ôn tập nhìn giải thích nhớ từ"], ["jp", "Luôn nhìn từ tiếng Nhật → nhớ nghĩa"], ["vi", "Luôn nhìn giải thích → nhớ từ tiếng Nhật"], ["mix", "Trộn ngẫu nhiên hai chiều"]].map(([k, l]) => `<option value="${k}"${s.front === k ? " selected" : ""}>${l}</option>`).join("")}</select></div>
     <label class="check"><input type="checkbox" id="setReading"${s.readingFront ? " checked" : ""}><span>Hiện cách đọc (furigana) ở mặt trước</span></label>
     <label class="check"><input type="checkbox" id="setAuto"${s.autoplay ? " checked" : ""}><span>Tự đọc từ khi lật thẻ</span></label>
     <label class="check"><input type="checkbox" id="setTr"${s.showTr ? " checked" : ""}><span>Hiện bản dịch ví dụ <span class="help" style="display:block;color:var(--muted);font-size:12.5px">Khi tắt, bản dịch bị làm mờ, chạm vào để xem.</span></span></label>
@@ -965,7 +960,7 @@ function saveSettings() {
   if ($("#setVoice")) s.voice = $("#setVoice").value;
   s.rate = +$("#setRate").value;
   P.st = Date.now(); save(); closeSheet(); toast("Đã lưu cài đặt");
-  if (cur && !cram && (!revealed || curDir === "read")) show(cur);
+  if (cur && !cram && !revealed) show(cur);
   refreshAll();
 }
 
@@ -1090,12 +1085,6 @@ document.addEventListener("input", e => {
 document.addEventListener("keydown", e => {
   if (!$("#overlay").hidden) { if (e.key === "Escape") closeSheet(); return; }
   if (UI.tab !== "study" || e.target.closest("input,textarea,select") || e.metaKey || e.ctrlKey || e.altKey) return;
-  if (curDir === "read" && revealed && !cram) {
-    if (e.key === " " || e.key === "Enter") { e.preventDefault(); answer(1); }
-    else if (e.key === "z" || e.key === "Z") undo();
-    else if (e.key === "r" || e.key === "R") { if (cur) speak(cur.r || cur.w, document.querySelector(".headrow .say")); }
-    return;
-  }
   if (e.key === " " || e.key === "Enter") { e.preventDefault(); revealed ? answer(3) : reveal(); }
   else if (revealed && ["1", "2", "3", "4"].includes(e.key)) answer(+e.key);
   else if (e.key === "h" || e.key === "H") nextHint();
