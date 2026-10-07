@@ -95,7 +95,8 @@ main.wrap{padding-block:18px 40px}
 .state{margin-left:8px;font-family:var(--f-ui);font-size:11px;font-weight:700;letter-spacing:.02em;border-radius:6px;padding:1px 7px;border:1px solid currentColor}
 .st-new{color:var(--new,var(--easy))} .st-learn{color:var(--again)} .st-review{color:var(--good)}
 .qdefs{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:clamp(19px,4.2vw,24px);font-weight:700;line-height:1.55;max-width:30ch;text-wrap:balance}
-.qdefs .dn{display:inline-grid;place-items:center;width:1.25em;height:1.25em;border-radius:50%;background:var(--ai);color:var(--card);font-size:.6em;margin-right:8px;vertical-align:.2em}
+.qdefs li{display:flex;justify-content:center;align-items:flex-start;gap:10px}
+.qdefs .dn{flex:none;display:grid;place-items:center;font-size:.6em;line-height:1;width:1.9em;height:1.9em;margin-top:calc((1.55em / .6 - 1.9em) / 2);border-radius:50%;background:var(--ai);color:var(--card);font-variant-numeric:tabular-nums}
 .blank{display:inline-block;width:2.4em;border-bottom:2px solid var(--shu);vertical-align:-.1em;height:1em}
 .slots{display:inline-flex;gap:max(.2em,4px);vertical-align:-.15em;margin-inline:2px}
 .slot{display:inline-grid;place-items:center;width:.95em;height:1.15em;border-bottom:2px solid var(--shu);color:var(--shu);font-weight:700;line-height:1}
@@ -108,11 +109,7 @@ main.wrap{padding-block:18px 40px}
 .hintout b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:2px}
 .hintout .jp{font-family:var(--f-jp);font-size:15.5px}
 .hintout .hvh{font-weight:700;letter-spacing:.14em;color:var(--shu)}
-.readbtns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:8px}
-.readbtns button{border-radius:14px;padding:12px 6px;display:grid;gap:1px;justify-items:center;font-weight:700;font-size:15px}
-.readbtns small{font-weight:500;font-size:12px;opacity:.8}
-.readbtns .known{border:1px solid var(--line);background:var(--card);color:var(--ink)}
-.readbtns .learn{border:0;background:var(--ai);color:var(--card);box-shadow:var(--shadow)}
+
 .say{border:1px solid var(--line);background:var(--soft);border-radius:999px;width:34px;height:34px;display:inline-grid;place-items:center;color:var(--ai);flex:none}
 .say svg{width:17px;height:17px}
 .say.lg{width:44px;height:44px}
@@ -682,7 +679,7 @@ function hintHtml(v, key) {
 const hintReady = (v, k) => k === "len" || (k === "kana" ? hintsOn.includes("len") : !!hintHtml(v, k));
 let hintsOn = [];
 function recallFront(v) {
-  const defs = v.s.map((x, i) => `<li>${v.s.length > 1 ? `<span class="dn">${i + 1}</span>` : ""}${masked(x.ja, v)}</li>`).join("");
+  const defs = v.s.map((x, i) => `<li>${v.s.length > 1 ? `<span class="dn">${i + 1}</span>` : ""}<span>${masked(x.ja, v)}</span></li>`).join("");
   const out = HINTS.filter(([k]) => hintsOn.includes(k) && hintHtml(v, k)).map(([k, l]) => `<div><b>${l}</b>${hintHtml(v, k)}</div>`).join("");
   const left = HINTS.filter(([k]) => !hintsOn.includes(k) && hintReady(v, k));
   return `<div class="front recall"><ol class="qdefs jp">${defs}</ol>
@@ -732,9 +729,8 @@ function renderStudy() {
   const c = P.cards[v.id], state = !c || !c.q ? "new" : c.q === 2 ? "review" : "learn";
   stage.innerHTML = `<article class="fc${revealed ? " flip" : ""}${trClass()}" id="card">${metaRow(v, state)}${revealed ? `<div class="back">${headBlock(v)}${details(v)}</div>` : front}</article>`;
   if (curDir === "read") {
-    const now = Date.now(), at = g => fmtIvl(sched(P.cards[v.id] || null, g, now), now);
-    ans.innerHTML = `<div class="readbtns"><button class="known" data-g="4">Đã biết<small>sau ${at(4)}</small></button><button class="learn" data-g="1">Học từ này<small>sau ${at(1)}</small></button></div>
-      <div class="keys"><kbd>Space</kbd> học từ này · <kbd>4</kbd> đã biết · <kbd>Z</kbd> hoàn tác</div>`;
+    ans.innerHTML = `<button class="reveal" data-g="1">Tiếp</button>
+      <div class="keys"><kbd>Space</kbd> tiếp · <kbd>R</kbd> nghe lại · <kbd>Z</kbd> hoàn tác</div>`;
   } else if (!revealed) {
     ans.innerHTML = `<button class="reveal" id="reveal">Hiện đáp án</button><div class="keys"><kbd>Space</kbd> lật thẻ${curDir === "recall" ? " · <kbd>H</kbd> gợi ý" : " · <kbd>R</kbd> nghe lại"}</div>`;
   } else {
@@ -1093,7 +1089,6 @@ document.addEventListener("keydown", e => {
   if (UI.tab !== "study" || e.target.closest("input,textarea,select") || e.metaKey || e.ctrlKey || e.altKey) return;
   if (curDir === "read" && revealed && !cram) {
     if (e.key === " " || e.key === "Enter") { e.preventDefault(); answer(1); }
-    else if (e.key === "4") answer(4);
     else if (e.key === "z" || e.key === "Z") undo();
     else if (e.key === "r" || e.key === "R") { if (cur) speak(cur.r || cur.w, document.querySelector(".headrow .say")); }
     return;
