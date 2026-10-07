@@ -533,7 +533,20 @@ function repairAgainBug() {
   if (n) save();
   return n;
 }
-function endBoot() { if (!booting) return; booting = false; repairAgainBug(); refreshAll(); }
+// Before the boot fix (2026-10-01 13:22 UTC) the first card on screen could be graded before it was due, and each
+// early "Dễ" multiplied its interval (word #1, 評判, reached "Đã thuộc"). The deck went live on 2026-10-01, and on
+// that first day no card can legitimately get more than 5 days (Easy on a new word = 4 ± 1), so any review card
+// last graded on that day with a longer interval was inflated: it is made due now with a 4-day interval and default ease.
+const FIRST_DAY_END = Date.UTC(2026, 9, 2, 0, 0);
+function repairEarlyGrades() {
+  const now = Date.now(); let n = 0;
+  for (const c of Object.values(P.cards)) {
+    if (c.q === 2 && (c.t || 0) < FIRST_DAY_END && c.i > 5) { c.i = 4; c.e = 2500; c.d = Math.min(c.d, now); n++; }
+  }
+  if (n) save();
+  return n;
+}
+function endBoot() { if (!booting) return; booting = false; repairAgainBug(); repairEarlyGrades(); refreshAll(); }
 async function connect() {
   setTimeout(endBoot, 5000);
   try {
