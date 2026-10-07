@@ -91,16 +91,19 @@ main.wrap{padding-block:18px 40px}
 .bigword{font-family:var(--f-mincho);font-weight:800;font-size:clamp(46px,12vw,84px);line-height:1.15;letter-spacing:.04em;word-break:keep-all}
 .bigword rt{font-family:var(--f-jp);font-weight:500;font-size:.24em;letter-spacing:.12em;color:var(--muted)}
 .front .vi-big{font-size:clamp(22px,5vw,30px);font-weight:700;text-wrap:balance;max-width:28ch}
-.hintbtn{border:1px dashed var(--line);background:none;border-radius:999px;padding:4px 12px;font-size:12.5px;color:var(--muted)}
+.hintbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--muted);transition:color .15s,border-color .15s}
+.hintbtn:hover{color:var(--ink);border-color:color-mix(in srgb,var(--ai) 50%,var(--line))}
 .state{margin-left:8px;font-family:var(--f-ui);font-size:11px;font-weight:700;letter-spacing:.02em;border-radius:6px;padding:1px 7px;border:1px solid currentColor}
 .st-new{color:var(--new,var(--easy))} .st-learn{color:var(--again)} .st-review{color:var(--good)}
-.qdefs{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:clamp(19px,4.2vw,24px);font-weight:700;line-height:1.55;max-width:30ch;text-wrap:balance}
-.qdefs li{display:flex;justify-content:center;align-items:flex-start;gap:10px}
-.qdefs .dn{flex:none;display:grid;place-items:center;font-size:.6em;line-height:1;width:1.9em;height:1.9em;margin-top:calc((1.55em / .6 - 1.9em) / 2);border-radius:50%;background:var(--ai);color:var(--card);font-variant-numeric:tabular-nums}
+.front.recall{gap:18px;padding-top:30px}
+.qdefs{list-style:none;margin:0 auto;padding:0;font-size:clamp(20px,3.8vw,25px);font-weight:700;line-height:1.55;max-width:min(100%,17em);text-wrap:balance}
+.qdefs.multi{display:grid;gap:12px;width:fit-content;max-width:min(100%,20em);text-align:left;text-wrap:pretty;font-size:clamp(18px,3.3vw,22px)}
+.qdefs.multi li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-items:start}
+.qdefs .dn{display:grid;place-items:center;font-size:.6em;line-height:1;width:1.8em;height:1.8em;margin-top:calc((1.55em / .6 - 1.8em) / 2);border-radius:50%;background:var(--ai-soft);color:var(--ai);font-weight:800;font-variant-numeric:tabular-nums}
 .blank{display:inline-block;width:2.4em;border-bottom:2px solid var(--shu);vertical-align:-.1em;height:1em}
 .slots{display:inline-flex;gap:max(.2em,4px);vertical-align:-.15em;margin-inline:2px}
 .slot{display:inline-grid;place-items:center;width:.95em;height:1.15em;border-bottom:2px solid var(--shu);color:var(--shu);font-weight:700;line-height:1}
-.answerline{font-size:clamp(26px,6vw,34px);min-height:1.4em}
+.answerline{font-size:clamp(26px,6vw,34px);line-height:1.2}
 .answerline .blank{width:4.5em}
 .hintout .vih{font-weight:700;font-size:16px}
 .hints{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
@@ -682,7 +685,7 @@ function recallFront(v) {
   const defs = v.s.map((x, i) => `<li>${v.s.length > 1 ? `<span class="dn">${i + 1}</span>` : ""}<span>${masked(x.ja, v)}</span></li>`).join("");
   const out = HINTS.filter(([k]) => hintsOn.includes(k) && hintHtml(v, k)).map(([k, l]) => `<div><b>${l}</b>${hintHtml(v, k)}</div>`).join("");
   const left = HINTS.filter(([k]) => !hintsOn.includes(k) && hintReady(v, k));
-  return `<div class="front recall"><ol class="qdefs jp">${defs}</ol>
+  return `<div class="front recall"><ol class="qdefs jp${v.s.length > 1 ? " multi" : ""}">${defs}</ol>
     <div class="answerline jp">${blankHtml(v.r || v.w)}</div>
     ${left.length ? `<div class="hints">${left.map(([k, l]) => `<button class="hintbtn" data-hint="${k}">${l}</button>`).join("")}</div>` : ""}
     ${out ? `<div class="hintout">${out}</div>` : ""}</div>`;
