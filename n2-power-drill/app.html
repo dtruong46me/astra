@@ -233,6 +233,7 @@ ol.why>li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:6px;margin:0
 ol.why>li>div{min-width:0}
 ol.why .mk{font-weight:700;color:var(--bad);text-align:center;line-height:1.5}
 ol.why li.ok .mk,ol.why li.ok>div>b{color:var(--ok)}
+ol.why.ord .mk{color:var(--muted)}
 ol.why .sub{color:var(--muted);font-size:13px}
 ol.why .stb{color:var(--gold);font-weight:700}
 ol.why .mine{display:inline-block;margin-left:6px;font-size:11px;font-weight:600;color:var(--bad);background:var(--bad-soft);border-radius:4px;padding:0 5px;vertical-align:1px}
@@ -518,7 +519,7 @@ function qHTML(u,s,q,qi,m,st){
 // per-option rationale: ✓ for the key, ✗ for the rest; t:12 lists fragments in slot order
 function whyHTML(q,t,kl,pick){
  const mine=i=>pick&&pick===i+1&&pick!==q.a?`<span class="mine">bạn chọn</span>`:"";
- if(t===12)return `<div class="xr"><b>Cách sắp xếp</b><ol class="why">${q.ord.map((n,si)=>{const i=n-1;
+ if(t===12)return `<div class="xr"><b>Cách sắp xếp</b><ol class="why ord">${q.ord.map((n,si)=>{const i=n-1;
    return `<li class="${si===2?"ok":""}"><span class="mk">${si+1}</span><div><b class="jp">${fmtO(q.o[i])}</b>${si===2?` <span class="stb">★</span>`:""}${mine(i)}<div>${esc(q.w[i])}</div></div></li>`;}).join("")}</ol></div>`;
  return `<div class="xr"><b>Vì sao chọn / loại</b><ol class="why">${q.o.map((o,i)=>{const ok=i+1===q.a;
    const head=t===6?`<b>Câu ${kl(i+1)}</b>`:`<b class="jp">${kl(i+1)}. ${fmtO(o)}</b>`;

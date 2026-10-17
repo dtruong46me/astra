@@ -2,6 +2,7 @@
 
 - `data/b01.js … b06.js`: sách 文字・語彙 — 30 回 + 10 集中トレーニング (câu hỏi, đáp án theo 別冊, dịch nghĩa, giải thích, ngữ pháp, từ vựng kèm Hán Việt và nhãn "Hay thi"/"Nhận diện").
 - `data/g01.js … g06.js`: sách 文法 — 30 回 (問題1 chọn mẫu ngữ pháp, 問題2 sắp xếp câu ★ kèm thứ tự đúng, 問題3 đoạn văn kèm bản dịch) + 10 集中トレーニング; mỗi câu có dịch nghĩa, giải thích, phân tích 4 lựa chọn, mẫu ngữ pháp (cách nối, nghĩa, nhãn) và từ vựng.
+- `data/x_b01.js … x_g06.js`: lớp bổ sung `X[id] = {w, nt}` — `w["sec.câu"]` là lý do chọn/loại cho từng lựa chọn (問題2: lý do đứng ở từng ô), `nt` là ghi chú kiến thức cuối bài (`h` tiêu đề, `p` trọng tâm, `x` mở rộng).
 - `app.html`: giao diện (tab 語彙 / 文法 / Từ vựng / Ngữ pháp / Thẻ; tự làm / xem đáp án, bảng tổng hợp cuối bài, flashcard từ vựng và ngữ pháp, lưu tiến độ).
 - `node build.js` → `dist/index.html` (file publish làm Artifact).
 
