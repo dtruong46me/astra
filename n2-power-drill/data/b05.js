@@ -366,7 +366,7 @@ ex:"心当たり (こころあたり): manh mối, nghĩ ra. 心がけ: ý thứ
 v:[["心当たり","こころあたり","TÂM ĐƯƠNG","manh mối","c"],["心掛け","こころがけ","TÂM QUẢI","ý thức, tâm niệm","c"],["心配り","こころくばり","TÂM PHỐI","quan tâm chu đáo","c"],["心残り","こころのこり","TÂM TÀN","tiếc nuối","c"]]},
 {q:"娘は歌の才能に（　）いる。",o:["込んで","優れて","つまって","恵まれて"],a:4,
 vi:"Con gái tôi có năng khiếu ca hát.",
-ex:"才能に恵まれる (めぐまれる): được trời phú tài năng — cụm cố định. 優れる thường dùng 「〜が優れている」「〜に優れた人」 (giỏi về mặt ~), không nói 「才能に優れている」 với nghĩa “được ban tài năng”.",
+ex:"才能に恵まれる (めぐまれる): được trời phú tài năng — cụm cố định. 優れる = xuất sắc (「〜が優れている」「運動能力に優れた人」); câu này nói “được trời ban” tài năng nên dùng 恵まれる.",
 v:[["恵まれる","めぐまれる","HUỆ","được ban, may mắn có","c"],["才能","さいのう","TÀI NĂNG","tài năng","c"]]},
 {q:"パソコンを処分する前に、データをすべて（　）してください。",o:["消費","消去","掃除","清掃"],a:2,
 vi:"Trước khi thanh lý máy tính, hãy xoá toàn bộ dữ liệu.",
