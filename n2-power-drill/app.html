@@ -228,6 +228,23 @@ select.sel{border:1px solid var(--line2);background:var(--card);color:var(--ink)
 .pbox.f i{font-style:normal;font-size:10px;font-family:var(--f-ui);margin-right:4px;opacity:.75}
 details.pv{border-top:0;margin-top:4px}
 ol.oe{margin:0;padding-left:20px}
+ol.why{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+ol.why>li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:6px;margin:0}
+ol.why>li>div{min-width:0}
+ol.why .mk{font-weight:700;color:var(--bad);text-align:center;line-height:1.5}
+ol.why li.ok .mk,ol.why li.ok>div>b{color:var(--ok)}
+ol.why .sub{color:var(--muted);font-size:13px}
+ol.why .stb{color:var(--gold);font-weight:700}
+ol.why .mine{display:inline-block;margin-left:6px;font-size:11px;font-weight:600;color:var(--bad);background:var(--bad-soft);border-radius:4px;padding:0 5px;vertical-align:1px}
+.nts{display:grid;gap:10px;margin-top:14px}
+details.nt{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px;box-shadow:var(--shadow)}
+details.nt>summary{cursor:pointer;font-weight:700;font-size:16px}
+details.nt ul{margin:8px 0 0;padding-left:18px}
+details.nt li{margin-bottom:4px}
+details.nt li b{color:var(--ai)}
+.ntx{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line2)}
+.ntx .lb{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
+.ntx ul{margin-top:4px}
 ol.oe li{margin-bottom:3px}
 ol.oe li.okli b{color:var(--ok)}
 table.gt{min-width:520px}
@@ -286,7 +303,7 @@ table.gt{min-width:520px}
 <div class="dock" id="dock" hidden></div>
 
 <script>
-const D=[];
+const D=[],X={};
 /*DATA*/
 </script>
 <script>
@@ -320,7 +337,8 @@ function fillBlanks(t,ans){const n=(t.match(/（　）/g)||[]).length;const part
 const fullStar=q=>q.q.replace("〔★〕",q.ord.map(n=>q.o[n-1]).join(""));
 const VOC=new Map(),GRM=new Map(); // key -> entry
 UNITS.forEach(u=>{u.total=0;u.maxPt=0;u.vkeys=[];u.gkeys=[];const seen=new Set(),gseen=new Set();
- u.secs.forEach((s,si)=>s.qs.forEach((q,qi)=>{q.id=si+"-"+qi;u.total++;u.maxPt+=SEC[s.t].pt;
+ const xo=X[u.id]||{},xw=xo.w||{};u.nt=xo.nt||[];
+ u.secs.forEach((s,si)=>s.qs.forEach((q,qi)=>{q.id=si+"-"+qi;u.total++;u.maxPt+=SEC[s.t].pt;q.w=xw[si+"."+qi];
   q.vk=(q.v||[]).map(v=>{const k=v[0]+"|"+v[1];let e=VOC.get(k);
    if(!e){e={k,kind:"v",w:v[0],r:v[1],hv:v[2],m:v[3],tag:v[4],units:[],hay:v[0]+" "+v[1]+" "+stripVN(v[2]+" "+v[3])};VOC.set(k,e);}
    if(!e.units.includes(u.id))e.units.push(u.id);
@@ -483,19 +501,35 @@ function qHTML(u,s,q,qi,m,st){
  h+=`</div>`;
  if(st.sub&&m==="self"){h+=pick===q.a?`<div class="mark ok">✓ Đúng</div>`:`<div class="mark bad">${pick?"✗ Sai":"— Bỏ trống"} · Đáp án: ${kl(q.a)}</div>`;}
  if(showKey){
-  h+=`<details class="exp" data-k="${q.id}"${S.prefs.openAll?" open":""}><summary>Xem kỹ: dịch, giải thích, ${u.book==="g"?"ngữ pháp, ":""}từ vựng</summary><div class="xb">
+  h+=`<details class="exp" data-k="${q.id}"${S.prefs.openAll?" open":""}><summary>Xem kỹ: ${q.w?(t===12?"cách sắp xếp, ":"vì sao chọn / loại, "):""}dịch, giải thích, ${u.book==="g"?"ngữ pháp, ":""}từ vựng</summary><div class="xb">
   <div class="xr"><b>Đáp án</b><div><span class="jp" style="font-weight:700">${kl(q.a)}. ${fmtO(correct)}</span></div></div>`;
   if(t===12)h+=`<div class="xr"><b>Câu đúng</b><div><span class="jp">${esc(fullStar(q))}</span><div class="muted" style="font-size:13px;margin-top:2px">Thứ tự: ${q.ord.join(" → ")} · ★ ở ô thứ 3</div></div></div>`;
   if(q.vi)h+=`<div class="xr"><b>Dịch nghĩa</b><div>${esc(q.vi).replace(/\n/g,"<br>")}</div></div>`;
   h+=`<div class="xr"><b>Giải thích</b><div>${esc(q.ex)}</div></div>`;
-  if(q.oe)h+=`<div class="xr"><b>Các lựa chọn</b><ol class="oe">${q.oe.map((x,i)=>`<li class="${i+1===q.a?"okli":""}"><b class="jp">${fmtO(q.o[i])}</b> — ${esc(x)}</li>`).join("")}</ol></div>`;
+  if(q.w)h+=whyHTML(q,t,kl,st.sub&&m==="self"?pick:0);
+  else if(q.oe)h+=`<div class="xr"><b>Các lựa chọn</b><ol class="oe">${q.oe.map((x,i)=>`<li class="${i+1===q.a?"okli":""}"><b class="jp">${fmtO(q.o[i])}</b> — ${esc(x)}</li>`).join("")}</ol></div>`;
   if(q.g)h+=`<div class="xr"><b>Ngữ pháp</b><div class="gram jp">${esc(q.g)}</div></div>`;
-  if(q.ot)h+=`<div class="xr"><b>Dịch 4 câu</b><ol>${q.ot.map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`;
+  if(q.ot&&!q.w)h+=`<div class="xr"><b>Dịch 4 câu</b><ol>${q.ot.map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`;
   if(q.gk.length)h+=`<div class="xr"><b>Mẫu ngữ pháp</b><div class="mini">${gtable(q.gk,{mini:true})}</div></div>`;
   if(q.vk.length)h+=`<div class="xr"><b>Từ vựng</b><div class="mini">${vtable(q.vk,{mini:true})}</div></div>`;
   h+=`</div></details>`;}
  return h+`</article>`;}
 
+// per-option rationale: ✓ for the key, ✗ for the rest; t:12 lists fragments in slot order
+function whyHTML(q,t,kl,pick){
+ const mine=i=>pick&&pick===i+1&&pick!==q.a?`<span class="mine">bạn chọn</span>`:"";
+ if(t===12)return `<div class="xr"><b>Cách sắp xếp</b><ol class="why">${q.ord.map((n,si)=>{const i=n-1;
+   return `<li class="${si===2?"ok":""}"><span class="mk">${si+1}</span><div><b class="jp">${fmtO(q.o[i])}</b>${si===2?` <span class="stb">★</span>`:""}${mine(i)}<div>${esc(q.w[i])}</div></div></li>`;}).join("")}</ol></div>`;
+ return `<div class="xr"><b>Vì sao chọn / loại</b><ol class="why">${q.o.map((o,i)=>{const ok=i+1===q.a;
+   const head=t===6?`<b>Câu ${kl(i+1)}</b>`:`<b class="jp">${kl(i+1)}. ${fmtO(o)}</b>`;
+   const sub=q.oe?q.oe[i]:q.ot?q.ot[i]:"";
+   return `<li class="${ok?"ok":"no"}"><span class="mk">${ok?"✓":"✗"}</span><div>${head}${mine(i)}${sub?`<div class="sub">${esc(sub)}</div>`:""}<div>${esc(q.w[i])}</div></div></li>`;}).join("")}</ol></div>`;}
+// end-of-unit notes; text before the first ": " is the item and is shown bold
+const ntLi=x=>{const m=/^(.{1,48}?)[:：]\s/.exec(x);return `<li>${m?`<b class="jp">${esc(m[1])}</b>: ${esc(x.slice(m[0].length))}`:esc(x)}</li>`;};
+function notesHTML(u){
+ return `<section class="vsum" id="nsum"><div class="eyebrow">Ghi chú cuối bài</div><h2 class="jp">まとめノート · Kiến thức ${esc(u.title)}</h2>
+ <p>Tổng hợp kiến thức trọng tâm của bài, kèm phần mở rộng cùng nhóm để học thêm.</p><div class="nts">${u.nt.map(b=>`<details class="nt" open><summary class="jp">${esc(b.h)}</summary>
+ <ul>${b.p.map(ntLi).join("")}</ul>${b.x&&b.x.length?`<div class="ntx"><div class="lb">Mở rộng</div><ul>${b.x.map(ntLi).join("")}</ul></div>`:""}</details>`).join("")}</div></section>`;}
 const EMPTY=`<div class="empty"><b>Không có mục nào khớp bộ lọc</b>Thử chọn bộ lọc khác hoặc xoá ô tìm kiếm.</div>`;
 const starBtn=k=>`<button class="star ${isFav(k)?"on":""}" data-fav="${esc(k)}" aria-label="Yêu thích">${STAR}</button>`;
 const tagBtn=k=>{const tg=tagOf(k);return `<button class="tag ${tg}" data-tag="${esc(k)}" title="Bấm để đổi mức">${TAGN[tg]}</button>`;};
@@ -535,6 +569,7 @@ function renderUnit(u){
   if(s.t===13)h+=passageHTML(s,si,showKey);
   s.qs.forEach((q,qi)=>h+=qHTML(u,s,q,qi,m,st));h+=`</section>`;});
  if(showKey){
+  if(u.nt.length)h+=notesHTML(u);
   if(u.gkeys.length){const f=S.prefs.gf;const keys=filterKeys(u.gkeys,f,"");
    h+=`<section class="vsum" id="gsum"><div class="eyebrow">Tổng hợp cuối bài</div><h2 class="jp">文型リスト · Ngữ pháp ${esc(u.title)}</h2>
    <p>${u.gkeys.length} mẫu ngữ pháp xuất hiện trong đáp án và giải thích. Bấm ★ để đưa vào flashcard, bấm nhãn mức để đổi “Hay thi” ↔ “Nhận diện”.</p>
@@ -547,7 +582,7 @@ function renderUnit(u){
  // dock
  if(m==="self"){DOCK.hidden=false;
   if(!st.sub){DOCK.innerHTML=`<div class="wrap"><span class="cnt"><b>${answered(u)}</b>/${u.total} câu</span><span class="timer" id="timer"></span><span class="sp"><button class="btn pri" id="submit">Chấm điểm</button></span></div>`;updTimer();}
-  else{const sc=scoreOf(u,st.ans);DOCK.innerHTML=`<div class="wrap"><span class="result">${st.score}/${u.maxPt} điểm</span><span class="cnt">${sc.ok}/${u.total} câu đúng · ${mmss(st.time)}${st.best!=null&&st.best!==st.score?` · cao nhất ${st.best}`:""}</span><span class="sp"><button class="btn" data-scroll="${u.gkeys.length?"gsum":"vsum"}">${u.gkeys.length?"Ngữ pháp":"Từ vựng"}</button><button class="btn" id="redo">Làm lại</button></span></div>`;}}
+  else{const sc=scoreOf(u,st.ans);DOCK.innerHTML=`<div class="wrap"><span class="result">${st.score}/${u.maxPt} điểm</span><span class="cnt">${sc.ok}/${u.total} câu đúng · ${mmss(st.time)}${st.best!=null&&st.best!==st.score?` · cao nhất ${st.best}`:""}</span><span class="sp">${u.nt.length?`<button class="btn" data-scroll="nsum">Ghi chú</button>`:""}<button class="btn" data-scroll="${u.gkeys.length?"gsum":"vsum"}">${u.gkeys.length?"Ngữ pháp":"Từ vựng"}</button><button class="btn" id="redo">Làm lại</button></span></div>`;}}
 }
 
 function unitSelect(id,val,books){return `<select class="sel" id="${id}"><option value="">Tất cả các bài</option>${books.map(b=>`<optgroup label="${BOOKN[b]}">${BOOKU[b].map(u=>`<option value="${u.id}" ${val===u.id?"selected":""}>${esc(u.title)}${u.topic?" "+esc(u.topic):""}</option>`).join("")}</optgroup>`).join("")}</select>`;}
