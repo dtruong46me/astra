@@ -6,68 +6,515 @@
  "title": "Đề 9 · Ngữ pháp N2",
  "jp": "文法形式",
  "mondai": "<b>問題7</b> 次の文の（　）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。 Chọn mẫu ngữ pháp thích hợp nhất để điền vào chỗ trống.",
- "src": {"folder": "1Mloi48ZJW7ey0zF8RXFmzOPu12C2nQo-", "goc": "1mbY3rDbnngBhgV38xiQc2zHyVuoDuHWU", "chua": "1Ofpl0Fx8Zpzwzh9j38vPzQeHOctPG-1d"},
+ "src": {
+  "folder": "1Mloi48ZJW7ey0zF8RXFmzOPu12C2nQo-",
+  "goc": "1mbY3rDbnngBhgV38xiQc2zHyVuoDuHWU",
+  "chua": "1Ofpl0Fx8Zpzwzh9j38vPzQeHOctPG-1d"
+ },
  "qs": [
-  {"s": "お忙しい（　）おいでくださいまして、ありがとうございます。", "o": ["ところを", "ものを", "あいだを", "ことを"], "a": 1, "ar": "〜ところを",
+  {
+   "s": "お忙しい（　）おいでくださいまして、ありがとうございます。",
+   "o": [
+    "ところを",
+    "ものを",
+    "あいだを",
+    "ことを"
+   ],
+   "a": 1,
+   "ar": "〜ところを",
    "vi": "Cảm ơn anh chị đã đến dù đang bận.",
-   "key": [{"w": "〜ところを", "r": "ところを", "hv": "—", "m": "trong lúc (người nghe đang…), dùng khi cảm ơn/xin lỗi"}],
-   "x": {"2": "〜ものを: giá mà… vậy mà (tiếc nuối): 言えばいいものを.", "3": "あいだを: không phải mẫu cố định.", "4": "không hợp."},
-   "g": ["<b class=\"jp\">お忙しいところを / お休みのところを + すみません/ありがとう</b>."],
-   "n": ["おいでくださる: kính ngữ của 来てくれる."]},
-  {"s": "かたくるしいあいさつは（　）さっそく一杯やりましょう。", "o": ["抜きつつ", "抜いても", "抜きにして", "抜きながら"], "a": 3, "ar": "〜は抜きにして",
+   "key": [
+    {
+     "w": "〜ところを",
+     "r": "ところを",
+     "hv": "—",
+     "m": "trong lúc (người nghe đang…), dùng khi cảm ơn/xin lỗi"
+    }
+   ],
+   "x": {
+    "2": "〜ものを (giá mà… vậy mà — tiếc nuối, trách): 言えばいいものを. Câu cảm ơn không có ý trách.",
+    "3": "あいだを: không có mẫu “お忙しいあいだを”. 〜あいだに chỉ khoảng thời gian, không mang nghĩa “dù đang bận”.",
+    "4": "ことを: “お忙しいことを” không tạo thành câu cảm ơn; ことを cần động từ phía sau nhận nó làm tân ngữ."
+   },
+   "g": [
+    "<b class=\"jp\">お忙しいところを / お休みのところを + すみません/ありがとう</b>."
+   ],
+   "n": [
+    "おいでくださる: kính ngữ của 来てくれる."
+   ],
+   "why": "Câu cảm ơn lịch sự khi người kia <b>đang bận mà vẫn đến</b>. Mẫu cố định <b>お忙しいところを</b>＋(わざわざ)〜くださって: trong lúc (anh chị) đang… vậy mà. Dùng trong thư từ, phát biểu."
+  },
+  {
+   "s": "かたくるしいあいさつは（　）さっそく一杯やりましょう。",
+   "o": [
+    "抜きつつ",
+    "抜いても",
+    "抜きにして",
+    "抜きながら"
+   ],
+   "a": 3,
+   "ar": "〜は抜きにして",
    "vi": "Bỏ qua mấy lời chào hỏi khách sáo đi, làm một ly luôn nào!",
-   "key": [{"w": "〜を/は抜きにして", "r": "ぬきにして", "hv": "BẠT", "m": "bỏ qua, không kể đến"}, {"w": "堅苦しい", "r": "かたくるしい", "hv": "KIÊN KHỔ", "m": "câu nệ, gò bó"}],
-   "x": {"1": "〜つつ: vừa… vừa (văn viết).", "2": "〜ても: dù có.", "4": "〜ながら: vừa… vừa."},
-   "n": ["Biến thể: 抜きで (Đề 18 câu 9), 抜きには語れない (không thể nói mà bỏ qua)."]},
-  {"s": "一時的に（　）、両国の{戦闘|せんとう}が{休戦状態|きゅうせんじょうたい}に入ったことは{慶賀|けいが}すべきことだ。", "o": ["だけ", "つけ", "しか", "せよ"], "a": 4, "ar": "〜にせよ",
+   "key": [
+    {
+     "w": "〜を/は抜きにして",
+     "r": "ぬきにして",
+     "hv": "BẠT",
+     "m": "bỏ qua, không kể đến"
+    },
+    {
+     "w": "堅苦しい",
+     "r": "かたくるしい",
+     "hv": "KIÊN KHỔ",
+     "m": "câu nệ, gò bó"
+    }
+   ],
+   "x": {
+    "1": "抜きつつ: 〜つつ (vừa… vừa) chỉ hai hành động đồng thời; “vừa bỏ chào hỏi vừa uống” không phải nghĩa của mẫu này.",
+    "2": "抜いても (dù có rút ra): nghĩa nhượng bộ, không phải đề nghị bỏ qua.",
+    "4": "抜きながら (vừa rút ra vừa): 抜く ở đây là động từ “rút”, không mang nghĩa “bỏ qua chào hỏi”."
+   },
+   "n": [
+    "Biến thể: 抜きで (Đề 18 câu 9), 抜きには語れない (không thể nói mà bỏ qua)."
+   ],
+   "why": "Đề nghị <b>bỏ qua</b> chào hỏi khách sáo để uống luôn. Mẫu <b>Nは抜きにして</b> (= Nは抜きで): bỏ qua N, không có N."
+  },
+  {
+   "s": "一時的に（　）、両国の{戦闘|せんとう}が{休戦状態|きゅうせんじょうたい}に入ったことは{慶賀|けいが}すべきことだ。",
+   "o": [
+    "だけ",
+    "つけ",
+    "しか",
+    "せよ"
+   ],
+   "a": 4,
+   "ar": "〜にせよ",
    "vi": "Dù chỉ là tạm thời, việc giao tranh giữa hai nước đi vào đình chiến là điều đáng mừng.",
-   "key": [{"w": "〜にせよ", "r": "にせよ", "hv": "—", "m": "dù là… đi nữa (= にしろ, にしても)"}],
-   "x": {"1": "一時的にだけ: chỉ tạm thời, không tạo nghĩa nhượng bộ.", "2": "〜につけ: hễ… là (Xem câu 12).", "3": "〜しか〜ない: chỉ (cần phủ định)."},
-   "g": ["<b class=\"jp\">Vるべき</b>: nên, đáng (慶賀すべき: đáng chúc mừng)."]},
-  {"s": "去年の夏休みは宿題に{追|お}われていて、旅行（　）。", "o": ["はずではなかった", "までもなかった", "ことではなかった", "どころではなかった"], "a": 4, "ar": "〜どころではない",
+   "key": [
+    {
+     "w": "〜にせよ",
+     "r": "にせよ",
+     "hv": "—",
+     "m": "dù là… đi nữa (= にしろ, にしても)"
+    }
+   ],
+   "x": {
+    "1": "一時的にだけ (chỉ tạm thời): không có nghĩa nhượng bộ “dù… nhưng vẫn”, câu sau bị đứt mạch.",
+    "2": "一時的につけ: 〜につけ (hễ… là) đi với động từ cảm nhận (見るにつけ) hoặc cặp 〜につけ〜につけ. Không dùng ở đây.",
+    "3": "〜しか cần phủ định đi sau (しか〜ない). Câu không có phủ định."
+   },
+   "g": [
+    "<b class=\"jp\">Vるべき</b>: nên, đáng (慶賀すべき: đáng chúc mừng)."
+   ],
+   "why": "Vế trước nhượng bộ: <b>dù chỉ là tạm thời</b>, vế sau vẫn đáng mừng. Mẫu <b>〜にせよ</b> (= 〜にしても): dù là… đi nữa. 一時的にせよ."
+  },
+  {
+   "s": "去年の夏休みは宿題に{追|お}われていて、旅行（　）。",
+   "o": [
+    "はずではなかった",
+    "までもなかった",
+    "ことではなかった",
+    "どころではなかった"
+   ],
+   "a": 4,
+   "ar": "〜どころではない",
    "vi": "Hè năm ngoái tôi ngập trong bài tập, chẳng còn tâm trí đâu mà đi du lịch.",
-   "key": [{"w": "〜どころではない", "r": "どころではない", "hv": "—", "m": "không phải lúc để…, không có tâm trí…"}],
-   "x": {"1": "〜はずではなかった: lẽ ra không phải như vậy.", "2": "〜までもない: không cần phải.", "3": "〜ことではない: không phải là việc…"},
-   "g": ["<b class=\"jp\">〜に追われる</b>: bị cuốn vào, bận ngập đầu (仕事に追われる)."]},
-  {"s": "A「あしたのパーティーに行きたくないの？」　B「行きたくないこと（　）ないけど、あまり気が進まないんだ。」", "o": ["は", "と", "さえ", "まで"], "a": 1, "ar": "〜ないことはない",
+   "key": [
+    {
+     "w": "〜どころではない",
+     "r": "どころではない",
+     "hv": "—",
+     "m": "không phải lúc để…, không có tâm trí…"
+    }
+   ],
+   "x": {
+    "1": "〜はずではなかった (lẽ ra không phải thế): diễn tả kết quả trái dự tính. Câu nói về không có thời gian, không nói về dự tính.",
+    "2": "〜までもなかった (không cần phải): ý là việc đó thừa. Du lịch không phải việc “không cần thiết”.",
+    "3": "〜ことではなかった (không phải là chuyện…): không diễn tả hoàn cảnh bận bịu."
+   },
+   "g": [
+    "<b class=\"jp\">〜に追われる</b>: bị cuốn vào, bận ngập đầu (仕事に追われる)."
+   ],
+   "why": "Bị bài tập vây kín → <b>không còn tâm trí / hoàn cảnh nào</b> để đi du lịch. Mẫu <b>Nどころではない</b>: không phải lúc để…"
+  },
+  {
+   "s": "A「あしたのパーティーに行きたくないの？」　B「行きたくないこと（　）ないけど、あまり気が進まないんだ。」",
+   "o": [
+    "は",
+    "と",
+    "さえ",
+    "まで"
+   ],
+   "a": 1,
+   "ar": "〜ないことはない",
    "vi": "A: Mai cậu không muốn đi tiệc à? B: Không hẳn là không muốn, chỉ là không hào hứng lắm.",
-   "key": [{"w": "〜ないことはない", "r": "ないことはない", "hv": "—", "m": "không phải là không… (khẳng định yếu)"}, {"w": "気が進まない", "r": "きがすすまない", "hv": "—", "m": "không hào hứng"}],
-   "x": {"2": "không hợp.", "3": "さえ: ngay cả.", "4": "まで: đến cả."},
-   "n": ["Biến thể: 〜ないこともない. Xem Đề 18 câu 4 (言えないこともない)."]},
-  {"s": "私が留学できたのは、両親のおかげ（　）。", "o": ["にほかならない", "のかいがない", "になくてはならない", "ではいられない"], "a": 1, "ar": "〜にほかならない",
+   "key": [
+    {
+     "w": "〜ないことはない",
+     "r": "ないことはない",
+     "hv": "—",
+     "m": "không phải là không… (khẳng định yếu)"
+    },
+    {
+     "w": "気が進まない",
+     "r": "きがすすまない",
+     "hv": "—",
+     "m": "không hào hứng"
+    }
+   ],
+   "x": {
+    "2": "ないことと: không có mẫu “ないこととない”.",
+    "3": "さえ (ngay cả): “ngay cả không muốn cũng không có” — không thành nghĩa.",
+    "4": "まで (đến cả): tương tự, không tạo mẫu khẳng định dè dặt."
+   },
+   "n": [
+    "Biến thể: 〜ないこともない. Xem Đề 18 câu 4 (言えないこともない)."
+   ],
+   "why": "B trả lời dè dặt: không phải là không muốn đi, nhưng không hào hứng. Mẫu <b>〜ないことはない</b>: không phải là không… (khẳng định yếu). Chỗ trống là trợ từ <b>は</b>."
+  },
+  {
+   "s": "私が留学できたのは、両親のおかげ（　）。",
+   "o": [
+    "にほかならない",
+    "のかいがない",
+    "になくてはならない",
+    "ではいられない"
+   ],
+   "a": 1,
+   "ar": "〜にほかならない",
    "vi": "Tôi đi du học được chính là nhờ bố mẹ.",
-   "key": [{"w": "〜にほかならない", "r": "にほかならない", "hv": "(他)", "m": "chính là, không gì khác ngoài"}],
-   "x": {"2": "〜かいがない: không bõ công (努力したかいがない).", "3": "〜なくてはならない: không thể thiếu (N にとってなくてはならない).", "4": "〜ではいられない: không thể cứ (bình thản) được."},
-   "g": ["<b class=\"jp\">〜のは〜にほかならない</b>: khẳng định nguyên nhân duy nhất."],
-   "n": ["Xem Đề 18 câu 3 (憎しみにほかならない)."]},
-  {"s": "台風の{上陸|じょうりく}に（　）、{九州地方|きゅうしゅうちほう}に{警戒警報|けいかいけいほう}が{発令|はつれい}されました。", "o": ["わたって", "ともなって", "比べて", "反して"], "a": 2, "ar": "〜に伴って",
+   "key": [
+    {
+     "w": "〜にほかならない",
+     "r": "にほかならない",
+     "hv": "(他)",
+     "m": "chính là, không gì khác ngoài"
+    }
+   ],
+   "x": {
+    "2": "〜かいがない (không bõ công): 努力したかいがない. Ngược nghĩa câu cảm ơn bố mẹ.",
+    "3": "なくてはならない ở đây đứng sau に nghĩa là “không thể thiếu đối với…” (Nにとってなくてはならない). “Là nhờ bố mẹ, không thể thiếu” sai cấu trúc.",
+    "4": "〜ではいられない (không thể cứ… được): diễn tả không kìm được, không hợp."
+   },
+   "g": [
+    "<b class=\"jp\">〜のは〜にほかならない</b>: khẳng định nguyên nhân duy nhất."
+   ],
+   "n": [
+    "Xem Đề 18 câu 3 (憎しみにほかならない)."
+   ],
+   "why": "Khẳng định mạnh: lý do đi du học được <b>chính là</b> nhờ bố mẹ. Mẫu <b>Nにほかならない</b>: chính là, không gì khác ngoài. Hay đi với 〜のは〜のおかげ／ため."
+  },
+  {
+   "s": "台風の{上陸|じょうりく}に（　）、{九州地方|きゅうしゅうちほう}に{警戒警報|けいかいけいほう}が{発令|はつれい}されました。",
+   "o": [
+    "わたって",
+    "ともなって",
+    "比べて",
+    "反して"
+   ],
+   "a": 2,
+   "ar": "〜に伴って",
    "vi": "Cùng với việc bão đổ bộ, lệnh cảnh báo đã được ban bố ở vùng Kyushu.",
-   "key": [{"w": "〜に伴って", "r": "にともなって", "hv": "BẠN", "m": "cùng với, kéo theo"}, {"w": "上陸", "r": "じょうりく", "hv": "THƯỢNG LỤC", "m": "đổ bộ"}],
-   "x": {"1": "〜にわたって: suốt, trải dài.", "3": "〜に比べて: so với.", "4": "〜に反して: trái với."},
-   "n": ["Dạng bổ nghĩa danh từ: N1 に伴う N2 (Đề 18 câu 8)."]},
-  {"s": "うちにコンピューターがすでにある（　）、新しいのが出るとほしくなる。", "o": ["をもとにして", "とすれば", "にもかかわらず", "にそって"], "a": 3, "ar": "〜にもかかわらず",
+   "key": [
+    {
+     "w": "〜に伴って",
+     "r": "にともなって",
+     "hv": "BẠN",
+     "m": "cùng với, kéo theo"
+    },
+    {
+     "w": "上陸",
+     "r": "じょうりく",
+     "hv": "THƯỢNG LỤC",
+     "m": "đổ bộ"
+    }
+   ],
+   "x": {
+    "1": "〜にわたって (suốt, trải dài): đi với khoảng thời gian/không gian (3日間にわたって). 上陸 là một sự kiện.",
+    "3": "〜に比べて (so với): không có gì được so sánh ở đây.",
+    "4": "〜に反して (trái với): bão đổ bộ và ra cảnh báo không trái ngược nhau."
+   },
+   "n": [
+    "Dạng bổ nghĩa danh từ: N1 に伴う N2 (Đề 18 câu 8)."
+   ],
+   "why": "Bão đổ bộ → <b>đi kèm theo đó</b> là lệnh cảnh báo. Mẫu <b>Nに伴って</b>: cùng với, kèm theo (sự thay đổi kéo theo)."
+  },
+  {
+   "s": "うちにコンピューターがすでにある（　）、新しいのが出るとほしくなる。",
+   "o": [
+    "をもとにして",
+    "とすれば",
+    "にもかかわらず",
+    "にそって"
+   ],
+   "a": 3,
+   "ar": "〜にもかかわらず",
    "vi": "Dù ở nhà đã có máy tính, cứ có mẫu mới ra là tôi lại muốn mua.",
-   "key": [{"w": "〜にもかかわらず", "r": "にもかかわらず", "hv": "—", "m": "mặc dù, bất chấp"}],
-   "x": {"1": "〜をもとにして: dựa trên.", "2": "〜とすれば: nếu giả sử.", "4": "〜にそって: dọc theo, theo."},
-   "n": ["Xem Đề 18 câu 6."]},
-  {"s": "たぶん来るだろうという{予想|よそう}に（　）、彼は来なかった。", "o": ["限って", "反して", "際して", "対して"], "a": 2, "ar": "〜に反して",
+   "key": [
+    {
+     "w": "〜にもかかわらず",
+     "r": "にもかかわらず",
+     "hv": "—",
+     "m": "mặc dù, bất chấp"
+    }
+   ],
+   "x": {
+    "1": "〜をもとにして (dựa trên): cần một cơ sở, chất liệu (事実をもとにして). Không nối mệnh đề trái ngược.",
+    "2": "〜とすれば (nếu giả sử): mệnh đề giả định — nhưng việc có máy tính là sự thật (すでにある).",
+    "4": "〜にそって (theo, dọc theo): đi với danh từ (方針にそって), không đi sau động từ ある."
+   },
+   "n": [
+    "Xem Đề 18 câu 6."
+   ],
+   "why": "Đã có máy tính <b>mà vẫn</b> muốn mua máy mới → quan hệ trái ngược. Mẫu <b>thể thường＋にもかかわらず</b>: mặc dù. ある＋にもかかわらず → đúng."
+  },
+  {
+   "s": "たぶん来るだろうという{予想|よそう}に（　）、彼は来なかった。",
+   "o": [
+    "限って",
+    "反して",
+    "際して",
+    "対して"
+   ],
+   "a": 2,
+   "ar": "〜に反して",
    "vi": "Trái với dự đoán rằng có lẽ anh ấy sẽ đến, anh ấy đã không đến.",
-   "key": [{"w": "〜に反して", "r": "にはんして", "hv": "PHẢN", "m": "trái với (dự đoán, kỳ vọng)"}],
-   "x": {"1": "〜に限って: riêng…", "3": "〜に際して: nhân dịp, khi.", "4": "〜に対して: đối với."},
-   "n": ["予想に反して, 期待に反して. Xem Đề 18 câu 2."]},
-  {"s": "技術に（　）劣る他社の商品が売れる理由が分からない。", "o": ["さしても", "おいても", "あたっても", "とっても"], "a": 2, "ar": "〜においても",
+   "key": [
+    {
+     "w": "〜に反して",
+     "r": "にはんして",
+     "hv": "PHẢN",
+     "m": "trái với (dự đoán, kỳ vọng)"
+    }
+   ],
+   "x": {
+    "1": "〜に限って (riêng… thì; đúng lúc… lại): 予想に限って không có nghĩa.",
+    "3": "〜に際して (nhân dịp, khi): đi với sự kiện (出発に際して). Không đi với 予想.",
+    "4": "〜に対して (đối với; trái lại): 予想に対して nghĩa là “đối với dự đoán”, không diễn tả kết quả trái ngược tự nhiên như に反して."
+   },
+   "n": [
+    "予想に反して, 期待に反して. Xem Đề 18 câu 2."
+   ],
+   "why": "Dự đoán là sẽ đến nhưng thực tế không đến → <b>trái với</b> dự đoán. Mẫu <b>予想に反して</b> là collocation cố định (期待に反して, 意に反して)."
+  },
+  {
+   "s": "技術に（　）劣る他社の商品が売れる理由が分からない。",
+   "o": [
+    "さしても",
+    "おいても",
+    "あたっても",
+    "とっても"
+   ],
+   "a": 2,
+   "ar": "〜においても",
    "vi": "Tôi không hiểu vì sao sản phẩm của công ty khác, vốn kém cả về mặt kỹ thuật, lại bán chạy.",
-   "key": [{"w": "〜において", "r": "において", "hv": "—", "m": "ở, về mặt (trang trọng)"}, {"w": "劣る", "r": "おとる", "hv": "LIỆT", "m": "kém hơn"}],
-   "x": {"1": "không có mẫu.", "3": "〜にあたって: khi (bắt đầu việc gì).", "4": "〜にとって: đối với (ai)."},
-   "n": ["Trái nghĩa của 劣る: 勝る まさる, 優れる すぐれる."]},
-  {"s": "そのころ母は英語の教師（　）中学校で働いていた。", "o": ["からいって", "に限って", "をのぞいて", "として"], "a": 4, "ar": "〜として",
+   "key": [
+    {
+     "w": "〜において",
+     "r": "において",
+     "hv": "—",
+     "m": "ở, về mặt (trang trọng)"
+    },
+    {
+     "w": "劣る",
+     "r": "おとる",
+     "hv": "LIỆT",
+     "m": "kém hơn"
+    }
+   ],
+   "x": {
+    "1": "にさしても: không có mẫu này.",
+    "3": "〜にあたっても (khi bắt đầu việc gì): đi với hành động quan trọng (開始にあたって), không đi với 技術.",
+    "4": "〜にとっても (đối với ai cũng): chủ thể phải là người/tổ chức chịu tác động, không phải 技術."
+   },
+   "n": [
+    "Trái nghĩa của 劣る: 勝る まさる, 優れる すぐれる."
+   ],
+   "why": "Sản phẩm công ty khác kém <b>cả về mặt</b> kỹ thuật. Mẫu <b>Nにおいても</b> (= Nの面でも): cả trong lĩnh vực, phương diện N."
+  },
+  {
+   "s": "そのころ母は英語の教師（　）中学校で働いていた。",
+   "o": [
+    "からいって",
+    "に限って",
+    "をのぞいて",
+    "として"
+   ],
+   "a": 4,
+   "ar": "〜として",
    "vi": "Hồi đó mẹ tôi làm giáo viên tiếng Anh ở một trường cấp hai.",
-   "key": [{"w": "〜として", "r": "として", "hv": "—", "m": "với tư cách là"}],
-   "x": {"1": "〜からいって: xét từ.", "2": "〜に限って: riêng.", "3": "〜をのぞいて: trừ ra."}},
-  {"s": "{良|よ}き（　）{悪|あ}しき（　）、もうその話はどんどん進行しているのだから、なりゆきを見守りましょう。", "o": ["につけ／につけ", "にあり／にあり", "でも／でも", "とも／とも"], "a": 1, "ar": "〜につけ〜につけ",
+   "key": [
+    {
+     "w": "〜として",
+     "r": "として",
+     "hv": "—",
+     "m": "với tư cách là"
+    }
+   ],
+   "x": {
+    "1": "〜からいって (xét từ): 経験からいって. Không nêu vai trò.",
+    "2": "〜に限って (riêng): không hợp nghĩa “làm ở trường với vai trò giáo viên”.",
+    "3": "〜をのぞいて (ngoại trừ): mâu thuẫn — mẹ chính là giáo viên."
+   },
+   "why": "Mẹ làm việc ở trường <b>với tư cách</b> giáo viên tiếng Anh. Mẫu <b>Nとして</b>: với tư cách, vai trò N."
+  },
+  {
+   "s": "{良|よ}き（　）{悪|あ}しき（　）、もうその話はどんどん進行しているのだから、なりゆきを見守りましょう。",
+   "o": [
+    "につけ／につけ",
+    "にあり／にあり",
+    "でも／でも",
+    "とも／とも"
+   ],
+   "a": 1,
+   "ar": "〜につけ〜につけ",
    "vi": "Dù tốt hay xấu thì chuyện đó cũng đang tiến triển nhanh rồi, ta cứ theo dõi diễn biến thôi.",
-   "key": [{"w": "AにつけBにつけ", "r": "につけ", "hv": "—", "m": "dù A hay B (cặp đối lập)"}, {"w": "成り行き", "r": "なりゆき", "hv": "THÀNH HÀNH", "m": "diễn biến, chiều hướng"}],
-   "x": {"2": "không có mẫu.", "3": "〜でも〜でも: dù… hay…, nhưng không đi với 良き/悪しき (dạng cổ).", "4": "không có mẫu."},
-   "n": ["Cụm cố định: 良きにつけ悪しきにつけ, 雨につけ風につけ. 〜につけ còn: hễ… là (写真を見るにつけ思い出す)."]}
+   "key": [
+    {
+     "w": "AにつけBにつけ",
+     "r": "につけ",
+     "hv": "—",
+     "m": "dù A hay B (cặp đối lập)"
+    },
+    {
+     "w": "成り行き",
+     "r": "なりゆき",
+     "hv": "THÀNH HÀNH",
+     "m": "diễn biến, chiều hướng"
+    }
+   ],
+   "x": {
+    "2": "にあり／にあり: không có mẫu này.",
+    "3": "でも／でも (dù… hay…): đi với danh từ hiện đại (雨でも雪でも). 良き／悪しき là dạng cổ chỉ đi trong thành ngữ với につけ.",
+    "4": "とも／とも: có mẫu 〜とも〜とも nhưng không ghép với 良き/悪しき theo thành ngữ này."
+   },
+   "n": [
+    "Cụm cố định: 良きにつけ悪しきにつけ, 雨につけ風につけ. 〜につけ còn: hễ… là (写真を見るにつけ思い出す)."
+   ],
+   "why": "Cặp văn cổ <b>良きにつけ悪しきにつけ</b>: dù tốt hay xấu (thành ngữ cố định). 〜につけ〜につけ ＝ cả khi… lẫn khi…"
+  }
+ ],
+ "sum": [
+  {
+   "h": "Nhóm mẫu “Nに＋động từ” (dạng hay ra nhất N2)",
+   "tbl": {
+    "head": [
+     "Mẫu",
+     "Nghĩa",
+     "Ví dụ"
+    ],
+    "rows": [
+     [
+      "〜に伴って",
+      "cùng với (thay đổi kéo theo)",
+      "台風の上陸に伴って"
+     ],
+     [
+      "〜に反して",
+      "trái với (dự đoán, kỳ vọng)",
+      "予想に反して"
+     ],
+     [
+      "〜に際して",
+      "nhân dịp, khi (trang trọng)",
+      "出発に際して"
+     ],
+     [
+      "〜に対して",
+      "đối với; trái lại",
+      "親に対して, 兄は〜のに対して弟は〜"
+     ],
+     [
+      "〜において / においても",
+      "tại, trong lĩnh vực",
+      "技術においても劣る"
+     ],
+     [
+      "〜にわたって",
+      "suốt, trải khắp",
+      "3日間にわたって"
+     ],
+     [
+      "〜にそって",
+      "theo, dọc theo",
+      "方針にそって"
+     ],
+     [
+      "〜にあたって",
+      "khi bắt đầu (việc quan trọng)",
+      "開店にあたって"
+     ],
+     [
+      "〜に限って",
+      "riêng; đúng lúc… lại",
+      "急いでいる時に限って"
+     ],
+     [
+      "〜にとって",
+      "đối với (ai)",
+      "私にとって大切だ"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Khẳng định mạnh và khẳng định dè dặt",
+   "li": [
+    "<b>Mạnh</b>: 〜にほかならない (chính là), 〜に違いない (chắc chắn), 〜に決まっている (đương nhiên).",
+    "<b>Dè dặt</b>: 〜ないことはない / 〜ないこともない (không phải là không), 〜なくもない.",
+    "<b>Không thể / không phải lúc</b>: 〜どころではない (không phải lúc), 〜わけにはいかない (không thể vì đạo lý), 〜ようがない (không có cách)."
+   ]
+  },
+  {
+   "h": "Nhượng bộ “dù… thì”",
+   "tbl": {
+    "head": [
+     "Mẫu",
+     "Sắc thái",
+     "Ví dụ"
+    ],
+    "rows": [
+     [
+      "〜にせよ / 〜にしろ / 〜にしても",
+      "dù… đi nữa",
+      "一時的にせよ"
+     ],
+     [
+      "〜にもかかわらず",
+      "mặc dù (văn viết)",
+      "雨にもかかわらず"
+     ],
+     [
+      "〜くせに",
+      "vậy mà (chê trách)",
+      "知っているくせに"
+     ],
+     [
+      "〜ところを",
+      "dù đang… (cảm ơn, xin lỗi)",
+      "お忙しいところを"
+     ],
+     [
+      "〜につけ〜につけ",
+      "dù… hay…",
+      "良きにつけ悪しきにつけ"
+     ],
+     [
+      "〜であれ〜であれ",
+      "dù là… hay…",
+      "大人であれ子どもであれ"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Mẫu “bỏ qua / không có”",
+   "li": [
+    "<b>Nは抜きにして / N抜きで</b>: bỏ qua N (あいさつは抜きにして).",
+    "<b>Nを抜きにしては〜ない</b>: nếu không có N thì không thể (彼の協力を抜きにしては成功しなかった).",
+    "<b>Nなしに / Nなしでは</b>: không có N (許可なしに入るな).",
+    "<b>〜ことなく</b>: mà không (休むことなく働く)."
+   ]
+  }
  ]
 }

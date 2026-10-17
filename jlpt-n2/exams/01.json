@@ -35,9 +35,9 @@
     }
    ],
    "x": {
-    "1": "không có từ này. Bẫy trộn âm On こう với âm Kun ごと.",
-    "2": "là cách đọc của <span class=\"jp\">工事</span> (CÔNG SỰ, thi công) hoặc <span class=\"jp\">公示</span> (công bố). Không phải cách đọc của 行事.",
-    "3": "không có từ này. ごと là âm Kun của 事 (như 仕事 しごと), không dùng trong từ Hán ghép 行事."
+    "1": "こう＋ごと: không có từ này. Trộn âm On こう (của 行 trong 旅行) với âm Kun ごと (của 事 trong 仕事) — từ Hán ghép không trộn kiểu này.",
+    "2": "こうじ là cách đọc của 工事 (CÔNG SỰ, thi công) hoặc 公示 (công bố). Sai ở chữ 行: trong 行事, 行 đọc ぎょう chứ không phải こう.",
+    "3": "ぎょう đúng nhưng ごと sai: ごと là âm Kun của 事, chỉ dùng trong từ thuần Nhật như 仕事, 出来事; trong từ Hán ghép 行事 phải đọc じ."
    },
    "g": [
     "<b class=\"jp\">わが〜</b> (我が): của chúng tôi, của ta. わが社 = công ty chúng tôi, わが国 = nước ta."
@@ -46,7 +46,8 @@
     "行 có ba âm On: こう (旅行 りょこう, 銀行 ぎんこう), ぎょう (行事, 行列 ぎょうれつ hàng người, 行儀 ぎょうぎ phép tắc), あん (行灯 あんどん đèn lồng).",
     "事: じ trong từ Hán (火事 かじ, 食事 しょくじ, 用事 ようじ); こと/ごと là Kun (出来事 できごと, 仕事 しごと).",
     "恒例行事 こうれいぎょうじ: sự kiện thường niên. Hay gặp cùng: 年中行事 ねんじゅうぎょうじ (các lễ hội trong năm)."
-   ]
+   ],
+   "why": "Tách từng chữ: 行 trong từ chỉ sự kiện, nghi lễ đọc <b>ぎょう</b> (行列, 行儀); 事 trong từ Hán ghép đọc <b>じ</b> (火事, 食事). Ghép lại: ぎょう＋じ ＝ <b>ぎょうじ</b>. Gợi ý thêm từ ngữ cảnh: 恒例 (thường niên) luôn đi với 行事 thành cụm cố định 恒例行事."
   },
   {
    "s": "データをコンピューターで_処理_した。",
@@ -68,9 +69,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">勝利</span> (THẮNG LỢI): chiến thắng. Bẫy thêm trường âm う.",
-    "2": "<span class=\"jp\">修理</span> (TU LÝ): sửa chữa. 修 đọc しゅう.",
-    "3": "không phải từ thông dụng (chỉ gặp trong địa danh 首里 ở Okinawa)."
+    "1": "しょうり là 勝利 (THẮNG LỢI). Sai vì thêm trường âm う vào 処 — 処 luôn đọc ngắn しょ.",
+    "2": "しゅうり là 修理 (TU LÝ, sửa chữa). Sai chữ đầu: 修 đọc しゅう, còn 処 đọc しょ. Về nghĩa, dữ liệu cũng không sửa chữa được bằng 修理.",
+    "3": "しゅり không phải từ thông dụng (chỉ gặp trong địa danh 首里). 処 không có âm しゅ."
    },
    "g": [
     "<b class=\"jp\">N で</b>: chỉ phương tiện, công cụ. コンピューターで = bằng máy tính."
@@ -78,7 +79,8 @@
    "n": [
     "処 đọc しょ, âm ngắn: 処分 しょぶん (xử lý, vứt bỏ; kỷ luật), 対処 たいしょ (đối phó), 処置 しょち (xử trí, sơ cứu), 処方 しょほう (kê đơn).",
     "理 đọc り: 料理, 無理, 理由 りゆう, 管理 かんり."
-   ]
+   ],
+   "why": "処 đọc <b>しょ</b> (âm ngắn, không có う), 理 đọc <b>り</b>. 処理 ＝ <b>しょり</b>: xử lý. Ngữ cảnh データを〜する (xử lý dữ liệu) khớp nghĩa."
   },
   {
    "s": "もちろん私は_地元_チームを応援します。",
@@ -106,15 +108,16 @@
     }
    ],
    "x": {
-    "2": "<span class=\"jp\">次元</span> (THỨ NGUYÊN): chiều, không gian (3次元 = 3 chiều); cũng nghĩa là tầm, cấp độ (次元が違う: khác đẳng cấp).",
-    "3": "không có từ này. 地 đọc ち ở 地下, 地図, nhưng 地元 đọc じ.",
-    "4": "không có từ này."
+    "2": "じげん là 次元 (THỨ NGUYÊN: chiều, cấp độ). Sai chữ 元: trong 地元, 元 đọc Kun もと chứ không đọc On げん.",
+    "3": "ちもと: không có từ này. 地 đọc ち ở 地下, 地図, 地域, nhưng riêng 地元 đọc じ.",
+    "4": "ちげん: không có từ này. Sai cả hai chữ — 地 phải là じ, 元 phải là もと."
    },
    "n": [
     "地元 là kiểu đọc 重箱読み (On + Kun): じ (On) + もと (Kun).",
     "地 đọc じ: 地震 じしん, 地面 じめん, 地味 じみ (giản dị). Đọc ち: 地下 ちか, 地図 ちず, 地域 ちいき, 地球 ちきゅう.",
     "元 đọc もと (Kun, gốc), げん (元気), がん (元日 がんじつ, 元旦 がんたん)."
-   ]
+   ],
+   "why": "地元 đọc kiểu 重箱読み (On + Kun): 地 âm On <b>じ</b> ＋ 元 âm Kun <b>もと</b> ＝ <b>じもと</b> (địa phương, quê nhà). Ngữ cảnh 地元チームを応援 (cổ vũ đội nhà) khớp nghĩa."
   },
   {
    "s": "このカレーは_辛くて_食べられない。",
@@ -136,9 +139,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">苦い</span> (KHỔ) にがい: đắng.",
-    "2": "<span class=\"jp\">渋い</span> (SÁP) しぶい: chát; (nghĩa bóng) trầm, sành điệu; nhăn nhó (渋い顔).",
-    "3": "<span class=\"jp\">臭い</span> (XÚ) くさい: hôi, có mùi khó chịu."
+    "1": "にがくて là của 苦い (đắng). Chữ khác (苦 KHỔ), không phải cách đọc của 辛.",
+    "2": "しぶくて là của 渋い (chát). Chữ khác (渋 SÁP), không phải cách đọc của 辛.",
+    "3": "くさくて là của 臭い (hôi). Chữ khác (臭 XÚ), và mùi thì không phải lý do “không ăn được” theo vị như câu này."
    },
    "g": [
     "<b class=\"jp\">Aくて</b>: thể て của tính từ い chỉ nguyên nhân (cay nên…).",
@@ -148,7 +151,8 @@
     "Năm vị: 甘い あまい (ngọt), 辛い からい (cay), 苦い にがい (đắng), 酸っぱい すっぱい (chua), 塩辛い しおからい / しょっぱい (mặn).",
     "辛い đọc つらい khi nói về cảm giác khổ sở: 別れが辛い (chia tay thật đau lòng). Xem Đề 2 câu 5.",
     "On của 辛 là しん: 香辛料 こうしんりょう (gia vị cay), 辛抱 しんぼう (nhẫn nại)."
-   ]
+   ],
+   "why": "辛い có hai cách đọc: <b>からい</b> (cay — vị giác) và つらい (khổ sở — cảm xúc). Câu nói về カレー (cà ri) và 食べられない (không ăn nổi) nên là vị cay → <b>からくて</b>."
   },
   {
    "s": "その本について_批評_を書きました。",
@@ -170,9 +174,9 @@
     }
    ],
    "x": {
-    "1": "không có từ này.",
-    "2": "không có từ này. 評 không bị đục hóa thành びょう.",
-    "4": "<span class=\"jp\">疲弊</span> (BÌ TỆ): kiệt quệ, suy kiệt (kinh tế, thể lực). Có thật nhưng khác chữ."
+    "1": "ひべい: không có từ này. 評 đọc ひょう (có âm ghép ょ), không phải べい.",
+    "2": "ひびょう: không có từ này. Sai vì đục hóa 評 thành びょう — 批評 không biến âm.",
+    "4": "ひへい là 疲弊 (BÌ TỆ, kiệt quệ). Có thật nhưng khác chữ; 評 không đọc へい."
    },
    "g": [
     "<b class=\"jp\">〜について</b>: về, liên quan đến."
@@ -181,7 +185,8 @@
     "評 đọc ひょう: 評判 ひょうばん (tiếng tăm), 評価 ひょうか (đánh giá), 好評 こうひょう (được khen), 不評 ふひょう.",
     "Phân biệt: 批評 (đánh giá chung, có thể khen) và 批判 ひはん PHÊ PHÁN (chỉ trích, nghiêng về tiêu cực).",
     "批 đọc ひ: 批判, 批准 ひじゅん (phê chuẩn)."
-   ]
+   ],
+   "why": "批 đọc <b>ひ</b>, 評 đọc <b>ひょう</b> (không đục hóa) ＝ <b>ひひょう</b>: phê bình. Cụm 〜について批評を書く (viết bài phê bình về…) là kết hợp tự nhiên."
   },
   {
    "s": "{消毒済|しょうどくず}みの_清潔_なガーゼを{傷口|きずぐち}に当てる。",
@@ -215,9 +220,9 @@
     }
    ],
    "x": {
-    "1": "không có từ này. げつ là âm của 月 (月曜日).",
-    "2": "không có từ này.",
-    "4": "không có từ này. 潔 đọc けつ, không phải きつ."
+    "1": "せいげつ: không có từ này. 潔 đọc けつ (âm trong), không đục thành げつ; げつ là âm của 月.",
+    "2": "せいぎつ: không có từ này. 潔 không có âm ぎつ.",
+    "4": "せいきつ: không có từ này. Bẫy nhầm hàng か — 潔 đọc けつ chứ không phải きつ."
    },
    "g": [
     "<b class=\"jp\">Vます + 済み</b> (ずみ): đã xong. 支払い済み (đã thanh toán), 使用済み (đã qua sử dụng).",
@@ -227,7 +232,8 @@
     "潔 đọc けつ: 簡潔 かんけつ (ngắn gọn), 不潔 ふけつ (bẩn, trái nghĩa của 清潔). Kun: 潔い いさぎよい (dứt khoát, thẳng thắn).",
     "清 đọc せい (清掃 せいそう dọn dẹp), しょう (清浄 しょうじょう). Kun: 清い きよい.",
     "ガーゼ: gạc y tế (từ tiếng Đức Gaze)."
-   ]
+   ],
+   "why": "清 đọc <b>せい</b>, 潔 đọc <b>けつ</b> ＝ <b>せいけつ</b>: sạch sẽ. Ngữ cảnh ガーゼ (gạc) đã 消毒済み (khử trùng) → sạch, khớp nghĩa 清潔."
   },
   {
    "s": "{抜|ぬ}き{出|だ}したカードを元の場所に_戻す_。",
@@ -255,9 +261,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">返す</span> (PHẢN) かえす: trả lại (cho người khác). 本を返す.",
-    "3": "<span class=\"jp\">壊す</span> (HOẠI) こわす: làm hỏng, phá.",
-    "4": "<span class=\"jp\">直す</span> (TRỰC) なおす: sửa; <span class=\"jp\">治す</span>: chữa bệnh."
+    "1": "かえす là 返す: trả lại cho chủ sở hữu (本を返す). Khác chữ; và câu nói về đặt lại vị trí chứ không phải trả cho ai.",
+    "3": "こわす là 壊す: làm hỏng. Khác chữ, ngược nghĩa với ngữ cảnh.",
+    "4": "なおす là 直す (sửa) / 治す (chữa bệnh). Khác chữ; tấm thẻ không bị hỏng nên không “sửa”."
    },
    "g": [
     "<b class=\"jp\">元の場所に戻す / 元に戻す</b>: đặt về chỗ cũ, khôi phục như ban đầu."
@@ -266,7 +272,8 @@
     "Cặp tự/tha: 戻る もどる (quay về) / 戻す もどす (đưa về).",
     "返す trả cho chủ sở hữu; 戻す đưa về vị trí hay trạng thái cũ. 借りた本を返す, 本を棚に戻す.",
     "On của 戻 là れい (返戻 へんれい, ít gặp)."
-   ]
+   ],
+   "why": "戻す (<b>もどす</b>) là đưa về vị trí hay trạng thái cũ. Câu có 元の場所に (về chỗ cũ) — đây chính là collocation 元の場所に戻す. Chữ 戻 chỉ có âm Kun もど(る/す)."
   },
   {
    "s": "花びんの_破片_が床に飛び散っていた。",
@@ -294,9 +301,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">干潟</span> ひがた: bãi bồi lộ ra khi thủy triều rút. Khác chữ.",
-    "3": "không có từ này. 破 đọc は, không phải ひ.",
-    "4": "<span class=\"jp\">歯形</span> はがた: dấu răng. Có thật nhưng khác chữ."
+    "1": "ひがた là 干潟 (bãi bồi). Khác chữ; 破 không đọc ひ.",
+    "3": "ひへん: không có từ này. 片 đúng là へん nhưng 破 đọc は chứ không phải ひ.",
+    "4": "はがた là 歯形 (dấu răng). 破 đúng là は nhưng 片 trong 破片 đọc On へん, không phải Kun かた (かた chỉ dùng ở 片方, 片道)."
    },
    "g": [
     "<b class=\"jp\">Vていた</b>: trạng thái kết quả trong quá khứ (lúc đó mảnh vỡ đang nằm văng khắp sàn)."
@@ -304,7 +311,8 @@
    "n": [
     "破 đọc は: 破産 はさん (phá sản), 突破 とっぱ (đột phá). Kun: 破る やぶる, 破れる やぶれる.",
     "片 đọc へん: 破片, 断片 だんぺん (đục hóa). Kun かた: 片方 かたほう, 片付ける かたづける, 片道 かたみち."
-   ]
+   ],
+   "why": "破 đọc <b>は</b>, 片 đọc <b>へん</b> ＝ <b>はへん</b>: mảnh vỡ. Ngữ cảnh 花びんの〜が飛び散る (mảnh bình hoa văng tung tóe) khớp nghĩa."
   },
   {
    "s": "_抽象的_な説明はやめてください。",
@@ -332,9 +340,9 @@
     }
    ],
    "x": {
-    "1": "không có từ này. (通商 つうしょう: thông thương.)",
-    "2": "không có từ này. (鋳造 ちゅうぞう: đúc kim loại.) Bẫy nhầm 象 với 像 ぞう.",
-    "4": "không có từ này. (通俗的 つうぞくてき: thông tục, bình dân.)"
+    "1": "つうしょうてき: không có từ này. Sai chữ đầu: 抽 đọc ちゅう, không phải つう (つうしょう là 通商, thông thương).",
+    "2": "ちゅうぞうてき: không có từ này. Bẫy nhầm 象 với 像 — 像 luôn đọc ぞう (想像, 画像), còn 象 đọc しょう (trừ khi là con voi).",
+    "4": "つうぞくてき mới là từ có thật (通俗的); つうぞうてき thì không có. Sai cả hai chữ."
    },
    "g": [
     "<b class=\"jp\">Vるのはやめてください / Nはやめてください</b>: xin đừng…, thôi… đi."
@@ -343,7 +351,8 @@
     "抽 đọc ちゅう: 抽選 ちゅうせん (câu 13), 抽出 ちゅうしゅつ (trích xuất).",
     "象 đọc しょう: 印象 いんしょう, 現象 げんしょう, 対象 たいしょう. Đọc ぞう khi là con voi (象).",
     "像 luôn đọc ぞう: 想像 そうぞう, 画像 がぞう, 映像 えいぞう. Đây là bẫy phổ biến."
-   ]
+   ],
+   "why": "抽 đọc <b>ちゅう</b>, 象 trong từ trừu tượng đọc <b>しょう</b> (印象, 現象, 対象) ＝ <b>ちゅうしょうてき</b>. Ngữ cảnh 〜な説明はやめて (đừng giải thích kiểu…) → trừu tượng, khớp nghĩa."
   },
   {
    "s": "祖父は孫に_極端_に甘い。",
@@ -377,9 +386,9 @@
     }
    ],
    "x": {
-    "2": "không có từ này.",
-    "3": "không có từ này. ごく là cách đọc khác của 極 nhưng không dùng ở đây.",
-    "4": "không có từ này. 端 không bị đục hóa."
+    "2": "ごくだん: không có từ này. Sai cả hai: 極 trong từ này đọc きょく, và 端 không đục thành だん.",
+    "3": "ごくたん: không có từ này. ごく là âm của 極 chỉ trong 極楽, 極秘, 極 (rất); 極端 phải là きょく.",
+    "4": "きょくだん: không có từ này. 極 đúng nhưng 端 bị đục hóa sai — phải là たん."
    },
    "g": [
     "<b class=\"jp\">〜に甘い</b>: dễ dãi, nuông chiều với ai. ↔ 〜に厳しい (nghiêm khắc với…).",
@@ -388,7 +397,8 @@
    "n": [
     "極 đọc きょく: 積極的 せっきょくてき, 消極的, 北極 ほっきょく. Đọc ごく: 極 ごく (rất), 極楽 ごくらく, 極秘 ごくひ.",
     "端 đọc たん: 先端 せんたん, 途端 とたん, 半端 はんぱ. Kun: 端 はし (mép), は (端数 はすう)."
-   ]
+   ],
+   "why": "極 đọc <b>きょく</b>, 端 đọc <b>たん</b> (không đục hóa) ＝ <b>きょくたん</b>: cực đoan, thái quá. Cụm 極端に甘い (nuông chiều quá mức) là cách nói quen thuộc."
   },
   {
    "s": "相手チームは選手層の厚さで我々より_圧倒的_に有利だ。",
@@ -422,9 +432,9 @@
     }
    ],
    "x": {
-    "1": "không có từ này. 圧 đọc あつ, không phải おつ.",
-    "2": "không có từ này. 倒 đọc とう, không đục hóa.",
-    "4": "không có từ này."
+    "1": "おっとうてき: không có từ này. 圧 đọc あ(つ), không phải お.",
+    "2": "あつどうてき: không có từ này. Sai hai chỗ: thiếu âm ngắt (あつ→あっ) và đục hóa 倒 thành どう.",
+    "4": "おつどうてき: không có từ này. Sai cả hai chữ."
    },
    "g": [
     "<b class=\"jp\">〜で</b>: nguyên nhân, căn cứ (nhờ vào…).",
@@ -433,7 +443,8 @@
    "n": [
     "圧 あつ → あっ khi đứng trước âm t/p/k: 圧倒 あっとう, 圧迫 あっぱく, 圧巻 あっかん. Giữ あつ: 圧力 あつりょく, 気圧 きあつ.",
     "倒 đọc とう: 倒産 とうさん (phá sản), 面倒 めんどう. Kun: 倒れる たおれる."
-   ]
+   ],
+   "why": "圧 (あつ) đứng trước âm hàng た nên biến thành âm ngắt <b>あっ</b>; 倒 đọc <b>とう</b> ＝ <b>あっとうてき</b>: áp đảo. Ngữ cảnh 我々より〜に有利 (có lợi hơn hẳn) khớp nghĩa."
   },
   {
    "s": "私たちは建物に{冷房|れいぼう}_装置_を付けた。",
@@ -461,9 +472,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">承知</span> (THỪA TRI) しょうち: biết, chấp thuận (かしこまりました ≈ 承知しました).",
-    "2": "<span class=\"jp\">処置</span> (XỬ TRÍ) しょち: xử lý, sơ cứu.",
-    "4": "<span class=\"jp\">措置</span> (THỐ TRÍ) そち: biện pháp (措置を取る)."
+    "1": "しょうち là 承知 (biết, chấp thuận). Khác chữ, không hợp nghĩa “lắp đặt”.",
+    "2": "しょち là 処置 (xử trí, sơ cứu). Có thật nhưng khác chữ; 装 không đọc しょ.",
+    "4": "そち là 措置 (biện pháp). Bẫy gần âm: thiếu trường âm — 装 phải là そう."
    },
    "g": [
     "<b class=\"jp\">NにNを付ける</b>: gắn, lắp cái gì vào đâu."
@@ -472,7 +483,8 @@
     "装 đọc そう: 服装 ふくそう (trang phục), 包装 ほうそう (đóng gói), 改装 かいそう. Đọc しょう: 衣装 いしょう.",
     "置 đọc ち: 位置 いち, 設置 せっち (lắp đặt), 放置 ほうち (bỏ mặc).",
     "Nhóm dễ nhầm cùng đuôi 〜ち: 装置 そうち / 処置 しょち / 措置 そち / 設置 せっち."
-   ]
+   ],
+   "why": "装 đọc <b>そう</b>, 置 đọc <b>ち</b> ＝ <b>そうち</b>: thiết bị. Ngữ cảnh 冷房装置を付ける (lắp hệ thống làm lạnh) là collocation cố định."
   },
   {
    "s": "_抽選_で順番を決めました。",
@@ -500,9 +512,9 @@
     }
    ],
    "x": {
-    "2": "không có từ này. 抽 đọc ちゅう.",
-    "3": "không có từ này.",
-    "4": "không có từ này. 選 không đục hóa."
+    "2": "つうせん: không có từ này. 抽 đọc ちゅう, không phải つう.",
+    "3": "つうぜん: không có từ này. Sai cả hai chữ (つう và ぜん).",
+    "4": "ちゅうぜん: không có từ này. 抽 đúng nhưng 選 không đục thành ぜん."
    },
    "g": [
     "<b class=\"jp\">Nで決める</b>: quyết định bằng (cách)…"
@@ -510,7 +522,8 @@
    "n": [
     "選 đọc せん: 選挙 せんきょ, 選手 せんしゅ, 選択 せんたく. Kun: 選ぶ えらぶ.",
     "抽選に当たる (trúng thăm) / 抽選に外れる (trượt thăm)."
-   ]
+   ],
+   "why": "抽 đọc <b>ちゅう</b>, 選 đọc <b>せん</b> (âm trong) ＝ <b>ちゅうせん</b>: bốc thăm. Ngữ cảnh 〜で順番を決める (quyết định thứ tự bằng…) khớp nghĩa."
   },
   {
    "s": "住民の_要求_により新しい公園が作られた。",
@@ -538,9 +551,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">欲求</span> (DỤC CẦU) よっきゅう: nhu cầu, ham muốn (欲求不満). Có thật nhưng khác chữ.",
-    "2": "không có từ này, thiếu trường âm.",
-    "4": "không có từ này, thiếu trường âm ở きゅう."
+    "1": "よっきゅう là 欲求 (ham muốn, nhu cầu bản năng). Có thật nhưng khác chữ: 欲 (DỤC) mới có âm ngắt よっ.",
+    "2": "よっきゅ: không có từ này. Vừa sai âm ngắt vừa thiếu trường âm.",
+    "4": "ようきゅ: không có từ này. Thiếu trường âm ở 求 — phải là きゅう."
    },
    "g": [
     "<b class=\"jp\">Nにより / Nによって</b>: do, theo, dựa trên.",
@@ -549,7 +562,8 @@
    "n": [
     "Cả hai chữ đều có trường âm: 要 よう (必要, 重要, 要点) + 求 きゅう (請求 せいきゅう, 追求 ついきゅう). Kun: 求める もとめる.",
     "So sánh: 要求 (đòi hỏi, mạnh), 要望 ようぼう (nguyện vọng, nhẹ hơn), 請求 せいきゅう (đòi thanh toán, yêu cầu chính thức)."
-   ]
+   ],
+   "why": "要 đọc <b>よう</b> (có trường âm), 求 đọc <b>きゅう</b> (có trường âm) ＝ <b>ようきゅう</b>: yêu cầu. Ngữ cảnh 住民の要求により (theo yêu cầu của người dân) khớp nghĩa."
   },
   {
    "s": "彼は_世の中_のことは何も知らなかった。",
@@ -571,9 +585,9 @@
     }
    ],
    "x": {
-    "2": "không có từ này. 世 đọc せ ở 世間, 世話 nhưng không dùng ở đây.",
-    "3": "không có từ này. うち là Kun của 内.",
-    "4": "không có từ này."
+    "2": "せのなか: không có từ này. せ là âm On của 世 (世間, 世話), không dùng trong từ thuần Nhật có の.",
+    "3": "せのうち: không có từ này. Sai cả hai chữ; うち là âm Kun của 内, không phải của 中.",
+    "4": "よのうち: không có từ này. 世 đúng là よ nhưng 中 đọc なか, không phải うち."
    },
    "g": [
     "<b class=\"jp\">何も〜ない</b>: hoàn toàn không… gì."
@@ -581,7 +595,8 @@
    "n": [
     "世 đọc よ (Kun): この世, あの世. Đọc せ: 世間 せけん, 世話 せわ, 世界 せかい. Đọc せい: 世紀 せいき.",
     "Liên quan: 世間知らず せけんしらず (người ngây ngô, không biết sự đời)."
-   ]
+   ],
+   "why": "世の中 đọc hoàn toàn bằng âm Kun: 世 <b>よ</b> ＋ の ＋ 中 <b>なか</b> ＝ <b>よのなか</b>: xã hội, sự đời. Có の ở giữa là dấu hiệu từ thuần Nhật, nên dùng âm Kun."
   },
   {
    "s": "壁の絵が少し_傾いて_いる。",
@@ -603,9 +618,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">傷つく</span> (THƯƠNG) きずつく: bị thương, bị tổn thương.",
-    "3": "<span class=\"jp\">乾く</span> (CAN) かわく: khô; <span class=\"jp\">渇く</span>: khát.",
-    "4": "<span class=\"jp\">浮く</span> (PHÙ) うく: nổi."
+    "1": "きずついて là 傷つく (bị thương, tổn thương). Khác chữ; tranh không “bị thương”.",
+    "3": "かわいて là 乾く (khô) / 渇く (khát). Khác chữ, không hợp nghĩa.",
+    "4": "ういて là 浮く (nổi). Khác chữ; tranh treo tường không “nổi”."
    },
    "g": [
     "<b class=\"jp\">Vている</b>: trạng thái hiện tại do kết quả của hành động (đang ở tình trạng nghiêng)."
@@ -613,7 +628,8 @@
    "n": [
     "Tha động từ: 傾ける かたむける. 耳を傾ける: lắng nghe chăm chú.",
     "On けい: 傾向 けいこう (khuynh hướng), 傾斜 けいしゃ (độ dốc)."
-   ]
+   ],
+   "why": "傾く đọc <b>かたむく</b>: nghiêng. Ngữ cảnh 壁の絵が少し〜ている (bức tranh trên tường hơi…) → bị nghiêng, khớp nghĩa."
   },
   {
    "s": "皆様のあたたかいご_声援_に応えるように努力します。",
@@ -641,9 +657,9 @@
     }
    ],
    "x": {
-    "2": "<span class=\"jp\">支援</span> (CHI VIỆN) しえん: hỗ trợ, viện trợ. Có thật nhưng khác chữ.",
-    "3": "<span class=\"jp\">成員</span> せいいん: thành viên (ít dùng). 援 đọc えん, không phải いん.",
-    "4": "<span class=\"jp\">子音</span> しいん: phụ âm; <span class=\"jp\">死因</span>: nguyên nhân tử vong."
+    "2": "しえん là 支援 (hỗ trợ). Có thật nhưng khác chữ: 声 không đọc し.",
+    "3": "せいいん: 声 đúng nhưng 援 đọc えん chứ không phải いん.",
+    "4": "しいん là 子音 (phụ âm) / 死因 (nguyên nhân tử vong). Sai cả hai chữ."
    },
    "g": [
     "<b class=\"jp\">〜に応える</b>: đáp lại. 期待に応える (đáp ứng kỳ vọng). Khác 答える (trả lời câu hỏi).",
@@ -652,7 +668,8 @@
    "n": [
     "援 đọc えん: 応援 おうえん, 援助 えんじょ (viện trợ), 救援 きゅうえん (cứu viện).",
     "声 đọc せい: 音声 おんせい, 名声 めいせい. Kun: こえ, こわ (声色 こわいろ)."
-   ]
+   ],
+   "why": "声 đọc <b>せい</b>, 援 đọc <b>えん</b> ＝ <b>せいえん</b>: sự cổ vũ (bằng tiếng hô). Ngữ cảnh あたたかいご声援に応える (đáp lại sự cổ vũ nồng nhiệt) là câu cảm ơn quen thuộc của vận động viên."
   },
   {
    "s": "簡単な質問に答えられなくて_恥_をかいた。",
@@ -674,9 +691,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">橋 / 端 / 箸</span> はし: cây cầu / mép / đũa.",
-    "2": "<span class=\"jp\">筈</span> はず: lẽ ra (〜はずだ). Lưu ý 恥ずかしい đọc はずかしい nên dễ nhầm.",
-    "3": "<span class=\"jp\">蓮</span> はす: hoa sen."
+    "1": "はし là 橋 / 端 / 箸. Sai vì âm cuối là し trong, còn 恥 là じ đục.",
+    "2": "はず là 筈 (lẽ ra). Bẫy vì 恥ずかしい đọc はずかしい, nhưng danh từ 恥 một mình đọc はじ.",
+    "3": "はす là 蓮 (hoa sen). Không phải cách đọc của 恥."
    },
    "g": [
     "<b class=\"jp\">恥をかく</b>: bị bẽ mặt, xấu hổ (quán ngữ, dùng động từ かく). 恥をかかせる: làm ai bẽ mặt.",
@@ -685,7 +702,8 @@
    "n": [
     "Cùng chữ 恥: 恥じる はじる (hổ thẹn), 恥ずかしい はずかしい (xấu hổ). On ち: 恥辱 ちじょく.",
     "Quán ngữ khác với かく: 汗をかく (đổ mồ hôi), いびきをかく (ngáy), あぐらをかく (ngồi xếp bằng)."
-   ]
+   ],
+   "why": "恥 âm Kun đọc <b>はじ</b>: nỗi xấu hổ. Quán ngữ cố định <b>恥をかく</b> (bị bẽ mặt) — đi với động từ かく."
   },
   {
    "s": "そのがけは地面に対してほとんど_垂直_です。",
@@ -713,9 +731,9 @@
     }
    ],
    "x": {
-    "2": "không có từ này. 垂 đọc すい.",
-    "3": "không có từ này. じき là cách đọc của 直 trong 正直 しょうじき, 直に じきに.",
-    "4": "không có từ này."
+    "2": "ついちょく: không có từ này. 垂 đọc すい, không phải つい.",
+    "3": "すいじき: không có từ này. じき chỉ là âm của 直 trong 正直, 直に; ở 垂直 phải là ちょく.",
+    "4": "ついじき: không có từ này. Sai cả hai chữ."
    },
    "g": [
     "<b class=\"jp\">〜に対して</b>: đối với, so với (ở đây là so với mặt đất)."
@@ -724,7 +742,8 @@
     "垂 Kun: 垂れる たれる (rủ xuống), 垂らす たらす (nhỏ giọt, thả xuống).",
     "直 đọc ちょく: 直接 ちょくせつ, 直線 ちょくせん. じき: 正直. Kun: 直す なおす, 直ちに ただちに.",
     "がけ (崖): vách đá."
-   ]
+   ],
+   "why": "垂 đọc <b>すい</b>, 直 đọc <b>ちょく</b> ＝ <b>すいちょく</b>: thẳng đứng. Ngữ cảnh 地面に対してほとんど〜 (gần như … so với mặt đất) khớp nghĩa thẳng đứng."
   },
   {
    "s": "いとこが今月_下旬_うちへ遊びに来る予定だ。",
@@ -758,9 +777,9 @@
     }
    ],
    "x": {
-    "2": "không có từ này. 下 đọc げ hoặc か, không phải け.",
-    "3": "không có từ này. Bẫy: 旬 đứng một mình đọc しゅん (mùa ngon nhất của thực phẩm), nhưng trong 上旬/中旬/下旬 đọc じゅん.",
-    "4": "không có từ này."
+    "2": "けじゅん: không có từ này. 下 đọc げ hoặc か, không bao giờ là け.",
+    "3": "げしゅん: không có từ này. Bẫy: 旬 một mình đọc しゅん (đúng mùa), nhưng trong 上旬・中旬・下旬 đọc じゅん.",
+    "4": "けしゅん: không có từ này. Sai cả hai chữ."
    },
    "g": [
     "<b class=\"jp\">Vます + に来る</b>: đến để làm gì. 遊びに来る."
@@ -768,7 +787,8 @@
    "n": [
     "下 đọc げ: 下車 げしゃ, 下品 げひん, 下水 げすい, 下旬. Đọc か: 地下 ちか, 下流 かりゅう.",
     "旬 しゅん: 旬の野菜 (rau đúng mùa)."
-   ]
+   ],
+   "why": "下 trong nhóm 上旬・中旬・下旬 đọc <b>げ</b>, 旬 đọc <b>じゅん</b> ＝ <b>げじゅん</b>: hạ tuần (ngày 21 đến cuối tháng). Câu có 今月 (tháng này) → chỉ khoảng thời gian trong tháng, khớp nghĩa."
   }
  ],
  "no": 1,
@@ -779,5 +799,129 @@
   "goc": "11PYSBCqOM-oxvMjCTAg0iGUaXNPw5Lj6",
   "chua": "11Res_rm63WqK8ugILN5aG9KFosG8G3rc"
  },
- "folderLabel": "Kanji"
+ "folderLabel": "Kanji",
+ "sum": [
+  {
+   "h": "5 kiểu bẫy hay gặp trong 漢字読み (問題1)",
+   "tbl": {
+    "head": [
+     "Kiểu bẫy",
+     "Ví dụ trong đề",
+     "Cách tránh"
+    ],
+    "rows": [
+     [
+      "Trường âm có / không",
+      "処理 しょり ≠ しょうり (勝利); 要求 ようきゅう ≠ ようきゅ",
+      "Học thuộc chữ đọc ngắn: 処 しょ, 所 しょ, 書 しょ; chữ đọc dài: 要 よう, 求 きゅう, 装 そう"
+     ],
+     [
+      "Âm ngắt っ (促音)",
+      "圧倒 あっとう ≠ あつどう; 欲求 よっきゅう",
+      "Âm cuối つ・く・ち + âm đầu hàng か・さ・た・は → thường thành っ"
+     ],
+     [
+      "Đục hóa (濁音) sai",
+      "批評 ひひょう ≠ ひびょう; 極端 たん ≠ だん; 抽選 せん ≠ ぜん",
+      "Từ Hán 2 chữ thường KHÔNG đục hóa; ngoại lệ phải nhớ riêng (断片 だんぺん)"
+     ],
+     [
+      "Chữ giống nhau, âm khác",
+      "抽象 しょう ≠ 像 ぞう",
+      "象 しょう (印象, 現象); 像 ぞう (想像, 画像)"
+     ],
+     [
+      "Trộn On / Kun",
+      "行事 ぎょうじ ≠ ぎょうごと; 地元 じもと",
+      "Từ Hán thường On+On; 重箱読み (On+Kun) như 地元, 本物 phải học riêng"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Chữ Hán nhiều cách đọc xuất hiện trong đề",
+   "tbl": {
+    "head": [
+     "Chữ",
+     "Các cách đọc",
+     "Ví dụ"
+    ],
+    "rows": [
+     [
+      "行",
+      "こう / ぎょう / あん / い(く) / おこな(う)",
+      "旅行 / 行事・行列 / 行灯 / 行く / 行う"
+     ],
+     [
+      "事",
+      "じ / ず / こと",
+      "火事・食事 / 好事家 / 仕事・出来事"
+     ],
+     [
+      "地",
+      "ち / じ",
+      "地下・地図・地域 / 地元・地震・地味"
+     ],
+     [
+      "極",
+      "きょく / ごく / きわ(める)",
+      "極端・積極的 / 極楽・極秘 / 極める"
+     ],
+     [
+      "世",
+      "せ / せい / よ",
+      "世間・世話 / 世紀 / 世の中・この世"
+     ],
+     [
+      "下",
+      "か / げ / した / しも / さ(げる)",
+      "地下 / 下旬・下車 / 下 / 下半期 / 下げる"
+     ],
+     [
+      "直",
+      "ちょく / じき / なお(す) / ただ(ちに)",
+      "垂直・直接 / 正直 / 直す / 直ちに"
+     ],
+     [
+      "旬",
+      "じゅん / しゅん",
+      "上旬・中旬・下旬 / 旬の野菜"
+     ],
+     [
+      "辛",
+      "しん / から(い) / つら(い)",
+      "香辛料 / 辛いカレー / 辛い別れ"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Quy tắc biến âm nên thuộc",
+   "li": [
+    "<b>促音化</b> (thêm っ): 学＋校 → がっこう, 一＋回 → いっかい, 発＋表 → はっぴょう, 圧＋倒 → あっとう, 決＋定 → けってい.",
+    "<b>連濁</b> (đục hóa ở từ ghép thuần Nhật): 手＋紙 → てがみ, 本＋棚 → ほんだな, 傷＋口 → きずぐち. Từ Hán ghép ít khi đục hóa.",
+    "<b>Âm ngắn ↔ dài dễ nhầm</b>: 処 しょ / 勝 しょう; 修 しゅう / 手 しゅ; 措 そ / 装 そう; 欲 よく / 要 よう.",
+    "Chữ có の ở giữa (世の中, 目の前, 気の毒) gần như luôn đọc theo âm Kun."
+   ]
+  },
+  {
+   "h": "Nhóm từ mở rộng theo chủ đề",
+   "li": [
+    "<b>Thời gian trong tháng</b>: 上旬 じょうじゅん (1–10), 中旬 ちゅうじゅん (11–20), 下旬 げじゅん (21–cuối). Tương tự: 月初め つきはじめ, 月末 げつまつ, 年末 ねんまつ.",
+    "<b>Năm vị</b>: 甘い あまい, 辛い からい, 苦い にがい, 酸っぱい すっぱい, 塩辛い しおからい. Thêm: 渋い しぶい (chát), 臭い くさい (hôi).",
+    "<b>Đuôi 〜置</b>: 装置 そうち (thiết bị), 処置 しょち (xử trí), 措置 そち (biện pháp), 設置 せっち (lắp đặt), 位置 いち (vị trí), 放置 ほうち (bỏ mặc).",
+    "<b>Đuôi 〜援</b>: 声援 せいえん (cổ vũ), 応援 おうえん (ủng hộ), 支援 しえん (hỗ trợ), 援助 えんじょ (viện trợ), 救援 きゅうえん (cứu viện).",
+    "<b>Cặp trái nghĩa</b>: 抽象的 ↔ 具体的 ぐたいてき; 清潔 ↔ 不潔 ふけつ; 垂直 ↔ 水平 すいへい; 有利 ↔ 不利 ふり; 積極的 ↔ 消極的."
+   ]
+  },
+  {
+   "h": "Động từ / tính từ Kun trong đề",
+   "li": [
+    "戻す もどす (đưa về chỗ cũ) / 戻る もどる; khác 返す かえす (trả cho người khác).",
+    "傾く かたむく (nghiêng) / 傾ける かたむける — 耳を傾ける: lắng nghe; 傾向 けいこう: khuynh hướng.",
+    "恥 はじ: 恥をかく (bẽ mặt), 恥じる はじる (hổ thẹn), 恥ずかしい はずかしい (xấu hổ).",
+    "Quán ngữ đi với かく: 恥をかく, 汗をかく, いびきをかく, あぐらをかく."
+   ]
+  }
+ ]
 }

@@ -6,66 +6,491 @@
  "title": "Đề 18 · Ngữ pháp N2",
  "jp": "文法形式",
  "mondai": "<b>問題7</b> 次の文の（　）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。 Chọn mẫu ngữ pháp thích hợp nhất để điền vào chỗ trống.",
- "src": {"folder": "14tmSQtWaGoqwDOaqvU4el2STikUgH-zp", "goc": "1L4f6fikUuAsHE6vrJGzVTPq4ekSHiSQA", "chua": "1nZ-PSLvc3Z1w0uts3ZY8d7U0Vl-Qce_k"},
+ "src": {
+  "folder": "14tmSQtWaGoqwDOaqvU4el2STikUgH-zp",
+  "goc": "1L4f6fikUuAsHE6vrJGzVTPq4ekSHiSQA",
+  "chua": "1nZ-PSLvc3Z1w0uts3ZY8d7U0Vl-Qce_k"
+ },
  "qs": [
-  {"s": "客の{要望|ようぼう}に（　）、９時から店を開けることにした。", "o": ["つけて", "おうじて", "ひかくして", "じつげんして"], "a": 2, "ar": "〜に応じて",
+  {
+   "s": "客の{要望|ようぼう}に（　）、９時から店を開けることにした。",
+   "o": [
+    "つけて",
+    "おうじて",
+    "ひかくして",
+    "じつげんして"
+   ],
+   "a": 2,
+   "ar": "〜に応じて",
    "vi": "Theo nguyện vọng của khách, chúng tôi quyết định mở cửa từ 9 giờ.",
-   "key": [{"w": "〜に応じて", "r": "におうじて", "hv": "ỨNG", "m": "đáp ứng, tùy theo"}, {"w": "要望", "r": "ようぼう", "hv": "YẾU VỌNG", "m": "nguyện vọng"}],
-   "x": {"1": "〜につけて: hễ… là.", "3": "比較して: so sánh (không đi với に).", "4": "実現して: thực hiện (cần を)."},
-   "n": ["収入に応じて (tùy thu nhập), 能力に応じて."]},
-  {"s": "{選挙|せんきょ}の{結果|けっか}は{予測|よそく}に（　）、{野党|やとう}の{大敗|たいはい}であった。", "o": ["そって", "したがって", "際して", "反して"], "a": 4, "ar": "〜に反して",
+   "key": [
+    {
+     "w": "〜に応じて",
+     "r": "におうじて",
+     "hv": "ỨNG",
+     "m": "đáp ứng, tùy theo"
+    },
+    {
+     "w": "要望",
+     "r": "ようぼう",
+     "hv": "YẾU VỌNG",
+     "m": "nguyện vọng"
+    }
+   ],
+   "x": {
+    "1": "〜につけて (hễ… là): đi với động từ cảm nhận (見るにつけ) hoặc cặp. 要望につけて không có nghĩa.",
+    "3": "比較して (so sánh): đi với と (〜と比較して), không với に; và câu không so sánh gì.",
+    "4": "実現して (thực hiện): cần tân ngữ を (要望を実現して). Với に thì sai ngữ pháp."
+   },
+   "n": [
+    "収入に応じて (tùy thu nhập), 能力に応じて."
+   ],
+   "why": "Mở cửa từ 9 giờ để <b>đáp ứng</b> nguyện vọng của khách. Mẫu <b>Nに応じて</b>: đáp ứng, tùy theo N. 要望に応じて là collocation chuẩn."
+  },
+  {
+   "s": "{選挙|せんきょ}の{結果|けっか}は{予測|よそく}に（　）、{野党|やとう}の{大敗|たいはい}であった。",
+   "o": [
+    "そって",
+    "したがって",
+    "際して",
+    "反して"
+   ],
+   "a": 4,
+   "ar": "〜に反して",
    "vi": "Trái với dự đoán, kết quả bầu cử là thất bại nặng nề của phe đối lập.",
-   "key": [{"w": "〜に反して", "r": "にはんして", "hv": "PHẢN", "m": "trái với"}, {"w": "野党", "r": "やとう", "hv": "DÃ ĐẢNG", "m": "đảng đối lập"}],
-   "x": {"1": "theo, dọc theo.", "2": "theo (tuân theo).", "3": "nhân dịp."},
-   "n": ["Xem Đề 9 câu 9."]},
-  {"s": "殺人の{動機|どうき}は{金銭的|きんせんてき}トラブルではなく{憎|にく}しみに（　）。", "o": ["ともなわない", "かぎらない", "ほかならない", "かかわらない"], "a": 3, "ar": "〜にほかならない",
+   "key": [
+    {
+     "w": "〜に反して",
+     "r": "にはんして",
+     "hv": "PHẢN",
+     "m": "trái với"
+    },
+    {
+     "w": "野党",
+     "r": "やとう",
+     "hv": "DÃ ĐẢNG",
+     "m": "đảng đối lập"
+    }
+   ],
+   "x": {
+    "1": "〜にそって (theo, dọc theo): “theo dự đoán” → kết quả khớp, không phải điều bất ngờ như câu.",
+    "2": "〜にしたがって (theo, tuân theo; càng… càng): cũng mang nghĩa “đúng như”, không phải trái ngược.",
+    "3": "〜に際して (nhân dịp): đi với sự kiện (出発に際して), không với 予測."
+   },
+   "n": [
+    "Xem Đề 9 câu 9."
+   ],
+   "why": "Dự đoán (có lẽ đảng cầm quyền thắng) nhưng kết quả là phe đối lập thua đậm — <b>trái với</b> dự đoán. Mẫu <b>予測に反して</b>."
+  },
+  {
+   "s": "殺人の{動機|どうき}は{金銭的|きんせんてき}トラブルではなく{憎|にく}しみに（　）。",
+   "o": [
+    "ともなわない",
+    "かぎらない",
+    "ほかならない",
+    "かかわらない"
+   ],
+   "a": 3,
+   "ar": "〜にほかならない",
    "vi": "Động cơ gây án không phải mâu thuẫn tiền bạc mà chính là hận thù.",
-   "key": [{"w": "〜にほかならない", "r": "にほかならない", "hv": "—", "m": "chính là"}, {"w": "動機", "r": "どうき", "hv": "ĐỘNG CƠ", "m": "động cơ"}],
-   "x": {"1": "không đi kèm.", "2": "〜とは限らない: không hẳn.", "4": "không liên quan."},
-   "n": ["Xem Đề 9 câu 6."]},
-  {"s": "この会社は社長一人の意見で動いていると（　）。", "o": ["言えるはずはない", "言えないはずだ", "言えないこともない", "言えることはない"], "a": 3, "ar": "〜ないこともない",
+   "key": [
+    {
+     "w": "〜にほかならない",
+     "r": "にほかならない",
+     "hv": "—",
+     "m": "chính là"
+    },
+    {
+     "w": "動機",
+     "r": "どうき",
+     "hv": "ĐỘNG CƠ",
+     "m": "động cơ"
+    }
+   ],
+   "x": {
+    "1": "ともなわない (không đi kèm): “không đi kèm hận thù” — ngược ý câu.",
+    "2": "〜とは限らない mới là “không hẳn”; にかぎらない không tạo nghĩa khẳng định “chính là”.",
+    "4": "かかわらない (không liên quan): ngược nghĩa với việc hận thù là động cơ."
+   },
+   "n": [
+    "Xem Đề 9 câu 6."
+   ],
+   "why": "Động cơ không phải tiền bạc mà <b>chính là</b> hận thù. Cấu trúc <b>AではなくBにほかならない</b>: không phải A mà chính là B."
+  },
+  {
+   "s": "この会社は社長一人の意見で動いていると（　）。",
+   "o": [
+    "言えるはずはない",
+    "言えないはずだ",
+    "言えないこともない",
+    "言えることはない"
+   ],
+   "a": 3,
+   "ar": "〜ないこともない",
    "vi": "Nói công ty này vận hành theo ý kiến của mỗi giám đốc cũng không hẳn là sai.",
-   "key": [{"w": "〜ないこともない", "r": "ないこともない", "hv": "—", "m": "không phải là không (khẳng định dè dặt)"}],
-   "x": {"1": "không lý nào nói được.", "2": "lẽ ra không nói được.", "4": "không có chuyện nói được."},
-   "n": ["Xem Đề 9 câu 5."]},
-  {"s": "歩道（　）季節のきれいな{草花|くさばな}が{植|う}えられている。", "o": ["によって", "にそって", "にわたって", "について"], "a": 2, "ar": "〜に沿って",
+   "key": [
+    {
+     "w": "〜ないこともない",
+     "r": "ないこともない",
+     "hv": "—",
+     "m": "không phải là không (khẳng định dè dặt)"
+    }
+   ],
+   "x": {
+    "1": "言えるはずはない (không lý nào nói được): phủ định mạnh — trái với giọng dè dặt.",
+    "2": "言えないはずだ (lẽ ra không thể nói): phán đoán phủ định, không phải khẳng định yếu.",
+    "4": "言えることはない (không có chuyện nói được): phủ định, không tự nhiên."
+   },
+   "n": [
+    "Xem Đề 9 câu 5."
+   ],
+   "why": "Khẳng định dè dặt: nói công ty chạy theo ý một người <b>cũng không phải là không đúng</b>. Mẫu <b>〜ないこともない</b>."
+  },
+  {
+   "s": "歩道（　）季節のきれいな{草花|くさばな}が{植|う}えられている。",
+   "o": [
+    "によって",
+    "にそって",
+    "にわたって",
+    "について"
+   ],
+   "a": 2,
+   "ar": "〜に沿って",
    "vi": "Dọc vỉa hè có trồng các loài hoa theo mùa rất đẹp.",
-   "key": [{"w": "〜に沿って", "r": "にそって", "hv": "DUYÊN", "m": "dọc theo; theo (kế hoạch)"}],
-   "x": {"1": "bởi, tùy theo.", "3": "suốt, trải khắp.", "4": "về."},
-   "n": ["Danh từ: 〜沿い (Đề 7 câu 9)."]},
-  {"s": "あれだけ努力した（　）、結局失敗に終わってしまった。", "o": ["にもかかわらず", "にしたら", "に際して", "にもとづき"], "a": 1, "ar": "〜にもかかわらず",
+   "key": [
+    {
+     "w": "〜に沿って",
+     "r": "にそって",
+     "hv": "DUYÊN",
+     "m": "dọc theo; theo (kế hoạch)"
+    }
+   ],
+   "x": {
+    "1": "〜によって (bởi, tùy theo): “trồng bởi vỉa hè” vô nghĩa.",
+    "3": "〜にわたって (suốt, trải khắp): đi với khoảng thời gian/phạm vi rộng (全国にわたって), không với 歩道 cụ thể.",
+    "4": "〜について (về): chỉ chủ đề nói/nghĩ, không chỉ vị trí."
+   },
+   "n": [
+    "Danh từ: 〜沿い (Đề 7 câu 9)."
+   ],
+   "why": "Hoa được trồng <b>dọc theo</b> vỉa hè. Mẫu <b>Nにそって</b> (沿って): dọc theo đường, sông."
+  },
+  {
+   "s": "あれだけ努力した（　）、結局失敗に終わってしまった。",
+   "o": [
+    "にもかかわらず",
+    "にしたら",
+    "に際して",
+    "にもとづき"
+   ],
+   "a": 1,
+   "ar": "〜にもかかわらず",
    "vi": "Mặc dù đã nỗ lực đến thế, rốt cuộc vẫn thất bại.",
-   "key": [{"w": "〜にもかかわらず", "r": "にもかかわらず", "hv": "—", "m": "mặc dù"}],
-   "x": {"2": "〜にしたら: đối với (ai) mà nói.", "3": "nhân dịp.", "4": "dựa trên."}},
-  {"s": "{短距離|たんきょり}（　）、{県内|けんない}には彼に{匹敵|ひってき}する選手は見当たらない。", "o": ["によると", "にとっては", "に対して", "にかけては"], "a": 4, "ar": "〜にかけては",
+   "key": [
+    {
+     "w": "〜にもかかわらず",
+     "r": "にもかかわらず",
+     "hv": "—",
+     "m": "mặc dù"
+    }
+   ],
+   "x": {
+    "2": "〜にしたら (đối với ai mà nói): đi với danh từ chỉ người (親にしたら). Không đi sau 努力した.",
+    "3": "〜に際して (nhân dịp): đi với danh từ sự kiện, không sau động từ thể た.",
+    "4": "〜にもとづき (dựa trên): cần danh từ làm căn cứ (データにもとづき)."
+   },
+   "why": "Nỗ lực đến thế <b>mà vẫn</b> thất bại. Mẫu <b>Vた＋にもかかわらず</b>: mặc dù."
+  },
+  {
+   "s": "{短距離|たんきょり}（　）、{県内|けんない}には彼に{匹敵|ひってき}する選手は見当たらない。",
+   "o": [
+    "によると",
+    "にとっては",
+    "に対して",
+    "にかけては"
+   ],
+   "a": 4,
+   "ar": "〜にかけては",
    "vi": "Riêng về chạy cự ly ngắn, trong tỉnh không ai sánh được với cậu ấy.",
-   "key": [{"w": "〜にかけては", "r": "にかけては", "hv": "—", "m": "riêng về (năng lực), thì không ai bằng"}, {"w": "匹敵", "r": "ひってき", "hv": "THẤT ĐỊCH", "m": "sánh ngang"}],
-   "x": {"1": "theo (nguồn tin).", "2": "đối với (ai).", "3": "đối với, trái với."},
-   "n": ["Khác 〜から〜にかけて (Đề 3 câu 12)."]},
-  {"s": "店の{改装|かいそう}に（　）工事のため、３日間休業します。", "o": ["そった", "ともなう", "して", "なった"], "a": 2, "ar": "N1に伴うN2",
+   "key": [
+    {
+     "w": "〜にかけては",
+     "r": "にかけては",
+     "hv": "—",
+     "m": "riêng về (năng lực), thì không ai bằng"
+    },
+    {
+     "w": "匹敵",
+     "r": "ひってき",
+     "hv": "THẤT ĐỊCH",
+     "m": "sánh ngang"
+    }
+   ],
+   "x": {
+    "1": "〜によると (theo nguồn tin): vế sau phải là thông tin nghe được (〜そうだ). Không hợp.",
+    "2": "〜にとっては (đối với ai): chủ thể phải là người chịu tác động. 短距離 không phải người.",
+    "3": "〜に対して (đối với; trái lại): không có nghĩa “riêng về năng lực”."
+   },
+   "n": [
+    "Khác 〜から〜にかけて (Đề 3 câu 12)."
+   ],
+   "why": "Riêng <b>về mảng</b> chạy cự ly ngắn thì không ai bằng. Mẫu <b>Nにかけては</b>: về (năng lực) thì không ai sánh bằng — vế sau là khen, so sánh hơn."
+  },
+  {
+   "s": "店の{改装|かいそう}に（　）工事のため、３日間休業します。",
+   "o": [
+    "そった",
+    "ともなう",
+    "して",
+    "なった"
+   ],
+   "a": 2,
+   "ar": "N1に伴うN2",
    "vi": "Vì thi công sửa sang cửa hàng, chúng tôi nghỉ 3 ngày.",
-   "key": [{"w": "〜に伴う", "r": "にともなう", "hv": "BẠN", "m": "đi kèm với"}],
-   "x": {"1": "〜にそった: theo (方針にそった).", "3": "không hợp.", "4": "không hợp."},
-   "n": ["Xem Đề 9 câu 7 (に伴って)."]},
-  {"s": "{山本|やまもと}さんはあいさつ（　）いきなり用件を切り出した。", "o": ["しても", "しずで", "ぬきで", "ぬいて"], "a": 3, "ar": "N抜きで",
+   "key": [
+    {
+     "w": "〜に伴う",
+     "r": "にともなう",
+     "hv": "BẠN",
+     "m": "đi kèm với"
+    }
+   ],
+   "x": {
+    "1": "〜にそった (theo, dọc theo): 方針にそった計画 — “thi công theo việc sửa sang” không tự nhiên.",
+    "3": "〜にして: không bổ nghĩa được cho danh từ 工事.",
+    "4": "〜になった (trở thành): “thi công đã trở thành sửa sang” vô nghĩa."
+   },
+   "n": [
+    "Xem Đề 9 câu 7 (に伴って)."
+   ],
+   "why": "Thi công <b>đi kèm theo</b> việc sửa sang cửa hàng. Mẫu <b>N1に伴うN2</b>: N2 đi kèm với N1 (dạng bổ nghĩa danh từ của 〜に伴って)."
+  },
+  {
+   "s": "{山本|やまもと}さんはあいさつ（　）いきなり用件を切り出した。",
+   "o": [
+    "しても",
+    "しずで",
+    "ぬきで",
+    "ぬいて"
+   ],
+   "a": 3,
+   "ar": "N抜きで",
    "vi": "Anh Yamamoto bỏ qua chào hỏi, vào thẳng việc chính.",
-   "key": [{"w": "〜抜きで", "r": "ぬきで", "hv": "BẠT", "m": "không có, bỏ qua"}, {"w": "切り出す", "r": "きりだす", "hv": "THIẾT XUẤT", "m": "mở lời"}],
-   "x": {"1": "không hợp.", "2": "không có dạng này.", "4": "ぬいて: rút ra (động từ), phải là 抜きにして."},
-   "n": ["Xem Đề 9 câu 2."]},
-  {"s": "あの人に（　）、そんなことはしないでしょう。", "o": ["ともなって", "かぎって", "つれて", "よって"], "a": 2, "ar": "〜に限って",
+   "key": [
+    {
+     "w": "〜抜きで",
+     "r": "ぬきで",
+     "hv": "BẠT",
+     "m": "không có, bỏ qua"
+    },
+    {
+     "w": "切り出す",
+     "r": "きりだす",
+     "hv": "THIẾT XUẤT",
+     "m": "mở lời"
+    }
+   ],
+   "x": {
+    "1": "しても: “dù chào hỏi” rồi vào thẳng việc — mâu thuẫn với いきなり (đột ngột).",
+    "2": "しずで: không có dạng này (dạng đúng là せずに / しないで).",
+    "4": "ぬいて (rút ra): 抜く là động từ “rút”; nghĩa “bỏ qua” phải là 抜きで / 抜きにして."
+   },
+   "n": [
+    "Xem Đề 9 câu 2."
+   ],
+   "why": "<b>Bỏ qua</b> chào hỏi, vào thẳng việc chính. Mẫu <b>N抜きで</b>: không có N (= Nは抜きにして ở Đề 9)."
+  },
+  {
+   "s": "あの人に（　）、そんなことはしないでしょう。",
+   "o": [
+    "ともなって",
+    "かぎって",
+    "つれて",
+    "よって"
+   ],
+   "a": 2,
+   "ar": "〜に限って",
    "vi": "Riêng người đó thì chắc chắn không làm chuyện như vậy đâu.",
-   "key": [{"w": "〜に限って", "r": "にかぎって", "hv": "HẠN", "m": "riêng… thì (tin tưởng); đúng lúc… thì lại"}],
-   "x": {"1": "đi kèm.", "3": "cùng với (biến đổi).", "4": "bởi."},
-   "n": ["Nghĩa khác: 急いでいるときに限って電車が遅れる."]},
-  {"s": "私は英語ができる（　）、まだろくに読むこともできません。", "o": ["ばかりか", "どころか", "ものなら", "ことなく"], "a": 2, "ar": "〜どころか",
+   "key": [
+    {
+     "w": "〜に限って",
+     "r": "にかぎって",
+     "hv": "HẠN",
+     "m": "riêng… thì (tin tưởng); đúng lúc… thì lại"
+    }
+   ],
+   "x": {
+    "1": "〜にともなって (cùng với): cần một sự thay đổi kéo theo, không đi với người.",
+    "3": "〜につれて (càng… càng): đi với sự biến đổi (時間がたつにつれて), không với người.",
+    "4": "〜によって (bởi, tùy): “tùy người đó mà không làm” không hợp ý tin tưởng."
+   },
+   "n": [
+    "Nghĩa khác: 急いでいるときに限って電車が遅れる."
+   ],
+   "why": "Thể hiện <b>niềm tin đặc biệt</b> vào riêng người đó: riêng người ấy thì chắc chắn không làm thế. Mẫu <b>Nに限って〜ない</b>."
+  },
+  {
+   "s": "私は英語ができる（　）、まだろくに読むこともできません。",
+   "o": [
+    "ばかりか",
+    "どころか",
+    "ものなら",
+    "ことなく"
+   ],
+   "a": 2,
+   "ar": "〜どころか",
    "vi": "Nói gì đến giỏi tiếng Anh, đến đọc cho ra hồn tôi còn chưa làm được.",
-   "key": [{"w": "〜どころか", "r": "どころか", "hv": "—", "m": "nói gì đến…, trái lại"}],
-   "x": {"1": "〜ばかりか: không chỉ… mà còn (cùng chiều).", "3": "〜ものなら: nếu có thể.", "4": "〜ことなく: mà không."},
-   "n": ["ろくに〜ない: không… ra hồn."]},
-  {"s": "経済が{発展|はってん}するに（　）、社会の{矛盾|むじゅん}も拡大してきた。", "o": ["いたって", "つれて", "さいして", "しても"], "a": 2, "ar": "〜につれて",
+   "key": [
+    {
+     "w": "〜どころか",
+     "r": "どころか",
+     "hv": "—",
+     "m": "nói gì đến…, trái lại"
+    }
+   ],
+   "x": {
+    "1": "〜ばかりか (không chỉ… mà còn): hai vế cùng chiều (giỏi tiếng Anh, còn giỏi cả…). Câu này ngược chiều.",
+    "3": "〜ものなら (nếu có thể): できる＋ものなら dùng cho thách thức (できるものならやってみろ). Không hợp.",
+    "4": "〜ことなく (mà không): “biết tiếng Anh mà không đọc được” không đúng cấu trúc ý."
+   },
+   "n": [
+    "ろくに〜ない: không… ra hồn."
+   ],
+   "why": "Nói gì đến giỏi, <b>ngay cả</b> đọc ra hồn còn không được — vế sau phủ định mạnh vế trước. Mẫu <b>〜どころか</b>."
+  },
+  {
+   "s": "経済が{発展|はってん}するに（　）、社会の{矛盾|むじゅん}も拡大してきた。",
+   "o": [
+    "いたって",
+    "つれて",
+    "さいして",
+    "しても"
+   ],
+   "a": 2,
+   "ar": "〜につれて",
    "vi": "Kinh tế càng phát triển thì mâu thuẫn xã hội cũng ngày càng lớn.",
-   "key": [{"w": "〜につれて", "r": "につれて", "hv": "—", "m": "cùng với (một bên thay đổi kéo theo bên kia)"}, {"w": "矛盾", "r": "むじゅん", "hv": "MÂU THUẪN", "m": "mâu thuẫn"}],
-   "x": {"1": "〜にいたって: đến mức.", "3": "nhân dịp.", "4": "dù."},
-   "n": ["Đồng nghĩa: 〜に伴って, 〜とともに."]}
+   "key": [
+    {
+     "w": "〜につれて",
+     "r": "につれて",
+     "hv": "—",
+     "m": "cùng với (một bên thay đổi kéo theo bên kia)"
+    },
+    {
+     "w": "矛盾",
+     "r": "むじゅん",
+     "hv": "MÂU THUẪN",
+     "m": "mâu thuẫn"
+    }
+   ],
+   "x": {
+    "1": "〜にいたって (đến mức, đến khi): nhấn mạnh tình huống cực đoan, không nói sự biến đổi song song.",
+    "3": "〜に際して (nhân dịp): đi với danh từ sự kiện, không với 発展する.",
+    "4": "発展するにしても (dù có phát triển đi nữa): nghĩa nhượng bộ, không diễn tả hai thay đổi cùng tăng như câu này."
+   },
+   "n": [
+    "Đồng nghĩa: 〜に伴って, 〜とともに."
+   ],
+   "why": "Kinh tế phát triển <b>kéo theo</b> mâu thuẫn xã hội tăng — hai thay đổi cùng diễn tiến. Mẫu <b>Vる＋につれて</b>."
+  }
+ ],
+ "sum": [
+  {
+   "h": "Biến đổi song song: につれて / に伴って / にしたがって / とともに",
+   "tbl": {
+    "head": [
+     "Mẫu",
+     "Nối",
+     "Sắc thái"
+    ],
+    "rows": [
+     [
+      "〜につれて",
+      "Vる / N",
+      "tự nhiên, dần dần; vế sau không phải ý chí"
+     ],
+     [
+      "〜に伴って / に伴うN",
+      "Vる / N",
+      "văn viết, sự kiện lớn kéo theo"
+     ],
+     [
+      "〜にしたがって",
+      "Vる / N",
+      "theo; vế sau có thể là ý chí"
+     ],
+     [
+      "〜とともに",
+      "Vる / N",
+      "cùng với (cả nghĩa “cùng nhau”)"
+     ],
+     [
+      "〜に応じて",
+      "N",
+      "đáp ứng, tùy theo (thu nhập, yêu cầu)"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Nhóm “Nに＋động từ” trong đề (ôn cùng Đề 9)",
+   "tbl": {
+    "head": [
+     "Mẫu",
+     "Nghĩa",
+     "Ví dụ"
+    ],
+    "rows": [
+     [
+      "〜に反して",
+      "trái với",
+      "予想に反して"
+     ],
+     [
+      "〜にそって",
+      "dọc theo; theo",
+      "川にそって, 方針にそって"
+     ],
+     [
+      "〜にかけては",
+      "riêng về (năng lực)",
+      "料理にかけては誰にも負けない"
+     ],
+     [
+      "〜に限って",
+      "riêng (tin tưởng); đúng lúc lại",
+      "うちの子に限って"
+     ],
+     [
+      "〜にほかならない",
+      "chính là",
+      "努力の結果にほかならない"
+     ],
+     [
+      "〜にもかかわらず",
+      "mặc dù",
+      "雨にもかかわらず"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Không chỉ / trái lại",
+   "li": [
+    "<b>〜どころか</b>: nói gì đến A, ngay cả B (thấp hơn) cũng không; hoặc trái lại hẳn: 休むどころか、ますます忙しい.",
+    "<b>〜ばかりか / 〜ばかりでなく / 〜のみならず</b>: không chỉ… mà còn (cùng chiều).",
+    "<b>〜はもちろん / 〜はもとより</b>: A đương nhiên, B cũng vậy.",
+    "Trạng từ đi với phủ định: ろくに〜ない (không… ra hồn), ろくな〜ない."
+   ]
+  },
+  {
+   "h": "Mẹo phân biệt nhanh",
+   "li": [
+    "Câu có 予想・予測・期待 → nghĩ ngay tới <b>に反して</b>.",
+    "Câu có 道・川・歩道・線路 → <b>にそって</b>; có 方針・計画 → <b>にそって / に基づいて</b>.",
+    "Câu khen năng lực “không ai bằng” → <b>にかけては</b>.",
+    "Câu “riêng người đó thì không thể” → <b>に限って〜ない</b>."
+   ]
+  }
  ]
 }

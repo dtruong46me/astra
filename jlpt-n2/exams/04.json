@@ -6,113 +6,758 @@
  "title": "Đề 4 · Kanji N2",
  "jp": "表記",
  "mondai": "<b>問題2</b> ＿＿の言葉を漢字で書くとき、最もよいものを1・2・3・4から一つ選びなさい。 Chọn cách viết chữ Hán đúng cho từ gạch chân.",
- "src": {"folder": "1D_x36MSL9e2qhxyH9XT-BB_bk0wt-A9m", "goc": "1IEiPLFAJs6-0WT1eFX6qeSNMM_uhW1RX", "chua": "18mmhXMGtKRrVFSNsjhAJz39C_Leg3sRl"},
+ "src": {
+  "folder": "1D_x36MSL9e2qhxyH9XT-BB_bk0wt-A9m",
+  "goc": "1IEiPLFAJs6-0WT1eFX6qeSNMM_uhW1RX",
+  "chua": "18mmhXMGtKRrVFSNsjhAJz39C_Leg3sRl"
+ },
  "qs": [
-  {"s": "あす学校で_ひなん_訓練があります。", "o": ["非乱", "避難", "非難", "避乱"], "a": 2, "ar": "ひなん",
+  {
+   "s": "あす学校で_ひなん_訓練があります。",
+   "o": [
+    "非乱",
+    "避難",
+    "非難",
+    "避乱"
+   ],
+   "a": 2,
+   "ar": "ひなん",
    "vi": "Ngày mai ở trường có buổi diễn tập sơ tán.",
-   "key": [{"w": "避難", "r": "ひなん", "hv": "TỊ NẠN", "m": "lánh nạn, sơ tán"}, {"w": "訓練", "r": "くんれん", "hv": "HUẤN LUYỆN", "m": "huấn luyện, diễn tập"}],
-   "x": {"1": "không có từ này.", "3": "<span class=\"jp\">非難</span> (PHI NAN) ひなん: chỉ trích, phê phán. Đồng âm khác nghĩa, bẫy chính của câu.", "4": "không có từ này."},
-   "n": ["避 = tránh: 避ける さける, 回避 かいひ. 難 = nạn, khó: 難しい, 困難 こんなん, 災難 さいなん.", "避難訓練, 避難所 (nơi sơ tán), 避難勧告 (khuyến cáo sơ tán)."]},
-  {"s": "あの人とはなんとか丸く_おさまった_よ。", "o": ["収まった", "貯まった", "薄まった", "縮まった"], "a": 1, "ar": "おさまる",
+   "key": [
+    {
+     "w": "避難",
+     "r": "ひなん",
+     "hv": "TỊ NẠN",
+     "m": "lánh nạn, sơ tán"
+    },
+    {
+     "w": "訓練",
+     "r": "くんれん",
+     "hv": "HUẤN LUYỆN",
+     "m": "huấn luyện, diễn tập"
+    }
+   ],
+   "x": {
+    "1": "非乱: không có từ này. 非 (PHI: không phải) và 乱 (LOẠN: rối loạn) không ghép được nghĩa “sơ tán”.",
+    "3": "非難 (PHI NAN) cũng đọc ひなん nhưng nghĩa là chỉ trích, phê phán. “Diễn tập chỉ trích” vô nghĩa — đây là bẫy đồng âm chính.",
+    "4": "避乱: không có từ này. 避 đúng nhưng 乱 (loạn) không phải “tai nạn”; chữ cần là 難."
+   },
+   "n": [
+    "避 = tránh: 避ける さける, 回避 かいひ. 難 = nạn, khó: 難しい, 困難 こんなん, 災難 さいなん.",
+    "避難訓練, 避難所 (nơi sơ tán), 避難勧告 (khuyến cáo sơ tán)."
+   ],
+   "why": "訓練 (diễn tập) ở trường → diễn tập <b>sơ tán, lánh nạn</b>. 避 (TỊ: tránh) ＋ 難 (NAN: tai nạn) ＝ <b>避難</b>: tránh nạn. 避難訓練 là cụm cố định."
+  },
+  {
+   "s": "あの人とはなんとか丸く_おさまった_よ。",
+   "o": [
+    "収まった",
+    "貯まった",
+    "薄まった",
+    "縮まった"
+   ],
+   "a": 1,
+   "ar": "おさまる",
    "vi": "Chuyện với người đó rốt cuộc cũng êm xuôi rồi.",
-   "key": [{"w": "収まる", "r": "おさまる", "hv": "THU", "m": "được giải quyết, lắng xuống; vừa vặn nằm gọn"}],
-   "x": {"2": "<span class=\"jp\">貯まる</span> たまる: (tiền) được tích lại.", "3": "<span class=\"jp\">薄まる</span> うすまる: loãng đi, nhạt đi.", "4": "<span class=\"jp\">縮まる</span> ちぢまる: co lại, rút ngắn (差が縮まる)."},
-   "g": ["<b class=\"jp\">丸く収まる</b>: giải quyết êm thấm (quán ngữ). なんとか: bằng cách này hay cách khác."],
-   "n": ["おさまる có nhiều chữ: 収まる (vào gọn, êm xuôi), 治まる (bệnh, bạo loạn lắng xuống), 納まる (được nộp, yên vị)."]},
-  {"s": "_ごかい_のないように率直に話します。", "o": ["誤悔", "誤解", "語悔", "語解"], "a": 2, "ar": "ごかい",
+   "key": [
+    {
+     "w": "収まる",
+     "r": "おさまる",
+     "hv": "THU",
+     "m": "được giải quyết, lắng xuống; vừa vặn nằm gọn"
+    }
+   ],
+   "x": {
+    "2": "貯まる (たまる: tiền được tích lại). Khác âm và khác nghĩa; quan hệ người với người không “tích lại”.",
+    "3": "薄まる (うすまる: loãng, nhạt đi). Khác âm; dùng cho màu, vị (味が薄まる).",
+    "4": "縮まる (ちぢまる: co lại, rút ngắn khoảng cách). Khác âm; 差が縮まる chứ không nói 丸く縮まる."
+   },
+   "g": [
+    "<b class=\"jp\">丸く収まる</b>: giải quyết êm thấm (quán ngữ). なんとか: bằng cách này hay cách khác."
+   ],
+   "n": [
+    "おさまる có nhiều chữ: 収まる (vào gọn, êm xuôi), 治まる (bệnh, bạo loạn lắng xuống), 納まる (được nộp, yên vị)."
+   ],
+   "why": "丸くおさまる: mọi chuyện êm xuôi, được dàn xếp ổn thỏa. Nghĩa “lắng xuống, yên ổn, gọn vào trong” viết là <b>収まる</b> (THU). Cùng âm còn có 治まる (bệnh, loạn yên lại) và 納まる (nạp vào)."
+  },
+  {
+   "s": "_ごかい_のないように率直に話します。",
+   "o": [
+    "誤悔",
+    "誤解",
+    "語悔",
+    "語解"
+   ],
+   "a": 2,
+   "ar": "ごかい",
    "vi": "Để tránh hiểu lầm, tôi xin nói thẳng.",
-   "key": [{"w": "誤解", "r": "ごかい", "hv": "NGỘ GIẢI", "m": "hiểu lầm"}, {"w": "率直", "r": "そっちょく", "hv": "SUẤT TRỰC", "m": "thẳng thắn"}],
-   "x": {"1": "không có từ này. 悔 (HỐI) là hối hận: 後悔 こうかい.", "3": "không có từ này. 語 là ngôn ngữ.", "4": "không có từ này."},
-   "g": ["<b class=\"jp\">〜ないように</b>: để không…, để tránh…"],
-   "n": ["誤 = sai: 誤り あやまり, 誤字 ごじ. 解 = giải: 理解, 解決, 解く とく."]},
-  {"s": "_きたく_の途中、思いもかけず高校時代の友人に会った。", "o": ["帰省", "帰宅", "帰国", "帰家"], "a": 2, "ar": "きたく",
+   "key": [
+    {
+     "w": "誤解",
+     "r": "ごかい",
+     "hv": "NGỘ GIẢI",
+     "m": "hiểu lầm"
+    },
+    {
+     "w": "率直",
+     "r": "そっちょく",
+     "hv": "SUẤT TRỰC",
+     "m": "thẳng thắn"
+    }
+   ],
+   "x": {
+    "1": "誤悔: không có từ này. 悔 (HỐI) nghĩa là hối hận (後悔 こうかい), không phải “hiểu”.",
+    "3": "語悔: không có từ này. 語 (NGỮ: ngôn ngữ) đọc ご nhưng không mang nghĩa “sai”; 悔 cũng sai.",
+    "4": "語解: không có từ này. 解 đúng nhưng chữ đầu phải là 誤 (sai), không phải 語 (lời)."
+   },
+   "g": [
+    "<b class=\"jp\">〜ないように</b>: để không…, để tránh…"
+   ],
+   "n": [
+    "誤 = sai: 誤り あやまり, 誤字 ごじ. 解 = giải: 理解, 解決, 解く とく."
+   ],
+   "why": "Ngữ cảnh: nói thẳng để tránh <b>hiểu lầm</b>. 誤 (NGỘ: sai) ＋ 解 (GIẢI: hiểu) ＝ <b>誤解</b>: hiểu sai."
+  },
+  {
+   "s": "_きたく_の途中、思いもかけず高校時代の友人に会った。",
+   "o": [
+    "帰省",
+    "帰宅",
+    "帰国",
+    "帰家"
+   ],
+   "a": 2,
+   "ar": "きたく",
    "vi": "Trên đường về nhà, tôi bất ngờ gặp lại bạn thời cấp ba.",
-   "key": [{"w": "帰宅", "r": "きたく", "hv": "QUY TRẠCH", "m": "về nhà"}, {"w": "思いもかけず", "r": "おもいもかけず", "hv": "—", "m": "không ngờ, bất ngờ"}],
-   "x": {"1": "<span class=\"jp\">帰省</span> きせい: về quê.", "3": "<span class=\"jp\">帰国</span> きこく: về nước.", "4": "không có từ này (家 không đọc たく)."},
-   "n": ["宅 たく: 住宅 じゅうたく, 自宅 じたく, お宅 おたく. 帰宅途中 / 帰宅ラッシュ (giờ cao điểm tan tầm)."]},
-  {"s": "報告書のページの_じゅんじょ_がばらばらになっている。", "o": ["準序", "準所", "順所", "順序"], "a": 4, "ar": "じゅんじょ",
+   "key": [
+    {
+     "w": "帰宅",
+     "r": "きたく",
+     "hv": "QUY TRẠCH",
+     "m": "về nhà"
+    },
+    {
+     "w": "思いもかけず",
+     "r": "おもいもかけず",
+     "hv": "—",
+     "m": "không ngờ, bất ngờ"
+    }
+   ],
+   "x": {
+    "1": "帰省 (きせい: về quê thăm nhà). Khác âm (せい) — câu cần âm たく.",
+    "3": "帰国 (きこく: về nước). Khác âm; và câu không nói chuyện về nước.",
+    "4": "帰家: không có từ này. 家 đọc か/いえ, không đọc たく; chữ “nhà” mang âm たく là 宅."
+   },
+   "n": [
+    "宅 たく: 住宅 じゅうたく, 自宅 じたく, お宅 おたく. 帰宅途中 / 帰宅ラッシュ (giờ cao điểm tan tầm)."
+   ],
+   "why": "途中 + gặp bạn trên đường → đường <b>về nhà</b>. 帰 (QUY: về) ＋ 宅 (TRẠCH: nhà) ＝ <b>帰宅</b> (きたく). 帰宅の途中 là cụm quen dùng."
+  },
+  {
+   "s": "報告書のページの_じゅんじょ_がばらばらになっている。",
+   "o": [
+    "準序",
+    "準所",
+    "順所",
+    "順序"
+   ],
+   "a": 4,
+   "ar": "じゅんじょ",
    "vi": "Thứ tự các trang của bản báo cáo bị lộn xộn.",
-   "key": [{"w": "順序", "r": "じゅんじょ", "hv": "THUẬN TỰ", "m": "thứ tự, trình tự"}],
-   "x": {"1": "không có từ này. 準 (CHUẨN) như 準備, 基準.", "2": "không có từ này.", "3": "không có từ này."},
-   "n": ["順 じゅん: 順番, 順調 じゅんちょう. 序 じょ: 秩序 ちつじょ, 序論.", "ばらばら: rời rạc, lộn xộn."]},
-  {"s": "彼はおぼれかけている子供を_きゅうじょ_した。", "o": ["援助", "救財", "救助", "援財"], "a": 3, "ar": "きゅうじょ",
+   "key": [
+    {
+     "w": "順序",
+     "r": "じゅんじょ",
+     "hv": "THUẬN TỰ",
+     "m": "thứ tự, trình tự"
+    }
+   ],
+   "x": {
+    "1": "準序: không có từ này. 準 (CHUẨN: tiêu chuẩn, chuẩn bị — 準備, 基準) không mang nghĩa thứ tự.",
+    "2": "準所: không có từ này. Sai cả hai chữ; 所 là nơi chốn.",
+    "3": "順所: không có từ này. 順 đúng nhưng 所 (SỞ: nơi chốn) đọc しょ, không phải じょ, và không có nghĩa trật tự."
+   },
+   "n": [
+    "順 じゅん: 順番, 順調 じゅんちょう. 序 じょ: 秩序 ちつじょ, 序論.",
+    "ばらばら: rời rạc, lộn xộn."
+   ],
+   "why": "Các trang bị lộn xộn → <b>thứ tự</b>. 順 (THUẬN: theo lượt) ＋ 序 (TỰ: trật tự) ＝ <b>順序</b> (じゅんじょ)."
+  },
+  {
+   "s": "彼はおぼれかけている子供を_きゅうじょ_した。",
+   "o": [
+    "援助",
+    "救財",
+    "救助",
+    "援財"
+   ],
+   "a": 3,
+   "ar": "きゅうじょ",
    "vi": "Anh ấy đã cứu đứa bé đang suýt chết đuối.",
-   "key": [{"w": "救助", "r": "きゅうじょ", "hv": "CỨU TRỢ", "m": "cứu hộ, cứu người"}],
-   "x": {"1": "<span class=\"jp\">援助</span> えんじょ: viện trợ, hỗ trợ (tiền bạc, vật chất).", "2": "không có từ này.", "4": "không có từ này."},
-   "g": ["<b class=\"jp\">Vます + かける</b>: suýt, sắp (おぼれかける)."],
-   "n": ["救 きゅう: 救急車, 救う すくう. 助 じょ: 助手, 助ける."]},
-  {"s": "ご_せいきゅう_がありしだい、サンプルをお送りします。", "o": ["誘球", "誘求", "請球", "請求"], "a": 4, "ar": "せいきゅう",
+   "key": [
+    {
+     "w": "救助",
+     "r": "きゅうじょ",
+     "hv": "CỨU TRỢ",
+     "m": "cứu hộ, cứu người"
+    }
+   ],
+   "x": {
+    "1": "援助 (えんじょ: viện trợ tiền bạc, vật chất). Khác âm (えん) và khác nghĩa — không dùng cho cứu người đuối nước.",
+    "2": "救財: không có từ này. 財 (TÀI: tiền của) không có nghĩa “giúp”.",
+    "4": "援財: không có từ này. Sai cả hai chữ."
+   },
+   "g": [
+    "<b class=\"jp\">Vます + かける</b>: suýt, sắp (おぼれかける)."
+   ],
+   "n": [
+    "救 きゅう: 救急車, 救う すくう. 助 じょ: 助手, 助ける."
+   ],
+   "why": "Cứu đứa trẻ suýt chết đuối → <b>cứu hộ</b>. 救 (CỨU) ＋ 助 (TRỢ) ＝ <b>救助</b> (きゅうじょ): cứu người khỏi nguy hiểm."
+  },
+  {
+   "s": "ご_せいきゅう_がありしだい、サンプルをお送りします。",
+   "o": [
+    "誘球",
+    "誘求",
+    "請球",
+    "請求"
+   ],
+   "a": 4,
+   "ar": "せいきゅう",
    "vi": "Ngay khi quý khách yêu cầu, chúng tôi sẽ gửi hàng mẫu.",
-   "key": [{"w": "請求", "r": "せいきゅう", "hv": "THỈNH CẦU", "m": "yêu cầu (chính thức); đòi thanh toán"}],
-   "x": {"1": "không có từ này. 誘 (DỤ) = rủ rê.", "2": "không có từ này.", "3": "không có từ này. 球 là quả bóng."},
-   "g": ["<b class=\"jp\">Vます / N + 次第</b>: ngay sau khi… (sẽ làm ngay)."],
-   "n": ["請求書 せいきゅうしょ: hóa đơn đòi tiền. 求 きゅう: 要求, 追求."]},
-  {"s": "気温が３５度を_こえる_ととても耐えられない。", "o": ["数える", "増える", "超える", "過える"], "a": 3, "ar": "こえる",
+   "key": [
+    {
+     "w": "請求",
+     "r": "せいきゅう",
+     "hv": "THỈNH CẦU",
+     "m": "yêu cầu (chính thức); đòi thanh toán"
+    }
+   ],
+   "x": {
+    "1": "誘球: không có từ này. 誘 (DỤ: rủ rê) đọc ゆう, không phải せい; 球 (CẦU: quả bóng).",
+    "2": "誘求: không có từ này. 求 đúng nhưng chữ đầu phải là 請 (xin), không phải 誘 (rủ).",
+    "3": "請球: không có từ này. 請 đúng nhưng 球 (quả bóng) sai — chữ “đòi hỏi” là 求."
+   },
+   "g": [
+    "<b class=\"jp\">Vます / N + 次第</b>: ngay sau khi… (sẽ làm ngay)."
+   ],
+   "n": [
+    "請求書 せいきゅうしょ: hóa đơn đòi tiền. 求 きゅう: 要求, 追求."
+   ],
+   "why": "Khách yêu cầu thì gửi hàng mẫu → <b>yêu cầu (chính thức)</b>. 請 (THỈNH: xin) ＋ 求 (CẦU: tìm, đòi) ＝ <b>請求</b> (せいきゅう). 資料請求, 請求書 là cách dùng quen thuộc."
+  },
+  {
+   "s": "気温が３５度を_こえる_ととても耐えられない。",
+   "o": [
+    "数える",
+    "増える",
+    "超える",
+    "過える"
+   ],
+   "a": 3,
+   "ar": "こえる",
    "vi": "Nhiệt độ vượt quá 35 độ thì thật không chịu nổi.",
-   "key": [{"w": "超える", "r": "こえる", "hv": "SIÊU", "m": "vượt quá (mức, con số)"}],
-   "x": {"1": "<span class=\"jp\">数える</span> かぞえる: đếm.", "2": "<span class=\"jp\">増える</span> ふえる: tăng.", "4": "không có động từ này (過 đọc すぎる)."},
-   "n": ["超える (vượt mức, con số) và 越える (vượt qua địa hình: 山を越える, 国境を越える)."]},
-  {"s": "彼は２位以下を大きく_はなして_ゴールインした。", "o": ["拒して", "距して", "離して", "理して"], "a": 3, "ar": "はなす",
+   "key": [
+    {
+     "w": "超える",
+     "r": "こえる",
+     "hv": "SIÊU",
+     "m": "vượt quá (mức, con số)"
+    }
+   ],
+   "x": {
+    "1": "数える (かぞえる: đếm). Khác âm và khác nghĩa.",
+    "2": "増える (ふえる: tăng). Khác âm; nhiệt độ “tăng 35 độ” cũng không phải nghĩa của câu.",
+    "4": "過える: không có động từ này. 過 dùng trong 過ぎる (すぎる: vượt quá) hoặc 過ごす, không đọc こえる."
+   },
+   "n": [
+    "超える (vượt mức, con số) và 越える (vượt qua địa hình: 山を越える, 国境を越える)."
+   ],
+   "why": "Nhiệt độ vượt quá 35 độ → vượt qua một <b>mức, con số</b>. Nghĩa vượt quá giới hạn viết <b>超える</b> (SIÊU). (越える dùng khi vượt qua địa điểm như núi, biên giới.)"
+  },
+  {
+   "s": "彼は２位以下を大きく_はなして_ゴールインした。",
+   "o": [
+    "拒して",
+    "距して",
+    "離して",
+    "理して"
+   ],
+   "a": 3,
+   "ar": "はなす",
    "vi": "Anh ấy về đích, bỏ xa người về nhì trở xuống.",
-   "key": [{"w": "離す", "r": "はなす", "hv": "LY", "m": "tách ra, giãn cách; bỏ xa"}],
-   "x": {"1": "không có. 拒 (CỰ) = từ chối: 拒否 きょひ.", "2": "không có. 距 (CỰ) = cự ly: 距離 きょり.", "4": "không có."},
-   "n": ["はなす có 3 chữ: 話す (nói), 離す (tách xa), 放す (thả ra: 鳥を放す).", "Tự động từ: 離れる はなれる."]},
-  {"s": "ひらがなを漢字に_へんかん_するときはこのキーを押してください。", "o": ["変替", "変改", "変換", "変更"], "a": 3, "ar": "へんかん",
+   "key": [
+    {
+     "w": "離す",
+     "r": "はなす",
+     "hv": "LY",
+     "m": "tách ra, giãn cách; bỏ xa"
+    }
+   ],
+   "x": {
+    "1": "拒して: không có. 拒 (CỰ) nghĩa là từ chối (拒否 きょひ, 拒む こばむ).",
+    "2": "距して: không có. 距 (CỰ) chỉ dùng trong 距離 (きょり: cự ly), không làm động từ.",
+    "4": "理して: không có. 理 (LÝ: lý lẽ) không có âm Kun はなす."
+   },
+   "n": [
+    "はなす có 3 chữ: 話す (nói), 離す (tách xa), 放す (thả ra: 鳥を放す).",
+    "Tự động từ: 離れる はなれる."
+   ],
+   "why": "Bỏ xa người về sau → tạo <b>khoảng cách</b>. 離す (LY: tách ra, để cách xa) ＝ <b>はなす</b>. 〜を大きく離してゴール ＝ về đích với khoảng cách lớn."
+  },
+  {
+   "s": "ひらがなを漢字に_へんかん_するときはこのキーを押してください。",
+   "o": [
+    "変替",
+    "変改",
+    "変換",
+    "変更"
+   ],
+   "a": 3,
+   "ar": "へんかん",
    "vi": "Khi chuyển hiragana sang kanji, hãy bấm phím này.",
-   "key": [{"w": "変換", "r": "へんかん", "hv": "BIẾN HOÁN", "m": "chuyển đổi (dạng thức, chữ)"}],
-   "x": {"1": "không có từ này.", "2": "không có từ này.", "4": "<span class=\"jp\">変更</span> へんこう: thay đổi (kế hoạch, lịch)."},
-   "n": ["換 かん: 交換 こうかん, 換気 かんき. Kun: 換える かえる."]},
-  {"s": "患者の_こきゅう_が戻ってきた。", "o": ["呼処", "呼拠", "呼吸", "呼扱"], "a": 3, "ar": "こきゅう",
+   "key": [
+    {
+     "w": "変換",
+     "r": "へんかん",
+     "hv": "BIẾN HOÁN",
+     "m": "chuyển đổi (dạng thức, chữ)"
+    }
+   ],
+   "x": {
+    "1": "変替: không có từ này. 替 (THẾ) đọc たい/かえる, không đọc かん.",
+    "2": "変改: không có từ này. 改 (CẢI) đọc かい.",
+    "4": "変更 (へんこう: thay đổi kế hoạch, lịch). Có thật nhưng khác âm (こう) và khác nghĩa — không nói “thay đổi chữ hiragana thành kanji”."
+   },
+   "n": [
+    "換 かん: 交換 こうかん, 換気 かんき. Kun: 換える かえる."
+   ],
+   "why": "Chuyển hiragana sang kanji → <b>chuyển đổi</b> dạng này sang dạng khác. 変 (BIẾN) ＋ 換 (HOÁN: đổi) ＝ <b>変換</b> (へんかん). Phím 変換 trên bàn phím Nhật."
+  },
+  {
+   "s": "患者の_こきゅう_が戻ってきた。",
+   "o": [
+    "呼処",
+    "呼拠",
+    "呼吸",
+    "呼扱"
+   ],
+   "a": 3,
+   "ar": "こきゅう",
    "vi": "Bệnh nhân đã thở lại được.",
-   "key": [{"w": "呼吸", "r": "こきゅう", "hv": "HÔ HẤP", "m": "hô hấp, hơi thở"}],
-   "x": {"1": "không có từ này.", "2": "không có từ này.", "4": "không có từ này."},
-   "n": ["吸 = hút vào: 吸う すう, 吸収 きゅうしゅう. 呼 = thở ra, gọi: 呼ぶ."]},
-  {"s": "私は音楽部に_しょぞく_しています。", "o": ["序続", "所属", "序属", "所続"], "a": 2, "ar": "しょぞく",
+   "key": [
+    {
+     "w": "呼吸",
+     "r": "こきゅう",
+     "hv": "HÔ HẤP",
+     "m": "hô hấp, hơi thở"
+    }
+   ],
+   "x": {
+    "1": "呼処: không có từ này. 処 (XỬ) đọc しょ.",
+    "2": "呼拠: không có từ này. 拠 (CỨ: căn cứ) đọc きょ — gần âm nhưng sai.",
+    "4": "呼扱: không có từ này. 扱 (TRÁP) là 扱う あつかう (xử lý), không đọc きゅう."
+   },
+   "n": [
+    "吸 = hút vào: 吸う すう, 吸収 きゅうしゅう. 呼 = thở ra, gọi: 呼ぶ."
+   ],
+   "why": "Bệnh nhân thở lại được → <b>hô hấp</b>. 呼 (HÔ: thở ra) ＋ 吸 (HẤP: hút vào) ＝ <b>呼吸</b> (こきゅう)."
+  },
+  {
+   "s": "私は音楽部に_しょぞく_しています。",
+   "o": [
+    "序続",
+    "所属",
+    "序属",
+    "所続"
+   ],
+   "a": 2,
+   "ar": "しょぞく",
    "vi": "Tôi là thành viên câu lạc bộ âm nhạc.",
-   "key": [{"w": "所属", "r": "しょぞく", "hv": "SỞ THUỘC", "m": "trực thuộc, là thành viên"}],
-   "x": {"1": "không có từ này.", "3": "không có từ này.", "4": "không có từ này."},
-   "n": ["属 ぞく: 属する ぞくする, 金属 きんぞく. Xem Đề 2 câu 9 (属して)."]},
-  {"s": "あの国ではユーロが_つうか_だよ。", "o": ["運賃", "通貨", "運貨", "通賃"], "a": 2, "ar": "つうか",
+   "key": [
+    {
+     "w": "所属",
+     "r": "しょぞく",
+     "hv": "SỞ THUỘC",
+     "m": "trực thuộc, là thành viên"
+    }
+   ],
+   "x": {
+    "1": "序続: không có từ này. 序 (TỰ) đọc じょ, 続 (TỤC) đọc ぞく — đúng âm từng phần nhưng sai chữ.",
+    "3": "序属: không có từ này. 属 đúng nhưng chữ đầu phải là 所 (しょ), không phải 序 (じょ).",
+    "4": "所続: không có từ này. 所 đúng nhưng 続 (tiếp tục) không mang nghĩa “thuộc về”."
+   },
+   "n": [
+    "属 ぞく: 属する ぞくする, 金属 きんぞく. Xem Đề 2 câu 9 (属して)."
+   ],
+   "why": "Là thành viên câu lạc bộ → <b>trực thuộc</b>. 所 (SỞ) ＋ 属 (THUỘC) ＝ <b>所属</b> (しょぞく). 〜に所属する: thuộc về tổ chức."
+  },
+  {
+   "s": "あの国ではユーロが_つうか_だよ。",
+   "o": [
+    "運賃",
+    "通貨",
+    "運貨",
+    "通賃"
+   ],
+   "a": 2,
+   "ar": "つうか",
    "vi": "Ở nước đó tiền tệ là đồng Euro đấy.",
-   "key": [{"w": "通貨", "r": "つうか", "hv": "THÔNG HÓA", "m": "tiền tệ"}],
-   "x": {"1": "<span class=\"jp\">運賃</span> うんちん: cước vận chuyển, tiền vé.", "3": "không có từ này.", "4": "không có từ này."},
-   "n": ["貨 か: 貨物 かもつ (hàng hóa). 賃 ちん: 家賃 やちん, 賃金 ちんぎん.", "Đồng âm: 通過 つうか (đi qua)."]},
-  {"s": "{感染者|かんせんしゃ}は２万人に_およんで_いる。", "o": ["満んで", "総んで", "及んで", "至んで"], "a": 3, "ar": "およぶ",
+   "key": [
+    {
+     "w": "通貨",
+     "r": "つうか",
+     "hv": "THÔNG HÓA",
+     "m": "tiền tệ"
+    }
+   ],
+   "x": {
+    "1": "運賃 (うんちん: cước vận chuyển, tiền vé). Khác âm và khác nghĩa.",
+    "3": "運貨: không có từ này. 運 đọc うん, không phải つう.",
+    "4": "通賃: không có từ này. 通 đúng nhưng 賃 (NHẪM: tiền công, cước) đọc ちん."
+   },
+   "n": [
+    "貨 か: 貨物 かもつ (hàng hóa). 賃 ちん: 家賃 やちん, 賃金 ちんぎん.",
+    "Đồng âm: 通過 つうか (đi qua)."
+   ],
+   "why": "Đồng Euro là <b>tiền tệ</b> của nước đó. 通 (THÔNG: lưu thông) ＋ 貨 (HÓA: tiền, hàng) ＝ <b>通貨</b> (つうか)."
+  },
+  {
+   "s": "{感染者|かんせんしゃ}は２万人に_およんで_いる。",
+   "o": [
+    "満んで",
+    "総んで",
+    "及んで",
+    "至んで"
+   ],
+   "a": 3,
+   "ar": "およぶ",
    "vi": "Số người nhiễm bệnh đã lên tới 20.000 người.",
-   "key": [{"w": "及ぶ", "r": "およぶ", "hv": "CẬP", "m": "lên tới, đạt tới, lan tới"}],
-   "x": {"1": "không có. 満 đọc みちる/みたす.", "2": "không có.", "4": "không có. 至る đọc いたる (至って)."},
-   "g": ["<b class=\"jp\">〜に及ぶ</b>: 被害は全国に及んだ. <b class=\"jp\">〜には及ばない</b>: không cần phải."],
-   "n": ["及 On きゅう: 普及 ふきゅう, 追及 ついきゅう."]},
-  {"s": "彼はバラの_はなたば_を抱えてやって来た。", "o": ["花続", "花属", "花族", "花束"], "a": 4, "ar": "はなたば",
+   "key": [
+    {
+     "w": "及ぶ",
+     "r": "およぶ",
+     "hv": "CẬP",
+     "m": "lên tới, đạt tới, lan tới"
+    }
+   ],
+   "x": {
+    "1": "満んで: không có. 満 đọc みちる / みたす (đầy), không có dạng 満ぶ.",
+    "2": "総んで: không có. 総 (TỔNG) không có âm Kun およぶ.",
+    "4": "至んで: không có. 至 đọc 至る (いたる: đạt tới) — nghĩa gần nhưng chia là 至って, không phải およんで."
+   },
+   "g": [
+    "<b class=\"jp\">〜に及ぶ</b>: 被害は全国に及んだ. <b class=\"jp\">〜には及ばない</b>: không cần phải."
+   ],
+   "n": [
+    "及 On きゅう: 普及 ふきゅう, 追及 ついきゅう."
+   ],
+   "why": "Số người nhiễm lên tới 2 vạn → <b>đạt tới, lan đến</b> một mức. Động từ <b>及ぶ</b> (CẬP) ＝ およぶ: 〜に及ぶ (lên tới, lan tới)."
+  },
+  {
+   "s": "彼はバラの_はなたば_を抱えてやって来た。",
+   "o": [
+    "花続",
+    "花属",
+    "花族",
+    "花束"
+   ],
+   "a": 4,
+   "ar": "はなたば",
    "vi": "Anh ấy ôm bó hoa hồng bước đến.",
-   "key": [{"w": "花束", "r": "はなたば", "hv": "HOA THÚC", "m": "bó hoa"}],
-   "x": {"1": "không có.", "2": "không có.", "3": "không có."},
-   "n": ["束 たば: bó; On そく: 約束 やくそく, 結束. 束ねる たばねる: bó lại."]},
-  {"s": "トマトの葉が_ちぢれて_枯れてしまった。", "o": ["削れて", "縮れて", "減れて", "略れて"], "a": 2, "ar": "ちぢれる",
+   "key": [
+    {
+     "w": "花束",
+     "r": "はなたば",
+     "hv": "HOA THÚC",
+     "m": "bó hoa"
+    }
+   ],
+   "x": {
+    "1": "花続: không có từ này. 続 (tiếp tục) không có nghĩa “bó”.",
+    "2": "花属: không có từ này. 属 (thuộc) không có nghĩa “bó”.",
+    "3": "花族: không có từ này. 族 (TỘC: gia tộc) không có nghĩa “bó”."
+   },
+   "n": [
+    "束 たば: bó; On そく: 約束 やくそく, 結束. 束ねる たばねる: bó lại."
+   ],
+   "why": "Ôm <b>bó hoa</b> hồng. 花 (HOA) ＋ 束 (THÚC: bó) ＝ <b>花束</b> (はなたば). たば là âm Kun của 束 (札束 さつたば: xấp tiền); âm On là そく (約束 やくそく)."
+  },
+  {
+   "s": "トマトの葉が_ちぢれて_枯れてしまった。",
+   "o": [
+    "削れて",
+    "縮れて",
+    "減れて",
+    "略れて"
+   ],
+   "a": 2,
+   "ar": "ちぢれる",
    "vi": "Lá cà chua bị quăn lại rồi héo mất.",
-   "key": [{"w": "縮れる", "r": "ちぢれる", "hv": "SÚC", "m": "quăn, xoăn, nhăn nhúm"}],
-   "x": {"1": "<span class=\"jp\">削れる</span> けずれる: bị gọt, bị bào.", "3": "không có. 減る đọc へる.", "4": "không có. 略 (LƯỢC) = 略す りゃくす."},
-   "n": ["縮 nhóm: 縮む ちぢむ (co lại), 縮める, 縮まる, 縮れる. On しゅく: 短縮 たんしゅく."]},
-  {"s": "とんだハプニングにみんな_はら_を抱えて笑った。", "o": ["腹", "腰", "背", "肩"], "a": 1, "ar": "はら",
+   "key": [
+    {
+     "w": "縮れる",
+     "r": "ちぢれる",
+     "hv": "SÚC",
+     "m": "quăn, xoăn, nhăn nhúm"
+    }
+   ],
+   "x": {
+    "1": "削れる (けずれる: bị gọt, bị bào mòn). Khác âm, khác nghĩa.",
+    "3": "減れて: không có. 減 đọc 減る (へる: giảm), không đọc ちぢれる.",
+    "4": "略れて: không có. 略 (LƯỢC) dùng trong 略す (りゃくす: viết tắt)."
+   },
+   "n": [
+    "縮 nhóm: 縮む ちぢむ (co lại), 縮める, 縮まる, 縮れる. On しゅく: 短縮 たんしゅく."
+   ],
+   "why": "Lá cà chua <b>quăn lại</b> rồi héo. 縮れる (SÚC) ＝ ちぢれる: quăn, co rúm (縮れた髪: tóc xoăn)."
+  },
+  {
+   "s": "とんだハプニングにみんな_はら_を抱えて笑った。",
+   "o": [
+    "腹",
+    "腰",
+    "背",
+    "肩"
+   ],
+   "a": 1,
+   "ar": "はら",
    "vi": "Trước sự cố dở khóc dở cười đó, ai nấy đều ôm bụng cười.",
-   "key": [{"w": "腹", "r": "はら", "hv": "PHÚC", "m": "bụng"}],
-   "x": {"2": "<span class=\"jp\">腰</span> こし: eo, hông.", "3": "<span class=\"jp\">背</span> せ: lưng; chiều cao.", "4": "<span class=\"jp\">肩</span> かた: vai."},
-   "g": ["<b class=\"jp\">腹を抱えて笑う</b>: cười ôm bụng."],
-   "n": ["Xem Đề 2 câu 17 (腹を立てる). とんだ: tai hại, không ngờ."]},
-  {"s": "彼女の声は_そうおん_でよく聞こえなかった。", "o": ["焦音", "驚音", "騒音", "怖音"], "a": 3, "ar": "そうおん",
+   "key": [
+    {
+     "w": "腹",
+     "r": "はら",
+     "hv": "PHÚC",
+     "m": "bụng"
+    }
+   ],
+   "x": {
+    "2": "腰 (こし: eo, hông). Khác âm; 腰を抱える không phải quán ngữ cười.",
+    "3": "背 (せ: lưng, chiều cao). Khác âm.",
+    "4": "肩 (かた: vai). Khác âm; quán ngữ là 肩を落とす (thất vọng), 肩を持つ (bênh vực)."
+   },
+   "g": [
+    "<b class=\"jp\">腹を抱えて笑う</b>: cười ôm bụng."
+   ],
+   "n": [
+    "Xem Đề 2 câu 17 (腹を立てる). とんだ: tai hại, không ngờ."
+   ],
+   "why": "Quán ngữ <b>腹を抱えて笑う</b>: ôm bụng cười (cười lăn lộn). はら viết là <b>腹</b> (PHÚC: bụng)."
+  },
+  {
+   "s": "彼女の声は_そうおん_でよく聞こえなかった。",
+   "o": [
+    "焦音",
+    "驚音",
+    "騒音",
+    "怖音"
+   ],
+   "a": 3,
+   "ar": "そうおん",
    "vi": "Giọng cô ấy bị tiếng ồn át mất nên tôi không nghe rõ.",
-   "key": [{"w": "騒音", "r": "そうおん", "hv": "TAO ÂM", "m": "tiếng ồn"}],
-   "x": {"1": "không có. 焦 (TIÊU) = cháy, sốt ruột: 焦る あせる.", "2": "không có. 驚 (KINH) = ngạc nhiên.", "4": "không có. 怖 (BỐ) = sợ."},
-   "n": ["騒 = ồn: 騒ぐ さわぐ, 騒がしい さわがしい, 物騒 ぶっそう."]},
-  {"s": "このテレビは_えいぞう_が鮮明だ。", "o": ["映象", "影像", "影象", "映像"], "a": 4, "ar": "えいぞう",
+   "key": [
+    {
+     "w": "騒音",
+     "r": "そうおん",
+     "hv": "TAO ÂM",
+     "m": "tiếng ồn"
+    }
+   ],
+   "x": {
+    "1": "焦音: không có. 焦 (TIÊU: cháy, sốt ruột — 焦る あせる) đọc しょう.",
+    "2": "驚音: không có. 驚 (KINH: ngạc nhiên — 驚く) đọc きょう.",
+    "4": "怖音: không có. 怖 (BỐ: sợ — 怖い) đọc ふ."
+   },
+   "n": [
+    "騒 = ồn: 騒ぐ さわぐ, 騒がしい さわがしい, 物騒 ぶっそう."
+   ],
+   "why": "Giọng bị át nên nghe không rõ → <b>tiếng ồn</b>. 騒 (TAO: ồn ào — 騒ぐ さわぐ) ＋ 音 (ÂM) ＝ <b>騒音</b> (そうおん)."
+  },
+  {
+   "s": "このテレビは_えいぞう_が鮮明だ。",
+   "o": [
+    "映象",
+    "影像",
+    "影象",
+    "映像"
+   ],
+   "a": 4,
+   "ar": "えいぞう",
    "vi": "Chiếc tivi này hình ảnh rất sắc nét.",
-   "key": [{"w": "映像", "r": "えいぞう", "hv": "ÁNH TƯỢNG", "m": "hình ảnh (phim, màn hình)"}, {"w": "鮮明", "r": "せんめい", "hv": "TIÊN MINH", "m": "rõ nét"}],
-   "x": {"1": "không có. 象 đọc ぞう chỉ khi là con voi.", "2": "không có (影 là bóng).", "3": "không có."},
-   "n": ["像 ぞう: 想像, 画像, 銅像. 映 えい: 映画, 反映."]},
-  {"s": "彼には味方も多いが_てき_も多い。", "o": ["敵", "適", "争", "逆"], "a": 1, "ar": "てき",
+   "key": [
+    {
+     "w": "映像",
+     "r": "えいぞう",
+     "hv": "ÁNH TƯỢNG",
+     "m": "hình ảnh (phim, màn hình)"
+    },
+    {
+     "w": "鮮明",
+     "r": "せんめい",
+     "hv": "TIÊN MINH",
+     "m": "rõ nét"
+    }
+   ],
+   "x": {
+    "1": "映象: không có. 象 đọc しょう (印象) hoặc ぞう chỉ khi là con voi; chữ “hình ảnh” là 像.",
+    "2": "影像: không dùng (影 えい/かげ: cái bóng). Chữ “chiếu hình” là 映.",
+    "3": "影象: không có. Sai cả hai chữ."
+   },
+   "n": [
+    "像 ぞう: 想像, 画像, 銅像. 映 えい: 映画, 反映."
+   ],
+   "why": "Tivi có <b>hình ảnh</b> sắc nét. 映 (ÁNH: chiếu) ＋ 像 (TƯỢNG: hình ảnh) ＝ <b>映像</b> (えいぞう)."
+  },
+  {
+   "s": "彼には味方も多いが_てき_も多い。",
+   "o": [
+    "敵",
+    "適",
+    "争",
+    "逆"
+   ],
+   "a": 1,
+   "ar": "てき",
    "vi": "Anh ấy có nhiều đồng minh nhưng cũng nhiều kẻ thù.",
-   "key": [{"w": "敵", "r": "てき", "hv": "ĐỊCH", "m": "kẻ thù, đối thủ"}, {"w": "味方", "r": "みかた", "hv": "VỊ PHƯƠNG", "m": "phe mình, đồng minh"}],
-   "x": {"2": "<span class=\"jp\">適</span> てき (THÍCH): thích hợp, không đứng một mình.", "3": "<span class=\"jp\">争</span> (TRANH): 争う あらそう.", "4": "<span class=\"jp\">逆</span> ぎゃく: ngược."},
-   "n": ["Cùng bộ 攵/啇: 敵 (địch), 適 (thích), 滴 (giọt: 水滴 すいてき)."]}
+   "key": [
+    {
+     "w": "敵",
+     "r": "てき",
+     "hv": "ĐỊCH",
+     "m": "kẻ thù, đối thủ"
+    },
+    {
+     "w": "味方",
+     "r": "みかた",
+     "hv": "VỊ PHƯƠNG",
+     "m": "phe mình, đồng minh"
+    }
+   ],
+   "x": {
+    "2": "適 (THÍCH: thích hợp) cũng đọc てき nhưng không đứng một mình làm danh từ, và nghĩa không đối lập với 味方 — bẫy đồng âm.",
+    "3": "争 (TRANH: tranh giành) đọc そう / あらそう, không đọc てき.",
+    "4": "逆 (NGHỊCH: ngược) đọc ぎゃく, không đọc てき."
+   },
+   "n": [
+    "Cùng bộ 攵/啇: 敵 (địch), 適 (thích), 滴 (giọt: 水滴 すいてき)."
+   ],
+   "why": "Đối lập với 味方 (đồng minh) → <b>kẻ thù</b>. てき viết là <b>敵</b> (ĐỊCH). Cấu trúc 〜も多いが〜も多い đối xứng rõ."
+  }
+ ],
+ "sum": [
+  {
+   "h": "Cách làm dạng 表記 (問題2 · chọn chữ Hán đúng)",
+   "li": [
+    "Bước 1: đọc cả câu để hiểu <b>nghĩa</b> — đề hay cài từ đồng âm (避難/非難, 敵/適).",
+    "Bước 2: tách từ thành từng chữ và hỏi “chữ này nghĩa gì?”. Ví dụ ごかい: ご ＝ sai (誤), かい ＝ hiểu (解).",
+    "Bước 3: loại chữ có <b>âm đọc sai</b> trước (家 không đọc たく, 所 không đọc じょ) — thường loại được 2 phương án ngay.",
+    "Bước 4: với động từ, kiểm tra okurigana: 縮れる, 及ぶ, 超える — chữ nào không có dạng đó là sai."
+   ]
+  },
+  {
+   "h": "Cặp đồng âm khác nghĩa cần nhớ",
+   "tbl": {
+    "head": [
+     "Âm",
+     "Chữ",
+     "Nghĩa"
+    ],
+    "rows": [
+     [
+      "ひなん",
+      "避難 / 非難",
+      "lánh nạn / chỉ trích"
+     ],
+     [
+      "てき",
+      "敵 / 適 / 的",
+      "kẻ thù / thích hợp / mục tiêu, 〜tính"
+     ],
+     [
+      "こえる",
+      "超える / 越える",
+      "vượt mức, con số / vượt địa điểm (山を越える)"
+     ],
+     [
+      "おさまる",
+      "収まる / 治まる / 納まる",
+      "êm xuôi, gọn / yên (bệnh, loạn) / nạp vào"
+     ],
+     [
+      "はなす",
+      "離す / 放す / 話す",
+      "tách xa / thả ra / nói"
+     ],
+     [
+      "せいきゅう",
+      "請求 / 性急",
+      "yêu cầu thanh toán / nóng vội"
+     ],
+     [
+      "かいほう",
+      "解放 / 開放 / 介抱",
+      "giải phóng / mở cửa / chăm sóc"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Bộ phận chữ giúp đoán nghĩa",
+   "tbl": {
+    "head": [
+     "Bộ",
+     "Nghĩa gợi ý",
+     "Ví dụ"
+    ],
+    "rows": [
+     [
+      "扌 (thủ: tay)",
+      "hành động bằng tay",
+      "換 (đổi), 拒 (từ chối), 扱 (xử lý)"
+     ],
+     [
+      "口 (khẩu: miệng)",
+      "miệng, hơi thở",
+      "呼 (thở ra), 吸 (hút vào)"
+     ],
+     [
+      "貝 (bối: vỏ sò, tiền)",
+      "tiền bạc",
+      "貨 (tiền), 賃 (cước), 財 (tài sản)"
+     ],
+     [
+      "言 (ngôn: lời)",
+      "lời nói",
+      "請 (xin), 誤 (sai), 誘 (rủ), 語 (ngữ)"
+     ],
+     [
+      "⻌ (sước: đi)",
+      "di chuyển",
+      "避 (tránh), 逆 (ngược), 通 (thông)"
+     ],
+     [
+      "糸 (mịch: sợi)",
+      "sợi, nối",
+      "縮 (co), 続 (nối tiếp)"
+     ],
+     [
+      "馬 (mã: ngựa)",
+      "náo động",
+      "騒 (ồn), 驚 (kinh ngạc)"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Từ vựng mở rộng theo nhóm",
+   "li": [
+    "<b>帰〜</b>: 帰宅 きたく (về nhà), 帰省 きせい (về quê), 帰国 きこく (về nước), 帰社 きしゃ (về công ty), 帰還 きかん (trở về).",
+    "<b>〜助 / 援〜</b>: 救助 (cứu hộ), 援助 (viện trợ), 補助 ほじょ (trợ cấp), 助言 じょげん (lời khuyên), 支援 (hỗ trợ).",
+    "<b>変〜</b>: 変換 (chuyển đổi), 変更 (thay đổi), 変化 へんか (biến hóa), 変動 へんどう (biến động).",
+    "<b>〜像</b>: 映像 (hình ảnh), 画像 がぞう (ảnh), 想像 そうぞう (tưởng tượng), 銅像 どうぞう (tượng đồng).",
+    "<b>Quán ngữ cơ thể</b>: 腹を抱える (ôm bụng cười), 腰が低い (khiêm tốn), 肩を持つ (bênh vực), 背を向ける (quay lưng)."
+   ]
+  }
  ]
 }

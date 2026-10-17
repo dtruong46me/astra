@@ -6,57 +6,542 @@
  "title": "Đề 6 · Ngữ pháp N2",
  "jp": "文の組み立て",
  "mondai": "<b>問題8</b> 次の文の　★　に入る最もよいものを、1・2・3・4から一つ選びなさい。 Sắp xếp 4 phương án thành câu đúng rồi chọn phương án nằm ở vị trí ★.",
- "src": {"folder": "1dL7Iev1IwiAwZ-ZuLi2B6E6ZC5eF1H12", "goc": "1KYlj-NBbilY567_RzgbWHTI4BZgxQNEn", "chua": "1BsWde6fjsXsV6EvC6Bx_NMkVTijg9w_3"},
+ "src": {
+  "folder": "1dL7Iev1IwiAwZ-ZuLi2B6E6ZC5eF1H12",
+  "goc": "1KYlj-NBbilY567_RzgbWHTI4BZgxQNEn",
+  "chua": "1BsWde6fjsXsV6EvC6Bx_NMkVTijg9w_3"
+ },
  "qs": [
-  {"s": "現地記者の話すところによると、{状況|じょうきょう}は［　］［　］［★］［　］だ。", "o": ["悪化", "のよう", "する", "一方"], "order": [1, 3, 4, 2], "a": 4, "ar": "悪化 → する → 一方 → のよう",
+  {
+   "s": "現地記者の話すところによると、{状況|じょうきょう}は［　］［　］［★］［　］だ。",
+   "o": [
+    "悪化",
+    "のよう",
+    "する",
+    "一方"
+   ],
+   "order": [
+    1,
+    3,
+    4,
+    2
+   ],
+   "a": 4,
+   "ar": "悪化 → する → 一方 → のよう",
    "vi": "Theo lời phóng viên tại chỗ, tình hình dường như ngày càng xấu đi.",
-   "key": [{"w": "〜一方だ", "r": "いっぽうだ", "hv": "NHẤT PHƯƠNG", "m": "ngày càng… (một chiều, thường xấu)"}, {"w": "悪化", "r": "あっか", "hv": "ÁC HÓA", "m": "xấu đi"}],
-   "g": ["<b class=\"jp\">Vる + 一方だ</b>: 悪化する一方だ. Thêm <b class=\"jp\">のようだ</b> ở cuối: 一方のようだ (có vẻ ngày càng…).", "<b class=\"jp\">〜ところによると</b>: theo như (nguồn tin)."],
-   "n": ["Mẹo: だ ở cuối câu chỉ có thể nối sau のよう, nên のよう đứng ô cuối. 悪化 + する là cặp chắc chắn."]},
-  {"s": "あのチームの選手は［　］［★］［　］［　］。", "o": ["から", "して", "強そうだ", "体格"], "order": [4, 1, 2, 3], "a": 1, "ar": "体格 → から → して → 強そうだ",
+   "key": [
+    {
+     "w": "〜一方だ",
+     "r": "いっぽうだ",
+     "hv": "NHẤT PHƯƠNG",
+     "m": "ngày càng… (một chiều, thường xấu)"
+    },
+    {
+     "w": "悪化",
+     "r": "あっか",
+     "hv": "ÁC HÓA",
+     "m": "xấu đi"
+    }
+   ],
+   "g": [
+    "<b class=\"jp\">Vる + 一方だ</b>: 悪化する一方だ. Thêm <b class=\"jp\">のようだ</b> ở cuối: 一方のようだ (có vẻ ngày càng…).",
+    "<b class=\"jp\">〜ところによると</b>: theo như (nguồn tin)."
+   ],
+   "n": [
+    "Mẹo: だ ở cuối câu chỉ có thể nối sau のよう, nên のよう đứng ô cuối. 悪化 + する là cặp chắc chắn."
+   ],
+   "why": "Bước 1: cặp chắc chắn <b>悪化＋する</b> (danh từ する). Bước 2: mẫu <b>Vる＋一方</b> (ngày càng) → 悪化する一方. Bước 3: だ cuối câu cần đứng sau <b>のよう</b> → 一方のようだ. Thứ tự: 悪化 → する → <b>一方</b>(★) → のよう. Ô ★ là ô thứ ba → <b>一方</b>.",
+   "x": {
+    "1": "悪化 — ô 1: là danh từ gốc, phải đứng trước する. Không thể ở ★ vì sau ★ còn một ô rồi mới đến だ, mà 悪化 không nối được với のようだ theo nghĩa “ngày càng”.",
+    "2": "のよう — ô 4: chỉ のよう mới nối được với だ ở cuối câu (のようだ). Vì vậy nó luôn ở ô cuối, không ở ★.",
+    "3": "する — ô 2: luôn đi ngay sau 悪化 và đứng trước 一方 (Vる＋一方).",
+    "4": "一方 — ô 3 (★): mẫu Vる＋一方だ ＝ ngày càng…; nằm giữa する và のよう."
+   }
+  },
+  {
+   "s": "あのチームの選手は［　］［★］［　］［　］。",
+   "o": [
+    "から",
+    "して",
+    "強そうだ",
+    "体格"
+   ],
+   "order": [
+    4,
+    1,
+    2,
+    3
+   ],
+   "a": 1,
+   "ar": "体格 → から → して → 強そうだ",
    "vi": "Các cầu thủ đội đó chỉ nhìn vóc dáng thôi đã thấy mạnh rồi.",
-   "key": [{"w": "体格", "r": "たいかく", "hv": "THỂ CÁCH", "m": "vóc dáng, thể hình"}, {"w": "〜からして", "r": "からして", "hv": "—", "m": "ngay từ… đã"}],
-   "g": ["<b class=\"jp\">N + からして</b>: lấy chi tiết tiêu biểu để phán đoán. Xem Đề 3 câu 3."],
-   "n": ["Mẹo: câu kết bằng 。 nên 強そうだ đứng cuối; から + して luôn đi liền."]},
-  {"s": "試験の［　］［★］［　］［　］胃が痛くなった。", "o": ["あまり", "どうなるか", "心配の", "結果が"], "order": [4, 2, 3, 1], "a": 2, "ar": "結果が → どうなるか → 心配の → あまり",
+   "key": [
+    {
+     "w": "体格",
+     "r": "たいかく",
+     "hv": "THỂ CÁCH",
+     "m": "vóc dáng, thể hình"
+    },
+    {
+     "w": "〜からして",
+     "r": "からして",
+     "hv": "—",
+     "m": "ngay từ… đã"
+    }
+   ],
+   "g": [
+    "<b class=\"jp\">N + からして</b>: lấy chi tiết tiêu biểu để phán đoán. Xem Đề 3 câu 3."
+   ],
+   "n": [
+    "Mẹo: câu kết bằng 。 nên 強そうだ đứng cuối; から + して luôn đi liền."
+   ],
+   "why": "Bước 1: 強そうだ có dạng kết câu → ô cuối. Bước 2: <b>から＋して</b> luôn đi liền nhau (mẫu N＋からして). Bước 3: N đứng trước からして là <b>体格</b> (vóc dáng). Thứ tự: 体格 → <b>から</b>(★) → して → 強そうだ.",
+   "x": {
+    "1": "から — ô 2 (★): phải đứng ngay sau danh từ 体格 và ngay trước して.",
+    "2": "して — ô 3: luôn theo sau から (からして); không đứng đầu cụm.",
+    "3": "強そうだ — ô 4: là vị ngữ kết thúc câu (trước dấu 。).",
+    "4": "体格 — ô 1: danh từ làm “chi tiết tiêu biểu” đứng trước からして; nối với 選手は phía trước thành “các cầu thủ… nhìn vóc dáng”."
+   }
+  },
+  {
+   "s": "試験の［　］［★］［　］［　］胃が痛くなった。",
+   "o": [
+    "あまり",
+    "どうなるか",
+    "心配の",
+    "結果が"
+   ],
+   "order": [
+    4,
+    2,
+    3,
+    1
+   ],
+   "a": 2,
+   "ar": "結果が → どうなるか → 心配の → あまり",
    "vi": "Tôi lo quá không biết kết quả thi sẽ ra sao đến mức đau cả dạ dày.",
-   "key": [{"w": "〜あまり", "r": "あまり", "hv": "—", "m": "vì quá… nên (kết quả xấu, bất thường)"}],
-   "g": ["<b class=\"jp\">Nの / Vる + あまり</b>: 心配のあまり, 喜びのあまり泣いた."],
-   "n": ["Mẹo: 試験の + 結果が (danh từ nối bằng の), 心配の + あまり là cặp cố định."]},
-  {"s": "妹は、［　］［　］［★］［　］、もう要らないと言う。", "o": ["と言った", "お菓子が", "食べたい", "かと思うと"], "order": [2, 3, 1, 4], "a": 1, "ar": "お菓子が → 食べたい → と言った → かと思うと",
+   "key": [
+    {
+     "w": "〜あまり",
+     "r": "あまり",
+     "hv": "—",
+     "m": "vì quá… nên (kết quả xấu, bất thường)"
+    }
+   ],
+   "g": [
+    "<b class=\"jp\">Nの / Vる + あまり</b>: 心配のあまり, 喜びのあまり泣いた."
+   ],
+   "n": [
+    "Mẹo: 試験の + 結果が (danh từ nối bằng の), 心配の + あまり là cặp cố định."
+   ],
+   "why": "Bước 1: 試験の cần danh từ → <b>結果が</b>. Bước 2: 結果が＋<b>どうなるか</b> (kết quả sẽ ra sao). Bước 3: <b>心配の＋あまり</b> (lo quá đến mức) đứng trước 胃が痛くなった. Thứ tự: 結果が → <b>どうなるか</b>(★) → 心配の → あまり.",
+   "x": {
+    "1": "あまり — ô 4: mẫu Nの＋あまり (quá… đến mức) đứng ngay trước kết quả 胃が痛くなった.",
+    "2": "どうなるか — ô 2 (★): là vị ngữ của 結果が, tạo mệnh đề nghi vấn “kết quả sẽ thế nào” làm nội dung của 心配.",
+    "3": "心配の — ô 3: phải đứng ngay trước あまり (心配のあまり).",
+    "4": "結果が — ô 1: nối với 試験の (試験の結果) và làm chủ ngữ cho どうなるか."
+   }
+  },
+  {
+   "s": "妹は、［　］［　］［★］［　］、もう要らないと言う。",
+   "o": [
+    "と言った",
+    "お菓子が",
+    "食べたい",
+    "かと思うと"
+   ],
+   "order": [
+    2,
+    3,
+    1,
+    4
+   ],
+   "a": 1,
+   "ar": "お菓子が → 食べたい → と言った → かと思うと",
    "vi": "Em gái tôi vừa bảo muốn ăn bánh xong thì đã bảo không cần nữa.",
-   "key": [{"w": "〜かと思うと", "r": "かとおもうと", "hv": "—", "m": "vừa mới… thì đã (đổi ý rất nhanh)"}],
-   "g": ["<b class=\"jp\">Vた + かと思うと</b>: 泣いたかと思うと笑い出す. Xem Đề 3 câu 4."],
-   "n": ["Mẹo: dấu 、 ngay sau ô cuối, nên かと思うと đứng cuối; trước nó phải là thể た (と言った)."]},
-  {"s": "{現時点|げんじてん}で、［　］［★］［　］［　］やってみたが、だめだった。", "o": ["考え", "方法で", "最善の", "うる"], "order": [1, 4, 3, 2], "a": 4, "ar": "考え → うる → 最善の → 方法で",
+   "key": [
+    {
+     "w": "〜かと思うと",
+     "r": "かとおもうと",
+     "hv": "—",
+     "m": "vừa mới… thì đã (đổi ý rất nhanh)"
+    }
+   ],
+   "g": [
+    "<b class=\"jp\">Vた + かと思うと</b>: 泣いたかと思うと笑い出す. Xem Đề 3 câu 4."
+   ],
+   "n": [
+    "Mẹo: dấu 、 ngay sau ô cuối, nên かと思うと đứng cuối; trước nó phải là thể た (と言った)."
+   ],
+   "why": "Bước 1: trước dấu 、 là liên từ → <b>かと思うと</b> ở ô cuối. Bước 2: かと思うと cần thể た đứng trước → <b>と言った</b>. Bước 3: nội dung lời nói: お菓子が食べたい. Thứ tự: お菓子が → 食べたい → <b>と言った</b>(★) → かと思うと.",
+   "x": {
+    "1": "と言った — ô 3 (★): là thể た, đứng ngay trước かと思うと (Vた＋かと思うと: vừa… thì đã).",
+    "2": "お菓子が — ô 1: tân ngữ của 食べたい (〜が食べたい).",
+    "3": "食べたい — ô 2: nội dung câu nói, đứng trước trích dẫn と.",
+    "4": "かと思うと — ô 4: nối hai vế đối lập, đứng ngay trước dấu 、 và vế sau もう要らないと言う."
+   }
+  },
+  {
+   "s": "{現時点|げんじてん}で、［　］［★］［　］［　］やってみたが、だめだった。",
+   "o": [
+    "考え",
+    "方法で",
+    "最善の",
+    "うる"
+   ],
+   "order": [
+    1,
+    4,
+    3,
+    2
+   ],
+   "a": 4,
+   "ar": "考え → うる → 最善の → 方法で",
    "vi": "Ở thời điểm hiện tại, tôi đã thử bằng cách tốt nhất có thể nghĩ ra nhưng vẫn không được.",
-   "key": [{"w": "〜うる", "r": "うる / える", "hv": "ĐẮC", "m": "có thể (khả năng xảy ra)"}, {"w": "最善", "r": "さいぜん", "hv": "TỐI THIỆN", "m": "tốt nhất"}],
-   "g": ["<b class=\"jp\">Vます + うる</b>: 考えうる (có thể nghĩ ra), あり得る ありうる. Phủ định: 〜えない."],
-   "n": ["Mẹo: 方法で nối với やってみた (làm bằng cách…), nên đứng cuối."]},
-  {"s": "その［　］［　］［★］［　］「その話はよそう」と言われた。", "o": ["かのうちに", "触れない", "話に", "触れるか"], "order": [3, 4, 2, 1], "a": 2, "ar": "話に → 触れるか → 触れない → かのうちに",
+   "key": [
+    {
+     "w": "〜うる",
+     "r": "うる / える",
+     "hv": "ĐẮC",
+     "m": "có thể (khả năng xảy ra)"
+    },
+    {
+     "w": "最善",
+     "r": "さいぜん",
+     "hv": "TỐI THIỆN",
+     "m": "tốt nhất"
+    }
+   ],
+   "g": [
+    "<b class=\"jp\">Vます + うる</b>: 考えうる (có thể nghĩ ra), あり得る ありうる. Phủ định: 〜えない."
+   ],
+   "n": [
+    "Mẹo: 方法で nối với やってみた (làm bằng cách…), nên đứng cuối."
+   ],
+   "why": "Bước 1: やってみた cần cách thức → <b>方法で</b> ở ô cuối. Bước 2: <b>最善の＋方法で</b>. Bước 3: <b>考え＋うる</b> (Vます＋うる: có thể nghĩ ra) bổ nghĩa cho 最善の方法. Thứ tự: 考え → <b>うる</b>(★) → 最善の → 方法で.",
+   "x": {
+    "1": "考え — ô 1: thể ます bỏ ます, phải đứng trước うる.",
+    "2": "方法で — ô 4: chỉ cách thức của hành động やってみた phía sau.",
+    "3": "最善の — ô 3: bổ nghĩa cho 方法 (最善の方法: cách tốt nhất).",
+    "4": "うる — ô 2 (★): hậu tố gắn ngay sau Vます (考えうる), tạo cụm bổ nghĩa cho danh từ phía sau."
+   }
+  },
+  {
+   "s": "その［　］［　］［★］［　］「その話はよそう」と言われた。",
+   "o": [
+    "かのうちに",
+    "触れない",
+    "話に",
+    "触れるか"
+   ],
+   "order": [
+    3,
+    4,
+    2,
+    1
+   ],
+   "a": 2,
+   "ar": "話に → 触れるか → 触れない → かのうちに",
    "vi": "Tôi vừa mới nhắc tới chuyện đó thì đã bị bảo “Thôi đừng nói chuyện đó nữa”.",
-   "key": [{"w": "触れる", "r": "ふれる", "hv": "XÚC", "m": "chạm; đề cập tới"}, {"w": "よそう", "r": "よそう", "hv": "—", "m": "thôi, bỏ đi (よす: thôi)"}],
-   "g": ["<b class=\"jp\">Vるか Vないかのうちに</b>: vừa mới… thì. Xem Đề 3 câu 10."],
-   "n": ["Mẹo: その + 話に (N に触れる: đề cập tới N)."]},
-  {"s": "［　］［　］［★］［　］、このあたりは夜とてもあぶないですよ。", "o": ["うちに", "と", "帰らない", "明るい"], "order": [4, 1, 3, 2], "a": 3, "ar": "明るい → うちに → 帰らない → と",
+   "key": [
+    {
+     "w": "触れる",
+     "r": "ふれる",
+     "hv": "XÚC",
+     "m": "chạm; đề cập tới"
+    },
+    {
+     "w": "よそう",
+     "r": "よそう",
+     "hv": "—",
+     "m": "thôi, bỏ đi (よす: thôi)"
+    }
+   ],
+   "g": [
+    "<b class=\"jp\">Vるか Vないかのうちに</b>: vừa mới… thì. Xem Đề 3 câu 10."
+   ],
+   "n": [
+    "Mẹo: その + 話に (N に触れる: đề cập tới N)."
+   ],
+   "why": "Bước 1: その cần danh từ → <b>話に</b> (話に触れる: nhắc tới chuyện). Bước 2: mẫu <b>Vるか＋Vないか＋のうちに</b>. Thứ tự: 話に → 触れるか → <b>触れない</b>(★) → かのうちに.",
+   "x": {
+    "1": "かのうちに — ô 4: phần cuối của mẫu, đứng sau 触れない, nối với vế sau 「その話はよそう」と言われた.",
+    "2": "触れない — ô 3 (★): thể phủ định, đứng giữa 触れるか và かのうちに.",
+    "3": "話に — ô 1: nối với その (その話) và làm bổ ngữ của 触れる (Nに触れる).",
+    "4": "触れるか — ô 2: thể khẳng định + か, mở đầu mẫu Vるか Vないか."
+   }
+  },
+  {
+   "s": "［　］［　］［★］［　］、このあたりは夜とてもあぶないですよ。",
+   "o": [
+    "うちに",
+    "と",
+    "帰らない",
+    "明るい"
+   ],
+   "order": [
+    4,
+    1,
+    3,
+    2
+   ],
+   "a": 3,
+   "ar": "明るい → うちに → 帰らない → と",
    "vi": "Nếu không về khi trời còn sáng thì khu này ban đêm nguy hiểm lắm đấy.",
-   "key": [{"w": "〜うちに", "r": "うちに", "hv": "—", "m": "trong lúc còn… (trước khi thay đổi)"}],
-   "g": ["<b class=\"jp\">Aい + うちに</b>: 明るいうちに, 若いうちに. <b class=\"jp\">Vないと</b>: nếu không… thì."],
-   "n": ["Mẹo: と (điều kiện) đứng ngay trước dấu 、."]},
-  {"s": "庭に{咲|さ}いている［　］［　］［★］［　］すごくいい。", "o": ["香りも", "きれいな", "うえに", "花は"], "order": [4, 2, 3, 1], "a": 3, "ar": "花は → きれいな → うえに → 香りも",
+   "key": [
+    {
+     "w": "〜うちに",
+     "r": "うちに",
+     "hv": "—",
+     "m": "trong lúc còn… (trước khi thay đổi)"
+    }
+   ],
+   "g": [
+    "<b class=\"jp\">Aい + うちに</b>: 明るいうちに, 若いうちに. <b class=\"jp\">Vないと</b>: nếu không… thì."
+   ],
+   "n": [
+    "Mẹo: と (điều kiện) đứng ngay trước dấu 、."
+   ],
+   "why": "Bước 1: <b>明るい＋うちに</b> (khi trời còn sáng). Bước 2: <b>帰らない＋と</b> (nếu không về thì) đứng trước dấu 、. Thứ tự: 明るい → うちに → <b>帰らない</b>(★) → と.",
+   "x": {
+    "1": "うちに — ô 2: đi ngay sau tính từ 明るい (Aい＋うちに: trong lúc còn…).",
+    "2": "と — ô 4: trợ từ điều kiện, đứng ngay trước dấu 、.",
+    "3": "帰らない — ô 3 (★): thể ない để nối với と (Vないと: nếu không… thì).",
+    "4": "明るい — ô 1: tính từ đứng trước うちに; đứng đầu câu."
+   }
+  },
+  {
+   "s": "庭に{咲|さ}いている［　］［　］［★］［　］すごくいい。",
+   "o": [
+    "香りも",
+    "きれいな",
+    "うえに",
+    "花は"
+   ],
+   "order": [
+    4,
+    2,
+    3,
+    1
+   ],
+   "a": 3,
+   "ar": "花は → きれいな → うえに → 香りも",
    "vi": "Hoa nở trong vườn không những đẹp mà hương cũng rất thơm.",
-   "key": [{"w": "〜うえに", "r": "うえに", "hv": "THƯỢNG", "m": "không những… mà còn"}, {"w": "香り", "r": "かおり", "hv": "HƯƠNG", "m": "mùi thơm"}],
-   "g": ["<b class=\"jp\">Aな + うえに</b>: きれいなうえに. Hai vế cùng chiều (cùng tốt hoặc cùng xấu)."],
-   "n": ["Mẹo: 咲いている bổ nghĩa cho 花, và 香りも + すごくいい."]},
-  {"s": "あなたが［　］［★］［　］［　］なのに、あなたにやめられたら本当に困りますよ。", "o": ["不足気味", "人手が", "いて", "さえ"], "order": [3, 4, 2, 1], "a": 4, "ar": "いて → さえ → 人手が → 不足気味",
+   "key": [
+    {
+     "w": "〜うえに",
+     "r": "うえに",
+     "hv": "THƯỢNG",
+     "m": "không những… mà còn"
+    },
+    {
+     "w": "香り",
+     "r": "かおり",
+     "hv": "HƯƠNG",
+     "m": "mùi thơm"
+    }
+   ],
+   "g": [
+    "<b class=\"jp\">Aな + うえに</b>: きれいなうえに. Hai vế cùng chiều (cùng tốt hoặc cùng xấu)."
+   ],
+   "n": [
+    "Mẹo: 咲いている bổ nghĩa cho 花, và 香りも + すごくいい."
+   ],
+   "why": "Bước 1: 咲いている bổ nghĩa cho danh từ → <b>花は</b>. Bước 2: <b>きれいな＋うえに</b> (không những đẹp mà còn). Bước 3: <b>香りも</b>＋すごくいい. Thứ tự: 花は → きれいな → <b>うえに</b>(★) → 香りも.",
+   "x": {
+    "1": "香りも — ô 4: chủ ngữ của すごくいい (hương cũng rất thơm), も thể hiện ý “cũng”.",
+    "2": "きれいな — ô 2: tính từ な giữ な khi nối với うえに.",
+    "3": "うえに — ô 3 (★): nối vế “đẹp” với vế “thơm” (cùng chiều tích cực).",
+    "4": "花は — ô 1: danh từ được 咲いている bổ nghĩa, làm chủ đề câu."
+   }
+  },
+  {
+   "s": "あなたが［　］［★］［　］［　］なのに、あなたにやめられたら本当に困りますよ。",
+   "o": [
+    "不足気味",
+    "人手が",
+    "いて",
+    "さえ"
+   ],
+   "order": [
+    3,
+    4,
+    2,
+    1
+   ],
+   "a": 4,
+   "ar": "いて → さえ → 人手が → 不足気味",
    "vi": "Ngay cả khi có bạn mà nhân lực còn hơi thiếu, bạn nghỉ việc thì chúng tôi thật sự khó khăn đấy.",
-   "key": [{"w": "人手", "r": "ひとで", "hv": "NHÂN THỦ", "m": "nhân lực, người làm"}, {"w": "〜気味", "r": "ぎみ", "hv": "KHÍ VỊ", "m": "hơi có vẻ"}],
-   "g": ["<b class=\"jp\">Vて + さえ</b>: ngay cả khi. <b class=\"jp\">やめられたら</b>: bị động gây phiền (迷惑の受身)."],
-   "n": ["Mẹo: 不足気味 + なのに (N + なのに). Xem Đề 3 câu 7 (気味)."]},
-  {"s": "［　］［　］［★］［　］のは、かえって失礼になることもあります。", "o": ["高価な", "といって", "物だから", "遠慮する"], "order": [1, 3, 2, 4], "a": 2, "ar": "高価な → 物だから → といって → 遠慮する",
+   "key": [
+    {
+     "w": "人手",
+     "r": "ひとで",
+     "hv": "NHÂN THỦ",
+     "m": "nhân lực, người làm"
+    },
+    {
+     "w": "〜気味",
+     "r": "ぎみ",
+     "hv": "KHÍ VỊ",
+     "m": "hơi có vẻ"
+    }
+   ],
+   "g": [
+    "<b class=\"jp\">Vて + さえ</b>: ngay cả khi. <b class=\"jp\">やめられたら</b>: bị động gây phiền (迷惑の受身)."
+   ],
+   "n": [
+    "Mẹo: 不足気味 + なのに (N + なのに). Xem Đề 3 câu 7 (気味)."
+   ],
+   "why": "Bước 1: なのに cần N/Aな đứng trước → <b>不足気味</b> ở ô cuối. Bước 2: <b>人手が</b>＋不足気味. Bước 3: あなたが＋<b>いて＋さえ</b> (ngay cả khi có bạn). Thứ tự: いて → <b>さえ</b>(★) → 人手が → 不足気味.",
+   "x": {
+    "1": "不足気味 — ô 4: danh từ＋気味, nối với なのに phía sau.",
+    "2": "人手が — ô 3: chủ ngữ của 不足気味 (nhân lực hơi thiếu).",
+    "3": "いて — ô 1: nối với あなたが (あなたがいて: có bạn ở đây).",
+    "4": "さえ — ô 2 (★): Vて＋さえ (ngay cả khi), gắn ngay sau いて."
+   }
+  },
+  {
+   "s": "［　］［　］［★］［　］のは、かえって失礼になることもあります。",
+   "o": [
+    "高価な",
+    "といって",
+    "物だから",
+    "遠慮する"
+   ],
+   "order": [
+    1,
+    3,
+    2,
+    4
+   ],
+   "a": 2,
+   "ar": "高価な → 物だから → といって → 遠慮する",
    "vi": "Từ chối chỉ vì đó là đồ đắt tiền đôi khi lại thành thất lễ.",
-   "key": [{"w": "〜からといって", "r": "からといって", "hv": "—", "m": "chỉ vì… mà (không hẳn)"}, {"w": "遠慮", "r": "えんりょ", "hv": "VIỄN LỰ", "m": "khách sáo, ngại, từ chối"}, {"w": "かえって", "r": "かえって", "hv": "—", "m": "ngược lại"}],
-   "g": ["<b class=\"jp\">〜からといって</b>: お金があるからといって幸せとは限らない."],
-   "n": ["Mẹo: 遠慮する + のは (Vる + の danh từ hóa) đứng cuối."]}
+   "key": [
+    {
+     "w": "〜からといって",
+     "r": "からといって",
+     "hv": "—",
+     "m": "chỉ vì… mà (không hẳn)"
+    },
+    {
+     "w": "遠慮",
+     "r": "えんりょ",
+     "hv": "VIỄN LỰ",
+     "m": "khách sáo, ngại, từ chối"
+    },
+    {
+     "w": "かえって",
+     "r": "かえって",
+     "hv": "—",
+     "m": "ngược lại"
+    }
+   ],
+   "g": [
+    "<b class=\"jp\">〜からといって</b>: お金があるからといって幸せとは限らない."
+   ],
+   "n": [
+    "Mẹo: 遠慮する + のは (Vる + の danh từ hóa) đứng cuối."
+   ],
+   "why": "Bước 1: のは cần Vる → <b>遠慮する</b> ở ô cuối (遠慮するのは). Bước 2: mẫu <b>〜からといって</b> → <b>物だから＋といって</b>. Bước 3: <b>高価な＋物</b>. Thứ tự: 高価な → 物だから → <b>といって</b>(★) → 遠慮する.",
+   "x": {
+    "1": "高価な — ô 1: tính từ な bổ nghĩa cho 物.",
+    "2": "といって — ô 3 (★): ghép với から ở cuối 物だから thành からといって (chỉ vì… mà).",
+    "3": "物だから — ô 2: chứa から để tạo mẫu からといって với mảnh sau.",
+    "4": "遠慮する — ô 4: động từ thể từ điển, nối với のは (danh từ hóa) làm chủ ngữ."
+   }
+  }
+ ],
+ "sum": [
+  {
+   "h": "Chiến thuật làm 文の組み立て (問題8 · câu ★)",
+   "li": [
+    "<b>Bước 1 — tìm mảnh cuối</b>: xem chữ ngay sau ô thứ 4 (だ, 。, 、, なのに, のは). Mảnh nào nối được với nó thì đặt ô 4. Ví dụ: のよう＋だ, 不足気味＋なのに, 遠慮する＋のは.",
+    "<b>Bước 2 — tìm mảnh đầu</b>: xem chữ ngay trước ô 1 (その, 試験の, 咲いている). Danh từ thường đứng ô 1.",
+    "<b>Bước 3 — ghép cặp cố định</b>: から＋して, 心配の＋あまり, 明るい＋うちに, きれいな＋うえに, 考え＋うる.",
+    "<b>Bước 4</b>: chỉ cần chắc vị trí ★, không cần dịch hoàn chỉnh. Ghép xong đọc lại một lần để kiểm tra nghĩa."
+   ]
+  },
+  {
+   "h": "Mẫu ngữ pháp trong đề",
+   "tbl": {
+    "head": [
+     "Mẫu",
+     "Nối",
+     "Nghĩa"
+    ],
+    "rows": [
+     [
+      "〜一方だ",
+      "Vる",
+      "ngày càng (một chiều)"
+     ],
+     [
+      "〜からして",
+      "N",
+      "ngay từ (chi tiết) đã…"
+     ],
+     [
+      "〜あまり",
+      "Nの / Vる",
+      "quá… đến mức"
+     ],
+     [
+      "〜かと思うと",
+      "Vた",
+      "vừa… thì đã"
+     ],
+     [
+      "〜うる / 〜える",
+      "Vます",
+      "có thể (考えうる, ありうる)"
+     ],
+     [
+      "〜か〜ないかのうちに",
+      "Vる・Vない",
+      "vừa mới… thì"
+     ],
+     [
+      "〜うちに",
+      "Aい / Vない / Nの",
+      "trong lúc còn…"
+     ],
+     [
+      "〜うえに",
+      "thể thường (Aな giữ な)",
+      "không những… mà còn"
+     ],
+     [
+      "〜てさえ",
+      "Vて",
+      "ngay cả khi"
+     ],
+     [
+      "〜からといって",
+      "thể thường",
+      "chỉ vì… mà (không hẳn)"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Quy tắc nối cần nhớ khi xếp câu",
+   "li": [
+    "Danh từ ＋ <b>の</b> trước あまり, うちに, ような; tính từ な giữ <b>な</b> trước うえに, のに, くせに.",
+    "Mẫu cần <b>Vた</b>: かと思うと, とたん, きり, あげく, 末に.",
+    "Mẫu cần <b>Vます</b>: うる, かねる, がち, かけ, ぬく, きる, 次第.",
+    "Mẫu cần <b>Vる</b>: 一方だ, 恐れがある, 際に, にあたって (cũng nhận N).",
+    "Trợ từ đi sau danh từ (が, を, に, は, も) — mảnh có trợ từ thường là chủ ngữ/tân ngữ, đứng trước động từ của nó."
+   ]
+  },
+  {
+   "h": "Mở rộng: nhóm mẫu dễ ra trong câu ★",
+   "li": [
+    "<b>Xu hướng</b>: 〜一方だ (ngày càng), 〜つつある (đang dần), 〜ばかりだ (chỉ toàn xấu đi).",
+    "<b>Mức độ quá</b>: 〜あまり, 〜すぎて, 〜ほど, 〜くらい.",
+    "<b>Không hẳn</b>: 〜からといって〜とは限らない, 〜わけではない, 〜とも限らない.",
+    "<b>Cộng thêm</b>: 〜うえに, 〜ばかりか, 〜のみならず, 〜に加えて."
+   ]
+  }
  ]
 }

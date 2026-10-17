@@ -6,103 +6,690 @@
  "title": "Đề 17 · Từ vựng N2",
  "jp": "文脈規定",
  "mondai": "<b>問題4</b> （　）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。 Chọn từ thích hợp nhất để điền vào chỗ trống.",
- "src": {"folder": "1VHNmPItgIoowzn-MjsTwkhTLHeUpJ6Q5", "goc": "15MNQ0ZUsiWys1AL5LDYOPlN4gjELl4o1", "chua": "1t5-HZ-b0X0xDAP_vSstgOcO8qjjNm94T"},
+ "src": {
+  "folder": "1VHNmPItgIoowzn-MjsTwkhTLHeUpJ6Q5",
+  "goc": "15MNQ0ZUsiWys1AL5LDYOPlN4gjELl4o1",
+  "chua": "1t5-HZ-b0X0xDAP_vSstgOcO8qjjNm94T"
+ },
  "qs": [
-  {"s": "商品は土曜日の午前中に（　）してください。", "o": ["配達", "発達", "伝達", "通達"], "a": 1, "ar": "はいたつ",
+  {
+   "s": "商品は土曜日の午前中に（　）してください。",
+   "o": [
+    "配達",
+    "発達",
+    "伝達",
+    "通達"
+   ],
+   "a": 1,
+   "ar": "はいたつ",
    "vi": "Xin hãy giao hàng vào sáng thứ Bảy.",
-   "key": [{"w": "配達", "r": "はいたつ", "hv": "PHỐI ĐẠT", "m": "giao hàng, phát (thư, báo)"}],
-   "x": {"2": "<span class=\"jp\">発達</span>: phát triển.", "3": "<span class=\"jp\">伝達</span>: truyền đạt.", "4": "<span class=\"jp\">通達</span>: thông báo (văn bản hành chính)."},
-   "n": ["新聞配達, 配達料."]},
-  {"s": "ゆうべは救急車のサイレンで目が（　）。", "o": ["さめた", "かれた", "ほえた", "ふけた"], "a": 1, "ar": "覚める",
+   "key": [
+    {
+     "w": "配達",
+     "r": "はいたつ",
+     "hv": "PHỐI ĐẠT",
+     "m": "giao hàng, phát (thư, báo)"
+    }
+   ],
+   "x": {
+    "2": "発達 (phát triển): dùng cho công nghệ, cơ thể (技術が発達する). Không “phát triển hàng hóa vào sáng thứ Bảy”.",
+    "3": "伝達 (truyền đạt): dùng cho thông tin, mệnh lệnh. Hàng hóa không “truyền đạt”.",
+    "4": "通達 (thông báo hành chính bằng văn bản): không dùng cho hàng hóa."
+   },
+   "n": [
+    "新聞配達, 配達料."
+   ],
+   "why": "商品 (hàng) ＋ thời gian giao → <b>giao hàng tận nơi</b>. <b>配達する</b>: phân phát, giao (thư, hàng, báo)."
+  },
+  {
+   "s": "ゆうべは救急車のサイレンで目が（　）。",
+   "o": [
+    "さめた",
+    "かれた",
+    "ほえた",
+    "ふけた"
+   ],
+   "a": 1,
+   "ar": "覚める",
    "vi": "Tối qua tôi bị tiếng còi xe cấp cứu đánh thức.",
-   "key": [{"w": "目が覚める", "r": "めがさめる", "hv": "GIÁC", "m": "tỉnh giấc"}],
-   "x": {"2": "<span class=\"jp\">枯れる / 嗄れる</span>: héo / khản (声が嗄れる).", "3": "<span class=\"jp\">吠える</span>: sủa.", "4": "<span class=\"jp\">更ける / 老ける</span>: (đêm) khuya / già đi."},
-   "n": ["Đồng âm: 冷める (nguội)."]},
-  {"s": "A「あ、また電車の中にかばんを忘れてきた。」　B「どうしてそんなに（　）の。」", "o": ["ずうずうしい", "そそっかしい", "いじわるい", "さわがしい"], "a": 2, "ar": "そそっかしい",
+   "key": [
+    {
+     "w": "目が覚める",
+     "r": "めがさめる",
+     "hv": "GIÁC",
+     "m": "tỉnh giấc"
+    }
+   ],
+   "x": {
+    "2": "かれる (枯れる: héo / 嗄れる: khản giọng): 声がかれる — không đi với 目.",
+    "3": "ほえる (吠える: sủa): chủ thể là chó, không phải 目.",
+    "4": "ふける (更ける: đêm khuya / 老ける: già đi): 夜が更ける — không đi với 目."
+   },
+   "n": [
+    "Đồng âm: 冷める (nguội)."
+   ],
+   "why": "Tiếng còi xe cấp cứu → <b>tỉnh giấc</b>. Collocation <b>目が覚める</b>: tỉnh dậy."
+  },
+  {
+   "s": "A「あ、また電車の中にかばんを忘れてきた。」　B「どうしてそんなに（　）の。」",
+   "o": [
+    "ずうずうしい",
+    "そそっかしい",
+    "いじわるい",
+    "さわがしい"
+   ],
+   "a": 2,
+   "ar": "そそっかしい",
    "vi": "A: Á, lại quên cặp trên tàu rồi. B: Sao cậu hậu đậu thế?",
-   "key": [{"w": "そそっかしい", "r": "そそっかしい", "hv": "—", "m": "hấp tấp, hậu đậu"}],
-   "x": {"1": "trơ trẽn.", "3": "xấu tính.", "4": "ồn ào."},
-   "n": ["Xem Đề 13 câu 15."]},
-  {"s": "彼は（　）家に生まれたので良い教育が受けられなかった。", "o": ["こいしい", "けわしい", "まずしい", "あやしい"], "a": 3, "ar": "貧しい",
+   "key": [
+    {
+     "w": "そそっかしい",
+     "r": "そそっかしい",
+     "hv": "—",
+     "m": "hấp tấp, hậu đậu"
+    }
+   ],
+   "x": {
+    "1": "ずうずうしい (trơ trẽn, mặt dày): nói thái độ không biết ngại, không liên quan việc hay quên đồ.",
+    "3": "いじわるい (xấu tính, hay chơi xấu): quên đồ không phải xấu tính.",
+    "4": "さわがしい (ồn ào): không liên quan."
+   },
+   "n": [
+    "Xem Đề 13 câu 15."
+   ],
+   "why": "Lại quên cặp trên tàu → tính <b>hậu đậu, hấp tấp</b>. <b>そそっかしい</b>: hay sơ suất, cẩu thả (đã gặp ở Đề 13 câu 15)."
+  },
+  {
+   "s": "彼は（　）家に生まれたので良い教育が受けられなかった。",
+   "o": [
+    "こいしい",
+    "けわしい",
+    "まずしい",
+    "あやしい"
+   ],
+   "a": 3,
+   "ar": "貧しい",
    "vi": "Sinh ra trong gia đình nghèo nên anh ấy không được học hành tử tế.",
-   "key": [{"w": "貧しい", "r": "まずしい", "hv": "BẦN", "m": "nghèo"}],
-   "x": {"1": "<span class=\"jp\">恋しい</span>: nhớ nhung.", "2": "<span class=\"jp\">険しい</span>: hiểm trở, gay gắt.", "4": "<span class=\"jp\">怪しい</span>: đáng ngờ."},
-   "n": ["↔ 豊か, 裕福. Xem Đề 10 câu 17 (乏しい)."]},
-  {"s": "この料理を作るには（　）も時間もかかります。", "o": ["手段", "手続き", "手間", "手入れ"], "a": 3, "ar": "てま",
+   "key": [
+    {
+     "w": "貧しい",
+     "r": "まずしい",
+     "hv": "BẦN",
+     "m": "nghèo"
+    }
+   ],
+   "x": {
+    "1": "こいしい (恋しい: nhớ nhung): tả cảm xúc nhớ người/quê, không tả gia đình.",
+    "2": "けわしい (険しい: hiểm trở, nghiêm khắc): 険しい山, 険しい表情 — không dùng cho gia đình.",
+    "4": "あやしい (怪しい: đáng ngờ): “sinh ra trong nhà đáng ngờ” không giải thích việc không được học."
+   },
+   "n": [
+    "↔ 豊か, 裕福. Xem Đề 10 câu 17 (乏しい)."
+   ],
+   "why": "Không được học hành tử tế vì sinh ra trong gia đình <b>nghèo</b>. <b>貧しい家</b>: nhà nghèo."
+  },
+  {
+   "s": "この料理を作るには（　）も時間もかかります。",
+   "o": [
+    "手段",
+    "手続き",
+    "手間",
+    "手入れ"
+   ],
+   "a": 3,
+   "ar": "てま",
    "vi": "Món này tốn cả công sức lẫn thời gian.",
-   "key": [{"w": "手間", "r": "てま", "hv": "THỦ GIAN", "m": "công sức, công phu"}],
-   "x": {"1": "<span class=\"jp\">手段</span>: phương tiện, biện pháp.", "2": "<span class=\"jp\">手続き</span>: thủ tục.", "4": "<span class=\"jp\">手入れ</span>: chăm sóc, bảo dưỡng."},
-   "n": ["手間がかかる, 手間をかける, お手間を取らせる (làm phiền)."]},
-  {"s": "テレビのおかげで我々は世界各国の出来事に（　）ことができる。", "o": ["関する", "達する", "接する", "適する"], "a": 3, "ar": "せっする",
+   "key": [
+    {
+     "w": "手間",
+     "r": "てま",
+     "hv": "THỦ GIAN",
+     "m": "công sức, công phu"
+    }
+   ],
+   "x": {
+    "1": "手段 (phương tiện, biện pháp): 手段がかかる không có. Dùng 手段を選ぶ.",
+    "2": "手続き (thủ tục): thủ tục hành chính, không phải công sức nấu ăn.",
+    "4": "手入れ (chăm sóc, bảo dưỡng): 庭の手入れ — không nói “món ăn tốn chăm sóc”."
+   },
+   "n": [
+    "手間がかかる, 手間をかける, お手間を取らせる (làm phiền)."
+   ],
+   "why": "Nấu món này tốn cả <b>công sức</b> lẫn thời gian. <b>手間がかかる</b> là collocation cố định (tốn công)."
+  },
+  {
+   "s": "テレビのおかげで我々は世界各国の出来事に（　）ことができる。",
+   "o": [
+    "関する",
+    "達する",
+    "接する",
+    "適する"
+   ],
+   "a": 3,
+   "ar": "せっする",
    "vi": "Nhờ tivi mà chúng ta tiếp cận được các sự kiện khắp thế giới.",
-   "key": [{"w": "接する", "r": "せっする", "hv": "TIẾP", "m": "tiếp xúc, tiếp cận"}],
-   "x": {"1": "liên quan (〜に関する + N).", "2": "đạt tới.", "4": "thích hợp."},
-   "g": ["<b class=\"jp\">〜のおかげで</b>: nhờ có."]},
-  {"s": "父親は子供にふとんを（　）あげた。", "o": ["のばして", "しいて", "あつめて", "ひっぱって"], "a": 2, "ar": "敷く",
+   "key": [
+    {
+     "w": "接する",
+     "r": "せっする",
+     "hv": "TIẾP",
+     "m": "tiếp xúc, tiếp cận"
+    }
+   ],
+   "x": {
+    "1": "関する (liên quan): chỉ dùng dạng 〜に関する＋N / 〜に関して. 〜に関することができる sai cấu trúc.",
+    "2": "達する (đạt tới mức): dùng cho con số, mục tiêu (目標に達する). Không “đạt tới sự kiện”.",
+    "4": "適する (thích hợp): “có thể thích hợp với sự kiện” không có nghĩa."
+   },
+   "g": [
+    "<b class=\"jp\">〜のおかげで</b>: nhờ có."
+   ],
+   "why": "Nhờ tivi mà <b>tiếp xúc, tiếp cận</b> được sự kiện thế giới. <b>〜に接する</b>: tiếp xúc với (thông tin, con người, văn hóa)."
+  },
+  {
+   "s": "父親は子供にふとんを（　）あげた。",
+   "o": [
+    "のばして",
+    "しいて",
+    "あつめて",
+    "ひっぱって"
+   ],
+   "a": 2,
+   "ar": "敷く",
    "vi": "Người cha trải nệm cho con.",
-   "key": [{"w": "敷く", "r": "しく", "hv": "PHU", "m": "trải (nệm, thảm)"}],
-   "x": {"1": "kéo dài, duỗi.", "3": "gom lại.", "4": "kéo."},
-   "n": ["布団を敷く ↔ 布団を畳む. 敷地 しきち: khuôn viên."]},
-  {"s": "A「館内を{巡回|じゅんかい}してきましたよ。{異状|いじょう}はありません。」　B「それは（　）。」", "o": ["おきのどくに", "ごえんりょなく", "ごくろうさま", "おまちどうさま"], "a": 3, "ar": "ご苦労様",
+   "key": [
+    {
+     "w": "敷く",
+     "r": "しく",
+     "hv": "PHU",
+     "m": "trải (nệm, thảm)"
+    }
+   ],
+   "x": {
+    "1": "のばす (kéo dài, duỗi): 足を伸ばす. Không dùng cho trải nệm.",
+    "3": "あつめる (gom lại): “gom nệm cho con” không phải việc chuẩn bị chỗ ngủ.",
+    "4": "ひっぱる (kéo): kéo nệm không phải trải nệm."
+   },
+   "n": [
+    "布団を敷く ↔ 布団を畳む. 敷地 しきち: khuôn viên."
+   ],
+   "why": "ふとん (nệm) → <b>trải</b>. Collocation <b>ふとんを敷く</b>: trải nệm."
+  },
+  {
+   "s": "A「館内を{巡回|じゅんかい}してきましたよ。{異状|いじょう}はありません。」　B「それは（　）。」",
+   "o": [
+    "おきのどくに",
+    "ごえんりょなく",
+    "ごくろうさま",
+    "おまちどうさま"
+   ],
+   "a": 3,
+   "ar": "ご苦労様",
    "vi": "A: Tôi vừa đi tuần quanh tòa nhà rồi. Không có gì bất thường. B: Vậy thì vất vả cho anh rồi.",
-   "key": [{"w": "ご苦労様", "r": "ごくろうさま", "hv": "KHỔ LAO", "m": "anh/chị vất vả rồi (nói với người dưới)"}],
-   "x": {"1": "tiếc cho anh (chia buồn).", "2": "cứ tự nhiên (Đề 8 câu 12).", "4": "xin lỗi đã để chờ."},
-   "n": ["Với cấp trên dùng お疲れ様です."]},
-  {"s": "{地震|じしん}の{規模|きぼ}は大きかったが、{倒|たお}れた家は（　）少なかった。", "o": ["少々", "案外", "当然", "事実"], "a": 2, "ar": "あんがい",
+   "key": [
+    {
+     "w": "ご苦労様",
+     "r": "ごくろうさま",
+     "hv": "KHỔ LAO",
+     "m": "anh/chị vất vả rồi (nói với người dưới)"
+    }
+   ],
+   "x": {
+    "1": "おきのどくに (thật đáng tiếc): câu chia buồn — sai, vì không có chuyện xấu.",
+    "2": "ごえんりょなく (cứ tự nhiên): dùng khi mời, cho phép — không hợp.",
+    "4": "おまちどうさま (xin lỗi đã để chờ): người làm cho người khác chờ mới nói câu này."
+   },
+   "n": [
+    "Với cấp trên dùng お疲れ様です."
+   ],
+   "why": "A vừa đi tuần tra xong báo cáo → B ghi nhận công sức: <b>ご苦労さま</b> (vất vả cho anh rồi). Lưu ý: dùng với người ngang hoặc dưới mình."
+  },
+  {
+   "s": "{地震|じしん}の{規模|きぼ}は大きかったが、{倒|たお}れた家は（　）少なかった。",
+   "o": [
+    "少々",
+    "案外",
+    "当然",
+    "事実"
+   ],
+   "a": 2,
+   "ar": "あんがい",
    "vi": "Trận động đất tuy lớn nhưng số nhà đổ lại ít hơn nghĩ.",
-   "key": [{"w": "案外", "r": "あんがい", "hv": "ÁN NGOẠI", "m": "không ngờ, ngoài dự đoán"}],
-   "x": {"1": "một chút.", "3": "đương nhiên.", "4": "thực tế là."},
-   "n": ["Đồng nghĩa: 意外に, 思いのほか."]},
-  {"s": "僕は少年時代、歌手に（　）ものだ。", "o": ["あこがれた", "あらわれた", "あわてた", "あらそった"], "a": 1, "ar": "憧れる",
+   "key": [
+    {
+     "w": "案外",
+     "r": "あんがい",
+     "hv": "ÁN NGOẠI",
+     "m": "không ngờ, ngoài dự đoán"
+    }
+   ],
+   "x": {
+    "1": "少々 (một chút): 少々少なかった nghe lặp ý và mất nghĩa “bất ngờ” do が tạo ra.",
+    "3": "当然 (đương nhiên): mâu thuẫn — động đất lớn thì ít nhà đổ không phải “đương nhiên”.",
+    "4": "事実 (thực tế là): không thể hiện sự trái ngược với dự đoán."
+   },
+   "n": [
+    "Đồng nghĩa: 意外に, 思いのほか."
+   ],
+   "why": "Động đất lớn nhưng nhà đổ lại ít — <b>trái với dự đoán</b>. <b>案外</b>: không ngờ, hơn/kém so với tưởng tượng."
+  },
+  {
+   "s": "僕は少年時代、歌手に（　）ものだ。",
+   "o": [
+    "あこがれた",
+    "あらわれた",
+    "あわてた",
+    "あらそった"
+   ],
+   "a": 1,
+   "ar": "憧れる",
    "vi": "Hồi còn nhỏ tôi từng mơ làm ca sĩ.",
-   "key": [{"w": "憧れる", "r": "あこがれる", "hv": "SUNG", "m": "ngưỡng mộ, khao khát"}],
-   "x": {"2": "xuất hiện.", "3": "hoảng hốt.", "4": "tranh giành."},
-   "g": ["<b class=\"jp\">Vたものだ</b>: hồi tưởng việc thường làm trong quá khứ."]},
-  {"s": "耳の聞こえない人たちは{手話|しゅわ}によって（　）を行うことができる。", "o": ["コミュニケーション", "ステーション", "コレクション", "ファッション"], "a": 1, "ar": "communication",
+   "key": [
+    {
+     "w": "憧れる",
+     "r": "あこがれる",
+     "hv": "SUNG",
+     "m": "ngưỡng mộ, khao khát"
+    }
+   ],
+   "x": {
+    "2": "あらわれた (xuất hiện): “xuất hiện trước ca sĩ” không hợp với ものだ hồi tưởng.",
+    "3": "あわてた (hoảng hốt): 歌手にあわてる vô nghĩa.",
+    "4": "あらそった (tranh giành): 〜と争う (tranh với ai), không phải 〜に."
+   },
+   "g": [
+    "<b class=\"jp\">Vたものだ</b>: hồi tưởng việc thường làm trong quá khứ."
+   ],
+   "why": "Hồi nhỏ <b>ngưỡng mộ, mơ ước</b> làm ca sĩ. <b>〜に憧れる</b> ＋ Vた＋ものだ (hồi tưởng)."
+  },
+  {
+   "s": "耳の聞こえない人たちは{手話|しゅわ}によって（　）を行うことができる。",
+   "o": [
+    "コミュニケーション",
+    "ステーション",
+    "コレクション",
+    "ファッション"
+   ],
+   "a": 1,
+   "ar": "communication",
    "vi": "Người khiếm thính có thể giao tiếp bằng ngôn ngữ ký hiệu.",
-   "key": [{"w": "コミュニケーション", "r": "コミュニケーション", "hv": "—", "m": "giao tiếp"}],
-   "x": {"2": "nhà ga, trạm.", "3": "bộ sưu tập.", "4": "thời trang."}},
-  {"s": "母の父、（　）私の祖父は現在８５歳です。", "o": ["なぜなら", "ところが", "すなわち", "そのうえ"], "a": 3, "ar": "即ち",
+   "key": [
+    {
+     "w": "コミュニケーション",
+     "r": "コミュニケーション",
+     "hv": "—",
+     "m": "giao tiếp"
+    }
+   ],
+   "x": {
+    "2": "ステーション (nhà ga, trạm): không “thực hiện nhà ga”.",
+    "3": "コレクション (bộ sưu tập): không liên quan ngôn ngữ ký hiệu.",
+    "4": "ファッション (thời trang): không liên quan."
+   },
+   "why": "Ngôn ngữ ký hiệu dùng để <b>giao tiếp</b>. <b>コミュニケーションを行う／取る</b>: giao tiếp."
+  },
+  {
+   "s": "母の父、（　）私の祖父は現在８５歳です。",
+   "o": [
+    "なぜなら",
+    "ところが",
+    "すなわち",
+    "そのうえ"
+   ],
+   "a": 3,
+   "ar": "即ち",
    "vi": "Bố của mẹ tôi, tức là ông ngoại tôi, năm nay 85 tuổi.",
-   "key": [{"w": "すなわち", "r": "すなわち", "hv": "(即ち)", "m": "tức là"}],
-   "x": {"1": "bởi vì.", "2": "thế nhưng.", "4": "hơn nữa."},
-   "n": ["Đồng nghĩa: つまり."]},
-  {"s": "あしたまでに（　）を出さなければならない。", "o": ["完成", "結局", "結論", "完了"], "a": 3, "ar": "けつろん",
+   "key": [
+    {
+     "w": "すなわち",
+     "r": "すなわち",
+     "hv": "(即ち)",
+     "m": "tức là"
+    }
+   ],
+   "x": {
+    "1": "なぜなら (bởi vì): vế sau phải là lý do — “ông ngoại” không phải lý do.",
+    "2": "ところが (thế nhưng): cần quan hệ trái ngược — không có.",
+    "4": "そのうえ (hơn nữa): cộng thêm thông tin mới; “ông ngoại” chỉ là cách gọi khác của cùng một người."
+   },
+   "n": [
+    "Đồng nghĩa: つまり."
+   ],
+   "why": "“Bố của mẹ” ＝ “ông ngoại” — nói lại bằng cách khác. Liên từ <b>すなわち</b>: tức là, nói cách khác."
+  },
+  {
+   "s": "あしたまでに（　）を出さなければならない。",
+   "o": [
+    "完成",
+    "結局",
+    "結論",
+    "完了"
+   ],
+   "a": 3,
+   "ar": "けつろん",
    "vi": "Phải đưa ra kết luận trước ngày mai.",
-   "key": [{"w": "結論", "r": "けつろん", "hv": "KẾT LUẬN", "m": "kết luận"}],
-   "x": {"1": "hoàn thành.", "2": "rốt cuộc (thường là phó từ).", "4": "hoàn tất."}},
-  {"s": "引っ越しの準備は（　）にいっている。", "o": ["エチケット", "スムーズ", "スタイル", "アクセント"], "a": 2, "ar": "smooth",
+   "key": [
+    {
+     "w": "結論",
+     "r": "けつろん",
+     "hv": "KẾT LUẬN",
+     "m": "kết luận"
+    }
+   ],
+   "x": {
+    "1": "完成 (hoàn thành): 完成を出す không có; nói 完成させる.",
+    "2": "結局 (rốt cuộc): thường là phó từ, không làm tân ngữ của 出す.",
+    "4": "完了 (hoàn tất): 完了を出す không có; nói 完了する."
+   },
+   "why": "〜を出す ＝ <b>đưa ra kết luận</b>. Collocation <b>結論を出す</b>."
+  },
+  {
+   "s": "引っ越しの準備は（　）にいっている。",
+   "o": [
+    "エチケット",
+    "スムーズ",
+    "スタイル",
+    "アクセント"
+   ],
+   "a": 2,
+   "ar": "smooth",
    "vi": "Việc chuẩn bị chuyển nhà đang suôn sẻ.",
-   "key": [{"w": "スムーズ", "r": "スムーズ", "hv": "—", "m": "trôi chảy, suôn sẻ"}],
-   "x": {"1": "phép lịch sự.", "3": "phong cách.", "4": "trọng âm."},
-   "n": ["Đồng nghĩa: 順調に進む."]},
-  {"s": "番組終了後、テレビ局には{抗議|こうぎ}のメールが（　）と{届|とど}いた。", "o": ["着々", "点々", "続々", "別々"], "a": 3, "ar": "ぞくぞく",
+   "key": [
+    {
+     "w": "スムーズ",
+     "r": "スムーズ",
+     "hv": "—",
+     "m": "trôi chảy, suôn sẻ"
+    }
+   ],
+   "x": {
+    "1": "エチケット (phép lịch sự): không mô tả tiến độ công việc.",
+    "3": "スタイル (phong cách): không đi với にいく.",
+    "4": "アクセント (trọng âm): không liên quan."
+   },
+   "n": [
+    "Đồng nghĩa: 順調に進む."
+   ],
+   "why": "Việc chuẩn bị đang <b>suôn sẻ</b>. Cấu trúc <b>スムーズにいく</b> (diễn ra trôi chảy)."
+  },
+  {
+   "s": "番組終了後、テレビ局には{抗議|こうぎ}のメールが（　）と{届|とど}いた。",
+   "o": [
+    "着々",
+    "点々",
+    "続々",
+    "別々"
+   ],
+   "a": 3,
+   "ar": "ぞくぞく",
    "vi": "Sau khi chương trình kết thúc, email phản đối gửi tới tấp đến đài.",
-   "key": [{"w": "続々", "r": "ぞくぞく", "hv": "TỤC TỤC", "m": "liên tục, tới tấp"}],
-   "x": {"1": "<span class=\"jp\">着々</span>: từng bước (tiến triển).", "2": "<span class=\"jp\">点々</span>: lác đác, rải rác.", "4": "<span class=\"jp\">別々</span>: riêng rẽ."}},
-  {"s": "この問題の{解決|かいけつ}はわたしに（　）もらいたい。", "o": ["うけとって", "あずけて", "あずかって", "あたえて"], "a": 2, "ar": "預ける",
+   "key": [
+    {
+     "w": "続々",
+     "r": "ぞくぞく",
+     "hv": "TỤC TỤC",
+     "m": "liên tục, tới tấp"
+    }
+   ],
+   "x": {
+    "1": "着々と (từng bước vững chắc): dùng cho tiến độ công việc (工事が着々と進む), không cho email dồn đến.",
+    "2": "点々と (lác đác, rải rác): ngược nghĩa “rất nhiều”.",
+    "4": "別々に (riêng rẽ): không đi với と届く theo nghĩa này."
+   },
+   "why": "Email phản đối gửi đến <b>tới tấp, liên tiếp</b>. <b>続々と</b>: nối tiếp nhau dồn dập."
+  },
+  {
+   "s": "この問題の{解決|かいけつ}はわたしに（　）もらいたい。",
+   "o": [
+    "うけとって",
+    "あずけて",
+    "あずかって",
+    "あたえて"
+   ],
+   "a": 2,
+   "ar": "預ける",
    "vi": "Tôi muốn anh giao việc giải quyết vấn đề này cho tôi.",
-   "key": [{"w": "預ける", "r": "あずける", "hv": "DỰ", "m": "gửi, giao phó"}],
-   "x": {"1": "nhận.", "3": "<span class=\"jp\">預かる</span>: nhận giữ hộ (chủ thể là người nhận).", "4": "cho."},
-   "g": ["<b class=\"jp\">Vてもらいたい</b>: muốn người khác làm cho mình. Người giao là người nghe nên dùng 預ける."]},
-  {"s": "彼女はようやく実力を（　）できる機会を与えられた。", "o": ["発揮", "発行", "発表", "発射"], "a": 1, "ar": "はっき",
+   "key": [
+    {
+     "w": "預ける",
+     "r": "あずける",
+     "hv": "DỰ",
+     "m": "gửi, giao phó"
+    }
+   ],
+   "x": {
+    "1": "うけとって (nhận): “muốn anh nhận cho tôi” sai hướng — người nhận là tôi.",
+    "3": "あずかって (預かる: nhận giữ hộ): chủ thể là người nhận. “Muốn anh nhận giữ việc này cho tôi” ngược ý (tôi muốn tự giải quyết).",
+    "4": "あたえて (cho, trao): dùng cho cơ hội, vật — “trao việc giải quyết” không tự nhiên bằng 預ける."
+   },
+   "g": [
+    "<b class=\"jp\">Vてもらいたい</b>: muốn người khác làm cho mình. Người giao là người nghe nên dùng 預ける."
+   ],
+   "why": "“Muốn anh <b>giao phó</b> việc này cho tôi”. <b>〜を…に預ける</b>: giao gửi cho ai giữ, phó thác. Vてもらいたい: muốn người kia làm (giao cho mình)."
+  },
+  {
+   "s": "彼女はようやく実力を（　）できる機会を与えられた。",
+   "o": [
+    "発揮",
+    "発行",
+    "発表",
+    "発射"
+   ],
+   "a": 1,
+   "ar": "はっき",
    "vi": "Cuối cùng cô ấy cũng được trao cơ hội phát huy thực lực.",
-   "key": [{"w": "発揮", "r": "はっき", "hv": "PHÁT HUY", "m": "phát huy"}],
-   "x": {"2": "phát hành.", "3": "công bố.", "4": "phóng (tên lửa)."},
-   "n": ["Xem Đề 13 câu 8, Đề 14 câu 18."]},
-  {"s": "その洋服は、あなたにはちょっと（　）ですが、{上品|じょうひん}ですね。", "o": ["率直", "高度", "妥当", "地味"], "a": 4, "ar": "じみ",
+   "key": [
+    {
+     "w": "発揮",
+     "r": "はっき",
+     "hv": "PHÁT HUY",
+     "m": "phát huy"
+    }
+   ],
+   "x": {
+    "2": "発行 (phát hành): dùng cho báo, vé, tiền.",
+    "3": "発表 (công bố, trình bày): 結果を発表する — không đi với 実力.",
+    "4": "発射 (bắn, phóng): tên lửa, súng."
+   },
+   "n": [
+    "Xem Đề 13 câu 8, Đề 14 câu 18."
+   ],
+   "why": "実力を〜 ＝ <b>phát huy</b> thực lực. <b>実力を発揮する</b> (đã gặp ở Đề 13 câu 8)."
+  },
+  {
+   "s": "その洋服は、あなたにはちょっと（　）ですが、{上品|じょうひん}ですね。",
+   "o": [
+    "率直",
+    "高度",
+    "妥当",
+    "地味"
+   ],
+   "a": 4,
+   "ar": "じみ",
    "vi": "Bộ đồ đó hơi giản dị so với bạn, nhưng trông thanh lịch nhỉ.",
-   "key": [{"w": "地味", "r": "じみ", "hv": "ĐỊA VỊ", "m": "giản dị, trầm"}],
-   "x": {"1": "thẳng thắn.", "2": "cao độ.", "3": "<span class=\"jp\">妥当</span>: thỏa đáng."},
-   "n": ["↔ 派手 はで (sặc sỡ)."]},
-  {"s": "学生は１度に５冊まで{貸|か}し{出|だ}しができる。（　）試験期間中は不可能だ。", "o": ["しかも", "だって", "そのうえ", "ただし"], "a": 4, "ar": "但し",
+   "key": [
+    {
+     "w": "地味",
+     "r": "じみ",
+     "hv": "ĐỊA VỊ",
+     "m": "giản dị, trầm"
+    }
+   ],
+   "x": {
+    "1": "率直 (thẳng thắn): tả cách nói của người, không tả quần áo.",
+    "2": "高度 (cao độ, trình độ cao): 高度な技術 — không tả quần áo.",
+    "3": "妥当 (thỏa đáng): tả kết luận, giá cả — không tả quần áo."
+   },
+   "n": [
+    "↔ 派手 はで (sặc sỡ)."
+   ],
+   "why": "Có ですが (nhưng) và 上品 (thanh lịch) → vế trước là nhận xét hơi tiêu cực: <b>hơi giản dị, kém nổi</b>. <b>地味</b> (じみ) ↔ 派手 はで."
+  },
+  {
+   "s": "学生は１度に５冊まで{貸|か}し{出|だ}しができる。（　）試験期間中は不可能だ。",
+   "o": [
+    "しかも",
+    "だって",
+    "そのうえ",
+    "ただし"
+   ],
+   "a": 4,
+   "ar": "但し",
    "vi": "Sinh viên được mượn tối đa 5 cuốn mỗi lần. Tuy nhiên trong kỳ thi thì không được.",
-   "key": [{"w": "ただし", "r": "ただし", "hv": "(但し)", "m": "tuy nhiên (thêm điều kiện, ngoại lệ)"}],
-   "x": {"1": "hơn nữa.", "2": "vì (biện minh).", "3": "thêm vào đó."}},
-  {"s": "あの選手はけがのため、やむなく（　）した。", "o": ["移動", "引退", "完了", "失業"], "a": 2, "ar": "いんたい",
+   "key": [
+    {
+     "w": "ただし",
+     "r": "ただし",
+     "hv": "(但し)",
+     "m": "tuy nhiên (thêm điều kiện, ngoại lệ)"
+    }
+   ],
+   "x": {
+    "1": "しかも (hơn nữa): cộng thêm điều cùng chiều — ngoại lệ thì ngược chiều.",
+    "2": "だって (vì — bào chữa): khẩu ngữ, không dùng để nêu ngoại lệ quy định.",
+    "3": "そのうえ (thêm vào đó): cộng thêm cùng chiều, không phải ngoại lệ."
+   },
+   "why": "Câu trước nêu quy định chung, câu sau nêu <b>ngoại lệ</b>. Liên từ <b>ただし</b>: tuy nhiên (điều kiện, ngoại lệ bổ sung)."
+  },
+  {
+   "s": "あの選手はけがのため、やむなく（　）した。",
+   "o": [
+    "移動",
+    "引退",
+    "完了",
+    "失業"
+   ],
+   "a": 2,
+   "ar": "いんたい",
    "vi": "Vận động viên đó vì chấn thương đành phải giải nghệ.",
-   "key": [{"w": "引退", "r": "いんたい", "hv": "DẪN THOÁI", "m": "giải nghệ"}],
-   "x": {"1": "di chuyển.", "3": "hoàn tất.", "4": "thất nghiệp."},
-   "n": ["やむなく: bất đắc dĩ."]}
+   "key": [
+    {
+     "w": "引退",
+     "r": "いんたい",
+     "hv": "DẪN THOÁI",
+     "m": "giải nghệ"
+    }
+   ],
+   "x": {
+    "1": "移動 (di chuyển): không mang nghĩa rời sự nghiệp.",
+    "3": "完了 (hoàn tất): dùng cho công việc, thủ tục.",
+    "4": "失業 (thất nghiệp): mất việc ngoài ý muốn vì công ty — không dùng cho vận động viên giải nghệ."
+   },
+   "n": [
+    "やむなく: bất đắc dĩ."
+   ],
+   "why": "Vì chấn thương, đành <b>giải nghệ</b>. <b>引退する</b>: rút lui khỏi sự nghiệp (vận động viên, chính trị gia)."
+  }
+ ],
+ "sum": [
+  {
+   "h": "Liên từ (接続詞) — dạng hay ra trong 文脈規定",
+   "tbl": {
+    "head": [
+     "Liên từ",
+     "Quan hệ",
+     "Ví dụ"
+    ],
+    "rows": [
+     [
+      "すなわち",
+      "nói cách khác",
+      "母の父、すなわち祖父"
+     ],
+     [
+      "ただし",
+      "ngoại lệ, điều kiện",
+      "5冊まで。ただし試験中は不可"
+     ],
+     [
+      "なお",
+      "bổ sung thông tin",
+      "なお、詳細は後日"
+     ],
+     [
+      "しかも / そのうえ",
+      "hơn nữa (cùng chiều)",
+      "安くて、しかもおいしい"
+     ],
+     [
+      "ところが",
+      "thế nhưng (bất ngờ)",
+      "晴れると思った。ところが雨だった"
+     ],
+     [
+      "なぜなら",
+      "bởi vì (câu sau là lý do)",
+      "なぜなら〜からだ"
+     ],
+     [
+      "それとも",
+      "hay là (câu hỏi)",
+      "コーヒー、それとも紅茶？"
+     ],
+     [
+      "したがって",
+      "do đó",
+      "したがって中止する"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Câu chào hỏi theo tình huống",
+   "tbl": {
+    "head": [
+     "Câu",
+     "Khi nào dùng"
+    ],
+    "rows": [
+     [
+      "ご苦労さま",
+      "ghi nhận công sức của người ngang hoặc dưới mình"
+     ],
+     [
+      "お疲れさま",
+      "chào đồng nghiệp sau giờ làm (dùng được với cấp trên)"
+     ],
+     [
+      "お待ちどうさま",
+      "xin lỗi vì đã để người khác chờ"
+     ],
+     [
+      "お気の毒に",
+      "chia buồn"
+     ],
+     [
+      "ご遠慮なく",
+      "mời, cho phép: cứ tự nhiên"
+     ],
+     [
+      "お大事に",
+      "chúc người ốm mau khỏe"
+     ],
+     [
+      "おかげさまで",
+      "nhờ trời / nhờ anh chị (trả lời hỏi thăm)"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Nhóm từ trong đề",
+   "li": [
+    "<b>〜達</b>: 配達 (giao hàng), 発達 (phát triển), 伝達 (truyền đạt), 通達 (thông báo), 速達 そくたつ (chuyển phát nhanh).",
+    "<b>手〜</b>: 手間 (công sức), 手段 (phương tiện), 手続き (thủ tục), 手入れ (chăm sóc), 手順 てじゅん (trình tự), 手軽 てがる (đơn giản).",
+    "<b>発〜</b>: 発揮 (phát huy), 発行 (phát hành), 発表 (công bố), 発射 (phóng), 発明 (phát minh).",
+    "<b>Láy chữ Hán 々</b>: 続々 (dồn dập), 着々 (từng bước), 点々 (rải rác), 別々 (riêng rẽ), 堂々 どうどう (đường hoàng), 徐々に じょじょに (dần dần)."
+   ]
+  },
+  {
+   "h": "Cặp động từ dễ nhầm",
+   "li": [
+    "<b>預ける</b> (gửi cho người khác giữ) ↔ <b>預かる</b> (nhận giữ hộ): 荷物を預ける / 荷物を預かる.",
+    "<b>覚める</b> (tỉnh: 目が覚める) ↔ <b>冷める</b> (nguội: スープが冷める) — cùng đọc さめる.",
+    "<b>敷く</b> (trải: ふとんを敷く) — <b>引く / 惹く / 弾く</b> (kéo / thu hút / đánh đàn).",
+    "<b>地味</b> ↔ <b>派手</b>; <b>上品</b> ↔ <b>下品</b>; <b>貧しい</b> ↔ <b>豊か</b>."
+   ]
+  }
  ]
 }

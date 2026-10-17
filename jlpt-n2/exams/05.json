@@ -6,110 +6,788 @@
  "title": "Đề 5 · Từ vựng N2",
  "jp": "言い換え類義",
  "mondai": "<b>問題5</b> ＿＿の言葉に意味が最も近いものを、1・2・3・4から一つ選びなさい。 Chọn từ/cụm từ gần nghĩa nhất với phần gạch chân.",
- "src": {"folder": "19tlJE8c5wUgE9MHRJWmBhW3W1hBl5YrO", "goc": "1O6QI6HqCk1YCPz_eKQab3nfQM7UU3t5P", "chua": "1fNe2Y1bDfF4DsGCAhqMJJDcVKySX-a1Y"},
+ "src": {
+  "folder": "19tlJE8c5wUgE9MHRJWmBhW3W1hBl5YrO",
+  "goc": "1O6QI6HqCk1YCPz_eKQab3nfQM7UU3t5P",
+  "chua": "1fNe2Y1bDfF4DsGCAhqMJJDcVKySX-a1Y"
+ },
  "qs": [
-  {"s": "そのことを彼から_じかに_聞いた。", "o": ["すべて", "確実", "直接", "あとで"], "a": 3, "ar": "直接 = ちょくせつ",
+  {
+   "s": "そのことを彼から_じかに_聞いた。",
+   "o": [
+    "すべて",
+    "確実",
+    "直接",
+    "あとで"
+   ],
+   "a": 3,
+   "ar": "直接 = ちょくせつ",
    "vi": "Tôi đã nghe chuyện đó trực tiếp từ anh ấy.",
-   "key": [{"w": "直に", "r": "じかに", "hv": "TRỰC", "m": "trực tiếp, không qua trung gian"}, {"w": "直接", "r": "ちょくせつ", "hv": "TRỰC TIẾP", "m": "trực tiếp"}],
-   "x": {"1": "tất cả.", "2": "<span class=\"jp\">確実</span> かくじつ: chắc chắn.", "4": "sau đó."},
-   "n": ["直 đọc じか: 直に, 直火 じかび (lửa trực tiếp). Xem Đề 1 câu 19 (các âm của 直)."]},
-  {"s": "今の仕事は_ハードだ_。", "o": ["大変だ", "楽しい", "簡単だ", "新しい"], "a": 1, "ar": "たいへんだ",
+   "key": [
+    {
+     "w": "直に",
+     "r": "じかに",
+     "hv": "TRỰC",
+     "m": "trực tiếp, không qua trung gian"
+    },
+    {
+     "w": "直接",
+     "r": "ちょくせつ",
+     "hv": "TRỰC TIẾP",
+     "m": "trực tiếp"
+    }
+   ],
+   "x": {
+    "1": "すべて (tất cả): nói về lượng thông tin, không phải cách nghe. Thay vào thành “nghe tất cả từ anh ấy” — đổi nghĩa.",
+    "2": "確実 (chắc chắn): là tính từ な, 確実に聞いた nghĩa là chắc chắn đã nghe — không phải “nghe trực tiếp”.",
+    "4": "あとで (sau đó): chỉ thời điểm, không chỉ cách thức. Đổi nghĩa câu."
+   },
+   "n": [
+    "直 đọc じか: 直に, 直火 じかび (lửa trực tiếp). Xem Đề 1 câu 19 (các âm của 直)."
+   ],
+   "why": "<b>じかに</b> (直に) ＝ trực tiếp, không qua trung gian. 彼から直に聞いた ＝ nghe tận miệng anh ấy. Thay bằng <b>直接</b> (ちょくせつ) nghĩa giữ nguyên hoàn toàn — cùng chữ 直."
+  },
+  {
+   "s": "今の仕事は_ハードだ_。",
+   "o": [
+    "大変だ",
+    "楽しい",
+    "簡単だ",
+    "新しい"
+   ],
+   "a": 1,
+   "ar": "たいへんだ",
    "vi": "Công việc hiện tại rất vất vả.",
-   "key": [{"w": "ハード", "r": "ハード", "hv": "—", "m": "(hard) nặng nhọc, vất vả"}, {"w": "大変", "r": "たいへん", "hv": "ĐẠI BIẾN", "m": "vất vả, gay go"}],
-   "x": {"2": "vui.", "3": "<span class=\"jp\">簡単</span>: đơn giản (trái nghĩa).", "4": "mới."},
-   "n": ["Trái nghĩa của ハード: 楽 らく. ハードスケジュール: lịch dày đặc."]},
-  {"s": "高度な_テクニック_を要する作業だ。", "o": ["訓練", "工夫", "知識", "技術"], "a": 4, "ar": "ぎじゅつ",
+   "key": [
+    {
+     "w": "ハード",
+     "r": "ハード",
+     "hv": "—",
+     "m": "(hard) nặng nhọc, vất vả"
+    },
+    {
+     "w": "大変",
+     "r": "たいへん",
+     "hv": "ĐẠI BIẾN",
+     "m": "vất vả, gay go"
+    }
+   ],
+   "x": {
+    "2": "楽しい (vui): trái sắc thái — công việc hard thì không “vui” theo nghĩa của từ.",
+    "3": "簡単だ (đơn giản): trái nghĩa với ハード.",
+    "4": "新しい (mới): không liên quan đến độ vất vả."
+   },
+   "n": [
+    "Trái nghĩa của ハード: 楽 らく. ハードスケジュール: lịch dày đặc."
+   ],
+   "why": "<b>ハード</b> (hard) khi nói về công việc ＝ nặng nhọc, vất vả. Từ tiếng Nhật tương ứng là <b>大変だ</b>."
+  },
+  {
+   "s": "高度な_テクニック_を要する作業だ。",
+   "o": [
+    "訓練",
+    "工夫",
+    "知識",
+    "技術"
+   ],
+   "a": 4,
+   "ar": "ぎじゅつ",
    "vi": "Đây là công việc đòi hỏi kỹ thuật cao.",
-   "key": [{"w": "テクニック", "r": "テクニック", "hv": "—", "m": "(technique) kỹ thuật, kỹ xảo"}, {"w": "技術", "r": "ぎじゅつ", "hv": "KỸ THUẬT", "m": "kỹ thuật"}],
-   "x": {"1": "<span class=\"jp\">訓練</span> くんれん: huấn luyện.", "2": "<span class=\"jp\">工夫</span> くふう: tìm tòi, sáng tạo cách làm.", "3": "<span class=\"jp\">知識</span> ちしき: kiến thức."},
-   "g": ["<b class=\"jp\">〜を要する</b> (ようする): cần, đòi hỏi (văn viết)."],
-   "n": ["高度 こうど: trình độ cao."]},
-  {"s": "私は_当分_は忙しいと思う。", "o": ["少し", "今回", "全部", "しばらく"], "a": 4, "ar": "しばらく",
+   "key": [
+    {
+     "w": "テクニック",
+     "r": "テクニック",
+     "hv": "—",
+     "m": "(technique) kỹ thuật, kỹ xảo"
+    },
+    {
+     "w": "技術",
+     "r": "ぎじゅつ",
+     "hv": "KỸ THUẬT",
+     "m": "kỹ thuật"
+    }
+   ],
+   "x": {
+    "1": "訓練 (huấn luyện): là quá trình tập luyện để có kỹ thuật, không phải bản thân kỹ thuật.",
+    "2": "工夫 (tìm tòi, nghĩ cách làm): là sự sáng tạo cách làm, không đồng nghĩa với kỹ thuật chuyên môn.",
+    "3": "知識 (kiến thức): là hiểu biết lý thuyết; テクニック là kỹ năng thực hành."
+   },
+   "g": [
+    "<b class=\"jp\">〜を要する</b> (ようする): cần, đòi hỏi (văn viết)."
+   ],
+   "n": [
+    "高度 こうど: trình độ cao."
+   ],
+   "why": "<b>テクニック</b> (technique) ＝ kỹ thuật, kỹ năng làm việc. Từ Hán tương ứng là <b>技術</b> (ぎじゅつ). 高度な技術を要する ＝ đòi hỏi kỹ thuật cao."
+  },
+  {
+   "s": "私は_当分_は忙しいと思う。",
+   "o": [
+    "少し",
+    "今回",
+    "全部",
+    "しばらく"
+   ],
+   "a": 4,
+   "ar": "しばらく",
    "vi": "Tôi nghĩ trong một thời gian tới mình sẽ bận.",
-   "key": [{"w": "当分", "r": "とうぶん", "hv": "ĐƯƠNG PHÂN", "m": "trong thời gian tới, tạm thời"}],
-   "x": {"1": "một chút.", "2": "<span class=\"jp\">今回</span>: lần này.", "3": "tất cả."},
-   "n": ["Đồng nghĩa: しばらく, 当面 とうめん. 当分の間 (trong một thời gian)."]},
-  {"s": "あの子は_臆病だ_。", "o": ["よく病気をする", "何でも忘れる", "何でも怖がる", "よく泣く"], "a": 3, "ar": "なんでもこわがる",
+   "key": [
+    {
+     "w": "当分",
+     "r": "とうぶん",
+     "hv": "ĐƯƠNG PHÂN",
+     "m": "trong thời gian tới, tạm thời"
+    }
+   ],
+   "x": {
+    "1": "少し (một chút): chỉ lượng/mức độ, “hơi bận” khác với “bận trong một thời gian”.",
+    "2": "今回 (lần này): chỉ một lần cụ thể, không chỉ khoảng thời gian kéo dài.",
+    "3": "全部 (tất cả): chỉ lượng, không chỉ thời gian."
+   },
+   "n": [
+    "Đồng nghĩa: しばらく, 当面 とうめん. 当分の間 (trong một thời gian)."
+   ],
+   "why": "<b>当分</b> (とうぶん) ＝ trong một thời gian (từ giờ trở đi), không biết chính xác bao lâu. Đồng nghĩa: <b>しばらく</b>. 当分は忙しい ＝ một thời gian tới sẽ bận."
+  },
+  {
+   "s": "あの子は_臆病だ_。",
+   "o": [
+    "よく病気をする",
+    "何でも忘れる",
+    "何でも怖がる",
+    "よく泣く"
+   ],
+   "a": 3,
+   "ar": "なんでもこわがる",
    "vi": "Đứa bé đó nhát gan.",
-   "key": [{"w": "臆病", "r": "おくびょう", "hv": "ỨC BỆNH", "m": "nhát gan, nhút nhát"}],
-   "x": {"1": "hay ốm. Bẫy vì chữ 病 trong 臆病 không có nghĩa là bệnh.", "2": "hay quên.", "4": "hay khóc."},
-   "n": ["臆病者 おくびょうもの: kẻ nhát gan. Trái nghĩa: 大胆 だいたん (táo bạo), 勇敢 ゆうかん."]},
-  {"s": "チンパンジーは_利口な_動物だ。", "o": ["かわいい", "元気な", "かっこいい", "頭がいい"], "a": 4, "ar": "あたまがいい",
+   "key": [
+    {
+     "w": "臆病",
+     "r": "おくびょう",
+     "hv": "ỨC BỆNH",
+     "m": "nhát gan, nhút nhát"
+    }
+   ],
+   "x": {
+    "1": "よく病気をする (hay ốm): bẫy vì chữ 病 — nhưng 臆病 không liên quan đến bệnh tật.",
+    "2": "何でも忘れる (hay quên): là 忘れっぽい, khác nghĩa.",
+    "4": "よく泣く (hay khóc): là 泣き虫, khác nghĩa; người nhát gan không nhất thiết hay khóc."
+   },
+   "n": [
+    "臆病者 おくびょうもの: kẻ nhát gan. Trái nghĩa: 大胆 だいたん (táo bạo), 勇敢 ゆうかん."
+   ],
+   "why": "<b>臆病</b> (おくびょう) ＝ nhát gan, cái gì cũng sợ. Giải thích bằng cụm <b>何でも怖がる</b> (sợ mọi thứ) là đúng nghĩa."
+  },
+  {
+   "s": "チンパンジーは_利口な_動物だ。",
+   "o": [
+    "かわいい",
+    "元気な",
+    "かっこいい",
+    "頭がいい"
+   ],
+   "a": 4,
+   "ar": "あたまがいい",
    "vi": "Tinh tinh là loài động vật thông minh.",
-   "key": [{"w": "利口", "r": "りこう", "hv": "LỢI KHẨU", "m": "thông minh, khôn"}],
-   "x": {"1": "đáng yêu.", "2": "khỏe mạnh.", "3": "ngầu, bảnh."},
-   "n": ["Đồng nghĩa: 賢い かしこい. Trái nghĩa: 馬鹿 ばか."]},
-  {"s": "早く_引き返した_方がいいよ。", "o": ["答えた", "払った", "直した", "戻った"], "a": 4, "ar": "もどった",
+   "key": [
+    {
+     "w": "利口",
+     "r": "りこう",
+     "hv": "LỢI KHẨU",
+     "m": "thông minh, khôn"
+    }
+   ],
+   "x": {
+    "1": "かわいい (đáng yêu): nói về vẻ ngoài, không phải trí tuệ.",
+    "2": "元気な (khỏe khoắn, hoạt bát): nói về sức khỏe, tinh thần.",
+    "3": "かっこいい (ngầu, bảnh): nói về vẻ ngoài."
+   },
+   "n": [
+    "Đồng nghĩa: 賢い かしこい. Trái nghĩa: 馬鹿 ばか."
+   ],
+   "why": "<b>利口</b> (りこう) ＝ thông minh, lanh lợi. Đồng nghĩa: <b>頭がいい</b>, 賢い."
+  },
+  {
+   "s": "早く_引き返した_方がいいよ。",
+   "o": [
+    "答えた",
+    "払った",
+    "直した",
+    "戻った"
+   ],
+   "a": 4,
+   "ar": "もどった",
    "vi": "Nên quay trở lại sớm thì hơn.",
-   "key": [{"w": "引き返す", "r": "ひきかえす", "hv": "DẪN PHẢN", "m": "quay lại (giữa đường)"}],
-   "x": {"1": "đã trả lời.", "2": "đã trả tiền.", "3": "đã sửa."},
-   "g": ["<b class=\"jp\">Vた方がいい</b>: nên làm."],
-   "n": ["Xem Đề 1 câu 7 (戻す)."]},
-  {"s": "あの選手はすばらしい_人柄_で有名だ。", "o": ["格好", "性格", "気分", "体調"], "a": 2, "ar": "せいかく",
+   "key": [
+    {
+     "w": "引き返す",
+     "r": "ひきかえす",
+     "hv": "DẪN PHẢN",
+     "m": "quay lại (giữa đường)"
+    }
+   ],
+   "x": {
+    "1": "答える (trả lời): bẫy vì 返 trong 返事 (trả lời), nhưng 引き返す là di chuyển quay lại.",
+    "2": "払う (trả tiền): bẫy vì 返す cũng có nghĩa trả lại — nhưng 引き返す không liên quan tiền.",
+    "3": "直す (sửa): khác nghĩa hoàn toàn."
+   },
+   "g": [
+    "<b class=\"jp\">Vた方がいい</b>: nên làm."
+   ],
+   "n": [
+    "Xem Đề 1 câu 7 (戻す)."
+   ],
+   "why": "<b>引き返す</b> (ひきかえす) ＝ quay lại theo đường cũ, quay đầu. Đồng nghĩa: <b>戻る</b>. 早く引き返した方がいい ＝ nên quay lại sớm."
+  },
+  {
+   "s": "あの選手はすばらしい_人柄_で有名だ。",
+   "o": [
+    "格好",
+    "性格",
+    "気分",
+    "体調"
+   ],
+   "a": 2,
+   "ar": "せいかく",
    "vi": "Vận động viên đó nổi tiếng nhờ nhân cách tuyệt vời.",
-   "key": [{"w": "人柄", "r": "ひとがら", "hv": "NHÂN BÍNH", "m": "nhân cách, tính tình"}, {"w": "性格", "r": "せいかく", "hv": "TÍNH CÁCH", "m": "tính cách"}],
-   "x": {"1": "<span class=\"jp\">格好</span> かっこう: dáng vẻ, bề ngoài.", "3": "<span class=\"jp\">気分</span>: tâm trạng.", "4": "<span class=\"jp\">体調</span>: thể trạng."},
-   "n": ["柄 がら: hoa văn; tính chất (家柄, 土地柄)."]},
-  {"s": "彼の態度に_むかついた_。", "o": ["驚いた", "困った", "怖がった", "怒った"], "a": 4, "ar": "おこった",
+   "key": [
+    {
+     "w": "人柄",
+     "r": "ひとがら",
+     "hv": "NHÂN BÍNH",
+     "m": "nhân cách, tính tình"
+    },
+    {
+     "w": "性格",
+     "r": "せいかく",
+     "hv": "TÍNH CÁCH",
+     "m": "tính cách"
+    }
+   ],
+   "x": {
+    "1": "格好 (かっこう: dáng vẻ bề ngoài): 人柄 nói về bên trong, không phải bề ngoài.",
+    "3": "気分 (tâm trạng): tạm thời, thay đổi theo lúc; 人柄 là tính cách lâu dài.",
+    "4": "体調 (thể trạng): nói về sức khỏe cơ thể."
+   },
+   "n": [
+    "柄 がら: hoa văn; tính chất (家柄, 土地柄)."
+   ],
+   "why": "<b>人柄</b> (ひとがら) ＝ nhân cách, tính cách con người (thường khen). Gần nhất là <b>性格</b> (せいかく: tính cách)."
+  },
+  {
+   "s": "彼の態度に_むかついた_。",
+   "o": [
+    "驚いた",
+    "困った",
+    "怖がった",
+    "怒った"
+   ],
+   "a": 4,
+   "ar": "おこった",
    "vi": "Tôi bực mình với thái độ của anh ta.",
-   "key": [{"w": "むかつく", "r": "むかつく", "hv": "—", "m": "bực mình, phát cáu; buồn nôn"}],
-   "x": {"1": "ngạc nhiên.", "2": "khó xử.", "3": "sợ hãi."},
-   "n": ["Đồng nghĩa: 腹が立つ, 頭にくる, いらいらする."]},
-  {"s": "彼女はその知らせを聞いてとても_動揺した_。", "o": ["不満になった", "面白いと思った", "うれしくなった", "不安になった"], "a": 4, "ar": "ふあんになった",
+   "key": [
+    {
+     "w": "むかつく",
+     "r": "むかつく",
+     "hv": "—",
+     "m": "bực mình, phát cáu; buồn nôn"
+    }
+   ],
+   "x": {
+    "1": "驚く (ngạc nhiên): phản ứng bất ngờ, không mang cảm xúc tức giận.",
+    "2": "困る (khó xử, bối rối): không phải giận.",
+    "3": "怖がる (sợ): cảm xúc khác hẳn tức giận."
+   },
+   "n": [
+    "Đồng nghĩa: 腹が立つ, 頭にくる, いらいらする."
+   ],
+   "why": "<b>むかつく</b> ＝ bực mình, tức tối (khẩu ngữ). Đồng nghĩa: <b>怒る</b>, 腹が立つ. 態度にむかついた ＝ bực vì thái độ."
+  },
+  {
+   "s": "彼女はその知らせを聞いてとても_動揺した_。",
+   "o": [
+    "不満になった",
+    "面白いと思った",
+    "うれしくなった",
+    "不安になった"
+   ],
+   "a": 4,
+   "ar": "ふあんになった",
    "vi": "Nghe tin đó cô ấy rất hoang mang.",
-   "key": [{"w": "動揺", "r": "どうよう", "hv": "ĐỘNG DAO", "m": "dao động, hoang mang"}],
-   "x": {"1": "bất mãn.", "2": "thấy thú vị.", "3": "vui lên."},
-   "n": ["動揺を隠せない: không giấu được sự bối rối."]},
-  {"s": "彼は_たびたび_その山に登った。", "o": ["偶然", "何度も", "必ず", "ようやく"], "a": 2, "ar": "なんども",
+   "key": [
+    {
+     "w": "動揺",
+     "r": "どうよう",
+     "hv": "ĐỘNG DAO",
+     "m": "dao động, hoang mang"
+    }
+   ],
+   "x": {
+    "1": "不満 (bất mãn): là không hài lòng, không phải hoang mang.",
+    "2": "面白いと思う (thấy thú vị): cảm xúc tích cực, ngược với 動揺.",
+    "3": "うれしい (vui): cảm xúc tích cực, ngược với 動揺."
+   },
+   "n": [
+    "動揺を隠せない: không giấu được sự bối rối."
+   ],
+   "why": "<b>動揺する</b> (どうよう) ＝ dao động, hoang mang, mất bình tĩnh. Gần nhất là <b>不安になった</b> (trở nên bất an)."
+  },
+  {
+   "s": "彼は_たびたび_その山に登った。",
+   "o": [
+    "偶然",
+    "何度も",
+    "必ず",
+    "ようやく"
+   ],
+   "a": 2,
+   "ar": "なんども",
    "vi": "Anh ấy nhiều lần leo ngọn núi đó.",
-   "key": [{"w": "度々", "r": "たびたび", "hv": "ĐỘ ĐỘ", "m": "nhiều lần, thường xuyên"}],
-   "x": {"1": "<span class=\"jp\">偶然</span> ぐうぜん: tình cờ.", "3": "nhất định.", "4": "cuối cùng thì."},
-   "n": ["Đồng nghĩa: しばしば, よく."]},
-  {"s": "彼女は町の名所を_ガイドして_います。", "o": ["宣伝して", "案内して", "記録して", "調査して"], "a": 2, "ar": "あんないして",
+   "key": [
+    {
+     "w": "度々",
+     "r": "たびたび",
+     "hv": "ĐỘ ĐỘ",
+     "m": "nhiều lần, thường xuyên"
+    }
+   ],
+   "x": {
+    "1": "偶然 (tình cờ): chỉ sự ngẫu nhiên, không chỉ số lần.",
+    "3": "必ず (nhất định, luôn luôn): chỉ sự chắc chắn, không phải tần suất nhiều lần.",
+    "4": "ようやく (cuối cùng thì): chỉ kết quả sau thời gian chờ đợi, ngược ý lặp lại."
+   },
+   "n": [
+    "Đồng nghĩa: しばしば, よく."
+   ],
+   "why": "<b>たびたび</b> (度々) ＝ nhiều lần, thường xuyên. Đồng nghĩa: <b>何度も</b>, しばしば."
+  },
+  {
+   "s": "彼女は町の名所を_ガイドして_います。",
+   "o": [
+    "宣伝して",
+    "案内して",
+    "記録して",
+    "調査して"
+   ],
+   "a": 2,
+   "ar": "あんないして",
    "vi": "Cô ấy đang hướng dẫn tham quan các danh thắng của thị trấn.",
-   "key": [{"w": "案内", "r": "あんない", "hv": "ÁN NỘI", "m": "hướng dẫn, dẫn đường"}],
-   "x": {"1": "<span class=\"jp\">宣伝</span> せんでん: quảng cáo.", "3": "<span class=\"jp\">記録</span>: ghi chép.", "4": "<span class=\"jp\">調査</span>: điều tra."},
-   "n": ["名所 めいしょ: danh lam thắng cảnh."]},
-  {"s": "バットの中心にボールを_当てた_。", "o": ["ぶつけた", "落とした", "隠した", "詰めた"], "a": 1, "ar": "ぶつける",
+   "key": [
+    {
+     "w": "案内",
+     "r": "あんない",
+     "hv": "ÁN NỘI",
+     "m": "hướng dẫn, dẫn đường"
+    }
+   ],
+   "x": {
+    "1": "宣伝する (quảng cáo): giới thiệu để bán, không đi cùng dẫn khách.",
+    "3": "記録する (ghi chép): khác nghĩa.",
+    "4": "調査する (điều tra, khảo sát): khác nghĩa."
+   },
+   "n": [
+    "名所 めいしょ: danh lam thắng cảnh."
+   ],
+   "why": "<b>ガイドする</b> (guide) ＝ dẫn đường, hướng dẫn tham quan. Từ tương ứng: <b>案内する</b> (あんない). 名所を案内する là collocation chuẩn."
+  },
+  {
+   "s": "バットの中心にボールを_当てた_。",
+   "o": [
+    "ぶつけた",
+    "落とした",
+    "隠した",
+    "詰めた"
+   ],
+   "a": 1,
+   "ar": "ぶつける",
    "vi": "Tôi đánh bóng trúng giữa cây gậy.",
-   "key": [{"w": "当てる", "r": "あてる", "hv": "ĐƯƠNG", "m": "làm trúng, chạm trúng"}],
-   "x": {"2": "đánh rơi.", "3": "giấu.", "4": "nhồi, lấp đầy."},
-   "n": ["当てる còn: áp vào (Đề 1 câu 6), đoán trúng (答えを当てる)."]},
-  {"s": "彼は朝９時に仕事に_とりかかった_。", "o": ["仕事を頼んだ", "仕事を始めた", "仕事を探した", "仕事を教えた"], "a": 2, "ar": "しごとをはじめた",
+   "key": [
+    {
+     "w": "当てる",
+     "r": "あてる",
+     "hv": "ĐƯƠNG",
+     "m": "làm trúng, chạm trúng"
+    }
+   ],
+   "x": {
+    "2": "落とす (đánh rơi): không có ý chạm trúng.",
+    "3": "隠す (giấu): khác nghĩa.",
+    "4": "詰める (nhồi, lấp đầy): khác nghĩa."
+   },
+   "n": [
+    "当てる còn: áp vào (Đề 1 câu 6), đoán trúng (答えを当てる)."
+   ],
+   "why": "<b>当てる</b> ở đây ＝ làm cho chạm trúng (bóng trúng tâm gậy). Đồng nghĩa: <b>ぶつける</b> (va, đập vào)."
+  },
+  {
+   "s": "彼は朝９時に仕事に_とりかかった_。",
+   "o": [
+    "仕事を頼んだ",
+    "仕事を始めた",
+    "仕事を探した",
+    "仕事を教えた"
+   ],
+   "a": 2,
+   "ar": "しごとをはじめた",
    "vi": "Anh ấy bắt tay vào việc lúc 9 giờ sáng.",
-   "key": [{"w": "取りかかる", "r": "とりかかる", "hv": "THỦ", "m": "bắt tay vào (làm)"}],
-   "x": {"1": "nhờ việc.", "3": "tìm việc.", "4": "dạy việc."},
-   "n": ["Đồng nghĩa: 着手する ちゃくしゅする."]},
-  {"s": "_愉快な_友人がいる。", "o": ["かわいい", "面白い", "親切な", "おしゃれな"], "a": 2, "ar": "おもしろい",
+   "key": [
+    {
+     "w": "取りかかる",
+     "r": "とりかかる",
+     "hv": "THỦ",
+     "m": "bắt tay vào (làm)"
+    }
+   ],
+   "x": {
+    "1": "仕事を頼む (nhờ việc): giao việc cho người khác, không phải tự bắt đầu.",
+    "3": "仕事を探す (tìm việc): khác nghĩa.",
+    "4": "仕事を教える (dạy việc): khác nghĩa."
+   },
+   "n": [
+    "Đồng nghĩa: 着手する ちゃくしゅする."
+   ],
+   "why": "<b>とりかかる</b> (取り掛かる) ＝ bắt tay vào làm. 仕事にとりかかる ＝ <b>仕事を始める</b>."
+  },
+  {
+   "s": "_愉快な_友人がいる。",
+   "o": [
+    "かわいい",
+    "面白い",
+    "親切な",
+    "おしゃれな"
+   ],
+   "a": 2,
+   "ar": "おもしろい",
    "vi": "Tôi có một người bạn vui tính.",
-   "key": [{"w": "愉快", "r": "ゆかい", "hv": "DU KHOÁI", "m": "vui vẻ, thú vị"}],
-   "x": {"1": "đáng yêu.", "3": "tốt bụng.", "4": "sành điệu."},
-   "n": ["Trái nghĩa: 不愉快 ふゆかい (khó chịu)."]},
-  {"s": "一生懸命やったのに合格できなくて_失望した_。", "o": ["がっかりした", "かっとした", "ぞっとした", "びっくりした"], "a": 1, "ar": "がっかりした",
+   "key": [
+    {
+     "w": "愉快",
+     "r": "ゆかい",
+     "hv": "DU KHOÁI",
+     "m": "vui vẻ, thú vị"
+    }
+   ],
+   "x": {
+    "1": "かわいい (đáng yêu): nói vẻ ngoài.",
+    "3": "親切な (tốt bụng): nói lòng tốt, không phải sự vui tính.",
+    "4": "おしゃれな (sành điệu): nói cách ăn mặc."
+   },
+   "n": [
+    "Trái nghĩa: 不愉快 ふゆかい (khó chịu)."
+   ],
+   "why": "<b>愉快</b> (ゆかい) ＝ vui vẻ, thú vị, khiến người khác cười. Gần nhất: <b>面白い</b>."
+  },
+  {
+   "s": "一生懸命やったのに合格できなくて_失望した_。",
+   "o": [
+    "がっかりした",
+    "かっとした",
+    "ぞっとした",
+    "びっくりした"
+   ],
+   "a": 1,
+   "ar": "がっかりした",
    "vi": "Đã cố gắng hết sức mà vẫn không đỗ nên tôi rất thất vọng.",
-   "key": [{"w": "失望", "r": "しつぼう", "hv": "THẤT VỌNG", "m": "thất vọng"}],
-   "x": {"2": "nổi nóng (かっとなる).", "3": "rùng mình sợ.", "4": "giật mình."},
-   "n": ["Đồng nghĩa: がっかり, 落胆 らくたん."]},
-  {"s": "レモンを入れると_一層_紅茶の風味が増します。", "o": ["もっと", "できるだけ", "少し", "すぐに"], "a": 1, "ar": "もっと",
+   "key": [
+    {
+     "w": "失望",
+     "r": "しつぼう",
+     "hv": "THẤT VỌNG",
+     "m": "thất vọng"
+    }
+   ],
+   "x": {
+    "2": "かっとする (nổi nóng bất chợt): là giận, không phải thất vọng.",
+    "3": "ぞっとする (rùng mình sợ): cảm giác sợ hãi.",
+    "4": "びっくりする (giật mình): cảm giác bất ngờ."
+   },
+   "n": [
+    "Đồng nghĩa: がっかり, 落胆 らくたん."
+   ],
+   "why": "<b>失望する</b> (しつぼう) ＝ thất vọng. Từ láy tương ứng: <b>がっかりする</b>. Ngữ cảnh cố gắng mà không đỗ → thất vọng."
+  },
+  {
+   "s": "レモンを入れると_一層_紅茶の風味が増します。",
+   "o": [
+    "もっと",
+    "できるだけ",
+    "少し",
+    "すぐに"
+   ],
+   "a": 1,
+   "ar": "もっと",
    "vi": "Cho chanh vào thì hương vị hồng trà càng đậm hơn.",
-   "key": [{"w": "一層", "r": "いっそう", "hv": "NHẤT TẦNG", "m": "hơn nữa, càng thêm"}],
-   "x": {"2": "càng… càng tốt.", "3": "một chút.", "4": "ngay."},
-   "n": ["より一層: càng hơn nữa. 風味 ふうみ: hương vị."]},
-  {"s": "キャベツの生産が_過剰_である。", "o": ["早すぎる", "少なすぎる", "多すぎる", "遅すぎる"], "a": 3, "ar": "おおすぎる",
+   "key": [
+    {
+     "w": "一層",
+     "r": "いっそう",
+     "hv": "NHẤT TẦNG",
+     "m": "hơn nữa, càng thêm"
+    }
+   ],
+   "x": {
+    "2": "できるだけ (cố hết mức có thể): chỉ nỗ lực, không chỉ mức độ tăng thêm.",
+    "3": "少し (một chút): ngược sắc thái — 一層 nhấn mạnh tăng hơn.",
+    "4": "すぐに (ngay): chỉ thời gian, không chỉ mức độ."
+   },
+   "n": [
+    "より一層: càng hơn nữa. 風味 ふうみ: hương vị."
+   ],
+   "why": "<b>一層</b> (いっそう) ＝ càng thêm, hơn nữa. Đồng nghĩa: <b>もっと</b>, より. 一層風味が増す ＝ hương vị càng đậm hơn."
+  },
+  {
+   "s": "キャベツの生産が_過剰_である。",
+   "o": [
+    "早すぎる",
+    "少なすぎる",
+    "多すぎる",
+    "遅すぎる"
+   ],
+   "a": 3,
+   "ar": "おおすぎる",
    "vi": "Sản lượng bắp cải đang dư thừa.",
-   "key": [{"w": "過剰", "r": "かじょう", "hv": "QUÁ THẶNG", "m": "dư thừa, quá mức"}],
-   "x": {"1": "quá sớm.", "2": "quá ít (trái nghĩa).", "4": "quá muộn."},
-   "n": ["Trái nghĩa: 不足 ふそく. 過剰反応: phản ứng thái quá."]},
-  {"s": "この辺も_物騒に_なってきた。", "o": ["さびしくなってきた", "きれいじゃなくなってきた", "安全じゃなくなってきた", "うるさくなってきた"], "a": 3, "ar": "あんぜんじゃなくなってきた",
+   "key": [
+    {
+     "w": "過剰",
+     "r": "かじょう",
+     "hv": "QUÁ THẶNG",
+     "m": "dư thừa, quá mức"
+    }
+   ],
+   "x": {
+    "1": "早すぎる (quá sớm): 過 có nghĩa “quá” nhưng 剰 là “thừa” về lượng, không phải thời gian.",
+    "2": "少なすぎる (quá ít): trái nghĩa — đó là 不足.",
+    "4": "遅すぎる (quá muộn): nói thời gian, không nói lượng."
+   },
+   "n": [
+    "Trái nghĩa: 不足 ふそく. 過剰反応: phản ứng thái quá."
+   ],
+   "why": "<b>過剰</b> (かじょう) ＝ thừa, vượt quá mức cần. 生産が過剰 ＝ sản xuất <b>quá nhiều</b> → 多すぎる."
+  },
+  {
+   "s": "この辺も_物騒に_なってきた。",
+   "o": [
+    "さびしくなってきた",
+    "きれいじゃなくなってきた",
+    "安全じゃなくなってきた",
+    "うるさくなってきた"
+   ],
+   "a": 3,
+   "ar": "あんぜんじゃなくなってきた",
    "vi": "Khu này dạo này cũng trở nên mất an ninh.",
-   "key": [{"w": "物騒", "r": "ぶっそう", "hv": "VẬT TAO", "m": "nguy hiểm, không an toàn"}],
-   "x": {"1": "trở nên vắng vẻ.", "2": "trở nên bẩn.", "4": "trở nên ồn. Bẫy vì chữ 騒 trong 物騒 gợi tiếng ồn."},
-   "g": ["<b class=\"jp\">〜になってきた</b>: dần trở nên."],
-   "n": ["Xem Đề 4 câu 18 (騒音)."]},
-  {"s": "私は彼が大変頭のいい生徒だったと_記憶している_。", "o": ["語って", "覚えて", "心配して", "応援して"], "a": 2, "ar": "おぼえている",
+   "key": [
+    {
+     "w": "物騒",
+     "r": "ぶっそう",
+     "hv": "VẬT TAO",
+     "m": "nguy hiểm, không an toàn"
+    }
+   ],
+   "x": {
+    "1": "さびしい (vắng vẻ, buồn): vắng không có nghĩa là nguy hiểm.",
+    "2": "きれいじゃない (không sạch): khác nghĩa.",
+    "4": "うるさい (ồn ào): bẫy vì chữ 騒 (ồn) trong 物騒, nhưng 物騒 nói về an ninh chứ không phải tiếng ồn."
+   },
+   "g": [
+    "<b class=\"jp\">〜になってきた</b>: dần trở nên."
+   ],
+   "n": [
+    "Xem Đề 4 câu 18 (騒音)."
+   ],
+   "why": "<b>物騒</b> (ぶっそう) ＝ bất an, nguy hiểm, mất trật tự (trộm cắp, tội phạm). Giải thích: <b>安全じゃなくなってきた</b> (không còn an toàn)."
+  },
+  {
+   "s": "私は彼が大変頭のいい生徒だったと_記憶している_。",
+   "o": [
+    "語って",
+    "覚えて",
+    "心配して",
+    "応援して"
+   ],
+   "a": 2,
+   "ar": "おぼえている",
    "vi": "Tôi nhớ rằng cậu ấy từng là một học sinh rất thông minh.",
-   "key": [{"w": "記憶", "r": "きおく", "hv": "KÝ ỨC", "m": "trí nhớ, ghi nhớ"}],
-   "x": {"1": "<span class=\"jp\">語る</span> かたる: kể.", "3": "lo lắng.", "4": "cổ vũ."},
-   "n": ["記憶力 (trí nhớ), 記憶に残る (đọng lại trong ký ức)."]}
+   "key": [
+    {
+     "w": "記憶",
+     "r": "きおく",
+     "hv": "KÝ ỨC",
+     "m": "trí nhớ, ghi nhớ"
+    }
+   ],
+   "x": {
+    "1": "語る (kể): là nói ra cho người khác, không phải ghi nhớ.",
+    "3": "心配する (lo lắng): khác nghĩa.",
+    "4": "応援する (cổ vũ): khác nghĩa."
+   },
+   "n": [
+    "記憶力 (trí nhớ), 記憶に残る (đọng lại trong ký ức)."
+   ],
+   "why": "<b>記憶している</b> ＝ nhớ, còn giữ trong trí nhớ. Đồng nghĩa: <b>覚えている</b>."
+  }
+ ],
+ "sum": [
+  {
+   "h": "Cách làm dạng 言い換え類義 (問題5 · tìm từ gần nghĩa)",
+   "li": [
+    "Chỉ cần hiểu <b>nghĩa của từ gạch chân</b> — không cần dịch cả câu. Sau đó thay từng phương án vào câu, phương án giữ nguyên nghĩa là đáp án.",
+    "Coi chừng bẫy <b>chữ Hán gây hiểu lầm</b>: 臆<b>病</b> ≠ bệnh, 物<b>騒</b> ≠ ồn, 引き<b>返</b>す ≠ trả lời / trả tiền, 過<b>剰</b> ≠ quá sớm.",
+    "Từ ngoại lai → tìm từ Hán tương ứng: ハード ＝ 大変, テクニック ＝ 技術, ガイド ＝ 案内.",
+    "Phó từ thường có cặp đồng nghĩa cố định: 当分 ＝ しばらく, たびたび ＝ 何度も, 一層 ＝ もっと, じかに ＝ 直接."
+   ]
+  },
+  {
+   "h": "Bảng cặp đồng nghĩa trong đề",
+   "tbl": {
+    "head": [
+     "Từ trong đề",
+     "＝",
+     "Nghĩa"
+    ],
+    "rows": [
+     [
+      "じかに",
+      "直接",
+      "trực tiếp"
+     ],
+     [
+      "当分",
+      "しばらく",
+      "một thời gian"
+     ],
+     [
+      "臆病",
+      "何でも怖がる",
+      "nhát gan"
+     ],
+     [
+      "利口",
+      "頭がいい / 賢い",
+      "thông minh"
+     ],
+     [
+      "引き返す",
+      "戻る",
+      "quay lại"
+     ],
+     [
+      "人柄",
+      "性格",
+      "nhân cách"
+     ],
+     [
+      "むかつく",
+      "怒る / 腹が立つ",
+      "bực tức"
+     ],
+     [
+      "動揺する",
+      "不安になる",
+      "hoang mang"
+     ],
+     [
+      "たびたび",
+      "何度も / しばしば",
+      "nhiều lần"
+     ],
+     [
+      "とりかかる",
+      "始める / 着手する",
+      "bắt tay vào"
+     ],
+     [
+      "愉快",
+      "面白い",
+      "vui vẻ"
+     ],
+     [
+      "失望する",
+      "がっかりする",
+      "thất vọng"
+     ],
+     [
+      "一層",
+      "もっと / より",
+      "càng hơn"
+     ],
+     [
+      "過剰",
+      "多すぎる",
+      "dư thừa"
+     ],
+     [
+      "物騒",
+      "安全じゃない",
+      "mất an ninh"
+     ],
+     [
+      "記憶する",
+      "覚える",
+      "ghi nhớ"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Từ láy cảm xúc nên học cùng nhóm",
+   "tbl": {
+    "head": [
+     "Từ láy",
+     "Cảm xúc",
+     "Từ Hán gần nghĩa"
+    ],
+    "rows": [
+     [
+      "がっかり",
+      "thất vọng",
+      "失望, 落胆"
+     ],
+     [
+      "かっと / むっと",
+      "nổi nóng / phật ý",
+      "激怒, 立腹"
+     ],
+     [
+      "ぞっと",
+      "rùng mình sợ",
+      "恐怖"
+     ],
+     [
+      "びっくり / どきっと",
+      "giật mình",
+      "驚く"
+     ],
+     [
+      "いらいら / むかむか",
+      "bực bội",
+      "腹が立つ"
+     ],
+     [
+      "はらはら / ひやひや",
+      "lo thót tim",
+      "心配, 不安"
+     ],
+     [
+      "わくわく",
+      "háo hức",
+      "期待"
+     ],
+     [
+      "ほっと",
+      "nhẹ nhõm",
+      "安心"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Trái nghĩa và từ cùng chủ đề",
+   "li": [
+    "臆病 ↔ 大胆 だいたん / 勇敢 ゆうかん; 利口 ↔ 馬鹿; 愉快 ↔ 不愉快; 過剰 ↔ 不足; 物騒 ↔ 平和 / 安全.",
+    "<b>Tần suất</b>: いつも > よく / しょっちゅう > たびたび / しばしば > 時々 > たまに > めったに〜ない > 全然〜ない.",
+    "<b>Thời gian tới</b>: 当分 / しばらく / 当面 (một thời gian) — 今後 (từ nay về sau) — 近いうちに (sắp tới).",
+    "<b>Tính cách</b>: 人柄 (nhân cách), 性格 (tính cách), 性質 せいしつ (bản chất), 気性 きしょう (tính khí), 素直 すなお (thật thà, ngoan)."
+   ]
+  }
  ]
 }

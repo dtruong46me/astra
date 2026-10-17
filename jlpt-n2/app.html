@@ -159,6 +159,28 @@ ul.notes li { padding-inline-start: 14px; position: relative; }
 ul.notes li::before { content: ""; position: absolute; left: 0; top: .7em; width: 6px; height: 6px; border-radius: 50%; background: var(--ai); }
 .g { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 8px 10px; }
 .g b.jp { color: var(--ai); }
+.why { margin: 0; background: var(--ok-wash); border-inline-start: 3px solid var(--ok); border-radius: 0 6px 6px 0; padding: 8px 12px; }
+ul.others .verdict { font-size: 12px; font-weight: 700; color: var(--shu); margin-inline-end: 4px; }
+.recap { margin-top: 16px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; scroll-margin-top: 70px; }
+.recap > * { min-width: 0; }
+.recap h2 { margin: 0; font-size: 20px; line-height: 1.3; }
+.recap h2 .jp { font-family: var(--font-jp); color: var(--ai); margin-inline-end: .3em; }
+.recap .lead { margin: 4px 0 0; color: var(--ink-soft); font-size: 14px; }
+.recap h3 { margin: 0 0 8px; font-size: 15px; display: flex; gap: 8px; align-items: baseline; }
+.recap h3 .k { font-family: var(--font-pen); color: var(--shu); font-size: 16px; }
+.recap p { margin: 0 0 8px; }
+.recap .jp, .recap ruby { font-family: var(--font-jp); }
+.recap td:first-child { font-family: var(--font-jp); font-weight: 700; white-space: nowrap; }
+@media (max-width: 560px) {
+  /* recap tables become stacked cards on phones so no column gets squeezed */
+  .recap .tbl table, .recap .tbl tbody, .recap .tbl tr, .recap .tbl td { display: block; }
+  .recap .tbl thead { display: none; }
+  .recap .tbl tr { padding: 8px 0; border-bottom: 1px solid var(--rule); }
+  .recap .tbl td { border: 0; padding: 1px 0; }
+  .recap .tbl td:first-child { white-space: normal; font-size: 16px; }
+  .recap .tbl td[data-l]:not(:first-child)::before { content: attr(data-l) " · "; font-size: 11.5px; color: var(--ink-soft); }
+}
+.recap .rc + .rc { border-top: 1px dashed var(--rule); padding-top: 16px; }
 .key { margin-top: 16px; }
 .key table { background: var(--sheet); }
 .key td, .key th { text-align: center; font-variant-numeric: tabular-nums; }
@@ -211,7 +233,7 @@ const touched = new Set();     // exams changed on this load before that read
 function setSync(k) {
   syncNow = k; clearTimeout(syncHide); syncEl.dataset.s = k; syncEl.textContent = SYNC_TXT[k];
   // on the home page the status stays visible; inside an exam a success note fades
-  if (k === "ok" && cur) syncHide = setTimeout(() => { syncEl.textContent = ""; }, 2500);
+  if (cur && k !== "wait") syncHide = setTimeout(() => { syncEl.textContent = ""; }, k === "ok" ? 2500 : 5000);
 }
 const pend = {}, busy = {};
 function push(no) {
@@ -391,9 +413,10 @@ function drawExam() {
        <button class="btn" type="button" id="cancelSubmit">Làm tiếp</button><button class="btn danger" type="button" id="forceSubmit">Nộp luôn</button></div>` : ""}
     ${done ? `<section class="result"><div class="big"><span class="pen">${right}<small>/${n}</small></span>
         <span>Đúng ${right} · Sai ${n - right} · Thời gian ${mmss(st.secs)}</span></div>
-        <div class="jumps">${ex.qs.map((q, i) => `<a href="#q${i + 1}" class="${st.picks[i] === q.a ? "" : "ng"}" data-jump="${i + 1}">${i + 1}</a>`).join("")}</div></section>` : ""}
+        <div class="jumps">${ex.qs.map((q, i) => `<a href="#q${i + 1}" class="${st.picks[i] === q.a ? "" : "ng"}" data-jump="${i + 1}">${i + 1}</a>`).join("")}</div>
+        ${ex.sum ? `<div><a class="btn" href="#recap" data-goto="recap">Tổng kết kiến thức của đề ↓</a></div>` : ""}</section>` : ""}
     <main class="sheet${done ? " done" : ""}${onlyWrong ? " only-wrong" : ""}" id="sheet">${ex.qs.map((q, i) => qHTML(q, i)).join("")}</main>
-    ${done ? keyHTML() : ""}
+    ${done ? keyHTML() + recapHTML(ex) : ""}
     <footer>Đề gốc và đáp án © DORA Nihongo. Phần giải thích mở rộng là phần bổ sung, không có trong bản chữa gốc.</footer>`;
   tick();
 }
@@ -439,8 +462,12 @@ function exHTML(q) {
   p.push(`<div><h4>Đáp án</h4><div class="ansline"><span class="circ">${CIRC[a]}</span><span class="w">${esc(q.o[a - 1])}</span>${q.ar ? `<span class="r">${fmt(q.ar)}</span>` : ""}</div></div>`);
   if (q.order) p.push(`<div><h4>Thứ tự đúng</h4><div class="ansline">${q.order.map(n => `<span class="${n === a ? "circ" : "r"}">${n}</span>`).join('<span class="r">→</span>')}</div></div>`);
   p.push(`<div><h4>Dịch câu</h4><p class="jpline">${fillStem(q, fmt(q.s), a, true)}</p><p class="vi">${q.vi}</p></div>`);
+  if (q.why) p.push(`<div><h4>Vì sao chọn ${CIRC[a]}</h4><p class="why">${fmt(q.why)}</p></div>`);
+  if (q.x) {
+    const ns = q.order ? [1, 2, 3, 4].filter(n => q.x[n]) : [1, 2, 3, 4].filter(n => n !== a && q.x[n]);
+    p.push(`<div><h4>${q.order ? "Vị trí từng mảnh" : "Vì sao không chọn các phương án khác"}</h4><ul class="others">${ns.map(n => `<li><span class="n">${n}</span><div>${q.order ? "" : `<span class="verdict">Loại</span>`}${q.x[n].startsWith(q.o[n - 1]) ? "" : `<span class="jp">${esc(q.o[n - 1])}</span> — `}${fmt(q.x[n])}</div></li>`).join("")}</ul></div>`);
+  }
   if (q.key && q.key.length) p.push(`<div><h4>Từ vựng</h4><div class="tbl"><table><thead><tr><th>Từ</th><th>Cách đọc</th><th>Hán Việt</th><th>Nghĩa</th></tr></thead><tbody>${q.key.map(k => `<tr><td class="w">${k.w}</td><td class="r">${k.r}</td><td class="hv">${k.hv || "—"}</td><td>${fmt(k.m)}</td></tr>`).join("")}</tbody></table></div></div>`);
-  if (q.x) p.push(`<div><h4>Các phương án còn lại</h4><ul class="others">${[1, 2, 3, 4].filter(n => n !== a && q.x[n]).map(n => `<li><span class="n">${n}</span><div><span class="jp">${esc(q.o[n - 1])}</span> — ${fmt(q.x[n])}</div></li>`).join("")}</ul></div>`);
   if (q.g && q.g.length) p.push(`<div><h4>Ngữ pháp trong câu</h4><div style="display:grid;gap:6px">${q.g.map(g => `<div class="g">${fmt(g)}</div>`).join("")}</div></div>`);
   if (q.n && q.n.length) p.push(`<div><h4>Ghi chú · Mở rộng</h4><ul class="notes">${q.n.map(n => `<li>${fmt(n)}</li>`).join("")}</ul></div>`);
   return p.join("");
@@ -452,6 +479,18 @@ function keyHTML() {
     rows.push(`<tr><th>Câu</th>${sl.map((_, k) => `<th>${s + k + 1}</th>`).join("")}</tr><tr><th>Đ/A</th>${sl.map(q => `<td>${q.a}</td>`).join("")}</tr>`);
   }
   return `<details class="ex key"><summary>Bảng đáp án (解答)</summary><div class="exb"><div class="tbl"><table>${rows.join("")}</table></div></div></details>`;
+}
+function recapHTML(ex) {
+  if (!ex.sum || !ex.sum.length) return "";
+  const sec = (c, i) => {
+    let h = `<div class="rc"><h3><span class="k">${i + 1}</span>${fmt(c.h)}</h3>`;
+    if (c.p) h += `<p>${fmt(c.p)}</p>`;
+    if (c.tbl) h += `<div class="tbl"><table><thead><tr>${c.tbl.head.map(t => `<th>${fmt(t)}</th>`).join("")}</tr></thead><tbody>${c.tbl.rows.map(r => `<tr>${r.map((t, k) => `<td data-l="${esc(c.tbl.head[k] || "")}">${fmt(t)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    if (c.li) h += `<ul class="notes">${c.li.map(t => `<li>${fmt(t)}</li>`).join("")}</ul>`;
+    return h + `</div>`;
+  };
+  return `<section class="recap" id="recap"><div><h2><span class="jp">${esc(ex.jp)}</span>Tổng kết kiến thức · ${esc(ex.title)}</h2>
+    <p class="lead">Những điểm cần nhớ rút ra từ đề này và kiến thức mở rộng cùng nhóm.</p></div>${ex.sum.map(sec).join("")}</section>`;
 }
 function submit() {
   st.secs = Math.floor((Date.now() - st.t0) / 1000);
@@ -474,6 +513,8 @@ app.addEventListener("click", e => {
   }
   const fb = t.closest("[data-filter]");
   if (fb) { filter = fb.dataset.filter; try { localStorage.setItem("n2-dora-filter", filter); } catch (e) {} home(); return; }
+  const go = t.closest("[data-goto]");
+  if (go) { e.preventDefault(); document.getElementById(go.dataset.goto).scrollIntoView({ behavior: "smooth", block: "start" }); return; }
   const jump = t.closest("[data-jump]");
   if (jump) { e.preventDefault(); document.getElementById("q" + jump.dataset.jump).scrollIntoView({ behavior: "smooth", block: "start" }); return; }
   switch (t.closest("button")?.id) {

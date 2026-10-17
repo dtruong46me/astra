@@ -32,13 +32,14 @@
     }
    ],
    "x": {
-    "1": "không có. Bẫy trộn âm đục ぞう với さく.",
-    "2": "<span class=\"jp\">造作</span> ぞうさ: phiền phức, công sức (ít gặp).",
-    "3": "<span class=\"jp\">創作</span> / <span class=\"jp\">捜索</span> そうさく: sáng tác / lục soát."
+    "1": "ぞうさく: không có từ này. 操 không đục thành ぞう, và 作 ở đây đọc さ.",
+    "2": "ぞうさ là 造作 (công sức, phiền hà — ít gặp). Chữ đầu khác (造), không phải 操.",
+    "3": "そうさく là 創作 (sáng tác) / 捜索 (lục soát). 作 trong 操作 đọc さ, không phải さく."
    },
    "n": [
     "作 đọc さ trong 操作, 動作 どうさ; đọc さく trong 作品, 作文."
-   ]
+   ],
+   "why": "操 đọc <b>そう</b> (âm trong), 作 trong từ này đọc <b>さ</b> ＝ <b>そうさ</b>: thao tác, vận hành. Ngữ cảnh 携帯電話の操作が簡単 khớp nghĩa."
   },
   {
    "s": "彼のスピーチはその場では_適切_でなかった。",
@@ -60,13 +61,14 @@
     }
    ],
    "x": {
-    "1": "không có.",
-    "2": "không có.",
-    "4": "てっきり: cứ ngỡ chắc chắn là (phó từ)."
+    "1": "てっせつ: không có từ này; không có âm ngắt.",
+    "2": "てききり: 切 trong từ Hán đọc せつ, không đọc Kun きり.",
+    "4": "てっきり là phó từ (cứ ngỡ chắc là). Không phải cách đọc của 適切."
    },
    "n": [
     "切 せつ: 大切, 親切. Trái nghĩa: 不適切."
-   ]
+   ],
+   "why": "適 đọc <b>てき</b>, 切 đọc <b>せつ</b> ＝ <b>てきせつ</b>: thích hợp. Ngữ cảnh その場では適切でなかった (không phù hợp với hoàn cảnh) khớp nghĩa. Không có âm ngắt vì 切 ở đây là せつ."
   },
   {
    "s": "{佐藤|さとう}さんはネズミの行動を_観察_した。",
@@ -88,13 +90,14 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">検察</span> けんさつ: công tố.",
-    "2": "không có.",
-    "3": "<span class=\"jp\">関西</span> かんさい: vùng Kansai."
+    "1": "けんさつ là 検察 (công tố). 観 không đọc けん.",
+    "2": "けんさい: không có từ này.",
+    "3": "かんさい là 関西 (vùng Kansai). 察 đọc さつ, không phải さい."
    },
    "n": [
     "察 さつ: 警察, 察する. Đồng âm: 監察 (giám sát)."
-   ]
+   ],
+   "why": "観 đọc <b>かん</b>, 察 đọc <b>さつ</b> ＝ <b>かんさつ</b>: quan sát. Ngữ cảnh ネズミの行動を観察した khớp nghĩa."
   },
   {
    "s": "_医療_の{発達|はったつ}により{乳幼児|にゅうようじ}の{死亡率|しぼうりつ}がぐっと{減|へ}った。",
@@ -116,13 +119,14 @@
     }
    ],
    "x": {
-    "1": "không có.",
-    "2": "<span class=\"jp\">治療</span> ちりょう: điều trị (khác chữ).",
-    "4": "không có."
+    "1": "ちりゅう: không có từ này.",
+    "2": "ちりょう là 治療 (điều trị). 療 đúng nhưng 医 đọc い, không phải ち.",
+    "4": "いりゅう: 療 đọc りょう, không phải りゅう."
    },
    "n": [
     "療 りょう: 治療, 療養. ぐっと: mạnh, rõ rệt."
-   ]
+   ],
+   "why": "医 đọc <b>い</b>, 療 đọc <b>りょう</b> ＝ <b>いりょう</b>: y tế. Ngữ cảnh 医療の発達 (y tế phát triển) làm giảm tỷ lệ tử vong khớp nghĩa."
   },
   {
    "s": "どちらのチームが強いかで兄と_議論_になった。",
@@ -144,13 +148,14 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">論議</span> ろんぎ: bàn luận (đảo chữ).",
-    "2": "<span class=\"jp\">異論</span> いろん: ý kiến khác.",
-    "4": "không có."
+    "1": "ろんぎ là 論議 (bàn luận) — chữ bị đảo thứ tự, không phải 議論.",
+    "2": "いろん là 異論 (ý kiến khác). Chữ đầu khác.",
+    "4": "ろんい: không có từ này."
    },
    "n": [
     "議 ぎ: 会議, 議員. Xem Đề 7 câu 3 (〜論)."
-   ]
+   ],
+   "why": "議 đọc <b>ぎ</b>, 論 đọc <b>ろん</b> ＝ <b>ぎろん</b>: tranh luận. Ngữ cảnh đội nào mạnh hơn → 議論になった khớp nghĩa."
   },
   {
    "s": "{震災|しんさい}以後、{燃料輸入額|ねんりょうゆにゅうがく}は約10_兆_円増加した。",
@@ -172,13 +177,14 @@
     }
    ],
    "x": {
-    "1": "không có.",
-    "2": "<span class=\"jp\">中</span> ちゅう.",
-    "4": "không có."
+    "1": "ちょ: thiếu trường âm.",
+    "2": "ちゅう: là âm của 中, 虫 — không phải 兆.",
+    "4": "ちゅ: không có âm này cho 兆."
    },
    "n": [
     "万 (10⁴) → 億 おく (10⁸) → 兆 (10¹²). Kun: 兆し きざし (dấu hiệu)."
-   ]
+   ],
+   "why": "兆 đọc <b>ちょう</b>: nghìn tỷ (10^12). Ngữ cảnh 約10兆円 (khoảng 10 nghìn tỷ yên) khớp nghĩa. Kun: 兆し きざし (điềm báo)."
   },
   {
    "s": "彼らは{双子|ふたご}だが、性格はずいぶん_異なって_いる。",
@@ -200,13 +206,14 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">重なる</span>: chồng lên.",
-    "2": "<span class=\"jp\">連なる</span>: nối tiếp.",
-    "3": "mất đi."
+    "1": "かさなって là 重なる (chồng lên, trùng). Chữ khác; ngược nghĩa.",
+    "2": "つらなって là 連なる (nối tiếp thành hàng). Chữ khác.",
+    "3": "なくなって (mất đi): không phải cách đọc của 異."
    },
    "n": [
     "異常 (câu 18), 異文化. Xem Đề 16 câu 20 (ことなった là phương án nhiễu)."
-   ]
+   ],
+   "why": "異なる đọc <b>ことなる</b>: khác nhau. Ngữ cảnh 双子だが性格は〜 (sinh đôi nhưng tính cách khác) khớp nghĩa. Âm On: い (異常, 異論)."
   },
   {
    "s": "彼女はグリーンの_靴_を{履|は}いていたと思います。",
@@ -228,13 +235,14 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">傘</span>: ô.",
-    "2": "<span class=\"jp\">服</span>: quần áo.",
-    "3": "<span class=\"jp\">鞄</span>: cặp."
+    "1": "かさ là 傘 (ô). Ô thì 差す, không 履く.",
+    "2": "ふく là 服 (quần áo). Quần áo thì 着る.",
+    "3": "かばん là 鞄 (cặp). Cặp thì 持つ."
    },
    "n": [
     "履く (giày, quần) / 着る (áo) / かぶる (mũ)."
-   ]
+   ],
+   "why": "靴 âm Kun <b>くつ</b>: giày. Động từ 履く (はく: mang giày) xác nhận đáp án."
   },
   {
    "s": "事故は_単純_な計算ミスが原因だった。",
@@ -256,13 +264,14 @@
     }
    ],
    "x": {
-    "1": "không có.",
-    "3": "không có.",
-    "4": "<span class=\"jp\">簡単</span> かんたん: dễ (khác chữ)."
+    "1": "かんだん: không có từ này. 単 đọc たん.",
+    "3": "だんじゅん: 単 không đục thành だん.",
+    "4": "かんたん là 簡単 (dễ). Nghĩa gần nhưng chữ khác — bẫy vì 単 là chữ thứ hai của 簡単."
    },
    "n": [
     "純 じゅん: 純粋 (Đề 11 câu 11). ↔ 複雑."
-   ]
+   ],
+   "why": "単 đọc <b>たん</b>, 純 đọc <b>じゅん</b> ＝ <b>たんじゅん</b>: đơn giản, đơn thuần. Ngữ cảnh 単純な計算ミス khớp nghĩa."
   },
   {
    "s": "火事で亡くなった人の{身元|みもと}の_調査_はあまり進んでいない。",
@@ -284,10 +293,11 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">検査</span>: kiểm tra.",
-    "2": "<span class=\"jp\">審査</span>: thẩm tra.",
-    "3": "<span class=\"jp\">交差 / 考査</span>: giao nhau / khảo sát."
-   }
+    "1": "けんさ là 検査 (kiểm tra). 査 đúng nhưng 調 đọc ちょう.",
+    "2": "しんさ là 審査 (thẩm tra). Chữ đầu khác.",
+    "3": "こうさ là 交差 (giao nhau) / 考査. Chữ đầu khác."
+   },
+   "why": "調 đọc <b>ちょう</b>, 査 đọc <b>さ</b> ＝ <b>ちょうさ</b>: điều tra. Ngữ cảnh 身元の調査 (điều tra danh tính) khớp nghĩa."
   },
   {
    "s": "二度と戦争という名の_悲劇_を繰り返してはいけない。",
@@ -309,13 +319,14 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">喜劇</span>: hài kịch.",
-    "2": "<span class=\"jp\">衝撃</span>: cú sốc.",
-    "3": "<span class=\"jp\">攻撃</span>: tấn công."
+    "1": "きげき là 喜劇 (hài kịch). Trái nghĩa — 悲 đọc ひ.",
+    "2": "しょうげき là 衝撃 (cú sốc). Khác chữ (撃 cũng đọc げき).",
+    "3": "こうげき là 攻撃 (tấn công). Khác chữ."
    },
    "n": [
     "劇 げき: 演劇 (Đề 11 câu 17)."
-   ]
+   ],
+   "why": "悲 đọc <b>ひ</b> (Kun: 悲しい), 劇 đọc <b>げき</b> ＝ <b>ひげき</b>: bi kịch. Ngữ cảnh 戦争という名の悲劇 khớp nghĩa."
   },
   {
    "s": "工場で大きな_爆発_があったが、幸いけが人は出なかった。",
@@ -337,13 +348,14 @@
     }
    ],
    "x": {
-    "1": "không có.",
-    "2": "không có.",
-    "3": "không có."
+    "1": "ばくほつ: 発 đọc はつ / ほつ (ほつ chỉ ở 発作 ほっさ, 発端 ほったん), không dùng trong 爆発.",
+    "2": "ぼくほつ: 爆 đọc ばく, không phải ぼく.",
+    "3": "ぼくはつ: 爆 đọc ばく."
    },
    "n": [
     "発 はつ (xuất phát), ほつ chỉ trong 発作 ほっさ, 発端 ほったん."
-   ]
+   ],
+   "why": "爆 đọc <b>ばく</b>, 発 đọc <b>はつ</b> ＝ <b>ばくはつ</b>: vụ nổ. (Không có âm ngắt vì ばく＋は giữ nguyên trong từ này.)"
   },
   {
    "s": "今日の仕事はこれで_完了_だ。",
@@ -365,10 +377,11 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">管理</span>: quản lý.",
-    "2": "<span class=\"jp\">終了</span>: kết thúc (khác chữ).",
-    "3": "<span class=\"jp\">修理</span>: sửa chữa."
-   }
+    "1": "かんり là 管理 (quản lý). 了 đọc りょう.",
+    "2": "しゅうりょう là 終了 (kết thúc). Nghĩa gần nhưng chữ đầu khác (終).",
+    "3": "しゅうり là 修理 (sửa chữa). Sai cả hai."
+   },
+   "why": "完 đọc <b>かん</b>, 了 đọc <b>りょう</b> ＝ <b>かんりょう</b>: hoàn tất. Ngữ cảnh 今日の仕事はこれで完了 khớp nghĩa."
   },
   {
    "s": "美しい景色を見ていると、_寿命_が{延|の}びるようだ。",
@@ -390,13 +403,14 @@
     }
    ],
    "x": {
-    "2": "không có.",
-    "3": "không có.",
-    "4": "không có."
+    "2": "じゅうめい: thừa trường âm và 命 đọc みょう ở đây.",
+    "3": "じゅうみょう: thừa trường âm — 寿 đọc じゅ.",
+    "4": "じゅめい: 命 trong 寿命 đọc みょう (như 一生懸命 いっしょうけんめい), không phải めい."
    },
    "n": [
     "命 đọc みょう ở 寿命, đọc めい ở 生命, 命令. 平均寿命."
-   ]
+   ],
+   "why": "寿 đọc <b>じゅ</b> (ngắn), 命 trong từ này đọc <b>みょう</b> ＝ <b>じゅみょう</b>: tuổi thọ. Ngữ cảnh 寿命が延びる (kéo dài tuổi thọ) khớp nghĩa."
   },
   {
    "s": "{勤務先|きんむさき}では{顧客|こきゃく}の{苦情|くじょう}の_処理_を担当している。",
@@ -418,13 +432,14 @@
     }
    ],
    "x": {
-    "1": "không có.",
-    "3": "<span class=\"jp\">措置</span>: biện pháp.",
-    "4": "không có."
+    "1": "そり: 処 đọc しょ, không phải そ.",
+    "3": "そち là 措置 (biện pháp). Khác chữ.",
+    "4": "しゅち: không có từ này."
    },
    "n": [
     "Xem Đề 1 câu 2. 苦情処理."
-   ]
+   ],
+   "why": "処 đọc <b>しょ</b>, 理 đọc <b>り</b> ＝ <b>しょり</b>: xử lý (đã gặp ở Đề 1 câu 2). Ngữ cảnh 苦情の処理 (xử lý khiếu nại) khớp nghĩa."
   },
   {
    "s": "弟は自分の間違いをなかなか_認めない_。",
@@ -446,13 +461,14 @@
     }
    ],
    "x": {
-    "2": "<span class=\"jp\">含める</span>: tính cả vào.",
-    "3": "<span class=\"jp\">進める / 勧める</span>: xúc tiến / khuyên.",
-    "4": "<span class=\"jp\">勤める</span>: làm việc."
+    "2": "ふくめない là 含める (tính gộp vào). Chữ khác.",
+    "3": "すすめない là 進める / 勧める. Chữ khác.",
+    "4": "つとめない là 勤める / 努める. Chữ khác."
    },
    "n": [
     "Xem Đề 14 câu 14."
-   ]
+   ],
+   "why": "認める đọc <b>みとめる</b>: thừa nhận. Ngữ cảnh 自分の間違いを認めない (không nhận lỗi) khớp nghĩa. Âm On: 確認 かくにん."
   },
   {
    "s": "わが国は{諸外国|しょがいこく}と_貿易_を行っている。",
@@ -474,13 +490,14 @@
     }
    ],
    "x": {
-    "2": "không có.",
-    "3": "không có.",
-    "4": "không có."
+    "2": "もうえき: 貿 không đọc もう.",
+    "3": "ぼういき: 易 trong 貿易 đọc えき, không phải いき.",
+    "4": "もういき: sai cả hai chữ."
    },
    "n": [
     "易 えき (貿易) / い (簡易, 容易 ようい, 易しい やさしい)."
-   ]
+   ],
+   "why": "貿 đọc <b>ぼう</b>, 易 đọc <b>えき</b> ＝ <b>ぼうえき</b>: thương mại quốc tế. Ngữ cảnh 諸外国と貿易を行う khớp nghĩa. (易 còn đọc い trong 容易 ようい, やさしい.)"
   },
   {
    "s": "このような{状況|じょうきょう}は私にはきわめて_異常_に思える。",
@@ -502,13 +519,14 @@
     }
    ],
    "x": {
-    "2": "<span class=\"jp\">非常</span>: khẩn cấp; cực kỳ.",
-    "3": "<span class=\"jp\">故障</span>: hỏng.",
-    "4": "<span class=\"jp\">支障</span>: trở ngại."
+    "2": "ひじょう là 非常 (khẩn cấp; cực kỳ). Chữ đầu khác.",
+    "3": "こしょう là 故障 (hỏng hóc). Sai cả hai chữ.",
+    "4": "ししょう là 支障 (trở ngại). Sai cả hai chữ."
    },
    "n": [
     "Đồng âm: 以上, 異状 (Đề 17 câu 8)."
-   ]
+   ],
+   "why": "異 đọc <b>い</b>, 常 đọc <b>じょう</b> ＝ <b>いじょう</b>: bất thường. Ngữ cảnh きわめて異常に思える khớp nghĩa."
   },
   {
    "s": "あの仕事は、たいてい単純な_作業_の繰り返しだと聞いた。",
@@ -530,13 +548,14 @@
     }
    ],
    "x": {
-    "1": "không có.",
-    "2": "không có (thiếu trường âm).",
-    "3": "không có."
+    "1": "さくぎょう: 作 trong 作業 đọc さ, không phải さく.",
+    "2": "さぎょ: thiếu trường âm ở 業.",
+    "3": "さくぎょ: sai cả hai chỗ."
    },
    "n": [
     "作 đọc さ (câu 1). 業 ぎょう: 授業, 工業."
-   ]
+   ],
+   "why": "作 trong từ này đọc <b>さ</b>, 業 đọc <b>ぎょう</b> (có trường âm) ＝ <b>さぎょう</b>: thao tác, công việc. Giống 操作 そうさ ở câu 1: 作 đọc さ."
   },
   {
    "s": "くつの_泥_を落としてから入室してください。",
@@ -558,12 +577,98 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">土地</span>: đất đai.",
-    "2": "<span class=\"jp\">土</span>: đất.",
-    "3": "<span class=\"jp\">砂</span>: cát."
+    "1": "とち là 土地 (đất đai). Không phải cách đọc của 泥.",
+    "2": "つち là 土 (đất). Chữ khác.",
+    "3": "すな là 砂 (cát). Chữ khác."
    },
    "n": [
     "泥棒 どろぼう: kẻ trộm. 泥だらけ: lấm lem bùn."
+   ],
+   "why": "泥 âm Kun <b>どろ</b>: bùn. Ngữ cảnh くつの泥を落とす (giũ bùn ở giày) khớp nghĩa. Âm On: でい (泥酔 でいすい)."
+  }
+ ],
+ "sum": [
+  {
+   "h": "Chữ 作 có ba âm On — điểm nóng của đề",
+   "tbl": {
+    "head": [
+     "Âm",
+     "Từ",
+     "Nghĩa"
+    ],
+    "rows": [
+     [
+      "さ",
+      "操作 そうさ, 作業 さぎょう, 動作 どうさ, 作法 さほう",
+      "thao tác, động tác"
+     ],
+     [
+      "さく",
+      "作品 さくひん, 創作 そうさく, 作文, 名作",
+      "tác phẩm, sáng tác"
+     ],
+     [
+      "さっ",
+      "作家 さっか, 作曲 さっきょく",
+      "âm ngắt trước か"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Chữ nhiều âm khác trong đề",
+   "li": [
+    "<b>命</b>: めい (生命, 命令) / みょう (寿命, 一生懸命) / いのち.",
+    "<b>易</b>: えき (貿易) / い (容易, 安易) / やさ(しい).",
+    "<b>発</b>: はつ (爆発, 発表) / ほつ (発作 ほっさ, 発端 ほったん).",
+    "<b>異</b>: い (異常, 異論) / こと(なる). <b>兆</b>: ちょう (一兆) / きざ(し)."
+   ]
+  },
+  {
+   "h": "Cặp từ dễ nhầm",
+   "tbl": {
+    "head": [
+     "Cặp",
+     "Phân biệt"
+    ],
+    "rows": [
+     [
+      "完了 / 終了",
+      "hoàn tất (việc làm xong) / kết thúc (thời gian, sự kiện)"
+     ],
+     [
+      "議論 / 論議",
+      "tranh luận / bàn luận (gần nghĩa, đảo chữ)"
+     ],
+     [
+      "悲劇 / 喜劇",
+      "bi kịch / hài kịch"
+     ],
+     [
+      "異常 / 非常",
+      "bất thường / khẩn cấp, cực kỳ"
+     ],
+     [
+      "医療 / 治療",
+      "y tế (hệ thống) / điều trị (cho một người)"
+     ],
+     [
+      "単純 / 簡単",
+      "đơn thuần, đơn giản (bản chất) / dễ làm"
+     ],
+     [
+      "調査 / 検査 / 審査",
+      "điều tra / kiểm tra / thẩm tra"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Số lớn trong tiếng Nhật",
+   "li": [
+    "万 まん (10^4) → 億 おく (10^8) → 兆 ちょう (10^12) → 京 けい (10^16).",
+    "1 tỷ ＝ 10億 じゅうおく; 1 nghìn tỷ ＝ 1兆 いっちょう; 100 triệu ＝ 1億 いちおく.",
+    "Biến âm: 一兆 いっちょう, 八兆 はっちょう, 十兆 じゅっちょう."
    ]
   }
  ]

@@ -30,9 +30,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">ちょうし</span> (ĐIỀU TỬ): tình trạng, phong độ. 体の調子が悪い, 調子に乗る (được đà lấn tới).",
-    "2": "<span class=\"jp\">いしょく</span> (DỊ SẮC): khác thường, lạ so với số đông, thường dùng dạng 異色の＋N (異色の作品). Không dùng để nói “điểm đặc trưng của X”.",
-    "4": "<span class=\"jp\">ようす</span> (DẠNG TỬ): dáng vẻ, tình hình quan sát được (様子を見る)."
+    "1": "調子 (tình trạng, phong độ): nói về sức khỏe, máy móc, nhịp điệu (体の調子). Không dùng để nêu “nét riêng của trường”.",
+    "2": "異色 (khác thường, độc đáo hơn số đông): thường dùng dạng 異色の作品, 異色の経歴 để bổ nghĩa. “Cái khác thường của trường là…” nghe không tự nhiên; câu cần “nét đặc trưng”.",
+    "4": "様子 (dáng vẻ, tình hình quan sát bằng mắt): 様子を見る. Không dùng để định nghĩa thế mạnh của tổ chức."
    },
    "g": [
     "<b class=\"jp\">AはBことだ</b>: A là việc B (giải thích nội dung của A).",
@@ -40,7 +40,8 @@
    ],
    "n": [
     "特色 gần nghĩa 特徴 とくちょう (đặc trưng, trung tính). 特色 thường mang sắc thái tích cực, là điểm riêng đáng chú ý."
-   ]
+   ],
+   "why": "Mẫu câu <b>AはBことだ</b>: A là điểm gì đó, B giải thích nội dung. Chỗ trống phải là danh từ chỉ “điểm riêng, nét nổi bật” của trường → <b>特色</b> (đặc sắc). わが校の特色 là cụm hay dùng khi giới thiệu trường."
   },
   {
    "s": "あの会社はいろんな問題を（　）いる。",
@@ -62,9 +63,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">迎える</span> (NGHÊNH): đón (客を迎える, 新年を迎える).",
-    "3": "<span class=\"jp\">限る</span> (HẠN): giới hạn. Hay gặp 〜に限って, 〜とは限らない.",
-    "4": "<span class=\"jp\">握る</span> (ÁC): nắm chặt (手を握る, 権力を握る)."
+    "1": "迎える (đón): đối tượng là người, thời điểm (客を迎える, 新年を迎える). Không “đón” vấn đề.",
+    "3": "限る (giới hạn): hầu như chỉ dùng trong mẫu 〜に限る, 〜に限って, 〜とは限らない; không nhận 問題を làm tân ngữ với nghĩa này.",
+    "4": "握る (nắm chặt): đi với vật cụ thể hoặc quyền lực (手を握る, 権力を握る, 秘密を握る). “Nắm vấn đề” không phải collocation."
    },
    "g": [
     "<b class=\"jp\">Vている</b>: trạng thái kéo dài (đang mang vấn đề)."
@@ -72,7 +73,8 @@
    "n": [
     "Collocation: 問題を抱える, 借金を抱える (gánh nợ), 悩みを抱える (mang nỗi lo), 頭を抱える (vò đầu bứt tai).",
     "Cùng chữ 抱: 抱く だく (ôm) / いだく (ấp ủ: 夢を抱く)."
-   ]
+   ],
+   "why": "Tân ngữ là 問題 (vấn đề). Kết hợp cố định: <b>問題を抱える</b> (đang ôm, gánh vấn đề). Thể ている chỉ trạng thái kéo dài — công ty đang mang nhiều vấn đề."
   },
   {
    "s": "最終コーナーを曲がったとき、ひざに（　）痛みを感じた。",
@@ -100,9 +102,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">細い</span> (TẾ): mảnh, gầy. Không đi với 痛み.",
-    "2": "<span class=\"jp\">鋭い</span> (DUỆ): sắc, nhọn; 鋭い痛み = đau nhói. Về nghĩa cụm này cũng tự nhiên, nhưng đáp án của đề là 鈍い. Nên nhớ cả cặp 鈍い痛み / 鋭い痛み.",
-    "4": "<span class=\"jp\">粗い</span> (THÔ): thô, ráp; <span class=\"jp\">荒い</span> (HOANG): dữ dội (波が荒い)."
+    "1": "細い (mảnh, gầy): tả hình dáng (細い道, 細い指). Không dùng tả cơn đau.",
+    "2": "鋭い (sắc, nhọn): 鋭い痛み (đau nhói) cũng là cụm có thật. Đề chọn 鈍い; khi gặp cả hai trong đề, xem kỹ ngữ cảnh (đau như dao đâm → 鋭い; ê ẩm, nặng → 鈍い). Nên nhớ cả cặp.",
+    "4": "粗い (thô ráp) / 荒い (dữ dội): tả bề mặt hoặc tính chất (目が粗い, 波が荒い, 金遣いが荒い). Không đi với 痛み."
    },
    "g": [
     "<b class=\"jp\">Vたとき</b>: khi đã (làm xong hành động)…"
@@ -110,7 +112,8 @@
    "n": [
     "鈍い còn dùng: 動きが鈍い (chậm chạp), 勘が鈍い (kém nhạy), 鈍い音 (tiếng động trầm đục).",
     "Tả cơn đau: ずきずき (nhức từng cơn), ちくちく (châm chích), ひりひり (rát), がんがん (đau như búa bổ)."
-   ]
+   ],
+   "why": "Danh từ cần bổ nghĩa là 痛み (cơn đau). Tính từ tả kiểu đau: <b>鈍い痛み</b> (đau âm ỉ) và 鋭い痛み (đau nhói). Đáp án của đề là 鈍い — cơn đau ê ẩm ở đầu gối khi chạy vào khúc cua cuối."
   },
   {
    "s": "明日ゴルフだというのに（　）雨のようですね。",
@@ -132,9 +135,9 @@
     }
    ],
    "x": {
-    "1": "lơ đễnh, sơ ý (うっかり忘れた). Chỉ hành động vô ý của người, không tả thời tiết.",
-    "2": "<span class=\"jp\">折角</span>: cất công, hiếm hoi mới có (せっかくの休み, せっかく来たのに). Phải bổ nghĩa cho hành động hay danh từ đáng quý, không đứng trước 雨.",
-    "4": "cất công, cố tình (わざわざ来てくれた)."
+    "1": "うっかり (sơ ý, lơ đễnh): chỉ hành động vô ý của con người (うっかり忘れた). Thời tiết không thể “sơ ý”.",
+    "2": "せっかく (cất công, hiếm có): đi với danh từ hay hành động đáng quý (せっかくの休み, せっかく来たのに). “せっかく雨” vô nghĩa — mưa không phải điều đáng quý ở đây.",
+    "4": "わざわざ (cất công, cố tình): chỉ hành động có chủ ý của người (わざわざ来てくれた). Mưa không có chủ ý."
    },
    "g": [
     "<b class=\"jp\">〜というのに</b>: vậy mà, thế mà (bất mãn vì kết quả trái mong đợi).",
@@ -142,7 +145,8 @@
    ],
    "n": [
     "あいにく còn dùng khi từ chối lịch sự: あいにく、その日は都合が悪いです (rất tiếc hôm đó tôi bận)."
-   ]
+   ],
+   "why": "Câu có <b>〜というのに</b> (vậy mà) → kết quả trái mong đợi, không may. Phó từ chỉ “thật không may (do hoàn cảnh)” là <b>あいにく</b>. Trời mưa đúng ngày đi gôn → あいにく雨."
   },
   {
    "s": "ずっと彼にうそをついているのが（　）なってきた。",
@@ -164,9 +168,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">いたましい</span> (THỐNG): thương tâm, đau lòng khi chứng kiến chuyện của người khác (痛ましい事故).",
-    "3": "<span class=\"jp\">おもくるしい</span> (TRỌNG KHỔ): nặng nề, ngột ngạt (không khí, tâm trạng chung). 重苦しい雰囲気.",
-    "4": "<span class=\"jp\">憎い</span> (TĂNG) にくい: đáng ghét. Không hợp nghĩa."
+    "1": "痛ましい (thương tâm): cảm xúc khi chứng kiến bi kịch của người khác (痛ましい事故). Không tả cảm giác của bản thân khi nói dối.",
+    "3": "重苦しい (nặng nề, ngột ngạt): tả bầu không khí, tâm trạng chung (重苦しい雰囲気). Không hợp với chủ ngữ “việc nói dối”.",
+    "4": "にくい (憎い: đáng ghét): sai nghĩa. Nếu hiểu là đuôi 〜にくい (khó làm) thì phải gắn sau Vます, không đứng một mình."
    },
    "g": [
     "<b class=\"jp\">Aく + なってきた</b>: dần trở nên… (biến đổi tới hiện tại).",
@@ -174,7 +178,8 @@
    ],
    "n": [
     "Cùng chữ 辛: からい (cay) — xem Đề 1 câu 4."
-   ]
+   ],
+   "why": "Chủ thể cảm nhận là chính người nói (nói dối mãi thấy khổ). Tính từ chỉ nỗi khổ sở của bản thân là <b>つらい</b> (辛い). Aく＋なってきた: dần trở nên khổ sở."
   },
   {
    "s": "彼女とは久しぶりに会ったので、何時間話しても話が（　）。",
@@ -196,9 +201,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">かぎりない</span>: vô hạn, bất tận. Dùng như tính từ bổ nghĩa (限りない愛), không làm vị ngữ cho 話が.",
-    "2": "<span class=\"jp\">衰える</span> (SUY) おとろえる: suy yếu (体力が衰える, 人気が衰える).",
-    "4": "<span class=\"jp\">枯れる</span> (KHÔ) かれる: héo, khô (花が枯れる)."
+    "1": "限りない (vô hạn): là tính từ dùng bổ nghĩa trước danh từ (限りない愛). “話が限りない” không phải cách nói.",
+    "2": "衰えない (không suy yếu): chủ ngữ phải là thứ có sức lực, độ nổi tiếng (体力, 人気). Câu chuyện không “suy yếu”.",
+    "4": "枯れない (không héo): dùng cho cây cỏ, nguồn nước (花が枯れる, 井戸が枯れる). Không dùng cho câu chuyện."
    },
    "g": [
     "<b class=\"jp\">何時間〜ても</b>: dù bao nhiêu tiếng… đi nữa.",
@@ -207,7 +212,8 @@
    "n": [
     "Collocation: 話が尽きない (nói mãi không hết), 話題が尽きない, 力が尽きる (kiệt sức), 運が尽きる (hết vận).",
     "Tha động từ: 尽くす つくす (tận lực): 全力を尽くす."
-   ]
+   ],
+   "why": "Chủ ngữ là 話 (câu chuyện). Collocation <b>話が尽きない</b>: chuyện nói mãi không hết. 尽きる (cạn, hết) ở thể phủ định. Ngữ cảnh lâu ngày gặp lại, nói mấy tiếng vẫn không hết chuyện → hợp."
   },
   {
    "s": "給与を引き上げただけでは社員の不満は（　）しない。",
@@ -241,16 +247,17 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">ていし</span> (ĐÌNH CHỈ): dừng (運転停止, 営業停止).",
-    "2": "<span class=\"jp\">げんりょう</span> (GIẢM LƯỢNG): giảm cân, giảm lượng.",
-    "3": "<span class=\"jp\">さくじょ</span> (TƯỚC TRỪ): xóa bỏ (dữ liệu, câu chữ)."
+    "1": "停止 (đình chỉ, dừng): dùng cho hoạt động, máy móc (運転停止, 営業停止). Không dùng cho cảm xúc.",
+    "2": "減量 (giảm lượng, giảm cân): dùng cho cân nặng, khối lượng. 不満が減量 không phải cách nói.",
+    "3": "削除 (xóa bỏ): dùng cho dữ liệu, câu chữ, điều khoản (データを削除). Không dùng cho cảm xúc."
    },
    "g": [
     "<b class=\"jp\">Vただけでは〜ない</b>: chỉ riêng việc… thì chưa (đủ để)…"
    ],
    "n": [
     "Collocation: ストレス解消, 不満を解消する, 渋滞を解消する, 契約を解消する."
-   ]
+   ],
+   "why": "Đối tượng là 不満 (bất mãn). Collocation <b>不満を解消する</b>: giải tỏa, xóa bỏ bất mãn. Câu: chỉ tăng lương thì sự bất mãn cũng không được giải tỏa."
   },
   {
    "s": "彼は収入に（　）して出費が多くなった。",
@@ -284,16 +291,17 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">たいおう</span> (ĐỐI ỨNG): ứng phó, đáp ứng (客に対応する, 変化に対応する). Không diễn tả quan hệ tăng theo.",
-    "3": "<span class=\"jp\">おうとう</span> (ỨNG ĐÁP): trả lời, phản hồi.",
-    "4": "<span class=\"jp\">ひかく</span> (TỶ GIẢO): so sánh, đi với と: 〜と比較して."
+    "1": "対応 (ứng phó, đáp ứng): 〜に対応する nghĩa là ứng phó với thay đổi, đáp ứng khách. Không diễn tả “tăng theo”.",
+    "3": "応答 (trả lời, phản hồi): dùng cho hỏi–đáp, tín hiệu. Không có nghĩa tỷ lệ.",
+    "4": "比較 (so sánh): đi với と (〜と比較して) và chỉ so sánh, không nói chi tiêu tăng theo thu nhập."
    },
    "g": [
     "<b class=\"jp\">〜に比例して</b>: tỷ lệ thuận với… ↔ 〜に反比例して はんぴれい (tỷ lệ nghịch)."
    ],
    "n": [
     "Mẫu gần nghĩa ở N2: 〜につれて, 〜に伴って, 〜とともに (cùng với… thì…)."
-   ]
+   ],
+   "why": "Chi tiêu tăng theo thu nhập → quan hệ tăng cùng chiều. Mẫu <b>〜に比例して</b>: tỷ lệ thuận với. Trợ từ に trước chỗ trống cũng khớp với 比例する."
   },
   {
    "s": "ぼくの部屋は通りに（　）いるから、ときどきうるさいんだ。",
@@ -315,16 +323,17 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">対する</span>: đối với. Thường dùng dạng 〜に対して, không tả vị trí căn phòng.",
-    "2": "<span class=\"jp\">属する</span> (THUỘC) ぞくする: thuộc về (組織に属する).",
-    "3": "<span class=\"jp\">適する</span> (THÍCH) てきする: thích hợp (〜に適している)."
+    "1": "対する (đối với): gần như chỉ dùng trong mẫu 〜に対して (đối với, trái với). Không tả vị trí.",
+    "2": "属する (thuộc về): dùng cho tổ chức, nhóm (クラブに属する). Căn phòng không “thuộc về” con đường.",
+    "3": "適する (thích hợp): 〜に適している (phù hợp với). Nói “phòng phù hợp với đường” không hợp nghĩa và không giải thích được lý do ồn."
    },
    "g": [
     "<b class=\"jp\">〜んだ</b>: giải thích lý do (khẩu ngữ)."
    ],
    "n": [
     "Hay gặp: 海に面したホテル (khách sạn nhìn ra biển), 危機に面する (đối mặt khủng hoảng; thường dùng 直面する ちょくめんする)."
-   ]
+   ],
+   "why": "Câu tả vị trí căn phòng (nhìn ra đường nên ồn). Động từ chỉ “hướng ra, giáp mặt với” là <b>面する</b>: 通りに面している."
   },
   {
    "s": "{洗面所|せんめんじょ}のトイレが一つ（　）いて使えません。",
@@ -352,9 +361,9 @@
     }
    ],
    "x": {
-    "2": "<span class=\"jp\">潜る</span> (TIỀM) もぐる: lặn, chui vào (海に潜る, 布団に潜る).",
-    "3": "đề in “うまいて”, nhiều khả năng là lỗi in của <span class=\"jp\">埋まって</span> (MAI) うまって: bị lấp đầy, bị vùi (席が埋まる: kín chỗ).",
-    "4": "<span class=\"jp\">沈む</span> (TRẦM) しずむ: chìm, lặn (太陽が沈む)."
+    "2": "潜る (lặn, chui vào): chủ thể là người, động vật (海に潜る, 布団に潜る). Bồn cầu không “lặn”.",
+    "3": "Đề in “うまいて” — không có dạng này (nhiều khả năng là lỗi in của 埋まって: bị lấp, kín chỗ). Kể cả là 埋まる thì cũng dùng cho chỗ ngồi, hố đất, không dùng cho bồn cầu bị tắc.",
+    "4": "沈む (chìm, lặn): dùng cho tàu, mặt trời (船が沈む). Không hợp nghĩa."
    },
    "g": [
     "<b class=\"jp\">Vて + 使えません</b>: vì… nên không thể dùng."
@@ -362,7 +371,8 @@
    "n": [
     "詰まる: 鼻が詰まる (nghẹt mũi), 言葉に詰まる (nghẹn lời), 予定が詰まっている (lịch kín).",
     "Tha động từ: 詰める つめる (nhồi, xếp chặt; ngồi xích lại)."
-   ]
+   ],
+   "why": "Bồn cầu không dùng được → bị tắc. Động từ chỉ đường ống bị nghẽn là <b>詰まる</b>: トイレが詰まる."
   },
   {
    "s": "ロシア語ができるのが彼女の（　）ですね。",
@@ -384,9 +394,9 @@
     }
    ],
    "x": {
-    "2": "<span class=\"jp\">ふかみ</span>: chiều sâu (味に深みがある: vị đậm đà).",
-    "3": "<span class=\"jp\">おもみ</span>: sức nặng, trọng lượng (言葉の重み).",
-    "4": "<span class=\"jp\">たかみ</span>: chỗ cao. 高みの見物 (đứng ngoài xem)."
+    "2": "深み (chiều sâu, độ đậm): dùng cho hương vị, tính cách (味に深みがある). Không phải lợi thế kỹ năng.",
+    "3": "重み (sức nặng, uy tín): dùng cho lời nói, trách nhiệm (言葉の重み). Không nói kỹ năng ngoại ngữ là “sức nặng”.",
+    "4": "高み (chỗ cao): chủ yếu trong 高みの見物 (đứng ngoài xem). Không hợp nghĩa."
    },
    "g": [
     "<b class=\"jp\">Vるのが〜だ</b>: việc… là…"
@@ -394,7 +404,8 @@
    "n": [
     "Hậu tố 〜み tạo danh từ chỉ điểm, cảm nhận: 強み, 弱み, 楽しみ, 悲しみ. 〜さ chỉ mức độ đo được: 強さ, 深さ.",
     "弱みを握る: nắm được điểm yếu của ai."
-   ]
+   ],
+   "why": "Biết tiếng Nga là lợi thế của cô ấy → <b>強み</b> (điểm mạnh). Hậu tố 〜み biến tính từ thành danh từ chỉ “điểm, cảm giác”."
   },
   {
    "s": "秋は読書の（　）です。",
@@ -422,14 +433,15 @@
     }
    ],
    "x": {
-    "1": "master: chủ quán; thạc sĩ; thành thạo (マスターする).",
-    "2": "chorus: hợp xướng.",
-    "3": "partner: đối tác, bạn đời."
+    "1": "マスター (chủ quán, thạc sĩ, thành thạo): không chỉ thời gian; “mùa thu là chủ quán của việc đọc sách” vô nghĩa.",
+    "2": "コーラス (hợp xướng): không liên quan đến mùa hay đọc sách.",
+    "3": "パートナー (đối tác, bạn đời): không chỉ thời gian."
    },
    "n": [
     "Các cụm quen thuộc về mùa thu: 読書の秋, スポーツの秋, 食欲の秋, 芸術の秋.",
     "Liên quan: シーズンオフ (mùa thấp điểm), オフシーズン, 受験シーズン (mùa thi)."
-   ]
+   ],
+   "why": "Cụm cố định <b>読書のシーズン</b> / 読書の秋: mùa thu là mùa đọc sách. シーズン ＝ mùa, thời điểm thích hợp."
   },
   {
    "s": "雨に降られて、{上着|うわぎ}が（　）{濡|ぬ}れた。",
@@ -463,16 +475,17 @@
     }
    ],
    "x": {
-    "1": "ngủ say (ぐっすり眠る).",
-    "2": "mệt lả, rũ rượi (疲れてぐったりする).",
-    "3": "vừa khít, vừa vặn (サイズがぴったり)."
+    "1": "ぐっすり (ngủ say): chỉ đi với 眠る, 寝る.",
+    "2": "ぐったり (mệt lả, rũ rượi): tả cơ thể kiệt sức, không tả quần áo ướt.",
+    "3": "ぴったり (vừa khít, vừa khớp): tả kích cỡ, thời gian (サイズがぴったり). Không đi với 濡れる."
    },
    "g": [
     "<b class=\"jp\">雨に降られる</b>: bị động gián tiếp (bị làm phiền), bị mắc mưa."
    ],
    "n": [
     "Gần nghĩa: びしょびしょ, びしょ濡れ. 汗びっしょり: đầm đìa mồ hôi."
-   ]
+   ],
+   "why": "Động từ là 濡れる (bị ướt) và nguyên nhân là mắc mưa. Từ tượng thái chỉ “ướt sũng” là <b>びっしょり</b>: びっしょり濡れる."
   },
   {
    "s": "（　）言っておくが、これは楽な仕事ではない。",
@@ -494,9 +507,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">おもいきって</span>: mạnh dạn, dứt khoát (思い切って告白する).",
-    "2": "<span class=\"jp\">いっきに</span>: một mạch, một hơi (xem câu 19).",
-    "3": "<span class=\"jp\">いっせいに</span> (NHẤT TỀ): đồng loạt."
+    "1": "思い切って (mạnh dạn, dứt khoát): dùng khi lấy hết can đảm làm gì (思い切って告白する). Câu chỉ “nói trước”, không cần can đảm.",
+    "2": "一気に (một mạch, một hơi): chỉ làm liên tục không nghỉ. Không đi với ý “nói trước”.",
+    "3": "一斉に (đồng loạt): cần nhiều chủ thể cùng làm. Ở đây chỉ có một người nói."
    },
    "g": [
     "<b class=\"jp\">Vておく</b>: làm trước (để chuẩn bị). 言っておく = nói trước.",
@@ -504,7 +517,8 @@
    ],
    "n": [
     "Đồng nghĩa khẩu ngữ: 前もって まえもって. 予め thường đi với Vておく: 予め準備しておく."
-   ]
+   ],
+   "why": "Động từ là <b>言っておく</b> (Vておく: làm trước để chuẩn bị). Phó từ “trước, sẵn từ trước” là <b>予め</b>: 予め言っておく (nói trước cho biết)."
   },
   {
    "s": "{大雨|おおあめ}で{地盤|じばん}が{緩|ゆる}み、{落石|らくせき}が（　）落ちて来た。",
@@ -544,9 +558,9 @@
     }
    ],
    "x": {
-    "1": "đi lang thang (町をぶらぶらする); đung đưa lủng lẳng.",
-    "3": "đung đưa nhè nhẹ (ろうそくの火がゆらゆら).",
-    "4": "đi loanh quanh, lảng vảng (không có mục đích, bồn chồn)."
+    "1": "ぶらぶら (lang thang; đung đưa lủng lẳng): tả người đi dạo hoặc vật treo. Đá rơi xuống không “đi dạo”.",
+    "3": "ゆらゆら (đung đưa nhè nhẹ): tả ngọn lửa, cành cây lay. Không tả đá lăn.",
+    "4": "うろうろ (đi loanh quanh, lảng vảng): chủ thể là người hoặc động vật."
    },
    "g": [
     "<b class=\"jp\">Vます形、〜</b> (緩み、): thể liên dụng nối câu trong văn viết, tương đương 緩んで.",
@@ -554,7 +568,8 @@
    ],
    "n": [
     "ごろごろ còn dùng: 家でごろごろする (nằm ườn ở nhà), 雷がごろごろ鳴る (sấm rền), 目がごろごろする (cộm mắt)."
-   ]
+   ],
+   "why": "Chủ ngữ là 落石 (đá rơi), động từ 落ちて来た. Từ tượng thanh/tượng thái cho vật nặng lăn lông lốc là <b>ごろごろ</b>."
   },
   {
    "s": "この切符は、明日まで（　）です。",
@@ -576,16 +591,17 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">こうよう</span> (HIỆU DỤNG): công dụng (薬の効用).",
-    "2": "<span class=\"jp\">けんり</span> (QUYỀN LỢI): quyền (↔ 義務 nghĩa vụ).",
-    "3": "<span class=\"jp\">りてん</span> (LỢI ĐIỂM): ưu điểm."
+    "1": "効用 (công dụng): dùng cho thuốc, sản phẩm (薬の効用). Vé không có “công dụng đến ngày mai”.",
+    "2": "権利 (quyền lợi): chủ thể có quyền là người, không phải tấm vé.",
+    "3": "利点 (ưu điểm): không đi với mốc thời gian 〜まで."
    },
    "g": [
     "<b class=\"jp\">〜まで</b>: đến (mốc thời gian) — hiệu lực kéo dài đến hết ngày mai."
    ],
    "n": [
     "有効期限 ゆうこうきげん: hạn sử dụng/hiệu lực. 時間を有効に使う: dùng thời gian hiệu quả."
-   ]
+   ],
+   "why": "Chủ ngữ là 切符 (vé), có mốc 明日まで (đến ngày mai). Tính chất của vé “còn hiệu lực đến ngày…” là <b>有効</b>."
   },
   {
    "s": "彼はちょっとしたことにもすぐ腹を（　）。",
@@ -607,9 +623,9 @@
     }
    ],
    "x": {
-    "2": "<span class=\"jp\">腹を割る</span>: thẳng thắn, nói thật lòng (腹を割って話す).",
-    "3": "<span class=\"jp\">腹を切る</span>: mổ bụng tự sát; nghĩa bóng: nhận trách nhiệm.",
-    "4": "<span class=\"jp\">腹を決める</span>: hạ quyết tâm (≈ 腹をくくる)."
+    "2": "腹を割る (thẳng thắn, nói thật lòng): 腹を割って話す. Không liên quan đến nổi giận.",
+    "3": "腹を切る (mổ bụng; nhận trách nhiệm): sai nghĩa hoàn toàn.",
+    "4": "腹を決める (hạ quyết tâm): không phải phản ứng với chuyện nhỏ nhặt."
    },
    "g": [
     "<b class=\"jp\">ちょっとした</b>: nhỏ nhặt, không đáng kể.",
@@ -617,7 +633,8 @@
    ],
    "n": [
     "Cặp tự/tha: 腹が立つ (tức giận) / 腹を立てる (nổi giận). Quán ngữ với 腹 khác: 腹が黒い (thâm hiểm)."
-   ]
+   ],
+   "why": "Ngữ cảnh: chuyện cỏn con cũng ... ngay → nổi giận. Quán ngữ <b>腹を立てる</b>: nổi giận (tự động từ tương ứng: 腹が立つ)."
   },
   {
    "s": "交通渋滞で少しも動けないので車の中で（　）している。",
@@ -645,16 +662,17 @@
     }
    ],
    "x": {
-    "2": "nói trôi chảy (tiếng nước ngoài); lật giở trang sách.",
-    "3": "trôi chảy, suôn sẻ (すらすら読む, すらすら解ける).",
-    "4": "hồi hộp háo hức (điều sắp tới vui)."
+    "2": "ぺらぺら (nói trôi chảy; lật trang): không tả cảm xúc khi kẹt xe.",
+    "3": "すらすら (trôi chảy, suôn sẻ): ngược ngữ cảnh — xe đang không đi được.",
+    "4": "わくわく (háo hức hồi hộp vì điều vui sắp tới): cảm xúc tích cực, trái với tình huống tắc đường."
    },
    "g": [
     "<b class=\"jp\">少しも〜ない</b>: không… chút nào."
    ],
    "n": [
     "いらいらする: sốt ruột, cáu vì mọi việc không như ý. Gần nghĩa: むかむか (buồn nôn; tức tối)."
-   ]
+   ],
+   "why": "Tắc đường, không nhích được chút nào → cảm xúc bực bội, sốt ruột → <b>いらいら</b>する."
   },
   {
    "s": "途中寄り道をせず、{岡山|おかやま}まで（　）車を飛ばした。",
@@ -682,9 +700,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">いっせいに</span>: đồng loạt (nhiều người/vật cùng lúc).",
-    "2": "<span class=\"jp\">あらためて</span>: lại lần nữa, dịp khác (改めて連絡します).",
-    "4": "<span class=\"jp\">おもいきって</span>: mạnh dạn, dứt khoát."
+    "1": "一斉に (đồng loạt): cần nhiều người/vật cùng lúc. Chỉ có một người lái xe.",
+    "2": "改めて (lại lần nữa, dịp khác): không có ý “liên tục không dừng”.",
+    "4": "思い切って (mạnh dạn): nói về quyết định táo bạo, không liên quan việc không ghé dọc đường."
    },
    "g": [
     "<b class=\"jp\">Vず(に)</b>: không làm… mà (văn viết của ないで). する → せず.",
@@ -692,7 +710,8 @@
    ],
    "n": [
     "一気に: 一気に飲む (uống một hơi), 一気に読み終える (đọc một mạch hết)."
-   ]
+   ],
+   "why": "寄り道をせず (không la cà) → chạy liền một mạch đến Okayama. Phó từ “một hơi, một mạch” là <b>一気に</b>."
   },
   {
    "s": "年末の完成を（　）工事を進める。",
@@ -720,9 +739,9 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">眺める</span> (THIẾU) ながめる: ngắm nhìn (景色を眺める).",
-    "2": "<span class=\"jp\">見上げる</span>: ngước nhìn; ngưỡng mộ.",
-    "3": "<span class=\"jp\">見下ろす</span>: nhìn xuống (từ trên cao). Khác 見下す みくだす (coi thường)."
+    "1": "眺める (ngắm nhìn): đối tượng là cảnh vật nhìn bằng mắt. Không “ngắm” sự hoàn thành.",
+    "2": "見上げる (ngước nhìn, ngưỡng mộ): dùng cho vật ở trên cao hoặc người đáng kính.",
+    "3": "見下ろす (nhìn xuống từ trên cao): chỉ hướng nhìn vật lý, không phải mục tiêu."
    },
    "g": [
     "<b class=\"jp\">〜を目指して</b>: hướng tới (mục tiêu)…",
@@ -730,7 +749,8 @@
    ],
    "n": [
     "目指す: 合格を目指す (nhắm đến đỗ), 頂上を目指す (hướng lên đỉnh)."
-   ]
+   ],
+   "why": "Tân ngữ là 完成 (hoàn thành) — một mục tiêu. Động từ <b>目指す</b> (nhắm tới): 〜を目指して工事を進める (tiến hành thi công hướng tới mục tiêu)."
   }
  ],
  "no": 2,
@@ -741,5 +761,153 @@
   "goc": "172NfEmOfXeUpahQv1Hn3ge-W-2apyUNw",
   "chua": "1qxQjPxxp24RejO_r-8iDJluWmw8eOK1a"
  },
- "folderLabel": "Ngữ pháp"
+ "folderLabel": "Ngữ pháp",
+ "sum": [
+  {
+   "h": "Cách làm dạng 文脈規定 (問題4 · điền từ theo ngữ cảnh)",
+   "li": [
+    "Bước 1: tìm <b>từ đi kèm</b> ngay trước/sau chỗ trống (trợ từ, danh từ, động từ). Hầu hết câu giải được bằng collocation: 問題を<b>抱える</b>, 話が<b>尽きない</b>, 不満を<b>解消</b>する, 腹を<b>立てる</b>.",
+    "Bước 2: xác định <b>chủ thể</b> — người hay vật? Các phó từ うっかり, わざわざ, 思い切って chỉ dùng cho hành động có ý thức của người.",
+    "Bước 3: xem <b>dấu hiệu ngữ pháp</b>: 〜というのに (trái mong đợi → あいにく), Vておく (làm trước → 予め), 〜まで (hạn → 有効).",
+    "Bước 4: các phương án thường cùng nhóm hình thức (cùng đuôi 〜み, cùng chữ 見〜, cùng dạng láy) — phân biệt bằng nghĩa cụ thể, không đoán theo cảm giác."
+   ]
+  },
+  {
+   "h": "Từ láy (オノマトペ) trong đề và nhóm mở rộng",
+   "tbl": {
+    "head": [
+     "Từ",
+     "Nghĩa",
+     "Đi với"
+    ],
+    "rows": [
+     [
+      "びっしょり",
+      "ướt sũng",
+      "濡れる, 汗びっしょり"
+     ],
+     [
+      "ぐっすり",
+      "ngủ say",
+      "眠る"
+     ],
+     [
+      "ぐったり",
+      "mệt lả",
+      "疲れて〜する"
+     ],
+     [
+      "ぴったり",
+      "vừa khít",
+      "サイズ, 時間"
+     ],
+     [
+      "ごろごろ",
+      "lăn lông lốc; nằm ườn; sấm rền",
+      "石が転がる, 家で〜する"
+     ],
+     [
+      "いらいら",
+      "bực bội, sốt ruột",
+      "渋滞で〜する"
+     ],
+     [
+      "わくわく",
+      "háo hức",
+      "旅行の前に〜する"
+     ],
+     [
+      "すらすら / ぺらぺら",
+      "trôi chảy / nói lưu loát",
+      "読む, 解ける / 英語が〜"
+     ],
+     [
+      "うろうろ / ぶらぶら",
+      "lảng vảng / đi dạo",
+      "店の前を〜 / 町を〜"
+     ],
+     [
+      "ゆらゆら / ぐらぐら",
+      "đung đưa nhẹ / lung lay mạnh",
+      "炎 / 地震で家が〜"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Phó từ dễ nhầm",
+   "tbl": {
+    "head": [
+     "Từ",
+     "Nghĩa",
+     "Sắc thái"
+    ],
+    "rows": [
+     [
+      "あいにく",
+      "không may",
+      "do hoàn cảnh bên ngoài; cũng dùng từ chối lịch sự"
+     ],
+     [
+      "せっかく",
+      "cất công, hiếm có",
+      "tiếc vì công sức / cơ hội bị phí: せっかく来たのに"
+     ],
+     [
+      "わざわざ",
+      "cất công, cố ý",
+      "người khác bỏ công làm cho mình: わざわざありがとう"
+     ],
+     [
+      "うっかり",
+      "sơ ý",
+      "lỗi vô ý của bản thân"
+     ],
+     [
+      "予め / 前もって",
+      "trước, sẵn",
+      "đi với Vておく"
+     ],
+     [
+      "一気に",
+      "một mạch",
+      "làm liên tục đến xong"
+     ],
+     [
+      "一斉に",
+      "đồng loạt",
+      "nhiều chủ thể cùng lúc"
+     ],
+     [
+      "思い切って",
+      "mạnh dạn",
+      "lấy hết can đảm"
+     ],
+     [
+      "改めて",
+      "lại lần nữa, dịp khác",
+      "改めて連絡します"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Quán ngữ với 腹 và collocation cần thuộc",
+   "li": [
+    "<b>腹</b>: 腹が立つ / 腹を立てる (tức giận), 腹を割る (nói thật lòng), 腹を決める / 腹をくくる (quyết tâm), 腹が黒い (thâm hiểm), 腹八分目 (ăn vừa no).",
+    "<b>抱える</b>: 問題を〜, 借金を〜, 悩みを〜, 頭を〜 (vò đầu bứt tai).",
+    "<b>尽きる / 尽くす</b>: 話が尽きない, 力が尽きる, 全力を尽くす (dốc toàn lực).",
+    "<b>解消</b>: ストレス解消, 不満を解消, 渋滞を解消, 契約を解消.",
+    "<b>面する</b>: 海に面したホテル, 通りに面した部屋; 直面する (đối mặt khó khăn)."
+   ]
+  },
+  {
+   "h": "Hậu tố 〜み và 〜さ",
+   "li": [
+    "〜み: điểm, cảm nhận mang tính chất lượng: 強み (thế mạnh), 弱み (điểm yếu), 深み (chiều sâu), 重み (sức nặng), 楽しみ, 悲しみ, 痛み.",
+    "〜さ: mức độ đo được: 強さ, 深さ, 重さ, 高さ. Ví dụ: 水の深さ (độ sâu của nước) ≠ 味の深み (độ đậm đà).",
+    "Không phải tính từ nào cũng có 〜み: 大きさ có, “大きみ” không có."
+   ]
+  }
+ ]
 }

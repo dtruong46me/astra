@@ -6,111 +6,730 @@
  "title": "Đề 11 · Kanji N2",
  "jp": "表記",
  "mondai": "<b>問題2</b> ＿＿の言葉を漢字で書くとき、最もよいものを1・2・3・4から一つ選びなさい。 Chọn cách viết chữ Hán đúng cho từ gạch chân.",
- "src": {"folder": "1hd-JaV0ycmjMZSqrzvWGXyna2cnVyQuT", "goc": "1BsHW96TXlRNFtKh1AwB1-04wZHpwPGXa", "chua": "1TYjTJosHww2y_zp6ufWrcfic6mX84jTe"},
+ "src": {
+  "folder": "1hd-JaV0ycmjMZSqrzvWGXyna2cnVyQuT",
+  "goc": "1BsHW96TXlRNFtKh1AwB1-04wZHpwPGXa",
+  "chua": "1TYjTJosHww2y_zp6ufWrcfic6mX84jTe"
+ },
  "qs": [
-  {"s": "大会の_かいさい_の準備をする。", "o": ["開講", "開場", "開演", "開催"], "a": 4, "ar": "かいさい",
+  {
+   "s": "大会の_かいさい_の準備をする。",
+   "o": [
+    "開講",
+    "開場",
+    "開演",
+    "開催"
+   ],
+   "a": 4,
+   "ar": "かいさい",
    "vi": "Chuẩn bị cho việc tổ chức đại hội.",
-   "key": [{"w": "開催", "r": "かいさい", "hv": "KHAI THÔI", "m": "tổ chức (sự kiện)"}],
-   "x": {"1": "<span class=\"jp\">開講</span> かいこう: khai giảng khóa học.", "2": "<span class=\"jp\">開場</span> かいじょう: mở cửa hội trường.", "3": "<span class=\"jp\">開演</span> かいえん: bắt đầu biểu diễn."},
-   "n": ["催 さい: 主催 しゅさい (đứng ra tổ chức). Kun: 催す もよおす (câu 13)."]},
-  {"s": "彼女の_しょうじょう_は次第に悪化してきた。", "o": ["症情", "障状", "症状", "障情"], "a": 3, "ar": "しょうじょう",
+   "key": [
+    {
+     "w": "開催",
+     "r": "かいさい",
+     "hv": "KHAI THÔI",
+     "m": "tổ chức (sự kiện)"
+    }
+   ],
+   "x": {
+    "1": "開講 (かいこう: khai giảng khóa học). Khác âm (こう); đại hội không “khai giảng”.",
+    "2": "開場 (かいじょう: mở cửa hội trường cho khách vào). Khác âm (じょう); chỉ là một bước, không phải “tổ chức đại hội”.",
+    "3": "開演 (かいえん: bắt đầu buổi diễn). Khác âm (えん); dùng cho kịch, hòa nhạc."
+   },
+   "n": [
+    "催 さい: 主催 しゅさい (đứng ra tổ chức). Kun: 催す もよおす (câu 13)."
+   ],
+   "why": "大会の〜 ＝ <b>tổ chức</b> đại hội. 開 (KHAI: mở) ＋ 催 (THÔI: tổ chức, triệu tập) ＝ <b>開催</b> (かいさい). Cùng chữ 催 với 催し (sự kiện) ở câu 13."
+  },
+  {
+   "s": "彼女の_しょうじょう_は次第に悪化してきた。",
+   "o": [
+    "症情",
+    "障状",
+    "症状",
+    "障情"
+   ],
+   "a": 3,
+   "ar": "しょうじょう",
    "vi": "Triệu chứng của cô ấy dần xấu đi.",
-   "key": [{"w": "症状", "r": "しょうじょう", "hv": "CHỨNG TRẠNG", "m": "triệu chứng"}],
-   "x": {"1": "không có.", "2": "không có. 障 (CHƯỚNG) như 障害, 故障.", "4": "không có."},
-   "n": ["症 có bộ nạch 疒 (bệnh): 病, 痛, 疲. 状 じょう: 状態, 状況."]},
-  {"s": "弟が私の結婚式の写真_さつえい_を担当した。", "o": ["撮栄", "撮営", "撮映", "撮影"], "a": 4, "ar": "さつえい",
+   "key": [
+    {
+     "w": "症状",
+     "r": "しょうじょう",
+     "hv": "CHỨNG TRẠNG",
+     "m": "triệu chứng"
+    }
+   ],
+   "x": {
+    "1": "症情: không có từ này. 情 (TÌNH: tình cảm) đọc じょう nhưng không mang nghĩa trạng thái bệnh.",
+    "2": "障状: không có từ này. 障 (CHƯỚNG: trở ngại — 障害, 故障) đọc しょう nhưng không phải “bệnh chứng”.",
+    "4": "障情: không có từ này. Sai cả hai chữ."
+   },
+   "n": [
+    "症 có bộ nạch 疒 (bệnh): 病, 痛, 疲. 状 じょう: 状態, 状況."
+   ],
+   "why": "Thứ “xấu dần đi” của người bệnh → <b>triệu chứng</b>. 症 (CHỨNG: bệnh chứng) ＋ 状 (TRẠNG: tình trạng) ＝ <b>症状</b> (しょうじょう)."
+  },
+  {
+   "s": "弟が私の結婚式の写真_さつえい_を担当した。",
+   "o": [
+    "撮栄",
+    "撮営",
+    "撮映",
+    "撮影"
+   ],
+   "a": 4,
+   "ar": "さつえい",
    "vi": "Em trai tôi phụ trách chụp ảnh đám cưới của tôi.",
-   "key": [{"w": "撮影", "r": "さつえい", "hv": "TOÁT ẢNH", "m": "chụp ảnh, quay phim"}],
-   "x": {"1": "không có. 栄 (VINH) = 栄養.", "2": "không có. 営 (DOANH) = 営業.", "3": "không có. 映 (ÁNH) dễ nhầm vì 映画, 映像."},
-   "n": ["Xem Đề 10 câu 5 (đọc 撮影)."]},
-  {"s": "_うで_に黄色いリボンをつけているのはツアーのお客様です。", "o": ["腕", "胸", "肩", "腹"], "a": 1, "ar": "うで",
+   "key": [
+    {
+     "w": "撮影",
+     "r": "さつえい",
+     "hv": "TOÁT ẢNH",
+     "m": "chụp ảnh, quay phim"
+    }
+   ],
+   "x": {
+    "1": "撮栄: không có từ này. 栄 (VINH: vinh quang — 栄養) đọc えい nhưng không phải hình ảnh.",
+    "2": "撮営: không có từ này. 営 (DOANH: kinh doanh — 営業) đọc えい.",
+    "3": "撮映: không có từ này. Bẫy mạnh nhất vì 映 (ÁNH: chiếu) liên quan hình ảnh (映画, 映像), nhưng “chụp ảnh” viết 撮影."
+   },
+   "n": [
+    "Xem Đề 10 câu 5 (đọc 撮影)."
+   ],
+   "why": "写真〜 ＝ <b>chụp ảnh</b>. 撮 (TOÁT: chụp) ＋ 影 (ẢNH: hình bóng) ＝ <b>撮影</b> (さつえい). Từ này đã gặp ở phần đọc (Đề 10 câu 5)."
+  },
+  {
+   "s": "_うで_に黄色いリボンをつけているのはツアーのお客様です。",
+   "o": [
+    "腕",
+    "胸",
+    "肩",
+    "腹"
+   ],
+   "a": 1,
+   "ar": "うで",
    "vi": "Những người đeo ruy băng vàng ở cánh tay là khách của tour.",
-   "key": [{"w": "腕", "r": "うで", "hv": "OẢN", "m": "cánh tay; tay nghề"}],
-   "x": {"2": "<span class=\"jp\">胸</span> むね: ngực.", "3": "<span class=\"jp\">肩</span> かた: vai.", "4": "<span class=\"jp\">腹</span> はら: bụng."},
-   "n": ["腕がいい (tay nghề giỏi), 腕時計 うでどけい."]},
-  {"s": "ずっと{閉|し}めきりだったので部屋が_しめっぽい_。", "o": ["湿っぽい", "汗っぽい", "汚っぽい", "泡っぽい"], "a": 1, "ar": "しめっぽい",
+   "key": [
+    {
+     "w": "腕",
+     "r": "うで",
+     "hv": "OẢN",
+     "m": "cánh tay; tay nghề"
+    }
+   ],
+   "x": {
+    "2": "胸 (むね: ngực). Khác âm.",
+    "3": "肩 (かた: vai). Khác âm.",
+    "4": "腹 (はら: bụng). Khác âm."
+   },
+   "n": [
+    "腕がいい (tay nghề giỏi), 腕時計 うでどけい."
+   ],
+   "why": "Đeo ruy băng ở <b>cánh tay</b> → うで viết là <b>腕</b> (OẢN). Đeo băng tay là cách nhận diện khách tour."
+  },
+  {
+   "s": "ずっと{閉|し}めきりだったので部屋が_しめっぽい_。",
+   "o": [
+    "湿っぽい",
+    "汗っぽい",
+    "汚っぽい",
+    "泡っぽい"
+   ],
+   "a": 1,
+   "ar": "しめっぽい",
    "vi": "Căn phòng đóng kín suốt nên có mùi ẩm.",
-   "key": [{"w": "湿っぽい", "r": "しめっぽい", "hv": "THẤP", "m": "ẩm ướt; (không khí) ảm đạm"}],
-   "x": {"2": "không có. 汗 あせ = mồ hôi.", "3": "không có. 汚 = bẩn.", "4": "không có. 泡 あわ = bọt."},
-   "g": ["<b class=\"jp\">Vます + きり</b> (閉めきり): đóng kín suốt. <b class=\"jp\">〜っぽい</b>: có vẻ, hơi."],
-   "n": ["湿る しめる (Đề 20 câu 9), 湿度 しつど, 湿気 しっけ."]},
-  {"s": "音楽会に行こうと友達を_さそった_。", "o": ["勧った", "招った", "誘った", "請った"], "a": 3, "ar": "さそう",
+   "key": [
+    {
+     "w": "湿っぽい",
+     "r": "しめっぽい",
+     "hv": "THẤP",
+     "m": "ẩm ướt; (không khí) ảm đạm"
+    }
+   ],
+   "x": {
+    "2": "汗っぽい: không có từ này. 汗 (あせ: mồ hôi) — muốn nói “đẫm mồ hôi” là 汗ばむ.",
+    "3": "汚っぽい: không có từ này. 汚 đọc きたない / よごれる, không đọc しめ.",
+    "4": "泡っぽい: không có từ này. 泡 (あわ: bọt)."
+   },
+   "g": [
+    "<b class=\"jp\">Vます + きり</b> (閉めきり): đóng kín suốt. <b class=\"jp\">〜っぽい</b>: có vẻ, hơi."
+   ],
+   "n": [
+    "湿る しめる (Đề 20 câu 9), 湿度 しつど, 湿気 しっけ."
+   ],
+   "why": "Phòng đóng kín lâu → <b>ẩm thấp</b>. 湿 (THẤP: ẩm) ＋ っぽい ＝ <b>湿っぽい</b> (しめっぽい). Động từ gốc: 湿る しめる (bị ẩm)."
+  },
+  {
+   "s": "音楽会に行こうと友達を_さそった_。",
+   "o": [
+    "勧った",
+    "招った",
+    "誘った",
+    "請った"
+   ],
+   "a": 3,
+   "ar": "さそう",
    "vi": "Tôi rủ bạn đi xem hòa nhạc.",
-   "key": [{"w": "誘う", "r": "さそう", "hv": "DỤ", "m": "rủ, mời"}],
-   "x": {"1": "không có. 勧 đọc すすめる.", "2": "không có. 招 đọc まねく.", "4": "không có. 請 đọc こう/うける."},
-   "n": ["誘惑 ゆうわく (cám dỗ), 勧誘 (Đề 10 câu 13)."]},
-  {"s": "この国は_ふくし_が充実しています。", "o": ["副仕", "副祉", "福祉", "福仕"], "a": 3, "ar": "ふくし",
+   "key": [
+    {
+     "w": "誘う",
+     "r": "さそう",
+     "hv": "DỤ",
+     "m": "rủ, mời"
+    }
+   ],
+   "x": {
+    "1": "勧った: không có dạng này. 勧 đọc 勧める (すすめる: khuyên, mời) — nghĩa gần nhưng âm khác.",
+    "2": "招った: không có dạng này. 招 đọc 招く (まねく: mời đến dự).",
+    "4": "請った: không có dạng này. 請 đọc 請う (こう: xin) / 請ける (うける)."
+   },
+   "n": [
+    "誘惑 ゆうわく (cám dỗ), 勧誘 (Đề 10 câu 13)."
+   ],
+   "why": "Rủ bạn đi xem hòa nhạc → <b>mời rủ</b>. さそう viết là <b>誘う</b> (DỤ). 〜ようと誘う: rủ cùng làm."
+  },
+  {
+   "s": "この国は_ふくし_が充実しています。",
+   "o": [
+    "副仕",
+    "副祉",
+    "福祉",
+    "福仕"
+   ],
+   "a": 3,
+   "ar": "ふくし",
    "vi": "Nước này có chế độ phúc lợi rất đầy đủ.",
-   "key": [{"w": "福祉", "r": "ふくし", "hv": "PHÚC CHỈ", "m": "phúc lợi xã hội"}, {"w": "充実", "r": "じゅうじつ", "hv": "SUNG THỰC", "m": "đầy đủ, phong phú"}],
-   "x": {"1": "không có. 副 (PHÓ) = phụ.", "2": "không có.", "4": "không có."},
-   "n": ["Đồng âm: 副詞 ふくし (phó từ)."]},
-  {"s": "誰にでも_じゃくてん_はある。", "o": ["弱点", "欠点", "失点", "短点"], "a": 1, "ar": "じゃくてん",
+   "key": [
+    {
+     "w": "福祉",
+     "r": "ふくし",
+     "hv": "PHÚC CHỈ",
+     "m": "phúc lợi xã hội"
+    },
+    {
+     "w": "充実",
+     "r": "じゅうじつ",
+     "hv": "SUNG THỰC",
+     "m": "đầy đủ, phong phú"
+    }
+   ],
+   "x": {
+    "1": "副仕: không có từ này. 副 (PHÓ: phụ) đọc ふく nhưng không mang nghĩa phúc lợi; 仕 (SĨ: làm việc).",
+    "2": "副祉: không có từ này. 祉 đúng nhưng chữ đầu phải là 福.",
+    "4": "福仕: không có từ này. 福 đúng nhưng 仕 sai."
+   },
+   "n": [
+    "Đồng âm: 副詞 ふくし (phó từ)."
+   ],
+   "why": "Chế độ đầy đủ của một quốc gia → <b>phúc lợi</b>. 福 (PHÚC: hạnh phúc) ＋ 祉 (CHỈ: phúc) ＝ <b>福祉</b> (ふくし). Cả hai chữ đều có bộ 礻 (thần linh, may mắn)."
+  },
+  {
+   "s": "誰にでも_じゃくてん_はある。",
+   "o": [
+    "弱点",
+    "欠点",
+    "失点",
+    "短点"
+   ],
+   "a": 1,
+   "ar": "じゃくてん",
    "vi": "Ai cũng có điểm yếu.",
-   "key": [{"w": "弱点", "r": "じゃくてん", "hv": "NHƯỢC ĐIỂM", "m": "điểm yếu"}],
-   "x": {"2": "<span class=\"jp\">欠点</span> けってん: khuyết điểm (đọc khác).", "3": "<span class=\"jp\">失点</span> しってん: điểm bị mất.", "4": "không có (phải là 短所 たんしょ)."},
-   "n": ["弱 On じゃく: 弱者. 長所 ↔ 短所."]},
-  {"s": "大臣が工事現場を_おとずれた_。", "o": ["訪れた", "参れた", "伺れた", "尋れた"], "a": 1, "ar": "おとずれる",
+   "key": [
+    {
+     "w": "弱点",
+     "r": "じゃくてん",
+     "hv": "NHƯỢC ĐIỂM",
+     "m": "điểm yếu"
+    }
+   ],
+   "x": {
+    "2": "欠点 (けってん: khuyết điểm). Nghĩa gần nhưng đọc khác — đề hỏi chữ của âm じゃくてん.",
+    "3": "失点 (しってん: điểm bị mất trong thi đấu). Khác âm, khác nghĩa.",
+    "4": "短点: không có từ này. “Sở đoản” là 短所 たんしょ; trái nghĩa 長所."
+   },
+   "n": [
+    "弱 On じゃく: 弱者. 長所 ↔ 短所."
+   ],
+   "why": "じゃくてん ＝ <b>điểm yếu</b>: 弱 (NHƯỢC: yếu, đọc じゃく) ＋ 点 (ĐIỂM) ＝ <b>弱点</b>."
+  },
+  {
+   "s": "大臣が工事現場を_おとずれた_。",
+   "o": [
+    "訪れた",
+    "参れた",
+    "伺れた",
+    "尋れた"
+   ],
+   "a": 1,
+   "ar": "おとずれる",
    "vi": "Bộ trưởng đã đến thăm công trường.",
-   "key": [{"w": "訪れる", "r": "おとずれる", "hv": "PHỎNG", "m": "đến thăm (nơi chốn); (mùa) đến"}],
-   "x": {"2": "không có. 参る まいる.", "3": "không có. 伺う うかがう.", "4": "không có. 尋ねる たずねる (hỏi)."},
-   "n": ["訪ねる たずねる: thăm (người). 春が訪れる."]},
-  {"s": "あの男は決して自分の_そん_になることはしない。", "o": ["損", "罪", "害", "毒"], "a": 1, "ar": "そん",
+   "key": [
+    {
+     "w": "訪れる",
+     "r": "おとずれる",
+     "hv": "PHỎNG",
+     "m": "đến thăm (nơi chốn); (mùa) đến"
+    }
+   ],
+   "x": {
+    "2": "参れた: không có dạng này. 参 đọc 参る (まいる: đi, đến — khiêm nhường).",
+    "3": "伺れた: không có dạng này. 伺 đọc 伺う (うかがう: hỏi, đến thăm — khiêm nhường).",
+    "4": "尋れた: không có dạng này. 尋 đọc 尋ねる (たずねる: hỏi). Chú ý 訪ねる cũng đọc たずねる (đến thăm)."
+   },
+   "n": [
+    "訪ねる たずねる: thăm (người). 春が訪れる."
+   ],
+   "why": "Bộ trưởng <b>đến thăm</b> công trường. おとずれる viết là <b>訪れる</b> (PHỎNG). Âm On: 訪問 ほうもん."
+  },
+  {
+   "s": "あの男は決して自分の_そん_になることはしない。",
+   "o": [
+    "損",
+    "罪",
+    "害",
+    "毒"
+   ],
+   "a": 1,
+   "ar": "そん",
    "vi": "Gã đó tuyệt đối không làm gì thiệt cho bản thân.",
-   "key": [{"w": "損", "r": "そん", "hv": "TỔN", "m": "thiệt, lỗ"}],
-   "x": {"2": "<span class=\"jp\">罪</span> つみ: tội.", "3": "<span class=\"jp\">害</span> がい: hại.", "4": "<span class=\"jp\">毒</span> どく: độc."},
-   "n": ["損 ↔ 得 とく. 損害 (Đề 14 câu 3)."]},
-  {"s": "ユリの花は{純粋|じゅんすい}さを_しょうちょう_している。", "o": ["像微", "像徴", "象微", "象徴"], "a": 4, "ar": "しょうちょう",
+   "key": [
+    {
+     "w": "損",
+     "r": "そん",
+     "hv": "TỔN",
+     "m": "thiệt, lỗ"
+    }
+   ],
+   "x": {
+    "2": "罪 (つみ: tội). Đọc khác; 自分の罪になる sai nghĩa.",
+    "3": "害 (がい: hại). Đọc khác; cụm thường là 害になる nhưng đề hỏi âm そん.",
+    "4": "毒 (どく: độc). Đọc khác; 毒になる (có hại cho sức khỏe) không hợp ngữ cảnh."
+   },
+   "n": [
+    "損 ↔ 得 とく. 損害 (Đề 14 câu 3)."
+   ],
+   "why": "そん ＝ <b>thiệt hại, lỗ</b>. 自分の損になる ＝ thiệt cho bản thân. Viết là <b>損</b> (TỔN). Trái nghĩa: 得 とく (lợi)."
+  },
+  {
+   "s": "ユリの花は{純粋|じゅんすい}さを_しょうちょう_している。",
+   "o": [
+    "像微",
+    "像徴",
+    "象微",
+    "象徴"
+   ],
+   "a": 4,
+   "ar": "しょうちょう",
    "vi": "Hoa bách hợp tượng trưng cho sự thuần khiết.",
-   "key": [{"w": "象徴", "r": "しょうちょう", "hv": "TƯỢNG TRƯNG", "m": "tượng trưng"}],
-   "x": {"1": "không có.", "2": "không có. 像 đọc ぞう.", "3": "không có. 微 (VI) như 微妙 びみょう."},
-   "n": ["徴 ちょう: 特徴, 徴収. Xem Đề 1 câu 9 (象 しょう)."]},
-  {"s": "手術しか彼女を_すくう_道はありません。", "o": ["救う", "療う", "治う", "助う"], "a": 1, "ar": "すくう",
+   "key": [
+    {
+     "w": "象徴",
+     "r": "しょうちょう",
+     "hv": "TƯỢNG TRƯNG",
+     "m": "tượng trưng"
+    }
+   ],
+   "x": {
+    "1": "像微: không có từ này. 像 đọc ぞう; 微 (VI: nhỏ — 微妙) đọc び.",
+    "2": "像徴: không có từ này. 徴 đúng nhưng 像 đọc ぞう, không phải しょう.",
+    "3": "象微: không có từ này. 象 đúng nhưng 微 khác 徴 — chú ý hai chữ trông rất giống nhau."
+   },
+   "n": [
+    "徴 ちょう: 特徴, 徴収. Xem Đề 1 câu 9 (象 しょう)."
+   ],
+   "why": "Hoa bách hợp <b>tượng trưng</b> cho sự thuần khiết. 象 (TƯỢNG: hình tượng, đọc しょう) ＋ 徴 (TRƯNG: dấu hiệu) ＝ <b>象徴</b> (しょうちょう)."
+  },
+  {
+   "s": "手術しか彼女を_すくう_道はありません。",
+   "o": [
+    "救う",
+    "療う",
+    "治う",
+    "助う"
+   ],
+   "a": 1,
+   "ar": "すくう",
    "vi": "Chỉ có phẫu thuật mới cứu được cô ấy.",
-   "key": [{"w": "救う", "r": "すくう", "hv": "CỨU", "m": "cứu"}],
-   "x": {"2": "không có.", "3": "không có. 治 đọc なおす/おさめる.", "4": "không có. 助 đọc たすける."},
-   "g": ["<b class=\"jp\">〜しか〜ない</b>: chỉ có."],
-   "n": ["Xem Đề 4 câu 6 (救助)."]},
-  {"s": "昨日、町内の_もよおし_に参加しました。", "o": ["推し", "権し", "催し", "携し"], "a": 3, "ar": "もよおし",
+   "key": [
+    {
+     "w": "救う",
+     "r": "すくう",
+     "hv": "CỨU",
+     "m": "cứu"
+    }
+   ],
+   "x": {
+    "2": "療う: không có. 療 (LIỆU) chỉ dùng trong từ Hán: 治療, 医療.",
+    "3": "治う: không có. 治 đọc 治す (なおす: chữa) / 治める (おさめる: cai trị).",
+    "4": "助う: không có. 助 đọc 助ける (たすける: giúp đỡ) — nghĩa gần nhưng okurigana khác."
+   },
+   "g": [
+    "<b class=\"jp\">〜しか〜ない</b>: chỉ có."
+   ],
+   "n": [
+    "Xem Đề 4 câu 6 (救助)."
+   ],
+   "why": "Phẫu thuật là cách duy nhất để <b>cứu</b> cô ấy. すくう viết là <b>救う</b> (CỨU) — cùng chữ với 救助 (Đề 4 câu 6)."
+  },
+  {
+   "s": "昨日、町内の_もよおし_に参加しました。",
+   "o": [
+    "推し",
+    "権し",
+    "催し",
+    "携し"
+   ],
+   "a": 3,
+   "ar": "もよおし",
    "vi": "Hôm qua tôi tham gia một sự kiện của khu phố.",
-   "key": [{"w": "催し", "r": "もよおし", "hv": "THÔI", "m": "sự kiện, lễ hội"}],
-   "x": {"1": "không có. 推 đọc おす (推し: thần tượng yêu thích).", "2": "không có.", "4": "không có. 携 đọc たずさえる."},
-   "n": ["催し物 もよおしもの. Xem Đề 10 câu 20."]},
-  {"s": "_しんけん_な表情で医者の説明を聞く。", "o": ["真検", "真健", "真堅", "真剣"], "a": 4, "ar": "しんけん",
+   "key": [
+    {
+     "w": "催し",
+     "r": "もよおし",
+     "hv": "THÔI",
+     "m": "sự kiện, lễ hội"
+    }
+   ],
+   "x": {
+    "1": "推し: đọc おし (người/thứ mình yêu thích, từ 推す おす: đẩy, tiến cử). Khác âm.",
+    "2": "権し: không có. 権 (QUYỀN) không có âm Kun.",
+    "4": "携し: không có. 携 đọc 携える (たずさえる: mang theo)."
+   },
+   "n": [
+    "催し物 もよおしもの. Xem Đề 10 câu 20."
+   ],
+   "why": "町内の〜に参加 ＝ tham gia <b>sự kiện</b> của khu phố. もよおし viết là <b>催し</b> (THÔI). Động từ: 催す もよおす (tổ chức)."
+  },
+  {
+   "s": "_しんけん_な表情で医者の説明を聞く。",
+   "o": [
+    "真検",
+    "真健",
+    "真堅",
+    "真剣"
+   ],
+   "a": 4,
+   "ar": "しんけん",
    "vi": "Nghe bác sĩ giải thích với vẻ mặt nghiêm túc.",
-   "key": [{"w": "真剣", "r": "しんけん", "hv": "CHÂN KIẾM", "m": "nghiêm túc, hết mình"}],
-   "x": {"1": "không có. 検 (KIỂM).", "2": "không có. 健 (KIỆN).", "3": "không có. 堅 (KIÊN)."},
-   "n": ["Bốn chữ 検・健・堅・剣 đều đọc けん, chỉ khác bộ."]},
-  {"s": "_くわしい_ことはよく知らないんです。", "o": ["細しい", "詳しい", "税しい", "祥しい"], "a": 2, "ar": "くわしい",
+   "key": [
+    {
+     "w": "真剣",
+     "r": "しんけん",
+     "hv": "CHÂN KIẾM",
+     "m": "nghiêm túc, hết mình"
+    }
+   ],
+   "x": {
+    "1": "真検: không có. 検 (KIỂM: kiểm tra — 検査) đọc けん nhưng sai chữ.",
+    "2": "真健: không có. 健 (KIỆN: khỏe — 健康).",
+    "3": "真堅: không có. 堅 (KIÊN: cứng — 堅い)."
+   },
+   "n": [
+    "Bốn chữ 検・健・堅・剣 đều đọc けん, chỉ khác bộ."
+   ],
+   "why": "Vẻ mặt <b>nghiêm túc</b> khi nghe bác sĩ. 真 (CHÂN) ＋ 剣 (KIẾM: thanh kiếm) ＝ <b>真剣</b> (しんけん) — gốc nghĩa “kiếm thật”, nay là nghiêm túc."
+  },
+  {
+   "s": "_くわしい_ことはよく知らないんです。",
+   "o": [
+    "細しい",
+    "詳しい",
+    "税しい",
+    "祥しい"
+   ],
+   "a": 2,
+   "ar": "くわしい",
    "vi": "Chi tiết thì tôi không rõ lắm.",
-   "key": [{"w": "詳しい", "r": "くわしい", "hv": "TƯỜNG", "m": "chi tiết; am hiểu"}],
-   "x": {"1": "không có. 細 đọc こまかい/ほそい.", "3": "không có.", "4": "không có."},
-   "n": ["詳細 しょうさい. 〜に詳しい: rành về…"]},
-  {"s": "人々は_きそって_その新製品を{買|か}い{求|もと}めた。", "o": ["討って", "競って", "争って", "戦って"], "a": 2, "ar": "きそう",
+   "key": [
+    {
+     "w": "詳しい",
+     "r": "くわしい",
+     "hv": "TƯỜNG",
+     "m": "chi tiết; am hiểu"
+    }
+   ],
+   "x": {
+    "1": "細しい: không có. 細 đọc 細かい (こまかい: tỉ mỉ, nhỏ) / 細い (ほそい) — nghĩa gần nhưng okurigana khác.",
+    "3": "税しい: không có. 税 (THUẾ) không có âm Kun.",
+    "4": "祥しい: không có. 祥 (TƯỜNG — 不祥事) trông giống 詳 nhưng bộ 礻, không phải bộ 言."
+   },
+   "n": [
+    "詳細 しょうさい. 〜に詳しい: rành về…"
+   ],
+   "why": "くわしい ＝ <b>chi tiết, tường tận</b>. Viết là <b>詳しい</b> (TƯỜNG). Âm On: 詳細 しょうさい."
+  },
+  {
+   "s": "人々は_きそって_その新製品を{買|か}い{求|もと}めた。",
+   "o": [
+    "討って",
+    "競って",
+    "争って",
+    "戦って"
+   ],
+   "a": 2,
+   "ar": "きそう",
    "vi": "Mọi người tranh nhau mua sản phẩm mới đó.",
-   "key": [{"w": "競う", "r": "きそう", "hv": "CẠNH", "m": "tranh đua"}],
-   "x": {"1": "<span class=\"jp\">討つ</span> うつ: đánh.", "3": "<span class=\"jp\">争う</span> あらそう: tranh chấp (đọc khác).", "4": "<span class=\"jp\">戦う</span> たたかう: chiến đấu."},
-   "n": ["競争 きょうそう, 競技 きょうぎ."]},
-  {"s": "主人公を演じた彼の_えんぎ_はすばらしかった。", "o": ["演劇", "園技", "演技", "園劇"], "a": 3, "ar": "えんぎ",
+   "key": [
+    {
+     "w": "競う",
+     "r": "きそう",
+     "hv": "CẠNH",
+     "m": "tranh đua"
+    }
+   ],
+   "x": {
+    "1": "討って: 討つ đọc うつ (đánh dẹp). Khác âm.",
+    "3": "争って: 争う đọc あらそう (tranh chấp). Nghĩa gần nhưng âm khác — đề hỏi chữ của きそう.",
+    "4": "戦って: 戦う đọc たたかう (chiến đấu). Khác âm."
+   },
+   "n": [
+    "競争 きょうそう, 競技 きょうぎ."
+   ],
+   "why": "Mọi người <b>tranh nhau</b> mua. きそう viết là <b>競う</b> (CẠNH). 競って〜する ＝ đua nhau làm. Âm On: 競争 きょうそう."
+  },
+  {
+   "s": "主人公を演じた彼の_えんぎ_はすばらしかった。",
+   "o": [
+    "演劇",
+    "園技",
+    "演技",
+    "園劇"
+   ],
+   "a": 3,
+   "ar": "えんぎ",
    "vi": "Diễn xuất của anh ấy trong vai chính thật tuyệt vời.",
-   "key": [{"w": "演技", "r": "えんぎ", "hv": "DIỄN KỸ", "m": "diễn xuất"}],
-   "x": {"1": "<span class=\"jp\">演劇</span> えんげき: kịch.", "2": "không có.", "4": "không có."},
-   "n": ["Đồng âm: 縁起 えんぎ (điềm): 縁起がいい."]},
-  {"s": "彼は{赤十字|せきじゅうじ}に{多額|たがく}を_きふ_した。", "o": ["寄付", "奇与", "寄与", "奇付"], "a": 1, "ar": "きふ",
+   "key": [
+    {
+     "w": "演技",
+     "r": "えんぎ",
+     "hv": "DIỄN KỸ",
+     "m": "diễn xuất"
+    }
+   ],
+   "x": {
+    "1": "演劇 (えんげき: kịch nghệ). Khác âm (げき); là loại hình nghệ thuật, không phải “diễn xuất của anh ấy”.",
+    "2": "園技: không có. 園 (VIÊN: vườn) đọc えん nhưng sai nghĩa.",
+    "4": "園劇: không có."
+   },
+   "n": [
+    "Đồng âm: 縁起 えんぎ (điềm): 縁起がいい."
+   ],
+   "why": "Diễn xuất của diễn viên → <b>演技</b> (えんぎ): 演 (DIỄN) ＋ 技 (KỸ: kỹ thuật)."
+  },
+  {
+   "s": "彼は{赤十字|せきじゅうじ}に{多額|たがく}を_きふ_した。",
+   "o": [
+    "寄付",
+    "奇与",
+    "寄与",
+    "奇付"
+   ],
+   "a": 1,
+   "ar": "きふ",
    "vi": "Anh ấy quyên góp một khoản lớn cho Hội Chữ thập đỏ.",
-   "key": [{"w": "寄付", "r": "きふ", "hv": "KÝ PHÓ", "m": "quyên góp"}],
-   "x": {"2": "không có.", "3": "<span class=\"jp\">寄与</span> きよ: đóng góp công sức (đọc khác).", "4": "không có."},
-   "n": ["寄 き/よる: 寄る, 年寄り. 奇 (KỲ) như 奇妙, 好奇心."]},
-  {"s": "{山下|やました}さんは事務_けいとう_の仕事に向いています。", "o": ["系等", "形等", "系統", "形統"], "a": 3, "ar": "けいとう",
+   "key": [
+    {
+     "w": "寄付",
+     "r": "きふ",
+     "hv": "KÝ PHÓ",
+     "m": "quyên góp"
+    }
+   ],
+   "x": {
+    "2": "奇与: không có. 奇 (KỲ: lạ — 奇妙) trông giống 寄 nhưng không có bộ 宀.",
+    "3": "寄与 (きよ: đóng góp công sức cho xã hội). Đọc khác (きよ) — đề hỏi きふ.",
+    "4": "奇付: không có. 付 đúng nhưng 奇 sai."
+   },
+   "n": [
+    "寄 き/よる: 寄る, 年寄り. 奇 (KỲ) như 奇妙, 好奇心."
+   ],
+   "why": "Đưa số tiền lớn cho Hội Chữ thập đỏ → <b>quyên góp</b>. 寄 (KÝ: gửi) ＋ 付 (PHÓ: giao) ＝ <b>寄付</b> (きふ)."
+  },
+  {
+   "s": "{山下|やました}さんは事務_けいとう_の仕事に向いています。",
+   "o": [
+    "系等",
+    "形等",
+    "系統",
+    "形統"
+   ],
+   "a": 3,
+   "ar": "けいとう",
    "vi": "Anh Yamashita hợp với công việc mảng hành chính.",
-   "key": [{"w": "系統", "r": "けいとう", "hv": "HỆ THỐNG", "m": "hệ, mảng; hệ thống"}],
-   "x": {"1": "không có.", "2": "không có.", "4": "không có."},
-   "g": ["<b class=\"jp\">〜に向いている</b>: phù hợp với."],
-   "n": ["統 とう: 統一, 伝統. 等 とう: 平等 (bẫy đồng âm)."]},
-  {"s": "_じっせん_を通じて技術を学んだ。", "o": ["実践", "実志", "実浅", "実施"], "a": 1, "ar": "じっせん",
+   "key": [
+    {
+     "w": "系統",
+     "r": "けいとう",
+     "hv": "HỆ THỐNG",
+     "m": "hệ, mảng; hệ thống"
+    }
+   ],
+   "x": {
+    "1": "系等: không có. 等 (ĐẲNG: bằng nhau) đọc とう nhưng sai chữ.",
+    "2": "形等: không có. 形 (HÌNH) đọc けい nhưng sai nghĩa.",
+    "4": "形統: không có. 統 đúng nhưng 形 sai."
+   },
+   "g": [
+    "<b class=\"jp\">〜に向いている</b>: phù hợp với."
+   ],
+   "n": [
+    "統 とう: 統一, 伝統. 等 とう: 平等 (bẫy đồng âm)."
+   ],
+   "why": "事務〜の仕事 ＝ công việc <b>thuộc mảng</b> hành chính. 系 (HỆ) ＋ 統 (THỐNG) ＝ <b>系統</b> (けいとう): hệ thống, dòng, mảng."
+  },
+  {
+   "s": "_じっせん_を通じて技術を学んだ。",
+   "o": [
+    "実践",
+    "実志",
+    "実浅",
+    "実施"
+   ],
+   "a": 1,
+   "ar": "じっせん",
    "vi": "Tôi học kỹ thuật thông qua thực hành.",
-   "key": [{"w": "実践", "r": "じっせん", "hv": "THỰC TIỄN", "m": "thực hành"}],
-   "x": {"2": "không có.", "3": "không có. 浅 あさい = nông.", "4": "<span class=\"jp\">実施</span> じっし: thực thi (đọc khác)."},
-   "g": ["<b class=\"jp\">〜を通じて</b>: thông qua."],
-   "n": ["Đồng âm: 実戦 じっせん (thực chiến)."]}
+   "key": [
+    {
+     "w": "実践",
+     "r": "じっせん",
+     "hv": "THỰC TIỄN",
+     "m": "thực hành"
+    }
+   ],
+   "x": {
+    "2": "実志: không có. 志 (CHÍ: ý chí) đọc し.",
+    "3": "実浅: không có. 浅 (THIỂN: nông — 浅い) đọc せん nhưng sai nghĩa.",
+    "4": "実施 (じっし: thi hành, tiến hành chính sách). Đọc khác (じっし) và nghĩa khác — không “học qua thi hành”."
+   },
+   "g": [
+    "<b class=\"jp\">〜を通じて</b>: thông qua."
+   ],
+   "n": [
+    "Đồng âm: 実戦 じっせん (thực chiến)."
+   ],
+   "why": "Học kỹ thuật thông qua <b>thực hành</b>. 実 (THỰC) ＋ 践 (TIỄN: bước, thực hiện) ＝ <b>実践</b> (じっせん)."
+  }
+ ],
+ "sum": [
+  {
+   "h": "Chữ Hán trông giống nhau — bẫy chính của 表記",
+   "tbl": {
+    "head": [
+     "Cặp chữ",
+     "Phân biệt",
+     "Ví dụ"
+    ],
+    "rows": [
+     [
+      "徴 / 微",
+      "徴 trưng (dấu hiệu) / 微 vi (nhỏ)",
+      "象徴, 特徴 / 微妙, 微笑"
+     ],
+     [
+      "寄 / 奇",
+      "寄 có 宀 (gửi) / 奇 không có (lạ)",
+      "寄付, 寄与 / 奇妙, 好奇心"
+     ],
+     [
+      "詳 / 祥",
+      "詳 bộ 言 (chi tiết) / 祥 bộ 礻",
+      "詳しい, 詳細 / 不祥事"
+     ],
+     [
+      "象 / 像",
+      "象 しょう (hình tượng) / 像 ぞう (hình ảnh)",
+      "象徴, 印象 / 映像, 想像"
+     ],
+     [
+      "影 / 映",
+      "影 bóng, ảnh / 映 chiếu",
+      "撮影, 影響 / 映画, 映像"
+     ],
+     [
+      "剣 / 検 / 険 / 験",
+      "kiếm / kiểm tra / hiểm / thí nghiệm",
+      "真剣 / 検査 / 危険 / 試験"
+     ],
+     [
+      "福 / 副",
+      "phúc / phó",
+      "福祉 / 副作用"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Động từ mời, thăm, hỏi — dễ nhầm okurigana",
+   "tbl": {
+    "head": [
+     "Chữ",
+     "Đọc",
+     "Nghĩa"
+    ],
+    "rows": [
+     [
+      "誘う",
+      "さそう",
+      "rủ"
+     ],
+     [
+      "勧める",
+      "すすめる",
+      "khuyên, mời"
+     ],
+     [
+      "招く",
+      "まねく",
+      "mời (đến dự)"
+     ],
+     [
+      "訪れる / 訪ねる",
+      "おとずれる / たずねる",
+      "đến thăm"
+     ],
+     [
+      "尋ねる",
+      "たずねる",
+      "hỏi"
+     ],
+     [
+      "伺う",
+      "うかがう",
+      "hỏi / thăm (khiêm nhường)"
+     ],
+     [
+      "救う",
+      "すくう",
+      "cứu"
+     ],
+     [
+      "助ける",
+      "たすける",
+      "giúp"
+     ],
+     [
+      "競う",
+      "きそう",
+      "đua tranh"
+     ],
+     [
+      "催す",
+      "もよおす",
+      "tổ chức"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Nhóm từ theo chủ đề",
+   "li": [
+    "<b>開〜</b>: 開催 (tổ chức), 開講 (khai giảng), 開場 (mở cửa), 開演 (bắt đầu diễn), 開幕 かいまく (khai mạc), 開店 (khai trương).",
+    "<b>Y tế</b>: 症状 (triệu chứng), 治療 (điều trị), 手術 (phẫu thuật), 診察 しんさつ (khám), 処方 (kê đơn).",
+    "<b>Xã hội</b>: 福祉 (phúc lợi), 寄付 (quyên góp), 寄与 (đóng góp), 慈善 じぜん (từ thiện), ボランティア.",
+    "<b>Điểm</b>: 弱点 (điểm yếu), 欠点 (khuyết điểm), 短所 (sở đoản) ↔ 長所 (sở trường), 利点 (ưu điểm).",
+    "<b>実〜</b>: 実践 (thực hành), 実施 (thi hành), 実行 (thực hiện), 実現 (hiện thực hóa), 実験 (thí nghiệm)."
+   ]
+  }
  ]
 }

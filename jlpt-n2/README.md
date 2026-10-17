@@ -4,7 +4,9 @@ Một trang duy nhất chứa đủ 20 đề: https://claude.ai/artifact/McgkzL1
 
 - Chế độ làm bài: chỉ có câu hỏi và đồng hồ; đáp án, giải thích chỉ hiện sau khi nộp.
 - Chế độ xem lại: điểm, đúng/sai, lọc câu sai, giải thích từng câu (đáp án, dịch câu,
-  từ vựng + Hán Việt + cách đọc, phương án nhiễu, ngữ pháp, ghi chú), bảng đáp án.
+  vì sao chọn đáp án, vì sao loại từng phương án còn lại, từ vựng + Hán Việt + cách đọc,
+  ngữ pháp, ghi chú), bảng đáp án, và cuối mỗi đề là phần tổng kết kiến thức + mở rộng
+  cùng nhóm (`sum` trong JSON). `build.py` từ chối build nếu câu nào thiếu `why` / `x`.
 
 Số thứ tự: thư mục Drive đánh Đề 1–20, còn file PDF bên trong mang số riêng của bộ (ĐỀ 7–26).
 

@@ -39,13 +39,14 @@
     }
    ],
    "x": {
-    "1": "<span class=\"jp\">不思議</span>: kỳ lạ, khó hiểu.",
-    "3": "buồn.",
-    "4": "nhớ nhung."
+    "1": "不思議な (kỳ lạ, khó giải thích): là điều không hiểu nổi, không nhất thiết là điều không ngờ tới.",
+    "3": "悲しい (buồn): chuyện bất ngờ có thể vui hoặc buồn — đổi nghĩa.",
+    "4": "恋しい (nhớ nhung): không liên quan."
    },
    "n": [
     "Xem Đề 4 câu 4 (思いもかけず)."
-   ]
+   ],
+   "why": "<b>思いがけない</b> ＝ không ngờ tới, ngoài dự đoán. Đồng nghĩa: <b>意外な</b> (いがい: bất ngờ)."
   },
   {
    "s": "友だちがバイクを安く_ゆずって_くれた。",
@@ -67,13 +68,14 @@
     }
    ],
    "x": {
-    "1": "giữ hộ rẻ.",
-    "2": "sửa rẻ.",
-    "3": "cho thuê rẻ (vẫn là của người cho mượn)."
+    "1": "預かる (nhận giữ hộ): quyền sở hữu không đổi — khác 譲る.",
+    "2": "直す (sửa): khác nghĩa.",
+    "3": "貸す (cho mượn/thuê): xe vẫn là của bạn — 譲る là chuyển hẳn cho mình."
    },
    "n": [
     "席を譲る: nhường ghế. 譲歩 じょうほ: nhượng bộ."
-   ]
+   ],
+   "why": "<b>ゆずる</b> (譲る) ＝ nhượng lại, chuyển quyền sở hữu cho người khác. 安く譲ってくれた ＝ bán lại rẻ → <b>安く売って</b>."
   },
   {
    "s": "彼は_おそらく_来ないと思います。",
@@ -95,10 +97,11 @@
     }
    ],
    "x": {
-    "2": "đương nhiên.",
-    "3": "tuyệt đối.",
-    "4": "quả nhiên."
-   }
+    "2": "とうぜん (đương nhiên): chắc chắn 100%, mạnh hơn おそらく.",
+    "3": "ぜったい (tuyệt đối): chắc chắn hoàn toàn — mạnh hơn nhiều.",
+    "4": "やはり (quả nhiên): xác nhận điều đã đoán, không phải phỏng đoán."
+   },
+   "why": "<b>おそらく</b> ＝ có lẽ (phán đoán khả năng cao, văn viết hơn). Đồng nghĩa: <b>たぶん</b>."
   },
   {
    "s": "彼は研究者の中でも_優秀だった_。",
@@ -120,13 +123,14 @@
     }
    ],
    "x": {
-    "1": "được yêu thích.",
-    "2": "khỏe mạnh.",
-    "3": "<span class=\"jp\">手際</span> てぎわ がよい: làm khéo, nhanh gọn (kỹ năng tay chân)."
+    "1": "人気がある (được yêu thích): nói về sự hâm mộ, không phải năng lực.",
+    "2": "体が丈夫 (khỏe mạnh): nói sức khỏe.",
+    "3": "手際がよい (làm khéo, nhanh gọn): là kỹ năng thao tác, không bao quát nghĩa “xuất sắc” của nhà nghiên cứu."
    },
    "n": [
     "Xem Đề 16 câu 8 (優れる)."
-   ]
+   ],
+   "why": "<b>優秀</b> (ゆうしゅう) ＝ xuất sắc, giỏi (về năng lực, trí tuệ). Trong bối cảnh nhà nghiên cứu → <b>頭がよかった</b>."
   },
   {
    "s": "前売券は_たちまち_売り切れとなった。",
@@ -148,13 +152,14 @@
     }
    ],
    "x": {
-    "2": "từ lâu rồi.",
-    "3": "cuối cùng.",
-    "4": "hoàn toàn."
+    "2": "とっくに (từ lâu rồi): chỉ việc đã xảy ra từ lâu, không chỉ tốc độ.",
+    "3": "やっと (cuối cùng thì): ngụ ý mất nhiều thời gian — ngược nghĩa.",
+    "4": "すっかり (hoàn toàn): chỉ mức độ, không chỉ tốc độ."
    },
    "n": [
     "前売券 まえうりけん: vé bán trước."
-   ]
+   ],
+   "why": "<b>たちまち</b> ＝ ngay lập tức, trong chớp mắt. Đồng nghĩa: <b>すぐに</b>."
   },
   {
    "s": "彼は_依然として_考えを改めない。",
@@ -176,13 +181,14 @@
     }
    ],
    "x": {
-    "1": "cho đến nay.",
-    "2": "đúng như nghĩ.",
-    "3": "từ giờ."
+    "1": "これまで (cho đến nay): chỉ khoảng thời gian, không mang nghĩa “vẫn thế”.",
+    "2": "思ったとおり (đúng như đã nghĩ): xác nhận dự đoán, khác nghĩa.",
+    "3": "これから (từ giờ): chỉ tương lai — khác nghĩa."
    },
    "n": [
     "Đồng âm: 以前 いぜん (trước đây). Xem Đề 14 câu 8 (改める)."
-   ]
+   ],
+   "why": "<b>依然として</b> (いぜんとして) ＝ vẫn y như trước, không thay đổi. Đồng nghĩa: <b>相変わらず</b>."
   },
   {
    "s": "このズボンは僕には_ぶかぶかだ_。",
@@ -204,13 +210,14 @@
     }
    ],
    "x": {
-    "1": "hơi chật.",
-    "2": "hơi rộng (chưa đủ mức).",
-    "4": "rất chật (きつきつ)."
+    "1": "すこし小さい (hơi chật): ngược nghĩa.",
+    "2": "すこし大きい (hơi rộng): chưa đủ mức — ぶかぶか là rộng quá nhiều.",
+    "4": "とても小さい (rất chật): ngược nghĩa (đó là きつきつ)."
    },
    "n": [
     "ぴったり (vừa khít), きつい (chật)."
-   ]
+   ],
+   "why": "<b>ぶかぶか</b> ＝ rộng thùng thình (quá rộng so với người mặc). Đáp án <b>とても大きい</b> diễn đạt đúng mức độ."
   },
   {
    "s": "自動車を_所有している_と税金がかかります。",
@@ -232,13 +239,14 @@
     }
    ],
    "x": {
-    "1": "cho mượn.",
-    "2": "đi (xe).",
-    "4": "mượn."
+    "1": "貸す (cho mượn): xe đem cho người khác dùng — không phải sở hữu.",
+    "2": "乗る (đi xe): có thể đi xe không phải của mình.",
+    "4": "借りる (mượn): ngược nghĩa với sở hữu."
    },
    "n": [
     "所有権 (Đề 7 câu 19)."
-   ]
+   ],
+   "why": "<b>所有する</b> ＝ sở hữu. Đồng nghĩa thông dụng: <b>持っている</b>."
   },
   {
    "s": "テントが_しめっている_。",
@@ -260,13 +268,14 @@
     }
    ],
    "x": {
-    "2": "đã khô (trái nghĩa).",
-    "3": "đã dọn xong.",
-    "4": "chưa dọn."
+    "2": "もう乾いている (đã khô): trái nghĩa.",
+    "3": "もう片づいている (đã dọn xong): không liên quan độ ẩm.",
+    "4": "まだ片づいていない (chưa dọn): không liên quan độ ẩm."
    },
    "n": [
     "Xem Đề 11 câu 5 (湿っぽい)."
-   ]
+   ],
+   "why": "<b>しめる</b> (湿る) ＝ bị ẩm, chưa khô hẳn. しめっている ＝ <b>まだ乾いていない</b>."
   },
   {
    "s": "列車の発車_間際_になって駅に到着した。",
@@ -288,13 +297,14 @@
     }
    ],
    "x": {
-    "1": "ngay sau.",
-    "3": "hôm khác (sau này).",
-    "4": "ngày hôm đó."
+    "1": "直後 (ngay sau): trái nghĩa — nếu đến sau giờ tàu chạy thì đã lỡ tàu.",
+    "3": "後日 (hôm khác, sau này): khác nghĩa.",
+    "4": "当日 (ngày hôm đó): quá rộng, không chỉ “sát giờ”."
    },
    "n": [
     "寝る間際, 締め切り間際."
-   ]
+   ],
+   "why": "<b>間際</b> (まぎわ) ＝ ngay sát trước (thời điểm). 発車間際 ＝ ngay trước giờ tàu chạy → <b>直前</b>."
   },
   {
    "s": "あの子は{叱|しか}られて赤い顔をして_うつむいた_。",
@@ -316,10 +326,11 @@
     }
    ],
    "x": {
-    "1": "quay phải.",
-    "2": "quay trái.",
-    "4": "ngẩng lên (あおむく)."
-   }
+    "1": "右をむく (quay phải): sai hướng.",
+    "2": "左をむく (quay trái): sai hướng.",
+    "4": "上をむく (ngẩng lên — あおむく): trái nghĩa."
+   },
+   "why": "<b>うつむく</b> (俯く) ＝ cúi gằm mặt (vì xấu hổ, buồn). ＝ <b>下をむく</b>."
   },
   {
    "s": "この仕事は明日までに_仕上げて_ください。",
@@ -341,10 +352,11 @@
     }
    ],
    "x": {
-    "1": "soạn.",
-    "3": "đào tạo.",
-    "4": "cấu thành."
-   }
+    "1": "作成させる (cho soạn thảo): là làm ra, không nhấn mạnh “làm cho xong”.",
+    "3": "養成させる (cho đào tạo): dùng cho nhân lực.",
+    "4": "構成させる (cho cấu thành): nói cấu trúc, bố cục."
+   },
+   "why": "<b>仕上げる</b> ＝ làm cho xong, hoàn thiện. Đồng nghĩa: <b>完成させる</b>."
   },
   {
    "s": "彼女は_みずから_身を引いたのだ。",
@@ -366,13 +378,14 @@
     }
    ],
    "x": {
-    "1": "ngay.",
-    "3": "cùng bạn bè.",
-    "4": "đột nhiên."
+    "1": "すぐに (ngay): chỉ thời gian.",
+    "3": "仲間で (cùng bạn bè): ngược nghĩa “tự mình”.",
+    "4": "にわかに (đột nhiên): chỉ sự đột ngột, không chỉ chủ thể."
    },
    "n": [
     "身を引く: rút lui. 自ら đọc おのずから là tự nhiên mà (ít gặp)."
-   ]
+   ],
+   "why": "<b>みずから</b> (自ら) ＝ tự mình, do chính mình quyết định. Đồng nghĩa: <b>自分で</b>."
   },
   {
    "s": "珍しく彼女と_見解_が一致した。",
@@ -394,10 +407,11 @@
     }
    ],
    "x": {
-    "1": "cách dùng.",
-    "2": "đồ dùng được.",
-    "3": "<span class=\"jp\">考え物</span>: vấn đề cần cân nhắc."
-   }
+    "1": "使い方 (cách dùng): khác nghĩa.",
+    "2": "使い物 (đồ dùng được): 使い物にならない — khác nghĩa.",
+    "3": "考え物 (điều cần cân nhắc, đáng ngờ): それは考え物だ — không phải “quan điểm”."
+   },
+   "why": "<b>見解</b> (けんかい) ＝ quan điểm, cách nhìn nhận. Đồng nghĩa: <b>考え方</b>."
   },
   {
    "s": "このセーターは洗濯すると_ちぢんで_しまうかもしれない。",
@@ -419,13 +433,14 @@
     }
    ],
    "x": {
-    "1": "cũ đi.",
-    "3": "bẩn.",
-    "4": "rách."
+    "1": "古くなる (cũ đi): không phải co lại.",
+    "3": "汚れる (bẩn): ngược với kết quả giặt.",
+    "4": "破れる (rách): khác nghĩa."
    },
    "n": [
     "Xem Đề 4 câu 16 (縮れる)."
-   ]
+   ],
+   "why": "<b>ちぢむ</b> (縮む) ＝ co lại. Áo len co sau khi giặt ＝ <b>小さくなる</b>."
   },
   {
    "s": "この道は_日中_でも人通りが少ない。",
@@ -447,13 +462,14 @@
     }
    ],
    "x": {
-    "1": "ngày thường.",
-    "3": "ngày nghỉ.",
-    "4": "<span class=\"jp\">居間</span> いま: phòng khách."
+    "1": "平日 (ngày thường trong tuần): phân biệt với cuối tuần, không phải ban ngày.",
+    "3": "休日 (ngày nghỉ): khác nghĩa.",
+    "4": "居間 (phòng khách): bẫy vì có chữ 間 như 昼間, nhưng là nơi chốn."
    },
    "n": [
     "日中 にっちゅう còn có nghĩa Nhật–Trung (日中関係)."
-   ]
+   ],
+   "why": "<b>日中</b> (にっちゅう) ＝ ban ngày (khi mặt trời còn). Đồng nghĩa: <b>昼間</b> (ひるま)."
   },
   {
    "s": "わたしは毎日_必死だった_。",
@@ -475,10 +491,11 @@
     }
    ],
    "x": {
-    "1": "nguy hiểm.",
-    "3": "cay cú.",
-    "4": "cẩu thả (trái nghĩa)."
-   }
+    "1": "危ない (nguy hiểm): bẫy vì chữ 死 (chết) trong 必死, nhưng 必死 không có nghĩa nguy hiểm.",
+    "3": "悔しい (cay cú): cảm xúc khi thua, khác nghĩa.",
+    "4": "いい加減 (cẩu thả, qua loa): trái nghĩa."
+   },
+   "why": "<b>必死</b> (ひっし) ＝ liều mạng, dốc toàn lực. Đồng nghĩa: <b>一生懸命</b>."
   },
   {
    "s": "授業中は_じっとして_ください。",
@@ -500,10 +517,11 @@
     }
    ],
    "x": {
-    "1": "đừng đứng.",
-    "2": "đừng nói.",
-    "3": "đừng chạy."
-   }
+    "1": "立たないで (đừng đứng): chỉ cấm một hành động, じっと là không cử động nói chung.",
+    "2": "話さないで (đừng nói): じっと nói về cử động, không về lời nói.",
+    "3": "走らないで (đừng chạy): quá hẹp, không tương đương じっと."
+   },
+   "why": "<b>じっとする</b> ＝ ngồi yên, không cử động. ＝ <b>動かないで</b>."
   },
   {
    "s": "足元に_用心して_ください。",
@@ -525,13 +543,14 @@
     }
    ],
    "x": {
-    "1": "chú mục, để ý nhìn.",
-    "3": "chuẩn bị.",
-    "4": "việc bận."
+    "1": "注目する (chú ý nhìn, quan tâm): nhìn tập trung vào điều gì đó thú vị — không phải đề phòng nguy hiểm.",
+    "3": "用意する (chuẩn bị): bẫy vì có chữ 用 như 用心.",
+    "4": "用事 (việc bận): danh từ, khác nghĩa."
    },
    "n": [
     "火の用心: cẩn thận lửa. Xem Đề 8 câu 4 (足元)."
-   ]
+   ],
+   "why": "<b>用心する</b> ＝ cẩn thận, đề phòng. Đồng nghĩa: <b>注意する</b>. 足元に注意してください."
   },
   {
    "s": "よく見えるように_収納して_ください。",
@@ -553,12 +572,182 @@
     }
    ],
    "x": {
-    "1": "gấp.",
-    "3": "đóng (sách, mắt).",
-    "4": "tích lại."
+    "1": "たたむ (gấp): là một bước trước khi cất, không đồng nghĩa với cất.",
+    "3": "とじる (đóng — sách, mắt; khâu lại): khác nghĩa.",
+    "4": "ためる (tích lại): dùng cho tiền, nước — không phải cất gọn."
    },
    "n": [
     "収納スペース: chỗ để đồ."
+   ],
+   "why": "<b>収納する</b> ＝ cất vào chỗ chứa. Đồng nghĩa: <b>しまう</b> (仕舞う: cất đi)."
+  }
+ ],
+ "sum": [
+  {
+   "h": "Bảng cặp đồng nghĩa trong đề",
+   "tbl": {
+    "head": [
+     "Từ trong đề",
+     "＝",
+     "Nghĩa"
+    ],
+    "rows": [
+     [
+      "思いがけない",
+      "意外な",
+      "không ngờ"
+     ],
+     [
+      "譲る",
+      "売る / あげる",
+      "nhượng lại"
+     ],
+     [
+      "おそらく",
+      "たぶん",
+      "có lẽ"
+     ],
+     [
+      "優秀",
+      "頭がいい",
+      "xuất sắc"
+     ],
+     [
+      "たちまち",
+      "すぐに",
+      "ngay lập tức"
+     ],
+     [
+      "依然として",
+      "相変わらず",
+      "vẫn như cũ"
+     ],
+     [
+      "ぶかぶか",
+      "とても大きい",
+      "rộng thùng thình"
+     ],
+     [
+      "所有する",
+      "持つ",
+      "sở hữu"
+     ],
+     [
+      "湿る",
+      "乾いていない",
+      "ẩm"
+     ],
+     [
+      "間際",
+      "直前",
+      "ngay sát trước"
+     ],
+     [
+      "うつむく",
+      "下を向く",
+      "cúi đầu"
+     ],
+     [
+      "仕上げる",
+      "完成させる",
+      "hoàn thành"
+     ],
+     [
+      "自ら",
+      "自分で",
+      "tự mình"
+     ],
+     [
+      "見解",
+      "考え方",
+      "quan điểm"
+     ],
+     [
+      "縮む",
+      "小さくなる",
+      "co lại"
+     ],
+     [
+      "日中",
+      "昼間",
+      "ban ngày"
+     ],
+     [
+      "必死",
+      "一生懸命",
+      "dốc sức"
+     ],
+     [
+      "じっと",
+      "動かない",
+      "đứng yên"
+     ],
+     [
+      "用心する",
+      "注意する",
+      "cẩn thận"
+     ],
+     [
+      "収納する",
+      "しまう",
+      "cất đi"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Bẫy chữ Hán gây hiểu sai (ôn cùng Đề 5)",
+   "li": [
+    "必<b>死</b> ≠ nguy hiểm, chết → nghĩa là dốc sức.",
+    "日<b>中</b> ≠ Nhật–Trung (nghĩa phụ) → trong đề là ban ngày.",
+    "<b>用</b>心 ≠ 用意 (chuẩn bị) / 用事 (việc bận) → nghĩa là cẩn thận.",
+    "<b>依然</b> ≠ 以前 (trước đây) — đồng âm いぜん, khác nghĩa.",
+    "昼<b>間</b> / 居<b>間</b> / 間際 — chữ 間 không giúp đoán nghĩa, phải học cả từ."
+   ]
+  },
+  {
+   "h": "Phó từ thời gian và mức chắc chắn",
+   "tbl": {
+    "head": [
+     "Nhóm",
+     "Từ",
+     "Ghi chú"
+    ],
+    "rows": [
+     [
+      "Ngay lập tức",
+      "たちまち, すぐに, ただちに, さっそく",
+      "さっそく: (làm) ngay khi có dịp"
+     ],
+     [
+      "Vẫn như cũ",
+      "依然として, 相変わらず, 今なお",
+      ""
+     ],
+     [
+      "Mức chắc chắn",
+      "きっと > おそらく ≈ たぶん > もしかすると",
+      "ぜったい / 必ず: 100%"
+     ],
+     [
+      "Đột ngột",
+      "にわかに, 急に, 突然",
+      ""
+     ],
+     [
+      "Thời điểm",
+      "直前 / 間際 ↔ 直後",
+      "締め切り間際"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Từ láy kích cỡ, trạng thái",
+   "li": [
+    "ぶかぶか (rộng thùng thình) ↔ きつきつ / きつい (chật) ↔ ぴったり (vừa khít).",
+    "じっと (đứng yên; nhìn chăm chú) · そわそわ (bồn chồn, không yên) · うろうろ (đi loanh quanh).",
+    "しっとり (ẩm mịn, dịu) · じめじめ (ẩm thấp khó chịu) · からから / からっと (khô ráo)."
    ]
   }
  ]

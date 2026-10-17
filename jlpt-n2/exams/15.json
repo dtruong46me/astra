@@ -6,66 +6,475 @@
  "title": "Đề 15 · Ngữ pháp N2",
  "jp": "文法形式",
  "mondai": "<b>問題7</b> 次の文の（　）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。 Chọn mẫu ngữ pháp thích hợp nhất để điền vào chỗ trống.",
- "src": {"folder": "1BQ4m_OfdIIQXfPKdB2uaPDOkNHgiWyh7", "goc": "1s4FFvCMdeZZYJyIThv-JR_HWq1tB8ojv", "chua": "1CLv36P_DkIx9-W7eZAFn08AxsIfQrInK"},
+ "src": {
+  "folder": "1BQ4m_OfdIIQXfPKdB2uaPDOkNHgiWyh7",
+  "goc": "1s4FFvCMdeZZYJyIThv-JR_HWq1tB8ojv",
+  "chua": "1CLv36P_DkIx9-W7eZAFn08AxsIfQrInK"
+ },
  "qs": [
-  {"s": "{山口|やまぐち}さんは、見た目で学校の先生（　）、銀行員のようだ。", "o": ["にもかかわらず", "というより", "だけで", "どころか"], "a": 2, "ar": "AというよりB",
+  {
+   "s": "{山口|やまぐち}さんは、見た目で学校の先生（　）、銀行員のようだ。",
+   "o": [
+    "にもかかわらず",
+    "というより",
+    "だけで",
+    "どころか"
+   ],
+   "a": 2,
+   "ar": "AというよりB",
    "vi": "Nhìn bề ngoài anh Yamaguchi giống nhân viên ngân hàng hơn là giáo viên.",
-   "key": [{"w": "〜というより", "r": "というより", "hv": "—", "m": "nói đúng hơn là, hơn là"}],
-   "x": {"1": "mặc dù.", "3": "chỉ bằng.", "4": "〜どころか: nói gì đến, trái lại (Đề 18 câu 11)."},
-   "n": ["見た目 みため: vẻ bề ngoài."]},
-  {"s": "日本人（　）正しく書けないのだから、外国人が正しく書けないのはあたりまえでしょう。", "o": ["だから", "なら", "でさえ", "だけか"], "a": 3, "ar": "Nでさえ",
+   "key": [
+    {
+     "w": "〜というより",
+     "r": "というより",
+     "hv": "—",
+     "m": "nói đúng hơn là, hơn là"
+    }
+   ],
+   "x": {
+    "1": "〜にもかかわらず (mặc dù): cần quan hệ trái ngược (dù là giáo viên nhưng…). Câu chỉ so sánh ấn tượng bề ngoài, anh ấy không phải giáo viên.",
+    "3": "だけで (chỉ bằng): “chỉ là giáo viên trường học” không nối được với 銀行員のようだ.",
+    "4": "〜どころか (nói gì đến, trái lại): dùng khi vế sau còn mạnh hơn hoặc ngược hẳn (英語どころか日本語も…). Không phải so sánh nhẹ nhàng."
+   },
+   "n": [
+    "見た目 みため: vẻ bề ngoài."
+   ],
+   "why": "So sánh hai cách nhận xét: giống nhân viên ngân hàng <b>hơn là</b> giáo viên. Mẫu <b>AというよりB</b>: nói là A thì đúng hơn là B. Vế sau có 〜のようだ → khớp."
+  },
+  {
+   "s": "日本人（　）正しく書けないのだから、外国人が正しく書けないのはあたりまえでしょう。",
+   "o": [
+    "だから",
+    "なら",
+    "でさえ",
+    "だけか"
+   ],
+   "a": 3,
+   "ar": "Nでさえ",
    "vi": "Ngay cả người Nhật còn không viết đúng, người nước ngoài viết sai là đương nhiên.",
-   "key": [{"w": "〜でさえ", "r": "でさえ", "hv": "—", "m": "ngay cả"}],
-   "x": {"1": "vì là.", "2": "nếu là.", "4": "không có mẫu."},
-   "n": ["Xem Đề 12 câu 2 (さえ)."]},
-  {"s": "この{困難|こんなん}（　）、あとは楽になりますよ。", "o": ["こそ乗り切ると", "さえ乗り切れば", "さえ乗り切ると", "こそ乗り切れば"], "a": 2, "ar": "Nさえ〜ば",
+   "key": [
+    {
+     "w": "〜でさえ",
+     "r": "でさえ",
+     "hv": "—",
+     "m": "ngay cả"
+    }
+   ],
+   "x": {
+    "1": "だから (vì là): “vì là người Nhật nên không viết đúng” — logic ngược, mất ý so sánh.",
+    "2": "なら (nếu là): “nếu là người Nhật thì không viết đúng” — không hợp vế sau.",
+    "4": "だけか: không có mẫu này (chỉ có ばかりか / だけでなく)."
+   },
+   "n": [
+    "Xem Đề 12 câu 2 (さえ)."
+   ],
+   "why": "Nêu ví dụ cực đoan: <b>ngay cả</b> người Nhật còn viết sai → người nước ngoài viết sai là đương nhiên. Mẫu <b>Nでさえ</b>: ngay cả N."
+  },
+  {
+   "s": "この{困難|こんなん}（　）、あとは楽になりますよ。",
+   "o": [
+    "こそ乗り切ると",
+    "さえ乗り切れば",
+    "さえ乗り切ると",
+    "こそ乗り切れば"
+   ],
+   "a": 2,
+   "ar": "Nさえ〜ば",
    "vi": "Chỉ cần vượt qua khó khăn này, sau đó sẽ nhẹ nhàng thôi.",
-   "key": [{"w": "〜さえ〜ば", "r": "さえ〜ば", "hv": "—", "m": "chỉ cần… là"}, {"w": "乗り切る", "r": "のりきる", "hv": "THỪA THIẾT", "m": "vượt qua"}],
-   "x": {"1": "こそ không đi với điều kiện kiểu này.", "3": "Mẫu cố định là さえ〜ば, không phải さえ〜と.", "4": "こそ〜ば chỉ dùng trong 〜ばこそ (chính vì)."},
-   "n": ["お金さえあれば, 薬を飲みさえすれば."]},
-  {"s": "コンピューターを使う（　）、筆と絵の具の代わりにコンピューターの{彩色|さいしき}ソフトを使って彩色をするという作業です。", "o": ["どころか", "といっても", "としたら", "というもの"], "a": 2, "ar": "〜といっても",
+   "key": [
+    {
+     "w": "〜さえ〜ば",
+     "r": "さえ〜ば",
+     "hv": "—",
+     "m": "chỉ cần… là"
+    },
+    {
+     "w": "乗り切る",
+     "r": "のりきる",
+     "hv": "THỪA THIẾT",
+     "m": "vượt qua"
+    }
+   ],
+   "x": {
+    "1": "こそ乗り切ると: こそ (chính là) không tạo nghĩa “chỉ cần”; và と không ghép với こそ thành điều kiện đủ.",
+    "3": "さえ乗り切ると: さえ phải đi với thể ば (さえ〜ば / さえ〜たら); さえ〜と không phải mẫu chuẩn.",
+    "4": "こそ乗り切れば: こそ chỉ ghép với ば theo dạng 〜ばこそ (chính vì…), không phải Nこそ〜ば."
+   },
+   "n": [
+    "お金さえあれば, 薬を飲みさえすれば."
+   ],
+   "why": "Điều kiện đủ: <b>chỉ cần</b> vượt qua khó khăn này thì sau sẽ nhẹ. Mẫu cố định <b>Nさえ〜ば</b>: chỉ cần N… là. 乗り切れば là thể ば → khớp."
+  },
+  {
+   "s": "コンピューターを使う（　）、筆と絵の具の代わりにコンピューターの{彩色|さいしき}ソフトを使って彩色をするという作業です。",
+   "o": [
+    "どころか",
+    "といっても",
+    "としたら",
+    "というもの"
+   ],
+   "a": 2,
+   "ar": "〜といっても",
    "vi": "Nói là dùng máy tính, nhưng thực ra chỉ là dùng phần mềm tô màu thay cho bút lông và màu vẽ.",
-   "key": [{"w": "〜といっても", "r": "といっても", "hv": "—", "m": "nói là… nhưng thực ra (không to tát)"}],
-   "x": {"1": "trái lại.", "3": "nếu giả sử.", "4": "〜というもの: suốt (khoảng thời gian)."},
-   "n": ["Xem Đề 12 câu 4 (いくら〜といっても)."]},
-  {"s": "やり方（　）、８時間の仕事も６時間で終わる。", "o": ["次第では", "ほどで", "ばかりに", "上は"], "a": 1, "ar": "N次第では",
+   "key": [
+    {
+     "w": "〜といっても",
+     "r": "といっても",
+     "hv": "—",
+     "m": "nói là… nhưng thực ra (không to tát)"
+    }
+   ],
+   "x": {
+    "1": "〜どころか (trái lại): vế sau phải ngược hoặc vượt hẳn. Câu chỉ giải thích cụ thể, không ngược.",
+    "3": "〜としたら (nếu giả sử): việc dùng máy tính là thực tế, không phải giả định.",
+    "4": "〜というもの: dùng sau khoảng thời gian (この3年というもの: suốt 3 năm nay). Không đi sau 使う."
+   },
+   "n": [
+    "Xem Đề 12 câu 4 (いくら〜といっても)."
+   ],
+   "why": "Thừa nhận vế trước (có dùng máy tính) rồi <b>điều chỉnh</b>: thực ra chỉ là tô màu bằng phần mềm. Mẫu <b>〜といっても</b>: nói là… nhưng thực tế (mức độ thấp hơn tưởng)."
+  },
+  {
+   "s": "やり方（　）、８時間の仕事も６時間で終わる。",
+   "o": [
+    "次第では",
+    "ほどで",
+    "ばかりに",
+    "上は"
+   ],
+   "a": 1,
+   "ar": "N次第では",
    "vi": "Tùy cách làm mà việc 8 tiếng cũng có thể xong trong 6 tiếng.",
-   "key": [{"w": "〜次第では", "r": "しだいでは", "hv": "THỨ ĐỆ", "m": "tùy vào… mà (có thể)"}],
-   "x": {"2": "khoảng chừng.", "3": "chỉ vì (hậu quả xấu).", "4": "〜上は: một khi đã (đi sau động từ)."},
-   "n": ["Xem Đề 4 câu 7 (次第: ngay sau khi)."]},
-  {"s": "大阪に行った（　）、大学時代の友人に会ってきた。", "o": ["とおりに", "うちに", "ついでに", "ばかりに"], "a": 3, "ar": "〜ついでに",
+   "key": [
+    {
+     "w": "〜次第では",
+     "r": "しだいでは",
+     "hv": "THỨ ĐỆ",
+     "m": "tùy vào… mà (có thể)"
+    }
+   ],
+   "x": {
+    "2": "ほどで (khoảng chừng): đi với số lượng (1時間ほどで). Không đi với やり方.",
+    "3": "〜ばかりに (chỉ vì — hậu quả xấu): kết quả ở đây là tốt (xong sớm).",
+    "4": "〜上は (một khi đã): đi sau động từ (決めた上は), không sau danh từ やり方."
+   },
+   "n": [
+    "Xem Đề 4 câu 7 (次第: ngay sau khi)."
+   ],
+   "why": "Kết quả <b>thay đổi tùy</b> cách làm: 8 tiếng có thể xong trong 6 tiếng. Mẫu <b>N次第では</b>: tùy vào N mà (có trường hợp)…"
+  },
+  {
+   "s": "大阪に行った（　）、大学時代の友人に会ってきた。",
+   "o": [
+    "とおりに",
+    "うちに",
+    "ついでに",
+    "ばかりに"
+   ],
+   "a": 3,
+   "ar": "〜ついでに",
    "vi": "Nhân tiện đi Osaka, tôi ghé gặp bạn thời đại học.",
-   "key": [{"w": "〜ついでに", "r": "ついでに", "hv": "—", "m": "nhân tiện"}],
-   "x": {"1": "đúng như.", "2": "trong lúc.", "4": "chỉ vì."}},
-  {"s": "あの人の計画には、どこかおかしいところがあると（　）。", "o": ["言わずにおくしかない", "言わざるをえない", "言うどころではない", "言うわけにはいかない"], "a": 2, "ar": "Vない + ざるをえない",
+   "key": [
+    {
+     "w": "〜ついでに",
+     "r": "ついでに",
+     "hv": "—",
+     "m": "nhân tiện"
+    }
+   ],
+   "x": {
+    "1": "〜とおりに (đúng như): 言ったとおりに. “Đúng như đã đi Osaka” vô nghĩa.",
+    "2": "〜うちに (trong lúc còn): đi với Vる / Vている, không với Vた theo nghĩa này.",
+    "4": "〜ばかりに (chỉ vì — hậu quả xấu): gặp bạn không phải hậu quả xấu."
+   },
+   "why": "Đi Osaka (việc chính), <b>nhân tiện</b> gặp bạn (việc phụ). Mẫu <b>Vた／Nの＋ついでに</b>: nhân tiện."
+  },
+  {
+   "s": "あの人の計画には、どこかおかしいところがあると（　）。",
+   "o": [
+    "言わずにおくしかない",
+    "言わざるをえない",
+    "言うどころではない",
+    "言うわけにはいかない"
+   ],
+   "a": 2,
+   "ar": "Vない + ざるをえない",
    "vi": "Tôi buộc phải nói rằng kế hoạch của người đó có chỗ nào đó bất thường.",
-   "key": [{"w": "〜ざるを得ない", "r": "ざるをえない", "hv": "ĐẮC", "m": "đành phải, không thể không"}],
-   "x": {"1": "chỉ còn cách không nói.", "3": "không phải lúc để nói.", "4": "không thể nói (vì lý do đạo lý)."},
-   "n": ["する → せざるを得ない."]},
-  {"s": "環境問題は、決して他人にまかせておけばいい（　）ではない。", "o": ["というはず", "というもの", "というよう", "というそう"], "a": 2, "ar": "〜というものではない",
+   "key": [
+    {
+     "w": "〜ざるを得ない",
+     "r": "ざるをえない",
+     "hv": "ĐẮC",
+     "m": "đành phải, không thể không"
+    }
+   ],
+   "x": {
+    "1": "言わずにおくしかない (chỉ còn cách không nói): ngược nghĩa — câu có と (trích nội dung nói ra).",
+    "3": "言うどころではない (không phải lúc để nói): không hợp vì câu đang nhận xét kế hoạch.",
+    "4": "言うわけにはいかない (không thể nói vì đạo lý): ngược nghĩa."
+   },
+   "n": [
+    "する → せざるを得ない."
+   ],
+   "why": "Dù không muốn nhưng <b>buộc phải</b> nói ra (do sự thật). Mẫu <b>Vない＋ざるをえない</b>: không thể không, đành phải. 言わ＋ざるをえない."
+  },
+  {
+   "s": "環境問題は、決して他人にまかせておけばいい（　）ではない。",
+   "o": [
+    "というはず",
+    "というもの",
+    "というよう",
+    "というそう"
+   ],
+   "a": 2,
+   "ar": "〜というものではない",
    "vi": "Vấn đề môi trường tuyệt đối không phải cứ phó mặc cho người khác là xong.",
-   "key": [{"w": "〜というものではない", "r": "というものではない", "hv": "—", "m": "không hẳn là (phủ định suy nghĩ đơn giản)"}],
-   "x": {"1": "không có mẫu.", "3": "không có mẫu.", "4": "không có mẫu."},
-   "n": ["Khẳng định: 〜というものだ (Đề 12 câu 8)."]},
-  {"s": "{西村|にしむら}さんは娘の大学合格がうれしくて（　）らしい。", "o": ["ならない", "きれない", "しかない", "ほかない"], "a": 1, "ar": "〜てならない",
+   "key": [
+    {
+     "w": "〜というものではない",
+     "r": "というものではない",
+     "hv": "—",
+     "m": "không hẳn là (phủ định suy nghĩ đơn giản)"
+    }
+   ],
+   "x": {
+    "1": "というはず: không có mẫu “というはずではない”.",
+    "3": "というよう: không có mẫu này.",
+    "4": "というそう: không có mẫu này (そう truyền đạt không đi sau という như vậy)."
+   },
+   "n": [
+    "Khẳng định: 〜というものだ (Đề 12 câu 8)."
+   ],
+   "why": "Phủ định một quan niệm sai: vấn đề môi trường <b>không phải cứ</b> phó mặc người khác là được. Mẫu <b>〜ばいいというものではない</b>: không phải cứ… là xong."
+  },
+  {
+   "s": "{西村|にしむら}さんは娘の大学合格がうれしくて（　）らしい。",
+   "o": [
+    "ならない",
+    "きれない",
+    "しかない",
+    "ほかない"
+   ],
+   "a": 1,
+   "ar": "〜てならない",
    "vi": "Có vẻ ông Nishimura vui khôn xiết vì con gái đỗ đại học.",
-   "key": [{"w": "〜てならない", "r": "てならない", "hv": "—", "m": "vô cùng, không kìm được"}],
-   "x": {"2": "〜きれない: không làm hết được (cần Vます).", "3": "〜しかない: chỉ còn cách.", "4": "〜ほかない: chỉ còn cách."},
-   "n": ["Xem Đề 12 câu 12."]},
-  {"s": "授業を（　）最中に、非常ベルが鳴り出した。", "o": ["している", "して", "する", "した"], "a": 1, "ar": "Vている + 最中に",
+   "key": [
+    {
+     "w": "〜てならない",
+     "r": "てならない",
+     "hv": "—",
+     "m": "vô cùng, không kìm được"
+    }
+   ],
+   "x": {
+    "2": "〜きれない (không làm hết được): gắn sau Vます (食べきれない), không sau うれしくて.",
+    "3": "〜しかない (chỉ còn cách): gắn sau Vる, không sau tính từ thể て.",
+    "4": "〜ほかない (chỉ còn cách): tương tự, không sau うれしくて."
+   },
+   "n": [
+    "Xem Đề 12 câu 12."
+   ],
+   "why": "Vui <b>khôn xiết, không kìm được</b> vì con đỗ đại học. Mẫu <b>Aくて＋ならない</b>: cảm xúc trào dâng tự nhiên (thường dùng cho người khác kèm らしい／ようだ)."
+  },
+  {
+   "s": "授業を（　）最中に、非常ベルが鳴り出した。",
+   "o": [
+    "している",
+    "して",
+    "する",
+    "した"
+   ],
+   "a": 1,
+   "ar": "Vている + 最中に",
    "vi": "Đang giữa giờ học thì chuông báo động reo.",
-   "key": [{"w": "〜最中に", "r": "さいちゅうに", "hv": "TỐI TRUNG", "m": "đang lúc giữa chừng"}],
-   "x": {"2": "không nối được.", "3": "Vる không đi với 最中.", "4": "Vた không đi với 最中."},
-   "n": ["N の最中: 会議の最中."]},
-  {"s": "友だちの家へ（　）、あいにく留守だった。", "o": ["行ったばかり", "行ったところ", "行くところ", "行くばかり"], "a": 2, "ar": "Vた + ところ",
+   "key": [
+    {
+     "w": "〜最中に",
+     "r": "さいちゅうに",
+     "hv": "TỐI TRUNG",
+     "m": "đang lúc giữa chừng"
+    }
+   ],
+   "x": {
+    "2": "して: thể て không nối trực tiếp với danh từ 最中.",
+    "3": "する: Vる không đi với 最中 (phải là している).",
+    "4": "した: Vた chỉ hành động đã xong — mâu thuẫn với “đang giữa chừng”."
+   },
+   "n": [
+    "N の最中: 会議の最中."
+   ],
+   "why": "Đúng lúc <b>đang giữa</b> giờ học thì chuông reo. Mẫu <b>Vている／Nの＋最中に</b>: đang lúc cao điểm của hành động."
+  },
+  {
+   "s": "友だちの家へ（　）、あいにく留守だった。",
+   "o": [
+    "行ったばかり",
+    "行ったところ",
+    "行くところ",
+    "行くばかり"
+   ],
+   "a": 2,
+   "ar": "Vた + ところ",
    "vi": "Tôi đến nhà bạn thì không may cậu ấy vắng nhà.",
-   "key": [{"w": "Vたところ", "r": "たところ", "hv": "—", "m": "làm… thì (phát hiện kết quả)"}],
-   "x": {"1": "vừa mới đi.", "3": "sắp đi.", "4": "cứ ngày càng đi."},
-   "n": ["あいにく (Đề 2 câu 4). 留守 るす: vắng nhà."]},
-  {"s": "{夏目漱石|なつめそうせき}（　）、「こころ」という小説を思い出す人も多いだろう。", "o": ["というと", "からいって", "からいえば", "というより"], "a": 1, "ar": "Nというと",
+   "key": [
+    {
+     "w": "Vたところ",
+     "r": "たところ",
+     "hv": "—",
+     "m": "làm… thì (phát hiện kết quả)"
+    }
+   ],
+   "x": {
+    "1": "行ったばかり (vừa mới đi): chỉ thời gian ngắn, không nối với kết quả “không có ở nhà”.",
+    "3": "行くところ (sắp đi): chưa đến thì chưa biết bạn vắng nhà.",
+    "4": "行くばかり: không có nghĩa phù hợp (〜ばかりだ: ngày càng xấu)."
+   },
+   "n": [
+    "あいにく (Đề 2 câu 4). 留守 るす: vắng nhà."
+   ],
+   "why": "Làm một việc (đến nhà bạn) <b>thì kết quả là</b> phát hiện bạn vắng nhà. Mẫu <b>Vた＋ところ</b>: làm… thì (kết quả bất ngờ)."
+  },
+  {
+   "s": "{夏目漱石|なつめそうせき}（　）、「こころ」という小説を思い出す人も多いだろう。",
+   "o": [
+    "というと",
+    "からいって",
+    "からいえば",
+    "というより"
+   ],
+   "a": 1,
+   "ar": "Nというと",
    "vi": "Nhắc đến Natsume Soseki, hẳn nhiều người sẽ nhớ tới tiểu thuyết “Kokoro”.",
-   "key": [{"w": "〜というと", "r": "というと", "hv": "—", "m": "nhắc đến… thì (liên tưởng)"}],
-   "x": {"2": "xét từ.", "3": "xét từ.", "4": "nói đúng hơn là (câu 1)."},
-   "n": ["Đồng nghĩa: 〜といえば, 〜といったら."]}
+   "key": [
+    {
+     "w": "〜というと",
+     "r": "というと",
+     "hv": "—",
+     "m": "nhắc đến… thì (liên tưởng)"
+    }
+   ],
+   "x": {
+    "2": "〜からいって (xét từ): cần một tiêu chí đánh giá (経験からいって). “Xét từ Natsume Soseki” không hợp.",
+    "3": "〜からいえば (xét từ góc độ): tương tự, không dùng để liên tưởng.",
+    "4": "〜というより (nói đúng hơn là): cần hai thứ để so sánh, không có ở đây."
+   },
+   "n": [
+    "Đồng nghĩa: 〜といえば, 〜といったら."
+   ],
+   "why": "Nhắc đến một chủ đề rồi <b>liên tưởng</b> tới điều liên quan. Mẫu <b>Nというと／といえば</b>: nhắc đến N thì (nghĩ ngay đến)…"
+  }
+ ],
+ "sum": [
+  {
+   "h": "Họ mẫu với という — dễ nhầm nhất N2",
+   "tbl": {
+    "head": [
+     "Mẫu",
+     "Nghĩa",
+     "Ví dụ"
+    ],
+    "rows": [
+     [
+      "AというよりB",
+      "B thì đúng hơn A",
+      "先生というより銀行員だ"
+     ],
+     [
+      "〜といっても",
+      "nói là… nhưng thực ra",
+      "料理ができるといっても卵焼きだけ"
+     ],
+     [
+      "Nというと / といえば",
+      "nhắc đến N thì",
+      "夏目漱石というと「こころ」"
+     ],
+     [
+      "Nといったら",
+      "nói đến N thì (cảm thán)",
+      "その寒さといったら"
+     ],
+     [
+      "〜というものではない",
+      "không phải cứ… là",
+      "お金があればいいというものではない"
+     ],
+     [
+      "〜というものだ",
+      "đó mới chính là",
+      "それが親心というものだ"
+     ],
+     [
+      "期間＋というもの",
+      "suốt (thời gian dài)",
+      "この1週間というもの"
+     ],
+     [
+      "〜ということだ",
+      "nghe nói; nghĩa là",
+      "明日は休みだということだ"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "さえ / でさえ / こそ",
+   "li": [
+    "<b>Nさえ〜ば</b>: chỉ cần N là đủ — お金さえあれば; Vます＋さえすれば: 謝りさえすれば許す.",
+    "<b>Nでさえ / Nさえ</b>: ngay cả N (ví dụ cực đoan) — 子どもでさえ知っている.",
+    "<b>Nこそ</b>: chính N (nhấn mạnh tích cực) — 今年こそ. <b>〜ばこそ / 〜からこそ</b>: chính vì.",
+    "<b>Nすら</b>: ngay cả (văn viết, ≈ さえ)."
+   ]
+  },
+  {
+   "h": "Mẫu chỉ thời điểm và kết quả",
+   "tbl": {
+    "head": [
+     "Mẫu",
+     "Nghĩa",
+     "Ví dụ"
+    ],
+    "rows": [
+     [
+      "Vている / Nの＋最中に",
+      "đang giữa lúc",
+      "会議の最中に電話が鳴った"
+     ],
+     [
+      "Vた＋ところ",
+      "làm… thì (kết quả)",
+      "聞いてみたところ、知らなかった"
+     ],
+     [
+      "Vた＋ばかり",
+      "vừa mới",
+      "来たばかりだ"
+     ],
+     [
+      "Vる＋ところ",
+      "sắp",
+      "出かけるところだ"
+     ],
+     [
+      "Vた / Nの＋ついでに",
+      "nhân tiện",
+      "買い物のついでに"
+     ],
+     [
+      "N次第で / 次第では",
+      "tùy vào",
+      "天気次第では中止"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Buộc phải / cảm xúc trào dâng",
+   "li": [
+    "<b>Vない＋ざるをえない</b>: buộc phải (する → せざるをえない). Gần nghĩa: 〜ないわけにはいかない, 〜しかない.",
+    "<b>〜てならない</b> / <b>〜てたまらない</b> / <b>〜てしかたがない</b>: … không chịu nổi; với người thứ ba thêm らしい／ようだ／がっている.",
+    "Đối lập: 〜わけにはいかない (không thể làm), 〜どころではない (không phải lúc), 〜ずにおく (cố ý không làm)."
+   ]
+  }
  ]
 }

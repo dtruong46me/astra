@@ -6,111 +6,730 @@
  "title": "Đề 8 · Từ vựng N2",
  "jp": "文脈規定",
  "mondai": "<b>問題4</b> （　）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。 Chọn từ thích hợp nhất để điền vào chỗ trống.",
- "src": {"folder": "1wQmVMGk71d-DyTdtNUoH0uI5iwTnDzzR", "goc": "1PjfVzIWN-lrCZsBjjk2WzAqDdAoEHrUf", "chua": "1pH0gwQBUpahsczxDY21_7b53x7fe2GoO"},
+ "src": {
+  "folder": "1wQmVMGk71d-DyTdtNUoH0uI5iwTnDzzR",
+  "goc": "1PjfVzIWN-lrCZsBjjk2WzAqDdAoEHrUf",
+  "chua": "1pH0gwQBUpahsczxDY21_7b53x7fe2GoO"
+ },
  "qs": [
-  {"s": "１時間以上{床|ゆか}に座っていたら、足が（　）。", "o": ["しびれた", "つぶれた", "やぶれた", "くずれた"], "a": 1, "ar": "痺れる",
+  {
+   "s": "１時間以上{床|ゆか}に座っていたら、足が（　）。",
+   "o": [
+    "しびれた",
+    "つぶれた",
+    "やぶれた",
+    "くずれた"
+   ],
+   "a": 1,
+   "ar": "痺れる",
    "vi": "Ngồi dưới sàn hơn một tiếng làm chân tôi tê rần.",
-   "key": [{"w": "痺れる", "r": "しびれる", "hv": "TÝ", "m": "tê, tê dại"}],
-   "x": {"2": "<span class=\"jp\">潰れる</span> つぶれる: bị đè bẹp; (công ty) phá sản.", "3": "<span class=\"jp\">破れる</span> やぶれる: rách.", "4": "<span class=\"jp\">崩れる</span> くずれる: sụp, lở; (thời tiết) xấu đi."},
-   "g": ["<b class=\"jp\">Vていたら</b>: đang làm… thì (kết quả xảy ra)."],
-   "n": ["しびれを切らす: mất kiên nhẫn (quán ngữ)."]},
-  {"s": "（　）スマホが{欲|ほ}しいのなら、自分で買いなさい。", "o": ["必ずしも", "どうしても", "少なくとも", "くれぐれも"], "a": 2, "ar": "どうしても",
+   "key": [
+    {
+     "w": "痺れる",
+     "r": "しびれる",
+     "hv": "TÝ",
+     "m": "tê, tê dại"
+    }
+   ],
+   "x": {
+    "2": "つぶれる (bị đè bẹp; phá sản): chân không bị “bẹp” vì ngồi; 店がつぶれる, 箱がつぶれる.",
+    "3": "やぶれる (rách; thua): dùng cho giấy, vải (服が破れる), không dùng cho chân.",
+    "4": "くずれる (sụp đổ, lở; thời tiết xấu đi): 山が崩れる, 天気が崩れる. Không tả cảm giác ở chân."
+   },
+   "g": [
+    "<b class=\"jp\">Vていたら</b>: đang làm… thì (kết quả xảy ra)."
+   ],
+   "n": [
+    "しびれを切らす: mất kiên nhẫn (quán ngữ)."
+   ],
+   "why": "Ngồi lâu dưới sàn → chân bị <b>tê</b>. Collocation cố định <b>足がしびれる</b> (痺れる: tê rần)."
+  },
+  {
+   "s": "（　）スマホが{欲|ほ}しいのなら、自分で買いなさい。",
+   "o": [
+    "必ずしも",
+    "どうしても",
+    "少なくとも",
+    "くれぐれも"
+   ],
+   "a": 2,
+   "ar": "どうしても",
    "vi": "Nếu con nhất định muốn có điện thoại thì tự mà mua đi.",
-   "key": [{"w": "どうしても", "r": "どうしても", "hv": "—", "m": "bằng mọi giá; dù thế nào cũng (không)"}],
-   "x": {"1": "必ずしも〜ない: không hẳn là.", "3": "少なくとも: ít nhất thì.", "4": "くれぐれも: (dặn dò) nhất định, hết sức (くれぐれもお大事に)."},
-   "g": ["<b class=\"jp\">〜のなら</b>: nếu (tiếp nhận ý người nghe). <b class=\"jp\">Vなさい</b>: mệnh lệnh nhẹ."],
-   "n": ["どうしても + phủ định: どうしても分からない (thế nào cũng không hiểu)."]},
-  {"s": "その新聞社は、国際政治関係の{論文|ろんぶん}の全国（　）を{開催|かいさい}している。", "o": ["コンサート", "コンクリート", "コンクール", "コンセント"], "a": 3, "ar": "concours",
+   "key": [
+    {
+     "w": "どうしても",
+     "r": "どうしても",
+     "hv": "—",
+     "m": "bằng mọi giá; dù thế nào cũng (không)"
+    }
+   ],
+   "x": {
+    "1": "必ずしも phải đi với phủ định (必ずしも〜とは限らない: không hẳn). Câu này khẳng định.",
+    "3": "少なくとも (ít nhất thì): đi với số lượng, mức tối thiểu. “Ít nhất thì muốn điện thoại” không hợp.",
+    "4": "くれぐれも (xin hết sức): dùng khi dặn dò, nhờ vả lịch sự (くれぐれもお大事に). Không dùng cho mong muốn của bản thân."
+   },
+   "g": [
+    "<b class=\"jp\">〜のなら</b>: nếu (tiếp nhận ý người nghe). <b class=\"jp\">Vなさい</b>: mệnh lệnh nhẹ."
+   ],
+   "n": [
+    "どうしても + phủ định: どうしても分からない (thế nào cũng không hiểu)."
+   ],
+   "why": "Vế sau là điều kiện “nếu muốn thì tự mua” → nhấn mạnh <b>mong muốn mãnh liệt</b>. <b>どうしても</b>＋〜たい ＝ nhất định muốn, muốn bằng mọi giá."
+  },
+  {
+   "s": "その新聞社は、国際政治関係の{論文|ろんぶん}の全国（　）を{開催|かいさい}している。",
+   "o": [
+    "コンサート",
+    "コンクリート",
+    "コンクール",
+    "コンセント"
+   ],
+   "a": 3,
+   "ar": "concours",
    "vi": "Tòa soạn đó tổ chức cuộc thi viết luận toàn quốc về chính trị quốc tế.",
-   "key": [{"w": "コンクール", "r": "コンクール", "hv": "—", "m": "cuộc thi (tiếng Pháp concours)"}],
-   "x": {"1": "hòa nhạc.", "2": "bê tông.", "4": "ổ cắm điện."},
-   "n": ["Nhóm từ ngoại lai dễ nhầm vì cùng đầu コン〜."]},
-  {"s": "暗いから（　）に気をつけてください。", "o": ["足音", "足早", "足元", "足跡"], "a": 3, "ar": "あしもと",
+   "key": [
+    {
+     "w": "コンクール",
+     "r": "コンクール",
+     "hv": "—",
+     "m": "cuộc thi (tiếng Pháp concours)"
+    }
+   ],
+   "x": {
+    "1": "コンサート (hòa nhạc): không thi viết luận ở buổi hòa nhạc.",
+    "2": "コンクリート (bê tông): vật liệu xây dựng — bẫy âm gần giống.",
+    "4": "コンセント (ổ cắm điện): bẫy âm gần giống, khác nghĩa hoàn toàn."
+   },
+   "n": [
+    "Nhóm từ ngoại lai dễ nhầm vì cùng đầu コン〜."
+   ],
+   "why": "論文の全国〜を開催 ＝ tổ chức <b>cuộc thi</b> viết luận toàn quốc. <b>コンクール</b> (concours) ＝ cuộc thi (âm nhạc, tranh, văn)."
+  },
+  {
+   "s": "暗いから（　）に気をつけてください。",
+   "o": [
+    "足音",
+    "足早",
+    "足元",
+    "足跡"
+   ],
+   "a": 3,
+   "ar": "あしもと",
    "vi": "Trời tối, xin hãy cẩn thận dưới chân.",
-   "key": [{"w": "足元", "r": "あしもと", "hv": "TÚC NGUYÊN", "m": "dưới chân, bước chân"}],
-   "x": {"1": "<span class=\"jp\">足音</span> あしおと: tiếng bước chân.", "2": "<span class=\"jp\">足早</span> あしばや: bước nhanh.", "4": "<span class=\"jp\">足跡</span> あしあと: dấu chân."},
-   "n": ["足元を見る: lợi dụng điểm yếu. Xem Đề 20 câu 19 (足元に用心)."]},
-  {"s": "道路の建設をめぐって住民同士が（　）している。", "o": ["対照", "対立", "対策", "対面"], "a": 2, "ar": "たいりつ",
+   "key": [
+    {
+     "w": "足元",
+     "r": "あしもと",
+     "hv": "TÚC NGUYÊN",
+     "m": "dưới chân, bước chân"
+    }
+   ],
+   "x": {
+    "1": "足音 (tiếng bước chân): không liên quan đến việc trời tối dễ vấp.",
+    "2": "足早 (bước vội): là trạng thái đi, không phải chỗ để “cẩn thận”.",
+    "4": "足跡 (dấu chân): là vết để lại, không cần cẩn thận vì trời tối."
+   },
+   "n": [
+    "足元を見る: lợi dụng điểm yếu. Xem Đề 20 câu 19 (足元に用心)."
+   ],
+   "why": "Trời tối → cẩn thận <b>dưới chân</b> (kẻo vấp ngã). Câu cố định <b>足元に気をつけて</b>."
+  },
+  {
+   "s": "道路の建設をめぐって住民同士が（　）している。",
+   "o": [
+    "対照",
+    "対立",
+    "対策",
+    "対面"
+   ],
+   "a": 2,
+   "ar": "たいりつ",
    "vi": "Người dân đang mâu thuẫn với nhau xoay quanh việc làm đường.",
-   "key": [{"w": "対立", "r": "たいりつ", "hv": "ĐỐI LẬP", "m": "đối lập, mâu thuẫn"}],
-   "x": {"1": "<span class=\"jp\">対照</span> たいしょう: đối chiếu, tương phản.", "3": "<span class=\"jp\">対策</span> たいさく: biện pháp đối phó.", "4": "<span class=\"jp\">対面</span> たいめん: gặp mặt trực tiếp."},
-   "g": ["<b class=\"jp\">〜をめぐって</b>: xoay quanh (vấn đề tranh cãi)."],
-   "n": ["同士 どうし: những người cùng… với nhau."]},
-  {"s": "固く{結|むす}んであるから、なかなか{靴|くつ}の（　）がほどけない。", "o": ["つな", "いと", "なわ", "ひも"], "a": 4, "ar": "紐",
+   "key": [
+    {
+     "w": "対立",
+     "r": "たいりつ",
+     "hv": "ĐỐI LẬP",
+     "m": "đối lập, mâu thuẫn"
+    }
+   ],
+   "x": {
+    "1": "対照 (đối chiếu, tương phản): dùng để so sánh hai thứ (対照的な性格). Người dân không “đối chiếu với nhau”.",
+    "3": "対策 (biện pháp đối phó): 対策を立てる. Không dùng 住民同士が対策している.",
+    "4": "対面 (gặp mặt trực tiếp): không mang nghĩa mâu thuẫn do bất đồng."
+   },
+   "g": [
+    "<b class=\"jp\">〜をめぐって</b>: xoay quanh (vấn đề tranh cãi)."
+   ],
+   "n": [
+    "同士 どうし: những người cùng… với nhau."
+   ],
+   "why": "〜をめぐって (xoay quanh vấn đề) ＋ 住民同士 (người dân với nhau) → <b>đối lập, mâu thuẫn</b>. <b>対立する</b>: hai phe đối đầu."
+  },
+  {
+   "s": "固く{結|むす}んであるから、なかなか{靴|くつ}の（　）がほどけない。",
+   "o": [
+    "つな",
+    "いと",
+    "なわ",
+    "ひも"
+   ],
+   "a": 4,
+   "ar": "紐",
    "vi": "Vì buộc chặt nên mãi không cởi được dây giày.",
-   "key": [{"w": "紐", "r": "ひも", "hv": "NỮU", "m": "dây (buộc)"}],
-   "x": {"1": "<span class=\"jp\">綱</span> つな: dây thừng to (綱引き).", "2": "<span class=\"jp\">糸</span> いと: sợi chỉ.", "3": "<span class=\"jp\">縄</span> なわ: dây thừng bện (縄跳び)."},
-   "g": ["<b class=\"jp\">なかなか〜ない</b>: mãi mà không."],
-   "n": ["ほどける (tự) / ほどく (tha): tuột ra / cởi ra."]},
-  {"s": "新聞の一面に{保険金詐欺事件|ほけんきんさぎじけん}が大きな（　）で出ている。", "o": ["見かけ", "見出し", "見本", "見方"], "a": 2, "ar": "みだし",
+   "key": [
+    {
+     "w": "紐",
+     "r": "ひも",
+     "hv": "NỮU",
+     "m": "dây (buộc)"
+    }
+   ],
+   "x": {
+    "1": "つな (綱: dây thừng to): dùng kéo co (綱引き), buộc tàu — quá to cho giày.",
+    "2": "いと (糸: sợi chỉ): dùng để may, không phải dây buộc giày.",
+    "3": "なわ (縄: dây thừng bện): dùng nhảy dây (縄跳び), buộc đồ — không phải dây giày."
+   },
+   "g": [
+    "<b class=\"jp\">なかなか〜ない</b>: mãi mà không."
+   ],
+   "n": [
+    "ほどける (tự) / ほどく (tha): tuột ra / cởi ra."
+   ],
+   "why": "Thứ buộc trên giày và cởi ra (ほどける) là <b>dây giày</b>: <b>靴のひも</b> (紐)."
+  },
+  {
+   "s": "新聞の一面に{保険金詐欺事件|ほけんきんさぎじけん}が大きな（　）で出ている。",
+   "o": [
+    "見かけ",
+    "見出し",
+    "見本",
+    "見方"
+   ],
+   "a": 2,
+   "ar": "みだし",
    "vi": "Vụ lừa đảo tiền bảo hiểm lên trang nhất báo với dòng tít lớn.",
-   "key": [{"w": "見出し", "r": "みだし", "hv": "KIẾN XUẤT", "m": "tít, tiêu đề"}],
-   "x": {"1": "<span class=\"jp\">見かけ</span>: vẻ bề ngoài.", "3": "<span class=\"jp\">見本</span> みほん: hàng mẫu.", "4": "<span class=\"jp\">見方</span>: cách nhìn."},
-   "n": ["一面 いちめん: trang nhất. 詐欺 さぎ: lừa đảo."]},
-  {"s": "あすの水泳大会で（　）の結果が見られることを楽しみにしています。", "o": ["目的", "自慢", "覚悟", "努力"], "a": 4, "ar": "どりょく",
+   "key": [
+    {
+     "w": "見出し",
+     "r": "みだし",
+     "hv": "KIẾN XUẤT",
+     "m": "tít, tiêu đề"
+    }
+   ],
+   "x": {
+    "1": "見かけ (vẻ bề ngoài): nói về người, vật; báo không có “vẻ ngoài lớn”.",
+    "3": "見本 (hàng mẫu): không liên quan đến trình bày tin trên báo.",
+    "4": "見方 (cách nhìn): là quan điểm, không phải phần chữ in trên báo."
+   },
+   "n": [
+    "一面 いちめん: trang nhất. 詐欺 さぎ: lừa đảo."
+   ],
+   "why": "Tin xuất hiện trên trang nhất với chữ lớn → <b>dòng tít</b>. <b>見出し</b> ＝ tiêu đề bài báo. 大きな見出しで出る là cách nói quen thuộc."
+  },
+  {
+   "s": "あすの水泳大会で（　）の結果が見られることを楽しみにしています。",
+   "o": [
+    "目的",
+    "自慢",
+    "覚悟",
+    "努力"
+   ],
+   "a": 4,
+   "ar": "どりょく",
    "vi": "Tôi mong được thấy thành quả của sự nỗ lực ở giải bơi ngày mai.",
-   "key": [{"w": "努力", "r": "どりょく", "hv": "NỖ LỰC", "m": "nỗ lực"}],
-   "x": {"1": "mục đích.", "2": "<span class=\"jp\">自慢</span> じまん: khoe khoang, tự hào.", "3": "<span class=\"jp\">覚悟</span> かくご: sự chuẩn bị tinh thần."},
-   "n": ["努力が報われる: nỗ lực được đền đáp."]},
-  {"s": "{書物|しょもつ}の選択にあたってはもっと（　）にしなければなりませんよ。", "o": ["貴重", "重要", "重大", "慎重"], "a": 4, "ar": "しんちょう",
+   "key": [
+    {
+     "w": "努力",
+     "r": "どりょく",
+     "hv": "NỖ LỰC",
+     "m": "nỗ lực"
+    }
+   ],
+   "x": {
+    "1": "目的 (mục đích): “kết quả của mục đích” không hợp nghĩa.",
+    "2": "自慢 (khoe khoang, tự hào): “kết quả của sự khoe khoang” vô nghĩa.",
+    "3": "覚悟 (chuẩn bị tinh thần đón điều xấu): không tạo ra “thành quả” ở giải bơi."
+   },
+   "n": [
+    "努力が報われる: nỗ lực được đền đáp."
+   ],
+   "why": "Mong được thấy <b>thành quả</b> trong giải bơi → kết quả của <b>sự nỗ lực</b>. Cụm 努力の結果 (thành quả nỗ lực) rất tự nhiên."
+  },
+  {
+   "s": "{書物|しょもつ}の選択にあたってはもっと（　）にしなければなりませんよ。",
+   "o": [
+    "貴重",
+    "重要",
+    "重大",
+    "慎重"
+   ],
+   "a": 4,
+   "ar": "しんちょう",
    "vi": "Khi chọn sách phải cẩn trọng hơn nữa đấy.",
-   "key": [{"w": "慎重", "r": "しんちょう", "hv": "THẬN TRỌNG", "m": "thận trọng"}],
-   "x": {"1": "<span class=\"jp\">貴重</span> きちょう: quý giá.", "2": "<span class=\"jp\">重要</span>: quan trọng.", "3": "<span class=\"jp\">重大</span>: nghiêm trọng, hệ trọng."},
-   "g": ["<b class=\"jp\">〜にあたって</b>: khi, nhân dịp (trang trọng)."],
-   "n": ["Cả 4 đều có chữ 重, chỉ 慎重 mô tả thái độ hành động."]},
-  {"s": "A「試験の成績、どうだった？」　B「（　）できたよ。」", "o": ["まあまあ", "ちっとも", "さっぱり", "あんまり"], "a": 1, "ar": "まあまあ",
+   "key": [
+    {
+     "w": "慎重",
+     "r": "しんちょう",
+     "hv": "THẬN TRỌNG",
+     "m": "thận trọng"
+    }
+   ],
+   "x": {
+    "1": "貴重 (quý giá): tả giá trị của vật (貴重な資料), không tả thái độ của người chọn.",
+    "2": "重要 (quan trọng): tả tầm quan trọng của sự việc; “phải làm quan trọng hơn” không tự nhiên.",
+    "3": "重大 (nghiêm trọng, hệ trọng): tả sự việc (重大な事故), không tả cách hành động."
+   },
+   "g": [
+    "<b class=\"jp\">〜にあたって</b>: khi, nhân dịp (trang trọng)."
+   ],
+   "n": [
+    "Cả 4 đều có chữ 重, chỉ 慎重 mô tả thái độ hành động."
+   ],
+   "why": "Khi chọn sách, cần <b>cẩn trọng</b> hơn. 〜にする (làm cho, hành động một cách) cần tính từ chỉ thái độ → <b>慎重</b> (thận trọng). 慎重にする / 慎重に選ぶ."
+  },
+  {
+   "s": "A「試験の成績、どうだった？」　B「（　）できたよ。」",
+   "o": [
+    "まあまあ",
+    "ちっとも",
+    "さっぱり",
+    "あんまり"
+   ],
+   "a": 1,
+   "ar": "まあまあ",
    "vi": "A: Kết quả thi thế nào? B: Cũng tàm tạm.",
-   "key": [{"w": "まあまあ", "r": "まあまあ", "hv": "—", "m": "tàm tạm, kha khá"}],
-   "x": {"2": "ちっとも〜ない: chẳng chút nào (cần phủ định).", "3": "さっぱり〜ない: hoàn toàn không (cần phủ định).", "4": "あんまり〜ない: không… lắm (cần phủ định)."},
-   "n": ["Câu kết thúc bằng できた (khẳng định) nên loại các phó từ đi với phủ định."]},
-  {"s": "アインシュタインは{科学者|かがくしゃ}として（　）な{業績|ぎょうせき}を残した。", "o": ["高級", "上等", "豪華", "偉大"], "a": 4, "ar": "いだい",
+   "key": [
+    {
+     "w": "まあまあ",
+     "r": "まあまあ",
+     "hv": "—",
+     "m": "tàm tạm, kha khá"
+    }
+   ],
+   "x": {
+    "2": "ちっとも chỉ đi với phủ định (ちっとも分からない). できた khẳng định → sai.",
+    "3": "さっぱり (hoàn toàn không) đi với phủ định (さっぱり分からない). Sai với できた.",
+    "4": "あんまり (không… lắm) đi với phủ định (あんまりできなかった). Sai với できた."
+   },
+   "n": [
+    "Câu kết thúc bằng できた (khẳng định) nên loại các phó từ đi với phủ định."
+   ],
+   "why": "Động từ できた ở thể <b>khẳng định</b> → cần phó từ dùng được với khẳng định. <b>まあまあ</b> ＝ tàm tạm, cũng được."
+  },
+  {
+   "s": "アインシュタインは{科学者|かがくしゃ}として（　）な{業績|ぎょうせき}を残した。",
+   "o": [
+    "高級",
+    "上等",
+    "豪華",
+    "偉大"
+   ],
+   "a": 4,
+   "ar": "いだい",
    "vi": "Einstein để lại những thành tựu vĩ đại với tư cách nhà khoa học.",
-   "key": [{"w": "偉大", "r": "いだい", "hv": "VĨ ĐẠI", "m": "vĩ đại"}, {"w": "業績", "r": "ぎょうせき", "hv": "NGHIỆP TÍCH", "m": "thành tựu"}],
-   "x": {"1": "<span class=\"jp\">高級</span>: cao cấp (hàng hóa).", "2": "<span class=\"jp\">上等</span>: thượng hạng.", "3": "<span class=\"jp\">豪華</span> ごうか: xa hoa."},
-   "g": ["<b class=\"jp\">Nとして</b>: với tư cách là."]},
-  {"s": "A「このノートパソコン、使わせていただいてもよろしいでしょうか。」　B「どうぞ、（　）。」", "o": ["ごえんりょなく", "おじゃましました", "おきのどくに", "かしこまりました"], "a": 1, "ar": "ご遠慮なく",
+   "key": [
+    {
+     "w": "偉大",
+     "r": "いだい",
+     "hv": "VĨ ĐẠI",
+     "m": "vĩ đại"
+    },
+    {
+     "w": "業績",
+     "r": "ぎょうせき",
+     "hv": "NGHIỆP TÍCH",
+     "m": "thành tựu"
+    }
+   ],
+   "x": {
+    "1": "高級 (cao cấp): dùng cho hàng hóa, nhà hàng (高級車). Không dùng cho thành tựu.",
+    "2": "上等 (thượng hạng): dùng cho chất lượng đồ vật (上等な肉).",
+    "3": "豪華 (xa hoa, lộng lẫy): dùng cho bữa tiệc, trang trí (豪華な料理)."
+   },
+   "g": [
+    "<b class=\"jp\">Nとして</b>: với tư cách là."
+   ],
+   "why": "業績 (thành tựu) của nhà khoa học → <b>vĩ đại</b>. <b>偉大な業績</b> là collocation cố định, dùng cho người và công trình lớn."
+  },
+  {
+   "s": "A「このノートパソコン、使わせていただいてもよろしいでしょうか。」　B「どうぞ、（　）。」",
+   "o": [
+    "ごえんりょなく",
+    "おじゃましました",
+    "おきのどくに",
+    "かしこまりました"
+   ],
+   "a": 1,
+   "ar": "ご遠慮なく",
    "vi": "A: Tôi dùng chiếc laptop này được không ạ? B: Xin mời, cứ tự nhiên.",
-   "key": [{"w": "ご遠慮なく", "r": "ごえんりょなく", "hv": "VIỄN LỰ", "m": "xin cứ tự nhiên"}],
-   "x": {"2": "tôi đã làm phiền (khi ra về).", "3": "thật đáng tiếc cho anh/chị (chia buồn).", "4": "vâng, tôi hiểu rồi (nhận lệnh, người dưới nói)."},
-   "g": ["<b class=\"jp\">使わせていただいてもよろしいでしょうか</b>: xin phép rất lịch sự."]},
-  {"s": "その{遊覧船|ゆうらんせん}の{乗客数|じょうきゃくすう}は定員を50人も（　）していた。", "o": ["過剰", "通過", "過失", "超過"], "a": 4, "ar": "ちょうか",
+   "key": [
+    {
+     "w": "ご遠慮なく",
+     "r": "ごえんりょなく",
+     "hv": "VIỄN LỰ",
+     "m": "xin cứ tự nhiên"
+    }
+   ],
+   "x": {
+    "2": "おじゃましました (tôi đã làm phiền): người khách nói khi ra về, không dùng để cho phép.",
+    "3": "おきのどくに (thật đáng tiếc cho anh chị): câu chia buồn, sai tình huống.",
+    "4": "かしこまりました (vâng, tôi hiểu rồi): người dưới nhận yêu cầu. Người cho phép không nói câu này."
+   },
+   "g": [
+    "<b class=\"jp\">使わせていただいてもよろしいでしょうか</b>: xin phép rất lịch sự."
+   ],
+   "why": "A xin phép dùng laptop, B cho phép → <b>ご遠慮なく</b> (cứ tự nhiên, đừng ngại). どうぞ、ご遠慮なく là câu đáp cố định."
+  },
+  {
+   "s": "その{遊覧船|ゆうらんせん}の{乗客数|じょうきゃくすう}は定員を50人も（　）していた。",
+   "o": [
+    "過剰",
+    "通過",
+    "過失",
+    "超過"
+   ],
+   "a": 4,
+   "ar": "ちょうか",
    "vi": "Số khách trên du thuyền vượt sức chứa tới 50 người.",
-   "key": [{"w": "超過", "r": "ちょうか", "hv": "SIÊU QUÁ", "m": "vượt quá (định mức)"}, {"w": "定員", "r": "ていいん", "hv": "ĐỊNH VIÊN", "m": "số người quy định"}],
-   "x": {"1": "<span class=\"jp\">過剰</span>: dư thừa (danh từ/tính từ, không nhận tân ngữ を).", "2": "<span class=\"jp\">通過</span>: đi qua.", "3": "<span class=\"jp\">過失</span> かしつ: lỗi sơ suất."},
-   "n": ["[số lượng] + も: nhấn mạnh nhiều. 超過料金: phí vượt mức."]},
-  {"s": "私は子供の頃からパイロットになる夢を（　）きた。", "o": ["かかえて", "くだいて", "いだいて", "むかえて"], "a": 3, "ar": "抱く → いだく",
+   "key": [
+    {
+     "w": "超過",
+     "r": "ちょうか",
+     "hv": "SIÊU QUÁ",
+     "m": "vượt quá (định mức)"
+    },
+    {
+     "w": "定員",
+     "r": "ていいん",
+     "hv": "ĐỊNH VIÊN",
+     "m": "số người quy định"
+    }
+   ],
+   "x": {
+    "1": "過剰 (dư thừa): là tính từ/danh từ, không có dạng 過剰する nhận を (定員を過剰する sai).",
+    "2": "通過 (đi qua): 駅を通過する — đi ngang qua chứ không phải “vượt quá”.",
+    "3": "過失 (lỗi sơ suất): không phải động từ chỉ vượt mức."
+   },
+   "n": [
+    "[số lượng] + も: nhấn mạnh nhiều. 超過料金: phí vượt mức."
+   ],
+   "why": "定員を50人も〜した ＝ <b>vượt</b> sức chứa 50 người. Động từ nhận tân ngữ を và chỉ vượt quá giới hạn là <b>超過する</b> (定員を超過する)."
+  },
+  {
+   "s": "私は子供の頃からパイロットになる夢を（　）きた。",
+   "o": [
+    "かかえて",
+    "くだいて",
+    "いだいて",
+    "むかえて"
+   ],
+   "a": 3,
+   "ar": "抱く → いだく",
    "vi": "Từ nhỏ tôi đã luôn ấp ủ ước mơ làm phi công.",
-   "key": [{"w": "抱く", "r": "いだく", "hv": "BÃO", "m": "ấp ủ (ước mơ, cảm xúc)"}],
-   "x": {"1": "<span class=\"jp\">抱える</span>: ôm, gánh (vấn đề). Xem Đề 2 câu 2.", "2": "<span class=\"jp\">砕く</span> くだく: đập vỡ.", "4": "<span class=\"jp\">迎える</span>: đón."},
-   "g": ["<b class=\"jp\">Vてきた</b>: đã làm liên tục từ quá khứ đến nay."],
-   "n": ["抱く だく: ôm (vật lý); いだく: ấp ủ (trừu tượng): 疑問を抱く, 不安を抱く."]},
-  {"s": "そろそろお茶の時間だね。（　）、昨日買ったクッキーどうした？", "o": ["そういえば", "なぜなら", "それとも", "だって"], "a": 1, "ar": "そう言えば",
+   "key": [
+    {
+     "w": "抱く",
+     "r": "いだく",
+     "hv": "BÃO",
+     "m": "ấp ủ (ước mơ, cảm xúc)"
+    }
+   ],
+   "x": {
+    "1": "かかえる (ôm, gánh): dùng cho vấn đề, gánh nặng (問題を抱える). Ước mơ là điều tích cực nên dùng 抱く.",
+    "2": "くだく (đập vỡ): ngược nghĩa; “đập tan ước mơ” mới dùng 夢を砕く — câu này nói ấp ủ từ nhỏ.",
+    "4": "むかえる (đón): không “đón ước mơ”."
+   },
+   "g": [
+    "<b class=\"jp\">Vてきた</b>: đã làm liên tục từ quá khứ đến nay."
+   ],
+   "n": [
+    "抱く だく: ôm (vật lý); いだく: ấp ủ (trừu tượng): 疑問を抱く, 不安を抱く."
+   ],
+   "why": "Tân ngữ là 夢 (ước mơ) và có từ nhỏ đến giờ (〜てきた) → <b>ấp ủ</b>. <b>夢を抱く</b> đọc <b>いだく</b> (văn trang trọng)."
+  },
+  {
+   "s": "そろそろお茶の時間だね。（　）、昨日買ったクッキーどうした？",
+   "o": [
+    "そういえば",
+    "なぜなら",
+    "それとも",
+    "だって"
+   ],
+   "a": 1,
+   "ar": "そう言えば",
    "vi": "Sắp đến giờ uống trà rồi nhỉ. Nhắc mới nhớ, bánh quy mua hôm qua đâu rồi?",
-   "key": [{"w": "そういえば", "r": "そういえば", "hv": "—", "m": "nhắc mới nhớ"}],
-   "x": {"2": "bởi vì.", "3": "hay là (lựa chọn).", "4": "vì (biện minh, khẩu ngữ)."}},
-  {"s": "（　）のメンバーは10時に{競技場|きょうぎじょう}に集まることになっている。", "o": ["サービス", "ゲスト", "ライバル", "チーム"], "a": 4, "ar": "team",
+   "key": [
+    {
+     "w": "そういえば",
+     "r": "そういえば",
+     "hv": "—",
+     "m": "nhắc mới nhớ"
+    }
+   ],
+   "x": {
+    "2": "なぜなら (bởi vì): câu sau phải là lý do của câu trước. Câu hỏi về bánh quy không giải thích lý do.",
+    "3": "それとも (hay là): nối hai lựa chọn trong câu hỏi (AそれともB). Không có lựa chọn ở đây.",
+    "4": "だって (vì, nhưng mà — biện minh): dùng để bào chữa, không dùng để chuyển chủ đề."
+   },
+   "why": "Đang nói giờ uống trà thì <b>chợt nhớ ra</b> chuyện bánh quy. Liên từ <b>そういえば</b> ＝ nhắc mới nhớ, chuyển sang chủ đề liên quan."
+  },
+  {
+   "s": "（　）のメンバーは10時に{競技場|きょうぎじょう}に集まることになっている。",
+   "o": [
+    "サービス",
+    "ゲスト",
+    "ライバル",
+    "チーム"
+   ],
+   "a": 4,
+   "ar": "team",
    "vi": "Các thành viên đội theo kế hoạch sẽ tập trung ở sân thi đấu lúc 10 giờ.",
-   "key": [{"w": "チーム", "r": "チーム", "hv": "—", "m": "đội"}],
-   "x": {"1": "dịch vụ.", "2": "khách mời.", "3": "đối thủ."},
-   "g": ["<b class=\"jp\">〜ことになっている</b>: theo quy định/kế hoạch."]},
-  {"s": "その店はここから（　）10分ほど歩いたところにあります。", "o": ["ほんの", "はるかに", "とっくに", "めっきり"], "a": 1, "ar": "ほんの",
+   "key": [
+    {
+     "w": "チーム",
+     "r": "チーム",
+     "hv": "—",
+     "m": "đội"
+    }
+   ],
+   "x": {
+    "1": "サービス (dịch vụ): “thành viên dịch vụ” vô nghĩa.",
+    "2": "ゲスト (khách mời): khách mời không tập trung theo lịch thi đấu như thành viên.",
+    "3": "ライバル (đối thủ): đối thủ không có “thành viên” tập trung theo kế hoạch của mình."
+   },
+   "g": [
+    "<b class=\"jp\">〜ことになっている</b>: theo quy định/kế hoạch."
+   ],
+   "why": "〜のメンバー tập trung ở sân thi đấu (競技場) → <b>thành viên đội</b>. <b>チーム</b>のメンバー."
+  },
+  {
+   "s": "その店はここから（　）10分ほど歩いたところにあります。",
+   "o": [
+    "ほんの",
+    "はるかに",
+    "とっくに",
+    "めっきり"
+   ],
+   "a": 1,
+   "ar": "ほんの",
    "vi": "Cửa hàng đó chỉ cách đây chừng 10 phút đi bộ.",
-   "key": [{"w": "ほんの", "r": "ほんの", "hv": "—", "m": "chỉ (một chút)"}],
-   "x": {"2": "hơn hẳn (はるかに大きい).", "3": "từ lâu rồi (とっくに終わった).", "4": "rõ rệt (めっきり寒くなった)."},
-   "n": ["ほんの少し, ほんの気持ちです (chút lòng thành)."]},
-  {"s": "熱いコーヒーのおかげで{凍|こご}えていた{指先|ゆびさき}に（　）が戻ってきた。", "o": ["感激", "感動", "感情", "感覚"], "a": 4, "ar": "かんかく",
+   "key": [
+    {
+     "w": "ほんの",
+     "r": "ほんの",
+     "hv": "—",
+     "m": "chỉ (một chút)"
+    }
+   ],
+   "x": {
+    "2": "はるかに (hơn hẳn): dùng trong so sánh (はるかに大きい), không đứng trước số phút.",
+    "3": "とっくに (từ lâu rồi): đi với hành động đã xong (とっくに終わった).",
+    "4": "めっきり (rõ rệt): tả sự thay đổi (めっきり寒くなった)."
+   },
+   "n": [
+    "ほんの少し, ほんの気持ちです (chút lòng thành)."
+   ],
+   "why": "10分ほど (khoảng 10 phút) → nhấn mạnh <b>chỉ có</b> chừng đó (gần). <b>ほんの</b>＋số lượng nhỏ ＝ chỉ, vẻn vẹn."
+  },
+  {
+   "s": "熱いコーヒーのおかげで{凍|こご}えていた{指先|ゆびさき}に（　）が戻ってきた。",
+   "o": [
+    "感激",
+    "感動",
+    "感情",
+    "感覚"
+   ],
+   "a": 4,
+   "ar": "かんかく",
    "vi": "Nhờ cà phê nóng mà đầu ngón tay đang cóng đã có cảm giác trở lại.",
-   "key": [{"w": "感覚", "r": "かんかく", "hv": "CẢM GIÁC", "m": "cảm giác (giác quan)"}, {"w": "凍える", "r": "こごえる", "hv": "ĐÔNG", "m": "cóng, rét cóng"}],
-   "x": {"1": "<span class=\"jp\">感激</span>: xúc động mạnh.", "2": "<span class=\"jp\">感動</span>: cảm động.", "3": "<span class=\"jp\">感情</span>: tình cảm, cảm xúc."}},
-  {"s": "彼のピアノ演奏はプロの（　）に達している。", "o": ["スタイル", "ゴール", "パターン", "レベル"], "a": 4, "ar": "level",
+   "key": [
+    {
+     "w": "感覚",
+     "r": "かんかく",
+     "hv": "CẢM GIÁC",
+     "m": "cảm giác (giác quan)"
+    },
+    {
+     "w": "凍える",
+     "r": "こごえる",
+     "hv": "ĐÔNG",
+     "m": "cóng, rét cóng"
+    }
+   ],
+   "x": {
+    "1": "感激 (xúc động mạnh): là cảm xúc trong lòng, không phải xúc giác ở ngón tay.",
+    "2": "感動 (cảm động): cảm xúc, không phải cảm giác vật lý.",
+    "3": "感情 (tình cảm, cảm xúc): ngón tay không có “tình cảm”."
+   },
+   "why": "Ngón tay đang tê cóng, nhờ cà phê nóng mà <b>cảm giác</b> (xúc giác) trở lại → <b>感覚</b>."
+  },
+  {
+   "s": "彼のピアノ演奏はプロの（　）に達している。",
+   "o": [
+    "スタイル",
+    "ゴール",
+    "パターン",
+    "レベル"
+   ],
+   "a": 4,
+   "ar": "level",
    "vi": "Màn biểu diễn piano của anh ấy đã đạt trình độ chuyên nghiệp.",
-   "key": [{"w": "レベル", "r": "レベル", "hv": "—", "m": "trình độ, mức"}],
-   "x": {"1": "phong cách.", "2": "đích.", "3": "khuôn mẫu."},
-   "g": ["<b class=\"jp\">〜に達する</b>: đạt tới."]},
-  {"s": "（　）ようですが、６時までには必ず来てくださいね。", "o": ["えらい", "かゆい", "ゆるい", "くどい"], "a": 4, "ar": "くどい",
+   "key": [
+    {
+     "w": "レベル",
+     "r": "レベル",
+     "hv": "—",
+     "m": "trình độ, mức"
+    }
+   ],
+   "x": {
+    "1": "スタイル (phong cách): không “đạt tới” phong cách theo nghĩa mức độ.",
+    "2": "ゴール (đích): ゴールに達する có thể dùng cho đích đến, nhưng “đích của dân chuyên” không hợp nghĩa.",
+    "3": "パターン (khuôn mẫu): không phải mức độ để đạt tới."
+   },
+   "g": [
+    "<b class=\"jp\">〜に達する</b>: đạt tới."
+   ],
+   "why": "〜に達する (đạt đến) một mức → <b>trình độ</b>. <b>プロのレベルに達する</b> ＝ đạt trình độ chuyên nghiệp."
+  },
+  {
+   "s": "（　）ようですが、６時までには必ず来てくださいね。",
+   "o": [
+    "えらい",
+    "かゆい",
+    "ゆるい",
+    "くどい"
+   ],
+   "a": 4,
+   "ar": "くどい",
    "vi": "Biết là nói lại thì hơi dài dòng, nhưng nhất định phải đến trước 6 giờ nhé.",
-   "key": [{"w": "くどい", "r": "くどい", "hv": "—", "m": "dài dòng, lặp đi lặp lại"}],
-   "x": {"1": "giỏi, đáng nể.", "2": "ngứa.", "3": "lỏng, dễ dãi."},
-   "n": ["くどいようですが: câu mào đầu khi dặn lại."]}
+   "key": [
+    {
+     "w": "くどい",
+     "r": "くどい",
+     "hv": "—",
+     "m": "dài dòng, lặp đi lặp lại"
+    }
+   ],
+   "x": {
+    "1": "えらい (giỏi, đáng nể; vất vả): えらいようですが không phải câu rào đón.",
+    "2": "かゆい (ngứa): không liên quan.",
+    "3": "ゆるい (lỏng, dễ dãi): không phải câu rào đón khi nhắc lại."
+   },
+   "n": [
+    "くどいようですが: câu mào đầu khi dặn lại."
+   ],
+   "why": "Nhắc lại điều đã dặn (phải đến trước 6 giờ) → người nói rào trước: <b>くどいようですが</b> ＝ biết là nhắc đi nhắc lại thì dài dòng, nhưng… — câu rào đón cố định."
+  }
+ ],
+ "sum": [
+  {
+   "h": "Dấu hiệu nhận biết nhanh trong 文脈規定",
+   "li": [
+    "<b>Phó từ đi với phủ định</b>: ちっとも, さっぱり, あんまり, 必ずしも, 少しも, めったに. Câu khẳng định → loại ngay (câu 10, câu 2).",
+    "<b>Câu giao tiếp cố định</b>: どうぞご遠慮なく (cứ tự nhiên), くどいようですが (nhắc lại thì dài dòng nhưng), お邪魔しました, お気の毒に, かしこまりました.",
+    "<b>Liên từ</b>: そういえば (nhắc mới nhớ), なぜなら (bởi vì — câu sau là lý do), それとも (hay là — lựa chọn), だって (vì — bào chữa).",
+    "<b>Từ ngoại lai na ná nhau</b>: コンクール (cuộc thi) / コンサート / コンクリート / コンセント — đọc kỹ từng chữ."
+   ]
+  },
+  {
+   "h": "Nhóm từ cùng chữ đầu trong đề",
+   "tbl": {
+    "head": [
+     "Nhóm",
+     "Các từ",
+     "Phân biệt"
+    ],
+    "rows": [
+     [
+      "足〜",
+      "足元 / 足音 / 足跡 / 足早",
+      "dưới chân / tiếng bước / dấu chân / bước vội"
+     ],
+     [
+      "見〜",
+      "見出し / 見かけ / 見本 / 見方",
+      "tít báo / bề ngoài / hàng mẫu / cách nhìn"
+     ],
+     [
+      "対〜",
+      "対立 / 対照 / 対策 / 対面",
+      "đối lập / tương phản / biện pháp / gặp mặt"
+     ],
+     [
+      "〜重",
+      "慎重 / 貴重 / 重要 / 重大",
+      "thận trọng / quý / quan trọng / hệ trọng"
+     ],
+     [
+      "感〜",
+      "感覚 / 感激 / 感動 / 感情",
+      "cảm giác / xúc động mạnh / cảm động / tình cảm"
+     ],
+     [
+      "過〜",
+      "超過 / 過剰 / 通過 / 過失",
+      "vượt mức / dư thừa / đi qua / sơ suất"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Dây và vật buộc",
+   "li": [
+    "ひも (紐): dây nhỏ — 靴ひも, ひもを結ぶ / ほどく.",
+    "なわ (縄): dây thừng bện — 縄跳び, 縄で縛る. つな (綱): dây thừng to — 綱引き, 命綱 (dây cứu sinh).",
+    "いと (糸): chỉ — 針と糸. コード: dây điện. ロープ: dây thừng (ngoại lai).",
+    "Động từ: 結ぶ むすぶ (buộc), ほどく (cởi), 縛る しばる (trói), ほどける (bị tuột)."
+   ]
+  },
+  {
+   "h": "Phó từ mở rộng cùng nhóm",
+   "tbl": {
+    "head": [
+     "Phó từ",
+     "Nghĩa",
+     "Ví dụ"
+    ],
+    "rows": [
+     [
+      "どうしても",
+      "nhất định; dù thế nào cũng (không)",
+      "どうしても行きたい / どうしても分からない"
+     ],
+     [
+      "ほんの",
+      "chỉ, vẻn vẹn (+ lượng nhỏ)",
+      "ほんの少し, ほんの気持ちです"
+     ],
+     [
+      "はるかに",
+      "hơn hẳn",
+      "はるかに高い"
+     ],
+     [
+      "とっくに",
+      "từ lâu rồi",
+      "とっくに帰った"
+     ],
+     [
+      "めっきり",
+      "rõ rệt (thay đổi)",
+      "めっきり寒くなった"
+     ],
+     [
+      "まあまあ",
+      "tàm tạm",
+      "まあまあの出来"
+     ],
+     [
+      "くれぐれも",
+      "xin hết sức (dặn dò)",
+      "くれぐれもよろしく"
+     ]
+    ]
+   }
+  }
  ]
 }

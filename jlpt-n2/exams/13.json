@@ -6,103 +6,721 @@
  "title": "Đề 13 · Từ vựng N2",
  "jp": "文脈規定",
  "mondai": "<b>問題4</b> （　）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。 Chọn từ thích hợp nhất để điền vào chỗ trống.",
- "src": {"folder": "1qyh5LVW7K_NQ0zPPz6UaGVvfSbhmhjML", "goc": "1feHo6Q-EqbHGauz4wunyUuerMKLr_P5Y", "chua": "1gI632CeEsjZnRDoa8Yx6tYZhzrFwNVC5"},
+ "src": {
+  "folder": "1qyh5LVW7K_NQ0zPPz6UaGVvfSbhmhjML",
+  "goc": "1feHo6Q-EqbHGauz4wunyUuerMKLr_P5Y",
+  "chua": "1gI632CeEsjZnRDoa8Yx6tYZhzrFwNVC5"
+ },
  "qs": [
-  {"s": "30代の女性を（　）にした雑誌がよく売れている。", "o": ["ターゲット", "ゴール", "アピール", "インパクト"], "a": 1, "ar": "target",
+  {
+   "s": "30代の女性を（　）にした雑誌がよく売れている。",
+   "o": [
+    "ターゲット",
+    "ゴール",
+    "アピール",
+    "インパクト"
+   ],
+   "a": 1,
+   "ar": "target",
    "vi": "Tạp chí nhắm tới phụ nữ tuổi 30 đang bán rất chạy.",
-   "key": [{"w": "ターゲット", "r": "ターゲット", "hv": "—", "m": "đối tượng hướng tới"}],
-   "x": {"2": "đích, mục tiêu cuối.", "3": "sự thu hút, kêu gọi (アピールする).", "4": "ấn tượng mạnh."},
-   "g": ["<b class=\"jp\">NをターゲットにしたN</b>: N nhắm vào đối tượng…"]},
-  {"s": "年末にベートーベンの{交響曲|こうきょうきょく}第九番を{演奏|えんそう}することは日本（　）の風習だ。", "o": ["孤立", "専属", "独特", "限定"], "a": 3, "ar": "どくとく",
+   "key": [
+    {
+     "w": "ターゲット",
+     "r": "ターゲット",
+     "hv": "—",
+     "m": "đối tượng hướng tới"
+    }
+   ],
+   "x": {
+    "2": "ゴール (đích, đích đến): là nơi phải đạt tới, không phải nhóm khách hàng. “Lấy phụ nữ làm đích” không hợp.",
+    "3": "アピール (sự thu hút, kêu gọi): dùng 〜にアピールする (thu hút ai). Cấu trúc 〜をアピールにした sai.",
+    "4": "インパクト (ấn tượng mạnh): インパクトがある. Không làm đối tượng mục tiêu."
+   },
+   "g": [
+    "<b class=\"jp\">NをターゲットにしたN</b>: N nhắm vào đối tượng…"
+   ],
+   "why": "Tạp chí <b>nhắm tới</b> phụ nữ tuổi 30. Cấu trúc <b>NをターゲットにしたN</b>: lấy N làm đối tượng mục tiêu (khách hàng). ターゲット ＝ đối tượng nhắm tới."
+  },
+  {
+   "s": "年末にベートーベンの{交響曲|こうきょうきょく}第九番を{演奏|えんそう}することは日本（　）の風習だ。",
+   "o": [
+    "孤立",
+    "専属",
+    "独特",
+    "限定"
+   ],
+   "a": 3,
+   "ar": "どくとく",
    "vi": "Biểu diễn Giao hưởng số 9 của Beethoven vào cuối năm là phong tục riêng của Nhật.",
-   "key": [{"w": "独特", "r": "どくとく", "hv": "ĐỘC ĐẶC", "m": "độc đáo, riêng biệt"}, {"w": "風習", "r": "ふうしゅう", "hv": "PHONG TẬP", "m": "phong tục"}],
-   "x": {"1": "<span class=\"jp\">孤立</span> こりつ: cô lập.", "2": "<span class=\"jp\">専属</span> せんぞく: độc quyền, chuyên thuộc.", "4": "<span class=\"jp\">限定</span> げんてい: giới hạn (限定品)."},
-   "n": ["日本独特の文化, 独特な味."]},
-  {"s": "人をそんなに（　）見るのは失礼ですよ。", "o": ["じろじろ", "ささと", "たまたま", "うっかり"], "a": 1, "ar": "じろじろ",
+   "key": [
+    {
+     "w": "独特",
+     "r": "どくとく",
+     "hv": "ĐỘC ĐẶC",
+     "m": "độc đáo, riêng biệt"
+    },
+    {
+     "w": "風習",
+     "r": "ふうしゅう",
+     "hv": "PHONG TẬP",
+     "m": "phong tục"
+    }
+   ],
+   "x": {
+    "1": "孤立 (cô lập): dùng cho người, quốc gia bị tách biệt (孤立した村). “Phong tục cô lập của Nhật” sai nghĩa.",
+    "2": "専属 (độc quyền, chuyên thuộc): dùng cho người làm việc riêng cho một nơi (専属モデル). Không dùng cho phong tục.",
+    "4": "限定 (giới hạn): 期間限定, 地域限定 (chỉ bán ở…). 日本限定の風習 không phải cách nói tự nhiên về phong tục."
+   },
+   "n": [
+    "日本独特の文化, 独特な味."
+   ],
+   "why": "Phong tục <b>riêng có</b> của Nhật. <b>Nに独特の／N独特の</b>＋N: đặc trưng riêng của N. 日本独特の風習 là collocation cố định."
+  },
+  {
+   "s": "人をそんなに（　）見るのは失礼ですよ。",
+   "o": [
+    "じろじろ",
+    "ささと",
+    "たまたま",
+    "うっかり"
+   ],
+   "a": 1,
+   "ar": "じろじろ",
    "vi": "Nhìn chằm chằm người khác như thế là bất lịch sự đấy.",
-   "key": [{"w": "じろじろ", "r": "じろじろ", "hv": "—", "m": "nhìn chằm chằm, soi mói"}],
-   "x": {"2": "nhanh gọn (さっさと).", "3": "tình cờ.", "4": "lơ đễnh."},
-   "n": ["ちらちら (liếc), じっと (nhìn chăm chú), きょろきょろ (nhìn quanh)."]},
-  {"s": "いいことばかり言うのではなく、ちゃんとデメリットも教えてくれたので（　）。", "o": ["くわしかった", "たのもしかった", "したしかった", "なつかしかった"], "a": 2, "ar": "頼もしい",
+   "key": [
+    {
+     "w": "じろじろ",
+     "r": "じろじろ",
+     "hv": "—",
+     "m": "nhìn chằm chằm, soi mói"
+    }
+   ],
+   "x": {
+    "2": "“ささと” không có; nếu là さっさと (nhanh gọn) thì “nhìn nhanh” không bất lịch sự.",
+    "3": "たまたま (tình cờ): nhìn tình cờ thì không bị trách là thất lễ.",
+    "4": "うっかり (lơ đễnh): chỉ hành động sơ ý, không phải kiểu nhìn soi mói."
+   },
+   "n": [
+    "ちらちら (liếc), じっと (nhìn chăm chú), きょろきょろ (nhìn quanh)."
+   ],
+   "why": "Kiểu nhìn bị coi là <b>bất lịch sự</b> → nhìn <b>chằm chằm</b>. <b>じろじろ見る</b>: nhìn soi mói."
+  },
+  {
+   "s": "いいことばかり言うのではなく、ちゃんとデメリットも教えてくれたので（　）。",
+   "o": [
+    "くわしかった",
+    "たのもしかった",
+    "したしかった",
+    "なつかしかった"
+   ],
+   "a": 2,
+   "ar": "頼もしい",
    "vi": "Không chỉ nói toàn điều tốt mà còn nói rõ cả mặt bất lợi nên tôi thấy rất đáng tin.",
-   "key": [{"w": "頼もしい", "r": "たのもしい", "hv": "LẠI", "m": "đáng tin cậy"}],
-   "x": {"1": "<span class=\"jp\">詳しい</span>: chi tiết.", "3": "<span class=\"jp\">親しい</span>: thân thiết.", "4": "<span class=\"jp\">懐かしい</span>: nhớ, hoài niệm."},
-   "n": ["デメリット ↔ メリット."]},
-  {"s": "私の部屋はいろいろな物で（　）している。", "o": ["きょろきょろ", "きちんと", "ぼんやり", "ごちゃごちゃ"], "a": 4, "ar": "ごちゃごちゃ",
+   "key": [
+    {
+     "w": "頼もしい",
+     "r": "たのもしい",
+     "hv": "LẠI",
+     "m": "đáng tin cậy"
+    }
+   ],
+   "x": {
+    "1": "くわしい (chi tiết): tả lời giải thích, nhưng câu nói về cảm nhận với người nói thật → không phải độ chi tiết.",
+    "3": "したしい (thân thiết): quan hệ bạn bè, không phải kết quả của việc nói thật.",
+    "4": "なつかしい (nhớ, hoài niệm): nói về quá khứ — không hợp."
+   },
+   "n": [
+    "デメリット ↔ メリット."
+   ],
+   "why": "Nói thật cả mặt bất lợi → người nghe thấy người đó <b>đáng tin cậy</b>. <b>頼もしい</b> (たのもしい): đáng tin, có thể trông cậy."
+  },
+  {
+   "s": "私の部屋はいろいろな物で（　）している。",
+   "o": [
+    "きょろきょろ",
+    "きちんと",
+    "ぼんやり",
+    "ごちゃごちゃ"
+   ],
+   "a": 4,
+   "ar": "ごちゃごちゃ",
    "vi": "Phòng tôi bừa bộn đủ thứ đồ.",
-   "key": [{"w": "ごちゃごちゃ", "r": "ごちゃごちゃ", "hv": "—", "m": "lộn xộn, bừa bãi"}],
-   "x": {"1": "nhìn ngó quanh.", "2": "ngăn nắp (không đi với で〜している như vậy).", "3": "lơ mơ, mơ hồ."}},
-  {"s": "ちょっと聞きたいことがあったから帰ろうとした友達を（　）。", "o": ["取り付けた", "受け入れた", "引き止めた", "持ち寄った"], "a": 3, "ar": "ひきとめる",
+   "key": [
+    {
+     "w": "ごちゃごちゃ",
+     "r": "ごちゃごちゃ",
+     "hv": "—",
+     "m": "lộn xộn, bừa bãi"
+    }
+   ],
+   "x": {
+    "1": "きょろきょろ (nhìn ngó quanh): tả ánh mắt của người, không tả căn phòng.",
+    "2": "きちんと (ngăn nắp): ngược nghĩa với “đầy đủ thứ đồ”, và きちんとしている không đi với 〜で (bằng đồ vật).",
+    "3": "ぼんやり (lơ mơ, mờ mờ): tả tinh thần hoặc hình ảnh, không tả sự bừa bộn."
+   },
+   "why": "Phòng đầy đủ thứ đồ (いろいろな物で) → <b>bừa bộn</b>. <b>ごちゃごちゃしている</b>: lộn xộn, chật chội nhiều thứ."
+  },
+  {
+   "s": "ちょっと聞きたいことがあったから帰ろうとした友達を（　）。",
+   "o": [
+    "取り付けた",
+    "受け入れた",
+    "引き止めた",
+    "持ち寄った"
+   ],
+   "a": 3,
+   "ar": "ひきとめる",
    "vi": "Có chuyện muốn hỏi nên tôi giữ người bạn đang định về lại.",
-   "key": [{"w": "引き止める", "r": "ひきとめる", "hv": "DẪN CHỈ", "m": "giữ lại, níu lại"}],
-   "x": {"1": "lắp đặt; đạt được (thỏa thuận).", "2": "tiếp nhận.", "4": "mỗi người mang tới góp."},
-   "g": ["<b class=\"jp\">Vよう + とした</b>: định làm."]},
-  {"s": "列車は混んでいたが、何とか席を二つ（　）できた。", "o": ["作成", "保存", "確保", "制作"], "a": 3, "ar": "かくほ",
+   "key": [
+    {
+     "w": "引き止める",
+     "r": "ひきとめる",
+     "hv": "DẪN CHỈ",
+     "m": "giữ lại, níu lại"
+    }
+   ],
+   "x": {
+    "1": "取り付ける (lắp đặt; đạt được thỏa thuận): không dùng với người bạn.",
+    "2": "受け入れる (tiếp nhận): dùng cho đề nghị, người mới — không phải giữ người đang về.",
+    "4": "持ち寄る (mỗi người mang đến góp): dùng cho đồ ăn, ý kiến — không hợp."
+   },
+   "g": [
+    "<b class=\"jp\">Vよう + とした</b>: định làm."
+   ],
+   "why": "Người bạn đang định về, mình có chuyện muốn hỏi → <b>giữ lại</b>. <b>引き止める</b>: níu giữ người đang muốn đi."
+  },
+  {
+   "s": "列車は混んでいたが、何とか席を二つ（　）できた。",
+   "o": [
+    "作成",
+    "保存",
+    "確保",
+    "制作"
+   ],
+   "a": 3,
+   "ar": "かくほ",
    "vi": "Tàu đông nhưng tôi vẫn giữ được hai chỗ ngồi.",
-   "key": [{"w": "確保", "r": "かくほ", "hv": "XÁC BẢO", "m": "đảm bảo có được, giữ chắc"}],
-   "x": {"1": "<span class=\"jp\">作成</span>: soạn (tài liệu).", "2": "<span class=\"jp\">保存</span>: lưu giữ, bảo quản.", "4": "<span class=\"jp\">制作</span>: chế tác (tác phẩm)."},
-   "n": ["予算の確保, 人材の確保."]},
-  {"s": "体が弱くては実力を十分に（　）することはできない。", "o": ["表現", "明示", "公開", "発揮"], "a": 4, "ar": "はっき",
+   "key": [
+    {
+     "w": "確保",
+     "r": "かくほ",
+     "hv": "XÁC BẢO",
+     "m": "đảm bảo có được, giữ chắc"
+    }
+   ],
+   "x": {
+    "1": "作成 (soạn thảo): dùng cho tài liệu, kế hoạch. Không “soạn” chỗ ngồi.",
+    "2": "保存 (bảo quản, lưu): dùng cho thực phẩm, dữ liệu. Không dùng cho chỗ trên tàu.",
+    "4": "制作 (chế tác): dùng cho tác phẩm nghệ thuật, chương trình."
+   },
+   "n": [
+    "予算の確保, 人材の確保."
+   ],
+   "why": "Tàu đông mà vẫn <b>giữ được</b> hai chỗ. <b>確保する</b>: đảm bảo có được (chỗ ngồi, nguồn vốn, nhân lực). 席を確保する là collocation chuẩn."
+  },
+  {
+   "s": "体が弱くては実力を十分に（　）することはできない。",
+   "o": [
+    "表現",
+    "明示",
+    "公開",
+    "発揮"
+   ],
+   "a": 4,
+   "ar": "はっき",
    "vi": "Sức khỏe yếu thì không thể phát huy hết thực lực.",
-   "key": [{"w": "発揮", "r": "はっき", "hv": "PHÁT HUY", "m": "phát huy"}],
-   "x": {"1": "biểu hiện, diễn đạt.", "2": "<span class=\"jp\">明示</span>: chỉ rõ.", "3": "<span class=\"jp\">公開</span>: công khai."},
-   "g": ["<b class=\"jp\">〜ては</b>: nếu mà (kết quả xấu)."],
-   "n": ["Xem Đề 17 câu 17 (実力を発揮)."]},
-  {"s": "私は会社を辞める決意を（　）。", "o": ["まとめた", "合わせた", "仕上げた", "固めた"], "a": 4, "ar": "決意を固める",
+   "key": [
+    {
+     "w": "発揮",
+     "r": "はっき",
+     "hv": "PHÁT HUY",
+     "m": "phát huy"
+    }
+   ],
+   "x": {
+    "1": "表現 (biểu hiện, diễn đạt): dùng cho cảm xúc, ý tưởng (気持ちを表現する), không dùng với 実力.",
+    "2": "明示 (chỉ rõ): dùng cho điều kiện, giá (価格を明示する).",
+    "3": "公開 (công khai): dùng cho thông tin, phim. “Công khai thực lực” không phải ý câu."
+   },
+   "g": [
+    "<b class=\"jp\">〜ては</b>: nếu mà (kết quả xấu)."
+   ],
+   "n": [
+    "Xem Đề 17 câu 17 (実力を発揮)."
+   ],
+   "why": "実力を十分に〜 ＝ <b>phát huy</b> hết thực lực. <b>発揮する</b>: 実力を発揮, 能力を発揮 là collocation cố định."
+  },
+  {
+   "s": "私は会社を辞める決意を（　）。",
+   "o": [
+    "まとめた",
+    "合わせた",
+    "仕上げた",
+    "固めた"
+   ],
+   "a": 4,
+   "ar": "決意を固める",
    "vi": "Tôi đã hạ quyết tâm nghỉ việc.",
-   "key": [{"w": "決意を固める", "r": "けついをかためる", "hv": "QUYẾT Ý", "m": "hạ quyết tâm"}],
-   "x": {"1": "tổng hợp, thu xếp.", "2": "gộp lại.", "3": "hoàn thiện."},
-   "n": ["Cùng kiểu: 覚悟を決める, 腹を決める."]},
-  {"s": "その選手は体力の（　）を理由に{現役|げんえき}を引退した。", "o": ["制限", "境界", "境目", "限界"], "a": 4, "ar": "げんかい",
+   "key": [
+    {
+     "w": "決意を固める",
+     "r": "けついをかためる",
+     "hv": "QUYẾT Ý",
+     "m": "hạ quyết tâm"
+    }
+   ],
+   "x": {
+    "1": "まとめる (tổng hợp, thu xếp): 意見をまとめる — không đi với 決意.",
+    "2": "合わせる (gộp, khớp): không đi với 決意.",
+    "3": "仕上げる (hoàn thiện): dùng cho sản phẩm, công việc."
+   },
+   "n": [
+    "Cùng kiểu: 覚悟を決める, 腹を決める."
+   ],
+   "why": "決意を〜 ＝ <b>hạ quyết tâm</b>. Collocation <b>決意を固める</b> (làm cho quyết tâm vững chắc)."
+  },
+  {
+   "s": "その選手は体力の（　）を理由に{現役|げんえき}を引退した。",
+   "o": [
+    "制限",
+    "境界",
+    "境目",
+    "限界"
+   ],
+   "a": 4,
+   "ar": "げんかい",
    "vi": "Vận động viên đó giải nghệ với lý do thể lực đã tới giới hạn.",
-   "key": [{"w": "限界", "r": "げんかい", "hv": "HẠN GIỚI", "m": "giới hạn"}, {"w": "現役", "r": "げんえき", "hv": "HIỆN DỊCH", "m": "đang còn thi đấu, đương chức"}],
-   "x": {"1": "<span class=\"jp\">制限</span>: hạn chế (quy định).", "2": "<span class=\"jp\">境界</span>: ranh giới.", "3": "<span class=\"jp\">境目</span> さかいめ: đường ranh."}},
-  {"s": "祖母の視力は急速に（　）きています。", "o": ["散って", "傷んで", "枯れて", "衰えて"], "a": 4, "ar": "おとろえる",
+   "key": [
+    {
+     "w": "限界",
+     "r": "げんかい",
+     "hv": "HẠN GIỚI",
+     "m": "giới hạn"
+    },
+    {
+     "w": "現役",
+     "r": "げんえき",
+     "hv": "HIỆN DỊCH",
+     "m": "đang còn thi đấu, đương chức"
+    }
+   ],
+   "x": {
+    "1": "制限 (hạn chế do quy định): 年齢制限, 速度制限 — do người khác đặt ra, không phải giới hạn tự nhiên của cơ thể.",
+    "2": "境界 (ranh giới giữa hai vùng): 国の境界. Không dùng cho thể lực.",
+    "3": "境目 (đường ranh): cũng là ranh giới giữa hai thứ, không phải mức tối đa."
+   },
+   "why": "Thể lực <b>đã tới giới hạn</b> nên giải nghệ. <b>体力の限界</b>: giới hạn thể lực (mức tối đa có thể)."
+  },
+  {
+   "s": "祖母の視力は急速に（　）きています。",
+   "o": [
+    "散って",
+    "傷んで",
+    "枯れて",
+    "衰えて"
+   ],
+   "a": 4,
+   "ar": "おとろえる",
    "vi": "Thị lực của bà tôi đang suy giảm nhanh.",
-   "key": [{"w": "衰える", "r": "おとろえる", "hv": "SUY", "m": "suy giảm"}],
-   "x": {"1": "<span class=\"jp\">散る</span>: rơi rụng.", "2": "<span class=\"jp\">傷む</span>: hư hỏng, thối.", "3": "<span class=\"jp\">枯れる</span>: héo."},
-   "n": ["Xem Đề 2 câu 6 (衰えない)."]},
-  {"s": "野菜を無農薬で（　）する農家が増えている。", "o": ["養成", "栽培", "製造", "制作"], "a": 2, "ar": "さいばい",
+   "key": [
+    {
+     "w": "衰える",
+     "r": "おとろえる",
+     "hv": "SUY",
+     "m": "suy giảm"
+    }
+   ],
+   "x": {
+    "1": "散る (rơi rụng): hoa, lá (桜が散る).",
+    "2": "傷む (hư, dập, thối): đồ ăn, đồ vật (果物が傷む).",
+    "3": "枯れる (héo): cây cỏ."
+   },
+   "n": [
+    "Xem Đề 2 câu 6 (衰えない)."
+   ],
+   "why": "Thị lực <b>suy giảm</b> nhanh. <b>衰える</b>: suy yếu dần (thể lực, thị lực, trí nhớ, sức ảnh hưởng)."
+  },
+  {
+   "s": "野菜を無農薬で（　）する農家が増えている。",
+   "o": [
+    "養成",
+    "栽培",
+    "製造",
+    "制作"
+   ],
+   "a": 2,
+   "ar": "さいばい",
    "vi": "Ngày càng nhiều nông hộ trồng rau không dùng thuốc trừ sâu.",
-   "key": [{"w": "栽培", "r": "さいばい", "hv": "TÀI BỒI", "m": "trồng trọt"}],
-   "x": {"1": "<span class=\"jp\">養成</span>: đào tạo (nhân lực).", "3": "<span class=\"jp\">製造</span>: sản xuất (nhà máy).", "4": "<span class=\"jp\">制作</span>: chế tác."}},
-  {"s": "この机は（　）を取り過ぎている。", "o": ["フロント", "ステージ", "フロア", "スペース"], "a": 4, "ar": "space",
+   "key": [
+    {
+     "w": "栽培",
+     "r": "さいばい",
+     "hv": "TÀI BỒI",
+     "m": "trồng trọt"
+    }
+   ],
+   "x": {
+    "1": "養成 (đào tạo): nhân lực (教員を養成する).",
+    "3": "製造 (sản xuất trong nhà máy): xe, thuốc — không dùng cho rau.",
+    "4": "制作 (chế tác): tác phẩm, chương trình."
+   },
+   "why": "Rau → <b>trồng trọt</b>. <b>栽培する</b>: trồng (rau, cây, hoa) có chăm sóc."
+  },
+  {
+   "s": "この机は（　）を取り過ぎている。",
+   "o": [
+    "フロント",
+    "ステージ",
+    "フロア",
+    "スペース"
+   ],
+   "a": 4,
+   "ar": "space",
    "vi": "Chiếc bàn này chiếm quá nhiều chỗ.",
-   "key": [{"w": "スペース", "r": "スペース", "hv": "—", "m": "không gian, chỗ"}],
-   "x": {"1": "quầy lễ tân.", "2": "sân khấu.", "3": "sàn, tầng."},
-   "g": ["<b class=\"jp\">スペースを取る</b>: chiếm chỗ."]},
-  {"s": "川沿いの{朝市|あさいち}は（　）の人たちにも観光客にもとても人気がある。", "o": ["地元", "根元", "立場", "土台"], "a": 1, "ar": "じもと",
+   "key": [
+    {
+     "w": "スペース",
+     "r": "スペース",
+     "hv": "—",
+     "m": "không gian, chỗ"
+    }
+   ],
+   "x": {
+    "1": "フロント (quầy lễ tân): không “chiếm quầy lễ tân”.",
+    "2": "ステージ (sân khấu): không hợp.",
+    "3": "フロア (sàn, tầng): フロアを取る không phải cách nói “chiếm chỗ”."
+   },
+   "g": [
+    "<b class=\"jp\">スペースを取る</b>: chiếm chỗ."
+   ],
+   "why": "Chiếc bàn chiếm nhiều <b>chỗ</b>. <b>スペースを取る</b>: chiếm diện tích."
+  },
+  {
+   "s": "川沿いの{朝市|あさいち}は（　）の人たちにも観光客にもとても人気がある。",
+   "o": [
+    "地元",
+    "根元",
+    "立場",
+    "土台"
+   ],
+   "a": 1,
+   "ar": "じもと",
    "vi": "Chợ sáng ven sông rất được người địa phương lẫn khách du lịch ưa thích.",
-   "key": [{"w": "地元", "r": "じもと", "hv": "ĐỊA NGUYÊN", "m": "địa phương"}],
-   "x": {"2": "<span class=\"jp\">根元</span> ねもと: gốc (cây).", "3": "<span class=\"jp\">立場</span>: lập trường.", "4": "<span class=\"jp\">土台</span>: nền móng."},
-   "n": ["Xem Đề 1 câu 3 (đọc 地元)."]},
-  {"s": "そんなうわさを真に受けるなんて、彼ちょっと（　）んだよ。", "o": ["そそっかしい", "たのもしい", "そうぞうしい", "あつかましい"], "a": 1, "ar": "そそっかしい",
+   "key": [
+    {
+     "w": "地元",
+     "r": "じもと",
+     "hv": "ĐỊA NGUYÊN",
+     "m": "địa phương"
+    }
+   ],
+   "x": {
+    "2": "根元 (gốc cây, gốc rễ): 木の根元 — không dùng cho người.",
+    "3": "立場 (lập trường, vị trí): 立場の人 không đối lập được với khách du lịch.",
+    "4": "土台 (nền móng): không dùng cho người."
+   },
+   "n": [
+    "Xem Đề 1 câu 3 (đọc 地元)."
+   ],
+   "why": "Đối lập với 観光客 (khách du lịch) → <b>người địa phương</b>: <b>地元の人</b>."
+  },
+  {
+   "s": "そんなうわさを真に受けるなんて、彼ちょっと（　）んだよ。",
+   "o": [
+    "そそっかしい",
+    "たのもしい",
+    "そうぞうしい",
+    "あつかましい"
+   ],
+   "a": 1,
+   "ar": "そそっかしい",
    "vi": "Tin ngay lời đồn như thế, anh ta hơi hấp tấp đấy.",
-   "key": [{"w": "そそっかしい", "r": "そそっかしい", "hv": "—", "m": "hấp tấp, cẩu thả"}, {"w": "真に受ける", "r": "まにうける", "hv": "—", "m": "tin là thật"}],
-   "x": {"2": "đáng tin.", "3": "<span class=\"jp\">騒々しい</span>: ồn ào.", "4": "<span class=\"jp\">厚かましい</span>: trơ trẽn."},
-   "n": ["Xem Đề 17 câu 3."]},
-  {"s": "京都は紅葉の（　）で、秋になると大勢の観光客が訪れる。", "o": ["名所", "要所", "実地", "現場"], "a": 1, "ar": "めいしょ",
+   "key": [
+    {
+     "w": "そそっかしい",
+     "r": "そそっかしい",
+     "hv": "—",
+     "m": "hấp tấp, cẩu thả"
+    },
+    {
+     "w": "真に受ける",
+     "r": "まにうける",
+     "hv": "—",
+     "m": "tin là thật"
+    }
+   ],
+   "x": {
+    "2": "頼もしい (đáng tin): ngược nghĩa với việc dễ tin lời đồn.",
+    "3": "騒々しい (ồn ào): không liên quan việc tin lời đồn.",
+    "4": "厚かましい (trơ trẽn, mặt dày): chỉ thái độ không biết ngại, không phải dễ tin."
+   },
+   "n": [
+    "Xem Đề 17 câu 3."
+   ],
+   "why": "Tin ngay lời đồn → <b>hấp tấp, thiếu suy xét</b>. <b>そそっかしい</b>: vội vàng, cẩu thả, hay nhầm lẫn."
+  },
+  {
+   "s": "京都は紅葉の（　）で、秋になると大勢の観光客が訪れる。",
+   "o": [
+    "名所",
+    "要所",
+    "実地",
+    "現場"
+   ],
+   "a": 1,
+   "ar": "めいしょ",
    "vi": "Kyoto là nơi ngắm lá đỏ nổi tiếng, mùa thu có rất đông du khách.",
-   "key": [{"w": "名所", "r": "めいしょ", "hv": "DANH SỞ", "m": "danh thắng"}],
-   "x": {"2": "<span class=\"jp\">要所</span>: nơi hiểm yếu, điểm mấu chốt.", "3": "<span class=\"jp\">実地</span>: thực địa.", "4": "<span class=\"jp\">現場</span>: hiện trường."}},
-  {"s": "子どもたちはみな{猛暑|もうしょ}の中で（　）していた。", "o": ["すっきり", "ぐったり", "しっかり", "ぎっしり"], "a": 2, "ar": "ぐったり",
+   "key": [
+    {
+     "w": "名所",
+     "r": "めいしょ",
+     "hv": "DANH SỞ",
+     "m": "danh thắng"
+    }
+   ],
+   "x": {
+    "2": "要所 (nơi hiểm yếu, điểm then chốt): dùng trong quân sự, giao thông, không cho cảnh đẹp.",
+    "3": "実地 (thực địa): 実地調査 — không phải nơi tham quan.",
+    "4": "現場 (hiện trường): 事故現場, 工事現場."
+   },
+   "why": "Kyoto là <b>địa điểm nổi tiếng</b> ngắm lá đỏ. <b>紅葉の名所</b>: danh thắng ngắm lá đỏ."
+  },
+  {
+   "s": "子どもたちはみな{猛暑|もうしょ}の中で（　）していた。",
+   "o": [
+    "すっきり",
+    "ぐったり",
+    "しっかり",
+    "ぎっしり"
+   ],
+   "a": 2,
+   "ar": "ぐったり",
    "vi": "Lũ trẻ đều mệt lả dưới cái nóng gay gắt.",
-   "key": [{"w": "ぐったり", "r": "ぐったり", "hv": "—", "m": "mệt lả, rũ rượi"}],
-   "x": {"1": "sảng khoái, gọn gàng.", "3": "chắc chắn, vững vàng.", "4": "chật ních."},
-   "n": ["Xem Đề 2 câu 13."]},
-  {"s": "彼のメールには一枚の写真が（　）されていた。", "o": ["付属", "添付", "輸送", "郵送"], "a": 2, "ar": "てんぷ",
+   "key": [
+    {
+     "w": "ぐったり",
+     "r": "ぐったり",
+     "hv": "—",
+     "m": "mệt lả, rũ rượi"
+    }
+   ],
+   "x": {
+    "1": "すっきり (sảng khoái): ngược ngữ cảnh nóng bức.",
+    "3": "しっかり (vững vàng, chắc chắn): không tả mệt mỏi.",
+    "4": "ぎっしり (chật ních): tả đồ vật xếp kín (予定がぎっしり), không tả người."
+   },
+   "n": [
+    "Xem Đề 2 câu 13."
+   ],
+   "why": "Dưới cái nóng gay gắt, bọn trẻ <b>mệt lả</b>. <b>ぐったりする</b>: rũ rượi, kiệt sức."
+  },
+  {
+   "s": "彼のメールには一枚の写真が（　）されていた。",
+   "o": [
+    "付属",
+    "添付",
+    "輸送",
+    "郵送"
+   ],
+   "a": 2,
+   "ar": "てんぷ",
    "vi": "Email của anh ấy có đính kèm một tấm ảnh.",
-   "key": [{"w": "添付", "r": "てんぷ", "hv": "THIÊM PHÓ", "m": "đính kèm"}],
-   "x": {"1": "<span class=\"jp\">付属</span>: phụ thuộc, kèm theo (付属品).", "3": "<span class=\"jp\">輸送</span>: vận chuyển.", "4": "<span class=\"jp\">郵送</span>: gửi bưu điện."},
-   "n": ["添付ファイル: file đính kèm."]},
-  {"s": "一人の男が順番を無視してタクシーを待つ列に（　）きた。", "o": ["付け加えて", "割り込んで", "当てはまって", "行き着いて"], "a": 2, "ar": "わりこむ",
+   "key": [
+    {
+     "w": "添付",
+     "r": "てんぷ",
+     "hv": "THIÊM PHÓ",
+     "m": "đính kèm"
+    }
+   ],
+   "x": {
+    "1": "付属 (phụ thuộc, kèm theo sản phẩm): 付属品, 大学付属病院. Không dùng cho email.",
+    "3": "輸送 (vận chuyển hàng hóa): không dùng cho ảnh trong email.",
+    "4": "郵送 (gửi qua bưu điện): không phải gửi email."
+   },
+   "n": [
+    "添付ファイル: file đính kèm."
+   ],
+   "why": "Ảnh được <b>đính kèm</b> trong email. <b>添付する</b>: đính kèm (file, tài liệu). 添付ファイル."
+  },
+  {
+   "s": "一人の男が順番を無視してタクシーを待つ列に（　）きた。",
+   "o": [
+    "付け加えて",
+    "割り込んで",
+    "当てはまって",
+    "行き着いて"
+   ],
+   "a": 2,
+   "ar": "わりこむ",
    "vi": "Một người đàn ông phớt lờ thứ tự, chen vào hàng chờ taxi.",
-   "key": [{"w": "割り込む", "r": "わりこむ", "hv": "CÁT", "m": "chen ngang"}],
-   "x": {"1": "bổ sung thêm.", "3": "áp dụng được, khớp.", "4": "đi tới được, rốt cuộc tới."}},
-  {"s": "{工程|こうてい}が多い作業は、個々の得意分野を活かし、（　）して作業に取り組んでいます。", "o": ["分担", "分別", "区分", "区別"], "a": 1, "ar": "ぶんたん",
+   "key": [
+    {
+     "w": "割り込む",
+     "r": "わりこむ",
+     "hv": "CÁT",
+     "m": "chen ngang"
+    }
+   ],
+   "x": {
+    "1": "付け加える (bổ sung): dùng cho lời nói, thông tin.",
+    "3": "当てはまる (áp dụng được, khớp): 条件に当てはまる.",
+    "4": "行き着く (đi tới được, rốt cuộc đến): không mang nghĩa chen hàng."
+   },
+   "why": "Phớt lờ thứ tự, <b>chen vào</b> hàng. <b>割り込む</b>: chen ngang (hàng, câu chuyện). 列に割り込む."
+  },
+  {
+   "s": "{工程|こうてい}が多い作業は、個々の得意分野を活かし、（　）して作業に取り組んでいます。",
+   "o": [
+    "分担",
+    "分別",
+    "区分",
+    "区別"
+   ],
+   "a": 1,
+   "ar": "ぶんたん",
    "vi": "Với công việc nhiều công đoạn, chúng tôi phân chia nhau làm, phát huy sở trường của từng người.",
-   "key": [{"w": "分担", "r": "ぶんたん", "hv": "PHÂN ĐẢM", "m": "phân chia công việc"}],
-   "x": {"2": "<span class=\"jp\">分別</span> ぶんべつ: phân loại (rác).", "3": "<span class=\"jp\">区分</span>: phân khu, phân loại.", "4": "<span class=\"jp\">区別</span>: phân biệt."},
-   "n": ["役割分担 やくわりぶんたん."]}
+   "key": [
+    {
+     "w": "分担",
+     "r": "ぶんたん",
+     "hv": "PHÂN ĐẢM",
+     "m": "phân chia công việc"
+    }
+   ],
+   "x": {
+    "2": "分別 (ぶんべつ: phân loại rác) / ふんべつ (sự suy xét). Không phải chia việc.",
+    "3": "区分 (phân khu, phân loại theo tiêu chí): dùng cho đất đai, hạng mục.",
+    "4": "区別 (phân biệt): 善悪を区別する — không phải chia việc."
+   },
+   "n": [
+    "役割分担 やくわりぶんたん."
+   ],
+   "why": "Công việc nhiều công đoạn, mỗi người làm phần sở trường → <b>phân công nhau</b>. <b>分担する</b>: chia phần việc."
+  }
+ ],
+ "sum": [
+  {
+   "h": "Động từ ghép (複合動詞) N2 hay ra",
+   "tbl": {
+    "head": [
+     "Từ",
+     "Nghĩa",
+     "Đi với"
+    ],
+    "rows": [
+     [
+      "引き止める",
+      "giữ lại (người)",
+      "帰ろうとする人を〜"
+     ],
+     [
+      "割り込む",
+      "chen ngang",
+      "列に〜, 話に〜"
+     ],
+     [
+      "取り付ける",
+      "lắp đặt; đạt được",
+      "エアコンを〜, 合意を〜"
+     ],
+     [
+      "受け入れる",
+      "tiếp nhận",
+      "提案を〜, 留学生を〜"
+     ],
+     [
+      "持ち寄る",
+      "mỗi người mang góp",
+      "料理を〜"
+     ],
+     [
+      "付け加える",
+      "bổ sung",
+      "一言〜"
+     ],
+     [
+      "当てはまる",
+      "khớp, áp dụng",
+      "条件に〜"
+     ],
+     [
+      "行き着く",
+      "rốt cuộc đi tới",
+      "結論に〜"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Collocation danh từ + động từ trong đề",
+   "li": [
+    "席を<b>確保</b>する, 実力を<b>発揮</b>する, 決意を<b>固める</b>, 野菜を<b>栽培</b>する, 写真を<b>添付</b>する, 作業を<b>分担</b>する, スペースを<b>取る</b>.",
+    "<b>Phân biệt 作〜 / 制〜 / 製〜</b>: 作成 (soạn tài liệu), 制作 (chế tác tác phẩm), 製作 (chế tạo đồ vật), 製造 (sản xuất hàng loạt).",
+    "<b>Phân biệt 分〜 / 区〜</b>: 分担 (chia việc), 分別 (phân loại rác), 区分 (phân khu), 区別 (phân biệt).",
+    "<b>Giới hạn</b>: 限界 (giới hạn tự nhiên), 制限 (hạn chế quy định), 限定 (giới hạn phạm vi bán), 境界 / 境目 (ranh giới)."
+   ]
+  },
+  {
+   "h": "Tính từ tả tính cách người",
+   "tbl": {
+    "head": [
+     "Từ",
+     "Nghĩa",
+     "Sắc thái"
+    ],
+    "rows": [
+     [
+      "頼もしい",
+      "đáng tin cậy",
+      "khen"
+     ],
+     [
+      "そそっかしい",
+      "hấp tấp, cẩu thả",
+      "chê nhẹ"
+     ],
+     [
+      "厚かましい / ずうずうしい",
+      "trơ trẽn",
+      "chê"
+     ],
+     [
+      "騒々しい",
+      "ồn ào",
+      "chê"
+     ],
+     [
+      "おとなしい",
+      "hiền, ít nói",
+      "trung tính"
+     ],
+     [
+      "だらしない",
+      "luộm thuộm",
+      "chê"
+     ],
+     [
+      "几帳面 きちょうめん",
+      "cẩn thận, ngăn nắp",
+      "khen"
+     ],
+     [
+      "図々しい",
+      "mặt dày",
+      "chê"
+     ]
+    ]
+   }
+  },
+  {
+   "h": "Từ láy trạng thái",
+   "li": [
+    "ごちゃごちゃ (bừa bộn) ↔ すっきり / きちんと (gọn gàng).",
+    "じろじろ (nhìn chằm chằm, soi mói) · きょろきょろ (ngó nghiêng) · ちらっと (liếc qua) · じっと (nhìn chăm chú).",
+    "ぐったり (mệt lả) · へとへと (kiệt sức) · くたくた (rã rời).",
+    "ぎっしり (chật ních) · びっしり (kín đặc) · がらがら (vắng tanh)."
+   ]
+  }
  ]
 }

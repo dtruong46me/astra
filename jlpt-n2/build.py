@@ -17,9 +17,14 @@ def main():
         e = json.loads(p.read_text(encoding="utf-8"))
         for i, q in enumerate(e["qs"], 1):
             assert len(q["o"]) == 4 and 1 <= q["a"] <= 4, (p.name, i)
+            # every question explains why the key is right and why each other option is out
+            assert q.get("why"), (p.name, i, "why")
+            need = [str(n) for n in range(1, 5) if "order" in q or n != q["a"]]
+            assert all(q.get("x", {}).get(n) for n in need), (p.name, i, "x")
             if "order" in q:
                 assert sorted(q["order"]) == [1, 2, 3, 4], (p.name, i)
                 assert q["order"][q["s"].replace("［★］", "*").replace("［　］", "_").count("_", 0, q["s"].replace("［★］", "*").replace("［　］", "_").index("*"))] == q["a"], (p.name, i)
+        assert e.get("sum"), (p.name, "end-of-exam recap")
         s = e.pop("src")
         e["source"] = {
             "folder": f"https://drive.google.com/drive/folders/{s['folder']}",
