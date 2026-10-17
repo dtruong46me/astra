@@ -282,7 +282,7 @@ ex:"～に沿って: theo, bám theo (phương châm, kế hoạch). 政府に�
 gp:[["～に沿って","名詞＋に沿って","theo, dọc theo ~","c"],["～によって（受身）","名詞＋によって","bởi ~ (tác nhân của câu bị động)","r"]],
 v:[["政府","せいふ","CHÍNH PHỦ","chính phủ","c"],["方針","ほうしん","PHƯƠNG CHÂM","phương châm","c"],["授業","じゅぎょう","THỤ NGHIỆP","giờ học","c"]]},
 {q:"私はあまり魚を食べないが、食べない〔★〕ではない。",o:["嫌いな","といって","から","わけ"],a:1,ord:[3,2,1,4],
-vi:"Tôi không ăn cá nhiều lắm, nhưng không phải vì không ăn mà là ghét cá.",
+vi:"Tôi không ăn cá nhiều lắm, nhưng không ăn không có nghĩa là tôi ghét cá.",
 ex:"～からといって～わけではない: dù ~ nhưng không có nghĩa là ~.",
 gp:[["～からといって","普通形＋からといって","dù nói là ~ (nhưng không hẳn)","c"],["～わけではない","普通形＋わけではない","không hẳn là ~","c"]],
 v:[["嫌い","きらい","HIỀM","ghét","c"]]},
