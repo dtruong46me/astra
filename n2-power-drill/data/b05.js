@@ -3,7 +3,7 @@ D.push({id:"r21",kind:"round",no:21,title:"第21回",pages:"56–57",secs:[
 {t:1,qs:[
 {q:"この飛行機は、大阪{経由}北京行きです。",o:["けいゆ","きょうゆ","けいゆう","きょうゆう"],a:1,
 vi:"Máy bay này đi Bắc Kinh, quá cảnh Osaka.",
-ex:"経由 (けいゆ): đi qua, quá cảnh. 由 đọc ゆ (理由: りゆう).",
+ex:"経由 (けいゆ): đi qua, quá cảnh. 由 ở đây đọc ゆ ngắn (khác 理由・自由 đọc ゆう).",
 v:[["経由","けいゆ","KINH DO","đi qua, quá cảnh","c"]]},
 {q:"留学生{同士}で、それぞれの国の言葉を教え合っている。",o:["とうし","とうじ","どうし","どうじ"],a:3,
 vi:"Các du học sinh dạy nhau tiếng nước mình.",
@@ -366,7 +366,7 @@ ex:"心当たり (こころあたり): manh mối, nghĩ ra. 心がけ: ý thứ
 v:[["心当たり","こころあたり","TÂM ĐƯƠNG","manh mối","c"],["心掛け","こころがけ","TÂM QUẢI","ý thức, tâm niệm","c"],["心配り","こころくばり","TÂM PHỐI","quan tâm chu đáo","c"],["心残り","こころのこり","TÂM TÀN","tiếc nuối","c"]]},
 {q:"娘は歌の才能に（　）いる。",o:["込んで","優れて","つまって","恵まれて"],a:4,
 vi:"Con gái tôi có năng khiếu ca hát.",
-ex:"才能に恵まれる (めぐまれる): được trời phú tài năng. 優れる không đi với に.",
+ex:"才能に恵まれる (めぐまれる): được trời phú tài năng — cụm cố định. 優れる thường dùng 「〜が優れている」「〜に優れた人」 (giỏi về mặt ~), không nói 「才能に優れている」 với nghĩa “được ban tài năng”.",
 v:[["恵まれる","めぐまれる","HUỆ","được ban, may mắn có","c"],["才能","さいのう","TÀI NĂNG","tài năng","c"]]},
 {q:"パソコンを処分する前に、データをすべて（　）してください。",o:["消費","消去","掃除","清掃"],a:2,
 vi:"Trước khi thanh lý máy tính, hãy xoá toàn bộ dữ liệu.",
