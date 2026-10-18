@@ -6,4 +6,6 @@ Flashcard ôn từ vựng N2 (Riki「言葉ゲームの漂流記」) kiểu Anki
 - `template.html` — giao diện + logic (SM-2, phát âm bằng Web Speech, đồng bộ tiến độ qua capability `db`).
 - `build.py` — gộp mọi file `data/vocab-*.json` vào `template.html` thành `index.html` (file được publish).
 
-Hiện có đủ bài 1–93 (từ 1–930). Sửa hoặc thêm từ: chỉnh file `data/vocab-*.json` tương ứng (file mới theo cùng cấu trúc), chạy `python3 build.py`, rồi publish lại `index.html` lên cùng URL artifact. Loại từ (`pos`): `n`, `v`, `vs`, `na`, `i`, `adv`.
+Hiện có 1338 từ: bài 1–93 của sách (id 1–930) và 408 từ chỉ có trong danh sách 745 từ đã ra đề JLPT N2 2010–2024 (id 931–1338, `l` = 0, hiển thị là nhóm "Đề thi / Ngoài sách").
+- `data/jlpt.json` — `{id: số lần ra đề}` cho mọi từ có trong danh sách đề thi (cả từ của sách). `build.py` gắn vào từng từ thành trường `jl`, dùng cho tag "Đề thi ×N" và bộ lọc "Đã ra đề / Ra đề ≥ 2 lần / Chưa ra đề".
+- Sửa hoặc thêm từ: chỉnh file `data/vocab-*.json` tương ứng (file mới theo cùng cấu trúc), chạy `python3 build.py`, rồi publish lại `index.html` lên cùng URL artifact. Loại từ (`pos`): `n`, `v`, `vs`, `na`, `i`, `adv`, `pre` (tiền tố), `suf` (hậu tố), `exp` (cụm từ).

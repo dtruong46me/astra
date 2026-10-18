@@ -65,6 +65,18 @@ button{cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ai);border-color:var(--ai);color:var(--card)}
 .lessongrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:6px}
 .lessongrid .chip{border-radius:9px;padding:6px 0;text-align:center;font-variant-numeric:tabular-nums}
+.lessongrid .chip.wide{grid-column:1/-1;padding:7px 12px}
+.tag.exam{border-color:color-mix(in srgb,var(--shu) 55%,var(--line));color:var(--shu);font-weight:700}
+.fav{border:0;background:none;width:34px;height:34px;display:inline-grid;place-items:center;color:var(--muted);border-radius:999px;flex:none}
+.fav svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2}
+.fav[aria-pressed="true"]{color:var(--shu)}
+.fav[aria-pressed="true"] svg{fill:currentColor}
+.fav:hover{background:var(--soft)}
+.meta .right{display:flex;align-items:flex-start;gap:6px}
+.meta .no{display:flex;align-items:center;flex-wrap:wrap;row-gap:4px}
+.state{white-space:nowrap}
+.meta .fav{width:30px;height:30px;margin:-6px -6px -6px 0}
+.xb{display:inline-block;vertical-align:middle;margin-left:6px;font-family:var(--f-ui);font-size:10px;font-weight:800;letter-spacing:.04em;color:var(--shu);border:1px solid color-mix(in srgb,var(--shu) 50%,var(--line));border-radius:5px;padding:0 4px;line-height:1.5}
 .quick{display:flex;flex-wrap:wrap;gap:6px}
 .quick button{border:0;background:none;color:var(--ai);font-weight:600;font-size:13px;padding:2px 4px}
 
@@ -188,7 +200,7 @@ main.wrap{padding-block:18px 40px}
 .lesson .pcount{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
 .lesson header .ghost{margin-left:auto}
 .rows{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.rowi{display:grid;grid-template-columns:2.4rem minmax(7.5rem,1fr) minmax(0,2fr) 5.6rem 34px;gap:10px;align-items:center;padding:9px 12px;border-top:1px solid var(--line);cursor:pointer}
+.rowi{display:grid;grid-template-columns:2.6rem minmax(7.5rem,1fr) minmax(0,2fr) 5.6rem 34px 34px;gap:10px;align-items:center;padding:9px 12px;border-top:1px solid var(--line);cursor:pointer}
 .rowi:first-child{border-top:0}
 .rowi:hover{background:var(--soft)}
 .rowi .n{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;font-family:var(--f-jp)}
@@ -204,9 +216,9 @@ main.wrap{padding-block:18px 40px}
 .st-mature{background:var(--good);color:var(--card)}
 .empty{padding:40px 16px;text-align:center;color:var(--muted)}
 @media (max-width:640px){
-  .rowi{grid-template-columns:minmax(0,1fr) auto 34px;grid-template-areas:"w p s" "m m m";row-gap:2px;padding:10px 14px}
+  .rowi{grid-template-columns:minmax(0,1fr) auto 34px 34px;grid-template-areas:"w p f s" "m m m m";row-gap:2px;padding:10px 14px}
   .rowi .n{display:none}
-  .rowi .w{grid-area:w} .rowi .m{grid-area:m} .rowi .pill{grid-area:p} .rowi .say{grid-area:s}
+  .rowi .w{grid-area:w} .rowi .m{grid-area:m} .rowi .pill{grid-area:p} .rowi .fav{grid-area:f} .rowi .say{grid-area:s}
   .midword{font-size:34px}
   .fc{padding:18px 16px 20px}
 }
@@ -301,6 +313,8 @@ details.more[open] summary{margin-bottom:8px}
       <div class="lessongrid" id="lessonChips"></div>
       <h3>Loại từ</h3>
       <div class="chips" id="posChips"></div>
+      <h3>Đề thi JLPT N2 (2010–2024)</h3>
+      <div class="chips" id="srcChips"></div>
     </div>
   </div>
 </header>
@@ -357,8 +371,12 @@ const VOCAB = /*__VOCAB__*/[];
 const $ = s => document.querySelector(s);
 const BY_ID = new Map(VOCAB.map(v => [v.id, v]));
 const BY_WORD = new Map(VOCAB.map(v => [v.w, v]));
+// l = 0 marks words that are not in the book (added from the JLPT 2010–2024 list); they form one extra group.
 const LESSONS = [...new Set(VOCAB.map(v => v.l))].sort((a, b) => a - b);
-const POS = { n: "Danh từ", v: "Động từ", vs: "Động từ する", na: "Tính từ な", i: "Tính từ い", adv: "Phó từ" };
+const BOOK = LESSONS.filter(l => l > 0);
+const SRC = { exam: ["Đã ra đề", v => v.jl], exam2: ["Ra đề ≥ 2 lần", v => v.jl >= 2], book: ["Chưa ra đề", v => !v.jl] };
+const lessonName = l => (l ? `第${l}課` : "Đề thi");
+const POS = { n: "Danh từ", v: "Động từ", vs: "Động từ する", na: "Tính từ な", i: "Tính từ い", adv: "Phó từ", pre: "Tiền tố", suf: "Hậu tố", exp: "Cụm từ" };
 const STATUS = { new: "Mới", learn: "Đang học", due: "Đến hạn", young: "Đã học", mature: "Đã thuộc" };
 const MIN = 60e3, DAY = 864e5, ROLL = 4;
 const LEARN = [1, 10], RELEARN = [10];
@@ -372,10 +390,10 @@ const pad3 = n => String(n).padStart(3, "0");
 
 function normalize(p) {
   p = p && typeof p === "object" ? p : {};
-  return { cards: p.cards || {}, days: p.days || {}, settings: Object.assign({}, DEFAULTS, p.settings || {}), st: p.st || 0 };
+  return { cards: p.cards || {}, days: p.days || {}, settings: Object.assign({}, DEFAULTS, p.settings || {}), st: p.st || 0, fav: p.fav || {} };
 }
 let P = normalize(lsGet(LS_KEY));
-let UI = Object.assign({ tab: "study", lessons: null, pos: [], status: "all", q: "", hideMean: false }, lsGet(UI_KEY) || {});
+let UI = Object.assign({ tab: "study", lessons: null, pos: [], src: [], status: "all", q: "", hideMean: false }, lsGet(UI_KEY) || {});
 const saveUI = () => lsSet(UI_KEY, UI);
 
 /* ---------- dates ---------- */
@@ -441,7 +459,8 @@ function status(id, now = Date.now()) {
 function notYetDue(id, now = Date.now()) { const c = P.cards[id]; return !!c && c.q === 2 && c.d > now; }
 function pool() {
   const L = UI.lessons ? new Set(UI.lessons) : null;
-  return VOCAB.filter(v => (!L || L.has(v.l)) && (!UI.pos.length || v.pos.some(p => UI.pos.includes(p))));
+  const src = UI.src.filter(k => SRC[k]);
+  return VOCAB.filter(v => (!L || L.has(v.l)) && (!UI.pos.length || v.pos.some(p => UI.pos.includes(p))) && (!src.length || src.some(k => SRC[k][1](v))));
 }
 const byDue = (a, b) => P.cards[a].d - P.cards[b].d;
 function deck(now = Date.now()) {
@@ -508,12 +527,14 @@ function merge(remote) {
     for (const f of ["n", "r", "x"]) if ((d[f] || 0) > (l[f] || 0)) { l[f] = d[f]; changed = true; }
   }
   if ((R.st || 0) > (P.st || 0)) { P.settings = R.settings; P.st = R.st; changed = true; }
+  for (const [id, f] of Object.entries(R.fav)) { const l = P.fav[id]; if (!l || f[1] > l[1]) { P.fav[id] = f; changed = true; } }
   return changed;
 }
 function localAhead(remote) {
   const R = normalize(remote);
   if ((P.st || 0) > (R.st || 0)) return true;
   for (const [id, c] of Object.entries(P.cards)) { const r = R.cards[id]; if (!r || (c.t || 0) > (r.t || 0)) return true; }
+  for (const [id, f] of Object.entries(P.fav)) { const r = R.fav[id]; if (!r || f[1] > r[1]) return true; }
   return false;
 }
 function setSync(s) {
@@ -561,7 +582,7 @@ async function connect() {
     const remote = snap.exists ? snap.data() : null;
     if (remote && merge(remote)) { lsSet(LS_KEY, P); if (!booting) refreshAll(true); }
     docRef = ref; setSync("ok");
-    if (!remote ? Object.keys(P.cards).length || P.st : localAhead(remote)) { dirty = true; flush(); }
+    if (!remote ? Object.keys(P.cards).length || P.st || Object.keys(P.fav).length : localAhead(remote)) { dirty = true; flush(); }
     ref.onSnapshot(s => {
       if (!s.exists || s.metadata.hasPendingWrites) return;
       if (merge(s.data())) { lsSet(LS_KEY, P); refreshAll(true); }
@@ -631,7 +652,17 @@ function headBlock(v) {
       </div>
     </div>`;
 }
-const metaRow = (v, state) => `<div class="meta"><span class="no">No.${pad3(v.id)} · 第${v.l}課${state ? `<span class="state st-${state}">${{ new: "Từ mới", learn: "Đang học", review: "Ôn tập" }[state]}</span>` : ""}</span><span class="tags">${posTags(v)}</span></div>`;
+const HEART = '<svg viewBox="0 0 24 24" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>';
+const isFav = id => !!(P.fav[id] && P.fav[id][0]);
+const favBtn = id => `<button class="fav" data-fav="${id}" aria-pressed="${isFav(id)}" aria-label="Yêu thích" title="Yêu thích (F)">${HEART}</button>`;
+function toggleFav(id) {
+  P.fav[id] = [isFav(id) ? 0 : 1, Date.now()]; save();
+  document.querySelectorAll(`[data-fav="${id}"]`).forEach(b => b.setAttribute("aria-pressed", isFav(id)));
+  if (UI.tab === "list" && UI.status === "fav") renderList();
+  toast(isFav(id) ? "Đã thêm vào yêu thích" : "Đã bỏ khỏi yêu thích");
+}
+const examTag = v => (v.jl ? `<span class="tag exam" title="Xuất hiện ${v.jl} lần trong đề JLPT N2 2010–2024">Đề thi${v.jl > 1 ? " ×" + v.jl : ""}</span>` : "");
+const metaRow = (v, state) => `<div class="meta"><span class="no">No.${pad3(v.id)} · ${lessonName(v.l)}${state ? `<span class="state st-${state}">${{ new: "Từ mới", learn: "Đang học", review: "Ôn tập" }[state]}</span>` : ""}</span><span class="right"><span class="tags">${examTag(v)}${posTags(v)}</span>${favBtn(v.id)}</span></div>`;
 const trClass = () => (P.settings.showTr ? "" : " hide-tr");
 
 /* ---------- card modes ---------- */
@@ -647,13 +678,14 @@ function modeFor(v) {
 // Each key that hides the word maps to the kana that fills its blank (stems for conjugated verbs/adjectives).
 function maskKeys(v) {
   const m = new Map(), r = v.r || v.w, add = (k, f) => { if (k && !m.has(k)) m.set(k, f); };
-  add(v.w, r);
+  const w = v.w.replace(/[～~]/g, "");
+  add(w, r);
   if (v.r && v.r !== v.w && v.r.length >= 3) add(v.r, v.r);
   if (v.pos.some(p => p === "v" || p === "i")) {
-    if (v.w.length >= 3) add(v.w.slice(0, -1), r.slice(0, -1));
+    if (w.length >= 3) add(w.slice(0, -1), r.slice(0, -1));
     if (v.r && v.r.length >= 3) add(v.r.slice(0, -1), v.r.slice(0, -1));
   }
-  if (/[にと]$/.test(v.w) && v.w.length >= 3) add(v.w.slice(0, -1), /[にと]$/.test(r) ? r.slice(0, -1) : r);
+  if (/[にと]$/.test(w) && w.length >= 3) add(w.slice(0, -1), /[にと]$/.test(r) ? r.slice(0, -1) : r);
   return [...m].sort((a, b) => b[0].length - a[0].length);
 }
 // A blank is a plain underline until "Số chữ" splits it into one slot per kana; "Chữ đầu" fills the first slot.
@@ -798,12 +830,14 @@ function matches(v, q) {
 }
 function renderList() {
   const now = Date.now(), q = UI.q.trim();
-  const items = pool().filter(v => matches(v, q) && (UI.status === "all" || status(v.id, now) === UI.status || (UI.status === "known" && ["young", "mature"].includes(status(v.id, now)))));
+  const items = pool().filter(v => matches(v, q) && (UI.status === "all" || status(v.id, now) === UI.status || (UI.status === "known" && ["young", "mature"].includes(status(v.id, now))) || (UI.status === "fav" && isFav(v.id))));
   const all = pool(), cnt = { new: 0, learn: 0, due: 0, young: 0, mature: 0 };
   all.forEach(v => cnt[status(v.id, now)]++);
-  $("#statusChips").innerHTML = [["all", "Tất cả", all.length], ["new", "Mới", cnt.new], ["learn", "Đang học", cnt.learn], ["due", "Đến hạn", cnt.due], ["known", "Đã học", cnt.young + cnt.mature]]
+  const favN = all.filter(v => isFav(v.id)).length;
+  $("#statusChips").innerHTML = [["all", "Tất cả", all.length], ["new", "Mới", cnt.new], ["learn", "Đang học", cnt.learn], ["due", "Đến hạn", cnt.due], ["known", "Đã học", cnt.young + cnt.mature], ["fav", "Yêu thích", favN]]
     .map(([k, l, n]) => `<button class="chip" data-st="${k}" aria-pressed="${UI.status === k}">${l} · ${n}</button>`).join("");
-  $("#summary").innerHTML = `<span><b>${all.length}</b> từ trong bộ lọc</span><span><b>${cnt.young + cnt.mature}</b> đã học</span><span><b>${cnt.mature}</b> đã thuộc (≥ 21 ngày)</span>`;
+  $("#summary").innerHTML = `<span><b>${all.length}</b> từ trong bộ lọc</span><span><b>${cnt.young + cnt.mature}</b> đã học</span><span><b>${cnt.mature}</b> đã thuộc (≥ 21 ngày)</span>`
+    + (UI.status === "fav" && items.length ? `<button class="primary" id="cramFav" style="margin-left:auto">Luyện ${items.length} từ yêu thích</button>` : "");
   const groups = new Map();
   for (const v of items) { if (!groups.has(v.l)) groups.set(v.l, []); groups.get(v.l).push(v); }
   if (!items.length) { $("#lessons").innerHTML = `<div class="empty">Không có từ nào khớp. Thử bỏ bớt bộ lọc hoặc từ khoá.</div>`; return; }
@@ -815,15 +849,15 @@ function renderList() {
     const ln = lv.filter(v => status(v.id, now) === "learn").length;
     const first = lv[0].id, last = lv[lv.length - 1].id;
     html += `<section class="lesson"><header>
-        <h3>第${l}課<small>Bài ${l} · ${pad3(first)}–${pad3(last)}</small></h3>
+        <h3>${l ? `第${l}課<small>Bài ${l} · ${pad3(first)}–${pad3(last)}</small>` : `Đề thi<small>Từ ngoài sách, có trong đề JLPT N2 2010–2024 · ${pad3(first)}–${pad3(last)}</small>`}</h3>
         <span class="prog" title="Đã thuộc ${m}, đã học ${y}, đang học ${ln}"><i class="p-m" style="width:${m / tot * 100}%"></i><i class="p-y" style="width:${y / tot * 100}%"></i><i class="p-l" style="width:${ln / tot * 100}%"></i></span>
         <span class="pcount">${m + y}/${tot}</span>
-        <button class="ghost" data-studyl="${l}">Học bài này</button>
+        <button class="ghost" data-studyl="${l}">${l ? "Học bài này" : "Học nhóm này"}</button>
       </header><ul class="rows">${vs.map(v => {
         const st = status(v.id, now);
         return `<li class="rowi" data-open="${v.id}"><span class="n">${pad3(v.id)}</span>
-          <span class="w">${ruby(v)}${v.hv ? `<span class="h">${esc(v.hv)}</span>` : ""}</span>
-          <span class="m">${esc(v.vi)}</span><span class="pill st-${st}">${STATUS[st]}</span>${sayBtn(v.r || v.w)}</li>`;
+          <span class="w">${ruby(v)}${v.jl ? `<span class="xb" title="Ra đề ${v.jl} lần">ĐT${v.jl > 1 ? "×" + v.jl : ""}</span>` : ""}${v.hv ? `<span class="h">${esc(v.hv)}</span>` : ""}</span>
+          <span class="m">${esc(v.vi)}</span><span class="pill st-${st}">${STATUS[st]}</span>${favBtn(v.id)}${sayBtn(v.r || v.w)}</li>`;
       }).join("")}</ul></section>`;
   }
   $("#lessons").innerHTML = html;
@@ -967,23 +1001,29 @@ function saveSettings() {
 /* ---------- filters ---------- */
 function filterLabel() {
   let t;
-  if (!UI.lessons) t = `Tất cả ${LESSONS.length} bài`;
+  if (!UI.lessons) t = `Tất cả ${BOOK.length} bài${BOOK.length < LESSONS.length ? " + đề thi" : ""}`;
   else if (!UI.lessons.length) t = "Chưa chọn bài";
   else {
-    const ls = [...UI.lessons].sort((a, b) => a - b), parts = [];
+    const ls = UI.lessons.filter(l => l > 0).sort((a, b) => a - b), parts = [];
     let a = ls[0], b = ls[0];
     for (let i = 1; i <= ls.length; i++) { if (ls[i] === b + 1) b = ls[i]; else { parts.push(a === b ? a : a + "–" + b); a = b = ls[i]; } }
-    t = "Bài " + parts.join(", ");
+    const segs = ls.length ? ["Bài " + parts.join(", ")] : [];
+    if (UI.lessons.includes(0)) segs.push("Ngoài sách");
+    t = segs.join(" + ");
   }
   if (UI.pos.length) t += " · " + UI.pos.map(p => POS[p]).join(", ");
+  if (UI.src.length) t += " · " + UI.src.filter(k => SRC[k]).map(k => SRC[k][0]).join(", ");
   return t + ` · ${pool().length} từ`;
 }
 function renderFilters() {
   const sel = l => !UI.lessons || UI.lessons.includes(l);
-  $("#lessonChips").innerHTML = LESSONS.map(l => `<button class="chip" data-l="${l}" aria-pressed="${sel(l)}" title="Bài ${l}">${l}</button>`).join("");
+  const extraN = VOCAB.filter(v => !v.l).length;
+  $("#lessonChips").innerHTML = BOOK.map(l => `<button class="chip" data-l="${l}" aria-pressed="${sel(l)}" title="Bài ${l}">${l}</button>`).join("")
+    + (extraN ? `<button class="chip wide" data-l="0" aria-pressed="${sel(0)}">Ngoài sách · ${extraN} từ chỉ có trong đề thi JLPT</button>` : "");
   const groups = [];
-  for (let i = 0; i < LESSONS.length; i += 10) groups.push(LESSONS.slice(i, i + 10));
-  $("#quick").innerHTML = `<button data-q="all">Tất cả</button><button data-q="none">Bỏ chọn</button>` + groups.map(g => `<button data-q="${g[0]}-${g[g.length - 1]}">${g[0]}–${g[g.length - 1]}</button>`).join("");
+  for (let i = 0; i < BOOK.length; i += 10) groups.push(BOOK.slice(i, i + 10));
+  $("#quick").innerHTML = `<button data-q="all">Tất cả</button><button data-q="none">Bỏ chọn</button>` + groups.map(g => `<button data-q="${g[0]}-${g[g.length - 1]}">${g[0]}–${g[g.length - 1]}</button>`).join("") + (extraN ? `<button data-q="0-0">Ngoài sách</button>` : "");
+  $("#srcChips").innerHTML = Object.entries(SRC).map(([k, [l, f]]) => `<button class="chip" data-src="${k}" aria-pressed="${UI.src.includes(k)}">${l} · ${VOCAB.filter(f).length}</button>`).join("");
   const used = [...new Set(VOCAB.flatMap(v => v.pos))];
   $("#posChips").innerHTML = Object.keys(POS).filter(p => used.includes(p)).map(p => `<button class="chip" data-pos="${p}" aria-pressed="${UI.pos.includes(p)}">${POS[p]}</button>`).join("");
   $("#filterLabel").textContent = filterLabel();
@@ -1023,6 +1063,7 @@ document.addEventListener("click", e => {
   const t = e.target;
   const say = t.closest("[data-say]");
   if (say) { e.stopPropagation(); speak(say.dataset.say, say); return; }
+  const fv = t.closest("[data-fav]"); if (fv) { e.stopPropagation(); toggleFav(+fv.dataset.fav); return; }
   if (t.closest(".tr") && t.closest(".hide-tr")) { t.closest(".tr").classList.toggle("show"); return; }
   const rel = t.closest("[data-rel]");
   if (rel) { const v = BY_WORD.get(rel.dataset.rel); if (v && (!cur || v.id !== cur.id || !$("#overlay").hidden)) openDetail(v.id); else speak(rel.dataset.relr, null); return; }
@@ -1043,6 +1084,9 @@ document.addEventListener("click", e => {
   if (lc) { const l = +lc.dataset.l; let ls = UI.lessons ? [...UI.lessons] : [...LESSONS]; ls = ls.includes(l) ? ls.filter(x => x !== l) : [...ls, l]; return setLessons(ls); }
   const qk = t.closest("[data-q]");
   if (qk) { const q = qk.dataset.q; if (q === "all") return setLessons(null); if (q === "none") return setLessons([]); const [a, b] = q.split("-").map(Number); return setLessons(LESSONS.filter(l => l >= a && l <= b)); }
+  const sc2 = t.closest("[data-src]");
+  if (sc2) { const k = sc2.dataset.src; UI.src = UI.src.includes(k) ? UI.src.filter(x => x !== k) : [...UI.src, k]; saveUI(); return onFilterChange(); }
+  if (t.closest("#cramFav")) { const ids = pool().filter(v => isFav(v.id) && matches(v, UI.q.trim())).map(v => v.id); for (let i = ids.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [ids[i], ids[j]] = [ids[j], ids[i]]; } cram = { q: ids }; setTab("study"); next(); return; }
   const pc = t.closest("[data-pos]");
   if (pc) { const p = pc.dataset.pos; UI.pos = UI.pos.includes(p) ? UI.pos.filter(x => x !== p) : [...UI.pos, p]; saveUI(); return onFilterChange(); }
   const sc = t.closest("[data-st]"); if (sc) { UI.status = sc.dataset.st; saveUI(); return renderList(); }
@@ -1088,6 +1132,7 @@ document.addEventListener("keydown", e => {
   if (e.key === " " || e.key === "Enter") { e.preventDefault(); revealed ? answer(3) : reveal(); }
   else if (revealed && ["1", "2", "3", "4"].includes(e.key)) answer(+e.key);
   else if (e.key === "h" || e.key === "H") nextHint();
+  else if ((e.key === "f" || e.key === "F") && cur) toggleFav(cur.id);
   else if (e.key === "r" || e.key === "R") { if (cur) speak(cur.r || cur.w, document.querySelector(".fc .say.lg")); }
   else if (e.key === "z" || e.key === "Z") undo();
 });
