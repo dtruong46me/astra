@@ -1,0 +1,351 @@
+# Chuỗi nối chữ (熟語しりとり): chữ Hán cuối của từ cha = chữ Hán đầu của từ con.
+# Mỗi dòng: thụt lề 2 dấu cách cho mỗi cấp.
+#   Từ có trong bộ thẻ N2: chỉ ghi từ (cách đọc, nghĩa, Hán Việt lấy từ bộ thẻ).
+#   Từ ngoài bộ: 語 よみ cấp(5..1) HÁN VIỆT | nghĩa tiếng Việt
+# Dòng trống ngăn cách các cây.
+
+会社 かいしゃ 5 HỘI XÃ | công ty
+  社会 しゃかい 4 XÃ HỘI | xã hội
+    会見
+      見解
+      見当
+    会合 かいごう 3 HỘI HỢP | cuộc họp, buổi gặp mặt
+      合同
+      合図
+    会議 かいぎ 4 HỘI NGHỊ | cuộc họp, hội nghị
+      議論
+      議長 ぎちょう 2 NGHỊ TRƯỞNG | chủ tọa, chủ tịch (hội nghị, quốc hội)
+  社長 しゃちょう 4 XÃ TRƯỞNG | giám đốc (công ty)
+    長期 ちょうき 3 TRƯỜNG KỲ | dài hạn
+      期日
+      期限 きげん 3 KỲ HẠN | thời hạn
+    長所 ちょうしょ 3 TRƯỜNG SỞ | sở trường, điểm mạnh
+      所有
+    長男 ちょうなん 3 TRƯỞNG NAM | con trai cả
+  社説 しゃせつ 1 XÃ THUYẾT | bài xã luận
+    説明 せつめい 4 THUYẾT MINH | giải thích
+      明確 めいかく 2 MINH XÁC | rõ ràng, chính xác
+      明示
+    説得 せっとく 3 THUYẾT ĐẮC | thuyết phục
+      得点
+      得意 とくい 3 ĐẮC Ý | giỏi, sở trường; đắc ý
+
+学生 がくせい 5 HỌC SINH | sinh viên, học sinh
+  生活 せいかつ 4 SINH HOẠT | cuộc sống, sinh hoạt
+    活気
+      気楽
+      気候
+    活発
+      発達
+      発想
+    活動 かつどう 3 HOẠT ĐỘNG | hoạt động
+      動詞 どうし 3 ĐỘNG TỪ | động từ
+  生物 せいぶつ 3 SINH VẬT | sinh vật
+    物体
+      体格
+        格好
+        格別
+      体調
+        調整 ちょうせい 3 ĐIỀU CHỈNH | điều chỉnh
+        調子 ちょうし 3 ĐIỀU TỬ | tình trạng, phong độ
+    物騒
+      騒音 そうおん 3 TAO ÂM | tiếng ồn
+        音楽 おんがく 5 ÂM NHẠC | âm nhạc
+      騒動 そうどう 1 TAO ĐỘNG | náo loạn, vụ lùm xùm
+  生産量
+
+日本 にほん 5 NHẬT BẢN | Nhật Bản
+  本物
+    物事 ものごと 3 VẬT SỰ | sự vật, mọi việc
+      事業
+      事実 じじつ 3 SỰ THỰC | sự thật
+    物理 ぶつり 3 VẬT LÝ | vật lý
+      理想
+      理解 りかい 3 LÝ GIẢI | hiểu, lý giải
+  本来
+    来日 らいにち 3 LAI NHẬT | đến Nhật
+      日中
+      日課
+    来年 らいねん 5 LAI NIÊN | năm sau
+      年月
+      年中 ねんじゅう 3 NIÊN TRUNG | quanh năm, lúc nào cũng
+  本人 ほんにん 3 BẢN NHÂN | chính người đó, đương sự
+    人物
+      物語 ものがたり 3 VẬT NGỮ | truyện kể, câu chuyện
+      物価 ぶっか 3 VẬT GIÁ | vật giá
+    人工
+      工場 こうじょう 4 CÔNG TRƯỜNG | nhà máy
+      工夫 くふう 2 CÔNG PHU | tìm tòi, nghĩ cách làm
+
+天気 てんき 5 THIÊN KHÍ | thời tiết
+  気温 きおん 3 KHÍ ÔN | nhiệt độ (không khí)
+    温暖
+      暖房 だんぼう 4 NOÃN PHÒNG | sưởi ấm, máy sưởi
+    温厚
+    温度
+  気体 きたい 2 KHÍ THỂ | chất khí
+    体力
+    体育館
+  気分 きぶん 4 KHÍ PHÂN | tâm trạng
+    分配
+      配達
+        達成
+          成長
+          成人 せいじん 3 THÀNH NHÂN | người trưởng thành
+      配分 はいぶん 1 PHỐI PHÂN | phân bổ
+        分担
+        分別
+    分野
+      野生 やせい 2 DÃ SINH | hoang dã
+        生命 せいめい 3 SINH MỆNH | sinh mệnh, sự sống
+      野党 やとう 1 DÃ ĐẢNG | đảng đối lập
+
+時間 じかん 5 THỜI GIAN | thời gian
+  間隔
+  間接 かんせつ 2 GIÁN TIẾP | gián tiếp
+    接近 せっきん 2 TIẾP CẬN | tiếp cận, đến gần
+      近視 きんし 2 CẬN THỊ | cận thị
+        視野
+          野菜 やさい 5 DÃ THÁI | rau
+        視線
+          線路 せんろ 3 TUYẾN LỘ | đường ray
+      近代 きんだい 3 CẬN ĐẠI | thời cận đại
+        代表 だいひょう 3 ĐẠI BIỂU | đại diện
+          表現
+          表面 ひょうめん 3 BIỂU DIỆN | bề mặt
+    接続 せつぞく 2 TIẾP TỤC | kết nối, nối tiếp
+      続出
+        出世
+          世代
+          世間
+        出場
+      続々 ぞくぞく 2 TỤC TỤC | lần lượt, liên tiếp
+  間柄 あいだがら 1 GIAN BÍNH | mối quan hệ (giữa người với người)
+
+大学 だいがく 5 ĐẠI HỌC | đại học
+  学年 がくねん 3 HỌC NIÊN | năm học, khối lớp
+    年代 ねんだい 3 NIÊN ĐẠI | thời kỳ, thế hệ, thập niên
+      代金 だいきん 3 ĐẠI KIM | tiền hàng
+      代理 だいり 2 ĐẠI LÝ | thay mặt, người đại diện
+    年長 ねんちょう 1 NIÊN TRƯỞNG | lớn tuổi hơn
+      長女 ちょうじょ 3 TRƯỞNG NỮ | con gái cả
+  学部 がくぶ 3 HỌC BỘ | khoa (đại học)
+    部分 ぶぶん 3 BỘ PHÂN | bộ phận, phần
+      分析
+      分解 ぶんかい 2 PHÂN GIẢI | tháo rời, phân giải
+    部首 ぶしゅ 2 BỘ THỦ | bộ thủ (chữ Hán)
+      首相 しゅしょう 3 THỦ TƯỚNG | thủ tướng
+      首都 しゅと 3 THỦ ĐÔ | thủ đô
+  学会 がっかい 2 HỌC HỘI | hội nghị khoa học, học hội
+    会場 かいじょう 4 HỘI TRƯỜNG | hội trường, địa điểm tổ chức
+      場面
+      場合 ばあい 4 TRƯỜNG HỢP | trường hợp
+    会員 かいいん 3 HỘI VIÊN | hội viên, thành viên
+
+食事 しょくじ 4 THỰC SỰ | bữa ăn
+  事故 じこ 4 SỰ CỐ | tai nạn
+    故障
+      障子 しょうじ 2 CHƯỚNG TỬ | cửa giấy shoji
+        子供 こども 5 TỬ CUNG | trẻ con
+        子孫 しそん 2 TỬ TÔN | con cháu
+      障害 しょうがい 2 CHƯỚNG HẠI | trở ngại; khuyết tật
+    故人 こじん 1 CỐ NHÂN | người đã khuất
+      人柄
+      人口 じんこう 4 NHÂN KHẨU | dân số
+        口座
+        口実 こうじつ 1 KHẨU THỰC | cái cớ
+  事情 じじょう 3 SỰ TÌNH | hoàn cảnh, lý do
+    情報 じょうほう 3 TÌNH BÁO | thông tin
+      報道
+        道具 どうぐ 4 ĐẠO CỤ | dụng cụ
+        道順 みちじゅん 2 ĐẠO THUẬN | lộ trình, đường đi
+      報告 ほうこく 3 BÁO CÁO | báo cáo
+    情熱 じょうねつ 2 TÌNH NHIỆT | nhiệt huyết, đam mê
+      熱演
+      熱中
+  事件 じけん 3 SỰ KIỆN | vụ án, vụ việc
+
+名前 なまえ 5 DANH TIỀN | tên
+  前進 ぜんしん 2 TIỀN TIẾN | tiến lên
+    進行
+      行方
+        方針
+        方面 ほうめん 2 PHƯƠNG DIỆN | phương diện; hướng, vùng
+      行事
+        事務所 じむしょ 4 SỰ VỤ SỞ | văn phòng
+        事柄 ことがら 1 SỰ BÍNH | sự việc, vấn đề
+    進出
+      出願
+        願書 がんしょ 1 NGUYỆN THƯ | đơn xin (nhập học…)
+      出勤 しゅっきん 2 XUẤT CẦN | đi làm
+        勤務
+  前後 ぜんご 3 TIỀN HẬU | trước sau; khoảng chừng
+    後日
+      日光
+        光景 こうけい 2 QUANG CẢNH | quang cảnh, cảnh tượng
+      日記 にっき 4 NHẬT KÝ | nhật ký
+    後悔
+  前者 ぜんしゃ 2 TIỀN GIẢ | cái trước, người trước (đối với 後者)
+
+自分 じぶん 5 TỰ PHÂN | bản thân
+  分数 ぶんすう 2 PHÂN SỐ | phân số
+    数学 すうがく 4 SỐ HỌC | toán học
+      学習 がくしゅう 3 HỌC TẬP | học tập
+        習慣 しゅうかん 3 TẬP QUÁN | thói quen, tập quán
+        習字 しゅうじ 2 TẬP TỰ | luyện viết chữ
+      学問 がくもん 2 HỌC VẤN | học vấn, học thuật
+        問題 もんだい 5 VẤN ĐỀ | vấn đề, câu hỏi
+        問答 もんどう 1 VẤN ĐÁP | hỏi đáp
+    数字 すうじ 3 SỐ TỰ | chữ số
+      字体 じたい 1 TỰ THỂ | kiểu chữ, nét chữ
+        体温 たいおん 3 THỂ ÔN | thân nhiệt
+        体重 たいじゅう 3 THỂ TRỌNG | cân nặng
+  分布 ぶんぷ 2 PHÂN BỐ | phân bố
+    布団 ふとん 4 BỐ ĐOÀN | chăn đệm futon
+      団体
+        体制 たいせい 1 THỂ CHẾ | thể chế, cơ cấu
+        体育 たいいく 3 THỂ DỤC | thể dục
+      団地 だんち 2 ĐOÀN ĐỊA | khu chung cư
+        地元
+  分類 ぶんるい 2 PHÂN LOẠI | phân loại
+    類似 るいじ 1 LOẠI TỰ | tương tự
+
+電話 でんわ 5 ĐIỆN THOẠI | điện thoại
+  話題
+    題名
+      名作
+        作成
+          成年 せいねん 2 THÀNH NIÊN | tuổi thành niên
+          成分 せいぶん 2 THÀNH PHÂN | thành phần
+        作業
+          業者 ぎょうしゃ 1 NGHIỆP GIẢ | nhà thầu, doanh nghiệp (cung cấp dịch vụ)
+          業績 ぎょうせき 1 NGHIỆP TÍCH | thành tích kinh doanh
+      名所
+        所得 しょとく 1 SỞ ĐẮC | thu nhập
+    題材
+      材木 ざいもく 2 TÀI MỘC | gỗ xẻ
+        木材 もくざい 2 MỘC TÀI | gỗ (nguyên liệu)
+        木綿 もめん 2 MỘC MIÊN | vải bông
+      材料 ざいりょう 3 TÀI LIỆU | nguyên liệu, vật liệu
+        料金 りょうきん 3 LIỆU KIM | phí, cước
+          金融 きんゆう 1 KIM DUNG | tài chính, tín dụng
+          金額 きんがく 2 KIM NGẠCH | số tiền
+        料理 りょうり 5 LIỆU LÝ | món ăn, nấu ăn
+          理科 りか 3 LÝ KHOA | môn khoa học tự nhiên
+
+先生 せんせい 5 TIÊN SINH | giáo viên, thầy cô
+  生存 せいぞん 1 SINH TỒN | sinh tồn
+    存在 そんざい 3 TỒN TẠI | sự tồn tại
+      在学 ざいがく 1 TẠI HỌC | đang theo học
+        学期 がっき 3 HỌC KỲ | học kỳ
+        学科 がっか 2 HỌC KHOA | khoa, chuyên ngành
+      在庫 ざいこ 1 TẠI KHỐ | hàng tồn kho
+  生意気 なまいき 2 SINH Ý KHÍ | xấc xược, láo
+    気味 きみ 2 KHÍ VỊ | cảm giác; có vẻ, hơi (〜気味)
+      味方
+        方法 ほうほう 3 PHƯƠNG PHÁP | phương pháp
+      味覚 みかく 1 VỊ GIÁC | vị giác
+    気圧 きあつ 2 KHÍ ÁP | khí áp
+      圧縮 あっしゅく 1 ÁP SÚC | nén
+      圧倒 あっとう 1 ÁP ĐẢO | áp đảo
+  生涯 しょうがい 1 SINH NHAI | cả cuộc đời
+
+外国 がいこく 5 NGOẠI QUỐC | nước ngoài
+  国会
+    会計 かいけい 3 HỘI KẾ | kế toán; thanh toán
+      計器 けいき 1 KẾ KHÍ | đồng hồ đo, thiết bị đo
+        器用
+        器官 きかん 1 KHÍ QUAN | cơ quan (trong cơ thể)
+      計算 けいさん 3 KẾ TOÁN | tính toán
+        算数 さんすう 3 TOÁN SỐ | môn toán (tiểu học)
+  国境 こっきょう 2 QUỐC CẢNH | biên giới quốc gia
+    境目
+      目上
+        上昇
+        上達
+      目印
+    境界
+  国家 こっか 2 QUỐC GIA | quốc gia, nhà nước
+    家庭
+    家主 やぬし 2 GIA CHỦ | chủ nhà (cho thuê)
+      主人公
+      主要 しゅよう 2 CHỦ YẾU | chủ yếu
+
+旅行 りょこう 5 LỮ HÀNH | du lịch
+  行儀
+  行動 こうどう 3 HÀNH ĐỘNG | hành động
+    動揺
+    動作 どうさ 3 ĐỘNG TÁC | động tác
+      作法 さほう 2 TÁC PHÁP | phép tắc, cách cư xử
+        法律
+        法則 ほうそく 2 PHÁP TẮC | quy tắc, định luật
+      作品 さくひん 3 TÁC PHẨM | tác phẩm
+        品物 しなもの 4 PHẨM VẬT | hàng hóa
+        品質 ひんしつ 2 PHẨM CHẤT | chất lượng
+          質素
+          質問 しつもん 5 CHẤT VẤN | câu hỏi
+      作家 さっか 3 TÁC GIA | nhà văn
+        家内 かない 3 GIA NỘI | vợ (tôi)
+        家屋 かおく 1 GIA ỐC | nhà cửa
+  行列 ぎょうれつ 2 HÀNG LIỆT | hàng người xếp hàng; đoàn diễu hành
+    列車 れっしゃ 3 LIỆT XA | đoàn tàu
+    列島 れっとう 1 LIỆT ĐẢO | quần đảo
+
+文化 ぶんか 4 VĂN HÓA | văn hóa
+  化学 かがく 3 HÓA HỌC | hóa học
+    学校 がっこう 5 HỌC HIỆU | trường học
+      校長 こうちょう 3 HIỆU TRƯỞNG | hiệu trưởng
+        長官 ちょうかん 1 TRƯỞNG QUAN | người đứng đầu cơ quan nhà nước
+          官僚 かんりょう 1 QUAN LIÊU | quan chức
+          官庁 かんちょう 1 QUAN SẢNH | cơ quan nhà nước
+        長編 ちょうへん 1 TRƯỜNG THIÊN | (tiểu thuyết, phim) dài
+          編集 へんしゅう 2 BIÊN TẬP | biên tập
+            集中 しゅうちゅう 3 TẬP TRUNG | tập trung
+            集会 しゅうかい 2 TẬP HỘI | cuộc mít tinh, buổi tập hợp
+      校舎 こうしゃ 2 HIỆU XÁ | tòa nhà trường học
+    学歴 がくれき 2 HỌC LỊCH | trình độ học vấn, bằng cấp
+      歴史 れきし 4 LỊCH SỬ | lịch sử
+  化粧 けしょう 2 HÓA TRANG | trang điểm
+
+安全 あんぜん 4 AN TOÀN | an toàn
+  全身
+    身分 みぶん 1 THÂN PHẬN | thân phận, địa vị
+      分量 ぶんりょう 2 PHÂN LƯỢNG | lượng, liều lượng
+      分散 ぶんさん 1 PHÂN TÁN | phân tán
+        散歩 さんぽ 5 TẢN BỘ | đi dạo
+    身長 しんちょう 3 THÂN TRƯỜNG | chiều cao
+      長方形 ちょうほうけい 2 TRƯỜNG PHƯƠNG HÌNH | hình chữ nhật
+      長短 ちょうたん 1 TRƯỜNG ĐOẢN | dài ngắn; ưu nhược điểm
+  全国 ぜんこく 3 TOÀN QUỐC | toàn quốc
+    国語 こくご 3 QUỐC NGỮ | quốc ngữ; môn tiếng Nhật (ở trường)
+      語学 ごがく 3 NGỮ HỌC | việc học ngoại ngữ
+        学者 がくしゃ 3 HỌC GIẢ | học giả
+        学術 がくじゅつ 1 HỌC THUẬT | học thuật
+      語句 ごく 2 NGỮ CÚ | từ ngữ, cụm từ
+        句読点 くとうてん 2 CÚ ĐẬU ĐIỂM | dấu câu
+    国民 こくみん 3 QUỐC DÂN | quốc dân, nhân dân
+      民宿 みんしゅく 2 DÂN TÚC | nhà nghỉ kiểu gia đình
+      民間 みんかん 2 DÂN GIAN | tư nhân, dân sự
+  全体 ぜんたい 3 TOÀN THỂ | toàn thể, tổng thể
+    体積 たいせき 2 THỂ TÍCH | thể tích
+      積極的 せっきょくてき 2 TÍCH CỰC ĐÍCH | tích cực
+    体裁 ていさい 1 THỂ TÀI | hình thức bên ngoài, thể diện
+      裁判 さいばん 2 TÀI PHÁN | xét xử, phiên tòa
+      裁縫 さいほう 2 TÀI PHÙNG | may vá
+
+目的 もくてき 3 MỤC ĐÍCH | mục đích
+  的確
+    確保
+      保存
+      保障
+    確実 かくじつ 2 XÁC THỰC | chắc chắn
+      実現
+        現状
+          状況
+          状態 じょうたい 3 TRẠNG THÁI | trạng thái
+            態度 たいど 3 THÁI ĐỘ | thái độ
+            態勢 たいせい 1 THÁI THẾ | tư thế sẵn sàng, sự chuẩn bị
+        現金 げんきん 3 HIỆN KIM | tiền mặt
+          金庫 きんこ 2 KIM KHỐ | két sắt
+          金銭 きんせん 2 KIM TIỀN | tiền bạc
+      実施

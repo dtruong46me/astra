@@ -15,6 +15,7 @@
   --f-jp:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;
   --f-ui:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --c-rev:#2F64B8; --c-new:#C9502F;
+  --n5:#2B7A4B; --n4:#2A7680; --n3:#2760A6; --n2:#BF4128; --n1:#7446A8;
   --r:14px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
@@ -23,6 +24,7 @@
   --again:#F08A78; --hard:#E2B15A; --good:#6FCB94; --easy:#86B4F0;
   --again-soft:#3A2220; --hard-soft:#352B19; --good-soft:#1A3326; --easy-soft:#1B2A3E;
   --c-rev:#5B8EE0; --c-new:#E0694A;
+  --n5:#6FCB94; --n4:#63C2CC; --n3:#86B4F0; --n2:#F08A70; --n1:#B994EA;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.25); color-scheme:dark;
 }}
 :root[data-theme="dark"]{
@@ -31,6 +33,7 @@
   --again:#F08A78; --hard:#E2B15A; --good:#6FCB94; --easy:#86B4F0;
   --again-soft:#3A2220; --hard-soft:#352B19; --good-soft:#1A3326; --easy-soft:#1B2A3E;
   --c-rev:#5B8EE0; --c-new:#E0694A;
+  --n5:#6FCB94; --n4:#63C2CC; --n3:#86B4F0; --n2:#F08A70; --n1:#B994EA;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.25); color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -55,7 +58,7 @@ button{cursor:pointer}
 .navrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .seg{display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:3px;gap:2px}
 .seg button{border:0;background:transparent;padding:6px 14px;border-radius:8px;font-weight:600;font-size:14px;color:var(--muted)}
-.seg button[aria-selected="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.seg button[aria-selected="true"],.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
 .filterbtn{margin-left:auto;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);border-radius:11px;padding:7px 12px;font-size:13.5px;font-weight:500;max-width:100%;min-width:0}
 .filterbtn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .filters{border:1px solid var(--line);background:var(--card);border-radius:var(--r);padding:14px;display:grid;gap:12px}
@@ -260,6 +263,63 @@ main.wrap{padding-block:18px 40px}
 details.more summary{cursor:pointer;font-weight:600;font-size:14px}
 details.more[open] summary{margin-bottom:8px}
 
+/* word chains */
+.chbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.chbar .search{flex:1 1 220px}
+.chnav{display:flex;gap:8px;align-items:stretch;margin-bottom:12px}
+.chnav .ghost{padding:8px 14px;font-size:16px;line-height:1}
+.chnav .pick{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--line);background:var(--card);border-radius:11px;padding:7px 12px;font-weight:600;font-size:13.5px;color:var(--muted)}
+.chnav .pick b{font-family:var(--f-mincho);font-weight:800;font-size:18px;color:var(--ink);letter-spacing:.04em}
+.chindex{display:grid;grid-template-columns:repeat(auto-fill,minmax(62px,1fr));gap:6px;margin-bottom:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px}
+.chindex button{border:1px solid var(--line);background:var(--soft);border-radius:9px;padding:6px 0;font-family:var(--f-mincho);font-weight:800;font-size:16px;display:grid;line-height:1.2}
+.chindex button small{font-family:var(--f-ui);font-weight:500;font-size:10.5px;color:var(--muted)}
+.chindex button[aria-current="true"]{background:var(--ai);border-color:var(--ai);color:var(--card)}
+.chindex button[aria-current="true"] small{color:inherit;opacity:.8}
+.chhead{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:13px;color:var(--muted);margin:0 2px 10px;font-variant-numeric:tabular-nums}
+.chhead b{color:var(--ink)}
+.chhead .acts{margin-left:auto;display:flex;gap:6px}
+.tree{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 14px 16px;box-shadow:var(--shadow)}
+.kids{list-style:none;margin:0;padding:0 0 0 12px}
+.kids>li{position:relative;padding:7px 0 0 20px}
+.kids>li::before{content:"";position:absolute;left:0;top:0;width:15px;height:30px;border-left:2px solid var(--line);border-bottom:2px solid var(--line);border-bottom-left-radius:10px}
+.kids>li::after{content:"";position:absolute;left:0;top:0;bottom:0;border-left:2px solid var(--line)}
+.kids>li:last-child::after{display:none}
+.cn{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1px 8px;align-items:center;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:6px 6px 7px 11px;scroll-margin:120px}
+.cn.root{background:var(--ai-soft);border-color:transparent}
+.cn .cw{font-family:var(--f-mincho);font-weight:800;font-size:21px;line-height:1.3;letter-spacing:.03em;min-width:0}
+.cn.root .cw{font-size:26px}
+.cn .cw small{font-family:var(--f-jp);font-weight:500;font-size:12px;color:var(--muted);letter-spacing:.04em;margin-left:8px;white-space:nowrap}
+.cn .lk{color:var(--shu)}
+.cn .cm{grid-column:1/-1;font-size:13.5px;line-height:1.45;padding-right:6px}
+.cn .cm .h{font-weight:700;font-size:10.5px;letter-spacing:.12em;color:var(--shu);margin-right:7px;white-space:nowrap}
+.cn .ct{display:flex;align-items:center;gap:4px}
+.cn .say{width:30px;height:30px;border-color:transparent;background:none}
+.cn.hid{cursor:pointer;border-style:dashed;background:var(--soft)}
+.cn.hid:hover{border-color:color-mix(in srgb,var(--ai) 50%,var(--line))}
+.cn .q{color:var(--muted);font-size:12.5px}
+.cslot{display:inline-block;width:.85em;height:1.05em;border-bottom:2px solid var(--shu);margin-left:3px;vertical-align:-.12em}
+.lv{font-family:var(--f-ui);font-size:10.5px;font-weight:800;letter-spacing:.04em;border:1px solid currentColor;border-radius:5px;padding:0 5px;line-height:1.6;background:none;white-space:nowrap}
+.lv5{color:var(--n5)} .lv4{color:var(--n4)} .lv3{color:var(--n3)} .lv2{color:var(--n2)} .lv1{color:var(--n1)}
+.lv.deck{background:var(--n2);border-color:var(--n2);color:var(--card)}
+button.lv.deck{cursor:pointer}
+.sd{width:7px;height:7px;border-radius:50%;display:inline-block;flex:none}
+.sd.on{background:var(--good)} .sd.lrn{background:var(--again)}
+.chlegend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:12.5px;color:var(--muted);margin-top:12px}
+.chlegend span{display:inline-flex;align-items:center;gap:6px}
+.chres{list-style:none;margin:0 0 14px;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.chres li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 12px;border-top:1px solid var(--line);cursor:pointer}
+.chres li:first-child{border-top:0}
+.chres li:hover{background:var(--soft)}
+.chres .w{font-family:var(--f-mincho);font-weight:800;font-size:18px}
+.chres .m{font-size:13.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chres .c{font-size:12px;color:var(--muted);white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){.cn.flash{animation:flash 1.6s ease-out}@keyframes flash{0%,40%{box-shadow:0 0 0 3px var(--shu)}100%{box-shadow:0 0 0 3px transparent}}}
+@media (max-width:640px){
+  .kids{padding-left:9px} .kids>li{padding-left:15px} .kids>li::before{width:11px}
+  .cn .cw{font-size:19px} .cn.root .cw{font-size:23px}
+  .seg button{padding:6px 10px}
+}
+
 /* overlay */
 .overlay{position:fixed;inset:0;z-index:50;background:rgba(10,15,22,.45);display:flex;align-items:flex-end;justify-content:center;padding:env(safe-area-inset-top,0px) 0 0}
 .sheet{background:var(--card);width:100%;max-width:760px;max-height:92%;overflow:auto;border-radius:20px 20px 0 0;padding:18px 20px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:var(--shadow)}
@@ -299,6 +359,7 @@ details.more[open] summary{margin-bottom:8px}
       <div class="seg" role="tablist">
         <button role="tab" id="tabStudy" aria-selected="true">Ôn tập</button>
         <button role="tab" id="tabList" aria-selected="false">Danh sách</button>
+        <button role="tab" id="tabChain" aria-selected="false">Nối chữ</button>
         <button role="tab" id="tabStats" aria-selected="false">Tiến độ</button>
       </div>
       <button class="filterbtn" id="btnFilter" aria-expanded="false">
@@ -348,6 +409,23 @@ details.more[open] summary{margin-bottom:8px}
     <div class="panel"><details class="more"><summary>Xem dạng bảng</summary><div style="overflow-x:auto"><table class="tbl" id="fcTable"></table></div></details></div>
   </section>
 
+  <section id="viewChain" hidden>
+    <div class="chbar">
+      <div class="seg" id="chMode" role="group" aria-label="Cách xem"><button data-chm="view">Xem</button><button data-chm="word">Đoán từ</button><button data-chm="mean">Đoán nghĩa</button></div>
+      <label class="search"><input id="chq" type="search" placeholder="Tìm trong các chuỗi: 社長, しゃちょう, giám đốc…" autocomplete="off"></label>
+    </div>
+    <ul class="chres" id="chRes" hidden></ul>
+    <div class="chnav">
+      <button class="ghost" id="chPrev" aria-label="Chuỗi trước">‹</button>
+      <button class="pick" id="chPick" aria-expanded="false"></button>
+      <button class="ghost" id="chNext" aria-label="Chuỗi sau">›</button>
+    </div>
+    <div class="chindex" id="chIndex" hidden></div>
+    <div class="chhead" id="chHead"></div>
+    <div class="tree" id="chTree"></div>
+    <div class="chlegend" id="chLegend"></div>
+  </section>
+
   <section id="viewList" hidden>
     <div class="listbar">
       <label class="search">
@@ -368,6 +446,8 @@ details.more[open] summary{margin-bottom:8px}
 
 <script>
 const VOCAB = /*__VOCAB__*/[];
+// Word chains (熟語しりとり): each node is [deck id | [w, r, level, hv, vi], kids]; a child starts with its parent's last kanji.
+const CHAINS = /*__CHAINS__*/[];
 const $ = s => document.querySelector(s);
 const BY_ID = new Map(VOCAB.map(v => [v.id, v]));
 const BY_WORD = new Map(VOCAB.map(v => [v.w, v]));
@@ -393,7 +473,7 @@ function normalize(p) {
   return { cards: p.cards || {}, days: p.days || {}, settings: Object.assign({}, DEFAULTS, p.settings || {}), st: p.st || 0, fav: p.fav || {} };
 }
 let P = normalize(lsGet(LS_KEY));
-let UI = Object.assign({ tab: "study", lessons: null, pos: [], src: [], status: "all", q: "", hideMean: false }, lsGet(UI_KEY) || {});
+let UI = Object.assign({ tab: "study", lessons: null, pos: [], src: [], status: "all", q: "", hideMean: false, chain: 0, chMode: "view" }, lsGet(UI_KEY) || {});
 const saveUI = () => lsSet(UI_KEY, UI);
 
 /* ---------- dates ---------- */
@@ -866,6 +946,63 @@ function renderList() {
   $("#btnHideMean").textContent = UI.hideMean ? "Hiện nghĩa" : "Che nghĩa";
 }
 
+/* ---------- word chains ---------- */
+function cnode(n) {
+  if (typeof n[0] !== "number") { const [w, r, lv, hv, vi] = n[0]; return { w, r, lv, hv, vi }; }
+  const v = BY_ID.get(n[0]);
+  return { w: v.w, r: v.r, lv: 2, hv: (v.hv || "").replace(/\s*\([^)]*\)\s*$/, "").trim(), vi: v.vi, id: v.id };
+}
+// Every node once, with its chain index and path ("0.2.1") so search results can jump to it.
+const CH_FLAT = CHAINS.map((c, ci) => { const out = []; (function walk(n, path, d) { out.push({ ci, path, d, x: cnode(n) }); n[1].forEach((k, i) => walk(k, path + "." + i, d + 1)); })(c, "0", 0); return out; });
+const chOpen = new Set();
+let chQ = "", chFlash = null;
+// A hidden node keeps its deck badge inert so a stray tap cannot open (and give away) the card.
+const lvTag = (x, hid) => !x.id ? `<span class="lv lv${x.lv}">N${x.lv}</span>` : hid ? `<span class="lv deck">N2</span>` : `<button class="lv deck" data-open="${x.id}" title="Có trong bộ thẻ (No.${pad3(x.id)}), bấm để mở thẻ">N2</button>`;
+function chNodeHtml(ci, n, path, d) {
+  const x = cnode(n), key = ci + ":" + path, mode = UI.chMode;
+  const hid = d > 0 && mode !== "view" && !chOpen.has(key);
+  const rest = [...x.w].slice(d ? 1 : 0), lk = d ? `<span class="lk">${esc(x.w[0])}</span>` : "";
+  const word = hid && mode === "word" ? lk + rest.map(() => '<span class="cslot"></span>').join("") : lk + esc(rest.join(""));
+  const st = x.id ? status(x.id) : "";
+  const dot = x.id && st !== "new" ? `<i class="sd ${st === "learn" ? "lrn" : "on"}" title="${STATUS[st]}"></i>` : "";
+  const mean = hid ? (mode === "word" ? esc(x.vi) : '<span class="q">Chạm để xem nghĩa</span>') : `${x.hv ? `<span class="h">${esc(x.hv)}</span>` : ""}${esc(x.vi)}`;
+  const box = `<div class="cn${d ? "" : " root"}${hid ? " hid" : ""}" id="cn-${key.replace(/[:.]/g, "-")}"${hid ? ` data-cn="${key}" role="button" tabindex="0"` : ""}>
+      <div class="cw jp">${word}${hid ? "" : `<small>${esc(x.r)}</small>`}</div>
+      <div class="ct">${dot}${lvTag(x, hid)}${hid ? "" : sayBtn(x.r)}</div>
+      <div class="cm">${mean}</div></div>`;
+  return box + (n[1].length ? `<ul class="kids">${n[1].map((k, i) => `<li>${chNodeHtml(ci, k, path + "." + i, d + 1)}</li>`).join("")}</ul>` : "");
+}
+function renderChain() {
+  const ci = Math.min(Math.max(0, UI.chain | 0), CHAINS.length - 1), flat = CH_FLAT[ci], root = flat[0].x;
+  document.querySelectorAll("#chMode button").forEach(b => b.setAttribute("aria-pressed", b.dataset.chm === UI.chMode));
+  $("#chPick").innerHTML = `Chuỗi ${ci + 1}/${CHAINS.length}<b>${esc(root.w)}</b>${esc(root.vi)}`;
+  $("#chIndex").innerHTML = CHAINS.map((c, i) => `<button data-chgo="${i}" aria-current="${i === ci}"><span class="jp">${esc(cnode(c).w)}</span><small>${CH_FLAT[i].length} từ</small></button>`).join("");
+  const deckN = flat.filter(f => f.x.id), learned = deckN.filter(f => status(f.x.id) !== "new").length;
+  const lvN = [5, 4, 3, 2, 1].map(l => [l, flat.filter(f => f.x.lv === l).length]).filter(a => a[1]);
+  const hidN = UI.chMode === "view" ? 0 : flat.filter(f => f.d && !chOpen.has(ci + ":" + f.path)).length;
+  $("#chHead").innerHTML = `<span><b>${flat.length}</b> từ · <b>${deckN.length}</b> có trong bộ thẻ${deckN.length ? ` (${learned} đã học)` : ""}</span><span>${lvN.map(([l, n]) => `N${l}: ${n}`).join(" · ")}</span>`
+    + (UI.chMode !== "view" ? `<span class="acts">${hidN ? `<button class="ghost" id="chShowAll">Hiện hết</button>` : ""}${hidN < flat.length - 1 ? `<button class="ghost" id="chHideAll">Ẩn lại</button>` : ""}</span>` : "");
+  $("#chTree").innerHTML = chNodeHtml(ci, CHAINS[ci], "0", 0);
+  $("#chLegend").innerHTML = `<span>Chữ <b class="jp" style="color:var(--shu)">đỏ</b> là chữ Hán nối với từ phía trên</span><span><span class="lv deck">N2</span> có trong bộ thẻ, bấm để mở thẻ</span><span><i class="sd on"></i>đã học</span><span><i class="sd lrn"></i>đang học</span><span>${[5, 4, 3, 2, 1].map(l => `<span class="lv lv${l}">N${l}</span>`).join(" ")} cấp độ tham khảo</span>`;
+  renderChainSearch();
+  if (chFlash) { const el = document.getElementById("cn-" + chFlash.replace(/[:.]/g, "-")); chFlash = null; if (el) { el.scrollIntoView({ block: "center" }); el.classList.add("flash"); } }
+}
+function renderChainSearch() {
+  const q = chQ.trim().toLowerCase(), el = $("#chRes");
+  if (!q) { el.hidden = true; el.innerHTML = ""; return; }
+  const hits = CH_FLAT.flat().filter(f => [f.x.w, f.x.r, f.x.hv, f.x.vi].some(s => s && s.toLowerCase().includes(q))).slice(0, 40);
+  el.hidden = false;
+  el.innerHTML = hits.length ? hits.map(f => `<li data-chgo="${f.ci}" data-chpath="${f.path}"><span class="w">${esc(f.x.w)}</span><span class="m">${esc(f.x.vi)}</span><span class="c">Chuỗi ${esc(CH_FLAT[f.ci][0].x.w)}</span></li>`).join("")
+    : `<li style="cursor:default;grid-template-columns:1fr"><span class="m" style="color:var(--muted)">Không có từ nào khớp trong các chuỗi.</span></li>`;
+}
+function goChain(i, path) {
+  UI.chain = (i + CHAINS.length) % CHAINS.length; saveUI();
+  $("#chIndex").hidden = true; $("#chPick").setAttribute("aria-expanded", "false");
+  if (path) { chFlash = UI.chain + ":" + path; if (UI.chMode !== "view") chOpen.add(chFlash); chQ = ""; $("#chq").value = ""; }
+  renderChain();
+  if (!path) window.scrollTo({ top: 0 });
+}
+
 /* ---------- stats / forecast ---------- */
 const WD = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
 function dayLabel(k, start) {
@@ -1041,16 +1178,19 @@ function onFilterChange() {
 }
 
 /* ---------- tabs + refresh ---------- */
+const TABS = { study: "Study", list: "List", chain: "Chain", stats: "Stats" };
 function setTab(t) {
   UI.tab = t; saveUI();
-  $("#tabStudy").setAttribute("aria-selected", t === "study"); $("#tabList").setAttribute("aria-selected", t === "list"); $("#tabStats").setAttribute("aria-selected", t === "stats");
-  $("#viewStudy").hidden = t !== "study"; $("#viewList").hidden = t !== "list"; $("#viewStats").hidden = t !== "stats";
-  if (t === "list") renderList(); else if (t === "stats") renderStats(); else if (!cur) next(); else renderStudy();
+  for (const [k, n] of Object.entries(TABS)) { $("#tab" + n).setAttribute("aria-selected", t === k); $("#view" + n).hidden = t !== k; }
+  // Chains do not follow the lesson filter, so the filter button is hidden there.
+  $("#btnFilter").hidden = t === "chain"; if (t === "chain") $("#filters").hidden = true;
+  if (t === "list") renderList(); else if (t === "stats") renderStats(); else if (t === "chain") renderChain(); else if (!cur) next(); else renderStudy();
 }
 function refreshAll(remote) {
   renderFilters();
   if (UI.tab === "list") renderList();
   if (UI.tab === "stats") renderStats();
+  if (UI.tab === "chain") renderChain();
   if (remote && cur && !revealed && !cram) { const k = deck(); const ok = [...k.learnNow, ...k.due, ...k.fresh].includes(cur.id); if (!ok) { next(); return; } }
   if (cur && revealed && !cram && notYetDue(cur.id)) { next(); return; }
   if (UI.tab === "study") { if (cur) renderStudy(); else next(); }
@@ -1077,6 +1217,14 @@ document.addEventListener("click", e => {
   if (t.closest("#tabStudy")) return setTab("study");
   if (t.closest("#tabList")) return setTab("list");
   if (t.closest("#tabStats")) return setTab("stats");
+  if (t.closest("#tabChain")) return setTab("chain");
+  const chm = t.closest("[data-chm]"); if (chm) { UI.chMode = chm.dataset.chm; saveUI(); return renderChain(); }
+  const chg = t.closest("[data-chgo]"); if (chg) return goChain(+chg.dataset.chgo, chg.dataset.chpath);
+  if (t.closest("#chPrev")) return goChain(UI.chain - 1);
+  if (t.closest("#chNext")) return goChain(UI.chain + 1);
+  if (t.closest("#chPick")) { const ix = $("#chIndex"); ix.hidden = !ix.hidden; $("#chPick").setAttribute("aria-expanded", !ix.hidden); return; }
+  if (t.closest("#chShowAll")) { CH_FLAT[UI.chain].forEach(f => chOpen.add(UI.chain + ":" + f.path)); return renderChain(); }
+  if (t.closest("#chHideAll")) { [...chOpen].filter(k => k.startsWith(UI.chain + ":")).forEach(k => chOpen.delete(k)); return renderChain(); }
   const hz = t.closest("[data-h]"); if (hz) { UI.horizon = +hz.dataset.h; saveUI(); return renderStats(); }
   const col = t.closest(".col"); if (col) return showTip(col);
   if (t.closest("#btnFilter")) { const f = $("#filters"); f.hidden = !f.hidden; $("#btnFilter").setAttribute("aria-expanded", !f.hidden); return; }
@@ -1093,6 +1241,7 @@ document.addEventListener("click", e => {
   if (t.closest("#btnHideMean")) { UI.hideMean = !UI.hideMean; saveUI(); return renderList(); }
   const sl = t.closest("[data-studyl]"); if (sl) { $("#filters").hidden = true; setLessons([+sl.dataset.studyl]); cur = null; return setTab("study"); }
   const op = t.closest("[data-open]"); if (op) return openDetail(op.dataset.open);
+  const cn = t.closest("[data-cn]"); if (cn) { chOpen.add(cn.dataset.cn); return renderChain(); }
   if (t.closest("[data-close]") || t === $("#overlay")) return closeSheet();
   const so = t.closest("[data-studyone]");
   if (so) { closeSheet(); cram = { q: [+so.dataset.studyone] }; setTab("study"); next(); return; }
@@ -1124,10 +1273,16 @@ document.addEventListener("click", e => {
 document.addEventListener("submit", e => { if (e.target.id === "setForm") { e.preventDefault(); saveSettings(); } });
 document.addEventListener("input", e => {
   if (e.target.id === "q") { UI.q = e.target.value; saveUI(); renderList(); }
+  if (e.target.id === "chq") { chQ = e.target.value; renderChainSearch(); }
   if (e.target.id === "setRate") $("#rateVal").textContent = e.target.value;
 });
 document.addEventListener("keydown", e => {
   if (!$("#overlay").hidden) { if (e.key === "Escape") closeSheet(); return; }
+  if (UI.tab === "chain" && !e.target.closest("input,textarea,select") && !e.metaKey && !e.ctrlKey && !e.altKey) {
+    if (e.key === "ArrowLeft") goChain(UI.chain - 1); else if (e.key === "ArrowRight") goChain(UI.chain + 1);
+    else if ((e.key === "Enter" || e.key === " ") && e.target.closest("[data-cn]")) { e.preventDefault(); chOpen.add(e.target.closest("[data-cn]").dataset.cn); renderChain(); }
+    return;
+  }
   if (UI.tab !== "study" || e.target.closest("input,textarea,select") || e.metaKey || e.ctrlKey || e.altKey) return;
   if (e.key === " " || e.key === "Enter") { e.preventDefault(); revealed ? answer(3) : reveal(); }
   else if (revealed && ["1", "2", "3", "4"].includes(e.key)) answer(+e.key);
@@ -1140,7 +1295,7 @@ document.addEventListener("keydown", e => {
 /* ---------- boot ---------- */
 $("#q").value = UI.q || "";
 renderFilters();
-setTab(["list", "stats"].includes(UI.tab) ? UI.tab : "study");
+setTab(TABS[UI.tab] ? UI.tab : "study");
 document.addEventListener("mouseover", e => { const c = e.target.closest && e.target.closest("#chartwrap .col"); if (c) showTip(c); });
 document.addEventListener("mouseout", e => { if (e.target.closest && e.target.closest("#chartwrap .col") && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest("#chartwrap .col"))) showTip(null); });
 setSync("local");

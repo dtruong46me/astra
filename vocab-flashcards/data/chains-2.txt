@@ -1,0 +1,327 @@
+意見 いけん 4 Ý KIẾN | ý kiến
+  見事
+  見学 けんがく 3 KIẾN HỌC | tham quan học tập
+    学力 がくりょく 2 HỌC LỰC | học lực
+    学級 がっきゅう 2 HỌC CẤP | lớp học
+  見本 みほん 3 KIẾN BẢN | hàng mẫu
+    本部 ほんぶ 2 BẢN BỘ | trụ sở chính
+      部品 ぶひん 2 BỘ PHẨM | linh kiện
+      部屋 へや 5 BỘ ỐC | căn phòng
+        屋根 やね 3 ỐC CĂN | mái nhà
+        屋外 おくがい 2 ỐC NGOẠI | ngoài trời
+    本当 ほんとう 5 BẢN ĐƯƠNG | thật, sự thật
+      当分
+        分離 ぶんり 1 PHÂN LY | tách rời
+        分裂 ぶんれつ 1 PHÂN LIỆT | chia rẽ, phân tách
+      当時 とうじ 2 ĐƯƠNG THỜI | hồi đó, thời ấy
+        時速 じそく 2 THỜI TỐC | tốc độ tính theo giờ
+        時代 じだい 3 THỜI ĐẠI | thời đại
+
+教育
+  育児
+    児童 じどう 2 NHI ĐỒNG | nhi đồng, trẻ em
+      童謡 どうよう 1 ĐỒNG DAO | đồng dao, bài hát thiếu nhi
+      童話 どうわ 2 ĐỒNG THOẠI | truyện cổ tích (cho trẻ)
+  育成 いくせい 1 DỤC THÀNH | đào tạo, bồi dưỡng
+    成立 せいりつ 2 THÀNH LẬP | được thành lập; được thông qua
+      立場 たちば 2 LẬP TRƯỜNG | lập trường, vị trí
+        場所 ばしょ 4 TRƯỜNG SỞ | địa điểm
+      立派 りっぱ 3 LẬP PHÁI | tuyệt vời, đáng nể
+        派手 はで 2 PHÁI THỦ | lòe loẹt, phô trương
+        派遣 はけん 1 PHÁI KHIỂN | phái cử
+    成功 せいこう 3 THÀNH CÔNG | thành công
+      功績 こうせき 1 CÔNG TÍCH | công lao
+
+病気 びょうき 5 BỆNH KHÍ | bệnh
+  気配 けはい 2 KHÍ PHỐI | dấu hiệu, cảm giác có gì đó
+    配置 はいち 1 PHỐI TRÍ | bố trí, sắp xếp
+    配慮 はいりょ 1 PHỐI LỰ | quan tâm, để ý chu đáo
+  気象 きしょう 2 KHÍ TƯỢNG | khí tượng
+    象徴 しょうちょう 1 TƯỢNG TRƯNG | tượng trưng, biểu tượng
+      徴収 ちょうしゅう 1 TRƯNG THU | thu (phí, thuế)
+        収集
+          集金 しゅうきん 2 TẬP KIM | thu tiền
+            金属 きんぞく 2 KIM THUỘC | kim loại
+            金魚 きんぎょ 3 KIM NGƯ | cá vàng
+          集合 しゅうごう 2 TẬP HỢP | tập hợp, tập trung
+            合理 ごうり 1 HỢP LÝ | hợp lý (合理的)
+            合流 ごうりゅう 1 HỢP LƯU | hợp lưu; nhập vào nhóm
+        収納
+          納入 のうにゅう 1 NẠP NHẬP | nộp, giao (hàng)
+            入社
+            入学 にゅうがく 4 NHẬP HỌC | nhập học
+          納得 なっとく 2 NẠP ĐẮC | hiểu và chấp nhận, tâm phục
+
+主人 しゅじん 3 CHỦ NHÂN | chồng (tôi); chủ
+  人形 にんぎょう 4 NHÂN HÌNH | búp bê
+    形成
+      成績 せいせき 3 THÀNH TÍCH | thành tích, điểm số
+      成果 せいか 1 THÀNH QUẢ | thành quả
+        果実 かじつ 1 QUẢ THỰC | quả, trái cây
+        果物 くだもの 5 QUẢ VẬT | hoa quả
+    形態 けいたい 1 HÌNH THÁI | hình thái
+  人生 じんせい 3 NHÂN SINH | cuộc đời
+    生死 せいし 1 SINH TỬ | sống chết
+      死体 したい 2 TỬ THỂ | xác chết
+        体験 たいけん 2 THỂ NGHIỆM | trải nghiệm
+      死亡 しぼう 2 TỬ VONG | tử vong
+  人命 じんめい 1 NHÂN MỆNH | tính mạng con người
+    命令
+    命中 めいちゅう 1 MỆNH TRUNG | trúng đích
+      中断
+        断定 だんてい 1 ĐOẠN ĐỊNH | khẳng định, kết luận
+        断水 だんすい 2 ĐOẠN THỦY | cắt nước
+      中継
+
+運動 うんどう 4 VẬN ĐỘNG | vận động, thể thao
+  動機 どうき 2 ĐỘNG CƠ | động cơ, động lực
+    機能
+      能率
+        率直
+          直行
+            行政 ぎょうせい 1 HÀNH CHÍNH | hành chính
+            行進 こうしん 1 HÀNH TIẾN | diễu hành
+          直進
+            進学 しんがく 2 TIẾN HỌC | học lên (cấp cao hơn)
+            進展 しんてん 1 TIẾN TRIỂN | tiến triển
+      能力 のうりょく 3 NĂNG LỰC | năng lực
+    機敏
+      敏感
+        感覚
+          覚悟
+        感謝
+  動物 どうぶつ 5 ĐỘNG VẬT | động vật
+
+勉強 べんきょう 5 MIỄN CƯỜNG | học
+  強引
+    引退
+      退出
+        出発 しゅっぱつ 4 XUẤT PHÁT | xuất phát
+        出演 しゅつえん 2 XUẤT DIỄN | biểu diễn, xuất hiện (trên phim, sân khấu)
+      退場
+    引用
+      用途
+        途端
+        途中 とちゅう 4 ĐỒ TRUNG | giữa đường, giữa chừng
+      用心
+        心理 しんり 2 TÂM LÝ | tâm lý
+  強大
+    大半
+      半球
+      半径 はんけい 2 BÁN KÍNH | bán kính
+    大別
+      別荘 べっそう 2 BIỆT TRANG | biệt thự
+      別々 べつべつ 3 BIỆT BIỆT | riêng rẽ
+  強気
+
+地下 ちか 3 ĐỊA HẠ | dưới lòng đất, tầng hầm
+  下手 へた 5 HẠ THỦ | kém, vụng
+    手前
+      前例 ぜんれい 1 TIỀN LỆ | tiền lệ
+        例外 れいがい 2 LỆ NGOẠI | ngoại lệ
+          外見
+          外交 がいこう 2 NGOẠI GIAO | ngoại giao
+            交代
+    手軽
+      軽率 けいそつ 1 KHINH SUẤT | khinh suất, hấp tấp
+  下宿 げしゅく 3 HẠ TÚC | ở trọ, nhà trọ
+    宿泊
+    宿題 しゅくだい 5 TÚC ĐỀ | bài tập về nhà
+  下着 したぎ 3 HẠ TRƯỚC | đồ lót
+    着々
+    着工 ちゃっこう 1 TRƯỚC CÔNG | khởi công
+      工芸 こうげい 1 CÔNG NGHỆ | thủ công mỹ nghệ
+        芸術 げいじゅつ 2 NGHỆ THUẬT | nghệ thuật
+        芸能 げいのう 2 NGHỆ NĂNG | ngành giải trí, nghệ thuật biểu diễn
+      工学 こうがく 2 CÔNG HỌC | ngành kỹ thuật
+
+有名 ゆうめい 5 HỮU DANH | nổi tiếng
+  名誉
+  名人 めいじん 2 DANH NHÂN | bậc thầy, cao thủ
+    人種 じんしゅ 2 NHÂN CHỦNG | chủng tộc
+      種類 しゅるい 4 CHỦNG LOẠI | chủng loại, loại
+    人類 じんるい 2 NHÂN LOẠI | nhân loại
+  名刺 めいし 3 DANH THỨ | danh thiếp
+    刺激
+      激増 げきぞう 1 KÍCH TĂNG | tăng vọt
+        増大
+          大臣
+          大気
+        増加 ぞうか 2 TĂNG GIA | gia tăng
+          加速 かそく 1 GIA TỐC | tăng tốc
+            速度 そくど 2 TỐC ĐỘ | tốc độ
+            速達 そくたつ 2 TỐC ĐẠT | chuyển phát nhanh
+          加熱 かねつ 1 GIA NHIỆT | làm nóng, đun nóng
+            熱心 ねっしん 3 NHIỆT TÂM | nhiệt tình, chăm chỉ
+            熱意 ねつい 1 NHIỆT Ý | nhiệt huyết
+
+最初 さいしょ 4 TỐI SƠ | đầu tiên
+  初期
+    期待 きたい 3 KỲ ĐÃI | kỳ vọng
+      待合室 まちあいしつ 2 ĐÃI HỢP THẤT | phòng chờ
+      待遇 たいぐう 1 ĐÃI NGỘ | đãi ngộ
+    期間 きかん 3 KỲ GIAN | khoảng thời gian, thời hạn
+  初歩
+    歩道 ほどう 2 BỘ ĐẠO | vỉa hè, đường đi bộ
+      道徳 どうとく 2 ĐẠO ĐỨC | đạo đức
+      道路 どうろ 3 ĐẠO LỘ | đường sá
+  初心者
+
+交通 こうつう 4 GIAO THÔNG | giao thông
+  通信
+    信頼
+    信仰
+  通過
+    過剰
+    過失 かしつ 1 QUÁ THẤT | sơ suất, lỗi lầm
+      失望
+        望遠鏡 ぼうえんきょう 2 VỌNG VIỄN KÍNH | kính viễn vọng
+      失恋 しつれん 2 THẤT LUYẾN | thất tình
+        恋人 こいびと 3 LUYẾN NHÂN | người yêu
+          人気 にんき 3 NHÂN KHÍ | được yêu thích, nổi tiếng
+          人間 にんげん 3 NHÂN GIAN | con người
+        恋愛 れんあい 2 LUYẾN ÁI | tình yêu
+          愛情
+          愛想 あいそ 1 ÁI TƯỞNG | thân thiện, niềm nở
+  通知
+    知性 ちせい 1 TRI TÍNH | trí tuệ
+      性能
+      性格 せいかく 3 TÍNH CÁCH | tính cách
+        格差 かくさ 1 CÁCH SAI | chênh lệch
+    知恵 ちえ 2 TRI HUỆ | trí khôn, mẹo
+
+注意 ちゅうい 4 CHÚ Ý | chú ý
+  意図
+    図形
+      形式 けいしき 2 HÌNH THỨC | hình thức
+      形勢 けいせい 1 HÌNH THẾ | tình thế
+        勢力 せいりょく 1 THẾ LỰC | thế lực
+    図書 としょ 3 ĐỒ THƯ | sách (thư viện)
+      書籍
+      書類 しょるい 2 THƯ LOẠI | giấy tờ, hồ sơ
+  意欲
+    欲望 よくぼう 1 DỤC VỌNG | dục vọng, ham muốn
+  意外 いがい 3 Ý NGOẠI | bất ngờ, ngoài dự đoán
+    外出 がいしゅつ 3 NGOẠI XUẤT | ra ngoài
+      出口 でぐち 5 XUẤT KHẨU | lối ra
+        口紅 くちべに 2 KHẨU HỒNG | son môi
+        口頭 こうとう 1 KHẨU ĐẦU | bằng lời nói
+      出版 しゅっぱん 2 XUẤT BẢN | xuất bản
+    外観 がいかん 1 NGOẠI QUAN | vẻ bề ngoài (công trình)
+      観測
+      観察
+
+大切 たいせつ 5 ĐẠI THIẾT | quan trọng, quý giá
+  切手 きって 5 THIẾT THỦ | tem thư
+    手間
+    手数料
+  切開 せっかい 1 THIẾT KHAI | rạch, mổ
+    開設
+      設定
+        定着
+        定規 じょうぎ 2 ĐỊNH QUY | thước kẻ
+      設計
+        計画 けいかく 4 KẾ HOẠCH | kế hoạch
+    開発
+      発揮
+      発展 はってん 3 PHÁT TRIỂN | phát triển
+        展開
+  切実 せつじつ 1 THIẾT THỰC | cấp thiết, tha thiết
+    実用 じつよう 2 THỰC DỤNG | thực dụng
+      用具
+      用意 ようい 4 DỤNG Ý | chuẩn bị
+    実感 じっかん 2 THỰC CẢM | cảm nhận thực sự
+      感心 かんしん 3 CẢM TÂM | thán phục
+      感動 かんどう 3 CẢM ĐỘNG | cảm động
+
+発表 はっぴょう 3 PHÁT BIỂU | phát biểu, công bố
+  表情 ひょうじょう 3 BIỂU TÌNH | nét mặt
+    情勢 じょうせい 1 TÌNH THẾ | tình hình
+    情緒 じょうちょ 1 TÌNH TỰ | cảm xúc; không khí (đặc trưng)
+  表紙 ひょうし 2 BIỂU CHỈ | bìa sách
+    紙幣 しへい 1 CHỈ TỆ | tiền giấy
+  表示 ひょうじ 2 BIỂU THỊ | hiển thị, biểu thị
+
+試合 しあい 4 THÍ HỢP | trận đấu
+  合意 ごうい 1 HỢP Ý | thỏa thuận, đồng thuận
+    意思 いし 2 Ý TƯ | ý định, ý chí
+      思考
+        考慮
+        考古学 こうこがく 1 KHẢO CỔ HỌC | khảo cổ học
+      思想 しそう 2 TƯ TƯỞNG | tư tưởng
+        想像 そうぞう 3 TƯỞNG TƯỢNG | tưởng tượng
+    意義 いぎ 1 Ý NGHĨA | ý nghĩa
+      義務
+      義理 ぎり 1 NGHĨA LÝ | bổn phận, nghĩa vụ xã giao
+        理論 りろん 2 LÝ LUẬN | lý luận
+          論戦
+            戦争 せんそう 4 CHIẾN TRANH | chiến tranh
+          論文 ろんぶん 2 LUẬN VĂN | luận văn
+        理性 りせい 1 LÝ TÍNH | lý trí
+          性質 せいしつ 2 TÍNH CHẤT | tính chất, bản tính
+          性別 せいべつ 2 TÍNH BIỆT | giới tính
+  合格 ごうかく 3 HỢP CÁCH | đỗ, đạt
+  合計 ごうけい 3 HỢP KẾ | tổng cộng
+
+花火 はなび 3 HOA HỎA | pháo hoa
+  火山 かざん 2 HỎA SƠN | núi lửa
+    山林 さんりん 1 SƠN LÂM | rừng núi
+      林業 りんぎょう 1 LÂM NGHIỆP | lâm nghiệp
+        業務 ぎょうむ 1 NGHIỆP VỤ | nghiệp vụ, công việc
+  火災 かさい 2 HỎA TAI | hỏa hoạn
+    災難 さいなん 1 TAI NẠN | tai họa, chuyện xui xẻo
+    災害 さいがい 2 TAI HẠI | thiên tai, thảm họa
+  火花 ひばな 1 HỎA HOA | tia lửa
+    花瓶
+    花嫁 はなよめ 2 HOA GIÁ | cô dâu
+
+映画 えいが 5 ÁNH HỌA | phim
+  画家 がか 2 HỌA GIA | họa sĩ
+    家賃 やちん 3 GIA NHẪM | tiền thuê nhà
+      賃貸
+        貸家 かしや 1 THẢI GIA | nhà cho thuê
+          家来 けらい 1 GIA LAI | gia thần, kẻ hầu
+            来月 らいげつ 5 LAI NGUYỆT | tháng sau
+            来週 らいしゅう 5 LAI CHU | tuần sau
+          家出 いえで 1 GIA XUẤT | bỏ nhà ra đi
+      賃金 ちんぎん 1 NHẪM KIM | tiền công, tiền lương
+        金曜日 きんようび 5 KIM DIỆU NHẬT | thứ Sáu
+          日付 ひづけ 2 NHẬT PHÓ | ngày tháng (ghi trên giấy tờ)
+          日時 にちじ 2 NHẬT THỜI | ngày giờ
+    家具 かぐ 3 GIA CỤ | đồ nội thất
+      具合 ぐあい 3 CỤ HỢP | tình trạng (cơ thể, máy móc)
+        合成 ごうせい 1 HỢP THÀNH | tổng hợp
+          成熟 せいじゅく 1 THÀNH THỤC | chín, trưởng thành
+        合唱 がっしょう 2 HỢP XƯỚNG | hợp xướng
+      具体 ぐたい 2 CỤ THỂ | cụ thể (具体的)
+
+写真 しゃしん 5 TẢ CHÂN | ảnh
+  真実
+    実行 じっこう 2 THỰC HÀNH | thực hiện, thi hành
+      行為 こうい 1 HÀNH VI | hành vi
+        為替 かわせ 1 VI THẾ | hối đoái
+    実家 じっか 2 THỰC GIA | nhà bố mẹ đẻ
+      家事 かじ 3 GIA SỰ | việc nhà
+      家畜 かちく 1 GIA SÚC | gia súc
+        畜産 ちくさん 1 SÚC SẢN | chăn nuôi
+          産地 さんち 1 SẢN ĐỊA | nơi sản xuất
+            地区 ちく 2 ĐỊA KHU | khu vực
+            地面 じめん 2 ĐỊA DIỆN | mặt đất
+          産休 さんきゅう 1 SẢN HƯU | nghỉ thai sản
+            休講
+            休養
+  真夏
+  真剣
+
+安心 あんしん 4 AN TÂM | yên tâm
+  心臓 しんぞう 3 TÂM TẠNG | tim
+  心身 しんしん 1 TÂM THÂN | thân tâm
+    身体 しんたい 2 THÂN THỂ | cơ thể
+      体操 たいそう 3 THỂ THAO | thể dục (bài tập động tác)
+      体系 たいけい 1 THỂ HỆ | hệ thống
+  心得 こころえ 1 TÂM ĐẮC | hiểu biết; điều cần lưu ý
+
+電車 でんしゃ 5 ĐIỆN XA | tàu điện
+  車庫 しゃこ 2 XA KHỐ | nhà để xe
+  車掌 しゃしょう 2 XA CHƯỞNG | nhân viên soát vé (trên tàu)
+  車輪 しゃりん 2 XA LUÂN | bánh xe
