@@ -55,6 +55,17 @@ in_deck = sum(1 for w in seen if w in by_word)
 
 tpl = open(os.path.join(here, "template.html"), encoding="utf-8").read()
 data = json.dumps(vocab, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
-out = tpl.replace("/*__VOCAB__*/[]", data).replace("/*__CHAINS__*/[]", json.dumps(chains, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"))
+out = tpl.replace("/*__VOCAB__*/[]", data)
 open(os.path.join(here, "index.html"), "w", encoding="utf-8").write(out)
-print(f"{len(vocab)} words ({sum(1 for v in vocab if v['l'])} from the book, {sum(1 for v in vocab if not v['l'])} exam-only, {sum(1 for v in vocab if 'jl' in v)} tagged JLPT), {len(chains)} chains ({nodes} words, {in_deck} in the deck), {len(out)//1024} KB")
+# chains.html: the separate word-chain page, carrying the card data of every deck word it uses.
+js = lambda o: json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+deck_ids = set()
+def collect(n):
+    if isinstance(n[0], int): deck_ids.add(n[0])
+    for k in n[1]: collect(k)
+for c in chains: collect(c)
+deck = {v["id"]: {k: v[k] for k in ("w", "r", "hv", "vi", "l", "s", "jl") if k in v} for v in vocab if v["id"] in deck_ids}
+ctpl = open(os.path.join(here, "chains-template.html"), encoding="utf-8").read()
+cout = ctpl.replace("/*__CHAINS__*/[]", js(chains)).replace("/*__DECK__*/{}", js(deck))
+open(os.path.join(here, "chains.html"), "w", encoding="utf-8").write(cout)
+print(f"{len(vocab)} words ({sum(1 for v in vocab if v['l'])} from the book, {sum(1 for v in vocab if not v['l'])} exam-only, {sum(1 for v in vocab if 'jl' in v)} tagged JLPT), {len(out)//1024} KB; {len(chains)} chains ({nodes} words, {in_deck} in the deck), {len(cout)//1024} KB")
