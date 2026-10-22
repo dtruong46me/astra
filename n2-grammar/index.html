@@ -1,0 +1,1451 @@
+<title>Sổ tay ngữ pháp N2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* Layout: study notebook — sticky toolbar with tabs, notes drawer docked on the right, mind map as a pannable canvas */
+:root{
+  --paper:#F3F5F9; --card:#FFFFFF; --ink:#18202E; --muted:#5A6476; --line:#DCE1EA; --line-soft:#E9EDF3;
+  --indigo:#2A4A80; --indigo-soft:#E5ECF7; --shu:#C13A2B; --shu-soft:#FBEAE7;
+  --matcha:#4A7436; --matcha-soft:#E7F0E1; --ochre:#A36A0B; --ochre-soft:#FBF1DE;
+  --mark:#FFE9A8; --mark-ink:#18202E; --dot:#D5DBE5; --shadow:0 10px 30px rgba(24,32,46,.10);
+  --f-jp-display:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --f-jp:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;
+  --f-body:"Be Vietnam Pro","Zen Kaku Gothic New","Segoe UI",system-ui,sans-serif;
+  --bar-h:116px; --drawer-w:400px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0F131B; --card:#161C27; --ink:#E6E9EF; --muted:#9AA3B4; --line:#2A3242; --line-soft:#212837;
+  --indigo:#93B0E6; --indigo-soft:#1D2940; --shu:#F27767; --shu-soft:#3A1F1C;
+  --matcha:#9CC583; --matcha-soft:#1E2D19; --ochre:#E2B04A; --ochre-soft:#33280F;
+  --mark:#5A4A16; --mark-ink:#FFF4D0; --dot:#252C3A; --shadow:0 10px 30px rgba(0,0,0,.45); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0F131B; --card:#161C27; --ink:#E6E9EF; --muted:#9AA3B4; --line:#2A3242; --line-soft:#212837;
+  --indigo:#93B0E6; --indigo-soft:#1D2940; --shu:#F27767; --shu-soft:#3A1F1C;
+  --matcha:#9CC583; --matcha-soft:#1E2D19; --ochre:#E2B04A; --ochre-soft:#33280F;
+  --mark:#5A4A16; --mark-ink:#FFF4D0; --dot:#252C3A; --shadow:0 10px 30px rgba(0,0,0,.45); color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;transition:padding-right .25s ease}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--card)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.jp{font-family:var(--f-jp)}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--indigo);outline-offset:2px;border-radius:4px}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--indigo);color:var(--indigo)}
+.btn.primary{background:var(--indigo);border-color:var(--indigo);color:var(--card)}
+.btn.primary:hover{color:var(--card);filter:brightness(1.08)}
+.btn.ghost{border-color:transparent;background:transparent}
+.btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.count{min-width:18px;height:18px;border-radius:9px;background:var(--indigo);color:var(--card);font-size:11px;display:inline-grid;place-items:center;padding:0 5px;font-variant-numeric:tabular-nums}
+
+/* Header */
+.masthead{padding-block:28px 18px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-weight:700;font-size:clamp(26px,4.4vw,38px);line-height:1.2;margin:6px 0 8px;text-wrap:balance;letter-spacing:-.01em}
+h1 .kanji{font-family:var(--f-jp-display);color:var(--shu);margin-right:.2em}
+.lead{max-width:68ch;color:var(--muted);margin:0}
+.stats{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:16px}
+.stat{display:flex;align-items:baseline;gap:8px}
+.stat b{font-size:22px;font-variant-numeric:tabular-nums;font-weight:700}
+.stat span{color:var(--muted);font-size:13px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:13px;color:var(--muted);align-items:center}
+
+/* Toolbar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-block:1px solid var(--line)}
+.bar .wrap{display:flex;flex-direction:column;gap:8px;padding-block:10px}
+.bar-row{display:flex;align-items:center;gap:10px}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:0;background:none;padding:6px 12px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px;color:var(--muted);white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--indigo);color:var(--card)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tools[hidden]{display:none}
+.search{flex:1 1 220px;min-width:0;position:relative}
+.search input{width:100%;padding:7px 12px 7px 34px;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+.search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 11px;font-size:13px;cursor:pointer;white-space:nowrap;font-weight:500}
+.chip[aria-pressed="true"]{border-color:var(--indigo);background:var(--indigo-soft);color:var(--indigo)}
+.progress{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.progress .track{width:90px;height:6px;border-radius:3px;background:var(--line-soft);overflow:hidden}
+.progress .fill{height:100%;background:var(--matcha);width:0;transition:width .3s}
+
+/* Grammar tab */
+.panel-tab{padding-block:22px 60px}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:32px;align-items:start}
+.index{position:sticky;top:calc(var(--bar-h) + env(safe-area-inset-top,0px) + 12px);max-height:calc(100vh - var(--bar-h) - 40px);overflow-y:auto;padding-right:4px}
+.index h2,.mm-list h2{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 8px}
+.index ol,.mm-list ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px}
+.index a,.mm-list button{display:flex;justify-content:space-between;gap:8px;text-decoration:none;color:var(--ink);padding:5px 8px;border-radius:6px;font-size:14px;border:0;background:none;width:100%;text-align:left;cursor:pointer}
+.index a:hover,.mm-list button:hover{background:var(--indigo-soft)}
+.mm-list button[aria-current="true"]{background:var(--indigo);color:var(--card)}
+.mm-list button[aria-current="true"] .n{color:var(--card)}
+.index a .n,.mm-list .n{color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+.index a.empty{opacity:.4}
+.result-note{color:var(--muted);font-size:14px;margin:0 0 14px}
+.group{scroll-margin-top:calc(var(--bar-h) + 20px);margin-bottom:40px}
+.group-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:16px}
+.group-head h2{margin:0;font-size:22px;line-height:1.3}
+.group-head p{margin:0;color:var(--muted);font-size:14px}
+.cards{display:flex;flex-direction:column;gap:14px}
+.n3-head{display:flex;align-items:center;gap:10px;margin:22px 0 10px;font-size:13px;font-weight:600;color:var(--matcha);text-transform:uppercase;letter-spacing:.06em}
+.n3-head::after{content:"";flex:1;border-top:1px dashed var(--matcha)}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-width:0;scroll-margin-top:calc(var(--bar-h) + 20px)}
+.card.star{border-color:color-mix(in srgb,var(--shu) 45%,var(--line))}
+.card.n3{background:transparent;border-style:dashed;border-color:color-mix(in srgb,var(--matcha) 55%,var(--line));padding:12px 16px;gap:6px}
+.card.done .pat{text-decoration:line-through;text-decoration-color:var(--matcha);text-decoration-thickness:2px}
+.card.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,40%{box-shadow:0 0 0 4px var(--indigo-soft);border-color:var(--indigo)}100%{box-shadow:none}}
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px 14px;flex-wrap:wrap}
+.pat{font-family:var(--f-jp-display);font-weight:700;font-size:24px;line-height:1.3;margin:0;letter-spacing:.01em;overflow-wrap:anywhere}
+.card.n3 .pat{font-size:19px}
+.pnote{font-family:var(--f-body);font-size:13px;font-weight:600;color:var(--muted);margin-left:10px;letter-spacing:0;vertical-align:3px;white-space:nowrap}
+.reading{font-family:var(--f-jp);color:var(--muted);font-size:14px;margin-top:1px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.stamp{font-family:var(--f-jp-display);font-weight:700;color:var(--shu);border:1.5px solid var(--shu);border-radius:4px;padding:0 5px;font-size:13px;line-height:1.5;transform:rotate(-5deg);display:inline-block;background:var(--shu-soft)}
+.src{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.n3b{font-size:12px;color:var(--matcha);background:var(--matcha-soft);border-radius:4px;padding:0 7px;font-weight:600;white-space:nowrap}
+.formula{font-size:14px;background:var(--paper);border-radius:6px;padding:6px 10px;overflow-wrap:anywhere}
+.lbl{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-right:8px}
+.meaning{margin:0;font-weight:600;font-size:16px;line-height:1.5}
+.hv{font-size:13px;color:var(--muted);margin:-4px 0 0}
+.hv .v{color:var(--ink)}
+.ex{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ex li{padding-left:12px;border-left:2px solid var(--line)}
+.ja{font-family:var(--f-jp);font-size:17px;line-height:2.05;margin:0;overflow-wrap:anywhere}
+.vi{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+mark{background:var(--mark);color:var(--mark-ink);padding:0 2px;border-radius:2px;font-weight:700}
+rt{font-size:.55em;color:var(--muted);font-weight:400;letter-spacing:0}
+mark rt{color:var(--mark-ink);opacity:.75}
+body.nofuri rt{display:none}
+.note{font-size:14px;margin:0;line-height:1.65}
+.note ruby{font-family:var(--f-jp)}
+.tip{background:var(--indigo-soft);border-radius:8px;padding:8px 12px}
+.tip .lbl{color:var(--indigo)}
+.warn{background:var(--shu-soft);border-radius:8px;padding:8px 12px}
+.warn .lbl{color:var(--shu)}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding-top:2px}
+.foot-actions{display:flex;gap:6px;flex-wrap:wrap}
+.learn{display:inline-flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;color:var(--muted);user-select:none}
+.learn input{width:16px;height:16px;accent-color:var(--matcha);margin:0}
+.reveal-hint{display:none;font-size:12px;color:var(--indigo);font-weight:600}
+body.quiz .card:not(.open) .hide-q{filter:blur(7px);opacity:.55;user-select:none;pointer-events:none}
+body.quiz .card:not(.open){cursor:pointer}
+body.quiz .card:not(.open) .reveal-hint{display:inline}
+.hide-q{transition:filter .2s,opacity .2s}
+
+/* Mind map */
+.mm-tab{padding-block:18px 28px}
+.mm{display:grid;grid-template-columns:220px minmax(0,1fr);gap:20px;align-items:start}
+.mm-list{position:sticky;top:calc(var(--bar-h) + env(safe-area-inset-top,0px) + 12px);max-height:calc(100vh - var(--bar-h) - 40px);overflow-y:auto}
+.mm-list .sep{height:1px;background:var(--line);margin:6px 8px}
+.mm-pick{display:none}
+.mm-pick select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+.stage{position:relative;height:calc(100vh - var(--bar-h) - 40px);min-height:540px;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  background-color:var(--card);background-image:radial-gradient(var(--dot) 1px,transparent 1.2px);background-size:22px 22px}
+.canvas{position:absolute;inset:0;cursor:grab;touch-action:none;user-select:none}
+.canvas.drag{cursor:grabbing}
+.world{position:absolute;left:0;top:0;transform-origin:0 0}
+.world svg{position:absolute;left:0;top:0;width:1px;height:1px;overflow:visible}
+.edge{fill:none;stroke-width:1.6;transition:opacity .2s}
+.e-spoke{stroke:var(--line);stroke-width:1.4}
+.e-spoke.k-n3{stroke:var(--matcha);stroke-dasharray:2 5;stroke-linecap:round}
+.e-spoke.k-trap{stroke:color-mix(in srgb,var(--shu) 55%,var(--line))}
+.e-similar{stroke:var(--indigo);stroke-width:2}
+.e-contrast{stroke:var(--ochre);stroke-width:2;stroke-dasharray:7 5}
+.e-trap{stroke:var(--shu);stroke-width:2.4;stroke-dasharray:4 4}
+.e-related{stroke:var(--muted);stroke-width:1.6;stroke-dasharray:1 5;stroke-linecap:round}
+.e-share{stroke:var(--muted);stroke-opacity:.28}
+.e-share.hot{stroke-opacity:.9;stroke:var(--indigo)}
+.elabel{opacity:0;transition:opacity .2s;pointer-events:none}
+.elabel rect{fill:var(--card);stroke:var(--line)}
+.elabel text{font-family:var(--f-body);font-size:12px;font-weight:600;fill:var(--ink)}
+.elabel.t-similar rect{stroke:var(--indigo)} .elabel.t-contrast rect{stroke:var(--ochre)} .elabel.t-trap rect{stroke:var(--shu)}
+body.mm-labels .elabel,.elabel.hot{opacity:1}
+.world.focus .edge:not(.hot){opacity:.1}
+.world.focus .node:not(.hot){opacity:.32}
+.hide-similar .e-similar,.hide-similar .elabel.t-similar,.hide-contrast .e-contrast,.hide-contrast .elabel.t-contrast,
+.hide-trap .e-trap,.hide-trap .elabel.t-trap,.hide-related .e-related,.hide-related .elabel.t-related{display:none}
+.hide-n3 .node.k-n3,.hide-n3 .e-spoke.k-n3{display:none}
+.node{position:absolute;transform:translate(-50%,-50%);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:7px 12px 8px;text-align:center;max-width:200px;min-width:96px;cursor:pointer;
+  box-shadow:0 1px 2px rgba(0,0,0,.05);transition:opacity .2s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column;align-items:center;gap:1px}
+.node:hover{border-color:var(--indigo)}
+.node .np{font-family:var(--f-jp-display);font-weight:700;font-size:16px;line-height:1.35;white-space:nowrap}
+.node .nm{font-size:12px;color:var(--muted);line-height:1.35}
+.node.k-trap{border-color:var(--shu)}
+.node.k-trap .np{color:var(--shu)}
+.node.k-n3{border-style:dashed;border-color:var(--matcha);background:var(--matcha-soft)}
+.node.k-n3 .np{color:var(--matcha)}
+.node.center{background:var(--ink);border-color:var(--ink);color:var(--card);padding:12px 18px;max-width:240px}
+.node.center .np{font-family:var(--f-body);font-size:17px;white-space:normal}
+.node.center .nm{color:color-mix(in srgb,var(--card) 70%,transparent)}
+.node.cluster{max-width:170px}
+.node.cluster .np{font-family:var(--f-body);font-size:15px;white-space:normal}
+.node.sel{border-color:var(--indigo);box-shadow:0 0 0 4px var(--indigo-soft)}
+.node .flags{position:absolute;top:-8px;right:-6px;display:flex;gap:3px}
+.node .flags span{height:16px;min-width:16px;border-radius:8px;font-size:10px;font-weight:700;display:grid;place-items:center;padding:0 4px}
+.f-star{background:var(--shu);color:var(--card)} .f-done{background:var(--matcha);color:var(--card)} .f-note{background:var(--indigo);color:var(--card)}
+.mm-head{position:absolute;left:16px;top:14px;right:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none;flex-wrap:wrap}
+.mm-head > *{pointer-events:auto}
+.mm-title h2{margin:0;font-size:19px;line-height:1.3}
+.mm-title p{margin:2px 0 0;color:var(--muted);font-size:13px;max-width:52ch}
+.mm-legend{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:520px}
+.lg{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600;cursor:pointer}
+.lg[aria-pressed="false"]{opacity:.45}
+.lg i{display:inline-block;width:18px;height:0;border-top:2.4px solid}
+.lg .s-similar{border-color:var(--indigo)} .lg .s-contrast{border-color:var(--ochre);border-top-style:dashed}
+.lg .s-trap{border-color:var(--shu);border-top-style:dashed} .lg .s-related{border-color:var(--muted);border-top-style:dotted}
+.lg .s-n3{border-color:var(--matcha);border-top-style:dotted} .lg .s-label{border:0;width:auto;font-style:normal}
+.zoom{position:absolute;left:14px;bottom:14px;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.zoom button{border:0;background:none;width:36px;height:34px;cursor:pointer;display:grid;place-items:center}
+.zoom button+button{border-top:1px solid var(--line)}
+.zoom svg{width:16px;height:16px;stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round}
+.mm-hint{position:absolute;left:64px;bottom:18px;font-size:12px;color:var(--muted);pointer-events:none}
+.detail{position:absolute;right:14px;top:96px;bottom:14px;width:340px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.detail[hidden]{display:none}
+.detail .x{position:absolute;right:8px;top:8px}
+.detail h3{margin:0;font-family:var(--f-jp-display);font-size:24px;line-height:1.3;padding-right:30px}
+.detail .sub{font-family:var(--f-jp);color:var(--muted);font-size:14px;margin-top:-8px}
+.detail .sec-t{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.rel{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.rel li{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.5}
+.t{display:inline-block;flex:0 0 auto;font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px;margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
+.t-similar{background:var(--indigo-soft);color:var(--indigo)} .t-contrast{background:var(--ochre-soft);color:var(--ochre)}
+.t-trap{background:var(--shu-soft);color:var(--shu)} .t-related{background:var(--line-soft);color:var(--muted)} .t-n3{background:var(--matcha-soft);color:var(--matcha)}
+.linkbtn{border:0;background:none;padding:0;font-family:var(--f-jp);font-weight:700;color:var(--indigo);cursor:pointer;text-align:left}
+.linkbtn:hover{text-decoration:underline}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.mini{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:2px 10px;background:var(--card);cursor:pointer}
+.mini:hover{border-color:var(--indigo);color:var(--indigo)}
+.d-notes{display:flex;flex-direction:column;gap:6px}
+.d-note{font-size:13px;background:var(--paper);border-radius:8px;padding:6px 10px;white-space:pre-wrap;overflow-wrap:anywhere}
+.d-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
+.plist{display:flex;flex-direction:column;gap:4px}
+.plist button{display:flex;justify-content:space-between;gap:8px;align-items:baseline;border:0;background:var(--paper);border-radius:8px;padding:6px 10px;cursor:pointer;text-align:left}
+.plist button:hover{background:var(--indigo-soft)}
+.plist .jp{font-weight:700}
+.plist span:last-child{font-size:12px;color:var(--muted);text-align:right}
+
+/* Compare + study */
+.cmp-intro{max-width:70ch;color:var(--muted);margin:0 0 20px}
+.cmp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cmp{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.cmp-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cmp h3{margin:0;font-size:17px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:4px 8px;border-bottom:1px solid var(--line)}
+td{padding:7px 8px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.p{font-family:var(--f-jp);font-weight:700;white-space:nowrap}
+td .jp{font-family:var(--f-jp)}
+tr.n3 td.p{color:var(--matcha)} tr.trap td.p{color:var(--shu)}
+.tag{font-family:var(--f-body);font-size:10px;font-weight:700;border-radius:3px;padding:0 4px;margin-left:6px;vertical-align:2px}
+tr.n3 .tag{background:var(--matcha-soft);color:var(--matcha)} tr.trap .tag{background:var(--shu-soft);color:var(--shu)}
+.study{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+.study h2{font-size:20px;margin:0 0 12px}
+.study section{min-width:0}
+.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.rule{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+.rule h3{margin:0 0 4px;font-size:15px}
+.rule p{margin:0 0 8px;color:var(--muted);font-size:14px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-size:13px;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:1px 8px}
+.read td:first-child{font-family:var(--f-jp-display);font-weight:700;font-size:16px;white-space:nowrap}
+.read td:nth-child(3){font-size:12px;letter-spacing:.04em;color:var(--muted);white-space:nowrap}
+.read td:nth-child(4){font-family:var(--f-jp);color:var(--muted)}
+.keys{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px;margin:0}
+.keys dt{font-family:var(--f-jp);font-weight:700}
+.keys dd{margin:0;color:var(--muted)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:18px}
+.empty-state{padding:40px 0;text-align:center;color:var(--muted)}
+
+/* Notes drawer */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(var(--drawer-w),100vw);z-index:40;background:var(--card);border-left:1px solid var(--line);
+  transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px);visibility:hidden}
+body.drawer-open .drawer{transform:none;visibility:visible}
+.scrim{position:fixed;inset:0;background:rgba(10,14,22,.35);z-index:35;opacity:0;pointer-events:none;transition:opacity .25s}
+.dw-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+.dw-head h2{margin:0;font-size:18px}
+.sync{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.sync i{width:7px;height:7px;border-radius:50%;background:var(--muted);display:inline-block}
+.sync.cloud i{background:var(--matcha)} .sync.local i{background:var(--ochre)}
+.composer{padding:12px 16px;display:flex;flex-direction:column;gap:8px;border-bottom:1px solid var(--line);background:var(--paper)}
+.ref-row{display:flex;align-items:center;gap:8px}
+.ref-row label{font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap}
+.ref-row input{flex:1;min-width:0;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--card);font-family:var(--f-jp)}
+.composer textarea,.n-edit textarea{width:100%;min-height:92px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--card);line-height:1.55}
+.comp-actions{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.kbd{font-size:12px;color:var(--muted)}
+.n-tools{padding:10px 16px;display:flex;flex-direction:column;gap:8px;border-bottom:1px solid var(--line-soft)}
+.n-tools input{width:100%;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--paper)}
+.seg{display:flex;background:var(--paper);border-radius:8px;padding:3px;gap:2px}
+.seg button{flex:1;border:0;background:none;border-radius:6px;padding:4px 6px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.filter-ref{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.filter-ref[hidden]{display:none}
+.filter-ref b{font-family:var(--f-jp);color:var(--ink)}
+.n-list{flex:1;overflow-y:auto;padding:12px 16px 24px;display:flex;flex-direction:column;gap:10px}
+.n-group{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.n-item{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;background:var(--card)}
+.n-meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.n-ref{font-family:var(--f-jp);font-weight:700;font-size:14px;border:0;background:var(--indigo-soft);color:var(--indigo);border-radius:6px;padding:1px 8px;cursor:pointer;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.n-ref.general{background:var(--line-soft);color:var(--muted);font-family:var(--f-body);font-size:12px;cursor:default}
+.n-time{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.n-text{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.6}
+.n-text mark{font-weight:inherit}
+.n-act{display:flex;gap:4px;justify-content:flex-end}
+.n-act button{border:0;background:none;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;padding:2px 6px;border-radius:4px}
+.n-act button:hover{color:var(--indigo);background:var(--indigo-soft)}
+.n-act button.danger{color:var(--shu)}
+.n-pending{font-size:11px;color:var(--ochre);font-weight:600}
+.n-empty{color:var(--muted);font-size:14px;text-align:center;padding:30px 10px;line-height:1.6}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--card);font-size:13px;padding:8px 14px;border-radius:8px;z-index:50;opacity:0;transition:opacity .2s;pointer-events:none;max-width:calc(100vw - 32px)}
+.toast.show{opacity:1}
+
+@media (min-width:1180px){ body.drawer-open{padding-right:var(--drawer-w)} }
+@media (max-width:1179px){ body.drawer-open .scrim{opacity:1;pointer-events:auto} }
+@media (max-width:900px){
+  .layout,.mm{grid-template-columns:minmax(0,1fr)}
+  .index{position:static;max-height:none;overflow:visible}
+  .index ol{flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:6px;scrollbar-width:thin}
+  .index li{flex:0 0 auto}
+  .index a{border:1px solid var(--line);border-radius:999px;padding:4px 12px;white-space:nowrap;font-size:13px;background:var(--card)}
+  .mm-list{display:none}
+  .mm-pick{display:block;margin-bottom:10px}
+  .cmp-grid,.study{grid-template-columns:minmax(0,1fr)}
+  .detail{left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:50%}
+  .mm-title p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .stage.has-detail .mm-title p{display:none}
+  .mm-legend{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none;padding-bottom:2px}
+  .lg{flex:0 0 auto}
+  .mm-head{flex-direction:column;align-items:stretch}
+  .mm-hint{display:none}
+  .mm-legend{justify-content:flex-start}
+  .stage{height:calc(100vh - var(--bar-h) - 90px);min-height:480px}
+}
+@media (max-width:520px){
+  .pat{font-size:21px}
+  .card{padding:14px}
+  .ja{font-size:16px}
+  .progress .track{width:60px}
+  .bar-row .btn .lbl-t{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="masthead wrap">
+  <div class="eyebrow">JLPT N2 · Mimikara 110 mẫu + Shinkanzen 26 bài</div>
+  <h1><span class="kanji">文法</span>Sổ tay ngữ pháp N2</h1>
+  <p class="lead">Hai tài liệu đã được gộp lại và chia theo nhóm nghĩa. Mỗi mẫu có cách đọc, cấu trúc, chữ Hán, ví dụ có furigana, mẹo nhớ và điểm dễ nhầm. Sơ đồ tư duy nối các mẫu gần nghĩa, đối lập và dễ nhầm. Ghi chú của bạn nằm ở ngăn bên phải.</p>
+  <div class="stats" id="stats"></div>
+  <div class="legend">
+    <span><span class="stamp" aria-hidden="true">重点</span> Trọng tâm, hay ra thi</span>
+    <span><span class="src">Mimi 49</span> số thứ tự trong Mimikara</span>
+    <span><span class="src">Shin B1</span> bài trong Shinkanzen</span>
+    <span><span class="n3b">N3</span> mẫu N3 liên quan</span>
+    <span><mark class="jp">に際して</mark> phần ngữ pháp trong câu</span>
+  </div>
+</header>
+
+<nav class="bar" aria-label="Công cụ">
+  <div class="wrap">
+    <div class="bar-row">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" id="tab-ngu-phap" aria-controls="ngu-phap" aria-selected="true">Ngữ pháp</button>
+        <button class="tab" role="tab" id="tab-so-do" aria-controls="so-do" aria-selected="false">Sơ đồ tư duy</button>
+        <button class="tab" role="tab" id="tab-phan-biet" aria-controls="phan-biet" aria-selected="false">Cụm dễ nhầm</button>
+        <button class="tab" role="tab" id="tab-cach-hoc" aria-controls="cach-hoc" aria-selected="false">Quy tắc & cách đọc</button>
+      </div>
+      <button class="btn" id="openNotes" aria-controls="drawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="M4 4h12l4 4v12H4z"/><path d="M8 10h8M8 14h8M8 18h5"/></svg>
+        <span class="lbl-t">Ghi chú</span><span class="count" id="noteCount">0</span>
+      </button>
+    </div>
+    <div class="tools" id="tools">
+      <label class="search"><span hidden>Tìm mẫu ngữ pháp</span>
+        <svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Tìm: 際, ばかり, mặc dù, hoi tuong..." autocomplete="off">
+      </label>
+      <button class="chip" id="t-star" aria-pressed="false">重点 Chỉ trọng tâm</button>
+      <button class="chip" id="t-n3" aria-pressed="true">Hiện N3</button>
+      <button class="chip" id="t-furi" aria-pressed="true">Furigana</button>
+      <button class="chip" id="t-quiz" aria-pressed="false">Ôn tập: che nghĩa</button>
+      <span class="progress" title="Số mẫu N2 đã đánh dấu thuộc"><span class="track"><span class="fill" id="pfill"></span></span><span id="ptext">0/0</span></span>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="panel-tab wrap" id="ngu-phap" role="tabpanel" aria-labelledby="tab-ngu-phap">
+    <div class="layout">
+      <aside class="index" aria-label="Mục lục nhóm">
+        <h2>Nhóm nghĩa</h2>
+        <ol id="index"></ol>
+      </aside>
+      <div style="min-width:0">
+        <p class="result-note" id="rnote" hidden></p>
+        <div id="groups"></div>
+        <div class="empty-state" id="empty" hidden>Không tìm thấy mẫu nào. Thử từ khác, hoặc tắt bộ lọc 'Chỉ trọng tâm'.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mm-tab wrap" id="so-do" role="tabpanel" aria-labelledby="tab-so-do" hidden>
+    <div class="mm">
+      <aside class="mm-list" aria-label="Danh sách sơ đồ">
+        <h2>Sơ đồ</h2>
+        <ol id="mmList"></ol>
+      </aside>
+      <div style="min-width:0">
+        <label class="mm-pick"><span hidden>Chọn sơ đồ</span><select id="mmSelect"></select></label>
+        <div class="stage" id="stage">
+          <div class="canvas" id="canvas"><div class="world" id="world"><svg id="edges" aria-hidden="true"></svg><div id="nodes"></div></div></div>
+          <div class="mm-head">
+            <div class="mm-title"><h2 id="mmTitle"></h2><p id="mmSub"></p></div>
+            <div class="mm-legend" id="mmLegend">
+              <button class="lg" data-k="similar" aria-pressed="true"><i class="s-similar"></i>Gần nghĩa</button>
+              <button class="lg" data-k="contrast" aria-pressed="true"><i class="s-contrast"></i>Đối lập</button>
+              <button class="lg" data-k="trap" aria-pressed="true"><i class="s-trap"></i>Bẫy dễ nhầm</button>
+              <button class="lg" data-k="related" aria-pressed="true"><i class="s-related"></i>Liên quan</button>
+              <button class="lg" data-k="n3" aria-pressed="true"><i class="s-n3"></i>N3</button>
+              <button class="lg" data-k="labels" aria-pressed="false">Hiện nhãn</button>
+            </div>
+          </div>
+          <div class="zoom">
+            <button id="zIn" title="Phóng to" aria-label="Phóng to"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+            <button id="zOut" title="Thu nhỏ" aria-label="Thu nhỏ"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+            <button id="zFit" title="Vừa khung" aria-label="Vừa khung"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+          </div>
+          <div class="mm-hint">Kéo để di chuyển · cuộn để phóng to · bấm vào một mẫu để xem quan hệ</div>
+          <aside class="detail" id="detail" hidden></aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel-tab wrap" id="phan-biet" role="tabpanel" aria-labelledby="tab-phan-biet" hidden>
+    <p class="cmp-intro">Các mẫu hay bị đặt cạnh nhau làm đáp án nhiễu. Dòng màu đỏ là bẫy (nghĩa khác hẳn dù hình thức giống), dòng màu xanh là mẫu N3 để đối chiếu. Mỗi bảng có một sơ đồ tư duy tương ứng.</p>
+    <div class="cmp-grid" id="cmp"></div>
+  </section>
+
+  <section class="panel-tab wrap" id="cach-hoc" role="tabpanel" aria-labelledby="tab-cach-hoc" hidden>
+    <div class="study">
+      <section>
+        <h2>Cách học bộ này</h2>
+        <div class="box">
+          <ol class="steps">
+            <li>Học theo nhóm nghĩa, mỗi ngày 1 đến 2 nhóm. Đọc mẫu có dấu <span class="stamp">重点</span> trước.</li>
+            <li>Đọc to câu ví dụ có furigana. Khi đã quen, tắt Furigana để tự đọc.</li>
+            <li>Mở <b>Sơ đồ tư duy</b> của cụm vừa học. Bấm từng mẫu, đọc các đường nối đỏ (bẫy) và vàng (đối lập) để thấy chỗ khác nhau.</li>
+            <li>Bật <b>Ôn tập: che nghĩa</b>, tự nói nghĩa rồi chạm vào thẻ để kiểm tra.</li>
+            <li>Ghi lại câu tự đặt hoặc lỗi hay sai vào <b>Ghi chú</b>, gắn với mẫu tương ứng để xem lại.</li>
+            <li>Khi làm đề, nhìn vế sau trước: có ý chí hay không, khẳng định hay phủ định, tốt hay xấu.</li>
+          </ol>
+        </div>
+        <h2>Quy tắc loại đáp án</h2>
+        <div id="rules"></div>
+        <h2>Ký hiệu cấu trúc</h2>
+        <div class="box">
+          <dl class="keys">
+            <dt>N</dt><dd>Danh từ</dd>
+            <dt>Vる</dt><dd>Động từ thể từ điển (辞書形)</dd>
+            <dt>Vた／Vて</dt><dd>Động từ thể た／thể て</dd>
+            <dt>Vない</dt><dd>Động từ thể ない</dd>
+            <dt>Vます</dt><dd>Động từ bỏ ます (書き, 食べ)</dd>
+            <dt>Vよう</dt><dd>Thể ý chí (意向形: 書こう, 食べよう)</dd>
+            <dt>V可能形</dt><dd>Thể khả năng (書ける, 食べられる)</dd>
+            <dt>Aい／Na</dt><dd>Tính từ い／tính từ な</dd>
+            <dt>Thể thường</dt><dd>普通形: 書く, 書いた, 書かない, 高い, 静かだ, 学生だ</dd>
+          </dl>
+        </div>
+      </section>
+      <section>
+        <h2>Cách đọc chữ Hán trong mẫu</h2>
+        <div class="box tbl">
+          <table class="read"><thead><tr><th>Chữ</th><th>Đọc</th><th>Hán Việt</th><th>Ví dụ</th></tr></thead><tbody id="readings"></tbody></table>
+        </div>
+        <h2>Ghi chú về nguồn</h2>
+        <div class="box">
+          <p class="note">Hai tài liệu trùng nhiều mẫu (khoảng 70 mẫu). Những mẫu trùng được gộp thành một thẻ và ghi cả hai nguồn. Một số lỗi đánh máy trong tài liệu gốc đã được sửa và ghi chú ngay trên thẻ: <span class="jp">近代化つつある</span> → <span class="jp">近代化しつつある</span>, <span class="jp">に限りでは</span> → <span class="jp">限りでは</span>, <span class="jp">にしよ〜にちよ</span> → <span class="jp">にせよ〜にせよ</span>, <span class="jp">ものながら</span> → <span class="jp">ものだから</span>, <span class="jp">一度もとして</span> → <span class="jp">一度として</span>, ví dụ hồi tưởng <span class="jp">反抗したことだ</span> → <span class="jp">反抗したものだ</span>.</p>
+        </div>
+      </section>
+    </div>
+  </section>
+</main>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Ghi chú">
+  <div class="dw-head">
+    <div><h2>Ghi chú</h2><div class="sync" id="sync"><i></i><span>Đang kết nối…</span></div></div>
+    <button class="btn ghost" id="closeNotes" aria-label="Đóng ghi chú"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="composer">
+    <div class="ref-row"><label for="nRef">Gắn với</label><input id="nRef" list="patList" placeholder="Mẫu ngữ pháp (để trống = ghi chú chung)" autocomplete="off"></div>
+    <textarea id="nText" placeholder="Câu tự đặt, lỗi hay sai, mẹo nhớ của riêng bạn…"></textarea>
+    <div class="comp-actions"><span class="kbd">Ctrl + Enter để lưu</span><button class="btn primary" id="nSave">Lưu ghi chú</button></div>
+  </div>
+  <div class="n-tools">
+    <input id="nSearch" type="search" placeholder="Tìm trong ghi chú" autocomplete="off">
+    <div class="seg" role="group" aria-label="Lọc ghi chú">
+      <button data-f="all" aria-pressed="true">Tất cả</button>
+      <button data-f="ref" aria-pressed="false">Theo mẫu</button>
+      <button data-f="general" aria-pressed="false">Ghi chú chung</button>
+    </div>
+    <div class="filter-ref" id="filterRef" hidden><span>Đang xem ghi chú của</span><b id="filterRefName"></b><button class="btn ghost" id="clearRef">Bỏ lọc</button></div>
+  </div>
+  <div class="n-list" id="nList"></div>
+</aside>
+<datalist id="patList"></datalist>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+function G(id,title,sub,items){GROUPS.push({id:id,title:title,sub:sub,items:items});}
+const GROUPS=[];
+G("thoi-diem","Thời điểm","Khi, trước khi, ngay khi, đang lúc",[
+{p:"〜際(に)",r:"さい(に)",hv:"際 · TẾ (thực tế, giao tế) → dịp, lúc",f:"Nの／Vる／Vた ＋ 際(に・は)",m:"Khi, lúc. Là cách nói trang trọng của とき.",tip:"Hay gặp trên biển thông báo, trong khách sạn, nhà ga: 「ご{利用|りよう}の際は…」. Thấy 際 thì hiểu là とき nói lịch sự.",ex:[["こちらの{会議室|かいぎしつ}をご{利用|りよう}になる[[際は]]、{受付|うけつけ}で{必要事項|ひつようじこう}をご{記入|きにゅう}ください。","Khi sử dụng phòng họp này, xin vui lòng điền các mục cần thiết tại quầy lễ tân."],["お{食事|しょくじ}の[[際は]]、こちらのテーブルをお{使|つか}いいただけます。","Khi dùng bữa, quý khách có thể sử dụng chiếc bàn này."]],x:"Khác とき (N5) ở độ trang trọng. Chuyện đời thường như 「{子供|こども}のとき、よく{泳|およ}いだ」 thì không đổi sang 際.",src:["S1"]},
+{p:"〜に際して／〜に際し",r:"にさいして",hv:"際 · TẾ",f:"N／Vる ＋ に際して",m:"Nhân dịp, khi bắt đầu một việc đặc biệt (thường chỉ diễn ra một lần).",tip:"に際して đi với những dịp lớn: kết hôn, nhập học, phẫu thuật, phỏng vấn, khai trương.",ex:[["{面接|めんせつ}[[に際して]]、しっかりと{練習|れんしゅう}しておいた{方|ほう}がいいですよ。","Trước buổi phỏng vấn, bạn nên luyện tập thật kỹ."],["{父|ちち}は{手術|しゅじゅつ}を{受|う}ける[[に際して]]、{医者|いしゃ}にいろいろ{質問|しつもん}した。","Khi chuẩn bị phẫu thuật, bố tôi đã hỏi bác sĩ rất nhiều điều."]],x:"に際して trung tính, dùng được cả với việc không vui (入院, 手術). にあたって thiên về việc tích cực, cần quyết tâm và chuẩn bị.",s:1,src:["M50","S1"]},
+{p:"〜にあたって／〜にあたり",r:"にあたって",hv:"当たる · ĐƯƠNG → đương đầu, đối diện",f:"N／Vる ＋ にあたって",m:"Khi bắt đầu, khi đứng trước một việc quan trọng (để chuẩn bị, để quyết tâm).",tip:"あたる = đối diện. Rất hay có trong lời phát biểu: 「{開会|かいかい}にあたり、{一言|ひとこと}ご{挨拶|あいさつ}{申|もう}し{上|あ}げます」.",ex:[["{皆|みな}さん、JLPTを{受|う}ける[[にあたって]]、{大切|たいせつ}なことを{伝|つた}えておきます。","Các bạn, trước khi dự thi JLPT, tôi xin dặn vài điều quan trọng."],["{新|あたら}しく{事業|じぎょう}を{始|はじ}める[[にあたって]]、しっかりと{準備|じゅんび}をしようと{思|おも}っております。","Khi bắt đầu công việc kinh doanh mới, tôi định chuẩn bị thật chu đáo."]],x:"Không dùng cho việc tiêu cực: ×{倒産|とうさん}にあたって. Muốn trung tính thì dùng に際して.",s:1,src:["M49","S1"]},
+{p:"〜に先立って／〜に先立ち",r:"にさきだって",hv:"先立つ · TIÊN LẬP → đứng trước",f:"N／Vる ＋ に先立って",m:"Trước khi diễn ra việc lớn A thì làm trước việc B để chuẩn bị.",tip:"先 (trước) + 立つ (đứng): B đứng trước A về thứ tự.",ex:[["アメリカ{留学|りゅうがく}[[に先立ち]]、{現地|げんち}で{買|か}えない{参考書|さんこうしょ}や{辞書|じしょ}を{先|さき}に{送|おく}っておいた。","Trước khi đi du học Mỹ, tôi đã gửi trước sách tham khảo và từ điển không mua được ở bên đó."],["{映画|えいが}の{公開|こうかい}[[に先立って]]、{記者会見|きしゃかいけん}が{行|おこな}われた。","Trước khi bộ phim công chiếu, một buổi họp báo đã được tổ chức."]],x:"So với にあたって: に先立って nhấn vào thứ tự (B xảy ra trước A), không mang ý quyết tâm.",src:["M79"]},
+{p:"〜たとたん(に)",r:"たとたん(に)",hv:"途端 · ĐỒ ĐOAN → đầu mút con đường",f:"Vた ＋ とたん(に)",m:"Vừa mới... thì ngay lập tức xảy ra điều bất ngờ.",tip:"Hình dung: vừa bước tới đầu đường (途端) là có chuyện bất ngờ ập tới. Vế sau là điều người nói không kiểm soát được.",ex:[["{夫|おっと}は{結婚|けっこん}した[[とたんに]]、{態度|たいど}が{変|か}わった。","Chồng tôi vừa cưới xong là thái độ thay đổi ngay."],["{僕|ぼく}が「さよなら」と{言|い}った[[とたん]]、{彼女|かのじょ}は{走|はし}っていってしまった。","Tôi vừa nói 'tạm biệt' thì cô ấy chạy mất."]],x:"Vế sau KHÔNG được là ý chí hay mệnh lệnh: ×{家|いえ}に{着|つ}いたとたん、{電話|でんわ}してください. Câu này phải dùng {着|つ}き{次第|しだい} hoặc {着|つ}いたらすぐ.",s:1,src:["S1"]},
+{p:"〜(か)と思うと／〜(か)と思ったら",r:"(か)とおもうと／(か)とおもったら",f:"Vた ＋ (か)と思うと",m:"Vừa mới... thì đã (thay đổi đột ngột, ngoài dự đoán).",tip:"Dịch sát: 'vừa nghĩ là... thì đã...'. Người nói chỉ đứng quan sát, nên không dùng cho hành động của chính mình.",ex:[["{空|そら}がピカッと{光|ひか}った[[かと思うと]]、{大|おお}きな{雷|かみなり}の{音|おと}が{鳴|な}った。","Bầu trời vừa lóe sáng thì tiếng sấm lớn đã vang lên."],["{部屋|へや}が{片付|かたづ}いた[[かと思ったら]]、{子|こ}どもたちがすぐまた{散|ち}らかした。","Phòng vừa dọn xong thì lũ trẻ lại bày bừa ngay."]],x:"×{私|わたし}は{家|いえ}に{帰|かえ}ったかと思うと… (không dùng cho bản thân). Vế sau không có ý chí, nguyện vọng.",s:1,src:["M78","S1"]},
+{p:"〜か〜ないかのうちに",r:"か〜ないかのうちに",f:"Vる／Vた ＋ か ＋ Vない ＋ かのうちに",m:"Vừa mới... (còn chưa kịp xong) thì đã... Hai việc gần như đồng thời.",tip:"'Có hay chưa có' (か〜ないか): ranh giới rất mong manh, nên hai việc gần như dính vào nhau. Mức 'đồng thời' mạnh hơn かと思うと.",ex:[["お{店|みせ}が{開店|かいてん}する[[か]]{開店|かいてん}し[[ないかのうちに]]、ケーキは{全部|ぜんぶ}{売|う}り{切|き}れてしまった。","Cửa hàng vừa mở cửa (chưa kịp mở hẳn) thì bánh đã bán hết sạch."],["{雨|あめ}がやんだ[[か]]やま[[ないかのうちに]]、せみが{鳴|な}き{出|だ}した。","Mưa vừa tạnh là ve đã bắt đầu kêu."]],x:"Lặp lại CÙNG một động từ hai lần (khẳng định rồi phủ định). Đừng nhầm với 〜うちに (N3: trong lúc còn...).",s:1,src:["M77","S1"]},
+{p:"〜次第 (ngay khi)",r:"しだい",hv:"次第 · THỨ ĐỆ → thứ tự",f:"Vます ＋ 次第",m:"Ngay sau khi A xong thì (sẽ) làm B.",tip:"Theo thứ tự (次第): xong A là tới lượt B. Vế sau là ý chí hoặc yêu cầu ở tương lai. Câu hay gặp trong email công việc: 「わかり{次第|しだい}、ご{連絡|れんらく}します」.",ex:[["{全員|ぜんいん}{集|あつ}まり[[次第]]、{出発|しゅっぱつ}します。","Mọi người tập trung đủ là chúng ta xuất phát."],["{無事|ぶじ}に{着|つ}き[[次第]]、{電話|でんわ}してください。","Đến nơi an toàn thì gọi điện cho tôi ngay nhé."]],x:"Ngược với たとたん: 次第 là tương lai và có ý chí, còn たとたん là quá khứ và bất ngờ. Đừng nhầm với N＋次第だ (tùy vào) và 〜た次第です (lý do, trang trọng).",s:1,src:["M84","S3"]},
+{p:"〜矢先(に)",r:"やさき(に)",hv:"矢先 · THỈ TIÊN → đầu mũi tên",f:"Vた／Vようとした ＋ 矢先に",m:"Đúng lúc vừa (định) làm... thì chuyện ngoài ý muốn xảy ra.",tip:"Mũi tên (矢) vừa giương lên định bắn thì bị chặn lại.",ex:[["{電話|でんわ}をかけようとした[[矢先に]]、{向|む}こうからかかってきた。","Đúng lúc tôi định gọi thì bên kia gọi đến."],["{家|いえ}を{出|で}ようとした[[矢先に]]、{雨|あめ}が{降|ふ}り{出|だ}した。","Vừa định ra khỏi nhà thì trời đổ mưa."]],x:"Thường đi với việc không mong muốn. Khác たとたん ở chỗ 矢先 hay đi với 'định làm' (ようとした).",src:["M100"]},
+{p:"〜最中(に)／〜最中だ",r:"さいちゅう",hv:"最中 · TỐI TRUNG → giữa lúc cao điểm",f:"Nの／Vている ＋ 最中に",m:"Đúng lúc đang... (cao điểm) thì bị việc khác chen vào.",tip:"最 (nhất) + 中 (giữa) = giữa lúc cao trào nhất. Vế sau thường là sự cố phá đám.",ex:[["スピーチの[[最中に]]、{突然|とつぜん}{電気|でんき}が{消|き}えた。","Đang giữa bài phát biểu thì đột nhiên mất điện."],["{今|いま}{考|かんが}えごとをしている[[最中]]だから、じゃましないほうがいい。","Cậu ấy đang mải suy nghĩ, đừng làm phiền thì hơn."]],x:"So với 〜ているところ (N3): 最中 nhấn mạnh lúc đang cao điểm và thường có việc xen ngang. 〜ているところ chỉ đơn thuần là 'đang làm'.",src:["S2"]},
+{p:"〜(よ)うとしている／〜(よ)うとする",r:"(よ)うとしている",f:"Vよう (意向形) ＋ としている",m:"Sắp sửa, ngay trước khi sự việc xảy ra. Văn viết, trang trọng.",tip:"Dùng với sự vật, hiện tượng: mặt trời sắp lặn, trận đấu sắp bắt đầu. Mimikara xếp 〜ようとする vào lối văn chương: 「{生|う}まれようとする{命|いのち}」.",ex:[["{決勝戦|けっしょうせん}が{今|いま}{始|はじ}まろ[[うとしています]]。","Trận chung kết sắp bắt đầu."],["{病院|びょういん}では、{生|う}まれ[[ようとする]]{命|いのち}と{消|き}え[[ようとする]]{命|いのち}の{交代|こうたい}が、{日々|ひび}{繰|く}り{返|かえ}されている。","Ở bệnh viện, sự luân phiên giữa sinh mệnh sắp chào đời và sinh mệnh sắp lụi tắt diễn ra mỗi ngày."]],x:"N3 〜ようとする = cố gắng, định làm (chủ thể có ý chí). Ở N2 dùng cho sự việc sắp xảy ra.",src:["M109","S2"]},
+{p:"〜てはじめて",r:"てはじめて",f:"Vて ＋ はじめて",m:"Phải sau khi... thì mới (nhận ra, mới xảy ra điều lần đầu).",tip:"はじめて = lần đầu: trải qua A rồi mới lần đầu hiểu ra B.",ex:[["{実際|じっさい}に{現地|げんち}の{様子|ようす}を{見|み}て[[はじめて]]、{今回|こんかい}の{地震|じしん}のひどさを{知|し}った。","Phải tận mắt thấy tình hình nơi đó tôi mới biết trận động đất lần này khủng khiếp thế nào."],["{病気|びょうき}になって[[はじめて]]、{健康|けんこう}のありがたさがわかった。","Phải bị ốm rồi mới thấy sức khỏe quý giá."]],x:"Vế sau thường là 'nhận ra, hiểu ra' (わかる, {気|き}づく, {知|し}る).",src:["S3"]},
+{p:"〜た上で／〜の上で",r:"たうえで",hv:"上 · THƯỢNG",f:"Vた／Nの ＋ 上で",m:"Sau khi (làm A cẩn thận) rồi mới làm B. A là bước chuẩn bị, điều kiện.",tip:"Đặt A làm nền rồi mới xây B lên trên (上).",ex:[["{進学先|しんがくさき}は{親|おや}と{話|はな}し{合|あ}った[[上で]]、{決|き}めます。","Trường học tiếp, tôi sẽ quyết sau khi bàn bạc với bố mẹ."],["{内容|ないよう}をよくご{確認|かくにん}の[[上]]、サインしてください。","Vui lòng kiểm tra kỹ nội dung rồi hãy ký."]],x:"Có tới 6 chữ 上 dễ nhầm, xem bảng 'Họ 上' ở tab Cụm dễ nhầm. So với 〜てから (N4): 上で nhấn mạnh A là bước bắt buộc, cẩn trọng.",src:["M12","S3"]},
+{p:"〜る上で／Nの上で",r:"るうえで",f:"Vる／Nの ＋ 上で",m:"Trong quá trình, khi làm A thì điều B là quan trọng, cần thiết. Nの上で còn nghĩa: trên phương diện, trong phạm vi.",tip:"Vる上で ≈ 〜するときに／〜するために. Vế sau hay có: {大切|たいせつ}だ, {必要|ひつよう}だ, {欠|か}かせない.",ex:[["{結婚|けっこん}している{女性|じょせい}が{働|はたら}く[[上で]]、{夫|おっと}や{子供|こども}の{協力|きょうりょく}は{欠|か}かせない。","Với phụ nữ đã có gia đình, khi đi làm thì sự hợp tác của chồng con là không thể thiếu."],["{彼|かれ}とは{仕事|しごと}の[[上での]]{付|つ}き{合|あ}いしかない。","Tôi và anh ấy chỉ quan hệ trên phương diện công việc."]],x:"Nhìn thể động từ: Vた上で = sau khi; Vる上で = trong khi, để làm.",src:["M12","M72"]},
+{p:"〜て以来／〜てこのかた",r:"ていらい／てこのかた",hv:"以来 · DĨ LAI",f:"Vて ＋ 以来",m:"Kể từ khi... (đến tận bây giờ vẫn tiếp diễn).",tip:"以来 = từ đó đến nay. てこのかた là kiểu nói văn chương, lịch sự hơn.",ex:[["{父|ちち}は{新|あたら}しい{職場|しょくば}に{移|うつ}って[[以来]]、ずっと{何|なに}か{悩|なや}んでいるようだ。","Từ khi chuyển sang chỗ làm mới, bố tôi dường như cứ trăn trở điều gì đó."],["{母|はは}がいなくなって[[このかた]]、{母|はは}のことを{考|かんが}えない{日|ひ}はない。","Từ khi mẹ mất, không ngày nào tôi không nghĩ về mẹ."]],x:"Không dùng cho quá khứ quá gần (×{昨日|きのう}{来|き}て以来), không dùng cho tương lai. N3 〜てから chỉ thứ tự đơn thuần.",src:["S3"]},
+{p:"〜てからでないと／〜てからでなければ",r:"てからでないと",f:"Vて ＋ からでないと",m:"Nếu chưa làm A thì không thể làm B.",tip:"= 'Phải xong A đã'. Vế sau luôn mang nghĩa phủ định, khó khăn (できない, {無理|むり}だ).",ex:[["もっと{情報|じょうほう}を{集|あつ}めて[[からでないと]]、その{話|はなし}が{本当|ほんとう}かどうか{判断|はんだん}できない。","Chưa thu thập thêm thông tin thì không thể phán đoán chuyện đó thật hay không."],["{家族|かぞく}とよく{話|はな}し{合|あ}って[[からでなければ]]、お{返事|へんじ}できません。","Chưa bàn kỹ với gia đình thì tôi chưa thể trả lời."]],x:"Gần nghĩa với 〜ないことには (xem nhóm Giả định & điều kiện).",src:["S3"]},
+{p:"〜ところを",r:"ところを",f:"Nの／Vている／Aい／Naな ＋ ところを",m:"(1) Trong lúc (bạn đang...) mà... Dùng khi cảm ơn, xin lỗi, nhờ vả. (2) Đúng lúc đang... thì bị (bắt gặp).",tip:"Câu cửa miệng: 「お{忙|いそが}しいところをすみません」, 「お{休|やす}みのところを{申|もう}し{訳|わけ}ありません」.",ex:[["{先生|せんせい}、お{忙|いそが}しい[[ところ]]すみません。ちょっと{教|おし}えていただきたいことがあるんですが。","Thưa thầy, xin lỗi đã làm phiền lúc thầy đang bận. Em có điều muốn hỏi ạ."],["たばこを{吸|す}っている[[ところを]]{先生|せんせい}に{見|み}つかった。","Bị thầy bắt gặp đúng lúc đang hút thuốc."]],x:"Khác 〜たところ (thử làm thì kết quả là...) và 〜たところで (dù có... cũng vô ích).",src:["M59"]},
+{p:"〜うちに",r:"うちに",f:"Vる／Vている／Vない／Aい／Naな／Nの ＋ うちに",m:"Trong lúc còn... thì tranh thủ; hoặc trong lúc đang... thì (thay đổi lúc nào không hay).",ex:[["{若|わか}い[[うちに]]、いろいろな{国|くに}へ{行|い}ってみたい。","Tôi muốn đi nhiều nước khi còn trẻ."]],x:"Đừng nhầm với か〜ないかのうちに (N2: vừa mới... thì đã).",n3:1},
+{p:"〜たばかり",r:"たばかり",f:"Vた ＋ ばかり",m:"Vừa mới làm xong (theo cảm giác của người nói).",ex:[["{日本|にほん}に{来|き}た[[ばかり]]なので、まだ{慣|な}れていません。","Tôi vừa mới đến Nhật nên chưa quen."]],x:"Họ ばかり rất đông: たばかり (vừa mới), てばかりいる (toàn là), ばかりだ (ngày càng xấu), ばかりか (không những), ばかりに (chỉ vì). Xem bảng 'Họ ばかり'.",n3:1},
+{p:"〜ているところ／〜たところ",r:"ているところ／たところ",f:"Vている／Vた／Vる ＋ ところ",m:"Đang làm (ているところ), vừa xong (たところ), sắp làm (るところ).",ex:[["{今|いま}、{晩|ばん}ご{飯|はん}を{作|つく}っている[[ところ]]です。","Bây giờ tôi đang nấu cơm tối."]],x:"Ở N2 có thêm: 〜たところ (thử làm thì kết quả là...), 〜たところで (dù có... cũng vô ích), 〜ところだった (suýt nữa), 〜ところを (trong lúc... mà).",n3:1}
+]);
+
+G("bien-doi","Biến đổi & tương quan","Ngày càng, càng... càng, tùy theo",[
+{p:"〜一方だ",r:"いっぽうだ",hv:"一方 · NHẤT PHƯƠNG → một hướng",f:"Vる ＋ 一方だ",m:"Ngày càng... (biến đổi theo MỘT chiều, không dừng lại).",tip:"一方 = một phía, như đường một chiều chỉ đi tới. Dùng được cho cả chiều tốt lẫn chiều xấu.",ex:[["{一度|いちど}{問題|もんだい}が{起|お}きてから、{彼|かれ}との{関係|かんけい}は{悪|わる}くなる[[一方だ]]。","Từ khi xảy ra chuyện, quan hệ với anh ấy cứ ngày một xấu đi."],["この{町|まち}の{人口|じんこう}は{増|ふ}える[[一方だ]]。","Dân số thị trấn này cứ tăng lên mãi."]],x:"Vる一方だ (ngày càng) khác 〜一方(で) (mặt khác, trong khi), xem nhóm Trái ngược.",s:1,src:["S2"]},
+{p:"〜ばかりだ",r:"ばかりだ",f:"Vる ＋ ばかりだ",m:"Ngày càng... (hầu như luôn theo chiều XẤU).",tip:"'Chỉ toàn' đi xuống, nên là xấu dần. Vế trước thường là: {悪|わる}くなる, {衰|おとろ}える, {増|ふ}える (vấn đề).",ex:[["{年|とし}をとると、{記憶力|きおくりょく}は{衰|おとろ}える[[ばかりだ]]。","Có tuổi rồi thì trí nhớ chỉ có kém đi."],["{東京|とうきょう}の{交通機関|こうつうきかん}は{複雑|ふくざつ}になる[[ばかりで]]、よくわからなくなってきた。","Giao thông Tokyo ngày càng phức tạp, tôi chẳng còn hiểu nổi nữa."]],x:"一方だ: tốt hoặc xấu đều được. ばかりだ: gần như chỉ dùng cho chiều xấu. Đừng nhầm với たばかり (N3: vừa mới).",src:["M9","S2"]},
+{p:"〜つつある",r:"つつある",f:"Vます ＋ つつある",m:"Đang dần dần... (quá trình biến đổi đang diễn ra).",tip:"Giống 〜ている của sự thay đổi, nhưng là văn viết. Rất hay gặp trong tin tức: {回復|かいふく}しつつある, {減少|げんしょう}しつつある.",ex:[["{明治時代|めいじじだい}の{初|はじ}め、{日本|にほん}は{急速|きゅうそく}に{近代化|きんだいか}し[[つつあった]]。","Đầu thời Minh Trị, Nhật Bản đang hiện đại hóa nhanh chóng."],["この{会社|かいしゃ}は{現在|げんざい}{発展|はってん}し[[つつあり]]、{将来|しょうらい}が{期待|きたい}される。","Công ty này hiện đang phát triển, tương lai rất đáng kỳ vọng."]],x:"Chỉ dùng với động từ biến đổi ({増|ふ}える, {変|か}わる, {回復|かいふく}する). Danh động từ phải giữ し: 近代化しつつある (tài liệu gốc viết thiếu し).",s:1,src:["S2"]},
+{p:"〜つつ",r:"つつ",f:"Vます ＋ つつ",m:"Vừa... vừa... (= ながら nhưng cứng hơn, văn viết). Hai vế cùng chủ ngữ.",tip:"Hãy nghĩ つつ là ながら mặc vest. Hợp với hành động kéo dài, mang tính suy nghĩ.",ex:[["{住民|じゅうみん}と{話|はな}し{合|あ}い[[つつ]]、{計画|けいかく}を{立|た}てていきたい。","Tôi muốn vừa thảo luận với người dân vừa lập kế hoạch."],["ボートをこぎ[[つつ]]、いろいろなことを{思|おも}い{出|だ}した。","Vừa chèo thuyền tôi vừa nhớ lại nhiều chuyện."]],x:"○{歩|ある}きながらたばこを{吸|す}わないで ／ ×{歩|ある}きつつ: chuyện đời thường, văn nói thì dùng ながら. つつ(も) còn có nghĩa 'mặc dù' (xem nhóm Trái ngược).",src:["S2"]},
+{p:"〜につれて／〜にしたがって",r:"につれて／にしたがって",hv:"従う · TÒNG → đi theo",f:"N／Vる ＋ につれて",m:"Càng... càng... (A thay đổi dần kéo theo B thay đổi).",tip:"{連|つ}れる = dắt theo: A dắt B đi cùng. {従|したが}う = đi theo.",ex:[["{台風|たいふう}の{接近|せっきん}[[につれて]]、{雨|あめ}や{風|かぜ}が{強|つよ}くなってきた。","Bão càng đến gần thì mưa gió càng mạnh lên."],["{車|くるま}のスピードが{上|あ}がる[[にしたがって]]、{事故|じこ}の{危険性|きけんせい}も{高|たか}くなる。","Tốc độ xe càng tăng thì nguy cơ tai nạn càng cao."]],x:"にしたがって còn nghĩa 'theo, tuân theo' ({指示|しじ}にしたがって), につれて thì không. N3 〜ば〜ほど diễn tả cùng ý nhưng ở dạng điều kiện.",s:1,src:["S9"]},
+{p:"〜に伴って／〜とともに",r:"にともなって／とともに",hv:"伴う · BẠN → đi kèm",f:"N／Vる ＋ に伴って／とともに",m:"Cùng với sự thay đổi của A thì B cũng thay đổi. Văn viết, tin tức.",tip:"伴 = bạn đồng hành: A thay đổi, B đi kèm theo.",ex:[["{留学生|りゅうがくせい}の{数|かず}の{変化|へんか}[[に伴って]]、クラスの{数|かず}を{変|か}える{必要|ひつよう}がある。","Cùng với sự thay đổi số du học sinh, cần thay đổi số lớp."],["{経済|けいざい}の{回復|かいふく}[[とともに]]、{人々|ひとびと}の{表情|ひょうじょう}も{明|あか}るくなってきた。","Cùng với kinh tế phục hồi, nét mặt mọi người cũng tươi tắn hơn."]],x:"とともに còn nghĩa 'cùng với (ai)' ({家族|かぞく}とともに) và 'đồng thời là' ({研究者|けんきゅうしゃ}であるとともに{教師|きょうし}でもある).",src:["S9"]},
+{p:"〜次第だ／〜次第で(は)",r:"しだいだ",f:"N ＋ 次第だ／次第で",m:"Tùy vào, phụ thuộc vào (A quyết định kết quả B).",tip:"Câu quen thuộc: 「あなた{次第|しだい}です」 = tùy bạn.",ex:[["JLPTに{受|う}かるかどうかは、{君|きみ}たちの{努力|どりょく}[[次第だ]]。","Có đỗ JLPT hay không là tùy vào nỗ lực của các em."],["この{夏|なつ}のトレーニング[[次第で]]、{秋|あき}の{試合|しあい}に{勝|か}てるかどうかが{決|き}まる。","Thắng được trận mùa thu hay không phụ thuộc vào việc luyện tập mùa hè này."]],x:"Ba nghĩa của 次第: Vます次第 (ngay khi), N次第だ (tùy vào), 〜た次第です (lý do, trang trọng).",s:1,src:["M85","S9"]},
+{p:"〜に応じて／〜に応じた",r:"におうじて",hv:"応じる · ỨNG → tương ứng",f:"N ＋ に応じて／に応じた＋N",m:"Tương ứng với, tùy theo (điều chỉnh B cho phù hợp với A).",tip:"応 = ứng, tương ứng. Vế trước thường là thứ có nhiều mức: {年齢|ねんれい}, レベル, {能力|のうりょく}, {季節|きせつ}, {予算|よさん}.",ex:[["{日本語|にほんご}のレベル[[に応じて]]、クラスを{分|わ}けます。","Chúng tôi chia lớp tùy theo trình độ tiếng Nhật."],["{無理|むり}をしないで、{体力|たいりょく}[[に応じた]]{運動|うんどう}をしましょう。","Đừng quá sức, hãy vận động phù hợp với thể lực."]],x:"次第: kết quả PHỤ THUỘC vào A. に応じて: chủ động ĐIỀU CHỈNH cho hợp với A. によって (N3): tùy trường hợp mà khác nhau.",s:1,src:["M18","S9"]},
+{p:"〜につけ(て)",r:"につけ(て)",f:"Vる ＋ につけ(て)",m:"Mỗi khi... thì lại nảy sinh cảm xúc.",tip:"Vế trước hay là {見|み}る, {聞|き}く, {思|おも}う; vế sau là cảm xúc. Cụm cố định: {何|なに}かにつけて = hễ có chuyện gì là...",ex:[["この{絵|え}を{見|み}る[[につけ]]、{心|こころ}に{希望|きぼう}がわいてくる。","Mỗi lần ngắm bức tranh này, hy vọng lại trào dâng trong lòng."],["{母|はは}は{何|なに}か[[につけて]]{私|わたし}のことを{心配|しんぱい}する。","Hễ có chuyện gì là mẹ lại lo cho tôi."]],x:"N3 〜たびに cũng là 'mỗi lần' nhưng trung tính, còn につけ gắn với cảm xúc.",src:["S9"]},
+{p:"〜ては〜ては",r:"ては〜ては",f:"Vて ＋ は、Vて ＋ は",m:"Hết... lại... (hành động lặp đi lặp lại).",tip:"Đọc lên có nhịp: {降|ふ}ってはやみ、{降|ふ}ってはやみ, như một vòng lặp.",ex:[["{雨|あめ}が{降|ふ}って[[は]]やみ、{降|ふ}って[[は]]やみしている。","Mưa rồi tạnh, tạnh rồi lại mưa."],["{書|か}いて[[は]]{消|け}し、{書|か}いて[[は]]{消|け}して、やっと{手紙|てがみ}を{書|か}き{上|あ}げた。","Viết rồi xóa, xóa rồi viết, mãi mới xong lá thư."]],src:["M99"]},
+{p:"〜ば〜ほど",r:"ば〜ほど",f:"Vば ＋ Vる ＋ ほど",m:"Càng... càng...",ex:[["{練習|れんしゅう}すれ[[ば]]する[[ほど]]、{上手|じょうず}になる。","Càng luyện tập càng giỏi."]],x:"Cùng ý với につれて／にしたがって nhưng ở dạng điều kiện, dùng được trong văn nói.",n3:1},
+{p:"〜によって／〜によっては",r:"によって",f:"N ＋ によって",m:"Tùy theo (mỗi trường hợp mỗi khác).",ex:[["{国|くに}[[によって]]{習慣|しゅうかん}が{違|ちが}う。","Mỗi nước có phong tục khác nhau."]],x:"によって còn nghĩa: bởi (bị động), do (nguyên nhân), bằng (phương tiện). Xem nhóm Nguyên nhân.",n3:1},
+{p:"〜たびに",r:"たびに",f:"Vる／Nの ＋ たびに",m:"Mỗi lần... thì đều...",ex:[["この{写真|しゃしん}を{見|み}る[[たびに]]、{故郷|こきょう}を{思|おも}い{出|だ}す。","Mỗi lần nhìn tấm ảnh này tôi lại nhớ quê."]],x:"Gần につけ (N2) nhưng không bắt buộc vế sau là cảm xúc.",n3:1},
+{p:"〜てばかりいる",r:"てばかりいる",f:"Vて ＋ ばかりいる",m:"Suốt ngày chỉ... (giọng phàn nàn).",ex:[["{弟|おとうと}はゲームをして[[ばかりいる]]。","Em trai tôi suốt ngày chỉ chơi game."]],x:"Khác ばかりだ (N2: ngày càng xấu đi).",n3:1}
+]);
+
+G("pham-vi","Phạm vi & giới hạn","Suốt, trong phạm vi, chỉ riêng, không chỉ... mà còn",[
+{p:"〜にわたって／〜にわたる",r:"にわたって",hv:"渡る · ĐỘ → vượt qua, trải dài",f:"N ＋ にわたって／にわたる＋N",m:"Suốt, trải dài khắp (cả một phạm vi thời gian, không gian, số lần).",tip:"{渡|わた}る = băng qua: phủ kín từ đầu này sang đầu kia. Vế trước là con số hoặc phạm vi lớn: 3{日間|みっかかん}, 20キロ, {全国|ぜんこく}.",ex:[["{連休|れんきゅう}の{最終日|さいしゅうび}、{高速道路|こうそくどうろ}は20キロ[[にわたって]]{渋滞|じゅうたい}が{続|つづ}いた。","Ngày cuối kỳ nghỉ dài, đường cao tốc tắc suốt 20 km."],["3{日間|みっかかん}[[にわたる]]{研究発表大会|けんきゅうはっぴょうたいかい}が{無事|ぶじ}{終了|しゅうりょう}しました。","Hội nghị báo cáo nghiên cứu kéo dài 3 ngày đã kết thúc tốt đẹp."]],x:"So với を通じて: にわたって nhấn mạnh quy mô, độ rộng; を通じて nhấn mạnh sự liên tục 'suốt'.",s:1,src:["S4"]},
+{p:"〜を通じて／〜を通して",r:"をつうじて／をとおして",hv:"通 · THÔNG",f:"N ＋ を通じて",m:"(1) Suốt (cả khoảng thời gian), trạng thái không đổi. (2) Thông qua (phương tiện, người trung gian).",tip:"通 = thông suốt: đi xuyên qua thời gian (nghĩa 1) hoặc xuyên qua một kênh (nghĩa 2).",ex:[["この{町|まち}には{四季|しき}[[を通じて]]{観光客|かんこうきゃく}が{訪|おとず}れる。","Thị trấn này có khách du lịch ghé thăm suốt bốn mùa."],["インターネット[[を通じて]]、{世界中|せかいじゅう}の{情報|じょうほう}が{手|て}に{入|はい}る。","Thông qua internet, ta có được thông tin khắp thế giới."]],x:"Nghĩa (2) không dùng cho dụng cụ cụ thể, trực tiếp: ×はさみを{通|つう}じて{切|き}る. Dụng cụ thì dùng で.",src:["S4"]},
+{p:"〜限り (hết mức)",r:"かぎり",hv:"限 · HẠN → giới hạn",f:"Nの／Vる／Vている ＋ 限り",m:"Toàn bộ, hết mức trong giới hạn có thể.",tip:"Đẩy tới tận giới hạn (限): {力|ちから}の{限|かぎ}り = dốc hết sức, できる{限|かぎ}り = trong khả năng có thể.",ex:[["あしたは{試合|しあい}だ。{力|ちから}の[[限り]]{頑張|がんば}ろう。","Mai là trận đấu rồi. Hãy cố gắng hết sức mình nào."],["{君|きみ}が{知|し}っている[[限り]]のことを{全部|ぜんぶ}{話|はな}してほしい。","Tôi muốn cậu kể hết những gì cậu biết."]],x:"Họ 限り có 7 nghĩa, xem bảng 'Họ 限り' ở tab Cụm dễ nhầm.",src:["S4","M87"]},
+{p:"〜限り(は)／〜ない限り",r:"かぎり(は)",f:"Thể thường (Naな／Naである／Nである) ＋ 限り",m:"Chừng nào còn... thì... (điều kiện kéo dài). Dạng ない限り = chừng nào chưa... thì (không).",tip:"Hai vế đều là trạng thái; vì là điều kiện nên vế sau không ở quá khứ. ない限り cực hay ra đề.",ex:[["{学生|がくせい}である[[限り]]、{校則|こうそく}は{守|まも}らなければならない。","Chừng nào còn là học sinh thì phải tuân thủ nội quy."],["{本人|ほんにん}が{努力|どりょく}し[[ない限り]]、{合格|ごうかく}は{難|むずか}しいだろう。","Chừng nào bản thân chưa nỗ lực thì khó mà đỗ được."]],x:"Gần với 〜以上は／〜からには (đã là... thì phải). Khác ở chỗ 限り là 'trong suốt thời gian còn ở trạng thái đó'.",s:1,src:["S5","M87"]},
+{p:"〜限りでは",r:"かぎりでは",f:"Vる／Vた／Vている／Nの ＋ 限りでは",m:"Trong phạm vi (những gì tôi biết, nghe, thấy, điều tra) thì...",tip:"Vế trước là động từ thu nhận thông tin: {知|し}る, {聞|き}く, {見|み}る, {調|しら}べる. Vế sau là thông tin hoặc phán đoán.",ex:[["{私|わたし}が{知|し}っている[[限りでは]]、この{近所|きんじょ}に{花屋|はなや}はありません。","Theo những gì tôi biết thì gần đây không có tiệm hoa nào."],["{今回|こんかい}の{調査|ちょうさ}の[[限りでは]]、{書類|しょるい}にミスはなかった。","Trong phạm vi đợt kiểm tra lần này thì tài liệu không có sai sót."]],x:"Viết đúng là 〜限りでは (tài liệu Shinkanzen ghi nhầm thành 〜に限りでは).",src:["S5","M87"]},
+{p:"〜だけ (hết mức)",r:"だけ",f:"Vる／Vたい ＋ だけ",m:"Hết mức (có thể, muốn).",tip:"Hay đi với thể khả năng và lặp lại động từ: {積|つ}めるだけ{積|つ}む. Cụm phải nhớ: できるだけ (hết sức có thể).",ex:[["ここにある{段|だん}ボールを、{車|くるま}に{積|つ}める[[だけ]]{積|つ}んで{持|も}って{帰|かえ}ってください。","Số thùng carton ở đây, hãy chất lên xe được bao nhiêu thì chất rồi mang về."],["{今日|きょう}は{部長|ぶちょう}に{言|い}いたい[[だけ]]{不満|ふまん}を{言|い}って、すっきりした。","Hôm nay tôi đã nói hết những bất mãn muốn nói với trưởng phòng, thấy nhẹ cả người."]],src:["S4"]},
+{p:"〜に限り",r:"にかぎり",f:"N ＋ に限り",m:"Chỉ riêng (đối tượng này) được đối xử ngoại lệ, ưu đãi.",tip:"Ngôn ngữ thông báo cho công chúng: {先着|せんちゃく}100{名|めい}に{限|かぎ}り{無料|むりょう}.",ex:[["65{歳|さい}{以上|いじょう}の{方|かた}[[に限り]]、{入場|にゅうじょう}{無料|むりょう}です。","Chỉ những người từ 65 tuổi trở lên được vào cửa miễn phí."],["{急|きゅう}を{要|よう}する{患者|かんじゃ}さん[[に限り]]、{時間外|じかんがい}でも{診察|しんさつ}いたします。","Chỉ bệnh nhân cần khám gấp mới được khám ngoài giờ."]],x:"Thường không dùng thể phủ định ở vế sau.",src:["S5","M75"]},
+{p:"〜に限る",r:"にかぎる",f:"N／Vる／Vない ＋ に限る",m:"... là nhất, là tốt nhất (ý kiến chủ quan).",tip:"Giới hạn lựa chọn chỉ còn một = cái đó là số 1.",ex:[["{寒|さむ}い{日|ひ}はやっぱり{鍋|なべ}[[に限る]]よね。","Ngày lạnh thì lẩu là nhất nhỉ."],["{疲|つか}れたときは、{早|はや}く{寝|ね}る[[に限る]]。","Lúc mệt thì đi ngủ sớm là tốt nhất."]],x:"Gần nghĩa với 〜に{越|こ}したことはない nhưng に限る khẳng định mạnh hơn.",src:["M75"]},
+{p:"〜に限って",r:"にかぎって",f:"N ＋ に限って",m:"(1) Đúng lúc... thì lại (xui, khác thường). (2) Riêng... thì chắc chắn không (vì tin tưởng).",tip:"Nghĩa (1) đi với sự bất mãn: {急|いそ}いでいる{日|ひ}に{限|かぎ}って… Nghĩa (2) vế sau phủ định: うちの{子|こ}に{限|かぎ}って…ない.",ex:[["{予定|よてい}がある{日|ひ}[[に限って]]、なぜか{仕事|しごと}が{多|おお}いんだよね。","Cứ đúng hôm có hẹn là chẳng hiểu sao việc lại nhiều."],["うちの{子|こ}[[に限って]]、そんなことをするはずはない。","Riêng con nhà tôi thì không đời nào làm chuyện đó."]],x:"Không nhầm với に限り (chỉ riêng, ưu đãi) và に限らず (không chỉ).",s:1,src:["S5","M88"]},
+{p:"〜に限らず",r:"にかぎらず",f:"N ＋ に限らず",m:"Không chỉ... mà cả (một phạm vi rộng hơn).",tip:"Không giới hạn (限らず) ở A, mở rộng ra cả B. Vế sau hay có も và từ chỉ phạm vi rộng: みんな, いつも, {誰|だれ}でも.",ex:[["この{映画|えいが}は{子供|こども}[[に限らず]]、{大人|おとな}も{楽|たの}しめます。","Bộ phim này không chỉ trẻ con mà người lớn cũng thích."],["{近年|きんねん}、{地方|ちほう}の{町|まち}[[に限らず]]{大都市|だいとし}でも{書店|しょてん}の{閉店|へいてん}が{相次|あいつ}いでいる。","Những năm gần đây, không chỉ ở thị trấn địa phương mà cả ở thành phố lớn, hiệu sách liên tục đóng cửa."]],s:1,src:["S6","M76"]},
+{p:"〜のみならず",r:"のみならず",f:"N／thể thường (Naである／Nである) ＋ のみならず",m:"Không chỉ... mà còn... (văn viết).",tip:"のみ = だけ (văn viết), ならず = でなく. Vậy のみならず = だけでなく bản văn viết.",ex:[["{健康|けんこう}のためには、{食事|しょくじ}[[のみならず]]、{生活|せいかつ}リズムも{重要|じゅうよう}だ。","Vì sức khỏe, không chỉ ăn uống mà nhịp sinh hoạt cũng quan trọng."],["{電気代|でんきだい}[[のみならず]]、ガス{代|だい}や{水道代|すいどうだい}も{値上|ねあ}がりするようだ。","Không chỉ tiền điện mà tiền gas, tiền nước cũng sẽ tăng."]],x:"Khác に限らず: のみならず dùng được khi A và B ngang hàng, không cần B là phạm vi rộng hơn.",src:["S6","M96"]},
+{p:"〜ばかりか",r:"ばかりか",f:"N／thể thường ＋ ばかりか",m:"Không những... mà còn... (B còn hơn A, có cảm giác bất ngờ).",tip:"Thường thấy dạng AばかりかBも／まで／さえ. B mạnh hơn A.",ex:[["その{人|ひと}は{親切|しんせつ}に{道|みち}を{教|おし}えてくれた[[ばかりか]]、そこまで{案内|あんない}してくれた。","Người đó không những tận tình chỉ đường mà còn dẫn tôi tới tận nơi."],["{友達|ともだち}[[ばかりか]]、{親兄弟|おやきょうだい}も{彼|かれ}の{居場所|いばしょ}を{知|し}らない。","Không chỉ bạn bè mà cả bố mẹ, anh em cũng không biết anh ta ở đâu."]],x:"Vế sau không dùng mệnh lệnh, rủ rê: ×{勉強|べんきょう}ばかりか{運動|うんどう}もしなさい → dùng だけでなく.",s:1,src:["M8","S6"]},
+{p:"〜はもとより",r:"はもとより",hv:"元より · NGUYÊN → vốn dĩ",f:"N (＋trợ từ) ＋ はもとより",m:"A thì đương nhiên rồi, cả B cũng vậy.",tip:"= はもちろん (N3) nhưng trang trọng hơn. A là ví dụ hiển nhiên, B là ví dụ thêm vào.",ex:[["たばこは{本人|ほんにん}[[はもとより]]、{周|まわ}りの{人|ひと}にも{害|がい}を{及|およ}ぼす。","Thuốc lá có hại cho người hút đã đành, cho cả người xung quanh nữa."],["この{店|みせ}は{味|あじ}[[はもとより]]、サービスも{一流|いちりゅう}だ。","Quán này vị ngon thì khỏi nói, phục vụ cũng hạng nhất."]],s:1,src:["S6"]},
+{p:"〜上(に)",r:"うえ(に)",f:"Thể thường (Naな／Nの・Nである) ＋ 上に",m:"Hơn nữa, thêm vào đó (hai vế cùng chiều).",tip:"Chồng thêm lên trên (上): tốt chồng tốt, xấu chồng xấu.",ex:[["{彼|かれ}の{妹|いもうと}は{美人|びじん}である[[上に]]、{性格|せいかく}もいい。","Em gái anh ấy đã xinh lại còn tính tình tốt."],["{今日|きょう}は{寝不足|ねぶそく}の[[上]]、{少|すこ}し{熱|ねつ}がある。{早|はや}く{帰|かえ}りたい。","Hôm nay đã thiếu ngủ lại còn hơi sốt. Muốn về sớm quá."]],x:"Không dùng cho hai vế trái chiều (tốt + xấu). Vế sau không dùng mệnh lệnh, rủ rê.",s:1,src:["M10","S6"]},
+{p:"〜にとどまらず",r:"にとどまらず",hv:"留まる · LƯU → dừng lại",f:"N／Vる ＋ にとどまらず",m:"Không dừng lại ở... mà còn lan rộng ra.",tip:"{留|とど}まる = dừng lại. Không dừng ở A, lan sang phạm vi lớn hơn.",ex:[["アニメや{漫画|まんが}は{日本|にほん}[[にとどまらず]]、{海外|かいがい}でも{多|おお}くのファンを{増|ふ}やしている。","Anime và manga không chỉ ở Nhật mà còn có thêm nhiều fan ở nước ngoài."]],src:["M101"]},
+{p:"〜だけでなく／〜ばかりでなく",r:"だけでなく",f:"N／thể thường ＋ だけでなく",m:"Không chỉ... mà còn...",ex:[["{彼|かれ}は{英語|えいご}[[だけでなく]]、{中国語|ちゅうごくご}も{話|はな}せる。","Anh ấy không chỉ nói được tiếng Anh mà còn nói được tiếng Trung."]],x:"Bản gốc dễ dùng nhất của cả nhóm. Vế sau dùng được cả mệnh lệnh, điều mà ばかりか, 上に không làm được.",n3:1},
+{p:"〜はもちろん",r:"はもちろん",f:"N ＋ はもちろん",m:"... thì đương nhiên, cả... cũng.",ex:[["この{店|みせ}は{週末|しゅうまつ}[[はもちろん]]、{平日|へいじつ}も{混|こ}んでいる。","Quán này cuối tuần thì đương nhiên, ngày thường cũng đông."]],x:"Bản văn nói của はもとより.",n3:1},
+{p:"〜しか〜ない",r:"しか〜ない",f:"N (＋trợ từ) ＋ しか ＋ Vない",m:"Chỉ (có)... (ý thấy ít, không đủ).",ex:[["{財布|さいふ}に500{円|えん}[[しかない]]。","Trong ví chỉ có 500 yên."]],x:"Phân biệt với 〜にすぎない (chỉ là, đánh giá thấp) và 〜のみ (chỉ, văn viết, trung tính).",n3:1}
+]);
+
+G("can-cu","Đối tượng, căn cứ & lập trường","Về, xoay quanh, dựa trên, theo, với tư cách",[
+{p:"〜に関して／〜に関する",r:"にかんして",hv:"関 · QUAN → liên quan",f:"N ＋ に関して／に関する＋N",m:"Về, liên quan đến (nội dung, thông tin).",tip:"= について (N3) nhưng trang trọng hơn. Bao gồm cả những vấn đề xung quanh đối tượng.",ex:[["{警察|けいさつ}は、{犯行|はんこう}の{動機|どうき}[[に関して]]{詳|くわ}しい{調査|ちょうさ}を{開始|かいし}した。","Cảnh sát bắt đầu điều tra chi tiết về động cơ gây án."],["{高齢者|こうれいしゃ}の{生活|せいかつ}[[に関する]]アンケートにご{協力|きょうりょく}ください。","Xin hãy hợp tác trả lời khảo sát về cuộc sống người cao tuổi."]],src:["S7"]},
+{p:"〜をめぐって／〜をめぐる",r:"をめぐって",hv:"巡る · TUẦN → xoay vòng",f:"N ＋ をめぐって／をめぐる＋N",m:"Xoay quanh (một vấn đề có nhiều ý kiến trái chiều, tranh cãi).",tip:"{巡|めぐ}る = xoay quanh. Mọi người đứng thành vòng tròn quanh một vấn đề mà cãi nhau. Vế sau: {争|あらそ}う, {議論|ぎろん}する, {対立|たいりつ}する.",ex:[["{親|おや}が{残|のこ}した{土地|とち}[[をめぐって]]、{親族|しんぞく}が{争|あらそ}っている。","Họ hàng tranh giành nhau quanh mảnh đất bố mẹ để lại."],["このドラマは{一人|ひとり}の{女性|じょせい}[[をめぐって]]、4{人|にん}の{男性|だんせい}が{争|あらそ}うストーリーです。","Bộ phim kể chuyện 4 người đàn ông tranh giành một người phụ nữ."]],x:"に関して chỉ đơn giản là 'về'. をめぐって bắt buộc có tranh luận, nhiều bên.",s:1,src:["M20","S7"]},
+{p:"〜にかけては",r:"にかけては",f:"N ＋ にかけては",m:"Về khoản... thì (giỏi nhất, không thua ai).",tip:"Vế trước là năng lực, kỹ năng. Vế sau là đánh giá tích cực: {誰|だれ}にも{負|ま}けない, {右|みぎ}に{出|で}る{者|もの}はいない.",ex:[["{料理|りょうり}の{腕|うで}[[にかけては]]、{誰|だれ}にも{負|ま}けない。","Về tài nấu ăn thì tôi không thua ai."],["iPhoneは{高|たか}いですが、{性能|せいのう}[[にかけては]]{他社|たしゃ}のスマホよりも{優|すぐ}れています。","iPhone đắt nhưng về hiệu năng thì vượt trội so với điện thoại hãng khác."]],x:"Bẫy: N3 〜から〜にかけて = 'từ... đến...' ({今夜|こんや}から{明日|あした}にかけて). Có は ở cuối thì là 'về khoản'.",s:1,src:["M92","S7"]},
+{p:"〜に対して／〜に対する",r:"にたいして",hv:"対 · ĐỐI",f:"N ＋ に対して",m:"(1) Đối với (đối tượng của hành động, thái độ). (2) Trái với, ngược lại.",tip:"対 = 'đối' trong 'đối tượng' (nghĩa 1) và 'đối lập' (nghĩa 2).",ex:[["{目上|めうえ}の{人|ひと}[[に対して]]、そんな{乱暴|らんぼう}な{言|い}い{方|かた}をしてはいけません。","Không được ăn nói thô lỗ như vậy với người trên."],["{父|ちち}は{感情|かんじょう}が{激|はげ}しいの[[に対して]]、{母|はは}は{穏|おだ}やかな{性格|せいかく}です。","Bố tôi nóng tính, ngược lại mẹ tôi tính tình điềm đạm."]],x:"にとって = đánh giá theo lập trường (dễ, khó, quan trọng). に対して = hướng hành động, thái độ vào ai.",n3:1,src:["S7"]},
+{p:"〜にこたえて／〜にこたえる",r:"にこたえて",hv:"応える · ỨNG → đáp ứng",f:"N ＋ にこたえて",m:"Đáp lại, đáp ứng (kỳ vọng, yêu cầu, nguyện vọng).",tip:"Vế trước luôn là: {期待|きたい}, {要望|ようぼう}, {声|こえ}, {意見|いけん}, {応援|おうえん}. Viết bằng kanji 応える, không phải 答える.",ex:[["お{客様|きゃくさま}のご{意見|いけん}[[にお応えして]]、セール{期間|きかん}を1{週間|しゅうかん}{延長|えんちょう}することにいたしました。","Đáp lại ý kiến của quý khách, chúng tôi quyết định kéo dài đợt giảm giá thêm 1 tuần."],["{皆様|みなさま}のご{期待|きたい}[[にこたえて]]、{精|せい}いっぱい{頑張|がんば}ります。","Để đáp lại kỳ vọng của mọi người, tôi sẽ cố gắng hết sức."]],src:["M32","S7"]},
+{p:"〜をもとに(して)",r:"をもとに",hv:"元 · NGUYÊN → gốc",f:"N ＋ をもとに(して)／をもとにした＋N",m:"Lấy A làm gốc, làm chất liệu để tạo ra cái mới.",tip:"Vế sau là 'tạo ra': {作|つく}る, {書|か}く, {描|えが}く. Ví dụ phim dựa trên chuyện có thật.",ex:[["{漢字|かんじ}[[をもとにして]]、ひらがなとカタカナができた。","Hiragana và katakana được tạo ra từ chữ Hán."],["この{映画|えいが}は{実話|じつわ}[[をもとに]]{作|つく}られた。","Bộ phim này được làm dựa trên chuyện có thật."]],x:"Không dùng cho nguyên liệu vật chất: ×{小麦粉|こむぎこ}をもとにパンを{作|つく}る (dùng から／で).",s:1,src:["S8"]},
+{p:"〜に基づいて／〜に基づく",r:"にもとづいて",hv:"基 · CƠ → nền móng",f:"N ＋ に基づいて／に基づく＋N",m:"Dựa trên, căn cứ vào (dữ liệu, quy định, sự thật rõ ràng).",tip:"基 = móng nhà. Vế trước là thứ chuẩn mực: データ, {法律|ほうりつ}, {計画|けいかく}, {調査結果|ちょうさけっか}, {経験|けいけん}.",ex:[["{最新|さいしん}のデータ[[に基づいて]]、{売|う}り{上|あ}げ{計画|けいかく}を{立|た}てたいと{思|おも}います。","Tôi muốn lập kế hoạch doanh số dựa trên dữ liệu mới nhất."],["{実際|じっさい}の{経験|けいけん}[[に基づく]]{話|はなし}を{聞|き}くことができた。","Tôi đã được nghe những câu chuyện dựa trên kinh nghiệm thực tế."]],x:"をもとに: lấy làm chất liệu để sáng tạo. に基づいて: làm theo căn cứ, không lệch ra.",s:1,src:["S8"]},
+{p:"〜に沿って／〜に沿う",r:"にそって",hv:"沿 · DUYÊN → men theo",f:"N ＋ に沿って／に沿った＋N",m:"(1) Theo đúng (quy tắc, kế hoạch, mong muốn). (2) Dọc theo (sông, đường).",tip:"沿 = men theo bờ sông, không rời ra. Vế trước: マニュアル, {方針|ほうしん}, プログラム, {希望|きぼう}.",ex:[["{私|わたし}は{学校|がっこう}のシラバス[[に沿って]]、{日本語|にほんご}を{教|おし}えています。","Tôi dạy tiếng Nhật theo đúng đề cương của trường."],["{川|かわ}[[に沿って]]{桜|さくら}の{木|き}が{並|なら}んでいる。","Hàng anh đào trải dài dọc bờ sông."]],s:1,src:["M19","S8"]},
+{p:"〜を踏まえて",r:"をふまえて",hv:"踏 · ĐẠP → giẫm lên",f:"N ＋ を踏まえて",m:"Dựa trên, có cân nhắc (kết quả, tình hình) làm tiền đề để suy nghĩ, quyết định.",tip:"{踏|ふ}む = giẫm lên: đứng vững trên kết quả cũ để bước tiếp.",ex:[["アンケートの{結果|けっか}[[を踏まえて]]、{商品|しょうひん}のデザインを{見直|みなお}します。","Dựa trên kết quả khảo sát, chúng tôi sẽ xem xét lại thiết kế sản phẩm."]],src:["M107"]},
+{p:"〜のもとで／〜のもとに",r:"のもとで",hv:"下 · HẠ → bên dưới",f:"N ＋ のもとで／のもとに",m:"Dưới (sự chỉ đạo, ảnh hưởng, điều kiện) của...",tip:"のもとで hay đi với người (先生, 監督). のもとに hay đi với trạng thái, điều kiện ({保護|ほご}, {名|な}).",ex:[["{英語|えいご}が{話|はな}せる{先生|せんせい}[[のもとで]]、{日本語|にほんご}を{勉強|べんきょう}したいです。","Tôi muốn học tiếng Nhật dưới sự hướng dẫn của thầy nói được tiếng Anh."],["{公園|こうえん}は{国|くに}の{保護|ほご}[[のもとに]]、{環境|かんきょう}が{守|まも}られている。","Dưới sự bảo hộ của nhà nước, môi trường công viên được giữ gìn."]],src:["M34","S8"]},
+{p:"〜向け",r:"むけ",hv:"向 · HƯỚNG",f:"N ＋ 向けだ／向けに／向けの＋N",m:"Dành cho, hướng tới (đối tượng) — được làm ra cho đối tượng đó.",tip:"Vế sau là: {作|つく}る, {設計|せっけい}する, {編集|へんしゅう}する. 子供向け = làm ra cho trẻ em.",ex:[["これは{理科|りか}が{好|す}きな{子供|こども}[[向けに]]{編集|へんしゅう}された{雑誌|ざっし}だ。","Đây là tạp chí biên tập dành cho trẻ em yêu khoa học."],["このマンションは{一人暮|ひとりぐ}らしの{高齢者|こうれいしゃ}[[向けに]]{設計|せっけい}されている。","Tòa chung cư này được thiết kế cho người già sống một mình."]],x:"N3 〜向き = 'phù hợp với' (dù không cố ý làm cho). 〜向け = cố ý làm ra cho.",src:["S8"]},
+{p:"〜を契機に(して)",r:"をけいきに",hv:"契機 · KHẾ CƠ → bước ngoặt",f:"N ＋ を契機に",m:"Nhân dịp, lấy A làm bước ngoặt để B bắt đầu.",tip:"= をきっかけに (N3) nhưng văn viết, trang trọng.",ex:[["サッカーの{親善試合|しんぜんじあい}[[を契機に]]、{二国間|にこくかん}の{交流|こうりゅう}が{進|すす}んだ。","Nhân trận giao hữu bóng đá, giao lưu giữa hai nước đã tiến triển."],["{入院|にゅういん}[[をきっかけに]]、たばこをやめた。","Nhân lần nhập viện, tôi đã bỏ thuốc lá."]],src:["M52"]},
+{p:"〜を〜として／〜として",r:"を〜として",f:"N1 を N2 として／N ＋ として",m:"Lấy N1 làm N2; với tư cách là, với vai trò là.",tip:"〜を{目標|もくひょう}として, 〜を{趣味|しゅみ}として: lấy A làm mục tiêu, sở thích.",ex:[["{今年|ことし}1{年|ねん}、{大学合格|だいがくごうかく}[[を]]{目標|もくひょう}[[として]]がんばるつもりだ。","Năm nay tôi định cố gắng với mục tiêu đỗ đại học."],["{京都|きょうと}は{歴史的|れきしてき}な{町|まち}[[として]]{知|し}られている。","Kyoto được biết đến như một thành phố lịch sử."]],src:["M17","S19"]},
+{p:"〜にとって",r:"にとって",f:"N ＋ にとって",m:"Đối với (ai đó, theo lập trường của họ) thì...",tip:"Vế sau là sự đánh giá: {大切|たいせつ}だ, {難|むずか}しい, {必要|ひつよう}だ. Không đi với câu hành động.",ex:[["{今|いま}の{私|わたし}[[にとって]]、{一番|いちばん}{大切|たいせつ}なのは{家族|かぞく}です。","Với tôi bây giờ, điều quan trọng nhất là gia đình."]],x:"×{先生|せんせい}にとって{質問|しつもん}する (hành động) → {先生|せんせい}に{対|たい}して{質問|しつもん}する.",n3:1,src:["S19"]},
+{p:"〜にしたら／〜にすれば／〜にしてみれば",r:"にしたら／にすれば",f:"N (người) ＋ にしたら",m:"Đứng ở lập trường của (người khác) thì chắc là... (suy đoán cảm xúc của họ).",tip:"Dùng cho người KHÁC, không dùng cho bản thân. Vế sau là suy đoán: 〜だろう, 〜と{思|おも}う.",ex:[["{日本人|にほんじん}[[にすれば]]{簡単|かんたん}な{漢字|かんじ}でも、{外国人|がいこくじん}[[にしてみたら]]とても{難|むずか}しいかもしれない。","Chữ Hán người Nhật thấy dễ, nhưng ở vị trí người nước ngoài thì có lẽ rất khó."],["{君|きみ}のお{母|かあ}さん[[にしたら]]、{君|きみ}のことが{心配|しんぱい}なんだよ。","Đứng ở vị trí mẹ cậu thì bà ấy lo cho cậu thôi."]],x:"にとって: đánh giá chung (quan trọng, khó). にしたら: đặt mình vào vị trí người khác để đoán cảm xúc.",src:["M81","S19"]},
+{p:"〜からいうと／〜からすると／〜から見ると",r:"からいうと／からすると／からみると",f:"N ＋ からいうと／からすると",m:"Xét từ (lập trường, căn cứ) thì...",tip:"Nhìn sự việc từ một góc: ネイティブからすると, {結果|けっか}からいうと.",ex:[["ネイティブの{日本人|にほんじん}[[からすると]]、トムさんの{日本語|にほんご}はまだまだです。","Xét từ góc người Nhật bản xứ thì tiếng Nhật của Tom còn kém lắm."],["{模擬試験|もぎしけん}の{結果|けっか}[[からいうと]]、ジョンさんはN1に{合格|ごうかく}できるだろう。","Xét theo kết quả thi thử thì John chắc sẽ đỗ N1."]],x:"からいうと không đi với người: ×{私|わたし}からいうと. からすると, から{見|み}ると thì được.",src:["M55"]},
+{p:"〜上 (じょう)",r:"じょう",f:"N ＋ 上",m:"Về mặt, trên phương diện...",tip:"Đọc là じょう, không phải うえ! {教育上|きょういくじょう}, {健康上|けんこうじょう}, {法律上|ほうりつじょう}, {歴史上|れきしじょう}.",ex:[["あのアニメは[[{教育上|きょういくじょう}]]よくない。","Bộ anime đó không tốt về mặt giáo dục."],["[[{健康上|けんこうじょう}]]の{理由|りゆう}で{会社|かいしゃ}を{辞|や}めた。","Tôi nghỉ việc vì lý do sức khỏe."]],src:["M71"]},
+{p:"〜について",r:"について",f:"N ＋ について",m:"Về (chủ đề).",ex:[["{日本|にほん}の{文化|ぶんか}[[について]]レポートを{書|か}いた。","Tôi viết báo cáo về văn hóa Nhật."]],x:"に関して là bản trang trọng. をめぐって cần có tranh cãi.",n3:1},
+{p:"〜向き",r:"むき",f:"N ＋ 向き",m:"Phù hợp với (dù không cố ý làm ra cho).",ex:[["この{料理|りょうり}は{辛|から}くないので、{子供|こども}[[向き]]だ。","Món này không cay nên hợp với trẻ con."]],x:"向け = cố ý làm ra cho; 向き = tình cờ hợp với.",n3:1}
+]);
+
+G("liet-ke","Liệt kê & nêu ví dụ","Nào là... nào là, chẳng hạn như, tiêu biểu là",[
+{p:"〜やら〜やら",r:"やら〜やら",f:"N／Vる／Aい ＋ やら",m:"Nào là... nào là... (còn nhiều thứ khác nữa, rối ren).",tip:"Cảm giác bận rộn, lộn xộn, cảm xúc lẫn lộn: うれしいやら{寂|さび}しいやら.",ex:[["{最近|さいきん}、{勉強|べんきょう}[[やら]]バイト[[やら]]で{毎日|まいにち}{忙|いそが}しい。","Dạo này nào là học, nào là làm thêm, ngày nào cũng bận."],["{娘|むすめ}の{結婚式|けっこんしき}の{日|ひ}は、うれしい[[やら]]{寂|さび}しい[[やら]]、{複雑|ふくざつ}な{気持|きも}ちだった。","Ngày cưới con gái, tôi vừa vui vừa buồn, cảm xúc thật phức tạp."]],src:["M29","S10"]},
+{p:"〜だの〜だの",r:"だの〜だの",f:"N／thể thường ＋ だの",m:"Nào là... nào là... (giọng bất mãn, phàn nàn).",tip:"だの thường đi với lời phàn nàn về người khác: うるさい, {文句|もんく}を{言|い}う.",ex:[["{母|はは}はもっと{勉強|べんきょう}しろ[[だの]]、{遊|あそ}びすぎ[[だの]]、うるさい。","Mẹ cứ nào là học thêm đi, nào là chơi nhiều quá, phiền thật."]],x:"やら trung tính, cảm xúc lẫn lộn. だの mang sắc thái khó chịu.",src:["M31"]},
+{p:"〜というか〜というか",r:"というか〜というか",f:"N／thể thường ＋ というか",m:"Nói là... hay nói là... (khó chọn cách diễn đạt chính xác).",tip:"Người nói đang tìm từ để đánh giá một người hay một sự việc.",ex:[["あの{子|こ}は{元気|げんき}がいい[[というか]]、{落|お}ち{着|つ}きがない[[というか]]、じっとしていない{子|こ}です。","Đứa bé ấy nói là năng động hay nói là hiếu động cũng được, chẳng chịu ngồi yên."],["たくさんお{祝|いわ}いをしていただき、うれしい[[というか]]、{感謝|かんしゃ}[[というか]]、{言葉|ことば}になりません。","Được mọi người chúc mừng nhiều thế này, nói là vui hay biết ơn cũng không diễn tả hết."]],src:["M104","S10"]},
+{p:"〜にしても〜にしても／〜にしろ〜にしろ／〜にせよ〜にせよ",r:"にしても／にしろ／にせよ",f:"N／Vる／Vない ＋ にせよ",m:"Dù là A hay B thì đều (giống nhau).",tip:"Đưa ra hai ví dụ cùng loại hoặc đối lập: {行|い}くにせよ{行|い}かないにせよ. Vế sau là phán đoán của người nói.",ex:[["{野菜|やさい}[[にしても]]{魚|さかな}[[にしても]]、{料理|りょうり}の{材料|ざいりょう}は{新鮮|しんせん}さが{第一|だいいち}です。","Dù là rau hay cá thì nguyên liệu nấu ăn quan trọng nhất là độ tươi."],["{続|つづ}ける[[にせよ]]{辞|や}める[[にせよ]]、{決|き}めるのは{早|はや}いほうがいい。","Tiếp tục hay bỏ cũng vậy, quyết sớm thì hơn."]],x:"Tài liệu gốc ghi 'にしよ〜にちよ' là lỗi đánh máy, đúng là にせよ〜にせよ. Bản dùng một lần (いくら〜にせよ = dù có...) xem ở nhóm Trái ngược.",src:["M94","S10"]},
+{p:"〜といった",r:"といった",f:"N ＋ といった ＋ N",m:"Như là, chẳng hạn như (liệt kê ví dụ rồi gom lại).",tip:"Mẫu: AやBといったC. C là nhóm chung của A, B.",ex:[["この{学校|がっこう}には、ベトナムや{中国|ちゅうごく}[[といった]]アジアの{学生|がくせい}が{多|おお}い。","Trường này có nhiều học sinh châu Á như Việt Nam, Trung Quốc."],["{京都|きょうと}とか{鎌倉|かまくら}[[といった]]{古|ふる}い{町|まち}には{寺|てら}が{多|おお}い。","Những phố cổ như Kyoto hay Kamakura có rất nhiều chùa."]],src:["M21","S10"]},
+{p:"〜も〜ば〜も",r:"も〜ば〜も",f:"N も Vば／Aければ、N も",m:"Có... cũng có... ; vừa... vừa... (cùng chiều).",tip:"Hai nghĩa: liệt kê đối lập (người thích, người ghét) hoặc cộng dồn ({頭|あたま}もよければ{性格|せいかく}もいい).",ex:[["{本|ほん}を{読|よ}むのが{好|す}きな{人|ひと}[[も]]いれ[[ば]]、{嫌|きら}いな{人|ひと}[[も]]います。","Có người thích đọc sách, cũng có người ghét."],["{彼|かれ}は{頭|あたま}[[も]]よけれ[[ば]]、{性格|せいかく}[[も]]いい。","Anh ấy vừa thông minh vừa tốt tính."]],src:["M36"]},
+{p:"〜をはじめ(として)／〜をはじめとする",r:"をはじめ",f:"N ＋ をはじめ(として)／をはじめとする＋N",m:"Tiêu biểu là A, ngoài ra còn nhiều cái khác.",tip:"A là đại diện tiêu biểu nhất. Vế sau thường có từ số nhiều: いろいろ, {多|おお}く, みんな.",ex:[["この{体育館|たいいくかん}では{水泳|すいえい}[[をはじめ]]、いろいろなスポーツが{楽|たの}しめる。","Ở nhà thi đấu này có thể chơi nhiều môn, tiêu biểu là bơi lội."],["{日本|にほん}には「{桃太郎|ももたろう}」[[をはじめとする]]{昔話|むかしばなし}が{多|おお}い。","Nhật Bản có nhiều truyện cổ tích, tiêu biểu là 'Momotaro'."]],src:["S4"]},
+{p:"〜からして",r:"からして",f:"N ＋ からして",m:"Ngay từ (một chi tiết nhỏ) đã... thì những cái khác càng khỏi nói. Thường là đánh giá xấu.",tip:"Lấy một chi tiết nhỏ, không quan trọng (tên, tiêu đề, cách chào) để kết luận cho toàn thể.",ex:[["この{本|ほん}はタイトル[[からして]]つまらなさそうだ。","Cuốn sách này nhìn cái tựa đã thấy chán rồi."],["この{旅行|りょこう}の{計画|けいかく}には{無理|むり}がある。{出発時間|しゅっぱつじかん}[[からして]]{早|はや}すぎる。","Kế hoạch du lịch này có chỗ vô lý. Ngay giờ xuất phát đã quá sớm rồi."]],x:"Khác からすると (xét từ lập trường). からして = ngay cả chi tiết nhỏ.",src:["M103","S4"]},
+{p:"〜とか〜とか／〜し〜し",r:"とか〜とか／し〜し",f:"N／thể thường ＋ とか；thể thường ＋ し",m:"Như là... như là... ; vừa... vừa... (nêu lý do).",ex:[["{休|やす}みの{日|ひ}は{映画|えいが}[[とか]]{買|か}い{物|もの}[[とか]]に{行|い}く。","Ngày nghỉ tôi hay đi xem phim, mua sắm các kiểu."]],x:"Bản đời thường của やら〜やら và だの〜だの.",n3:1}
+]);
+
+G("bat-chap","Bất kể & tạm gác","Không phân biệt, không màng, khoan nói đến, bỏ qua",[
+{p:"〜を問わず",r:"をとわず",hv:"問 · VẤN → hỏi",f:"N ＋ を問わず",m:"Không phân biệt, bất kể (tuổi tác, giới tính, kinh nghiệm...).",tip:"Không hỏi (問わず) đến A. Vế trước là từ bao hàm nhiều loại ({年齢|ねんれい}, {国籍|こくせき}, {天候|てんこう}) hoặc cặp đối lập ({男女|だんじょ}, {昼夜|ちゅうや}, {有無|うむ}).",ex:[["{明日|あした}のパーティーは{年齢|ねんれい}[[を問わず]]、どなたでもご{参加|さんか}いただけます。","Bữa tiệc ngày mai ai cũng có thể tham gia, không phân biệt tuổi tác."],["この{仕事|しごと}は{経験|けいけん}の{有無|うむ}[[を問わず]]、{誰|だれ}でもできます。","Công việc này ai cũng làm được, dù có kinh nghiệm hay không."]],s:1,src:["M53","S11"]},
+{p:"〜にかかわらず／〜にかかわりなく",r:"にかかわらず",hv:"関わる · QUAN → liên quan",f:"N／Vる・Vない ＋ にかかわらず",m:"Không liên quan đến, bất kể A thế nào thì cũng như nhau.",tip:"Vế trước hay là cặp đối lập ({行|い}く{行|い}かない, {好|す}き{嫌|きら}い) hoặc từ chỉ mức độ ({距離|きょり}, {金額|きんがく}, {天候|てんこう}).",ex:[["{使|つか}う{使|つか}わない[[にかかわらず]]、{会場|かいじょう}にはマイクが{準備|じゅんび}してあります。","Dù có dùng hay không, hội trường đã chuẩn bị sẵn micro."],["このバスの{料金|りょうきん}は、{乗|の}った{距離|きょり}[[にかかわりなく]]{一律|いちりつ}200{円|えん}です。","Giá vé xe buýt này đồng giá 200 yên, bất kể đi xa hay gần."]],x:"BẪY LỚN: にかかわらず (bất kể) ≠ にもかかわらず (mặc dù). Thêm も là đổi nghĩa hoàn toàn.",s:1,src:["M46","S11"]},
+{p:"〜もかまわず",r:"もかまわず",hv:"構う · CẤU → để tâm",f:"N／Vる・Vている＋の ＋ もかまわず",m:"Chẳng màng đến, bất chấp (điều lẽ ra phải để ý).",tip:"{構|かま}う = để tâm. Vế sau là hành động khác thường, khiến người khác ngạc nhiên. Cụm hay gặp: {人目|ひとめ}もかまわず.",ex:[["あの{男|おとこ}は{人目|ひとめ}[[もかまわず]]、{電車|でんしゃ}の{中|なか}で{弁当|べんとう}を{食|た}べている。","Gã đàn ông đó chẳng màng ánh mắt người khác, ăn cơm hộp ngay trên tàu."],["{母|はは}は{人|ひと}を{待|ま}たせているの[[もかまわず]]、まだ{鏡|かがみ}の{前|まえ}で{化粧|けしょう}している。","Mẹ tôi mặc kệ người ta đang phải chờ, vẫn đứng trang điểm trước gương."]],x:"Không dùng cho ý chí, nguyện vọng của người nói. Thường nói về người khác với giọng phê phán.",s:1,src:["M56","S11"]},
+{p:"〜はともかく(として)／〜ならともかく",r:"はともかく",f:"N (＋trợ từ) ＋ はともかく",m:"A thì tạm chưa bàn, điều quan trọng hơn là B. ならともかく: nếu là A thì còn được, đằng này...",tip:"A cũng có vấn đề nhưng chưa phải trọng tâm, người nói muốn nhấn vào B.",ex:[["{彼女|かのじょ}の{料理|りょうり}は{見|み}た{目|め}[[はともかく]]、{味|あじ}は{美味|おい}しい。","Món cô ấy nấu thì vẻ ngoài khoan bàn, nhưng vị rất ngon."],["{子供|こども}[[ならともかく]]、{大人|おとな}がそんなことをするなんて。","Trẻ con thì còn được, người lớn mà lại làm thế sao."]],s:1,src:["M35","S11"]},
+{p:"〜はさておき",r:"はさておき",hv:"扨置く → gác sang một bên",f:"N (＋trợ từ) ＋ はさておき",m:"Tạm gác A sang một bên, hãy bắt đầu từ B (điều cơ bản, quan trọng hơn).",tip:"Hay dùng để chuyển chủ đề: {冗談|じょうだん}はさておき (thôi đùa nhé, vào việc).",ex:[["どんな{家|いえ}がいいか[[はさておき]]、どの{地域|ちいき}に{引|ひ}っ{越|こ}したいかを{考|かんが}えよう。","Nhà thế nào thì tạm gác, trước hết hãy nghĩ xem muốn chuyển đến khu nào."],["{冗談|じょうだん}[[はさておき]]、{次回|じかい}のミーティングのテーマを{決|き}めましょう。","Thôi đùa đủ rồi, ta quyết định chủ đề buổi họp tới nào."]],x:"はともかく: A vẫn có thể được bình luận. はさておき: dứt khoát gác A lại để làm B trước.",src:["S11"]},
+{p:"〜抜き(で)／〜抜きにして／〜を抜きにしては",r:"ぬき",hv:"抜 · BẠT → rút ra",f:"N ＋ 抜きで／を抜きにして",m:"(1) Bỏ qua A, không có A. (2) を抜きにしては〜ない: nếu không có A thì không thể B.",tip:"{抜|ぬ}く = rút ra. Nghĩa (2) dùng để đánh giá cao A: thiếu A là không xong.",ex:[["{冗談|じょうだん}は[[抜きにして]]、そろそろ{本題|ほんだい}に{入|はい}りましょう。","Bỏ chuyện đùa đi, vào việc chính thôi."],["ボランティアの{人|ひと}たちの{助|たす}け[[を抜きにしては]]、この{計画|けいかく}は{無理|むり}だと{思|おも}う。","Không có sự giúp đỡ của các tình nguyện viên thì kế hoạch này không thể thực hiện."]],src:["M23","S15"]},
+{p:"〜ことなく",r:"ことなく",f:"Vる ＋ ことなく",m:"Mà không... (không làm A mà vẫn làm B). Văn viết.",tip:"= 〜ないで／〜ずに (N3) bản văn viết. Hay đi với: {休|やす}むことなく, {諦|あきら}めることなく.",ex:[["{同僚|どうりょう}は{誰|だれ}にも{相談|そうだん}する[[ことなく]]、{会社|かいしゃ}を{辞|や}めてしまった。","Đồng nghiệp tôi nghỉ việc mà không hỏi ý ai."],["{彼|かれ}は{一日|いちにち}も{休|やす}む[[ことなく]]{練習|れんしゅう}を{続|つづ}けた。","Anh ấy luyện tập liên tục không nghỉ ngày nào."]],src:["M4"]},
+{p:"〜ずに／〜ないで",r:"ずに／ないで",f:"Vない ＋ で／Vない(bỏ ない) ＋ ずに",m:"Mà không...",ex:[["{朝|あさ}ご{飯|はん}を{食|た}べ[[ずに]]{学校|がっこう}へ{行|い}った。","Tôi đi học mà không ăn sáng."]],x:"ことなく là bản văn viết, trang trọng hơn.",n3:1},
+{p:"〜に関係なく",r:"にかんけいなく",f:"N ＋ に関係なく",m:"Không liên quan đến, bất kể.",ex:[["{天気|てんき}[[に関係なく]]、{試合|しあい}は{行|おこな}われる。","Trận đấu vẫn diễn ra bất kể thời tiết."]],x:"Bản dễ của にかかわらず và を問わず.",n3:1}
+]);
+
+G("trai-nguoc","Trái ngược & nhượng bộ","Mặc dù, tuy... nhưng, dù có... cũng, so với",[
+{p:"〜にもかかわらず",r:"にもかかわらず",f:"N／thể thường (Naである／Nである) ＋ にもかかわらず",m:"Mặc dù... nhưng (kết quả trái với dự đoán, cảm giác bất ngờ hoặc bất mãn).",tip:"も = 'ngay cả': ngay cả có liên quan đến A thì vẫn B. Văn viết, trang trọng hơn のに.",ex:[["{一生懸命|いっしょうけんめい}{勉強|べんきょう}した[[にもかかわらず]]、{行|い}きたかった{大学|だいがく}の{試験|しけん}に{落|お}ちてしまった。","Mặc dù đã học hết sức nhưng tôi vẫn trượt trường đại học mong muốn."],["{先生|せんせい}はお{忙|いそが}しい[[にもかかわらず]]、{快|こころよ}く{僕|ぼく}のレポートをチェックしてくださった。","Dù bận nhưng thầy vẫn vui vẻ kiểm tra báo cáo cho em."]],x:"Đừng nhầm với にかかわらず (bất kể). Vế sau không dùng ý chí, mệnh lệnh.",s:1,src:["M47","S14"]},
+{p:"〜ものの／〜とはいうものの",r:"ものの",f:"Thể thường (Naな／Naである) ＋ ものの",m:"Tuy... nhưng (thực tế không như lẽ ra phải thế).",tip:"A là sự thật đã xảy ra, B là kết quả không như mong đợi. とはいうものの = tuy nói vậy nhưng.",ex:[["{東京大学|とうきょうだいがく}を{卒業|そつぎょう}した[[ものの]]、{就職難|しゅうしょくなん}で{仕事|しごと}が{見|み}つからない。","Tuy tốt nghiệp Đại học Tokyo nhưng vì thị trường khó khăn nên vẫn chưa tìm được việc."],["{手術|しゅじゅつ}は{成功|せいこう}した[[とはいうものの]]、まだ{心配|しんぱい}だ。","Ca mổ thành công là vậy nhưng tôi vẫn còn lo."]],x:"Vế sau không dùng ý chí, mệnh lệnh. Khác ものなら (nếu có thể) và もので (vì).",s:1,src:["M5","S14"]},
+{p:"〜ながら(も)",r:"ながら(も)",f:"Vます／Aい／Na／N ＋ ながら(も)",m:"Tuy... nhưng (trạng thái trái với điều suy ra).",tip:"Đi với trạng thái: {狭|せま}いながらも, {子供|こども}ながら, {残念|ざんねん}ながら. Câu cố định: {狭|せま}いながらも{楽|たの}しい{我|わ}が{家|や}.",ex:[["{子供|こども}たちは{文句|もんく}を{言|い}い[[ながらも]]、{後片付|あとかたづ}けを{手伝|てつだ}ってくれた。","Bọn trẻ tuy càu nhàu nhưng vẫn giúp dọn dẹp."],["{毎日|まいにち}この{道|みち}を{通|とお}り[[ながら]]、ここにこんな{素敵|すてき}な{店|みせ}があるとは{気|き}がつかなかった。","Ngày nào cũng đi qua con đường này mà tôi không hề để ý có cửa hàng đẹp thế này."]],x:"Phân biệt với ながら N4 (vừa... vừa...). Nhìn ngữ cảnh: hai vế trái ngược thì là 'tuy... nhưng'.",src:["M15","S14"]},
+{p:"〜つつ(も)",r:"つつ(も)",f:"Vます ＋ つつ(も)",m:"Tuy biết, tuy nghĩ... nhưng vẫn (làm khác với suy nghĩ trong lòng).",tip:"Hay đi với động từ suy nghĩ, nhận thức: {知|し}りつつ, {思|おも}いつつ, {悪|わる}いと{分|わ}かりつつ.",ex:[["{体|からだ}に{良|よ}くないと{思|おも}い[[つつも]]、{毎日|まいにち}インスタント{食品|しょくひん}ばかり{食|た}べている。","Tuy nghĩ là không tốt cho sức khỏe nhưng ngày nào tôi cũng toàn ăn đồ ăn liền."],["{危険|きけん}だと{知|し}り[[つつ]]、{山道|やまみち}を{登|のぼ}り{続|つづ}けた。","Dù biết là nguy hiểm, tôi vẫn tiếp tục leo đường núi."]],x:"つつ đơn thuần = vừa... vừa (nhóm Biến đổi). Có thêm も hoặc hai vế mâu thuẫn thì là 'tuy... nhưng'.",s:1,src:["S14"]},
+{p:"〜といっても",r:"といっても",f:"N／thể thường ＋ といっても",m:"Nói là... nhưng thực ra (mức độ không như người ta tưởng).",tip:"Hạ thấp kỳ vọng: 'nói là biết nấu ăn nhưng chỉ món đơn giản thôi'.",ex:[["{日本語|にほんご}ができる[[といっても]]、{読|よ}んだり{書|か}いたりはできない。","Nói là biết tiếng Nhật nhưng tôi không đọc viết được."],["{料理|りょうり}ができる[[といっても]]、{簡単|かんたん}なものだけです。","Nói là biết nấu ăn nhưng chỉ món đơn giản thôi."]],src:["M91","S14"]},
+{p:"〜たところで",r:"たところで",f:"Vた ＋ ところで",m:"Dù có... thì cũng (vô ích, không được gì).",tip:"Vế sau luôn là kết quả tiêu cực, vô nghĩa: {無駄|むだ}だ, {遅|おそ}い, 〜ない. Hay đi với いくら, どんなに, {今更|いまさら}.",ex:[["{今更|いまさら}{後悔|こうかい}した[[ところで]]、もう{遅|おそ}いよ。","Giờ có hối hận thì cũng muộn rồi."],["いくら{頼|たの}んだ[[ところで]]、{彼|かれ}はお{金|かね}を{貸|か}してくれないだろう。","Dù có nhờ bao nhiêu thì anh ta cũng chẳng cho vay đâu."]],x:"BẪY: たところ (thử làm thì kết quả là...) khác hẳn たところで (dù có... cũng vô ích). Chỉ khác một chữ で.",s:1,src:["M60"]},
+{p:"〜にしては",r:"にしては",f:"N／thể thường ＋ にしては",m:"So với (một sự thật cụ thể) thì... lại khác với dự đoán.",tip:"Vế trước là một sự thật cụ thể: {新入社員|しんにゅうしゃいん}, 2{月|がつ}, 1000{円|えん}, {初|はじ}めて.",ex:[["{彼|かれ}は{新入社員|しんにゅうしゃいん}[[にしては]]、{電話応対|でんわおうたい}が{上手|じょうず}だ。","So với một nhân viên mới thì anh ấy nghe điện thoại rất giỏi."],["{今日|きょう}は2{月|がつ}[[にしては]]{暖|あたた}かかった。","Hôm nay ấm so với tháng Hai."]],x:"わりに đi với từ có tính mức độ (年齢, 値段). にしては đi với sự thật cụ thể (một con số, một tư cách).",s:1,src:["M33","S19"]},
+{p:"〜わりに(は)",r:"わりに(は)",hv:"割 · CÁT → tỉ lệ",f:"Nの／thể thường (Naな) ＋ わりに",m:"So với (mức độ của A) thì B không tương xứng.",tip:"割 = tỉ lệ: so tỉ lệ thì không cân xứng. Vế trước: {年齢|ねんれい}, {値段|ねだん}, {量|りょう}, よく{食|た}べる.",ex:[["このお{菓子|かし}は{値段|ねだん}の[[わりに]]{量|りょう}が{少|すく}ない。","Bánh này so với giá thì ít quá."],["{彼|かれ}はよく{食|た}べる[[わりに]]{太|ふと}らない。","Anh ấy ăn nhiều mà không béo."]],n3:1,src:["S19"]},
+{p:"〜一方(で)",r:"いっぽう(で)",f:"Thể thường (Naな／Naである／Nである) ＋ 一方(で)",m:"Mặt khác, trong khi đó (so sánh hai mặt).",tip:"Hai mặt của một vấn đề, hoặc hai đối tượng đối lập: 〜{人|ひと}がいる{一方|いっぽう}で、〜{人|ひと}もいる.",ex:[["{田舎暮|いなかぐ}らしに{憧|あこが}れる{男性|だんせい}がいる[[一方で]]、{都会|とかい}の{方|ほう}がいいという{男性|だんせい}もいる。","Có những người đàn ông mơ sống ở quê, mặt khác cũng có người thích thành phố hơn."],["{彼|かれ}は{厳|きび}しい[[一方で]]、{優|やさ}しいところもある。","Anh ấy nghiêm khắc nhưng mặt khác cũng có lúc dịu dàng."]],x:"Vる一方だ (ngày càng) khác 〜一方で (mặt khác). Cuối câu だ thì là 'ngày càng'; giữa câu で thì là 'mặt khác'.",src:["M27"]},
+{p:"〜としても",r:"としても",f:"Thể thường ＋ としても",m:"Cho dù (giả sử) có... thì cũng...",tip:"Vế trước chỉ là giả định. Hay đi với たとえ: たとえ〜としても.",ex:[["{親元|おやもと}を{離|はな}れる[[としても]]、できるだけ{親|おや}の{近|ちか}くに{住|す}む{方|ほう}がいい。","Cho dù có rời xa bố mẹ thì cũng nên sống càng gần càng tốt."],["たとえ{反対|はんたい}された[[としても]]、{私|わたし}は{留学|りゅうがく}する。","Dù có bị phản đối thì tôi vẫn đi du học."]],src:["S15"]},
+{p:"〜にしても／〜にしろ／〜にせよ",r:"にしても／にしろ／にせよ",f:"N／thể thường (Naである／Nである) ＋ にせよ",m:"Dù là... thì cũng... (vế trước có thể là giả định hoặc sự thật).",tip:"Hay đi với từ để hỏi: {何|なに}をするにせよ, いくら〜にせよ. Vế sau là đánh giá, phán đoán của người nói.",ex:[["いくら{大好物|だいこうぶつ}[[にせよ]]、{食|た}べ{過|す}ぎると{飽|あ}きる。","Món khoái khẩu đến mấy mà ăn nhiều quá cũng ngán."],["{何|なに}をする[[にせよ]]、{心|こころ}を{込|こ}めて{取|と}り{組|く}みたい。","Dù làm gì đi nữa tôi cũng muốn làm bằng cả tấm lòng."]],x:"としても: chỉ là giả định. にせよ: cả giả định lẫn sự thật.",s:1,src:["M94","S15"]},
+{p:"〜(に)は〜が／〜ことは〜が",r:"(に)は〜が／ことは〜が",f:"Aは A だが／Vことは Vが",m:"... thì đúng là... thật, nhưng mà (có vấn đề).",tip:"Lặp lại cùng một từ: {便利|べんり}は{便利|べんり}だが, {行|い}くことは{行|い}くけど. Shinkanzen có thêm dạng 〜といえば〜が.",ex:[["この{道具|どうぐ}は{便利|べんり}[[は]]{便利|べんり}[[だが]]、{高|たか}すぎて{売|う}れないだろう。","Dụng cụ này tiện thì có tiện thật, nhưng đắt quá chắc khó bán."],["{今|いま}のアパートは{駅|えき}から{遠|とお}いので、{不便|ふべん}[[といえば]]{不便|ふべん}[[ですが]]、{静|しず}かでいいですよ。","Căn hộ bây giờ xa ga nên bất tiện thì đúng là bất tiện thật, nhưng yên tĩnh nên cũng tốt."]],src:["M102","S13"]},
+{p:"〜のに",r:"のに",f:"Thể thường (Naな／Nな) ＋ のに",m:"Mặc dù... vậy mà (cảm xúc tiếc nuối, bất mãn mạnh).",ex:[["{約束|やくそく}した[[のに]]、{彼|かれ}は{来|こ}なかった。","Đã hẹn rồi vậy mà anh ấy không đến."]],x:"にもかかわらず là bản văn viết, ít cảm xúc hơn.",n3:1},
+{p:"〜くせに",r:"くせに",f:"Thể thường (Naな／Nの) ＋ くせに",m:"Đã... vậy mà còn (chê trách, khinh thường).",ex:[["{知|し}らない[[くせに]]、{知|し}っているふりをする。","Không biết mà cứ làm như biết."]],x:"Giống のに nhưng mang ý chê bai người khác. Không dùng cho bản thân.",n3:1},
+{p:"〜ても／〜たって",r:"ても／たって",f:"Vて／Aくて ＋ も",m:"Dù... cũng...",ex:[["いくら{呼|よ}ん[[でも]]、{返事|へんじ}がない。","Gọi mãi mà không thấy trả lời."]],x:"Bản đời thường của としても, たところで.",n3:1}
+]);
+
+G("gia-dinh","Giả định & điều kiện","Nếu, giả sử, chỉ cần, nếu không... thì không",[
+{p:"〜としたら／〜とすれば／〜とすると",r:"としたら",f:"Thể thường ＋ としたら",m:"Nếu giả sử (giả định mạnh, có thể không có thật).",tip:"Hay đi với もし: もし〜としたら. Hợp với câu hỏi 'nếu được... thì bạn sẽ...'.",ex:[["{無人島|むじんとう}に{一|ひと}つだけ{持|も}っていける[[としたら]]、{何|なに}を{持|も}っていきたいですか。","Nếu được mang một thứ ra đảo hoang, bạn muốn mang gì?"],["{彼|かれ}の{話|はなし}が{本当|ほんとう}だ[[とすれば]]、{大変|たいへん}なことになる。","Nếu chuyện anh ta kể là thật thì to chuyện rồi."]],x:"とすると, となると: vế sau không dùng ý chí, nguyện vọng của người nói.",src:["S15"]},
+{p:"〜となったら／〜となれば／〜となると",r:"となると",f:"N／thể thường ＋ となると",m:"Nếu thực sự (đến mức) như thế thì... ; Nのこととなると: hễ cứ động đến... là...",tip:"Giả định có khả năng xảy ra thật, khác としたら (giả định mạnh). Nのこととなると: thái độ thay đổi hẳn mỗi khi nhắc đến chủ đề đó.",ex:[["{引|ひ}っ{越|こ}す[[となると]]、かなりのお{金|かね}がかかる。","Nếu mà chuyển nhà thật thì sẽ tốn khá nhiều tiền."],["{弟|おとうと}は{車|くるま}のこと[[となると]]、{急|きゅう}に{専門家|せんもんか}みたいになる。","Em trai tôi hễ nói đến ô tô là bỗng như chuyên gia."]],src:["S15","S13"]},
+{p:"〜ものなら",r:"ものなら",f:"V可能形 ＋ ものなら",m:"Nếu (mà) có thể... thì muốn (điều khó thực hiện).",tip:"Vế trước là thể khả năng ({戻|もど}れる, できる). Vế sau là nguyện vọng: 〜たい. Câu thách thức: やれるものならやってみろ.",ex:[["{戻|もど}れる[[ものなら]]、20{年前|ねんまえ}に{戻|もど}って{人生|じんせい}をやり{直|なお}したい。","Nếu có thể quay lại, tôi muốn trở về 20 năm trước để làm lại cuộc đời."],["やれる[[ものなら]]、やってみろよ。","Làm được thì làm thử xem nào."]],x:"Hai mẫu ものなら khác hẳn nhau. V可能形＋ものなら = 'nếu có thể'. Vよう＋ものなら = 'lỡ mà... thì toi'.",s:1,src:["M66","S15"]},
+{p:"〜(よ)うものなら",r:"(よ)うものなら",f:"Vよう (意向形) ＋ ものなら",m:"Lỡ mà... thì (hậu quả nghiêm trọng).",tip:"Cảnh báo: 'chỉ cần lỡ... là toi'. Vế sau là hậu quả xấu chắc chắn xảy ra.",ex:[["{彼女|かのじょ}との{記念日|きねんび}を{忘|わす}れ[[ようものなら]]、1{週間|しゅうかん}は{口|くち}を{利|き}いてもらえないだろう。","Lỡ mà quên ngày kỷ niệm với cô ấy thì chắc một tuần cô ấy không thèm nói chuyện."],["{運転中|うんてんちゅう}に{一瞬|いっしゅん}でもよそ{見|み}をし[[ようものなら]]、{事故|じこ}を{起|お}こすぞ。","Đang lái xe mà lơ đễnh dù một giây thôi là gây tai nạn đấy."]],s:1,src:["M66","S15"]},
+{p:"〜ないことには",r:"ないことには",f:"Vない／Aくない／Naでない／Nでない ＋ ことには",m:"Nếu không (có) A thì không thể B.",tip:"Vế sau luôn là phủ định: できない, {始|はじ}まらない, わからない. Câu quen: やってみないことにはわからない.",ex:[["{彼|かれ}が{来|こ}ない[[ことには]]、{会議|かいぎ}を{始|はじ}めることができない。","Anh ấy chưa đến thì không thể bắt đầu cuộc họp."],["{実際|じっさい}にやってみ[[ないことには]]、うまくいくかどうかわからない。","Chưa làm thử thực tế thì không biết có ổn hay không."]],x:"Giống てからでないと. Khác ないかぎり ở chỗ ないことには nhấn mạnh A là điều kiện cần.",s:1,src:["M64","S15"]},
+{p:"〜さえ〜ば／〜さえ〜たら",r:"さえ〜ば",f:"Nさえ／Vますさえすれば／Aくさえあれば ＋ ば",m:"Chỉ cần... là (đủ, không cần gì khác).",tip:"Điều kiện tối thiểu. Mẫu với động từ: Vますさえすれば; Vてさえいれば.",ex:[["{後|あと}は{肉|にく}[[さえ]]{焼|や}け[[ば]]、{夕食|ゆうしょく}の{準備|じゅんび}は{終|お}わりだ。","Giờ chỉ cần nướng thịt nữa là xong bữa tối."],["{体|からだ}[[さえ]]{丈夫|じょうぶ}[[なら]]、ほかに{望|のぞ}むことはない。","Chỉ cần khỏe mạnh là tôi không mong gì hơn."]],x:"さえ còn nghĩa 'ngay cả' (nhóm Mức độ). Có ば, たら, なら đi kèm thì là 'chỉ cần'.",src:["M16","S21"]},
+{p:"〜ば／〜たら／〜なら／〜と",r:"ば／たら／なら／と",f:"Các thể điều kiện cơ bản",m:"Nếu...",ex:[["{安|やす}けれ[[ば]]{買|か}います。","Nếu rẻ thì tôi mua."]],x:"Các mẫu N2 trong nhóm này đều là bản 'nâng cao' về sắc thái của ば／たら／なら.",n3:1}
+]);
+
+G("nguyen-nhan","Nguyên nhân & lý do","Vì, chính vì, chỉ vì, đã... thì",[
+{p:"〜からには／〜以上(は)／〜上は",r:"からには／いじょう(は)／うえは",f:"Thể thường ＋ からには／以上は; Vる・Vた ＋ 上は",m:"Một khi đã... thì (đương nhiên phải, nhất định sẽ).",tip:"Đã chọn A thì phải chịu trách nhiệm đến cùng. Vế sau là quyết tâm, nghĩa vụ: 〜なければならない, 〜つもりだ, 〜べきだ, 〜てみせる.",ex:[["{留学|りゅうがく}すると{決心|けっしん}した[[上は]]、{必|かなら}ず{成果|せいか}を{出|だ}して{見|み}せる。","Một khi đã quyết đi du học thì nhất định tôi sẽ tạo ra thành quả."],["{約束|やくそく}した[[以上]]、{守|まも}らなければならない。","Đã hứa thì phải giữ lời."],["{試合|しあい}に{出|で}る[[からには]]、{勝|か}ちたい。","Đã ra sân thi đấu thì muốn thắng."]],x:"Vế sau BẮT BUỘC có ý chí, nghĩa vụ. 上は là trang trọng nhất. Xem bảng 'Họ 上'.",s:1,src:["M11","S17"]},
+{p:"〜だけに",r:"だけに",f:"N／thể thường (Naな) ＋ だけに",m:"Chính vì... nên (càng) — kết quả tương xứng với lý do.",tip:"Kết quả có thể tốt hoặc xấu. Dạng hay ra đề: 〜ていただけに (chính vì đã kỳ vọng nên càng...).",ex:[["{山下|やました}さんは{日本語|にほんご}を20{年|ねん}{教|おし}えている[[だけに]]、{教|おし}え{方|かた}がとても{上手|じょうず}だ。","Chính vì đã dạy tiếng Nhật 20 năm nên cô Yamashita dạy rất giỏi."],["{期待|きたい}していた[[だけに]]、{不合格|ふごうかく}のショックは{大|おお}きかった。","Chính vì đã kỳ vọng nhiều nên cú sốc thi trượt càng lớn."]],x:"だけあって luôn tích cực (khen). だけに dùng được cả tích cực lẫn tiêu cực. Không dùng để mời, rủ.",s:1,src:["M69","S17"]},
+{p:"〜だけあって／〜だけのことはある",r:"だけあって",f:"N／thể thường (Naな) ＋ だけあって",m:"Quả đúng là... có khác (đánh giá cao, xứng đáng).",tip:"Câu khen: さすが〜だけあって. だけのことはある đứng cuối câu: đúng là đáng đồng tiền.",ex:[["この{場所|ばしょ}は{有名|ゆうめい}な[[だけあって]]、たくさんの{観光客|かんこうきゃく}が{来|き}ている。","Quả là nơi nổi tiếng có khác, rất đông khách du lịch."],["すばらしい{部屋|へや}だ。{家賃|やちん}が{高|たか}い[[だけのことはある]]。","Căn phòng tuyệt quá. Đúng là đáng với giá thuê cao."]],s:1,src:["M70","S19"]},
+{p:"〜ばかりに",r:"ばかりに",f:"Thể thường (Naな／Naである／Nである) ＋ ばかりに",m:"Chỉ vì (một lý do nhỏ) mà dẫn đến kết quả xấu, đáng tiếc.",tip:"Giọng hối hận. Dạng 〜たいばかりに: chỉ vì muốn... mà chịu vất vả (kết quả không nhất thiết xấu).",ex:[["{手|て}を{洗|あら}わずにハンバーガーを{食|た}べた[[ばかりに]]、お{腹|なか}を{壊|こわ}してしまった。","Chỉ vì ăn hamburger mà không rửa tay nên tôi bị đau bụng."],["{彼女|かのじょ}に{会|あ}いたい[[ばかりに]]、はるばる{日本|にほん}からやってきた。","Chỉ vì muốn gặp cô ấy mà tôi lặn lội từ Nhật sang."]],x:"Vế sau không phải ý chí, nguyện vọng.",s:1,src:["M58","S17"]},
+{p:"〜あまり／〜あまりの〜に",r:"あまり",hv:"余り · DƯ → thừa, quá",f:"Nの／Vる・Vた ＋ あまり; あまりの＋N＋に",m:"Vì quá... nên (dẫn đến kết quả bất thường, thường xấu).",tip:"Vế trước là cảm xúc, trạng thái ({緊張|きんちょう}, {心配|しんぱい}, {悲|かな}しみ). Dạng あまりの{暑|あつ}さに = vì nóng quá.",ex:[["{緊張|きんちょう}の[[あまり]]、{上手|じょうず}にプレゼンテーションができなかった。","Vì quá hồi hộp nên tôi thuyết trình không tốt."],["10{年|ねん}ぶりに{会|あ}った{兄|あに}の[[あまりの]]{変化|へんか}[[に]]、{言葉|ことば}が{出|で}なかった。","Gặp lại anh trai sau 10 năm, thấy anh thay đổi quá nhiều tôi không nói nên lời."]],x:"Vế sau không phải ý chí, nguyện vọng của người nói.",s:1,src:["M48","S16"]},
+{p:"〜ことだから",r:"ことだから",f:"Nの ＋ ことだから",m:"Vì là (người đó, vốn tính như thế) nên chắc là...",tip:"Đi với người quen biết rõ tính cách. Vế sau là suy đoán: きっと〜だろう.",ex:[["{朝寝坊|あさねぼう}の{彼|かれ}の[[ことだから]]、{今日|きょう}も{遅|おく}れてくるだろう。","Anh ta vốn hay ngủ nướng, chắc hôm nay cũng đến muộn thôi."],["{頑張|がんば}り{屋|や}のAさんの[[ことだから]]、きっといい{点|てん}を{取|と}るよ。","Anh A vốn chăm chỉ, chắc chắn sẽ được điểm cao."]],s:1,src:["M2","S17"]},
+{p:"〜ことだし",r:"ことだし",f:"Thể thường (Naな／Nの・Nである) ＋ ことだし",m:"Vì (lý do này, cũng còn lý do khác) nên... (rủ rê, quyết định).",tip:"Nhẹ nhàng, văn nói. Vế sau là ý chí, lời rủ: 〜よう, 〜ない?",ex:[["{来週|らいしゅう}はお{客様|きゃくさま}が{来|く}る[[ことだし]]、{家|いえ}の{中|なか}を{大掃除|おおそうじ}しなくちゃ。","Tuần sau có khách đến nên phải tổng vệ sinh nhà cửa thôi."],["{明日|あした}はお{父|とう}さんも{休|やす}みの[[ことだし]]、みんなで{買|か}い{物|もの}にでも{行|い}かない？","Mai bố cũng được nghỉ, cả nhà đi mua sắm không?"]],src:["S17"]},
+{p:"〜もので／〜ものだから／〜もの",r:"もので／ものだから",f:"Thể thường (Naな／Nな) ＋ もので",m:"Vì... (giải thích, bao biện lý do cá nhân). Văn nói.",tip:"Dùng khi xin lỗi, thanh minh. もの, もん cuối câu là kiểu nói của trẻ con, phụ nữ: だって{眠|ねむ}いんだもん.",ex:[["このところ{忙|いそが}しかった[[もので]]、お{返事|へんじ}が{遅|おく}れてしまいました。","Dạo này bận quá nên tôi trả lời muộn, xin lỗi."],["あの{人|ひと}の{話|はなし}はよくわからないよ。{言葉|ことば}が{難|むずか}しいんだ[[もの]]。","Người đó nói tôi chẳng hiểu gì. Từ ngữ khó quá mà."]],x:"Vế sau không phải mệnh lệnh, ý chí. Tài liệu gốc ghi 'ものながら' là lỗi, đúng là ものだから.",src:["S16"]},
+{p:"〜ことから",r:"ことから",f:"Thể thường (Naな／Naである／Nである) ＋ ことから",m:"Từ việc..., do... (căn cứ để phán đoán, nguồn gốc tên gọi).",tip:"Hay dùng giải thích nguồn gốc tên: 〜ことから「〜」と{呼|よ}ばれている.",ex:[["この{町|まち}は{富士山|ふじさん}がよく{見|み}える[[ことから]]、「{富士見町|ふじみちょう}」と{呼|よ}ばれている。","Thị trấn này được gọi là 'Fujimi-cho' vì nhìn thấy núi Phú Sĩ rất rõ."],["{現場|げんば}に{足跡|あしあと}が{残|のこ}っていた[[ことから]]、{犯人|はんにん}は{男性|だんせい}だとわかった。","Từ dấu chân để lại hiện trường, đã biết thủ phạm là đàn ông."]],src:["M61"]},
+{p:"〜につき",r:"につき",f:"N ＋ につき",m:"(1) Vì (lý do, dùng trong thông báo). (2) Mỗi (tỉ lệ).",tip:"Nghĩa (1) gặp trên biển báo: {工事中|こうじちゅう}につき, {祝日|しゅくじつ}につき. Nghĩa (2) đi với con số: 1{人|ひとり}につき.",ex:[["{本日|ほんじつ}は{祝日|しゅくじつ}[[につき]]、{休館|きゅうかん}いたします。","Hôm nay là ngày lễ nên chúng tôi đóng cửa."],["{手数料|てすうりょう}は{書類|しょるい}1{通|つう}[[につき]]300{円|えん}です。","Phí là 300 yên cho mỗi bản giấy tờ."]],x:"Khác につけ (mỗi khi... thì cảm xúc).",src:["M28","S16"]},
+{p:"〜次第です (lý do)",r:"しだいです",f:"Vた／Vている ＋ 次第です",m:"Vì... nên (tôi đã...) — giải thích lý do, rất trang trọng.",tip:"Gặp trong thư xin việc, email công việc: 〜と{思|おも}い、ご{連絡|れんらく}した{次第|しだい}です.",ex:[["{御社|おんしゃ}の{理念|りねん}に{共感|きょうかん}し、{応募|おうぼ}した[[次第です]]。","Vì đồng cảm với triết lý của quý công ty nên tôi đã ứng tuyển."]],src:["M86"]},
+{p:"〜によって／〜による (nguyên nhân, phương tiện)",r:"によって",f:"N ＋ によって／による＋N",m:"Do, bởi (nguyên nhân); bằng (phương tiện).",ex:[["{会長|かいちょう}が{交替|こうたい}したこと[[によって]]、{会|かい}の{雰囲気|ふんいき}が{大|おお}きく{変|か}わった。","Do thay chủ tịch mà không khí hội thay đổi hẳn."],["{電話|でんわ}[[による]]お{問|と}い{合|あ}わせは{受|う}け{付|つ}けておりません。","Chúng tôi không nhận thắc mắc qua điện thoại."]],x:"Nghĩa 'bằng phương tiện' khó dùng với đồ dùng cá nhân hằng ngày (×ペンによって{書|か}く), nhưng dùng được khi bổ nghĩa cho danh từ (電話による).",n3:1,src:["S16"]},
+{p:"〜おかげで／〜せいで",r:"おかげで／せいで",f:"Nの／thể thường (Naな) ＋ おかげで／せいで",m:"Nhờ... (kết quả tốt) ／ Tại... (kết quả xấu).",ex:[["{先生|せんせい}の[[おかげで]]、{大学|だいがく}に{合格|ごうかく}できました。","Nhờ thầy mà em đỗ đại học."],["{気温|きおん}が{低|ひく}い{日|ひ}が{多|おお}かった[[せいで]]、{桜|さくら}の{開花|かいか}が{遅|おそ}い。","Tại nhiều ngày lạnh nên hoa anh đào nở muộn."]],x:"So với ばかりに (N2): ばかりに nhấn mạnh 'chỉ vì một chuyện nhỏ' và sự hối hận.",n3:1,src:["S16"]},
+{p:"〜ため(に)",r:"ため(に)",f:"Nの／thể thường ＋ ため(に)",m:"Vì (nguyên nhân); để (mục đích).",ex:[["{大雨|おおあめ}の[[ため]]、{電車|でんしゃ}が{止|と}まった。","Vì mưa lớn nên tàu dừng chạy."]],x:"Bản trung tính của cả nhóm nguyên nhân.",n3:1}
+]);
+
+G("ket-qua","Kết quả & kết cục","Rốt cuộc, sau một hồi, suýt nữa, rốt cuộc không",[
+{p:"〜あげく(に)",r:"あげく",hv:"挙句 · CỬ CÚ",f:"Nの／Vた ＋ あげく",m:"Sau một hồi (vất vả, kéo dài) thì rốt cuộc... (kết quả XẤU).",tip:"Nhớ 'あげく = rốt cuộc ăn hành'. Hay đi với さんざん, {長時間|ちょうじかん}, {悩|なや}んだ.",ex:[["{人気|にんき}のラーメン{店|てん}に2{時間|じかん}も{並|なら}んだ[[あげく]]、{売|う}り{切|き}れで{食|た}べられなかった。","Xếp hàng tận 2 tiếng ở quán ramen nổi tiếng, rốt cuộc hết hàng không được ăn."],["さんざん{悩|なや}んだ[[あげく]]、{国|くに}へ{帰|かえ}ることにした。","Đắn đo mãi, rốt cuộc tôi quyết định về nước."]],x:"末に cũng là 'sau một hồi' nhưng kết quả trung tính hoặc tốt. あげく thì kết quả xấu, đáng tiếc.",s:1,src:["M43","S20"]},
+{p:"〜末(に)",r:"すえ(に)",hv:"末 · MẠT → cuối",f:"Nの／Vた ＋ 末(に)",m:"Sau một thời gian dài (cân nhắc, nỗ lực) thì cuối cùng... (đi đến kết quả, quyết định).",tip:"末 = cuối cùng ({週末|しゅうまつ}, {年末|ねんまつ}). Kết quả thường tốt hoặc là một quyết định.",ex:[["さんざん{検討|けんとう}した[[末に]]{出|だ}した{結論|けつろん}ですので、{後悔|こうかい}はありません。","Đây là kết luận đưa ra sau khi cân nhắc rất kỹ, nên tôi không hối hận."],["{長|なが}い{話|はな}し{合|あ}いの[[末]]、Aの{案|あん}を{採用|さいよう}することになった。","Sau cuộc bàn bạc dài, cuối cùng phương án A được chọn."]],s:1,src:["M51","S20"]},
+{p:"〜たところ",r:"たところ",f:"Vた ＋ ところ",m:"Thử làm A thì (phát hiện ra) kết quả là B.",tip:"Sự việc xảy ra một lần trong quá khứ. Nhấn vào kết quả hơn 〜たら…た.",ex:[["2、3{日|にち}{休|やす}みたいと{課長|かちょう}に{相談|そうだん}した[[ところ]]、2{週間|しゅうかん}{休|やす}んでもいいと{言|い}われた。","Tôi xin trưởng phòng nghỉ 2, 3 ngày thì được bảo nghỉ hẳn 2 tuần cũng được."],["{連絡|れんらく}が{取|と}れないのでAさんの{家|いえ}へ{行|い}ってみた[[ところ]]、{病気|びょうき}で{寝|ね}ていた。","Không liên lạc được nên tôi thử đến nhà A, thì thấy anh ấy ốm nằm bẹp."]],x:"Khác たところで (dù có... cũng vô ích).",src:["S20"]},
+{p:"〜きり",r:"きり",f:"Vた ＋ きり; それきり",m:"Từ sau khi... thì cứ thế mãi (không tiếp diễn điều đáng lẽ xảy ra).",tip:"Vế sau thường phủ định: 〜たきり{帰|かえ}ってこない, それきり{会|あ}っていない.",ex:[["{息子|むすこ}は{今朝|けさ}{出|で}かけた[[きり]]、{夜|よる}になっても{帰|かえ}ってこない。","Con trai tôi ra ngoài từ sáng rồi biệt tăm, tối rồi vẫn chưa về."],["{彼|かれ}に{最後|さいご}に{会|あ}ったのは{卒業式|そつぎょうしき}です。それ[[きり]]、{一度|いちど}も{会|あ}っていません。","Lần cuối gặp anh ấy là ở lễ tốt nghiệp. Từ đó tới giờ chưa gặp lại lần nào."]],x:"〜まま (N3) chỉ trạng thái giữ nguyên. 〜きり nhấn mạnh điều mong đợi không xảy ra nữa.",src:["M39","S20"]},
+{p:"〜っぱなし",r:"っぱなし",hv:"放し · PHÓNG → thả ra",f:"Vます ＋ っぱなし",m:"(1) Để nguyên, bỏ mặc (không xử lý). (2) Liên tục, suốt.",tip:"{放|はな}す = thả ra rồi bỏ đó. Nghĩa (1) có ý chê cẩu thả: {出|だ}しっぱなし, つけっぱなし. Nghĩa (2): {立|た}ちっぱなし, {負|ま}けっぱなし.",ex:[["クーラーをつけ[[っぱなし]]で{寝|ね}てしまい、{母|はは}にさんざん{怒|おこ}られた。","Tôi bật điều hòa rồi ngủ quên, bị mẹ mắng một trận."],["{満員電車|まんいんでんしゃ}で1{時間|じかん}{立|た}ち[[っぱなし]]だった。","Tôi phải đứng suốt 1 tiếng trên tàu chật kín."]],x:"〜まま (N3) trung tính. 〜っぱなし mang ý tiêu cực: để đó không dọn.",src:["M37"]},
+{p:"〜ところだった",r:"ところだった",f:"Vる／Vない ＋ ところだった",m:"Suýt nữa thì... (nhưng thực tế đã không xảy ra).",tip:"Đi với: うっかり, {危|あや}うく, もう{少|すこ}しで. Có のに ở sau thì là tiếc vì suýt đạt kết quả tốt.",ex:[["あ、{今日|きょう}は15{日|にち}だった。うっかり{約束|やくそく}を{忘|わす}れる[[ところだった]]。","A, hôm nay là ngày 15. Suýt nữa thì quên mất cuộc hẹn."],["もう{少|すこ}しで100{点|てん}{取|と}れる[[ところだった]]のに、97{点|てん}だった。","Suýt nữa là được 100 điểm, vậy mà chỉ được 97."]],src:["S20"]},
+{p:"〜ずじまいだ",r:"ずじまい",hv:"仕舞い → kết thúc",f:"Vない (bỏ ない) ＋ ずじまいだ",m:"Rốt cuộc đã không... (lỡ mất cơ hội, tiếc nuối).",tip:"する → せずじまい. Thường ở quá khứ, không dùng khi vẫn còn cơ hội làm lại.",ex:[["{留学中|りゅうがくちゅう}に{旅行|りょこう}したかったが、{忙|いそが}しくてどこへも{行|い}か[[ずじまい]]で{帰国|きこく}した。","Tôi muốn đi du lịch khi du học, nhưng bận quá nên rốt cuộc chẳng đi đâu đã về nước."],["{結局|けっきょく}、Aさんの{連絡先|れんらくさき}はわから[[ずじまいだった]]。","Rốt cuộc vẫn không biết được cách liên lạc với A."]],src:["S20"]},
+{p:"〜ずにすむ／〜ないですむ",r:"ずにすむ",hv:"済む · TẾ → xong xuôi",f:"Vない (bỏ ない) ＋ ずにすむ",m:"Không phải... mà vẫn xong (may mắn tránh được).",tip:"{済|す}む = xong chuyện. 'Không cần làm A mà mọi chuyện vẫn ổn'. する → せずにすむ.",ex:[["{遅刻|ちこく}してしまったが、きちんと{理由|りゆう}を{説明|せつめい}したら{怒|おこ}られ[[ずに済んだ]]。","Tôi đến muộn nhưng giải thích rõ lý do nên không bị mắng."],["{友達|ともだち}が{手伝|てつだ}ってくれたので、{徹夜|てつや}せ[[ずにすんだ]]。","Nhờ bạn giúp nên tôi không phải thức trắng đêm."]],src:["M80"]},
+{p:"〜ぬく",r:"ぬく",hv:"抜く · BẠT",f:"Vます ＋ ぬく",m:"Làm đến cùng, làm triệt để dù khó khăn.",tip:"{走|はし}りぬく, やりぬく, {考|かんが}えぬく, {生|い}きぬく.",ex:[["{彼|かれ}は{途中|とちゅう}で{足|あし}を{痛|いた}めながらも、42.195キロを{走|はし}り[[ぬいた]]。","Dù bị đau chân giữa chừng, anh ấy vẫn chạy hết 42,195 km."],["{考|かんが}え[[ぬいた]]{末|すえ}に{出|だ}した{答|こた}えです。","Đây là câu trả lời đưa ra sau khi suy nghĩ thấu đáo."]],src:["M57"]},
+{p:"〜まま",r:"まま",f:"Vた／Vない／Nの ＋ まま",m:"Để nguyên, giữ nguyên trạng thái.",ex:[["{靴|くつ}を{履|は}いた[[まま]]{部屋|へや}に{入|はい}らないでください。","Đừng đi giày vào phòng."]],x:"っぱなし (chê bỏ mặc) và きり (từ đó không...) là các bản N2.",n3:1}
+]);
+
+G("muc-do","Mức độ & nhấn mạnh","Đến cả, dù phải, chỉ là, không những không... mà còn",[
+{p:"〜まで／〜までして／〜てまで",r:"まで／てまで",f:"N(＋trợ từ)＋まで(して); Vて ＋ まで",m:"Đến cả, đến mức (làm điều cực đoan).",tip:"てまで hay đi với phủ định hoặc phê phán: 〜てまで〜たくない, 〜てまで〜する{必要|ひつよう}はない.",ex:[["{一番|いちばん}{賛成|さんせい}してくれると{思|おも}っていた{母|はは}[[まで]]、{私|わたし}の{結婚|けっこん}に{反対|はんたい}した。","Đến cả mẹ, người tôi tưởng sẽ ủng hộ nhất, cũng phản đối cuộc hôn nhân của tôi."],["{新|あたら}しいテレビがほしいが、{借金|しゃっきん}して[[まで]]{買|か}おうとは{思|おも}わない。","Muốn có TV mới thật, nhưng không đến mức phải vay nợ để mua."]],x:"てまで: đến mức đó thì không làm (hoặc phê phán). てでも: dù phải đến mức đó cũng làm. Xem cặp này ở bảng Mức độ.",s:1,src:["M13","S21"]},
+{p:"〜てでも",r:"てでも",f:"Vて ＋ でも",m:"Dù phải (dùng cách cực đoan) cũng nhất định làm.",tip:"Vế sau là ý chí mạnh: 〜たい, 〜つもりだ, 〜てみせる.",ex:[["どうしてもこの{絵|え}がほしい。{借金|しゃっきん}して[[でも]]{買|か}いたい。","Tôi rất muốn bức tranh này. Dù phải vay nợ cũng muốn mua."],["2{倍|ばい}の{金額|きんがく}を{払|はら}って[[でも]]、そのコンサートのチケットがほしい。","Dù phải trả gấp đôi tôi cũng muốn có vé buổi hòa nhạc đó."]],s:1,src:["M14","S21"]},
+{p:"〜さえ (ngay cả)",r:"さえ",f:"N (＋trợ từ) ＋ さえ／Nでさえ",m:"Ngay cả, đến cả (mức thấp nhất mà cũng... thì những cái khác khỏi nói).",tip:"Ví dụ cực tiểu: ひらがなさえ{読|よ}めない thì kanji càng không.",ex:[["{日本|にほん}に{来|き}たばかりのときは、ひらがな[[さえ]]{読|よ}めなかった。","Khi mới sang Nhật, đến hiragana tôi cũng không đọc được."],["{専門家|せんもんか}で[[さえ]]わからない{問題|もんだい}だ。","Đây là vấn đề đến chuyên gia cũng không hiểu."]],x:"Có ば, たら, なら đi kèm thì さえ là 'chỉ cần' (nhóm Giả định).",src:["S21"]},
+{p:"〜として〜ない",r:"として〜ない",f:"(何／だれ＋) 一＋lượng từ ＋ として〜ない",m:"Không một... nào (phủ định hoàn toàn).",tip:"Mẫu cố định: {何一|なにひと}つとして, {誰一人|だれひとり}として, {一日|いちにち}として.",ex:[["{人生|じんせい}に{無駄|むだ}なものは{何一|なにひと}つ[[として]]ない。","Trong đời không có điều gì là vô ích cả."],["{彼女|かのじょ}はこれまで{一度|いちど}[[として]]{練習|れんしゅう}を{休|やす}んだことがない。","Đến giờ cô ấy chưa từng nghỉ tập lấy một lần."]],x:"Tài liệu gốc ghi '一度もとして' là lỗi, đúng là 一度として.",src:["S21"]},
+{p:"〜にすぎない",r:"にすぎない",hv:"過ぎる · QUÁ",f:"N／thể thường ＋ にすぎない",m:"Chỉ là, chẳng qua chỉ là (không đáng kể).",tip:"Không vượt quá (過ぎない) mức đó, tức là chỉ có vậy thôi. Hay đi với ほんの, {単|たん}なる, ただの.",ex:[["{今日|きょう}お{配|くば}りした{資料|しりょう}は、{全体|ぜんたい}のほんの{一部|いちぶ}[[にすぎません]]。","Tài liệu phát hôm nay chỉ là một phần nhỏ của toàn bộ."],["{一社員|いちしゃいん}[[にすぎない]]{私|わたし}に、{会社|かいしゃ}の{経営|けいえい}のことなど{決|き}められない。","Tôi chẳng qua chỉ là một nhân viên, sao quyết được chuyện kinh doanh của công ty."]],x:"にほかならない (chính là, không gì khác) mang nghĩa ngược lại, đề hay đặt hai mẫu cạnh nhau.",s:1,src:["M42","S23"]},
+{p:"〜のみ",r:"のみ",f:"N／thể thường ＋ のみ",m:"Chỉ (văn viết, = だけ).",tip:"Câu quen: あとは{祈|いの}るのみ (giờ chỉ còn biết cầu nguyện).",ex:[["{明日|あした}は{楽|たの}しみにしていた{遠足|えんそく}なので、{雨|あめ}が{降|ふ}らないことを{祈|いの}る[[のみ]]です。","Mai là chuyến dã ngoại mong chờ, giờ chỉ biết cầu cho trời đừng mưa."]],src:["M95"]},
+{p:"〜というより",r:"というより",f:"N／thể thường ＋ というより",m:"Nói là A thì đúng hơn là B (B chính xác hơn).",tip:"Sửa lại cách đánh giá: AというよりB. Hay có むしろ ở vế sau.",ex:[["{今日|きょう}は{涼|すず}しい[[というより]]{寒|さむ}いぐらいだ。","Hôm nay nói mát thì đúng hơn là lạnh."],["{彼|かれ}は{先生|せんせい}[[というより]]、{友達|ともだち}のような{存在|そんざい}だ。","Ông ấy giống bạn bè hơn là thầy giáo."]],src:["M45"]},
+{p:"〜どころか",r:"どころか",f:"N／thể thường (Naな) ＋ どころか",m:"Không những không... mà ngược lại; đừng nói là A, đến B cũng...",tip:"Hai cách dùng: (1) Kết quả ngược hẳn ({良|よ}くなるどころか{悪|わる}くなった). (2) A còn chưa tới, nói gì B ({漢字|かんじ}どころかひらがなも{書|か}けない).",ex:[["{薬|くすり}を{飲|の}んでいるのに、よくなる[[どころか]]、{症状|しょうじょう}はひどくなる{一方|いっぽう}だ。","Uống thuốc rồi mà không những không đỡ, triệu chứng còn ngày càng nặng."],["{漢字|かんじ}[[どころか]]、ひらがなもまだ{書|か}けない。","Đừng nói kanji, đến hiragana tôi còn chưa viết được."]],x:"どころではない (không phải lúc để...) khác どころか.",s:1,src:["M67","S12"]},
+{p:"〜どころではない",r:"どころではない",f:"N／Vる ＋ どころではない",m:"Không phải lúc để..., không có tâm trí nào mà...",tip:"Vì hoàn cảnh không thuận lợi (ốm, bận, ồn) nên không thể làm điều mong đợi.",ex:[["{高熱|こうねつ}が{出|で}てしまい、{旅行|りょこう}[[どころではありません]]。","Bị sốt cao, chẳng còn tâm trí nào mà đi du lịch."],["{隣|となり}の{人|ひと}たちがうるさくて、ゆっくり{食事|しょくじ}を{楽|たの}しむ[[どころではなかった]]。","Bàn bên ồn quá, chẳng thể thong thả thưởng thức bữa ăn."]],s:1,src:["M68","S18"]},
+{p:"〜など／〜なんて／〜なんか (coi nhẹ)",r:"など／なんて／なんか",f:"N (＋trợ từ) ＋ など",m:"Mấy cái như... (coi nhẹ, hạ thấp, khiêm tốn).",tip:"なんて, なんか là văn nói. Dùng để khiêm tốn về mình: {私|わたし}なんか.",ex:[["あの{人|ひと}の{言|い}ったこと[[など]]、{気|き}にすることはありません。","Mấy lời người đó nói không cần bận tâm đâu."],["Aさんは{文章|ぶんしょう}がうまい。{私|わたし}[[なんて]]{簡単|かんたん}な{文|ぶん}も{書|か}けないのに。","Anh A viết văn hay. Còn tôi thì đến câu đơn giản cũng không viết nổi."]],src:["S21"]},
+{p:"〜ぐらい／〜くらい",r:"ぐらい／くらい",f:"N／thể thường ＋ ぐらい",m:"Ít nhất là, cỡ... (mức tối thiểu); đến mức.",ex:[["{自分|じぶん}の{靴|くつ}[[ぐらい]]ちゃんと{並|なら}べなさい。","Ít nhất thì giày của mình cũng xếp cho gọn đi."]],x:"Gần với さえ (ngay cả). ほど (N3) dùng cho mức độ cao.",n3:1,src:["S21"]},
+{p:"〜ほど",r:"ほど",f:"N／thể thường ＋ ほど",m:"Đến mức...; không... bằng.",ex:[["{泣|な}きたい[[ほど]]{嬉|うれ}しかった。","Vui đến mức muốn khóc."]],x:"ほど và くらい gần như thay thế được cho nhau khi chỉ mức độ.",n3:1}
+]);
+
+G("kha-nang","Khả năng & không thể","Có thể xảy ra, khó mà, không thể, e là sẽ",[
+{p:"〜得る／〜得ない",r:"うる・える／えない",hv:"得 · ĐẮC",f:"Vます ＋ 得る／得ない",m:"Có thể xảy ra ／ không thể xảy ra (khả năng khách quan).",tip:"Đọc: khẳng định là うる hoặc える, phủ định CHỈ đọc えない. Cụm phải thuộc: あり{得|う}る, あり{得|え}ない, {考|かんが}え{得|う}る.",ex:[["{日頃|ひごろ}から{気|き}をつけていても、{事故|じこ}は{起|お}こり[[得る]]ものだ。","Dù ngày thường có cẩn thận thì tai nạn vẫn có thể xảy ra."],["{人間|にんげん}が100メートルを5{秒|びょう}で{走|はし}るなんて、あり[[得ない]]{話|はなし}だ。","Con người chạy 100 m trong 5 giây là chuyện không thể có."]],x:"Không dùng cho năng lực cá nhân: ×{私|わたし}は{英語|えいご}が{話|はな}し{得|う}る → {話|はな}せる.",s:1,src:["M25","S18"]},
+{p:"〜がたい",r:"がたい",hv:"難い · NAN → khó",f:"Vます ＋ がたい",m:"Khó mà (về mặt tâm lý, cảm xúc), dù cố cũng khó.",tip:"Đi với động từ tâm lý, phát ngôn: {信|しん}じがたい, {理解|りかい}しがたい, {許|ゆる}しがたい, {言|い}いがたい, {忘|わす}れがたい.",ex:[["{彼|かれ}はいつも{嘘|うそ}ばかりつくので、{今回|こんかい}の{話|はなし}も{本当|ほんとう}かどうか{信|しん}じ[[がたい]]。","Anh ta lúc nào cũng nói dối nên chuyện lần này thật hay không cũng khó mà tin."],["あの{料理|りょうり}はなんとも{言|い}い[[がたい]]{味|あじ}だ。","Món đó có vị khó mà diễn tả."]],x:"にくい (N4) = khó về mặt vật lý, kỹ thuật ({読|よ}みにくい). がたい = khó về tâm lý, gần như không thể.",s:1,src:["M26","S18"]},
+{p:"〜かねる",r:"かねる",hv:"兼ねる · KIÊM",f:"Vます ＋ かねる",m:"Khó mà... được, không thể (từ chối lịch sự vì lập trường).",tip:"Nhân viên dùng để từ chối khách: お{答|こた}えしかねます, {分|わ}かりかねます. Nghĩa là KHÔNG thể.",ex:[["{私|わたし}は{責任者|せきにんしゃ}ではございませんので、その{質問|しつもん}にはお{答|こた}えし[[かねます]]。","Tôi không phải người phụ trách nên không thể trả lời câu hỏi đó."],["あなたの{気持|きも}ちもわかりますが、その{案|あん}には{賛成|さんせい}し[[かねます]]。","Tôi hiểu cảm giác của anh, nhưng khó mà tán thành phương án đó."]],x:"BẪY: かねる = KHÔNG thể; かねない = CÓ THỂ (xảy ra chuyện xấu). Thêm ない lại thành nghĩa khẳng định.",s:1,src:["M82","S18"]},
+{p:"〜かねない",r:"かねない",f:"Vます ＋ かねない",m:"Có thể (xảy ra chuyện xấu), e là sẽ...",tip:"Phủ định kép: 'không khó (để xảy ra)', tức là dễ xảy ra. Chỉ dùng cho kết quả xấu.",ex:[["この{状況|じょうきょう}が{続|つづ}くようであれば、{会社|かいしゃ}は{倒産|とうさん}し[[かねませんよ]]。","Nếu tình trạng này kéo dài thì công ty có thể phá sản đấy."],["{大事|だいじ}なことをみんなに{相談|そうだん}しないと、{後|あと}で{文句|もんく}を{言|い}われ[[かねない]]。","Chuyện quan trọng mà không bàn với mọi người thì sau có khi bị phàn nàn."]],x:"おそれがある: văn viết, tin tức, khách quan. かねない: nói rõ nguyên nhân và có ý phê phán.",s:1,src:["M83","S22"]},
+{p:"〜ようがない／〜ようもない",r:"ようがない",hv:"様 · DẠNG → cách",f:"Vます ＋ ようがない",m:"Không có cách nào để... (hoàn toàn không thể).",tip:"よう = {方法|ほうほう} (cách làm). Không có cách làm, tức là bó tay.",ex:[["{住所|じゅうしょ}も{電話番号|でんわばんごう}もわからないので、{連絡|れんらく}し[[ようがない]]。","Không biết cả địa chỉ lẫn số điện thoại nên chẳng có cách nào liên lạc."],["{実力|じつりょく}はあるのだから、{今回|こんかい}は{運|うん}がなかったとしか{言|い}い[[ようがない]]。","Có thực lực mà, lần này chỉ có thể nói là không may thôi."]],src:["S18"]},
+{p:"〜ようにも〜ない",r:"ようにも〜ない",f:"Vよう ＋ にも ＋ V可能形ない",m:"Dù muốn... cũng không thể...",tip:"Lặp lại cùng động từ: {取|と}ろうにも{取|と}れない, {帰|かえ}ろうにも{帰|かえ}れない.",ex:[["{電話番号|でんわばんごう}もFacebookも{知|し}らないので、{連絡|れんらく}を{取|と}ろ[[うにも]]{取|と}れ[[ない]]。","Không biết cả số điện thoại lẫn Facebook nên muốn liên lạc cũng không được."],["{熱|ねつ}があって、{起|お}き[[ようにも]]{起|お}きられ[[ない]]。","Bị sốt, muốn dậy cũng không dậy nổi."]],src:["M106"]},
+{p:"〜っこない",r:"っこない",f:"Vます ＋ っこない",m:"Làm gì có chuyện, chắc chắn không thể (văn nói, thân mật).",tip:"Bản văn nói của わけがない. Hay đi với 'できっこない', 'わかりっこない'.",ex:[["{日本語|にほんご}の{勉強|べんきょう}を{始|はじ}めて1{年|ねん}{未満|みまん}なんだから、N1に{受|う}かり[[っこない]]よ。","Mới học tiếng Nhật chưa đầy một năm, đời nào đỗ N1."],["こんな{量|りょう}、1{日|にち}でできっ[[こない]]。","Từng này việc làm sao xong trong một ngày được."]],src:["M38"]},
+{p:"〜わけにはいかない／〜わけにもいかない",r:"わけにはいかない",f:"Vる ＋ わけにはいかない",m:"Không thể (vì lẽ thường, đạo lý, trách nhiệm) — dù có khả năng làm.",tip:"Không phải không có khả năng, mà là 'không được phép theo lương tâm'. Chủ ngữ thường là ngôi thứ nhất.",ex:[["{病気|びょうき}の{子供|こども}を{一人|ひとり}{家|いえ}において、{仕事|しごと}に{行|い}く[[わけにはいかない]]。","Không thể để con ốm ở nhà một mình mà đi làm được."],["{終電|しゅうでん}が{終|お}わってしまった。{会社|かいしゃ}に{泊|と}まる[[わけにもいかず]]、{困|こま}っている。","Hết chuyến tàu cuối rồi. Ở lại công ty cũng không được, khổ quá."]],x:"Vない＋わけにはいかない = buộc phải làm (nhóm Cảm xúc & bắt buộc).",s:1,src:["S18"]},
+{p:"〜はずがない",r:"はずがない",f:"Thể thường (Naな／Nの) ＋ はずがない",m:"Không thể nào (theo suy luận logic).",ex:[["あんなに{練習|れんしゅう}したんだから、{負|ま}ける[[はずがない]]。","Đã tập luyện nhiều thế thì không thể nào thua."]],x:"Gần như cùng nghĩa với わけがない. っこない là bản văn nói thân mật.",n3:1}
+]);
+
+G("phu-dinh","Phủ định & từ chối","Không lý nào, không hẳn, không đời nào, sẽ không",[
+{p:"〜わけがない",r:"わけがない",f:"Thể thường (Naな／Nの・Nである) ＋ わけがない",m:"Không lý nào, tuyệt đối không thể.",ex:[["この{仕事|しごと}を{今日中|きょうじゅう}に{全部|ぜんぶ}ですか。{私|わたし}{一人|ひとり}でできる[[わけがありません]]よ。","Làm hết việc này trong hôm nay sao? Một mình tôi làm sao làm nổi."]],x:"Bộ わけ: わけだ (thảo nào), わけがない (không lý nào), わけではない (không hẳn là), わけにはいかない (không thể vì đạo lý).",n3:1,src:["S12"]},
+{p:"〜わけではない／〜というわけではない",r:"わけではない",f:"Thể thường (Naな／Nの) ＋ わけではない",m:"Không hẳn là, không phải là (phủ định một phần).",tip:"Hay đi với いつも, {全部|ぜんぶ}, {必|かなら}ずしも.",ex:[["{携帯電話|けいたいでんわ}を{持|も}っていても、いつでも{電話|でんわ}に{出|で}られる[[わけではない]]。","Dù có mang điện thoại thì không phải lúc nào cũng nghe máy được."],["{親|おや}の{気持|きも}ちがわからない[[わけではない]]が、{自分|じぶん}の{進路|しんろ}は{自分|じぶん}で{決|き}めたい。","Không phải tôi không hiểu cảm giác của bố mẹ, nhưng tôi muốn tự quyết con đường của mình."]],n3:1,src:["S12"]},
+{p:"〜というものではない／〜というものでもない",r:"というものではない",f:"Thể thường ＋ というものではない",m:"Không phải cứ... là được (phản bác một quan niệm).",tip:"Thường đi với câu điều kiện: 〜ばいいというものではない, 〜からといって〜というものではない. でもない là bản mềm hơn.",ex:[["{努力|どりょく}すれば{必|かなら}ず{成功|せいこう}する[[というものではない]]。チャンスも{必要|ひつよう}だ。","Không phải cứ nỗ lực là chắc chắn thành công. Còn cần cả cơ hội."],["{値段|ねだん}が{高|たか}ければいい[[というものでもない]]。","Không phải cứ đắt là tốt."]],s:1,src:["S12"]},
+{p:"〜ものか／〜もんか",r:"ものか／もんか",f:"Thể thường (Naな) ＋ ものか",m:"Không đời nào, làm gì có chuyện (phủ định mạnh, cảm tính).",tip:"Câu hỏi tu từ để phủ định. Nữ giới hay nói ものですか.",ex:[["あんな{無責任|むせきにん}な{人|ひと}と、もう{一緒|いっしょ}に{仕事|しごと}をする[[ものか]]。","Không đời nào tôi làm việc với kẻ vô trách nhiệm như thế nữa."],["あの{人|ひと}が{正直|しょうじき}な[[もんか]]。{嘘|うそ}ばかり{言|い}う{人|ひと}だ。","Người đó mà thật thà gì. Toàn nói dối."]],s:1,src:["S12","S24"]},
+{p:"〜まい／〜(よ)うか〜まいか",r:"まい",f:"Vる ＋ まい (nhóm 2, 3: Vます＋まい cũng được; する → するまい／すまい)",m:"Quyết sẽ không... ; chắc là không... ; có nên... hay không.",tip:"Ý chí phủ định mạnh của người nói: {二度|にど}とするまい. Dạng do dự: {行|い}こうか{行|い}くまいか.",ex:[["{信用|しんよう}していた{親友|しんゆう}が{僕|ぼく}の{秘密|ひみつ}をもらした。{絶対|ぜったい}に{許|ゆる}す[[まい]]。","Người bạn thân tôi tin tưởng đã tiết lộ bí mật của tôi. Tôi quyết không tha thứ."],["{掃除|そうじ}ロボットを{買|か}お[[うか]]{買|か}う[[まいか]]、{決心|けっしん}がつかない。","Mua robot hút bụi hay không, tôi vẫn chưa quyết được."]],src:["M73","S24"]},
+{p:"〜か (phản ngữ)",r:"か",f:"Câu hỏi tu từ ＋ か",m:"Làm sao mà... được (câu hỏi để phản bác).",tip:"Hình thức là câu hỏi nhưng nghĩa là phủ định mạnh.",ex:[["{誰|だれ}があなたの{言|い}うことなんか{信|しん}じます[[か]]。","Ai mà tin lời anh nói chứ."]],src:["M93"]}
+]);
+
+G("phan-doan","Phán đoán & suy đoán","Chắc chắn là, chính là, có vẻ, e rằng, cứ như thể",[
+{p:"〜に違いない／〜に相違ない",r:"にちがいない／にそういない",hv:"相違 · TƯƠNG VI → sai khác",f:"Thể thường (Naである／Nである) ＋ に違いない",m:"Chắc chắn là (phán đoán dựa trên căn cứ).",tip:"{違|ちが}う = sai: 'không thể sai được'. に相違ない là bản cứng của văn viết.",ex:[["{日本|にほん}に1{年|ねん}{住|す}んでいるのだから、{彼|かれ}も{少|すこ}しは{生活|せいかつ}に{慣|な}れた[[に違いない]]。","Đã sống ở Nhật một năm rồi, chắc chắn anh ấy cũng đã quen phần nào."],["{僕|ぼく}らの{秘密|ひみつ}を{漏|も}らしたのは、キムさん[[に相違ない]]。","Người làm lộ bí mật của chúng tôi chắc chắn là Kim."]],s:1,src:["M24","S22"]},
+{p:"〜に決まっている",r:"にきまっている",f:"Thể thường (Na／N) ＋ に決まっている",m:"Chắc chắn là (phán đoán chủ quan, theo cảm tính).",tip:"Văn nói, chủ quan: 'ai mà chẳng nghĩ thế'. Khác に違いない (có căn cứ).",ex:[["こんな{派手|はで}な{色|いろ}のお{菓子|かし}、{体|からだ}に{悪|わる}い[[に決まっている]]。","Bánh kẹo màu lòe loẹt thế này, chắc chắn có hại cho sức khỏe."],["{毎日|まいにち}{練習|れんしゅう}しているんだから、{勝|か}つ[[に決まっている]]よ。","Ngày nào cũng tập thế thì chắc chắn thắng rồi."]],src:["S22"]},
+{p:"〜にほかならない",r:"にほかならない",hv:"他 · THA → khác",f:"N／〜から ＋ にほかならない",m:"Chính là, không gì khác ngoài (kết luận mạnh).",tip:"'Không phải cái gì khác (他)'. Hay đi với 〜のは〜からにほかならない (lý do chính là...).",ex:[["{彼|かれ}が{試験|しけん}に{落|お}ちたのは、{単|たん}に{勉強不足|べんきょうぶそく}[[にほかならない]]。","Anh ấy thi trượt chẳng qua chính là do học không đủ."],["{成功|せいこう}したのは、{皆|みな}さんの{協力|きょうりょく}があったから[[にほかなりません]]。","Thành công là nhờ chính sự hợp tác của mọi người."]],x:"にすぎない (chỉ là, xem nhẹ) mang nghĩa ngược hẳn.",s:1,src:["M97","S23"]},
+{p:"〜とみえる／〜とみえて",r:"とみえる",f:"Thể thường ＋ とみえる／とみえて",m:"Có vẻ là (suy đoán từ dấu hiệu nhìn thấy).",tip:"Nhìn biểu hiện của người khác để đoán. Hay đi với 〜ところを{見|み}ると.",ex:[["ジェームスさんはN1に{受|う}かった[[とみえて]]、とても{嬉|うれ}しそうだ。","Có vẻ James đã đỗ N1, trông anh ấy vui lắm."],["あまり{食|た}べないところを{見|み}ると、うちの{猫|ねこ}はこのえさが{好|す}きではない[[とみえる]]。","Thấy nó ăn ít thế, có vẻ mèo nhà tôi không thích món này."]],src:["M89","S22"]},
+{p:"〜おそれがある",r:"おそれがある",hv:"恐れ · KHỦNG → sợ",f:"Nの／Vる・Vない ＋ おそれがある",m:"E rằng, có nguy cơ (xảy ra điều xấu). Văn tin tức, thông báo.",tip:"Dự báo thời tiết rất hay dùng: {大雨|おおあめ}のおそれ, {津波|つなみ}のおそれはありません.",ex:[["{今夜|こんや}から{明日|あした}にかけて、{東日本|ひがしにほん}で{大雨|おおあめ}の[[おそれがあります]]。","Từ đêm nay đến ngày mai, miền Đông Nhật Bản có nguy cơ mưa lớn."],["このままでは、{絶滅|ぜつめつ}する[[おそれがある]]。","Cứ thế này thì có nguy cơ tuyệt chủng."]],s:1,src:["S22"]},
+{p:"〜かのようだ／〜かのように",r:"かのようだ",f:"Thể thường ＋ かのようだ",m:"Cứ như thể là (thực tế không phải vậy).",tip:"Có thêm か: thực tế KHÔNG phải. Hay đi với まるで.",ex:[["3{月|がつ}なのにまた{寒|さむ}くなりましたね。まるで{真冬|まふゆ}に{戻|もど}った[[かのようです]]ね。","Tháng Ba rồi mà lại lạnh nhỉ. Cứ như quay lại giữa mùa đông vậy."],["{彼|かれ}は{何|なに}も{知|し}らない[[かのような]]{顔|かお}をしている。","Anh ta làm mặt như thể chẳng biết gì."]],x:"ようだ (N3): có vẻ (có thể thật). かのようだ: như thể (biết rõ là không thật).",s:1,src:["M54"]},
+{p:"〜げ",r:"げ",hv:"気 · KHÍ → vẻ",f:"Aい(bỏ い)／Na ＋ げ(だ／な／に)",m:"Có vẻ, trông như (cảm xúc biểu hiện ra ngoài).",tip:"Đi với tính từ cảm xúc: {寂|さび}しげ, {不安|ふあん}げ, {楽|たの}しげ, {意味|いみ}ありげ, {自信|じしん}ありげ.",ex:[["{彼女|かのじょ}は{寂|さび}し[[げに]]、{一人|ひとり}で{公園|こうえん}のベンチに{座|すわ}っていた。","Cô ấy ngồi một mình trên ghế công viên, trông thật cô đơn."],["{彼|かれ}は{意味|いみ}あり[[げな]]{笑顔|えがお}を{見|み}せた。","Anh ta nở một nụ cười đầy ẩn ý."]],x:"〜そう (N4) nói về vẻ ngoài chung. げ nhấn vào cảm xúc lộ ra, văn chương hơn.",src:["M40"]},
+{p:"〜というものだ",r:"というものだ",f:"Thể thường (Na／N) ＋ というものだ",m:"Đó đúng là (theo lẽ thường, bản chất của nó là thế).",tip:"Người nói đưa ra nhận định chung kiểu 'lẽ đời là vậy'.",ex:[["{部下|ぶか}が{失敗|しっぱい}したら{責任|せきにん}を{負|お}うのが、{上司|じょうし}の{責任|せきにん}[[というものだ]]。","Cấp dưới mắc lỗi thì chịu trách nhiệm, đó chính là bổn phận của cấp trên."],["{今日中|きょうじゅう}にアメリカまで{荷物|にもつ}を{届|とど}けろと{言|い}われても、それは{無理|むり}[[というものだ]]。","Bảo giao hàng sang Mỹ trong hôm nay thì đúng là không thể."]],src:["M65","S23"]},
+{p:"〜ようだ／〜らしい／〜みたい",r:"ようだ／らしい／みたい",f:"Thể thường ＋ ようだ／らしい",m:"Có vẻ, hình như.",ex:[["{誰|だれ}かが{来|き}た[[ようだ]]。","Hình như có ai đến."]],x:"Bản N2 nâng cấp: とみえる (có vẻ, dựa vào thứ nhìn thấy), かのようだ (như thể, thực tế không phải).",n3:1},
+{p:"〜っぽい",r:"っぽい",f:"N／Vます／Aい(bỏ い) ＋ っぽい",m:"Có vẻ, hơi giống, hay (làm gì).",ex:[["{彼|かれ}は{忘|わす}れ[[っぽい]]。","Anh ấy hay quên."]],x:"げ (N2) là bản văn chương hơn, thiên về cảm xúc.",n3:1}
+]);
+
+G("loi-khuyen","Lời khuyên, lẽ thường & nghĩa vụ","Nên, phải, không cần, tốt nhất là, hãy cùng",[
+{p:"〜ことだ (lời khuyên)",r:"ことだ",f:"Vる／Vない ＋ ことだ",m:"Nên, hãy (lời khuyên cụ thể cho một người).",tip:"Người trên khuyên người dưới. Hay có 〜たいなら／〜たければ ở vế trước.",ex:[["{日本語|にほんご}が{上手|じょうず}になりたかったら、{毎日|まいにち}{話|はな}す[[ことだ]]。","Muốn giỏi tiếng Nhật thì nên nói mỗi ngày."],["{太|ふと}りたくなければ、{夜遅|よるおそ}く{食|た}べない[[ことです]]。","Không muốn béo thì đừng ăn khuya."]],x:"ものだ: lẽ thường cho mọi người. ことだ: lời khuyên cụ thể cho người đang nghe. Không dùng với người trên.",s:1,src:["M1","S24"]},
+{p:"〜ものだ／〜ものではない (lẽ thường)",r:"ものだ",f:"Vる／Vない ＋ ものだ; Vる ＋ ものではない",m:"Nên, phải (lẽ thường ai cũng biết) ／ không nên. Cũng dùng nêu chân lý chung.",tip:"Nói chung cho mọi người, không nhắm vào ai cụ thể.",ex:[["{悪|わる}いことをしたら{謝|あやま}る[[もんだ]]。","Làm sai thì phải xin lỗi chứ."],["{人|ひと}の{悪口|わるぐち}を{言|い}う[[ものではない]]。","Không nên nói xấu người khác."],["{自分|じぶん}では{気|き}がつきにくいが、どんな{人|ひと}にもくせがある[[ものだ]]。","Tự mình khó nhận ra, nhưng ai cũng có thói quen riêng."]],x:"Họ もの có hơn 10 mẫu, xem bảng 'Họ もの'.",s:1,src:["M6","S23","S24"]},
+{p:"〜たものだ (hồi tưởng)",r:"たものだ",f:"Vた ＋ ものだ",m:"Hồi đó thường hay... (nhớ lại thói quen trong quá khứ).",tip:"Hay có: {子供|こども}のころ, {昔|むかし}は, よく. Không dùng cho việc chỉ xảy ra một lần.",ex:[["{若|わか}いころは、よく{親|おや}に{反抗|はんこう}した[[ものだ]]。","Hồi trẻ tôi hay cãi lời bố mẹ lắm."],["{子供|こども}のころ、{夏|なつ}になるとこの{川|かわ}で{泳|およ}いだ[[ものです]]。","Hồi nhỏ, cứ đến hè là tôi lại bơi ở con sông này."]],x:"Bảng Mimikara gốc ghi 'ことだ' trong ví dụ này là nhầm, đúng là ものだ.",src:["M6","S26"]},
+{p:"〜ものだ (cảm thán)",r:"ものだ",f:"Aい／Naな／Vる ＋ ものだ",m:"Thật là... (cảm xúc sâu sắc, ngạc nhiên).",tip:"Hay đi với よく, ずいぶん, {本当|ほんとう}に.",ex:[["{日本|にほん}へ{来|き}てもう1{年|ねん}になる。{時|とき}が{経|た}つのは{本当|ほんとう}に{早|はや}い[[ものだ]]。","Sang Nhật đã một năm rồi. Thời gian trôi nhanh thật."]],src:["M6","S26"]},
+{p:"〜べきだ／〜べきではない",r:"べきだ",f:"Vる ＋ べきだ (する → すべき／するべき)",m:"Nên, phải ／ không nên (ý kiến, đạo lý của người nói).",tip:"Mạnh hơn ほうがいい. Không dùng cho luật lệ ({法律|ほうりつ}で{決|き}まっている → なければならない).",ex:[["{学生|がくせい}は{遊|あそ}んでいないで、もっと{勉強|べんきょう}す[[べきだ]]。","Học sinh thì đừng chơi nữa, nên học nhiều hơn."],["そんな{質問|しつもん}は、{初|はじ}めて{会|あ}った{人|ひと}にす[[べきではない]]。","Không nên hỏi câu đó với người mới gặp lần đầu."]],x:"Nhớ dạng đặc biệt: する → すべき. Không dùng trực tiếp với người trên.",src:["M44","S23"]},
+{p:"〜ことはない",r:"ことはない",f:"Vる ＋ ことはない",m:"Không cần phải...",ex:[["{彼|かれ}の{言葉|ことば}など{気|き}にする[[ことはない]]よ。","Không cần bận tâm lời anh ta đâu."]],x:"Đừng nhầm với 〜ことがない (chưa từng).",n3:1,src:["S24"]},
+{p:"〜に越したことはない",r:"にこしたことはない",hv:"越す · VIỆT → vượt",f:"Thể thường hiện tại (Na／N) ＋ に越したことはない",m:"... thì vẫn là tốt nhất (không bắt buộc nhưng nên vậy).",tip:"'Không có gì vượt qua (越す) được A', tức A là tốt nhất.",ex:[["お{金持|かねも}ちになりたいわけではないが、お{金|かね}はある[[に越したことはない]]。","Không phải tôi muốn giàu, nhưng có tiền thì vẫn hơn."],["{旅行|りょこう}の{荷物|にもつ}は{軽|かる}い[[に越したことはない]]。","Hành lý đi du lịch thì nhẹ là tốt nhất."]],s:1,src:["M105","S23"]},
+{p:"〜しかない／〜よりほかない",r:"しかない／よりほかない",f:"Vる ＋ しかない／よりほかない",m:"Chỉ còn cách..., đành phải...",tip:"よりほか(は)ない là bản trang trọng.",ex:[["この{道|みち}は{一方通行|いっぽうつうこう}だから、{戻|もど}りたくてもまっすぐ{行|い}く[[しかない]]。","Đường này một chiều nên dù muốn quay lại cũng chỉ có cách đi thẳng."],["{会議|かいぎ}で{決|き}まったなら、この{決定|けってい}を{受|う}け{入|い}れる[[よりほかない]]でしょう。","Đã quyết trong cuộc họp rồi thì đành chấp nhận quyết định này thôi."]],src:["S23"]},
+{p:"〜(よ)うではないか",r:"(よ)うではないか",f:"Vよう ＋ ではないか",m:"Chúng ta hãy cùng... (kêu gọi mạnh mẽ trước đám đông).",tip:"Giọng diễn văn của chính trị gia, giám đốc. Không dùng trong hội thoại thường ngày.",ex:[["この{問題|もんだい}について、みなで{考|かんが}え[[ようではありませんか]]。","Chúng ta hãy cùng nhau suy nghĩ về vấn đề này."]],src:["M110","S24"]},
+{p:"〜たいものだ／〜てほしいものだ",r:"たいものだ",f:"Vます ＋ たいものだ; Vて ＋ ほしいものだ",m:"Thật muốn... (nhấn mạnh mong ước trong lòng).",tip:"Bày tỏ cảm xúc, không phải yêu cầu trực tiếp.",ex:[["そんなにきれいな{絵|え}なら、ぜひ{一度|いちど}{見|み}てみ[[たいものです]]。","Bức tranh đẹp đến thế thì nhất định tôi muốn xem một lần."],["{今度|こんど}こそ{実験|じっけん}が{成功|せいこう}して[[ほしいものだ]]。","Lần này thật mong thí nghiệm thành công."]],src:["S26"]},
+{p:"〜ことにする (coi như)",r:"ことにする",f:"Vた／〜という ＋ ことにする",m:"Coi như là... (thực tế không phải vậy).",tip:"Vた＋ことにする: giả vờ như đã. {聞|き}かなかったことにする = coi như chưa nghe.",ex:[["{友達|ともだち}に{書|か}いてもらった{作文|さくぶん}を、{自分|じぶん}が{書|か}いた[[ことにして]]{提出|ていしゅつ}した。","Tôi nộp bài văn nhờ bạn viết, coi như là mình tự viết."],["{今|いま}の{話|はなし}は{聞|き}かなかった[[ことにして]]ください。","Chuyện vừa rồi hãy coi như chưa nghe nhé."]],x:"N3 Vる＋ことにする = quyết định làm. Vた＋ことにする = coi như đã. Nhìn thể động từ để phân biệt.",src:["M62"]},
+{p:"〜ほうがいい",r:"ほうがいい",f:"Vた／Vない ＋ ほうがいい",m:"Nên...",ex:[["{早|はや}く{寝|ね}た[[ほうがいい]]よ。","Cậu nên ngủ sớm đi."]],x:"Nhẹ hơn べきだ, ことだ.",n3:1}
+]);
+
+G("cam-xuc","Cảm xúc & buộc phải","Rất (không chịu nổi), không kìm được, đành phải, biết bao",[
+{p:"〜てしかたがない／〜てしょうがない／〜てたまらない",r:"てしかたがない／てしょうがない／てたまらない",f:"Vて／Aくて／Naで ＋ しかたがない",m:"... không chịu nổi, vô cùng (cảm xúc, cảm giác cơ thể).",tip:"Không có cách nào (仕方がない) chịu nổi. てたまらない hay đi với cảm giác cơ thể: かゆい, {痛|いた}い, {暑|あつ}い. Chủ ngữ ngôi ba cần thêm ようだ, らしい.",ex:[["{大学受験|だいがくじゅけん}の{結果|けっか}が{気|き}になって[[しかたがない]]。","Tôi cứ bồn chồn mãi về kết quả thi đại học."],["{虫|むし}に{刺|さ}されたところがかゆくて[[たまらない]]。","Chỗ bị côn trùng đốt ngứa không chịu nổi."]],x:"Mimikara gốc ghi 'てしようがない' là cách đọc nhanh của てしょうがない.",n3:1,src:["M22","S25"]},
+{p:"〜てならない",r:"てならない",f:"Vて／Aくて／Naで ＋ ならない",m:"Rất... (cảm xúc tự nhiên trào lên, không kìm được), thường tiêu cực.",tip:"Hay đi với: {心配|しんぱい}でならない, {気|き}がしてならない, {思|おも}えてならない. Văn viết hơn しかたがない.",ex:[["{明日|あした}の{面接|めんせつ}でうまく{話|はな}せるかどうか、{心配|しんぱい}で[[ならない]]。","Tôi lo không biết mai phỏng vấn có nói trôi chảy không."],["{彼|かれ}が{嘘|うそ}をついているような{気|き}がして[[ならない]]。","Tôi cứ có cảm giác anh ta đang nói dối."]],x:"Đừng nhầm với 〜てはならない (cấm, không được làm).",s:1,src:["S25"]},
+{p:"〜ずにはいられない／〜ないではいられない",r:"ずにはいられない",f:"Vない (bỏ ない) ＋ ずにはいられない (する → せずには)",m:"Không thể không..., không kìm được mà...",tip:"Hành động tự nhiên bật ra, không kìm được: {笑|わら}わずにはいられない, {言|い}わずにはいられない.",ex:[["{友達|ともだち}がいじめられているところを{見|み}て、{何|なに}か{言|い}わ[[ずにはいられなかった]]。","Thấy bạn bị bắt nạt, tôi không thể không lên tiếng."],["この{曲|きょく}が{聞|き}こえてくると、{体|からだ}を{動|うご}かさ[[ないではいられない]]。","Cứ nghe bài này là người tôi lại nhún nhảy theo."]],x:"ずにはいられない: không kìm được (cảm xúc). ないわけにはいかない: buộc phải (vì đạo lý). ざるを得ない: đành phải (vì hoàn cảnh).",s:1,src:["M74","S25"]},
+{p:"〜ないわけにはいかない",r:"ないわけにはいかない",f:"Vない ＋ わけにはいかない",m:"Không thể không..., buộc phải (vì lẽ thường, trách nhiệm).",tip:"Phủ định kép: không thể KHÔNG làm, tức là phải làm.",ex:[["{親友|しんゆう}の{結婚式|けっこんしき}だから、{忙|いそが}しくても{出席|しゅっせき}し[[ないわけにはいかない]]。","Đám cưới bạn thân nên dù bận cũng phải dự."]],src:["S25"]},
+{p:"〜ざるを得ない",r:"ざるをえない",hv:"得 · ĐẮC",f:"Vない (bỏ ない) ＋ ざるを得ない (する → せざるを得ない)",m:"Đành phải, không còn cách nào khác (dù không muốn).",tip:"ざる = ない (cổ); 得ない = không thể. 'Không thể không làm', tức là đành làm. Văn viết.",ex:[["{他|ほか}に{代|か}わりの{先生|せんせい}がいないので、{今日|きょう}は{私|わたし}が{教|おし}え[[ざるを得ない]]。","Không có giáo viên dạy thay nên hôm nay tôi đành phải dạy."],["これだけ{証拠|しょうこ}がそろえば、{彼|かれ}の{説|せつ}は{間違|まちが}っていたと{言|い}わ[[ざるを得ない]]。","Bằng chứng đầy đủ thế này thì đành phải nói thuyết của anh ta là sai."]],x:"Nhớ dạng đặc biệt: する → せざるを得ない (không phải しざる).",s:1,src:["M98","S25"]},
+{p:"〜やむを得ない／やむを得ず",r:"やむをえない",hv:"止む · CHỈ → dừng",f:"N(も)＋やむを得ない; やむを得ず＋V",m:"Bất đắc dĩ, không còn cách nào khác.",tip:"Muốn dừng (止む) cũng không được, tức là bất đắc dĩ.",ex:[["{熱|ねつ}が39{度|ど}もあるのでは、{欠席|けっせき}も[[やむを得ない]]。","Sốt tới 39 độ thì nghỉ cũng là bất đắc dĩ."],["{雨|あめ}のため、[[やむを得ず]]{試合|しあい}を{中止|ちゅうし}した。","Vì mưa nên bất đắc dĩ phải hủy trận đấu."]],src:["M25"]},
+{p:"〜ないものか／〜ないものだろうか",r:"ないものか",f:"Vない ＋ ものか／ものだろうか",m:"Không biết có cách nào để... không (mong mỏi điều khó thành).",tip:"Hay đi với thể khả năng và どうにか, なんとか.",ex:[["{世界中|せかいじゅう}が{平和|へいわ}になる{日|ひ}が{来|こ}[[ないものだろうか]]。","Ước gì ngày cả thế giới hòa bình sẽ đến."],["どうにかして{母|はは}の{病気|びょうき}が{治|なお}ら[[ないものか]]。","Có cách nào chữa khỏi bệnh cho mẹ không."]],x:"Khác 〜ものか (không đời nào): có ない ở trước thì là mong ước.",src:["M7","S26"]},
+{p:"〜ものがある",r:"ものがある",f:"Thể thường hiện tại (Naな) ＋ ものがある",m:"Có cái gì đó (khiến cảm thấy)...",tip:"Cảm nhận mơ hồ nhưng có thật: {心|こころ}を{打|う}つものがある, {感慨深|かんがいぶか}いものがある.",ex:[["{彼|かれ}の{歌|うた}には、{人|ひと}の{心|こころ}を{打|う}つ[[ものがある]]。","Bài hát của anh ấy có gì đó chạm đến lòng người."],["ここまで{来|き}てあきらめるのは、{残念|ざんねん}な[[ものがある]]。","Đi tới đây rồi mà bỏ cuộc thì thấy tiếc làm sao."]],src:["S26"]},
+{p:"〜ことに",r:"ことに",f:"Aい／Naな／Vた ＋ ことに",m:"Thật là... (cảm xúc của người nói về việc nói phía sau).",tip:"Đặt cảm xúc lên đầu câu: {残念|ざんねん}なことに, {驚|おどろ}いたことに, うれしいことに.",ex:[["{悔|くや}しい[[ことに]]、1{点差|てんさ}で{試合|しあい}に{負|ま}けてしまった。","Thật đáng tiếc, chúng tôi thua với cách biệt 1 điểm."],["{驚|おどろ}いた[[ことに]]、{彼|かれ}はもう{結婚|けっこん}していた。","Thật ngạc nhiên là anh ấy đã kết hôn rồi."]],src:["M3"]},
+{p:"〜ことか／〜ことだろう",r:"ことか／ことだろう",f:"Từ để hỏi (どんなに, 何度) ＋ thể thường ＋ ことか",m:"Biết bao, biết bao nhiêu (cảm thán mạnh).",tip:"Luôn đi với từ để hỏi: どんなに, なんと, {何度|なんど}, {何年|なんねん}.",ex:[["この{参考書|さんこうしょ}を{何年|なんねん}{使|つか}ってきた[[ことだろう]]。{本当|ほんとう}に{役|やく}に{立|た}った。","Không biết đã dùng cuốn sách này bao nhiêu năm rồi. Thật sự rất có ích."],["{離|はな}れて{暮|く}らしているあなたのことを、ご{両親|りょうしん}はどんなに{心配|しんぱい}している[[ことか]]。","Bố mẹ lo cho bạn biết bao khi bạn sống xa nhà."]],src:["M63","S26"]},
+{p:"〜ことだ (cảm thán)",r:"ことだ",f:"Aい／Naな ＋ ことだ",m:"Thật là... (đánh giá cảm xúc).",tip:"Hay đi với なんと: なんとひどいことだ.",ex:[["{大|おお}きくなりすぎたからとペットを{捨|す}てる{人|ひと}がいる。なんとひどい[[ことだ]]。","Có người bỏ thú cưng chỉ vì nó lớn quá. Thật tàn nhẫn."]],src:["S26"]},
+{p:"〜の(か)やら／〜ものやら",r:"のやら",f:"Thể thường ＋ のやら",m:"Không biết là... nữa (thắc mắc, lo lắng).",tip:"Người nói bất lực, không hiểu nổi: {何|なに}を{考|かんが}えているのやら.",ex:[["もうすぐ{受験|じゅけん}だというのに、うちの{息子|むすこ}は{何|なに}を{考|かんが}えている[[のやら]]。","Sắp thi rồi mà không biết thằng con tôi đang nghĩ gì nữa."]],src:["M30"]},
+{p:"〜なんて／〜とは (bất ngờ)",r:"なんて／とは",f:"Thể thường ＋ なんて／とは",m:"... thật không thể tin được (ngạc nhiên, ngoài sức tưởng tượng).",tip:"とは là bản văn viết. Thường theo sau là {信|しん}じられない, {驚|おどろ}いた, または bỏ lửng.",ex:[["この{量|りょう}で1,200{円|えん}だ[[なんて]]、{信|しん}じられない。","Từng này mà 1.200 yên, không thể tin nổi."],["あの{真面目|まじめ}な{彼|かれ}が{犯人|はんにん}だった[[とは]]。","Không ngờ người nghiêm túc như anh ta lại là thủ phạm."]],x:"とは cũng là 'định nghĩa' (nhóm Chủ đề). Nhìn vế sau: cảm thán thì là bất ngờ.",src:["M41"]}
+]);
+
+G("chu-de","Chủ đề & nhắc đến","Nghĩa là, nhắc đến, cứ nói đến, tùy thuộc vào",[
+{p:"〜とは (định nghĩa)",r:"とは",f:"N ＋ とは",m:"... nghĩa là, ... là (định nghĩa, giải thích).",tip:"Bản cứng của というのは／って. Cuối câu: 〜のことだ, 〜という{意味|いみ}だ.",ex:[["「{正義|せいぎ}」[[とは]]どういう{意味|いみ}ですか。","'Chính nghĩa' nghĩa là gì?"],["{人生|じんせい}[[とは]]、{自分|じぶん}が{主役|しゅやく}のドラマのようなものだ。","Đời người giống như một vở kịch mà mình là vai chính."]],src:["S13"]},
+{p:"〜というと／〜といえば／〜といったら",r:"というと／といえば",f:"N／thể thường ＋ といえば",m:"Nhắc đến... thì (nghĩ ngay đến điều tiêu biểu); xác nhận lại thông tin.",tip:"Nghĩ ngay tới thứ đặc trưng nhất: {和食|わしょく}といえば{寿司|すし}. Cũng dùng khi chuyển chủ đề: そういえば.",ex:[["{和食|わしょく}[[といえば]]、お{寿司|すし}ですね。","Nhắc đến món Nhật là nghĩ ngay tới sushi."],["ハワイ[[といえば]]、Aさんが{来月|らいげつ}ハワイで{結婚式|けっこんしき}をするそうですよ。","Nhắc đến Hawaii mới nhớ, nghe nói tháng sau chị A làm đám cưới ở Hawaii."]],s:1,src:["M90","S13"]},
+{p:"〜といったら (nhấn mạnh)",r:"といったら",f:"N ＋ といったら",m:"Nói về... thì (mức độ phi thường, ngạc nhiên).",tip:"Hay đi với danh từ chỉ mức độ: {寂|さび}しさ, {怖|こわ}さ, {忙|いそが}しさ. Có khi bỏ lửng vế sau.",ex:[["{恋人|こいびと}と{別|わか}れたときの{寂|さび}しさ[[といったら]]、{泣|な}きたいぐらいだった。","Nỗi cô đơn khi chia tay người yêu, nói ra thì muốn khóc."],["{締|し}め{切|き}り{前|まえ}の{忙|いそが}しさ[[といったら]]、{想像|そうぞう}もできないと{思|おも}うよ。","Cái sự bận rộn trước hạn chót thì cậu không tưởng tượng nổi đâu."]],src:["M90","S13"]},
+{p:"〜は〜にかかっている",r:"にかかっている",hv:"掛かる → treo vào, phụ thuộc",f:"N／〜かどうか／từ để hỏi ＋ は ＋ N ＋ にかかっている",m:"A phụ thuộc vào B, A tùy thuộc vào B.",tip:"A 'treo' vào B. Gần nghĩa với 次第だ.",ex:[["{合格|ごうかく}できるかどうか[[は]]、これから1か{月|げつ}のがんばり[[にかかっている]]。","Đỗ hay không tùy vào sự cố gắng trong một tháng tới."]],src:["M108"]},
+{p:"〜って／〜というのは",r:"って／というのは",f:"N ＋ って／というのは",m:"... là, ... nghĩa là.",ex:[["「ネコババ」[[って]]どういう{意味|いみ}？","'Nekobaba' nghĩa là gì vậy?"]],x:"とは là bản văn viết.",n3:1}
+]);
+
+const CMP=[
+{t:"Vừa... thì ngay",tip:"Hỏi hai câu: vế sau có ý chí không, và chủ ngữ có phải 'tôi' không. Có ý chí, tương lai thì dùng 次第. Bất ngờ, quá khứ thì dùng たとたん. Quan sát người khác thì dùng かと思うと.",rows:[
+["〜たとたん(に)","Vừa xong thì xảy ra điều bất ngờ","Quá khứ. Vế sau không có ý chí."],
+["〜(か)と思うと","Vừa... thì đã thay đổi đột ngột","Không dùng cho hành động của chính mình."],
+["〜か〜ないかのうちに","Chưa kịp xong đã...","Gần như đồng thời nhất. Lặp lại cùng động từ."],
+["Vます＋次第","Xong A là làm B ngay","Tương lai, có ý chí, yêu cầu. Hay dùng trong công việc."],
+["〜矢先(に)","Vừa định làm thì...","Chuyện ngoài ý muốn. Hay đi với ようとした."],
+["〜たらすぐ／〜とすぐ","Xong thì ngay","Dùng tự do, văn nói.","n3"]]},
+{t:"Khi, nhân dịp, trước khi",tip:"Cả bốn mẫu đầu đều là 'khi' trang trọng. Chọn theo sắc thái: thông báo (際), dịp đặc biệt (に際して), việc lớn tích cực (にあたって), thứ tự trước sau (に先立って).",rows:[
+["〜際(に)","Khi (trang trọng của とき)","Thông báo, hướng dẫn."],
+["〜に際して","Nhân dịp (việc đặc biệt, một lần)","Trung tính, dùng được cả với việc buồn."],
+["〜にあたって","Đứng trước một việc lớn","Tích cực, mang ý chuẩn bị, quyết tâm."],
+["〜に先立って","Trước khi A thì làm B","Nhấn vào thứ tự."],
+["〜最中に","Đang cao điểm thì...","Bị chen ngang."],
+["〜とき／〜うちに","Khi／trong lúc còn","Dùng đời thường.","n3"]]},
+{t:"Họ 上",tip:"Đọc đúng trước đã: 上 đọc うえ, riêng N＋上 đọc じょう. Sau đó nhìn thể động từ đứng trước.",rows:[
+["Vた／Nの＋上で","Sau khi (làm A cẩn thận) rồi","うえで. A là bước chuẩn bị."],
+["Vる＋上で","Trong quá trình, để làm A","うえで. Vế sau: 大切, 必要."],
+["Nの＋上で","Trên phương diện","うえで. 仕事の上で."],
+["〜上(に)","Hơn nữa, thêm vào","うえに. Hai vế cùng chiều."],
+["〜上は","Một khi đã... thì","うえは. Vế sau là quyết tâm."],
+["N＋上","Về mặt...","じょう. 教育上, 健康上.","trap"]]},
+{t:"Thay đổi tương quan",tip:"一方だ, ばかりだ, つつある đứng cuối câu, chỉ có một vế. につれて, に伴って nối hai vế (A đổi thì B đổi).",rows:[
+["〜につれて","Càng... càng (cùng nhịp)","Văn nói và văn viết."],
+["〜にしたがって","Càng... càng; tuân theo","Có thêm nghĩa 'theo chỉ dẫn'."],
+["〜に伴って","Kéo theo","Văn viết, tin tức."],
+["〜とともに","Cùng với; đồng thời","Có nghĩa 'cùng với ai'."],
+["Vる＋一方だ","Ngày càng (một chiều)","Tốt hoặc xấu đều được."],
+["Vる＋ばかりだ","Ngày càng xấu","Gần như chỉ chiều xấu."],
+["Vます＋つつある","Đang dần dần","Quá trình đang diễn ra."],
+["〜ば〜ほど","Càng... càng","Dạng điều kiện.","n3"]]},
+{t:"Không chỉ... mà còn",tip:"Muốn kết thúc câu bằng mệnh lệnh, rủ rê thì chỉ có だけでなく an toàn. ばかりか và 上に cấm vế sau ý chí.",rows:[
+["〜ばかりか","Không những... mà còn (B vượt A)","Bất ngờ. Không mệnh lệnh."],
+["〜のみならず","Không chỉ... mà còn","Văn viết, A và B ngang hàng."],
+["〜に限らず","Không chỉ (phạm vi rộng hơn)","Vế sau: みんな, いつも."],
+["〜はもとより","A thì đương nhiên, B cũng","Trang trọng hơn はもちろん."],
+["〜上(に)","Hơn nữa","Cùng chiều tốt hoặc xấu."],
+["〜にとどまらず","Không dừng ở A, lan rộng","Phạm vi mở rộng."],
+["〜どころか","Không những không... mà ngược lại","Kết quả trái hẳn.","trap"],
+["〜だけでなく／はもちろん","Không chỉ／đương nhiên","Vế sau tự do.","n3"]]},
+{t:"Dựa trên, theo",tip:"をもとに là chất liệu để sáng tạo cái mới. に基づいて là căn cứ không lệch. に沿って là đi theo đường đã vạch.",rows:[
+["〜をもとに","Lấy làm chất liệu gốc","Vế sau: 作る, 書く."],
+["〜に基づいて","Căn cứ vào (rõ ràng)","データ, 法律, 計画."],
+["〜に沿って","Theo đúng, không lệch","マニュアル, 方針; dọc theo sông."],
+["〜を踏まえて","Lấy làm tiền đề để xét","結果, 現状."],
+["〜のもとで","Dưới sự chỉ đạo của","Đi với người."],
+["〜に応じて","Điều chỉnh cho phù hợp","年齢, レベル."],
+["N＋次第だ","Kết quả phụ thuộc vào","努力次第."]]},
+{t:"Bất kể và cái bẫy にもかかわらず",tip:"Thêm も là đổi nghĩa: にかかわらず = bất kể; にもかかわらず = mặc dù. Đây là cặp hay bị đặt cạnh nhau trong đề.",rows:[
+["〜を問わず","Không phân biệt","Từ bao hàm: 年齢, 男女, 有無."],
+["〜にかかわらず","Bất kể","Cặp đối lập: 行く行かない."],
+["〜もかまわず","Chẳng màng đến","Hành động khác thường."],
+["〜はともかく","Khoan bàn A","Nhấn vào B."],
+["〜はさておき","Gác A lại","Chuyển sang việc chính."],
+["〜抜きで","Bỏ qua A, không có A","冗談抜きで."],
+["〜にもかかわらず","MẶC DÙ","Nghĩa khác hẳn cả nhóm.","trap"]]},
+{t:"Mặc dù, tuy... nhưng",tip:"たところで khác たところ chỉ một chữ で. にしては đi với sự thật cụ thể (2月, 新入社員), わりに đi với từ chỉ mức độ (値段, 年齢).",rows:[
+["〜にもかかわらず","Mặc dù (văn viết)","Bất ngờ, bất mãn."],
+["〜ものの","Tuy (sự thật) nhưng","Kết quả không như mong."],
+["〜ながら(も)","Tuy (trạng thái) nhưng","子供ながら, 狭いながらも."],
+["〜つつ(も)","Biết là... mà vẫn","思いつつ, 知りつつ."],
+["〜といっても","Nói là... nhưng (mức độ thấp)","Hạ thấp kỳ vọng."],
+["〜たところで","Dù có... cũng vô ích","Vế sau tiêu cực.","trap"],
+["〜にしては","So với (sự thật cụ thể)","2月にしては暖かい."],
+["〜わりに","So với (mức độ)","値段のわりに."],
+["〜のに／〜くせに","Vậy mà／đã... còn","くせに mang ý chê.","n3"]]},
+{t:"Vì, chính vì",tip:"だけあって chỉ dùng để khen. だけに khen hay chê đều được. ばかりに luôn là hối hận. からには ép vế sau phải là quyết tâm.",rows:[
+["〜だけに","Chính vì... nên càng","Tốt hoặc xấu."],
+["〜だけあって","Quả là... có khác","Chỉ dùng để khen."],
+["〜ばかりに","Chỉ vì... mà (xấu)","Hối hận."],
+["〜あまり","Vì quá... nên","緊張のあまり."],
+["〜からには／以上は","Đã... thì phải","Vế sau: quyết tâm, nghĩa vụ."],
+["〜ことだから","Vì là người đó nên chắc","Đi với người quen."],
+["〜もので","Vì (bao biện)","Xin lỗi, thanh minh."],
+["〜ことから","Từ việc...","Căn cứ, nguồn gốc tên gọi."],
+["〜につき","Vì (thông báo)","Biển báo."],
+["〜おかげで／せいで／ため","Nhờ／tại／vì","Trung tính, cơ bản.","n3"]]},
+{t:"Rốt cuộc, sau cùng",tip:"あげく → kết quả xấu. 末に → kết quả, quyết định (thường tốt). Hai mẫu đều đi với Vた hoặc Nの.",rows:[
+["〜あげく","Sau một hồi → kết quả xấu","さんざん〜たあげく."],
+["〜末に","Sau một hồi → đi đến kết quả","Quyết định, kết luận."],
+["〜たところ","Thử làm thì phát hiện","Một lần, quá khứ."],
+["〜きり","Từ đó không... nữa","出かけたきり帰らない."],
+["〜ずじまい","Rốt cuộc không làm được","Tiếc, hết cơ hội."],
+["〜ところだった","Suýt nữa","うっかり, 危うく."],
+["〜っぱなし","Bỏ mặc／liên tục","Ý chê cẩu thả."],
+["〜ずにすむ","May mà không phải","Tránh được."]]},
+{t:"Không thể",tip:"かねる = KHÔNG thể. かねない = CÓ THỂ (xảy ra chuyện xấu). Câu từ chối lịch sự của nhân viên luôn là 〜かねます.",rows:[
+["〜がたい","Khó (về tâm lý)","信じがたい, 許しがたい."],
+["〜かねる","Không thể (từ chối lịch sự)","お答えしかねます."],
+["〜かねない","CÓ THỂ (kết quả xấu)","Phủ định kép.","trap"],
+["〜ようがない","Không có cách nào","連絡しようがない."],
+["〜ようにも〜ない","Muốn mà không được","取ろうにも取れない."],
+["〜得ない","Không thể xảy ra","あり得ない (えない)."],
+["〜っこない","Đời nào (văn nói)","できっこない."],
+["〜わけにはいかない","Không được (đạo lý)","Có khả năng nhưng không nên."],
+["〜どころではない","Không phải lúc để...","Hoàn cảnh không cho phép."],
+["〜にくい／〜はずがない","Khó (vật lý)／không lẽ nào","Bản dễ.","n3"]]},
+{t:"Chắc chắn & suy đoán",tip:"Căn cứ khách quan thì dùng に違いない. Cảm tính thì dùng に決まっている. Tin tức, dự báo thì dùng おそれがある.",rows:[
+["〜に違いない","Chắc chắn (có căn cứ)","Văn nói và văn viết."],
+["〜に相違ない","Chắc chắn","Bản văn viết của に違いない."],
+["〜に決まっている","Chắc chắn (chủ quan)","Văn nói."],
+["〜にほかならない","Chính là, không gì khác","Kết luận mạnh."],
+["〜とみえる","Có vẻ (nhìn dấu hiệu)","Đoán người khác."],
+["〜おそれがある","E rằng (xấu)","Tin tức, dự báo."],
+["〜かねない","Có thể (xấu)","Nêu rõ nguyên nhân."],
+["〜かのようだ","Cứ như thể","Thực tế không phải."]]},
+{t:"Đành phải, không kìm được",tip:"Hỏi lý do: hoàn cảnh ép (ざるを得ない), đạo lý xã hội (ないわけにはいかない), cảm xúc tự bật ra (ずにはいられない).",rows:[
+["〜ざるを得ない","Đành phải (hoàn cảnh ép)","する → せざるを得ない."],
+["〜しかない／よりほかない","Chỉ còn cách","Bản dễ, phổ biến."],
+["〜ないわけにはいかない","Phải (đạo lý, xã hội)","Phủ định kép."],
+["〜ずにはいられない","Không kìm được","Cảm xúc tự nhiên."],
+["〜てならない","Cảm xúc trào lên","心配でならない."],
+["〜てしかたがない","Không chịu nổi","Văn nói."],
+["〜やむを得ない","Bất đắc dĩ","やむを得ず + V."]]},
+{t:"Họ もの",tip:"Nhìn thứ đứng ngay trước もの: Vた → hồi tưởng; V可能形 → nếu có thể; Vよう → lỡ mà; Vない＋ものか → mong ước; ものか đơn thuần → không đời nào.",rows:[
+["Vる＋ものだ","Lẽ thường, nên","悪いことをしたら謝るものだ."],
+["Vる＋ものではない","Không nên","人の悪口を言うものではない."],
+["Vた＋ものだ","Hồi đó hay...","Hồi tưởng."],
+["Aい＋ものだ","Thật là... (cảm thán)","早いものだ."],
+["〜ものか","Không đời nào","Phủ định mạnh."],
+["Vない＋ものか","Mong sao...","Mong ước khó thành."],
+["V可能形＋ものなら","Nếu có thể thì muốn","戻れるものなら."],
+["Vよう＋ものなら","Lỡ mà... thì toi","忘れようものなら."],
+["〜ものの","Tuy... nhưng","Nhượng bộ."],
+["〜もので","Vì (bao biện)","Lý do cá nhân."],
+["〜ものがある","Có gì đó (cảm thấy)","心を打つものがある."],
+["〜というものだ","Đó đúng là (lẽ thường)","無理というものだ."],
+["〜というものではない","Không phải cứ... là được","Phản bác quan niệm."]]},
+{t:"Họ こと",tip:"ことだ có hai nghĩa: đi với động từ (Vる／Vない) là lời khuyên; đi với tính từ là cảm thán.",rows:[
+["Vる／Vない＋ことだ","Nên (lời khuyên)","毎日話すことだ."],
+["Aい／Naな＋ことだ","Thật là (cảm thán)","なんとひどいことだ."],
+["〜ことに","Thật... là (đầu câu)","残念なことに."],
+["〜ことか","Biết bao","Đi với どんなに, 何度."],
+["〜ことなく","Mà không","休むことなく."],
+["〜ことから","Từ việc...","Căn cứ, tên gọi."],
+["Nの＋ことだから","Vì là người đó","Suy đoán theo tính cách."],
+["〜ことだし","Vì (rủ rê)","Văn nói nhẹ nhàng."],
+["〜ないことには","Nếu không thì không","Vế sau phủ định."],
+["Vた＋ことにする","Coi như đã","聞かなかったことにする."],
+["〜ことはない","Không cần","気にすることはない."],
+["〜に越したことはない","... là tốt nhất","Không bắt buộc nhưng nên."]]},
+{t:"Họ 限り",tip:"Có に hay không có に là đổi nghĩa. Không có に: chừng nào, phạm vi. Có に: chỉ riêng, là nhất, đúng lúc, không chỉ.",rows:[
+["Nの＋限り","Hết mức","力の限り."],
+["〜限り(は)","Chừng nào còn","学生である限り."],
+["〜ない限り","Chừng nào chưa","努力しない限り."],
+["〜限りでは","Theo những gì (tôi biết)","知っている限りでは."],
+["〜に限り","Chỉ riêng (ưu đãi)","Thông báo."],
+["〜に限る","... là nhất","寒い日は鍋に限る."],
+["〜に限って","Đúng lúc thì lại／riêng... thì không","Bất mãn hoặc tin tưởng."],
+["〜に限らず","Không chỉ","Mở rộng phạm vi."]]},
+{t:"Họ ばかり",tip:"Vị trí của ばかり quyết định nghĩa: sau Vた là vừa mới, sau Vて là toàn là, sau Vる＋だ là ngày càng xấu.",rows:[
+["Vた＋ばかり","Vừa mới","来たばかり.","n3"],
+["Vて＋ばかりいる","Toàn là, suốt ngày","遊んでばかりいる.","n3"],
+["Vる＋ばかりだ","Ngày càng xấu","悪くなるばかりだ."],
+["〜ばかりか","Không những... mà còn","B vượt A."],
+["〜ばかりに","Chỉ vì... mà (xấu)","Hối hận."]]},
+{t:"Lập trường & đối tượng",tip:"にかけては (về khoản, giỏi) khác 〜から〜にかけて (từ... đến) của N3.",rows:[
+["〜にとって","Đối với (đánh giá)","Vế sau: 大切, 難しい."],
+["〜にしたら","Ở vị trí người khác thì chắc","Suy đoán cảm xúc."],
+["〜として","Với tư cách","親として."],
+["〜からすると","Xét từ","Góc nhìn, căn cứ."],
+["〜に対して","Hướng tới／trái với","Hành động, thái độ."],
+["〜にかけては","Về khoản (giỏi nhất)","誰にも負けない."],
+["〜から〜にかけて","Từ... đến","Thời gian, địa điểm.","trap"]]},
+{t:"Mức độ cực đoan",tip:"てまで: đến mức đó thì KHÔNG làm, hoặc phê phán. てでも: dù phải đến mức đó cũng LÀM.",rows:[
+["〜まで","Đến cả","母まで反対した."],
+["〜てまで","Đến mức (thì không làm)","借金してまで買わない."],
+["〜てでも","Dù phải (cũng làm)","借金してでも買いたい.","trap"],
+["〜さえ","Ngay cả","ひらがなさえ読めない."],
+["〜として〜ない","Không một... nào","何一つとしてない."],
+["〜にすぎない","Chỉ là, không đáng kể","Đánh giá thấp."],
+["〜にほかならない","Chính là","Khẳng định mạnh.","trap"]]}
+];
+
+const READ=[
+["得る","うる／える (phủ định: えない)","ĐẮC","あり得る・あり得ない"],
+["上","うえ (上で・上に・上は)／じょう (N＋上)","THƯỢNG","教育上"],
+["最中","さいちゅう (không đọc もなか, もなか là tên một loại bánh)","TỐI TRUNG","食事の最中"],
+["次第","しだい","THỨ ĐỆ","着き次第・努力次第"],
+["末","すえ","MẠT","悩んだ末に"],
+["矢先","やさき","THỈ TIÊN","出かけようとした矢先"],
+["相違ない","そういない","TƯƠNG VI","に相違ない"],
+["際","さい","TẾ","ご利用の際"],
+["一方","いっぽう","NHẤT PHƯƠNG","増える一方だ"],
+["問わず","とわず","VẤN","年齢を問わず"],
+["関わらず","かかわらず","QUAN","天候にかかわらず"],
+["構わず","かまわず","CẤU","人目もかまわず"],
+["抜き","ぬき","BẠT","冗談抜きで"],
+["越した","こした","VIỆT","に越したことはない"],
+["踏まえて","ふまえて","ĐẠP","結果を踏まえて"],
+["伴って","ともなって","BẠN","変化に伴って"],
+["基づいて","もとづいて","CƠ","データに基づいて"],
+["沿って","そって","DUYÊN","方針に沿って"],
+["応じて","おうじて","ỨNG","レベルに応じて"],
+["先立って","さきだって","TIÊN LẬP","開会に先立って"],
+["契機","けいき","KHẾ CƠ","を契機に"],
+["挙句","あげく (thường viết bằng hiragana)","CỬ CÚ","悩んだあげく"],
+["恐れ","おそれ","KHỦNG","大雨のおそれ"],
+["限り","かぎり","HẠN","知っている限り"],
+["難い","がたい (sau Vます)","NAN","信じがたい"],
+["兼ねる","かねる","KIÊM","お答えしかねます"],
+["止むを得ない","やむをえない","CHỈ","やむを得ず"],
+["途端","とたん (thường viết bằng hiragana)","ĐỒ ĐOAN","見たとたん"],
+["余り","あまり","DƯ","心配のあまり"],
+["他ならない","ほかならない","THA","努力にほかならない"]
+];
+
+const RULES=[
+{t:"Vế sau KHÔNG được có ý chí, mệnh lệnh, rủ rê",d:"Nếu đáp án có 〜よう, 〜たい, 〜てください, 〜なさい ở vế sau thì loại các mẫu này.",items:["〜たとたん","〜(か)と思うと","〜か〜ないかのうちに","〜にもかかわらず","〜ものの","〜ばかりか","〜上(に)","〜あまり","〜ばかりに","〜もかまわず","〜もので","〜とすると／〜となると"]},
+{t:"Vế sau BẮT BUỘC có ý chí, nghĩa vụ, quyết tâm",d:"Vế sau là 〜たい, 〜つもりだ, 〜なければならない, 〜てください, 〜よう.",items:["Vます＋次第 (ngay khi)","〜からには／〜以上は／〜上は","〜ことだし","Vた＋上で","〜てでも"]},
+{t:"Vế sau mang nghĩa PHỦ ĐỊNH, bất khả",d:"Câu kết thúc bằng できない, 無理だ, 〜ない, わからない.",items:["〜ないことには","〜てからでないと","〜を抜きにしては","〜ようがない","〜ようにも〜ない","〜たところで","〜どころではない","〜として〜ない","うちの子に限って〜ない"]},
+{t:"Gần như chỉ đi với kết quả XẤU",d:"Gặp tình huống tốt đẹp thì cân nhắc loại các mẫu này.",items:["〜あげく","〜ばかりに","〜あまり","〜かねない","〜おそれがある","Vる＋ばかりだ","〜っぱなし","〜からして","〜矢先に"]},
+{t:"Không dùng cho chính người nói",d:"Chủ ngữ là ngôi thứ nhất thì loại.",items:["〜(か)と思うと","〜にしたら／〜にすれば","〜とみえる","〜くせに"]},
+{t:"Biến đổi đặc biệt của する",d:"Đề hay bẫy ở chỗ này.",items:["する → すべき／するべき","する → せざるを得ない","する → せずにはいられない","する → せずにすむ","する → せずじまい","する → するまい／すまい"]}
+];
+
+/* Cross links inside each comparison map: [rowA, rowB, type, label]
+   type: similar = gần nghĩa, contrast = đối lập / so sánh, trap = bẫy dễ nhầm, related = liên quan */
+const LINKS=[
+[[0,3,"contrast","Bất ngờ, quá khứ ↔ có ý chí, tương lai"],[0,1,"similar","Đều bất ngờ; かと思うと không dùng cho bản thân"],[1,2,"similar","か〜ないかのうちに gần như đồng thời hơn"],[0,4,"related","矢先 thường đi với 'định làm'"],[3,5,"similar","次第 là bản trang trọng"]],
+[[1,2,"similar","Gần như thay thế được; にあたって thiên về tích cực"],[0,1,"related","際に → に際して trang trọng hơn"],[2,3,"contrast","Quyết tâm ↔ thứ tự trước sau"],[0,5,"similar","際 = とき nói lịch sự"]],
+[[0,1,"trap","Vた = sau khi; Vる = trong khi, để làm"],[3,4,"contrast","Hơn nữa ↔ một khi đã"],[2,5,"trap","Đều là 'về mặt'; đọc うえ ↔ じょう"]],
+[[0,1,"similar","Gần như thay thế được"],[2,3,"similar","Văn viết, 'kéo theo'"],[4,5,"contrast","Tốt hoặc xấu ↔ chỉ xấu"],[0,7,"similar","Bản N3 dạng điều kiện"],[6,4,"related","Đang dần ↔ ngày càng"]],
+[[0,6,"trap","Cộng thêm ↔ ngược hẳn"],[1,7,"similar","Văn viết ↔ văn nói"],[3,7,"similar","はもとより ≈ はもちろん"],[2,5,"similar","Mở rộng phạm vi"],[0,4,"similar","Đều cấm vế sau có ý chí"]],
+[[0,1,"contrast","Chất liệu để sáng tạo ↔ căn cứ không lệch"],[1,2,"similar","Làm theo quy định, kế hoạch"],[5,6,"contrast","Chủ động điều chỉnh ↔ kết quả phụ thuộc"],[0,4,"trap","をもとに (元: gốc) ↔ のもとで (下: dưới)"]],
+[[1,6,"trap","Thêm も: bất kể → mặc dù"],[0,1,"similar","Gần như thay thế được"],[3,4,"similar","Tạm gác; さておき dứt khoát hơn"],[4,5,"related","冗談はさておき／冗談抜きで"]],
+[[6,7,"contrast","Sự thật cụ thể ↔ từ chỉ mức độ"],[2,3,"similar","つつも văn viết, đi với 思う, 知る"],[0,8,"similar","Văn viết ↔ văn nói"],[1,4,"related","Kết quả không như mong đợi"]],
+[[0,1,"contrast","Khen hoặc chê ↔ chỉ khen"],[2,9,"similar","ばかりに ≈ せいで, thêm ý hối hận"],[2,3,"related","Đều dẫn tới kết quả xấu"],[5,0,"related","Suy từ tính cách ↔ từ lý do"]],
+[[0,1,"contrast","Kết quả xấu ↔ có kết quả, quyết định"],[3,6,"similar","Trạng thái cứ để nguyên"],[4,7,"contrast","Lỡ mất ↔ may mà tránh được"],[2,5,"related","Cùng họ ところ"]],
+[[1,2,"trap","Thêm ない: không thể → có thể (xấu)"],[3,4,"similar","Không có cách nào"],[5,6,"similar","Không thể xảy ra; っこない là văn nói"],[0,9,"contrast","Khó về tâm lý ↔ khó về vật lý"],[6,9,"similar","っこない ≈ はずがない"]],
+[[0,1,"similar","に相違ない là bản văn viết"],[0,2,"contrast","Có căn cứ ↔ chủ quan"],[5,6,"similar","Khả năng xảy ra điều xấu"],[4,7,"contrast","Có vẻ thật ↔ như thể (không thật)"]],
+[[0,1,"similar","Văn viết ↔ văn nói"],[2,3,"contrast","Vì đạo lý ↔ cảm xúc tự bật ra"],[4,5,"similar","Cảm xúc mạnh"],[0,6,"similar","Cùng chữ 得: bất đắc dĩ"]],
+[[4,5,"trap","Thêm ない: không đời nào → mong sao"],[6,7,"trap","Thể khả năng ↔ thể ý chí"],[0,1,"contrast","Nên ↔ không nên"],[11,12,"contrast","Đúng là ↔ không phải cứ"],[2,3,"related","Cảm xúc nhìn lại"],[8,9,"trap","Tuy... nhưng ↔ vì"]],
+[[0,1,"trap","Vる → lời khuyên; Aい → cảm thán"],[5,6,"contrast","Căn cứ ↔ tính cách người"],[6,7,"related","Đều nêu lý do"],[0,10,"contrast","Nên ↔ không cần"],[2,3,"related","Cảm thán"]],
+[[1,2,"contrast","Chừng nào còn ↔ chừng nào chưa"],[4,7,"contrast","Chỉ riêng ↔ không chỉ"],[5,6,"trap","Là nhất ↔ đúng lúc thì lại"],[3,0,"related","Phạm vi, giới hạn"]],
+[[0,2,"trap","Vた＋ばかり ↔ Vる＋ばかりだ"],[3,4,"trap","Không những ↔ chỉ vì"],[1,2,"related","Giọng phàn nàn"]],
+[[0,1,"contrast","Đánh giá ↔ đoán cảm xúc người khác"],[0,4,"trap","Đánh giá ↔ hành động hướng tới"],[5,6,"trap","Có は: về khoản; không có: từ… đến"],[1,3,"similar","Nhìn từ một góc"]],
+[[1,2,"trap","Không làm ↔ dù phải cũng làm"],[5,6,"contrast","Chỉ là ↔ chính là"],[0,3,"similar","Đến cả ↔ ngay cả"]]
+];
+
+/* Row → card pattern (exact p) where the automatic match is wrong or missing; null = no card */
+const REFS={
+"0:5":null,"1:4":"〜最中(に)／〜最中だ","1:5":"〜うちに","2:1":"〜る上で／Nの上で","2:2":"〜る上で／Nの上で","2:3":"〜上(に)","2:5":"〜上 (じょう)",
+"4:4":"〜上(に)","6:5":"〜抜き(で)／〜抜きにして／〜を抜きにしては","7:3":"〜つつ(も)","7:6":"〜にしては","9:1":"〜末(に)","9:2":"〜たところ",
+"10:9":"〜はずがない","12:1":"〜しかない／〜よりほかない","13:0":"〜ものだ／〜ものではない (lẽ thường)","13:1":"〜ものだ／〜ものではない (lẽ thường)",
+"13:2":"〜たものだ (hồi tưởng)","13:3":"〜ものだ (cảm thán)","13:5":"〜ないものか／〜ないものだろうか","13:7":"〜(よ)うものなら",
+"14:0":"〜ことだ (lời khuyên)","14:1":"〜ことだ (cảm thán)","14:2":"〜ことに","14:3":"〜ことか／〜ことだろう","15:1":"〜限り(は)／〜ない限り",
+"17:2":"〜を〜として／〜として","17:6":null,"18:3":"〜さえ (ngay cả)"
+};
+
+
+(function(){
+  const $=id=>document.getElementById(id);
+  const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+  const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  const fmt=s=>s?esc(s).replace(/\{([^|{}]+)\|([^{}]+)\}/g,"<ruby>$1<rt>$2</rt></ruby>").replace(/\[\[(.+?)\]\]/g,"<mark>$1</mark>"):"";
+  const plain=s=>s?String(s).replace(/\{([^|{}]+)\|([^{}]+)\}/g,"$1 $2").replace(/\[\[|\]\]/g,""):"";
+  const norm=s=>String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d").replace(/[〜～\s・／()（）]/g,"");
+  const srcLabel=c=>c[0]==="M"?"Mimi "+c.slice(1):"Shin B"+c.slice(1);
+  const jpWrap=s=>esc(s).replace(/([぀-ヿ一-龯〜][぀-ヿ一-龯〜・→]*)/g,'<span class="jp">$1</span>');
+  let toastT;function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),2600);}
+
+  /* ---------- Index data ---------- */
+  const ALL=[],BY_P={};
+  GROUPS.forEach(g=>g.items.forEach((it,i)=>{it.id=g.id+"-"+i;it.g=g;it.extra=!!(it.n3&&!it.src);ALL.push(it);BY_P[it.p]=it;}));
+  const normP=s=>s.replace(/\s*\([^)]*[A-Za-zÀ-ỹ][^)]*\)/g,"").replace(/[〜～\s]/g,"");
+  function autoRef(r){const k=r.replace(/^(Vた／Nの|Vる／Vない|Vる|Vた|Vて|Vない|Vます|V可能形|Vよう|Aい／Naな|Aい|Nの|N)＋/,"").replace(/[〜～]/g,"").replace(/\(.*?\)/g,"").split("／")[0].trim();return ALL.find(it=>normP(it.p).includes(k))||null;}
+  const MAPS=CMP.map((c,ci)=>({ci,title:c.t,tip:c.tip,links:LINKS[ci]||[],nodes:c.rows.map((r,ri)=>{const key=ci+":"+ri;const card=key in REFS?(REFS[key]?BY_P[REFS[key]]||null:null):autoRef(r[0]);return {label:r[0],m:r[1],note:r[2],kind:r[3]||"",card};})}));
+  const MAPS_OF={};MAPS.forEach(m=>m.nodes.forEach((n,ni)=>{if(n.card){(MAPS_OF[n.card.p]=MAPS_OF[n.card.p]||[]).push({ci:m.ci,ni});}}));
+
+  /* ---------- Learned progress (account when available, browser otherwise) ---------- */
+  const learned=new Set();
+  (store.get("n2.learned",[])||[]).forEach(k=>{const it=ALL.find(x=>x.id===k||x.p===k);if(it)learned.add(it.p);});
+  const prefs=Object.assign({star:false,n3:true,furi:true,quiz:false,mmHide:[],labels:false},store.get("n2.prefs",{}));
+  const savePrefs=()=>store.set("n2.prefs",prefs);
+  const learnIds=()=>ALL.filter(it=>!it.extra);
+  let progRef=null,progTimer=null,progBusy=false,progAgain=false;
+  function saveLearned(){
+    store.set("n2.learned",[...learned]);
+    if(!progRef)return;clearTimeout(progTimer);progTimer=setTimeout(pushProgress,700);
+  }
+  async function pushProgress(){
+    if(progBusy){progAgain=true;return;}progBusy=true;
+    try{await progRef.set({learned:[...learned],updated:Date.now()});}catch(e){}
+    progBusy=false;if(progAgain){progAgain=false;pushProgress();}
+  }
+  function setLearned(p,on){
+    if(on)learned.add(p);else learned.delete(p);
+    const it=BY_P[p];if(it){const c=$(it.id);if(c){c.classList.toggle("done",on);const cb=c.querySelector("input[data-p]");if(cb)cb.checked=on;}}
+    saveLearned();progress();if(MM.cur!==null)refreshFlags();
+  }
+
+  /* ---------- Stats ---------- */
+  const n2=ALL.filter(i=>!i.extra).length,stars=ALL.filter(i=>i.s).length,n3All=ALL.filter(i=>i.n3).length;
+  $("stats").innerHTML=`<div class="stat"><b>${n2}</b><span>thẻ ngữ pháp (đã gộp trùng)</span></div><div class="stat"><b>${stars}</b><span>mẫu trọng tâm</span></div><div class="stat"><b>${n3All}</b><span>mẫu N3 liên quan</span></div><div class="stat"><b>${MAPS.length+1}</b><span>sơ đồ tư duy</span></div>`;
+  $("patList").innerHTML=ALL.map(it=>`<option value="${esc(it.p)}"></option>`).join("");
+
+  /* ---------- Cards ---------- */
+  function card(it){
+    const extra=it.extra;
+    const pm=it.p.match(/^(.*?)\s*\(([^()]*[A-Za-zÀ-ỹđ][^()]*)\)$/);
+    const cls=["card"];if(it.s)cls.push("star");if(extra)cls.push("n3");if(learned.has(it.p))cls.push("done");
+    const badges=[];
+    if(it.s)badges.push('<span class="stamp" title="Trọng tâm">重点</span>');
+    if(it.n3)badges.push('<span class="n3b">'+(extra?"N3 liên quan":"Mức N3")+'</span>');
+    (it.src||[]).forEach(c=>badges.push('<span class="src">'+srcLabel(c)+'</span>'));
+    const ex=(it.ex||[]).map(e=>`<li><p class="ja">${fmt(e[0])}</p><p class="vi hide-q">${fmt(e[1])}</p></li>`).join("");
+    it.text=norm([it.p,it.r,it.m,it.f,it.hv,it.tip,it.x,(it.ex||[]).map(e=>e.join(" ")).join(" ")].map(plain).join(" "));
+    const inMap=MAPS_OF[it.p]?`<button class="btn ghost" data-act="map" data-p="${esc(it.p)}"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="12" cy="21" r="2"/><path d="M6 7l4 3.5M18 7l-4 3.5M12 15v4"/></svg>Sơ đồ</button>`:"";
+    const noteBtn=`<button class="btn ghost" data-act="note" data-p="${esc(it.p)}"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>Ghi chú<span class="count" data-nc="${esc(it.p)}" hidden>0</span></button>`;
+    return `<article class="${cls.join(" ")}" id="${it.id}" data-star="${it.s?1:0}" data-n3x="${extra?1:0}">
+      <div class="head"><div><h3 class="pat">${fmt(pm?pm[1]:it.p)}${pm?`<span class="pnote">${esc(pm[2])}</span>`:""}</h3>${it.r?`<div class="reading">${esc(it.r)}</div>`:""}</div><div class="badges">${badges.join("")}</div></div>
+      ${it.f?`<div class="formula"><span class="lbl">Cấu trúc</span>${fmt(it.f)}</div>`:""}
+      <p class="meaning hide-q">${fmt(it.m)}</p>
+      ${it.hv?`<p class="hv hide-q"><span class="lbl">Chữ Hán</span><span class="v">${fmt(it.hv)}</span></p>`:""}
+      ${ex?`<ol class="ex">${ex}</ol>`:""}
+      ${it.tip?`<p class="note tip hide-q"><span class="lbl">Mẹo nhớ</span>${fmt(it.tip)}</p>`:""}
+      ${it.x?`<p class="note warn hide-q"><span class="lbl">Dễ nhầm</span>${fmt(it.x)}</p>`:""}
+      <div class="card-foot">${extra?"<span></span>":`<label class="learn"><input type="checkbox" id="l-${it.id}" data-p="${esc(it.p)}"${learned.has(it.p)?" checked":""}> Đã thuộc</label>`}
+        <div class="foot-actions"><span class="reveal-hint">Chạm để xem nghĩa</span>${inMap}${noteBtn}</div></div>
+    </article>`;
+  }
+  $("groups").innerHTML=GROUPS.map(g=>{
+    const main=g.items.filter(i=>!i.extra),rel=g.items.filter(i=>i.extra);
+    return `<section class="group" id="${g.id}" data-g="${g.id}"><div class="group-head"><h2>${esc(g.title)}</h2><p>${esc(g.sub)}</p></div>
+      <div class="cards">${main.map(card).join("")}</div>
+      ${rel.length?`<div class="n3-block"><div class="n3-head">N3 liên quan, ôn để phân biệt</div><div class="cards">${rel.map(card).join("")}</div></div>`:""}</section>`;}).join("");
+  $("index").innerHTML=GROUPS.map(g=>`<li><a href="#${g.id}" data-g="${g.id}"><span>${esc(g.title)}</span><span class="n" data-c="${g.id}"></span></a></li>`).join("");
+
+  $("cmp").innerHTML=CMP.map((c,ci)=>`<section class="cmp"><div class="cmp-h"><h3>${esc(c.t)}</h3><button class="btn" data-openmap="${ci}">Xem sơ đồ</button></div>
+    <div class="tbl"><table><thead><tr><th>Mẫu</th><th>Nghĩa cốt lõi</th><th>Lưu ý</th></tr></thead><tbody>
+    ${c.rows.map(r=>`<tr class="${r[3]||""}"><td class="p">${esc(r[0])}${r[3]==="n3"?'<span class="tag">N3</span>':r[3]==="trap"?'<span class="tag">BẪY</span>':""}</td><td>${esc(r[1])}</td><td>${jpWrap(r[2])}</td></tr>`).join("")}
+    </tbody></table></div><p class="note tip"><span class="lbl">Mẹo phân biệt</span>${jpWrap(c.tip)}</p></section>`).join("");
+  $("cmp").addEventListener("click",e=>{const b=e.target.closest("[data-openmap]");if(b){showTab("so-do",true);openMap(+b.dataset.openmap);}});
+  $("rules").innerHTML=RULES.map(r=>`<div class="rule"><h3>${esc(r.t)}</h3><p>${esc(r.d)}</p><div class="pills">${r.items.map(i=>`<span class="pill">${jpWrap(i)}</span>`).join("")}</div></div>`).join("");
+  $("readings").innerHTML=READ.map(r=>`<tr><td>${esc(r[0])}</td><td>${jpWrap(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join("");
+
+  function progress(){
+    const ids=learnIds(),done=ids.filter(i=>learned.has(i.p)).length;
+    $("ptext").textContent=done+"/"+ids.length+" đã thuộc";
+    $("pfill").style.width=(ids.length?done/ids.length*100:0)+"%";
+  }
+  $("groups").addEventListener("change",e=>{const t=e.target;if(t.dataset.p&&t.type==="checkbox")setLearned(t.dataset.p,t.checked);});
+  $("groups").addEventListener("click",e=>{
+    const a=e.target.closest("[data-act]");
+    if(a){const p=a.dataset.p;if(a.dataset.act==="note")openNotes({ref:p,filter:true});else{const loc=MAPS_OF[p][0];showTab("so-do",true);openMap(loc.ci,loc.ni);}return;}
+    if(!document.body.classList.contains("quiz"))return;
+    if(e.target.closest("label,input,a,button"))return;
+    const c=e.target.closest(".card");if(c)c.classList.toggle("open");
+  });
+
+  /* ---------- Filters ---------- */
+  const q=$("q");
+  function apply(){
+    const term=norm(q.value);let total=0;
+    document.querySelectorAll(".group").forEach(sec=>{
+      let vis=0;
+      sec.querySelectorAll(".card").forEach(c=>{
+        const it=ALL.find(x=>x.id===c.id);let ok=true;
+        if(prefs.star&&c.dataset.star!=="1")ok=false;
+        if(!prefs.n3&&c.dataset.n3x==="1")ok=false;
+        if(term&&it.text.indexOf(term)<0)ok=false;
+        c.hidden=!ok;if(ok&&c.dataset.n3x!=="1")vis++;if(ok)total++;
+      });
+      const nb=sec.querySelector(".n3-block");if(nb)nb.hidden=![...nb.querySelectorAll(".card")].some(c=>!c.hidden);
+      const any=[...sec.querySelectorAll(".card")].some(c=>!c.hidden);sec.hidden=!any;
+      const cnt=document.querySelector(`[data-c="${sec.dataset.g}"]`);if(cnt)cnt.textContent=vis;
+      const a=document.querySelector(`a[data-g="${sec.dataset.g}"]`);if(a)a.classList.toggle("empty",!any);
+    });
+    $("empty").hidden=total>0;
+    const rn=$("rnote");
+    if(term||prefs.star){rn.hidden=false;rn.textContent=total+" thẻ phù hợp"+(term?` với “${q.value.trim()}”`:"")+(prefs.star?" · chỉ hiện mẫu trọng tâm":"");}else rn.hidden=true;
+  }
+  const toggles=[["star","t-star",null],["n3","t-n3",null],["furi","t-furi",{name:"nofuri",on:v=>!v}],["quiz","t-quiz",{name:"quiz",on:v=>v}]];
+  function syncToggle(k,b,cls){b.setAttribute("aria-pressed",String(prefs[k]));if(cls)document.body.classList.toggle(cls.name,cls.on(prefs[k]));}
+  toggles.forEach(([k,id,cls])=>{const b=$(id);syncToggle(k,b,cls);
+    b.addEventListener("click",()=>{prefs[k]=!prefs[k];syncToggle(k,b,cls);savePrefs();
+      if(k==="quiz")document.querySelectorAll(".card.open").forEach(c=>c.classList.remove("open"));apply();});});
+  q.addEventListener("input",apply);
+
+  function goToCard(p){
+    const it=BY_P[p];if(!it)return;
+    showTab("ngu-phap",true);
+    const c=$(it.id);
+    if(c.hidden){q.value="";if(prefs.star){prefs.star=false;syncToggle("star",$("t-star"));}if(it.extra&&!prefs.n3){prefs.n3=true;syncToggle("n3",$("t-n3"));}savePrefs();apply();}
+    requestAnimationFrame(()=>{c.scrollIntoView({behavior:"smooth",block:"start"});c.classList.remove("flash");void c.offsetWidth;c.classList.add("flash");});
+  }
+
+  /* ---------- Tabs ---------- */
+  const tabs=[...document.querySelectorAll(".tab")];
+  function showTab(id,push){
+    tabs.forEach(t=>{const on=t.getAttribute("aria-controls")===id;t.setAttribute("aria-selected",String(on));$(t.getAttribute("aria-controls")).hidden=!on;});
+    $("tools").hidden=id!=="ngu-phap";
+    if(push){try{history.replaceState(null,"","#"+id);}catch(e){}}
+    measure();
+    if(id==="so-do"){if(MM.cur===null)openMap(-1);else requestAnimationFrame(()=>{if(!MM.fitted)fit();});}
+  }
+  tabs.forEach(t=>t.addEventListener("click",()=>{showTab(t.getAttribute("aria-controls"),true);const top=document.querySelector(".bar").offsetTop;if(window.scrollY>top)window.scrollTo({top});}));
+  function measure(){document.documentElement.style.setProperty("--bar-h",document.querySelector(".bar").offsetHeight+"px");}
+  window.addEventListener("resize",()=>{measure();});
+
+  /* ---------- Mind map ---------- */
+  const MM={cur:null,sel:null,x:0,y:0,k:1,fitted:false,nodes:[],edges:[]};
+  const world=$("world"),canvas=$("canvas"),svg=$("edges"),nodesEl=$("nodes"),detail=$("detail");
+  const legendState=new Set(prefs.mmHide||[]);
+  const listItems=[{ci:-1,title:"Tổng quan",n:MAPS.length}].concat(MAPS.map(m=>({ci:m.ci,title:m.title,n:m.nodes.length})));
+  $("mmList").innerHTML=listItems.map((m,i)=>`<li><button data-ci="${m.ci}"><span>${esc(m.title)}</span><span class="n">${m.n}</span></button></li>${i===0?'<li class="sep" role="separator"></li>':""}`).join("");
+  $("mmSelect").innerHTML=listItems.map(m=>`<option value="${m.ci}">${esc(m.title)} (${m.n})</option>`).join("");
+  $("mmList").addEventListener("click",e=>{const b=e.target.closest("button[data-ci]");if(b)openMap(+b.dataset.ci);});
+  $("mmSelect").addEventListener("change",e=>openMap(+e.target.value));
+
+  function applyLegend(){
+    ["similar","contrast","trap","related","n3"].forEach(k=>{world.classList.toggle("hide-"+k,legendState.has(k));});
+    document.body.classList.toggle("mm-labels",!!prefs.labels);
+    document.querySelectorAll(".lg").forEach(b=>{const k=b.dataset.k;b.setAttribute("aria-pressed",String(k==="labels"?!!prefs.labels:!legendState.has(k)));});
+  }
+  $("mmLegend").addEventListener("click",e=>{const b=e.target.closest(".lg");if(!b)return;const k=b.dataset.k;
+    if(k==="labels")prefs.labels=!prefs.labels;else{legendState.has(k)?legendState.delete(k):legendState.add(k);prefs.mmHide=[...legendState];}
+    savePrefs();applyLegend();});
+  applyLegend();
+
+  function nodeFlags(p){
+    if(!p)return"";const it=BY_P[p];const f=[];
+    if(it&&it.s)f.push('<span class="f-star" title="Trọng tâm">重</span>');
+    if(learned.has(p))f.push('<span class="f-done" title="Đã thuộc">✓</span>');
+    const nc=notesFor(p).length;if(nc)f.push(`<span class="f-note" title="${nc} ghi chú">${nc}</span>`);
+    return f.length?`<span class="flags">${f.join("")}</span>`:"";
+  }
+  function refreshFlags(){MM.nodes.forEach(n=>{if(!n.p)return;const old=n.el.querySelector(".flags");if(old)old.remove();n.el.insertAdjacentHTML("beforeend",nodeFlags(n.p));});}
+
+  function openMap(ci,selectIdx){
+    MM.cur=ci;MM.sel=null;detail.hidden=true;$("stage").classList.remove("has-detail");world.classList.remove("focus");
+    document.querySelectorAll("#mmList button").forEach(b=>b.setAttribute("aria-current",String(+b.dataset.ci===ci)));
+    $("mmSelect").value=String(ci);
+    const nodes=[],edges=[];
+    if(ci<0){
+      $("mmTitle").textContent="Tổng quan các cụm";$("mmSub").textContent="Mỗi nhánh là một cụm dễ nhầm. Đường nối là các cụm có chung mẫu. Bấm một nhánh để mở.";
+      nodes.push({center:true,label:"文法 N2",m:MAPS.length+" cụm dễ nhầm"});
+      MAPS.forEach(m=>nodes.push({cluster:true,label:m.title,m:m.nodes.length+" mẫu",open:m.ci}));
+      MAPS.forEach((a,i)=>MAPS.forEach((b,j)=>{if(j<=i)return;const pa=new Set(a.nodes.filter(n=>n.card).map(n=>n.card.p));
+        const shared=[...new Set(b.nodes.filter(n=>n.card&&pa.has(n.card.p)).map(n=>n.card.p))];
+        if(shared.length)edges.push({a:i+1,b:j+1,type:"share",label:"Chung: "+shared.map(p=>normP(p).split("／")[0]).join(", ")});}));
+      nodes.forEach((n,i)=>{if(i)edges.push({a:0,b:i,spoke:true,kind:""});});
+    }else{
+      const m=MAPS[ci];
+      $("mmTitle").textContent=m.title;$("mmSub").textContent=m.tip;
+      nodes.push({center:true,label:m.title,m:m.nodes.length+" mẫu"});
+      m.nodes.forEach((n,ni)=>nodes.push({label:n.label,m:n.m,kind:n.kind,ni,p:n.card?n.card.p:null}));
+      m.nodes.forEach((n,ni)=>edges.push({a:0,b:ni+1,spoke:true,kind:n.kind}));
+      m.links.forEach(l=>edges.push({a:l[0]+1,b:l[1]+1,type:l[2],label:l[3]}));
+    }
+    MM.nodes=nodes;MM.edges=edges;
+    nodesEl.innerHTML=nodes.map((n,i)=>`<button class="node ${n.center?"center":""} ${n.cluster?"cluster":""} ${n.kind?"k-"+n.kind:""}" data-i="${i}">
+      <span class="np${n.cluster||n.center?"":" jp"}">${esc(n.label)}</span><span class="nm">${esc(n.m)}</span>${nodeFlags(n.p)}</button>`).join("");
+    nodes.forEach((n,i)=>{n.el=nodesEl.children[i];n.w=n.el.offsetWidth;n.h=n.el.offsetHeight;});
+    layout(nodes);
+    nodes.forEach(n=>{n.el.style.left=n.x+"px";n.el.style.top=n.y+"px";});
+    drawEdges();
+    MM.fitted=false;fit();
+    if(selectIdx!==undefined)select(selectIdx+1);
+  }
+  function layout(nodes){
+    const c=nodes[0];c.x=0;c.y=0;const rest=nodes.slice(1),n=rest.length;
+    const avgW=rest.reduce((a,b)=>a+b.w,0)/n,avgH=rest.reduce((a,b)=>a+b.h,0)/n;
+    let rx=Math.max(c.w/2+avgW/2+60,(n*(avgW+24))/(2*Math.PI)*(n>12?0.55:0.85)),ry=Math.max(c.h/2+avgH/2+50,rx*0.58);
+    for(let iter=0;iter<60;iter++){
+      rest.forEach((nd,i)=>{const a=-Math.PI/2+i*2*Math.PI/n,f=n>12&&i%2?0.66:1;nd.x=Math.cos(a)*rx*f;nd.y=Math.sin(a)*ry*f;});
+      let clash=false;
+      for(let i=0;i<nodes.length&&!clash;i++)for(let j=i+1;j<nodes.length;j++){const A=nodes[i],B=nodes[j];
+        if(Math.abs(A.x-B.x)<(A.w+B.w)/2+18&&Math.abs(A.y-B.y)<(A.h+B.h)/2+14){clash=true;break;}}
+      if(!clash)break;rx*=1.07;ry*=1.07;
+    }
+  }
+  function drawEdges(){
+    const N=MM.nodes;let html="";
+    MM.edges.forEach((e,i)=>{const A=N[e.a],B=N[e.b];let d,mx,my;
+      if(e.spoke){d=`M${A.x},${A.y} L${B.x},${B.y}`;}
+      else{const midx=(A.x+B.x)/2,midy=(A.y+B.y)/2;const len=Math.hypot(B.x-A.x,B.y-A.y)||1;const px=-(B.y-A.y)/len,py=(B.x-A.x)/len;
+        const cx=midx*0.55+px*len*0.12,cy=midy*0.55+py*len*0.12;d=`M${A.x},${A.y} Q${cx},${cy} ${B.x},${B.y}`;mx=.25*A.x+.5*cx+.25*B.x;my=.25*A.y+.5*cy+.25*B.y;e.mx=mx;e.my=my;}
+      e.cls=e.spoke?`e-spoke ${e.kind?"k-"+e.kind:""}`:`e-${e.type}`;
+      html+=`<path class="edge ${e.cls}" data-e="${i}" d="${d}"/>`;});
+    MM.edges.forEach((e,i)=>{if(e.spoke||!e.label)return;html+=`<g class="elabel t-${e.type}" data-l="${i}" transform="translate(${e.mx},${e.my})"><rect rx="6" ry="6"/><text text-anchor="middle" dominant-baseline="central">${esc(e.label)}</text></g>`;});
+    svg.innerHTML=html;
+    svg.querySelectorAll(".elabel").forEach(g=>{const t=g.querySelector("text"),r=g.querySelector("rect");let w=0;try{w=t.getComputedTextLength();}catch(_){}w=w||g.textContent.length*6.5;
+      r.setAttribute("x",-w/2-8);r.setAttribute("y",-11);r.setAttribute("width",w+16);r.setAttribute("height",22);});
+  }
+  function setT(){world.style.transform=`translate(${MM.x}px,${MM.y}px) scale(${MM.k})`;}
+  function fit(sub){
+    const N=Array.isArray(sub)?sub:MM.nodes;if(!N.length)return;const W=canvas.clientWidth,H=canvas.clientHeight;if(!W||!H)return;
+    let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;N.forEach(n=>{x0=Math.min(x0,n.x-n.w/2);x1=Math.max(x1,n.x+n.w/2);y0=Math.min(y0,n.y-n.h/2-10);y1=Math.max(y1,n.y+n.h/2);});
+    const head=document.querySelector('.mm-head');const topPad=head.offsetHeight+24;const open=!detail.hidden;
+    const availW=W-(open&&W>=900?370:0),availH=H-(open&&W<900?detail.offsetHeight+16:0);
+    const k=Math.max(.25,Math.min((availW-48)/(x1-x0),(availH-topPad-20)/(y1-y0),1.15));
+    MM.k=k;MM.x=availW/2-((x0+x1)/2)*k;MM.y=topPad+(availH-topPad-20)/2-((y0+y1)/2)*k;
+    setT();MM.fitted=true;
+  }
+  function zoomAt(f,cx,cy){const k=Math.min(2.6,Math.max(.25,MM.k*f));const r=k/MM.k;MM.x=cx-(cx-MM.x)*r;MM.y=cy-(cy-MM.y)*r;MM.k=k;setT();}
+  $("zIn").onclick=()=>zoomAt(1.2,canvas.clientWidth/2,canvas.clientHeight/2);
+  $("zOut").onclick=()=>zoomAt(1/1.2,canvas.clientWidth/2,canvas.clientHeight/2);
+  $("zFit").onclick=()=>fit();
+  canvas.addEventListener("wheel",e=>{e.preventDefault();const r=canvas.getBoundingClientRect();zoomAt(Math.exp(-e.deltaY*0.0016),e.clientX-r.left,e.clientY-r.top);},{passive:false});
+  const ptrs=new Map();let drag=null,moved=false,pinch=null;
+  canvas.addEventListener("pointerdown",e=>{if(e.button!==0&&e.pointerType==="mouse")return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(ptrs.size===1){drag={x:e.clientX,y:e.clientY,ox:MM.x,oy:MM.y,onNode:!!e.target.closest(".node")};moved=false;}
+    else if(ptrs.size===2){const [a,b]=[...ptrs.values()];pinch={d:Math.hypot(a.x-b.x,a.y-b.y),k:MM.k};}});
+  canvas.addEventListener("pointermove",e=>{if(!ptrs.has(e.pointerId))return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pinch&&ptrs.size===2){const [a,b]=[...ptrs.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);const r=canvas.getBoundingClientRect();zoomAt((pinch.k*d/pinch.d)/MM.k,(a.x+b.x)/2-r.left,(a.y+b.y)/2-r.top);moved=true;return;}
+    if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
+    if(!moved&&Math.hypot(dx,dy)>5){moved=true;canvas.classList.add("drag");try{canvas.setPointerCapture(e.pointerId);}catch(_){}}
+    if(moved){MM.x=drag.ox+dx;MM.y=drag.oy+dy;setT();}});
+  const endPtr=e=>{ptrs.delete(e.pointerId);if(ptrs.size<2)pinch=null;if(ptrs.size===0){canvas.classList.remove("drag");
+    if(drag&&!moved&&e.type==="pointerup"){const nd=e.target.closest(".node");if(nd)select(+nd.dataset.i);else if(!drag.onNode)deselect();}drag=null;}};
+  canvas.addEventListener("pointerup",endPtr);canvas.addEventListener("pointercancel",endPtr);
+  nodesEl.addEventListener("keydown",e=>{const nd=e.target.closest(".node");if(nd&&(e.key==="Enter"||e.key===" ")){e.preventDefault();select(+nd.dataset.i);}});
+  nodesEl.addEventListener("pointerover",e=>{const nd=e.target.closest(".node");if(nd&&MM.sel===null)highlight(+nd.dataset.i);});
+  nodesEl.addEventListener("pointerout",e=>{const nd=e.target.closest(".node");if(nd&&MM.sel===null)highlight(null);});
+  nodesEl.addEventListener("focusin",e=>{const nd=e.target.closest(".node");if(nd&&MM.sel===null)highlight(+nd.dataset.i);});
+
+  function highlight(i){
+    const N=MM.nodes;N.forEach(n=>n.el.classList.remove("hot","sel"));
+    svg.querySelectorAll(".hot").forEach(x=>x.classList.remove("hot"));
+    if(i===null||i===undefined){world.classList.remove("focus");return;}
+    world.classList.add("focus");N[i].el.classList.add("hot");
+    MM.edges.forEach((e,k)=>{if(e.a===i||e.b===i){const p=svg.querySelector(`[data-e="${k}"]`);if(p)p.classList.add("hot");const l=svg.querySelector(`[data-l="${k}"]`);if(l)l.classList.add("hot");N[e.a].el.classList.add("hot");N[e.b].el.classList.add("hot");}});
+  }
+  function deselect(){const was=!detail.hidden;MM.sel=null;detail.hidden=true;$("stage").classList.remove("has-detail");highlight(null);if(was&&canvas.clientWidth<900)fit();}
+  function select(i){
+    const n=MM.nodes[i];
+    if(MM.cur<0&&n.cluster){openMap(n.open);return;}
+    MM.sel=i;highlight(i);n.el.classList.add("sel");
+    const wasHidden=detail.hidden;$("stage").classList.add("has-detail");
+    renderDetail();detail.hidden=false;
+    const W=canvas.clientWidth,H=canvas.clientHeight;
+    world.style.transition="transform .3s ease";setTimeout(()=>world.style.transition="",320);
+    const near=new Set([i]);MM.edges.forEach(e=>{if(!e.spoke&&(e.a===i||e.b===i)){near.add(e.a);near.add(e.b);}});
+    if(near.size<3&&!n.center)near.add(0);
+    fit(n.center?null:[...near].map(k=>MM.nodes[k]));
+  }
+  function renderDetail(){
+    const i=MM.sel;if(i===null)return;const n=MM.nodes[i];let h=`<button class="btn ghost x" id="dClose" aria-label="Đóng"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>`;
+    if(n.center&&MM.cur<0){h+=`<h3>文法 N2</h3><p class="note">Chọn một nhánh để mở sơ đồ của cụm đó.</p>`;detail.innerHTML=h;bindDetail();return;}
+    if(n.center){const m=MAPS[MM.cur];
+      h+=`<h3 style="font-family:var(--f-body);font-size:20px">${esc(m.title)}</h3><p class="note tip"><span class="lbl">Mẹo phân biệt</span>${jpWrap(m.tip)}</p>
+      <div><p class="sec-t">Các mẫu trong cụm</p><div class="plist">${m.nodes.map((x,ni)=>`<button data-sel="${ni+1}"><span class="jp">${esc(x.label)}</span><span>${esc(x.m)}</span></button>`).join("")}</div></div>`;
+      detail.innerHTML=h;bindDetail();return;}
+    const m=MAPS[MM.cur],row=m.nodes[n.ni],it=row.card;
+    h+=`<h3>${esc(row.label)}</h3>${it&&it.r?`<div class="sub">${esc(it.r)}</div>`:""}`;
+    const tags=[];if(it&&it.s)tags.push('<span class="stamp">重点</span>');if(row.kind==="trap")tags.push('<span class="t t-trap">Bẫy dễ nhầm</span>');if(row.kind==="n3"||(it&&it.n3))tags.push('<span class="n3b">N3</span>');
+    if(tags.length)h+=`<div class="badges">${tags.join("")}</div>`;
+    h+=`<p class="meaning" style="margin:0">${esc(row.m)}</p>`;
+    if(it&&it.m&&norm(it.m)!==norm(row.m))h+=`<p class="note" style="color:var(--muted)">${fmt(it.m)}</p>`;
+    h+=`<p class="note warn"><span class="lbl">Lưu ý</span>${jpWrap(row.note)}</p>`;
+    const rels=m.links.filter(l=>l[0]===n.ni||l[1]===n.ni);
+    const TN={similar:"Gần nghĩa",contrast:"Đối lập",trap:"Bẫy",related:"Liên quan"};
+    if(rels.length)h+=`<div><p class="sec-t">Quan hệ trong cụm</p><ul class="rel">${rels.map(l=>{const o=l[0]===n.ni?l[1]:l[0];return `<li><span class="t t-${l[2]}">${TN[l[2]]}</span><span><button class="linkbtn" data-sel="${o+1}">${esc(m.nodes[o].label)}</button> · ${jpWrap(l[3])}</span></li>`;}).join("")}</ul></div>`;
+    if(it&&it.ex&&it.ex[0])h+=`<div><p class="sec-t">Ví dụ</p><p class="ja" style="font-size:16px">${fmt(it.ex[0][0])}</p><p class="vi">${fmt(it.ex[0][1])}</p></div>`;
+    if(it){const other=(MAPS_OF[it.p]||[]).filter(x=>x.ci!==MM.cur);
+      if(other.length)h+=`<div><p class="sec-t">Cũng có trong sơ đồ</p><div class="chips">${other.map(x=>`<button class="mini" data-go="${x.ci}:${x.ni}">${esc(MAPS[x.ci].title)}</button>`).join("")}</div></div>`;
+      const ns=notesFor(it.p);
+      h+=`<div><p class="sec-t">Ghi chú của bạn (${ns.length})</p>${ns.length?`<div class="d-notes">${ns.slice(0,3).map(x=>`<div class="d-note">${esc(x.text)}</div>`).join("")}</div>`:`<p class="note" style="color:var(--muted)">Chưa có ghi chú cho mẫu này.</p>`}</div>`;
+      h+=`<div class="d-actions"><button class="btn primary" data-dact="card">Mở thẻ đầy đủ</button><button class="btn" data-dact="note">Thêm ghi chú</button>${it.extra?"":`<label class="learn btn"><input type="checkbox" data-dact="learn"${learned.has(it.p)?" checked":""}> Đã thuộc</label>`}</div>`;
+    }else h+=`<p class="note" style="color:var(--muted)">Mẫu N3 cơ bản, chưa có thẻ riêng trong sổ tay.</p>`;
+    detail.innerHTML=h;bindDetail();
+  }
+  function bindDetail(){
+    $("dClose").onclick=deselect;
+    detail.querySelectorAll("[data-sel]").forEach(b=>b.onclick=()=>select(+b.dataset.sel));
+    detail.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{const [ci,ni]=b.dataset.go.split(":").map(Number);openMap(ci,ni);});
+    const n=MM.nodes[MM.sel];const it=n&&n.ni!==undefined?MAPS[MM.cur].nodes[n.ni].card:null;if(!it)return;
+    const c=detail.querySelector('[data-dact="card"]');if(c)c.onclick=()=>goToCard(it.p);
+    const nb=detail.querySelector('[data-dact="note"]');if(nb)nb.onclick=()=>openNotes({ref:it.p,filter:true});
+    const lb=detail.querySelector('input[data-dact="learn"]');if(lb)lb.onchange=()=>setLearned(it.p,lb.checked);
+  }
+  window.addEventListener("resize",()=>{if(!$("so-do").hidden&&MM.cur!==null)fit();});
+
+  /* ---------- Notes ---------- */
+  const NS={list:store.get("n2.notes",[]),mode:"connecting",coll:null,filter:"all",ref:null,editing:null,confirm:null};
+  const saveLocal=()=>store.set("n2.notes",NS.list);
+  const newId=()=>"n"+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+  function notesFor(p){return NS.list.filter(n=>n.ref===p).sort((a,b)=>b.updated-a.updated);}
+  function setSync(){const s=$("sync");s.className="sync "+(NS.mode==="cloud"?"cloud":NS.mode==="local"?"local":"");
+    s.querySelector("span").textContent=NS.mode==="cloud"?"Đã đồng bộ với tài khoản của bạn":NS.mode==="local"?"Đang lưu trên trình duyệt này":"Đang kết nối…";}
+  function updateCounts(){
+    $("noteCount").textContent=NS.list.length;
+    document.querySelectorAll("[data-nc]").forEach(el=>{const c=NS.list.filter(n=>n.ref===el.dataset.nc).length;el.textContent=c;el.hidden=!c;});
+    if(MM.cur!==null){refreshFlags();if(MM.sel!==null&&!detail.hidden)renderDetail();}
+  }
+  const fmtTime=t=>{const d=new Date(t);const p=x=>String(x).padStart(2,"0");return `${p(d.getDate())}/${p(d.getMonth()+1)}/${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`;};
+  function renderNotes(){
+    const term=norm($("nSearch").value);
+    let L=NS.list.slice();
+    if(NS.ref)L=L.filter(n=>n.ref===NS.ref);
+    else if(NS.filter==="ref")L=L.filter(n=>n.ref);else if(NS.filter==="general")L=L.filter(n=>!n.ref);
+    if(term)L=L.filter(n=>norm(n.text+" "+(n.ref||"")).includes(term));
+    $("filterRef").hidden=!NS.ref;$("filterRefName").textContent=NS.ref||"";
+    const box=$("nList");
+    if(!L.length){box.innerHTML=`<div class="n-empty">${NS.list.length?"Không có ghi chú nào khớp.":"Chưa có ghi chú nào.<br>Viết ở ô phía trên, hoặc bấm nút <b>Ghi chú</b> trên một thẻ ngữ pháp để gắn ghi chú với mẫu đó."}</div>`;return;}
+    let groups;
+    if(NS.filter==="ref"&&!NS.ref){const by={};L.forEach(n=>(by[n.ref]=by[n.ref]||[]).push(n));groups=Object.keys(by).sort().map(k=>({t:k,items:by[k].sort((a,b)=>b.updated-a.updated)}));}
+    else groups=[{t:"",items:L.sort((a,b)=>b.updated-a.updated)}];
+    box.innerHTML=groups.map(g=>(g.t?`<div class="n-group jp">${esc(g.t)}</div>`:"")+g.items.map(n=>{
+      const editing=NS.editing===n.id,conf=NS.confirm===n.id;
+      return `<div class="n-item" data-id="${n.id}">
+        <div class="n-meta">${n.ref?`<button class="n-ref" data-goref="${esc(n.ref)}" title="Mở thẻ">${esc(n.ref)}</button>`:'<span class="n-ref general">Ghi chú chung</span>'}<span class="n-time">${fmtTime(n.updated)}</span></div>
+        ${editing?`<div class="n-edit"><textarea data-edit>${esc(n.text)}</textarea></div>`:`<p class="n-text">${esc(n.text)}</p>`}
+        <div class="n-act">${n.pending?'<span class="n-pending">Chưa đồng bộ</span>':""}
+          ${editing?`<button data-a="cancel">Huỷ</button><button data-a="save">Lưu</button>`:conf?`<span class="n-time">Xoá ghi chú này?</span><button data-a="no">Không</button><button class="danger" data-a="yes">Xoá</button>`:`<button data-a="edit">Sửa</button><button class="danger" data-a="del">Xoá</button>`}</div></div>`;}).join("")).join("");
+    const ta=box.querySelector("[data-edit]");if(ta){ta.focus();ta.setSelectionRange(ta.value.length,ta.value.length);}
+  }
+  async function writeNote(n){
+    if(NS.mode==="cloud"&&NS.coll){
+      try{await NS.coll.doc(n.id).set({text:n.text,ref:n.ref||"",created:n.created,updated:n.updated});n.pending=false;}
+      catch(e){n.pending=true;if(e&&(e.code==="invalid_argument"||e.code==="revoked")){NS.mode="local";setSync();toast("Không lưu được lên tài khoản. Ghi chú được giữ trên trình duyệt này.");}else toast("Chưa đồng bộ được, sẽ thử lại sau.");}
+    }else n.pending=true;
+    saveLocal();
+  }
+  async function saveNew(){
+    const text=$("nText").value.trim();if(!text){$("nText").focus();return;}
+    let ref=$("nRef").value.trim();
+    if(ref&&!BY_P[ref]){const hit=ALL.find(it=>norm(it.p).includes(norm(ref)));ref=hit?hit.p:ref;}
+    const now=Date.now();const n={id:newId(),text,ref:ref||"",created:now,updated:now,pending:NS.mode!=="cloud"};
+    NS.list.push(n);saveLocal();$("nText").value="";renderNotes();updateCounts();toast("Đã lưu ghi chú");
+    writeNote(n).then(()=>{renderNotes();});
+  }
+  $("nSave").onclick=saveNew;
+  $("nText").addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.ctrlKey||e.metaKey)){e.preventDefault();saveNew();}});
+  $("nSearch").addEventListener("input",renderNotes);
+  document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{NS.filter=b.dataset.f;NS.ref=null;document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));renderNotes();});
+  $("clearRef").onclick=()=>{NS.ref=null;renderNotes();};
+  $("nList").addEventListener("click",async e=>{
+    const g=e.target.closest("[data-goref]");if(g){if(window.innerWidth<1180)closeNotes();goToCard(g.dataset.goref);return;}
+    const b=e.target.closest("[data-a]");if(!b)return;const id=b.closest(".n-item").dataset.id;const n=NS.list.find(x=>x.id===id);if(!n)return;
+    const a=b.dataset.a;
+    if(a==="edit"){NS.editing=id;NS.confirm=null;renderNotes();}
+    else if(a==="cancel"){NS.editing=null;renderNotes();}
+    else if(a==="save"){const v=b.closest(".n-item").querySelector("[data-edit]").value.trim();if(!v)return;n.text=v;n.updated=Date.now();NS.editing=null;saveLocal();renderNotes();await writeNote(n);renderNotes();updateCounts();}
+    else if(a==="del"){NS.confirm=id;NS.editing=null;renderNotes();}
+    else if(a==="no"){NS.confirm=null;renderNotes();}
+    else if(a==="yes"){NS.confirm=null;NS.list=NS.list.filter(x=>x.id!==id);saveLocal();renderNotes();updateCounts();
+      if(NS.mode==="cloud"&&NS.coll){try{await NS.coll.doc(id).delete();}catch(err){toast("Chưa xoá được trên tài khoản, hãy thử lại.");}}
+      else{const del=store.get("n2.notes.deleted",[]);del.push(id);store.set("n2.notes.deleted",del);}}
+  });
+  $("nList").addEventListener("keydown",e=>{if(e.target.matches("[data-edit]")&&e.key==="Enter"&&(e.ctrlKey||e.metaKey)){e.preventDefault();e.target.closest(".n-item").querySelector('[data-a="save"]').click();}});
+  function openNotes(opt){
+    opt=opt||{};document.body.classList.add("drawer-open");$("openNotes").setAttribute("aria-expanded","true");
+    if(opt.ref){$("nRef").value=opt.ref;if(opt.filter)NS.ref=opt.ref;}
+    renderNotes();setTimeout(()=>$("nText").focus(),260);
+    setTimeout(()=>{if(!$("so-do").hidden&&MM.cur!==null)fit();},280);
+  }
+  function closeNotes(){document.body.classList.remove("drawer-open");$("openNotes").setAttribute("aria-expanded","false");setTimeout(()=>{if(!$("so-do").hidden&&MM.cur!==null)fit();},280);}
+  $("openNotes").onclick=()=>document.body.classList.contains("drawer-open")?closeNotes():openNotes();
+  $("closeNotes").onclick=closeNotes;$("scrim").onclick=closeNotes;
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"){if(document.body.classList.contains("drawer-open"))closeNotes();else if(MM.sel!==null)deselect();}});
+
+  /* Account storage: notes and progress live in the viewer's private subtree */
+  (async function connect(){
+    let db=null,user=null,uid=null;
+    try{if(window.claude&&typeof window.claude.use==="function"){[db,user]=await Promise.all([window.claude.use("db"),window.claude.use("user")]);if(user)uid=await user.id();}}catch(e){}
+    if(!db||!uid){NS.mode="local";setSync();return;}
+    const root="data/users/"+uid;
+    NS.coll=db.doc(root+"/notebook").collection("notes");
+    progRef=db.doc(root+"/progress");
+    try{const snap=await progRef.get();
+      if(snap.exists){const L=(snap.data().learned)||[];const local=[...learned];learned.clear();L.forEach(p=>{if(BY_P[p])learned.add(p);});
+        const added=local.filter(p=>!learned.has(p));added.forEach(p=>learned.add(p));
+        store.set("n2.learned",[...learned]);document.querySelectorAll("input[data-p]").forEach(cb=>{cb.checked=learned.has(cb.dataset.p);cb.closest(".card")&&cb.closest(".card").classList.toggle("done",cb.checked);});
+        progress();if(added.length)pushProgress();}
+      else if(learned.size)pushProgress();
+    }catch(e){}
+    let first=true;
+    NS.coll.onSnapshot(snap=>{
+      const cloud=snap.docs.map(d=>Object.assign({id:d.id},d.data()));
+      const ids=new Set(cloud.map(n=>n.id));
+      const pending=NS.list.filter(n=>n.pending&&!ids.has(n.id));
+      NS.list=cloud.map(n=>({id:n.id,text:n.text,ref:n.ref||"",created:n.created||n.updated,updated:n.updated||n.created})).concat(pending);
+      if(NS.mode!=="local")NS.mode="cloud";setSync();saveLocal();renderNotes();updateCounts();
+      if(first){first=false;if(pending.length&&NS.mode==="cloud")setTimeout(async()=>{for(const n of pending){await writeNote(n);}renderNotes();},0);
+        const del=store.get("n2.notes.deleted",[]);if(del.length&&NS.mode==="cloud")setTimeout(async()=>{for(const id of del){try{await NS.coll.doc(id).delete();}catch(e){}}store.set("n2.notes.deleted",[]);},0);}
+    },err=>{NS.mode="local";setSync();});
+  })();
+
+  /* ---------- Boot ---------- */
+  const h=location.hash.slice(1);
+  if(["so-do","phan-biet","cach-hoc"].includes(h))showTab(h,false);else showTab("ngu-phap",false);
+  if(h&&$(h)&&!["ngu-phap","so-do","phan-biet","cach-hoc"].includes(h))setTimeout(()=>$(h).scrollIntoView(),0);
+  measure();progress();apply();setSync();renderNotes();updateCounts();
+})();
+</script>
