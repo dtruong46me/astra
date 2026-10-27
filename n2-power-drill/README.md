@@ -5,5 +5,6 @@
 - `data/x_b01.js … x_g06.js`: lớp bổ sung `X[id] = {w, nt}` — `w["sec.câu"]` là lý do chọn/loại cho từng lựa chọn (問題2: lý do đứng ở từng ô), `nt` là ghi chú kiến thức cuối bài (`h` tiêu đề, `p` trọng tâm, `x` mở rộng).
 - `app.html`: giao diện (tab 語彙 / 文法 / Từ vựng / Ngữ pháp / Thẻ / Ghi chú; tự làm / xem đáp án, bảng tổng hợp cuối bài, flashcard từ vựng và ngữ pháp, ghi chú riêng cho từng câu và từng bài — khung ghi chú bên phải trong bài và tab Ghi chú tổng hợp — lưu tiến độ).
 - `node build.js` → `dist/index.html` (file publish làm Artifact).
+- `node pdf.js` → `pdf/*.pdf`: mỗi dạng 問題 của mỗi sách một file A4 để in (gộp đủ 30 回 hoặc 10 集中), cuối file có bảng đáp án nhanh và giải thích ngắn từng câu. Font Noto tải một lần vào `.fonts/`.
 
 Đáp án 文字・語彙: 集中トレーニング lấy từ dòng 【答え】 cuối mỗi trang, 30 回 lấy từ 別冊解答. Đáp án 文法 lấy từ 別冊解答 (gồm cả thứ tự sắp xếp của 問題2).
