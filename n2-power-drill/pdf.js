@@ -1,4 +1,5 @@
-// Builds pdf/*.pdf: one printable workbook per 問題 type per book, answer key at the end.
+// Builds pdf/*.pdf: one printable workbook per 問題 type per book, plus one whole-book PDF per book
+// (every unit in book order); each ends with its answer key.
 // Usage: node pdf.js   (needs Playwright + Chromium + curl; fonts are cached in .fonts/)
 const fs=require('fs'),path=require('path'),vm=require('vm');
 const {execFileSync}=require('child_process');
@@ -99,6 +100,47 @@ function build(book,t){
  h+='</section>';
  return {title,html:page(title,h),file:`${BOOKF[book]}-${d.jp==='集中'?'集中トレーニング':d.jp+'-'+d.nm}.pdf`};}
 
+// whole book in book order: each unit on its own page, every 問題 with its instruction; key at the end
+function buildBook(book){
+ const units=UNITS.filter(u=>u.book===book);
+ const rounds=units.filter(u=>u.kind==='round'),trains=units.filter(u=>u.kind!=='round');
+ const nq=units.reduce((a,u)=>a+u.secs.reduce((b,s)=>b+s.qs.length,0),0);
+ const title=`パワードリル N2 ${BOOKN[book]}`;
+ const ts=[...new Set(rounds.flatMap(u=>u.secs.map(s=>s.t)))];
+ const insOf=s=>s.t===13?`次の文章を読んで、［1］から［${s.qs.length}］の中に入る最もよいものを、1・2・3・4から一つ選びなさい。`:SEC[s.t].ins;
+ const secHead=s=>{const d=SEC[s.t];return (d.jp!=='集中'?`<div class="sh"><span class="mondai sm">${d.jp}</span><span class="jp">${d.nm}</span><span class="pg">${d.vi}</span></div>`:'')+`<div class="ins jp sm">${esc(insOf(s))}</div>`;};
+ let h=`<section class="cover book"><div class="eyebrow">日本語パワードリル N2</div><h1 class="jp big">${BOOKN[book]}</h1>
+ <div class="meta">${rounds.length} 回 + ${trains.length} 集中トレーニング · ${nq} câu · đáp án và giải thích ngắn ở cuối sách</div>
+ <h3>Các dạng bài trong mỗi 回</h3><ul class="toc">${ts.map(t=>`<li><span class="mondai sm">${SEC[t].jp}</span><span class="jp">${SEC[t].nm}</span> <span class="pg">${SEC[t].vi}</span></li>`).join('')}
+ <li><span class="mondai sm">集中</span><span class="jp">集中トレーニング</span> <span class="pg">${SEC[book==='v'?7:17].vi} · chọn a / b</span></li></ul>
+ <h3>Mục lục</h3><ol class="ul">${units.map(u=>`<li><span class="jp">${esc(u.title)}</span><span class="pg">tr. ${esc(u.pages||'')}</span></li>`).join('')}</ol></section>`;
+ units.forEach(u=>{
+  h+=`<section class="unit pb">`;
+  u.secs.forEach((s,si)=>{
+   let head=(si?'':`<h2 class="jp">${uref(u)}</h2>`)+secHead(s);
+   if(s.t===13)head+=passage(s);
+   const qs=s.qs.map((q,qi)=>qHTML(q,qi,s.t));
+   h+=`<div class="keep">${head}${qs.shift()}</div>`+qs.join('');});
+  h+=`<div class="score">Điểm: ＿＿ / ${u.secs.reduce((a,s)=>a+s.qs.length,0)}</div></section>`;});
+ // quick grid: rounds grouped by 問題, 集中 units on their own
+ const grid=(us,cols)=>{let g=`<table class="grid"><thead><tr><th rowspan="2"></th>${cols.map(c=>`<th colspan="${c.n}" class="jp">${c.lb}</th>`).join('')}</tr><tr>${cols.map(c=>Array.from({length:c.n},(_,i)=>`<th>${i+1}</th>`).join('')).join('')}</tr></thead><tbody>`;
+  us.forEach(u=>{g+=`<tr><th class="jp">${esc(u.title.replace('集中トレーニング','集中'))}</th>${cols.map(c=>{const s=u.secs.find(s=>s.t===c.t);
+   return Array.from({length:c.n},(_,i)=>`<td${i===0?' class="gs"':''}>${s&&s.qs[i]?label(c.t,s.qs[i].a):''}</td>`).join('');}).join('')}</tr>`;});
+  return g+'</tbody></table>';};
+ const cols=us=>[...new Set(us.flatMap(u=>u.secs.map(s=>s.t)))].map(t=>({t,lb:SEC[t].jp,n:Math.max(...us.map(u=>{const s=u.secs.find(s=>s.t===t);return s?s.qs.length:0;}))}));
+ h+=`<section class="key"><h1 class="kh">解答 · Đáp án</h1><h3>Bảng đáp án nhanh · 第1回〜第${rounds.length}回</h3>${grid(rounds,cols(rounds))}
+ <div class="keep"><h3>Bảng đáp án nhanh · 集中トレーニング</h3>${grid(trains,cols(trains))}</div><h3 class="nb">Giải thích từng câu</h3>`;
+ units.forEach(u=>{
+  h+=`<div class="kunit">`;
+  u.secs.forEach((s,si)=>{const d=SEC[s.t];
+   let head=(si?'':`<h4 class="jp">${esc(u.title)}</h4>`)+(d.jp!=='集中'?`<div class="ksh jp">${d.jp} ${d.nm}</div>`:'');
+   if(s.t===13&&s.pvi)head+=`<div class="pvi"><b>Dịch đoạn văn:</b> ${esc(s.pvi).replace(/\n/g,' ')}</div>`;
+   const ks=s.qs.map((q,qi)=>keyLine(q,qi,s.t));
+   h+=`<div class="keep">${head}${ks.shift()}</div>`+ks.join('');});
+  h+='</div>';});
+ h+='</section>';
+ return {title,html:page(title,h),file:`パワードリルN2-${BOOKF[book]}.pdf`};}
+
 const CSS=`
 @page{size:A4;margin:16mm 15mm 16mm 15mm}
 :root{--ink:#1d1b18;--mut:#6b655c;--line:#cfc8bb;--acc:#9b2c1f;--soft:#f4efe6}
@@ -136,6 +178,21 @@ h2{font-size:13pt;margin:10px 0 4px;padding:2px 0 3px;border-bottom:1px solid va
 .src{text-align:right;font-size:9pt;color:var(--mut)}
 .score{text-align:right;font-size:9pt;color:var(--mut);margin-top:2px}
 .key{break-before:page}
+.pb{break-before:page}
+.big{font-size:34pt;margin:6px 0 4px}
+.mondai.sm{font-size:9.5pt;padding:0 9px;vertical-align:1px;margin-right:6px}
+.sh{display:flex;align-items:baseline;gap:6px;margin:12px 0 0;font-size:11.5pt;font-weight:700}
+.sh .pg{font-weight:400}
+.toc{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.toc li{display:flex;align-items:baseline;gap:4px}
+.ul{columns:2;column-gap:28px;margin:0;padding-left:22px}
+.ul li{break-inside:avoid;padding:1px 0}
+.ul .pg{margin-left:8px}
+.grid td.gs{border-left:1.6px solid var(--ink)}
+.key .grid{table-layout:fixed;font-size:8.5pt}
+.key .grid th,.key .grid td{padding:2px 1px}
+.key .grid tr>th:first-child{width:52px}
+.ksh{font-size:9.5pt;font-weight:700;color:var(--acc);margin:6px 0 0}
 .kh{border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:6px}
 h3{font-size:11.5pt;margin:12px 0 6px;color:var(--acc)}
 h3.nb{break-before:page;margin-top:0}
@@ -173,8 +230,9 @@ const page=(title,body)=>`<!doctype html><html lang="vi"><head><meta charset="ut
  const out=path.join(__dirname,'pdf');fs.mkdirSync(out,{recursive:true});
  const browser=await chromium.launch(fs.existsSync('/opt/pw-browsers/chromium')?{executablePath:'/opt/pw-browsers/chromium'}:{});
  const pg=await browser.newPage();
- for(const [book,ts] of FILES)for(const t of ts){
-  const {title,html,file}=build(book,t);
+ const jobs=[...FILES.flatMap(([book,ts])=>ts.map(t=>()=>build(book,t))),...FILES.map(([book])=>()=>buildBook(book))];
+ for(const job of jobs){
+  const {title,html,file}=job();
   if(process.env.HTML)fs.writeFileSync(path.join(out,file.replace(/\.pdf$/,'.html')),html);
   const tmp=path.join(__dirname,'.fonts','print.html');fs.writeFileSync(tmp,html);
   await pg.goto('file://'+tmp,{waitUntil:'load'});await pg.evaluate(()=>document.fonts.ready);
